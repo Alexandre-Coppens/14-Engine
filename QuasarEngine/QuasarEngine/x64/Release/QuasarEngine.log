@@ -1,0 +1,3 @@
+﻿  main.cpp
+MSVCRT.lib(exe_main.obj) : error LNK2001: unresolved external symbol main
+E:\Github\14-Engine\QuasarEngine\x64\Release\QuasarEngine.exe : fatal error LNK1120: 1 unresolved externals
