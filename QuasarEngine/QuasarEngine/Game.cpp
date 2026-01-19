@@ -1,9 +1,12 @@
 #include <SDL.h>
 #include "Game.h"
+#include "Time.h"
+#include "Inputs.h"
 
+#include "Scene.h"
 
-Game::Game(std::string _sTitle):
-	bIsRunning(true), sTitle(_sTitle)
+Game::Game(std::string _sTitle, std::vector<Scene*> _vScenes):
+	bIsRunning(true), sTitle(_sTitle), vScenes(_vScenes)
 {
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
 	{
@@ -11,58 +14,72 @@ Game::Game(std::string _sTitle):
 	}
 	else
 	{
-		SDL_Log("SDL initialization succeeded!");
+		SDL_Log("SDL initialization succeeded");
 	}
-	Initialize();
 }
 
 Game::~Game()
 {
-
 }
 
 void Game::Initialize()
 {
 	pWindow = new Window(800, 800, sTitle);
-	if (pWindow->Open()) Loop();
+	pRenderer = new Renderer();
+
+	if (vScenes.size() > 0)
+	{
+		vScenes[u8CurrentScene]->Start();
+		vScenes[u8CurrentScene]->SetRenderer(pRenderer);
+	}
+
+	if (pWindow->Open()) 
+	{
+		pRenderer->Initialize(*pWindow);
+		Loop();
+	}
 }
 
 void Game::Loop()
 {
-	CheckInputs();
-	Update();
-	Render();
+	while (bIsRunning)
+	{
+		Time::ComputeDeltaTime();
+
+		vScenes[u8CurrentScene]->EarlyUpdate();
+		Inputs::ComputeInputs();
+
+		vScenes[u8CurrentScene]->Update(Time::deltaTime);
+
+		Render();
+		vScenes[u8CurrentScene]->LateUpdate();
+
+		Inputs::FlushLateInputs();
+		bIsRunning = !Inputs::GetEventQuit();
+		Time::DelayTime();
+	}
+	Close();
 }
 
 void Game::Render()
 {
-}
-
-void Game::Update()
-{
-}
-
-void Game::CheckInputs()
-{
-	if (bIsRunning)
-	{
-		SDL_Event event;
-		while (SDL_PollEvent(&event))
-		{
-			switch (event.type)
-			{
-			case SDL_QUIT:
-				bIsRunning = false;
-				break;
-			default:
-				//SendInputs
-				break;
-			}
-		}
-	}
+	pRenderer->BeginDraw();
+	vScenes[u8CurrentScene]->Render();
+	pRenderer->EndDraw();
 }
 
 void Game::Close()
 {
+	for (Scene* scene : vScenes)
+	{
+		delete scene;
+	}
+
+	pRenderer->Close();
+	delete pRenderer;
+	pRenderer = nullptr;
+
 	pWindow->Close();
+	delete pWindow;
+	pWindow = nullptr;
 }

@@ -10,8 +10,8 @@ private:
 	Vector2 v2WindowSize;
 	std::string sWindowName;
 public:
-	const inline SDL_Window* GetSdlWindow() { return pSdlWindow; }
-	const inline Vector2 GetSize() { return v2WindowSize; }
+	SDL_Window* GetSdlWindow() const { return pSdlWindow; }
+	Vector2 GetSize() const { return v2WindowSize; }
 
 private:
 public:

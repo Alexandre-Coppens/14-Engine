@@ -3,40 +3,116 @@
   "WorkspaceRootPath": "E:\\Github\\14-Engine\\QuasarEngine\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Paddle.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|solutionrelative:QuasarEngine\\Paddle.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Scene_Pong.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|solutionrelative:QuasarEngine\\Scene_Pong.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Scene_Pong.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|solutionrelative:QuasarEngine\\Scene_Pong.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|solutionrelative:QuasarEngine\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Window.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|solutionrelative:QuasarEngine\\Window.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Paddle.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|solutionrelative:QuasarEngine\\Paddle.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Scene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|solutionrelative:QuasarEngine\\Scene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|solutionrelative:QuasarEngine\\Scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Inputs.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|solutionrelative:QuasarEngine\\Inputs.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|solutionrelative:QuasarEngine\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Inputs.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|solutionrelative:QuasarEngine\\Inputs.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Time.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|solutionrelative:QuasarEngine\\Time.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Time.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|solutionrelative:QuasarEngine\\Time.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|solutionrelative:QuasarEngine\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Window.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|solutionrelative:QuasarEngine\\Window.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\CommonLib.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|solutionrelative:QuasarEngine\\CommonLib.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\MathLib.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|solutionrelative:QuasarEngine\\MathLib.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Actor.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|solutionrelative:QuasarEngine\\Actor.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Actor.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|solutionrelative:QuasarEngine\\Actor.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Rectangle.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|solutionrelative:QuasarEngine\\Rectangle.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\CommonLib.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|solutionrelative:QuasarEngine\\CommonLib.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Component.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|solutionrelative:QuasarEngine\\Component.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\cTransform2D.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|solutionrelative:QuasarEngine\\cTransform2D.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Component.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|solutionrelative:QuasarEngine\\Component.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\cTransform2D.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|solutionrelative:QuasarEngine\\cTransform2D.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Renderer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|solutionrelative:QuasarEngine\\Renderer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Window.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|solutionrelative:QuasarEngine\\Window.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Log.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|solutionrelative:QuasarEngine\\Log.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Window.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|solutionrelative:QuasarEngine\\Window.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Log.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|solutionrelative:QuasarEngine\\Log.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Renderer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C4475D57-A2A8-4FD0-8A39-D2EB4565AC2E}|QuasarEngine\\QuasarEngine.vcxproj|solutionrelative:QuasarEngine\\Renderer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,37 +122,77 @@
       "DocumentGroups": [
         {
           "DockedWidth": 222,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "main.cpp",
               "DocumentMoniker": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\main.cpp",
               "RelativeDocumentMoniker": "QuasarEngine\\main.cpp",
               "ToolTip": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\main.cpp",
               "RelativeToolTip": "QuasarEngine\\main.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-01-15T08:18:53.04Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Game.cpp",
+              "DocumentMoniker": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Game.cpp",
+              "RelativeDocumentMoniker": "QuasarEngine\\Game.cpp",
+              "ToolTip": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Game.cpp",
+              "RelativeToolTip": "QuasarEngine\\Game.cpp",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwCQAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-01-15T12:16:45.819Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Paddle.cpp",
+              "DocumentMoniker": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Paddle.cpp",
+              "RelativeDocumentMoniker": "QuasarEngine\\Paddle.cpp",
+              "ToolTip": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Paddle.cpp",
+              "RelativeToolTip": "QuasarEngine\\Paddle.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-01-19T11:57:40.946Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Inputs.cpp",
+              "DocumentMoniker": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Inputs.cpp",
+              "RelativeDocumentMoniker": "QuasarEngine\\Inputs.cpp",
+              "ToolTip": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Inputs.cpp",
+              "RelativeToolTip": "QuasarEngine\\Inputs.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-01-19T13:27:26.888Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "CommonLib.h",
-              "DocumentMoniker": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\CommonLib.h",
-              "RelativeDocumentMoniker": "QuasarEngine\\CommonLib.h",
-              "ToolTip": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\CommonLib.h",
-              "RelativeToolTip": "QuasarEngine\\CommonLib.h",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABgAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-01-15T09:30:15.162Z",
+              "Title": "Scene.cpp",
+              "DocumentMoniker": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Scene.cpp",
+              "RelativeDocumentMoniker": "QuasarEngine\\Scene.cpp",
+              "ToolTip": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Scene.cpp",
+              "RelativeToolTip": "QuasarEngine\\Scene.cpp",
+              "ViewState": "AgIAAA0AAAAAAAAAAAApwCYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-01-16T09:23:36.257Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 13,
               "Title": "MathLib.h",
               "DocumentMoniker": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\MathLib.h",
               "RelativeDocumentMoniker": "QuasarEngine\\MathLib.h",
@@ -84,73 +200,203 @@
               "RelativeToolTip": "QuasarEngine\\MathLib.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-01-15T09:54:30.898Z"
+              "WhenOpened": "2026-01-15T09:54:30.898Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 1,
+              "Title": "Scene_Pong.cpp",
+              "DocumentMoniker": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Scene_Pong.cpp",
+              "RelativeDocumentMoniker": "QuasarEngine\\Scene_Pong.cpp",
+              "ToolTip": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Scene_Pong.cpp",
+              "RelativeToolTip": "QuasarEngine\\Scene_Pong.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-01-16T10:12:02.268Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Actor.cpp",
+              "DocumentMoniker": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Actor.cpp",
+              "RelativeDocumentMoniker": "QuasarEngine\\Actor.cpp",
+              "ToolTip": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Actor.cpp",
+              "RelativeToolTip": "QuasarEngine\\Actor.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAQwBcAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-01-19T11:24:47.487Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Time.cpp",
+              "DocumentMoniker": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Time.cpp",
+              "RelativeDocumentMoniker": "QuasarEngine\\Time.cpp",
+              "ToolTip": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Time.cpp",
+              "RelativeToolTip": "QuasarEngine\\Time.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-01-16T10:47:17.144Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "CommonLib.h",
+              "DocumentMoniker": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\CommonLib.h",
+              "RelativeDocumentMoniker": "QuasarEngine\\CommonLib.h",
+              "ToolTip": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\CommonLib.h",
+              "RelativeToolTip": "QuasarEngine\\CommonLib.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-01-15T09:30:15.162Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "cTransform2D.h",
+              "DocumentMoniker": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\cTransform2D.h",
+              "RelativeDocumentMoniker": "QuasarEngine\\cTransform2D.h",
+              "ToolTip": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\cTransform2D.h",
+              "RelativeToolTip": "QuasarEngine\\cTransform2D.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-01-19T10:37:28.141Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Component.cpp",
+              "DocumentMoniker": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Component.cpp",
+              "RelativeDocumentMoniker": "QuasarEngine\\Component.cpp",
+              "ToolTip": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Component.cpp",
+              "RelativeToolTip": "QuasarEngine\\Component.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-01-19T10:12:36.596Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "cTransform2D.cpp",
+              "DocumentMoniker": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\cTransform2D.cpp",
+              "RelativeDocumentMoniker": "QuasarEngine\\cTransform2D.cpp",
+              "ToolTip": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\cTransform2D.cpp",
+              "RelativeToolTip": "QuasarEngine\\cTransform2D.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-01-19T11:14:57.743Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Renderer.cpp",
+              "DocumentMoniker": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Renderer.cpp",
+              "RelativeDocumentMoniker": "QuasarEngine\\Renderer.cpp",
+              "ToolTip": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Renderer.cpp",
+              "RelativeToolTip": "QuasarEngine\\Renderer.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-01-16T08:25:11.265Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
               "Title": "Log.cpp",
               "DocumentMoniker": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Log.cpp",
               "RelativeDocumentMoniker": "QuasarEngine\\Log.cpp",
               "ToolTip": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Log.cpp",
               "RelativeToolTip": "QuasarEngine\\Log.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABcAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-01-15T09:27:09.611Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Log.h",
-              "DocumentMoniker": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Log.h",
-              "RelativeDocumentMoniker": "QuasarEngine\\Log.h",
-              "ToolTip": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Log.h",
-              "RelativeToolTip": "QuasarEngine\\Log.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-01-15T09:22:20.375Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 25,
               "Title": "Window.cpp",
               "DocumentMoniker": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Window.cpp",
               "RelativeDocumentMoniker": "QuasarEngine\\Window.cpp",
               "ToolTip": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Window.cpp",
               "RelativeToolTip": "QuasarEngine\\Window.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-01-15T11:37:16.742Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Game.cpp",
-              "DocumentMoniker": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Game.cpp",
-              "RelativeDocumentMoniker": "QuasarEngine\\Game.cpp",
-              "ToolTip": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Game.cpp",
-              "RelativeToolTip": "QuasarEngine\\Game.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAQwBoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-01-15T12:16:45.819Z",
-              "EditorCaption": ""
+              "DocumentIndex": 26,
+              "Title": "Log.h",
+              "DocumentMoniker": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Log.h",
+              "RelativeDocumentMoniker": "QuasarEngine\\Log.h",
+              "ToolTip": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Log.h",
+              "RelativeToolTip": "QuasarEngine\\Log.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-01-15T09:22:20.375Z"
             }
           ]
         },
         {
           "DockedWidth": 178,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 15,
+              "Title": "Actor.h",
+              "DocumentMoniker": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Actor.h",
+              "RelativeDocumentMoniker": "QuasarEngine\\Actor.h",
+              "ToolTip": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Actor.h",
+              "RelativeToolTip": "QuasarEngine\\Actor.h",
+              "ViewState": "AgIAABQAAAAAAAAAAAAQwCsAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-01-19T10:21:31.668Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Scene.h",
+              "DocumentMoniker": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Scene.h",
+              "RelativeDocumentMoniker": "QuasarEngine\\Scene.h",
+              "ToolTip": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Scene.h",
+              "RelativeToolTip": "QuasarEngine\\Scene.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-01-16T11:47:23.987Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Scene_Pong.h",
+              "DocumentMoniker": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Scene_Pong.h",
+              "RelativeDocumentMoniker": "QuasarEngine\\Scene_Pong.h",
+              "ToolTip": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Scene_Pong.h",
+              "RelativeToolTip": "QuasarEngine\\Scene_Pong.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-01-16T09:44:01.748Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "Game.h",
               "DocumentMoniker": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Game.h",
               "RelativeDocumentMoniker": "QuasarEngine\\Game.h",
               "ToolTip": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Game.h",
               "RelativeToolTip": "QuasarEngine\\Game.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2026-01-15T12:12:45.943Z",
               "EditorCaption": ""
@@ -158,15 +404,91 @@
             {
               "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "Paddle.h",
+              "DocumentMoniker": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Paddle.h",
+              "RelativeDocumentMoniker": "QuasarEngine\\Paddle.h",
+              "ToolTip": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Paddle.h",
+              "RelativeToolTip": "QuasarEngine\\Paddle.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-01-19T11:32:53.439Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Inputs.h",
+              "DocumentMoniker": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Inputs.h",
+              "RelativeDocumentMoniker": "QuasarEngine\\Inputs.h",
+              "ToolTip": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Inputs.h",
+              "RelativeToolTip": "QuasarEngine\\Inputs.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-01-19T12:05:24.851Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Time.h",
+              "DocumentMoniker": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Time.h",
+              "RelativeDocumentMoniker": "QuasarEngine\\Time.h",
+              "ToolTip": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Time.h",
+              "RelativeToolTip": "QuasarEngine\\Time.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-01-16T10:37:48.547Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Rectangle.h",
+              "DocumentMoniker": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Rectangle.h",
+              "RelativeDocumentMoniker": "QuasarEngine\\Rectangle.h",
+              "ToolTip": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Rectangle.h",
+              "RelativeToolTip": "QuasarEngine\\Rectangle.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-01-16T08:11:25.11Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Component.h",
+              "DocumentMoniker": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Component.h",
+              "RelativeDocumentMoniker": "QuasarEngine\\Component.h",
+              "ToolTip": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Component.h",
+              "RelativeToolTip": "QuasarEngine\\Component.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-01-19T10:07:10.83Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
               "Title": "Window.h",
               "DocumentMoniker": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Window.h",
               "RelativeDocumentMoniker": "QuasarEngine\\Window.h",
               "ToolTip": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Window.h",
               "RelativeToolTip": "QuasarEngine\\Window.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-01-15T11:31:10.451Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-15T11:31:10.451Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "Renderer.h",
+              "DocumentMoniker": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Renderer.h",
+              "RelativeDocumentMoniker": "QuasarEngine\\Renderer.h",
+              "ToolTip": "E:\\Github\\14-Engine\\QuasarEngine\\QuasarEngine\\Renderer.h",
+              "RelativeToolTip": "QuasarEngine\\Renderer.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-01-16T08:21:11.704Z"
             }
           ]
         }
