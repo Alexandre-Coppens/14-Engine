@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -76,14 +76,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\QuasarEngine\Dependencies\glew-2.2.0-win32\glew-2.2.0\include\GL;$(SolutionDir)\QuasarEngine\Dependencies\GL\SDL\include;$(SolutionDir)\QuasarEngine\Dependencies\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\QuasarEngine\Dependencies\SDL2_image-2.8.2\include;$(SolutionDir)\QuasarEngine\Dependencies\glew-2.2.0-win32\glew-2.2.0\include\GL;$(SolutionDir)\QuasarEngine\Dependencies\GL\SDL\include;$(SolutionDir)\QuasarEngine\Dependencies\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)\QuasarEngine\Dependencies\GL\SDL\lib\x86;$(SolutionDir)\QuasarEngine\Dependencies\glew-2.2.0-win32\glew-2.2.0\lib\Release\Win32;$(SolutionDir)\QuasarEngine\Dependencies\glew-2.2.0-win32\glew-2.2.0\bin\Release\Win32;$(SolutionDir)\QuasarEngine\Dependencies\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glu32.lib;glew32.lib;opengl32.lib;SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\QuasarEngine\Dependencies\SDL2_image-2.8.2\lib\x86;$(SolutionDir)\QuasarEngine\Dependencies\GL\SDL\lib\x86;$(SolutionDir)\QuasarEngine\Dependencies\glew-2.2.0-win32\glew-2.2.0\lib\Release\Win32;$(SolutionDir)\QuasarEngine\Dependencies\glew-2.2.0-win32\glew-2.2.0\bin\Release\Win32;$(SolutionDir)\QuasarEngine\Dependencies\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glu32.lib;glew32.lib;opengl32.lib;SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -94,14 +94,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\QuasarEngine\Dependencies\glew-2.2.0-win32\glew-2.2.0\include\GL;$(SolutionDir)\QuasarEngine\Dependencies\GL\SDL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\QuasarEngine\Dependencies\SDL2_image-2.8.2\include;$(SolutionDir)\QuasarEngine\Dependencies\glew-2.2.0-win32\glew-2.2.0\include\GL;$(SolutionDir)\QuasarEngine\Dependencies\GL\SDL\include;</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)\QuasarEngine\Dependencies\GL\SDL\lib\x86;$(SolutionDir)\QuasarEngine\Dependencies\glew-2.2.0-win32\glew-2.2.0\lib\Release\Win32;$(SolutionDir)\QuasarEngine\Dependencies\glew-2.2.0-win32\glew-2.2.0\bin\Release\Win32;</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glu32.lib;glew32.lib;opengl32.lib;SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\QuasarEngine\Dependencies\SDL2_image-2.8.2\lib\x86;$(SolutionDir)\QuasarEngine\Dependencies\GL\SDL\lib\x86;$(SolutionDir)\QuasarEngine\Dependencies\glew-2.2.0-win32\glew-2.2.0\lib\Release\Win32;$(SolutionDir)\QuasarEngine\Dependencies\glew-2.2.0-win32\glew-2.2.0\bin\Release\Win32;</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glu32.lib;glew32.lib;opengl32.lib;SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -132,7 +132,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="Assets.cpp" />
+    <ClCompile Include="Box.cpp" />
+    <ClCompile Include="cBoxCollider2D.cpp" />
+    <ClCompile Include="cCollider.cpp" />
     <ClCompile Include="Component.cpp" />
+    <ClCompile Include="cSprite2D.cpp" />
     <ClCompile Include="cTransform2D.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Inputs.cpp" />
@@ -145,12 +150,18 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Scene_Pong.cpp" />
     <ClCompile Include="Scene_Pong.h" />
+    <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h" />
+    <ClInclude Include="Assets.h" />
+    <ClInclude Include="Box.h" />
+    <ClInclude Include="cBoxCollider2D.h" />
+    <ClInclude Include="cCollider.h" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="cSprite2D.h" />
     <ClInclude Include="cTransform2D.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Inputs.h" />
@@ -159,6 +170,7 @@
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="Texture.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>

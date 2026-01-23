@@ -4,8 +4,8 @@
 #include "Component.h"
 #include "Scene.h"
 
-Actor::Actor(Scene* _pScene) :
-	pScene(_pScene), transform(Transform2D(this, 0))
+Actor::Actor() :
+	eState(ActorState::Active), transform(Transform2D()), pScene(Scene::ActiveScene)
 {
 }
 
@@ -15,6 +15,8 @@ Actor::~Actor()
 
 void Actor::Start()
 {
+
+
 	for(const auto c : vComponentList)
 	{
 		c.second->OnStart();
@@ -49,6 +51,7 @@ void Actor::AddComponent(Component* c)
 		oldComponent = nullptr;
 		vComponentList[c->GetName()] = c;
 	}
+	c->OnStart();
 }
 
 void Actor::RemoveComponent(std::string c)

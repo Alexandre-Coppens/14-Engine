@@ -1,12 +1,29 @@
 #pragma once
-#include "Rectangle.h"
+#include <SDL_Image.h>
 #include "Window.h"
 
+#include "Rectangle.h"
+
+class Sprite2D;
+class Actor;
+class Texture;
 class Renderer
 {
 private:
 	SDL_Renderer* pSDLRenderer;
+public:
+	SDL_Renderer* GetSdlRenderer() { return pSDLRenderer; }
 
+	enum class Flip
+	{
+		None = SDL_FLIP_NONE,
+		Horizontal = SDL_FLIP_HORIZONTAL,
+		Vertical = SDL_FLIP_VERTICAL
+	};
+
+private:
+	void DrawSprites();
+	void DrawSprite(const Actor&, const Texture&, Rectangle, Vector2, Flip) const;
 
 public:
 	Renderer();
@@ -18,5 +35,7 @@ public:
 	void EndDraw();
 	void Close();
 
-	void DrawRect(Rectangle& _pRect);
+	void Draw();
+	void AddSprite(Sprite2D* sprite);
+	void RemoveSprite(Sprite2D* sprite);
 };

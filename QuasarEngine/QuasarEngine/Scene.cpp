@@ -2,6 +2,9 @@
 
 #include "Renderer.h"
 #include "Actor.h"
+#include "Assets.h"
+
+Scene* Scene::ActiveScene = nullptr;
 
 Scene::Scene(std::string _sName):
 	sName(_sName)
@@ -10,11 +13,19 @@ Scene::Scene(std::string _sName):
 
 void Scene::Start()
 {
+	ActiveScene = this;
 }
 
 //Update Before Inputs
 void Scene::EarlyUpdate()
 {
+	for(Actor* a : vAddActorList)
+	{
+		a->Start();
+		vActorList.push_back(a);
+		vAddActorList.erase(std::remove(vActorList.begin(), vActorList.end(), a), vActorList.end());
+	}
+	vAddActorList.clear();
 }
 
 void Scene::Update(float deltaTime)
@@ -42,4 +53,42 @@ void Scene::Render()
 
 void Scene::Close()
 {
+	for (Actor* a : vAddActorList)
+	{
+		DeleteActor(a);
+	}
+	KillActors();
+}
+
+void Scene::AddActor(Actor* actor)
+{
+	vAddActorList.push_back(actor);
+}
+
+void Scene::DeleteActor(Actor* actor)
+{
+	vActorList.erase(std::remove(vActorList.begin(), vActorList.end(), actor), vActorList.end());
+	vDestroyActorList.push_back(actor);
+}
+
+void Scene::KillActors()
+{
+	for(Actor* a : vDestroyActorList)
+	{
+		delete a;
+	}
+	vDestroyActorList.clear();
+}
+
+void Scene::Load()
+{
+}
+
+void Scene::UnLoad()
+{
+	while (!vActorList.empty())
+	{
+		delete vActorList.back();
+	}
+	Assets::Clear();
 }

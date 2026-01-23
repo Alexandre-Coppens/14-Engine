@@ -14,6 +14,11 @@ bool Renderer::Initialize(Window& _pWindow)
 		Log::Error(LogType::Video, "Failed to create Renderer");
 		return false;
 	}
+	if (IMG_Init(IMG_INIT_PNG) == 0)
+	{
+		Log::Error(LogType::Video, "Unable to initialize SDL_Image");
+		return false;
+	}
 	return true;
 }
 
@@ -33,9 +38,21 @@ void Renderer::Close()
 	SDL_DestroyRenderer(pSDLRenderer);
 }
 
-void Renderer::DrawRect(Rectangle& _pRect)
+void Renderer::Draw()
 {
-	SDL_SetRenderDrawColor(pSDLRenderer, 255, 255, 255, 255);
+	/*SDL_SetRenderDrawColor(pSDLRenderer, 255, 255, 255, 255);
 	SDL_Rect sdlRect = _pRect.ToSDLRect();
-	SDL_RenderFillRect(pSDLRenderer, &sdlRect);
+	SDL_RenderFillRect(pSDLRenderer, &sdlRect);*/
+}
+
+void Renderer::DrawSprite(const Actor&, const Texture&, Rectangle, Vector2, Flip) const
+{
+}
+
+void Renderer::AddSprite(Sprite2D* sprite)
+{
+}
+
+void Renderer::RemoveSprite(Sprite2D* sprite)
+{
 }

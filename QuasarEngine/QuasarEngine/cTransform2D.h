@@ -30,6 +30,7 @@ public:
 
 protected:
 public:
+	Transform2D();
 	Transform2D(Actor* _pOwner, uint8_t _u8UpdateOrder);
 	virtual ~Transform2D();
 	Transform2D& operator= (Transform2D* _t2D) { SetTransform(_t2D); }

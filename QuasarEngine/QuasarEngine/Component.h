@@ -24,7 +24,7 @@ public:
 
 protected:
 public:
-	Component(Actor* _pOwner, uint8_t _u8UpdateOrder);
+	Component(Actor* _pOwner, uint8_t _u8UpdateOrder = 0);
 	virtual ~Component();
 
 	virtual void OnStart();
