@@ -5,8 +5,8 @@
 
 #include "Scene.h"
 
-Game::Game(std::string _sTitle, std::vector<Scene*> _vScenes):
-	bIsRunning(true), sTitle(_sTitle), vScenes(_vScenes)
+Game::Game(std::string _title, std::vector<Scene*> _scenes):
+	mIsRunning(true), mTitle(_title), mScenes(_scenes)
 {
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
 	{
@@ -18,7 +18,7 @@ Game::Game(std::string _sTitle, std::vector<Scene*> _vScenes):
 	}
 	pRenderer = new Renderer();
 
-	for (Scene* s : vScenes) s->SetRenderer(pRenderer);
+	for (Scene* s : mScenes) s->setRenderer(pRenderer);
 }
 
 Game::~Game()
@@ -27,31 +27,31 @@ Game::~Game()
 
 void Game::Initialize()
 {
-	pWindow = new Window(800, 800, sTitle);
+	pWindow = new Window(800, 800, mTitle);
 
 	if (pWindow->Open() && pRenderer->Initialize(*pWindow))
 	{
-		vScenes[u8CurrentScene] -> Load();
+		mScenes[mCurrentScene] -> Load();
 		Loop();
 	}
 }
 
 void Game::Loop()
 {
-	while (bIsRunning)
+	while (mIsRunning)
 	{
 		Time::ComputeDeltaTime();
 
-		vScenes[u8CurrentScene]->EarlyUpdate();
+		mScenes[mCurrentScene]->EarlyUpdate();
 		Inputs::ComputeInputs();
 
-		vScenes[u8CurrentScene]->Update(Time::deltaTime);
+		mScenes[mCurrentScene]->Update(Time::deltaTime);
 
 		Render();
-		vScenes[u8CurrentScene]->LateUpdate();
+		mScenes[mCurrentScene]->LateUpdate();
 
 		Inputs::FlushLateInputs();
-		bIsRunning = !Inputs::GetEventQuit();
+		mIsRunning = !Inputs::GetEventQuit();
 		Time::DelayTime();
 	}
 	Close();
@@ -66,7 +66,7 @@ void Game::Render()
 
 void Game::Close()
 {
-	for (Scene* scene : vScenes)
+	for (Scene* scene : mScenes)
 	{
 		delete scene;
 	}

@@ -6,7 +6,7 @@ std::map<int, uint16_t>	Inputs::mKeyTime;
 std::map<int, bool> Inputs::mKeyDown ;
 std::map<int, bool> Inputs::mKeyHold;
 std::map<int, bool> Inputs::mKeyUp;
-bool Inputs::bEventQuit = false;
+bool Inputs::mEventQuit = false;
 
 void Inputs::ComputeInputs()
 {
@@ -16,7 +16,7 @@ void Inputs::ComputeInputs()
 		switch (event.type)
 		{
 		case SDL_QUIT:
-			bEventQuit = true;
+			mEventQuit = true;
 			break;
 		default:
 			SortInput(event);

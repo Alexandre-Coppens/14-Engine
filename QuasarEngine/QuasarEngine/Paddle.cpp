@@ -8,7 +8,7 @@
 Paddle::Paddle():
 	Actor()
 {
-	sName = "Paddle";
+	mName = "Paddle";
 }
 
 Paddle::~Paddle()
@@ -22,32 +22,32 @@ void Paddle::Start()
 
 	Actor::Start();
 
-	transform.location = Vector2{ 375, 700 };
+	mTransform.setLocation(Vector2{375, 700});
 }
 
-void Paddle::Update(float deltaTime)
+void Paddle::Update(float _deltaTime)
 {
-	Vector2 oldPos = transform.location;
+	Vector2 oldPos = mTransform.getLocation();
 
 	if (Inputs::GetKey(SDLK_q))
 	{
-		transform.location.x -= 500 * deltaTime;
+		mTransform.addLocationX(-500 * _deltaTime);
 	}
 
 	if (Inputs::GetKey(SDLK_d))
 	{
-		transform.location.x += 500 * deltaTime;
+		mTransform.addLocationX(500 * _deltaTime);
 	}
 
-	Actor::Update(deltaTime);
+	Actor::Update(_deltaTime);
 
 	Component* c = GetComponent("BoxCollider2D");
 	if (c == nullptr) return;
 	BoxCollider2D* bc = dynamic_cast<BoxCollider2D*>(c);
 	if (bc == nullptr) return;
-	if (bc->GetIsColliding())
+	if (bc->getIsColliding())
 	{
-		transform.location = oldPos;
+		mTransform.setLocation(oldPos);
 	}
 }
 

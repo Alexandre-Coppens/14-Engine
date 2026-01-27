@@ -4,33 +4,33 @@
 #include "Actor.h"
 #include "Assets.h"
 
-Scene* Scene::ActiveScene = nullptr;
+Scene* Scene::sActiveScene = nullptr;
 
-Scene::Scene(std::string _sName):
-	sName(_sName)
+Scene::Scene(std::string _name):
+	mName(_name)
 {
 }
 
 void Scene::Start()
 {
-	ActiveScene = this;
+	sActiveScene = this;
 }
 
 //Update Before Inputs
 void Scene::EarlyUpdate()
 {
-	for(Actor* a : vAddActorList)
+	for(Actor* a : mAddActorList)
 	{
 		a->Start();
-		vActorList.push_back(a);
+		mActorList.push_back(a);
 		a = nullptr;
 	}
-	vAddActorList.clear();
+	mAddActorList.clear();
 }
 
 void Scene::Update(float deltaTime)
 {
-	for (Actor* actor : vActorList)
+	for (Actor* actor : mActorList)
 	{
 		actor->Update(deltaTime);
 	}
@@ -43,7 +43,7 @@ void Scene::LateUpdate()
 
 void Scene::Close()
 {
-	for (Actor* a : vAddActorList)
+	for (Actor* a : mAddActorList)
 	{
 		DeleteActor(a);
 	}
@@ -52,22 +52,22 @@ void Scene::Close()
 
 void Scene::AddActor(Actor* actor)
 {
-	vAddActorList.push_back(actor);
+	mAddActorList.push_back(actor);
 }
 
 void Scene::DeleteActor(Actor* actor)
 {
-	vActorList.erase(std::remove(vActorList.begin(), vActorList.end(), actor), vActorList.end());
-	vDestroyActorList.push_back(actor);
+	mActorList.erase(std::remove(mActorList.begin(), mActorList.end(), actor), mActorList.end());
+	mDestroyActorList.push_back(actor);
 }
 
 void Scene::KillActors()
 {
-	for(Actor* a : vDestroyActorList)
+	for(Actor* a : mDestroyActorList)
 	{
 		delete a;
 	}
-	vDestroyActorList.clear();
+	mDestroyActorList.clear();
 }
 
 void Scene::Load()
@@ -77,9 +77,9 @@ void Scene::Load()
 
 void Scene::UnLoad()
 {
-	while (!vActorList.empty())
+	while (!mActorList.empty())
 	{
-		delete vActorList.back();
+		delete mActorList.back();
 	}
 	Assets::Clear();
 }

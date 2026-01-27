@@ -5,7 +5,7 @@
 #include "Scene.h"
 
 Actor::Actor() :
-	eState(ActorState::Active), transform(Transform2D()), pScene(Scene::ActiveScene)
+	mState(ActorState::Active), mTransform(Transform2D()), pScene(Scene::sActiveScene)
 {
 }
 
@@ -15,15 +15,15 @@ Actor::~Actor()
 
 void Actor::Start()
 {
-	for(const auto c : vComponentList)
+	for(const auto c : mComponentList)
 	{
 		c.second->OnStart();
 	}
 }
 
-void Actor::Update(float deltaTime)
+void Actor::Update(float _deltaTime)
 {
-	for (const auto c : vComponentList)
+	for (const auto c : mComponentList)
 	{
 		c.second->Update();
 	}
@@ -31,35 +31,35 @@ void Actor::Update(float deltaTime)
 
 void Actor::Destroy()
 {
-	for (const auto c : vComponentList)
+	for (const auto c : mComponentList)
 	{
 		c.second->OnEnd();
 	}
 }
 
-void Actor::AddComponent(Component* c)
+void Actor::AddComponent(Component* _c)
 {
-	if (GetComponent(c->GetName()) == nullptr) vComponentList[c->GetName()] = c;
+	if (GetComponent(_c->getName()) == nullptr) mComponentList[_c->getName()] = _c;
 	else
 	{
-		Log::Info(sName + ": Has replaced " + c->GetName() + " Component by a new one with 'ADD' Function.");
+		Log::Info(mName + ": Has replaced " + _c->getName() + " Component by a new one with 'ADD' Function.");
 		Component* oldComponent;
-		oldComponent = vComponentList[c->GetName()];
+		oldComponent = mComponentList[_c->getName()];
 		delete oldComponent;
 		oldComponent = nullptr;
-		vComponentList[c->GetName()] = c;
+		mComponentList[_c->getName()] = _c;
 	}
-	c->OnStart();
+	_c->OnStart();
 }
 
-void Actor::RemoveComponent(std::string c)
+void Actor::RemoveComponent(std::string _c)
 {
-	if (vComponentList.find(c) == vComponentList.end())
+	if (mComponentList.find(_c) == mComponentList.end())
 	{
-		Log::Info(sName + ": No Instance of " + c + " Component found to remove.");
+		Log::Info(mName + ": No Instance of " + _c + " Component found to remove.");
 		return;
 	}
-	delete vComponentList[c];
-	vComponentList[c] = nullptr;
+	delete mComponentList[_c];
+	mComponentList[_c] = nullptr;
 }
 

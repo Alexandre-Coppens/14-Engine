@@ -12,9 +12,9 @@ class Renderer
 {
 private:
 	SDL_Renderer* pSDLRenderer;
-	std::vector<Sprite2D*> vSpriteList = {};
+	std::vector<Sprite2D*> mSpriteList = {};
 public:
-	SDL_Renderer* GetSdlRenderer() { return pSDLRenderer; }
+	SDL_Renderer* getSdlRenderer() { return pSDLRenderer; }
 
 	enum class Flip
 	{

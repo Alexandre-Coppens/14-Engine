@@ -12,36 +12,37 @@ class Scene
 {
 private:
 protected:
-	std::string sName;
+	std::string mName;
 	Renderer* pRenderer;
 
-	std::vector<Actor*> vActorList;
-	std::vector<Actor*> vAddActorList;
-	std::vector<Actor*> vDestroyActorList;
+	std::vector<Actor*> mActorList;
+	std::vector<Actor*> mAddActorList;
+	std::vector<Actor*> mDestroyActorList;
 
 public:
-	static Scene* ActiveScene;
+	static Scene* sActiveScene;
 
-	std::string GetSceneName() const { return sName; }
-	Renderer* GetRenderer()					{ return pRenderer; }
-	void SetRenderer(Renderer* _pRenderer) { pRenderer = _pRenderer; }
+	Renderer*	getRenderer()	const	{ return pRenderer; }
+	std::string getSceneName()	const	{ return mName; }
+	
+	void setRenderer(Renderer* _pRenderer) { pRenderer = _pRenderer; }
 
 private:
 	void KillActors();
 
 public:
-	Scene(std::string _sName = "Scene");
+	Scene(std::string _name = "Scene");
 	virtual void Start();
 	virtual void EarlyUpdate();
-	virtual void Update(float deltaTime);
+	virtual void Update(float _deltaTime);
 	virtual void LateUpdate();
 	virtual void Close();
 
 	virtual void Load();
 	virtual void UnLoad();
 
-	virtual void AddActor(Actor* actor);
-	virtual void DeleteActor(Actor* actor);
+	virtual void AddActor(Actor* _actor);
+	virtual void DeleteActor(Actor* _actor);
 };
 
 #endif

@@ -15,26 +15,26 @@ enum class ColliderForm2D
 class Collider : public Component
 {
 private:
-	bool bIsColliding;
-	std::vector<Actor*> vCollidingActors;
+	bool mIsColliding;
+	std::vector<Actor*> mCollidingActors;
 
 protected:
-	static std::vector<Collider*> colliderList;
-	ColliderForm2D eForm;
+	static std::vector<Collider*> mColliderList;
+	ColliderForm2D mForm;
 
 public:
-	bool GetIsColliding() { return bIsColliding; }
-	std::vector<Actor*> GetCollidingActors() { return vCollidingActors; }
-	ColliderForm2D GetForm() { return eForm; }
+	bool getIsColliding()					 const { return mIsColliding; }
+	ColliderForm2D getForm()				 const { return mForm; }
+	std::vector<Actor*> getCollidingActors() const { return mCollidingActors; }
 
 private:
-	bool BoxCollision(Rectangle c);
+	bool BoxCollision(Rectangle _c);
 
 protected:
 	virtual void CheckCollisions();
 
 public:
-	Collider(Actor* _pOwner, uint8_t _u8UpdateOrder);
+	Collider(Actor* _pOwner, uint8_t _updateOrder);
 	~Collider();
 
 	void OnStart() override;

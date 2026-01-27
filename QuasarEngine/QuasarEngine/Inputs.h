@@ -11,7 +11,7 @@ private:
 	static std::map<int, bool> mKeyDown;
 	static std::map<int, bool> mKeyHold;
 	static std::map<int, bool> mKeyUp;
-	static bool bEventQuit;
+	static bool mEventQuit;
 
 public:
 	Inputs() = default;
@@ -19,15 +19,15 @@ public:
 	Inputs& operator= (const Inputs&) = delete;
 
 	static void ComputeInputs();
-	static void SortInput(SDL_Event& event);
+	static void SortInput(SDL_Event& _event);
 	static void FlushLateInputs();
 
-	static bool GetKey(int key);
-	static bool GetKeyDown(int key);
-	static bool GetKeyHold(int key);
-	static bool GetKeyUp(int key);
+	static bool GetKey(int _key);
+	static bool GetKeyDown(int _key);
+	static bool GetKeyHold(int _key);
+	static bool GetKeyUp(int _key);
 
-	static bool GetEventQuit() { return bEventQuit; }
+	static bool GetEventQuit() { return mEventQuit; }
 };
 
 #endif INPUTS_H

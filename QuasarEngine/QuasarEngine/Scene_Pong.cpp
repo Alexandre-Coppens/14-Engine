@@ -5,15 +5,15 @@
 #include "Paddle.h"
 #include "Box.h"
 
-Scene_Pong::Scene_Pong(std::string _sName):
-	Scene(_sName)
+Scene_Pong::Scene_Pong(std::string _name):
+	Scene(_name)
 {
 }
 
 void Scene_Pong::Start()
 {
 	Scene::Start();
-	Log::Info("GAME: Loading Scene: '" + sName + "'.");
+	Log::Info("GAME: Loading Scene: '" + mName + "'.");
 
 	Assets::LoadTexture(*pRenderer, "Ressources/pokeball.png", "ball");
 

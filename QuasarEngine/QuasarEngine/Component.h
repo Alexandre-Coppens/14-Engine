@@ -8,19 +8,20 @@ class Actor;
 class Component
 {
 protected:
-	bool bIsActive				{ true };
+	bool mIsActive				{ true };
 	Actor* pOwner				{ nullptr };
-	uint8_t u8UpdateOrder		{ 0 };
+	uint8_t mUpdateOrder		{ 0 };
 
-	std::string sName			{ "Actor" };
+	std::string mName			{ "Component" };
 
 public:
-	void SetActive(bool _b) { bIsActive = _b; }
-	bool GetIsActive() const { return bIsActive; }
 
-	Actor*		GetOwner()			const { return pOwner; }
-	uint8_t		GetUpdateOrder()	const { return u8UpdateOrder; }
-	std::string	GetName()			const { return sName; }
+	std::string	getName()			const { return mName; }
+	Actor*		getOwner()			const { return pOwner; }
+	bool		getIsActive()		const { return mIsActive; }
+	uint8_t		getUpdateOrder()	const { return mUpdateOrder; }
+
+	void setActive(bool _b) { mIsActive = _b; }
 
 protected:
 public:

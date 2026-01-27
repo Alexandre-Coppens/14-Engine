@@ -11,9 +11,9 @@ private:
 protected:
 
 public:
-	Scene_Pong(std::string _sName);
+	Scene_Pong(std::string _name);
 	void Start()					override;
-	void Update(float deltaTime)	override;
+	void Update(float _deltaTime)	override;
 	void Close()					override;
 };
 

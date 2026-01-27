@@ -8,14 +8,17 @@
 ## Conventions
 
 #### Common
-Class **PascalCase**;
-public var **cameCase**;
-private var **mPascalCase**;
-function **PascalCase** (func var **_camelCase**);
+Class:       **PascalCase**.
+private var: **camelCase**.
+static var:  **sPascalCase**.
+pointer:     **pPascalCase**.
+function:    **PascalCase** (func var **_camelCase**).
 
 #### Variable
 Variables are **always** private even **Static** ones.
 They are followed by **getters & setters** to permit access & writing if needed.
+**Getters & Setters** are camelCase functions.
+**Getters** are always put before **setter**.
 
 #### Classes
 Classes are presented as followed:

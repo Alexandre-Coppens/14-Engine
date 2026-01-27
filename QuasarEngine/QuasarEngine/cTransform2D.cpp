@@ -5,10 +5,10 @@ Transform2D::Transform2D():
 {
 }
 
-Transform2D::Transform2D(Actor* _pOwner, uint8_t _u8UpdateOrder) :
-	Component( _pOwner, _u8UpdateOrder)
+Transform2D::Transform2D(Actor* _pOwner, uint8_t _updateOrder) :
+	Component( _pOwner, _updateOrder)
 {
-	sName = "Transform2D";
+	mName = "Transform2D";
 }
 
 Transform2D::~Transform2D()

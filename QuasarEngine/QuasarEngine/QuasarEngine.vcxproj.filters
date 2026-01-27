@@ -148,7 +148,7 @@
       <Filter>Engine\Render\Asset</Filter>
     </ClCompile>
     <ClCompile Include="cSprite2D.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Engine\GameBase\Scene\Actor\Components\Sprite2D</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -6,16 +6,14 @@
 class BoxCollider2D : public Collider
 {
 private:
-	Rectangle collision;
+	Rectangle mCollision;
 
 public:
-	Rectangle GetCollision() const { return collision; }
+	Rectangle GetCollision() const { return mCollision; }
 
 private:
-
-
 public:
-	BoxCollider2D(Actor* _pOwner, uint8_t _u8UpdateOrder, Rectangle _collision);
+	BoxCollider2D(Actor* _pOwner, uint8_t _updateOrder, Rectangle _collision);
 	~BoxCollider2D();
 
 	void Update() override;

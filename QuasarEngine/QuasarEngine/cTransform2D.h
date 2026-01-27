@@ -7,33 +7,39 @@
 class Transform2D : public Component
 {
 protected:
-	
+	float	mRotation	{ 0.0f };
+	Vector2 mScale		{ Vector2One() };
+	Vector2 mLocation	{ Vector2Zero() };
 
 public:
-	Vector2 location	{ Vector2Zero() };
-	float rotation		{ 0.0f };
-	Vector2 scale		{ Vector2One()  };
+	Vector2 getLocation()	const	{ return mLocation; }
+	float   getRotation()	const	{ return mRotation; }
+	Vector2 getScale()		const	{ return mScale; }
 
-	Vector2 GetLocation()	const	{ return location; }
-	float GetRotation()		const	{ return rotation; }
-	Vector2 GetScale()		const	{ return scale; }
+	void setLocation(Vector2 _v)	{ mLocation = _v; }
+	void setRotation(float _f)		{ mRotation = _f; }
+	void setScale(Vector2 _v)		{ mScale = _v; }
 
-	void SetLocation(Vector2 _v)	{ location = _v; }
-	void SetRotation(float _f)		{ rotation = _f; }
-	void SetScale(Vector2 _v)		{ scale = _v; }
+	void setLocationX(float _f)		{ mLocation.x = _f; }
+	void setLocationY(float _f)		{ mLocation.y = _f; }
+	void setScaleX(float _f)		{ mScale.x = _f; }
+	void setScaleY(float _f)		{ mScale.y = _f; }
 
-	void SetTransform(Transform2D* _t2D) {
-		location	= _t2D->location;
-		rotation	= _t2D->rotation;
-		scale		= _t2D->scale;
+	void addLocationX(float _f) { mLocation.x += _f; }
+	void addLocationY(float _f) { mLocation.y += _f; }
+
+	void setTransform(Transform2D* _t2D) {
+		mLocation = _t2D->mLocation;
+		mRotation = _t2D->mRotation;
+		mScale	  = _t2D->mScale;
 	}
 
 protected:
 public:
 	Transform2D();
-	Transform2D(Actor* _pOwner, uint8_t _u8UpdateOrder);
+	Transform2D(Actor* _pOwner, uint8_t _updateOrder);
 	virtual ~Transform2D();
-	Transform2D& operator= (Transform2D* _t2D) { SetTransform(_t2D); }
+	Transform2D& operator= (Transform2D* _pTransform) { setTransform(_pTransform); }
 
 	void OnStart()	override;
 	void Update()	override;

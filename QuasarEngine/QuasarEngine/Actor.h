@@ -19,35 +19,35 @@ class Component;
 class Actor
 {
 protected:
-	std::string sName;
+	std::string mName;
 	Scene* pScene;
-	ActorState eState;
-	Transform2D transform;
-	std::map<std::string, Component*> vComponentList;
+	ActorState mState;
+	Transform2D mTransform;
+	std::map<std::string, Component*> mComponentList;
 
 public:
-	std::string GetName()		const	{ return sName; }
-	Scene* GetScene()			const	{ return pScene; }
-	ActorState GetState()		const	{ return eState;  }
-	Transform2D* GetTransform()			{ return &transform;  }
+	std::string getName()		const	{ return mName; }
+	Scene*		getScene()		const	{ return pScene;  }
+	ActorState	getState()		const	{ return mState;  }
+	Transform2D* getTransform()			{ return &mTransform;  }
 	
 	Component* GetComponent(std::string c) {
-		if (vComponentList.find(c) != vComponentList.end()) return vComponentList[c];
+		if (mComponentList.find(c) != mComponentList.end()) return mComponentList[c];
 		return nullptr;
 	}
 
-	void SetActive(bool b) { if (b) eState = ActorState::Active; else eState = ActorState::Paused; }
+	void SetActive(bool _b) { if (_b) mState = ActorState::Active; else mState = ActorState::Paused; }
 
 public:
 	Actor();
 	~Actor();
 
 	virtual	void	Start();
-	virtual	void	Update(float deltaTime);
+	virtual	void	Update(float _deltaTime);
 	virtual	void	Destroy();
 
-	virtual void AddComponent(Component* c);
-	virtual void RemoveComponent(std::string c);
+	virtual void AddComponent(Component* _c);
+	virtual void RemoveComponent(std::string _c);
 };
 
 #endif // !ACTOR_H

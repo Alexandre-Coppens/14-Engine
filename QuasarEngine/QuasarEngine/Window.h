@@ -7,15 +7,15 @@ class Window
 {
 private:
 	SDL_Window* pSdlWindow;
-	Vector2 v2WindowSize;
-	std::string sWindowName;
+	Vector2 mWindowSize;
+	std::string mWindowName;
 public:
 	SDL_Window* GetSdlWindow() const { return pSdlWindow; }
-	Vector2 GetSize() const { return v2WindowSize; }
+	Vector2 GetSize() const { return mWindowSize; }
 
 private:
 public:
-	Window(Uint16 _u16Width, Uint16 _u16Height, std::string _sName);
+	Window(Uint16 _width, Uint16 _height, std::string _name);
 	Window(const Window&) = delete;
 	Window& operator= (const Window&) = delete;
 

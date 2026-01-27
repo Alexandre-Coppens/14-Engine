@@ -7,8 +7,8 @@
 Box::Box():
 	Actor()
 {
-	sName = "Box";
-	transform.location = Vector2{ 100, 700 };
+	mName = "Box";
+	mTransform.setLocation(Vector2{ 100, 700 });
 	AddComponent(new BoxCollider2D(this, 0, Rectangle{ Vector2Zero(), Vector2{ 50.0f, 50.0f } }));
 }
 
