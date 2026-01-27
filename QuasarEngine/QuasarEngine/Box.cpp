@@ -1,9 +1,11 @@
 #include "Box.h"
+#include "Assets.h"
 
 #include "cBoxCollider2D.h"
+#include "cSprite2D.h"
 
-Box::Box(Scene* _pScene) :
-	Actor(_pScene)
+Box::Box():
+	Actor()
 {
 	sName = "Box";
 	transform.location = Vector2{ 100, 700 };
@@ -16,6 +18,8 @@ Box::~Box()
 
 void Box::Start()
 {
+	AddComponent(new Sprite2D(this, Assets::GetTexture("ball"), { 50.0f, 50.0f }, 0));
+
 	Actor::Start();
 }
 

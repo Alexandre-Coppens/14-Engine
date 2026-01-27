@@ -1,14 +1,14 @@
 #include "Paddle.h"
 #include "Inputs.h"
+#include "Assets.h"
 
 #include "cBoxCollider2D.h"
+#include "cSprite2D.h"
 
-Paddle::Paddle(Scene* _pScene):
-	Actor(_pScene)
+Paddle::Paddle():
+	Actor()
 {
 	sName = "Paddle";
-	AddComponent(new BoxCollider2D(this, 0, Rectangle{ Vector2Zero(), Vector2{ 50.0f, 50.0f } }));
-	transform.location = Vector2{ 375, 700 };
 }
 
 Paddle::~Paddle()
@@ -17,7 +17,12 @@ Paddle::~Paddle()
 
 void Paddle::Start()
 {
+	AddComponent(new BoxCollider2D(this, 0, Rectangle{ Vector2Zero(), Vector2{ 50.0f, 50.0f } }));
+	AddComponent(new Sprite2D(this, Assets::GetTexture("ball"), {50.0f, 50.0f}, 0));
+
 	Actor::Start();
+
+	transform.location = Vector2{ 375, 700 };
 }
 
 void Paddle::Update(float deltaTime)

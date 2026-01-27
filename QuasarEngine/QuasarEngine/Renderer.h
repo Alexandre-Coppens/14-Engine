@@ -3,6 +3,7 @@
 #include "Window.h"
 
 #include "Rectangle.h"
+#include <vector>
 
 class Sprite2D;
 class Actor;
@@ -11,6 +12,7 @@ class Renderer
 {
 private:
 	SDL_Renderer* pSDLRenderer;
+	std::vector<Sprite2D*> vSpriteList = {};
 public:
 	SDL_Renderer* GetSdlRenderer() { return pSDLRenderer; }
 
@@ -22,8 +24,6 @@ public:
 	};
 
 private:
-	void DrawSprites();
-	void DrawSprite(const Actor&, const Texture&, Rectangle, Vector2, Flip) const;
 
 public:
 	Renderer();
@@ -36,6 +36,9 @@ public:
 	void Close();
 
 	void Draw();
+	void DrawSprites();
+	void DrawSprite(Actor& _pActor, const Texture& _pTex, Rectangle _SourceRect, Vector2 _v2Size, Vector2 _v2Origin, Flip _Flip) const;
+
 	void AddSprite(Sprite2D* sprite);
 	void RemoveSprite(Sprite2D* sprite);
 };

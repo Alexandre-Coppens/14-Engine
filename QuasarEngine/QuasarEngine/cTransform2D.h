@@ -11,15 +11,15 @@ protected:
 
 public:
 	Vector2 location	{ Vector2Zero() };
-	Vector2 rotation	{ Vector2Zero() };
+	float rotation		{ 0.0f };
 	Vector2 scale		{ Vector2One()  };
 
 	Vector2 GetLocation()	const	{ return location; }
-	Vector2 GetRotation()	const	{ return rotation; }
+	float GetRotation()		const	{ return rotation; }
 	Vector2 GetScale()		const	{ return scale; }
 
 	void SetLocation(Vector2 _v)	{ location = _v; }
-	void SetRotation(Vector2 _v)	{ rotation = _v; }
+	void SetRotation(float _f)		{ rotation = _f; }
 	void SetScale(Vector2 _v)		{ scale = _v; }
 
 	void SetTransform(Transform2D* _t2D) {

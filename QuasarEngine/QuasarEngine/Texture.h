@@ -16,6 +16,7 @@ public:
 	Vector2 GetSize()		const	{ return Vector2{ (float)u16Width, (float)u16Height }; }
 	uint16_t GetWidth()		const	{ return u16Width; }
 	uint16_t GetHeight()	const	{ return u16Height; }
+	SDL_Texture* GetSdlTexture()	const	{ return pSdlTexture; }
 
 private:
 public:

@@ -9,10 +9,6 @@ private:
 	static std::map<std::string, Texture> mTextureList;
 
 public:
-	Texture* GetTexture(std::string _sTextureName){
-		if (mTextureList.find(_sTextureName) != mTextureList.end()) return &mTextureList[_sTextureName];
-		return nullptr;
-	}
 
 private:
 	Assets() = default;

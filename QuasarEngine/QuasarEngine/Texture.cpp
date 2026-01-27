@@ -20,8 +20,8 @@ bool Texture::Load(Renderer& _renderer, const std::string& _filename)
 		Log::Error(LogType::Application, "Failed to load texture file :" + sFileName);
 		return false;
 	}
-	u16Width + surface->w;
-	u16Height + surface->h;
+	u16Width = surface->w;
+	u16Height = surface->h;
 
 	//Create Texture from surface
 	pSdlTexture = SDL_CreateTextureFromSurface(_renderer.GetSdlRenderer(), surface);

@@ -1,5 +1,6 @@
 #include "Scene_Pong.h"
 #include "Log.h"
+#include "Assets.h"
 
 #include "Paddle.h"
 #include "Box.h"
@@ -13,18 +14,16 @@ void Scene_Pong::Start()
 {
 	Scene::Start();
 	Log::Info("GAME: Loading Scene: '" + sName + "'.");
-	vActorList.push_back(new Paddle(this));
-	vActorList.push_back(new Box(this));
+
+	Assets::LoadTexture(*pRenderer, "Ressources/pokeball.png", "ball");
+
+	AddActor(new Paddle());
+	AddActor(new Box());
 }
 
 void Scene_Pong::Update(float deltaTime)
 {
 	Scene::Update(deltaTime);
-}
-
-void Scene_Pong::Render()
-{
-	Scene::Render();
 }
 
 void Scene_Pong::Close()

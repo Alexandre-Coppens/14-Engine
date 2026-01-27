@@ -23,7 +23,7 @@ void Scene::EarlyUpdate()
 	{
 		a->Start();
 		vActorList.push_back(a);
-		vAddActorList.erase(std::remove(vActorList.begin(), vActorList.end(), a), vActorList.end());
+		a = nullptr;
 	}
 	vAddActorList.clear();
 }
@@ -39,16 +39,6 @@ void Scene::Update(float deltaTime)
 //Update After Rendering
 void Scene::LateUpdate()
 {
-}
-
-void Scene::Render()
-{
-	Rectangle rect;
-	for (Actor* actor : vActorList)
-	{
-		rect = Rectangle{ actor->GetTransform()->GetLocation(), Vector2 {50, 50} };
-		pRenderer->DrawRect(rect);
-	}
 }
 
 void Scene::Close()
@@ -82,6 +72,7 @@ void Scene::KillActors()
 
 void Scene::Load()
 {
+	Start();
 }
 
 void Scene::UnLoad()

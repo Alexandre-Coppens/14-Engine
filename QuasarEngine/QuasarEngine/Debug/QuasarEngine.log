@@ -1,54 +1,11 @@
 ﻿  Actor.cpp
   Assets.cpp
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene.h(17,10): error C2143: syntax error: missing ';' before '*'
-  (compiling source file 'Actor.cpp')
-  
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene.h(17,10): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-  (compiling source file 'Actor.cpp')
-  
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene.h(17,21): error C2238: unexpected token(s) preceding ';'
-  (compiling source file 'Actor.cpp')
-  
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene.h(27,10): error C2143: syntax error: missing ';' before '*'
-  (compiling source file 'Actor.cpp')
-  
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene.h(27,10): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-  (compiling source file 'Actor.cpp')
-  
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene.h(27,26): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
-  (compiling source file 'Actor.cpp')
-  
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene.h(28,19): error C2061: syntax error: identifier 'Renderer'
-  (compiling source file 'Actor.cpp')
-  
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene.h(28,43): error C2065: 'pRenderer': undeclared identifier
-  (compiling source file 'Actor.cpp')
-  
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene.h(28,55): error C2065: '_pRenderer': undeclared identifier
-  (compiling source file 'Actor.cpp')
-  
   Box.cpp
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Box.cpp(6,7): error C2665: 'Actor::Actor': no overloaded function could convert all the argument types
-      E:\Github\14-Engine\QuasarEngine\QuasarEngine\Actor.h(51,1):
-      could be 'Actor::Actor(const Actor &)'
-          E:\Github\14-Engine\QuasarEngine\QuasarEngine\Box.cpp(6,7):
-          'Actor::Actor(const Actor &)': cannot convert argument 1 from 'Scene *' to 'const Actor &'
-              E:\Github\14-Engine\QuasarEngine\QuasarEngine\Box.cpp(6,8):
-              Reason: cannot convert from 'Scene *' to 'const Actor'
-      E:\Github\14-Engine\QuasarEngine\QuasarEngine\Box.cpp(6,7):
-      while trying to match the argument list '(Scene *)'
-  
   cBoxCollider2D.cpp
   cCollider.cpp
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\cCollider.cpp(36,27): warning C4858: discarding return value: This member function returns a bool indicating whether the container is empty and has no other effects. It is not useful to call this member function and discard the return value. Use the 'clear()' member function if you want to erase all elements.
   Component.cpp
   cSprite2D.cpp
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\cSprite2D.cpp(9,36): error C2228: left of '.AddSprite' must have class/struct/union
-      E:\Github\14-Engine\QuasarEngine\QuasarEngine\cSprite2D.cpp(9,36):
-      type is 'Renderer *'
-      E:\Github\14-Engine\QuasarEngine\QuasarEngine\cSprite2D.cpp(9,36):
-      did you intend to use '->' instead?
-  
   cTransform2D.cpp
   Game.cpp
   Inputs.cpp
@@ -58,105 +15,11 @@ E:\Github\14-Engine\QuasarEngine\QuasarEngine\Inputs.cpp(44,26): warning C4244: 
   CommonLib.h
   MathLib.h
   Paddle.cpp
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Paddle.cpp(7,7): error C2665: 'Actor::Actor': no overloaded function could convert all the argument types
-      E:\Github\14-Engine\QuasarEngine\QuasarEngine\Actor.h(51,1):
-      could be 'Actor::Actor(const Actor &)'
-          E:\Github\14-Engine\QuasarEngine\QuasarEngine\Paddle.cpp(7,7):
-          'Actor::Actor(const Actor &)': cannot convert argument 1 from 'Scene *' to 'const Actor &'
-              E:\Github\14-Engine\QuasarEngine\QuasarEngine\Paddle.cpp(7,8):
-              Reason: cannot convert from 'Scene *' to 'const Actor'
-      E:\Github\14-Engine\QuasarEngine\QuasarEngine\Paddle.cpp(7,7):
-      while trying to match the argument list '(Scene *)'
-  
   Renderer.cpp
   Scene.cpp
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene.h(17,10): error C2143: syntax error: missing ';' before '*'
-  (compiling source file 'Scene.cpp')
-  
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene.h(17,10): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-  (compiling source file 'Scene.cpp')
-  
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene.h(17,21): error C2238: unexpected token(s) preceding ';'
-  (compiling source file 'Scene.cpp')
-  
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene.h(27,10): error C2143: syntax error: missing ';' before '*'
-  (compiling source file 'Scene.cpp')
-  
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene.h(27,10): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-  (compiling source file 'Scene.cpp')
-  
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene.h(27,26): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
-  (compiling source file 'Scene.cpp')
-  
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene.h(28,19): error C2061: syntax error: identifier 'Renderer'
-  (compiling source file 'Scene.cpp')
-  
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene.h(28,43): error C2065: 'pRenderer': undeclared identifier
-  (compiling source file 'Scene.cpp')
-  
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene.h(28,55): error C2065: '_pRenderer': undeclared identifier
-  (compiling source file 'Scene.cpp')
-  
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene.cpp(50,3): error C2065: 'pRenderer': undeclared identifier
   Scene_Pong.cpp
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene.h(17,10): error C2143: syntax error: missing ';' before '*'
-  (compiling source file 'Scene_Pong.cpp')
-  
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene.h(17,10): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-  (compiling source file 'Scene_Pong.cpp')
-  
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene.h(17,21): error C2238: unexpected token(s) preceding ';'
-  (compiling source file 'Scene_Pong.cpp')
-  
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene.h(27,10): error C2143: syntax error: missing ';' before '*'
-  (compiling source file 'Scene_Pong.cpp')
-  
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene.h(27,10): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-  (compiling source file 'Scene_Pong.cpp')
-  
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene.h(27,26): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
-  (compiling source file 'Scene_Pong.cpp')
-  
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene.h(28,19): error C2061: syntax error: identifier 'Renderer'
-  (compiling source file 'Scene_Pong.cpp')
-  
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene.h(28,43): error C2065: 'pRenderer': undeclared identifier
-  (compiling source file 'Scene_Pong.cpp')
-  
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene.h(28,55): error C2065: '_pRenderer': undeclared identifier
-  (compiling source file 'Scene_Pong.cpp')
-  
   Scene_Pong.h
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene.h(17,10): error C2143: syntax error: missing ';' before '*'
-  (compiling source file 'Scene_Pong.h')
-  
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene.h(17,10): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-  (compiling source file 'Scene_Pong.h')
-  
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene.h(17,21): error C2238: unexpected token(s) preceding ';'
-  (compiling source file 'Scene_Pong.h')
-  
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene.h(27,10): error C2143: syntax error: missing ';' before '*'
-  (compiling source file 'Scene_Pong.h')
-  
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene.h(27,10): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-  (compiling source file 'Scene_Pong.h')
-  
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene.h(27,26): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
-  (compiling source file 'Scene_Pong.h')
-  
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene.h(28,19): error C2061: syntax error: identifier 'Renderer'
-  (compiling source file 'Scene_Pong.h')
-  
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene.h(28,43): error C2065: 'pRenderer': undeclared identifier
-  (compiling source file 'Scene_Pong.h')
-  
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene.h(28,55): error C2065: '_pRenderer': undeclared identifier
-  (compiling source file 'Scene_Pong.h')
-  
   Texture.cpp
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Texture.cpp(23,11): warning C4552: '+': result of expression not used
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Texture.cpp(24,12): warning C4552: '+': result of expression not used
   Generating Code...
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\cCollider.cpp(75): warning C4715: 'Collider::BoxCollision': not all control paths return a value
   Compiling...
@@ -164,3 +27,5 @@ E:\Github\14-Engine\QuasarEngine\QuasarEngine\cCollider.cpp(75): warning C4715: 
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\Time.cpp(17,24): warning C4244: '=': conversion from 'unsigned int' to 'float', possible loss of data
   Window.cpp
   Generating Code...
+Debug\Scene_Pong.obj : warning LNK4042: object specified more than once; extras ignored
+  QuasarEngine.vcxproj -> E:\Github\14-Engine\QuasarEngine\Debug\QuasarEngine.exe

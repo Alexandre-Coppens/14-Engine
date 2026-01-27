@@ -23,7 +23,7 @@ public:
 	static Scene* ActiveScene;
 
 	std::string GetSceneName() const { return sName; }
-	Renderer* GetRenderer() { return pRenderer; }
+	Renderer* GetRenderer()					{ return pRenderer; }
 	void SetRenderer(Renderer* _pRenderer) { pRenderer = _pRenderer; }
 
 private:
@@ -35,7 +35,6 @@ public:
 	virtual void EarlyUpdate();
 	virtual void Update(float deltaTime);
 	virtual void LateUpdate();
-	virtual void Render();
 	virtual void Close();
 
 	virtual void Load();

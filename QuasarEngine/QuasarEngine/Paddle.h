@@ -11,7 +11,7 @@ public:
 
 private:
 public:
-	Paddle(Scene* _pScene);
+	Paddle();
 	~Paddle();
 
 	void Start()					override;

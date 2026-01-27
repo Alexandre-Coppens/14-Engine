@@ -11,7 +11,7 @@ public:
 
 private:
 public:
-	Box(Scene* _pScene);
+	Box();
 	~Box();
 
 	void Start()					override;

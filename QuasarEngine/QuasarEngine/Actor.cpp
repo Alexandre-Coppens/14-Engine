@@ -15,8 +15,6 @@ Actor::~Actor()
 
 void Actor::Start()
 {
-
-
 	for(const auto c : vComponentList)
 	{
 		c.second->OnStart();

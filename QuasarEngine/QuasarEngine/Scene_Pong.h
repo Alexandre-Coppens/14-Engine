@@ -14,7 +14,6 @@ public:
 	Scene_Pong(std::string _sName);
 	void Start()					override;
 	void Update(float deltaTime)	override;
-	void Render()					override;
 	void Close()					override;
 };
 

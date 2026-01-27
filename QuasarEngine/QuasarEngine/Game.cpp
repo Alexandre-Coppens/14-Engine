@@ -16,6 +16,9 @@ Game::Game(std::string _sTitle, std::vector<Scene*> _vScenes):
 	{
 		SDL_Log("SDL initialization succeeded");
 	}
+	pRenderer = new Renderer();
+
+	for (Scene* s : vScenes) s->SetRenderer(pRenderer);
 }
 
 Game::~Game()
@@ -25,17 +28,10 @@ Game::~Game()
 void Game::Initialize()
 {
 	pWindow = new Window(800, 800, sTitle);
-	pRenderer = new Renderer();
 
-	if (vScenes.size() > 0)
+	if (pWindow->Open() && pRenderer->Initialize(*pWindow))
 	{
-		vScenes[u8CurrentScene]->Start();
-		vScenes[u8CurrentScene]->SetRenderer(pRenderer);
-	}
-
-	if (pWindow->Open()) 
-	{
-		pRenderer->Initialize(*pWindow);
+		vScenes[u8CurrentScene] -> Load();
 		Loop();
 	}
 }
@@ -64,7 +60,7 @@ void Game::Loop()
 void Game::Render()
 {
 	pRenderer->BeginDraw();
-	vScenes[u8CurrentScene]->Render();
+	pRenderer->Draw();
 	pRenderer->EndDraw();
 }
 

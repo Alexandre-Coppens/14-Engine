@@ -6,8 +6,7 @@
 //All Structs
 struct Vector2
 {
-	float x;
-	float y;
+	float x, y;
 };
 
 //Constants
@@ -43,6 +42,11 @@ static inline Vector2 Multiply(Vector2 v1, Vector2 v2)
 static inline Vector2 Divide(Vector2 v1, Vector2 v2)
 {
 	return Vector2{ v1.x / v2.x, v1.y / v2.y };
+}
+
+static inline bool Equal(Vector2 v1, Vector2 v2)
+{
+	return v1.x == v2.x && v1.y == v2.y;
 }
 
 #endif
