@@ -5,19 +5,19 @@
 - [ ] Custom Render Pass for Portal Effect
 - [ ] Source-Like Console for debbuging
 
-#### Conventions
+## Conventions
 
-###### Common
+#### Common
 Class **PascalCase**;
 public var **cameCase**;
 private var **mPascalCase**;
 function **PascalCase** (func var **_camelCase**);
 
-###### Variable
+#### Variable
 Variables are **always** private even **Static** ones.
 They are followed by **getters & setters** to permit access & writing if needed.
 
-###### Classes
+#### Classes
 Classes are presented as followed:
 
 Class Class
