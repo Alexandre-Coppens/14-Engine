@@ -29,6 +29,20 @@ Texture& Assets::GetTexture(const std::string& _pName)
 	return mTextureList[_pName];
 }
 
+//CAREFULL: This Function uses a find to EVERY textures so be precise in the name!
+std::vector<Texture*> Assets::GetTextures(const std::string& _pName)
+{
+	std::vector<Texture*> tList;
+
+	for (auto t = mTextureList.begin(); t != mTextureList.end(); t++)
+	{
+		if (t->first.find(_pName) != std::string::npos)
+			tList.push_back(&t->second);
+	}
+
+	return tList;
+}
+
 void Assets::Clear()
 {
 	for (auto iter : mTextureList)

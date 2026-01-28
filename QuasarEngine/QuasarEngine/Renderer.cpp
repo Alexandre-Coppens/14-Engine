@@ -67,7 +67,7 @@ void Renderer::DrawSprite(Actor& _pActor, const Texture& _pTex, Rectangle _Sourc
 	destinationRect.y = static_cast<int>(transform.getLocation().y - (transform.getSize().y * _v2Origin.y));
 
 	SDL_Rect* sourceSDL = nullptr;
-	if (Equal(_SourceRect.size, Vector2Zero())) //WTF IS RECTANGLE::NULLRECT SERIOUSLY
+	if (Equal(_SourceRect.size, Vector2Zero()))
 	{
 		sourceSDL = new SDL_Rect{
 			Round(0),

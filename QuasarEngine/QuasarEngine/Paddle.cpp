@@ -18,18 +18,8 @@ Paddle::~Paddle()
 
 void Paddle::Start()
 {
-	std::vector<Texture*> textureList;
-	textureList.push_back(&Assets::GetTexture("00_megaman"));
-	textureList.push_back(&Assets::GetTexture("01_megaman"));
-	textureList.push_back(&Assets::GetTexture("02_megaman"));
-	textureList.push_back(&Assets::GetTexture("03_megaman"));
-	textureList.push_back(&Assets::GetTexture("04_megaman"));
-	textureList.push_back(&Assets::GetTexture("05_megaman"));
-	textureList.push_back(&Assets::GetTexture("06_megaman"));
-	textureList.push_back(&Assets::GetTexture("07_megaman"));
-
 	AddComponent(new BoxCollider2D(this, 0, Rectangle{ Vector2Zero(), Vector2{ 50.0f, 50.0f } }));
-	AddComponent(new AnimatedSprite2D(this, textureList, 0));
+	AddComponent(new AnimatedSprite2D(this, Assets::GetTextures("megaman"), 0));
 
 	Actor::Start();
 
