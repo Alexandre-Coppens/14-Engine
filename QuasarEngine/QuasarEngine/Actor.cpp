@@ -17,7 +17,7 @@ void Actor::Start()
 {
 	for(const auto c : mComponentList)
 	{
-		c.second->OnStart();
+		c->OnStart();
 	}
 }
 
@@ -25,7 +25,7 @@ void Actor::Update(float _deltaTime)
 {
 	for (const auto c : mComponentList)
 	{
-		c.second->Update();
+		c->Update();
 	}
 }
 
@@ -33,33 +33,25 @@ void Actor::Destroy()
 {
 	for (const auto c : mComponentList)
 	{
-		c.second->OnEnd();
+		c->OnEnd();
 	}
 }
 
 void Actor::AddComponent(Component* _c)
 {
-	if (GetComponent(_c->getName()) == nullptr) mComponentList[_c->getName()] = _c;
-	else
-	{
-		Log::Info(mName + ": Has replaced " + _c->getName() + " Component by a new one with 'ADD' Function.");
-		Component* oldComponent;
-		oldComponent = mComponentList[_c->getName()];
-		delete oldComponent;
-		oldComponent = nullptr;
-		mComponentList[_c->getName()] = _c;
-	}
+	mComponentList.push_back(_c);
 	_c->OnStart();
 }
 
-void Actor::RemoveComponent(std::string _c)
+//Remove All -Type- Components from Actor
+//(There is no way now to remove a specific Component so it's all or nothing.)
+template<typename T>
+void Actor::RemoveComponents()
 {
-	if (mComponentList.find(_c) == mComponentList.end())
+	for (auto it = mComponentList.begin(); it != mComponentList.end(); it++)
 	{
-		Log::Info(mName + ": No Instance of " + _c + " Component found to remove.");
-		return;
+		delete* it;
+		mComponentList.erase(it);
 	}
-	delete mComponentList[_c];
-	mComponentList[_c] = nullptr;
 }
 

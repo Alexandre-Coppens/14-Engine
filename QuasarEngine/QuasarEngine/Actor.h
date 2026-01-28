@@ -3,6 +3,7 @@
 
 #include <map>
 #include <string>
+#include <vector>
 
 #include "cTransform2D.h"
 
@@ -23,7 +24,7 @@ protected:
 	Scene* pScene;
 	ActorState mState;
 	Transform2D mTransform;
-	std::map<std::string, Component*> mComponentList;
+	std::vector<Component*> mComponentList;
 
 public:
 	std::string  getName()		const	{ return mName; }
@@ -31,9 +32,26 @@ public:
 	ActorState	 getState()		const	{ return mState;  }
 	Transform2D* getTransform()			{ return &mTransform;  }
 	
-	Component* GetComponent(std::string c) {
-		if (mComponentList.find(c) != mComponentList.end()) return mComponentList[c];
+	template<typename T>
+	T* GetComponent() {
+		for (auto it = mComponentList.begin(); it != mComponentList.end(); it++)
+		{
+			T* component = dynamic_cast<T*>(*it);
+			if (component != nullptr) return component;
+		}
 		return nullptr;
+	}
+
+	template<typename T>
+	std::vector<T*> GetComponents() {
+		std::vector<T*> list;
+		for (auto it = mComponentList.begin(); it != mComponentList.end(); it++)
+		{
+			T* component = dynamic_cast<T*>(*it);
+			if (component != nullptr)
+				list.push_back(component);
+		}
+		return list;
 	}
 
 	void SetActive(bool _b) { if (_b) mState = ActorState::Active; else mState = ActorState::Paused; }
@@ -47,7 +65,8 @@ public:
 	virtual	void	Destroy();
 
 	virtual void AddComponent(Component* _c);
-	virtual void RemoveComponent(std::string _c);
+	template<typename T>
+	void RemoveComponents();
 };
 
 #endif // !ACTOR_H

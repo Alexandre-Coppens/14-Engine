@@ -42,11 +42,9 @@ void Paddle::Update(float _deltaTime)
 
 	Actor::Update(_deltaTime);
 
-	Component* c = GetComponent("BoxCollider2D");
+	BoxCollider2D* c = GetComponent<BoxCollider2D>();
 	if (c == nullptr) return;
-	BoxCollider2D* bc = dynamic_cast<BoxCollider2D*>(c);
-	if (bc == nullptr) return;
-	if (bc->getIsColliding())
+	if (c->getIsColliding())
 	{
 		mTransform.setLocation(oldPos);
 	}
