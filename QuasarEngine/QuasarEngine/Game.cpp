@@ -6,7 +6,7 @@
 #include "Scene.h"
 
 Game::Game(std::string _title, std::vector<Scene*> _scenes):
-	mIsRunning(true), mTitle(_title), mScenes(_scenes)
+	mTitle(_title), mScenes(_scenes)
 {
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
 	{
@@ -16,7 +16,7 @@ Game::Game(std::string _title, std::vector<Scene*> _scenes):
 	{
 		SDL_Log("SDL initialization succeeded");
 	}
-	pRenderer = new Renderer();
+	pRenderer = new RendererSdl();
 
 	for (Scene* s : mScenes) s->setRenderer(pRenderer);
 }
@@ -38,7 +38,7 @@ void Game::Initialize()
 
 void Game::Loop()
 {
-	while (mIsRunning)
+	while (!Inputs::GetEventQuit())
 	{
 		Time::ComputeDeltaTime();
 
@@ -50,8 +50,6 @@ void Game::Loop()
 		Render();
 		mScenes[mCurrentScene]->LateUpdate();
 
-		Inputs::FlushLateInputs();
-		mIsRunning = !Inputs::GetEventQuit();
 		Time::DelayTime();
 	}
 	Close();

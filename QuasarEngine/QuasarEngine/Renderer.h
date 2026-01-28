@@ -1,14 +1,13 @@
 #pragma once
 #include <SDL_Image.h>
-#include "Window.h"
+#include "IRenderer.h"
 
-#include "Rectangle.h"
 #include <vector>
 
 class Sprite2D;
 class Actor;
 class Texture;
-class Renderer
+class RendererSdl : public IRenderer
 {
 private:
 	SDL_Renderer* pSDLRenderer;
@@ -16,19 +15,13 @@ private:
 public:
 	SDL_Renderer* getSdlRenderer() { return pSDLRenderer; }
 
-	enum class Flip
-	{
-		None = SDL_FLIP_NONE,
-		Horizontal = SDL_FLIP_HORIZONTAL,
-		Vertical = SDL_FLIP_VERTICAL
-	};
-
 private:
-
 public:
-	Renderer();
-	Renderer(const Renderer&) = delete;
-	Renderer& operator= (const Renderer&) = delete;
+	RendererSdl();
+	RendererSdl(const RendererSdl&) = delete;
+	RendererSdl& operator= (const RendererSdl&) = delete;
+
+	IRenderer::RendererType getType() override { return RendererType::SDL; }
 
 	bool Initialize(Window& _pWindow);
 	void BeginDraw();

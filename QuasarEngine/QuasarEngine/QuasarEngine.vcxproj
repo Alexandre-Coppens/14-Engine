@@ -137,6 +137,7 @@
     <ClCompile Include="cAnimation2D.cpp" />
     <ClCompile Include="cBoxCollider2D.cpp" />
     <ClCompile Include="cCollider.cpp" />
+    <ClCompile Include="cGravity2D.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="cSprite2D.cpp" />
     <ClCompile Include="cTransform2D.cpp" />
@@ -162,11 +163,13 @@
     <ClInclude Include="cAnimation2D.h" />
     <ClInclude Include="cBoxCollider2D.h" />
     <ClInclude Include="cCollider.h" />
+    <ClInclude Include="cGravity2D.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="cSprite2D.h" />
     <ClInclude Include="cTransform2D.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Inputs.h" />
+    <ClInclude Include="IRenderer.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="Paddle.h" />
     <ClInclude Include="Rectangle.h" />

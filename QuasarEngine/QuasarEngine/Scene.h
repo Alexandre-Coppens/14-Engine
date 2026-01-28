@@ -5,7 +5,7 @@
 #include <vector>
 #include <map>
 
-class Renderer;
+class RendererSdl;
 class Actor;
 
 class Scene
@@ -13,7 +13,7 @@ class Scene
 private:
 protected:
 	std::string mName;
-	Renderer* pRenderer;
+	RendererSdl* pRenderer;
 
 	std::vector<Actor*> mActorList;
 	std::vector<Actor*> mAddActorList;
@@ -22,10 +22,10 @@ protected:
 public:
 	static Scene* sActiveScene;
 
-	Renderer*	getRenderer()	const	{ return pRenderer; }
+	RendererSdl*	getRenderer()	const	{ return pRenderer; }
 	std::string getSceneName()	const	{ return mName; }
 	
-	void setRenderer(Renderer* _pRenderer) { pRenderer = _pRenderer; }
+	void setRenderer(RendererSdl* _pRenderer) { pRenderer = _pRenderer; }
 
 private:
 	void KillActors();

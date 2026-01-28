@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Game">
-      <UniqueIdentifier>{f72497ab-99aa-4170-8bcf-17b9a0a7c636}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine">
       <UniqueIdentifier>{4089bd62-9b15-49bf-b1d9-291bb4df7a5c}</UniqueIdentifier>
     </Filter>
@@ -36,15 +33,6 @@
     </Filter>
     <Filter Include="Engine\Debug">
       <UniqueIdentifier>{82c0635e-96b4-4f4c-9d43-0ba4a6ff3624}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Scenes">
-      <UniqueIdentifier>{41afc706-2212-422e-97b3-ddf3d741529a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Actors">
-      <UniqueIdentifier>{cc61f775-cd15-4c73-ad31-0a3abd2cf407}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Components">
-      <UniqueIdentifier>{3a7a8b32-f11f-4c54-a47e-9a43793be007}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\GameBase">
       <UniqueIdentifier>{dd7518fc-ed91-4911-9d2b-d186fbbe9d6e}</UniqueIdentifier>
@@ -84,6 +72,21 @@
     </Filter>
     <Filter Include="Engine\GameBase\Scene\Actor\Components\Sprite2D\Animation2D">
       <UniqueIdentifier>{52932ea0-ed14-46f2-b2e8-5eaddabaa5aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\GameBase\Scene\Actor\Components\Gravity2D">
+      <UniqueIdentifier>{83fd442a-7e4c-4a42-a828-c7cd82c66d9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game2D">
+      <UniqueIdentifier>{f72497ab-99aa-4170-8bcf-17b9a0a7c636}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game2D\Scenes">
+      <UniqueIdentifier>{41afc706-2212-422e-97b3-ddf3d741529a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game2D\Actors">
+      <UniqueIdentifier>{cc61f775-cd15-4c73-ad31-0a3abd2cf407}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game2D\Components">
+      <UniqueIdentifier>{3a7a8b32-f11f-4c54-a47e-9a43793be007}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -127,13 +130,13 @@
       <Filter>Engine\Librairies\Inputs</Filter>
     </ClCompile>
     <ClCompile Include="Paddle.cpp">
-      <Filter>Game\Actors</Filter>
+      <Filter>Game2D\Actors</Filter>
     </ClCompile>
     <ClCompile Include="Scene_Pong.h">
-      <Filter>Game\Scenes</Filter>
+      <Filter>Game2D\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="Scene_Pong.cpp">
-      <Filter>Game\Scenes</Filter>
+      <Filter>Game2D\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="cBoxCollider2D.cpp">
       <Filter>Engine\GameBase\Scene\Actor\Components\Collider2D\BoxCollider2D</Filter>
@@ -142,7 +145,7 @@
       <Filter>Engine\GameBase\Scene\Actor\Components\Collider2D</Filter>
     </ClCompile>
     <ClCompile Include="Box.cpp">
-      <Filter>Game\Actors</Filter>
+      <Filter>Game2D\Actors</Filter>
     </ClCompile>
     <ClCompile Include="Texture.cpp">
       <Filter>Engine\Render\Asset\Texture</Filter>
@@ -154,6 +157,9 @@
       <Filter>Engine\GameBase\Scene\Actor\Components\Sprite2D</Filter>
     </ClCompile>
     <ClCompile Include="cAnimation2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cGravity2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -189,7 +195,7 @@
       <Filter>Engine\GameBase\Scene\Actor\Components\Transform2D</Filter>
     </ClInclude>
     <ClInclude Include="Paddle.h">
-      <Filter>Game\Actors</Filter>
+      <Filter>Game2D\Actors</Filter>
     </ClInclude>
     <ClInclude Include="Inputs.h">
       <Filter>Engine\Librairies\Inputs</Filter>
@@ -201,7 +207,7 @@
       <Filter>Engine\GameBase\Scene\Actor\Components\Collider2D</Filter>
     </ClInclude>
     <ClInclude Include="Box.h">
-      <Filter>Game\Actors</Filter>
+      <Filter>Game2D\Actors</Filter>
     </ClInclude>
     <ClInclude Include="Texture.h">
       <Filter>Engine\Render\Asset\Texture</Filter>
@@ -214,6 +220,12 @@
     </ClInclude>
     <ClInclude Include="cAnimation2D.h">
       <Filter>Engine\GameBase\Scene\Actor\Components\Sprite2D\Animation2D</Filter>
+    </ClInclude>
+    <ClInclude Include="cGravity2D.h">
+      <Filter>Engine\GameBase\Scene\Actor\Components\Gravity2D</Filter>
+    </ClInclude>
+    <ClInclude Include="IRenderer.h">
+      <Filter>Engine\Render\Renderer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

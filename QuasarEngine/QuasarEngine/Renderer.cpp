@@ -7,12 +7,12 @@
 #include "cSprite2D.h"
 
 
-Renderer::Renderer() :
+RendererSdl::RendererSdl() :
 	pSDLRenderer(nullptr)
 {
 }
 
-bool Renderer::Initialize(Window& _pWindow)
+bool RendererSdl::Initialize(Window& _pWindow)
 {
 	pSDLRenderer = SDL_CreateRenderer(_pWindow.GetSdlWindow(), -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	if (!pSDLRenderer)
@@ -28,28 +28,28 @@ bool Renderer::Initialize(Window& _pWindow)
 	return true;
 }
 
-void Renderer::BeginDraw()
+void RendererSdl::BeginDraw()
 {
 	SDL_SetRenderDrawColor(pSDLRenderer, 120, 120, 255, 255);
 	SDL_RenderClear(pSDLRenderer);
 }
 
-void Renderer::EndDraw()
+void RendererSdl::EndDraw()
 {
 	SDL_RenderPresent(pSDLRenderer);
 }
 
-void Renderer::Close()
+void RendererSdl::Close()
 {
 	SDL_DestroyRenderer(pSDLRenderer);
 }
 
-void Renderer::Draw()
+void RendererSdl::Draw()
 {
 	DrawSprites();
 }
 
-void Renderer::DrawSprites()
+void RendererSdl::DrawSprites()
 {
 	for (Sprite2D* sprite : mSpriteList)
 	{
@@ -57,17 +57,17 @@ void Renderer::DrawSprites()
 	}
 }
 
-void Renderer::DrawSprite(Actor& _pActor, const Texture& _pTex, Rectangle _SourceRect, Vector2 _v2Origin, Flip _Flip) const
+void RendererSdl::DrawSprite(Actor& _pActor, const Texture& _pTex, Rectangle _sourceRect, Vector2 _origin, Flip _flip) const
 {
 	SDL_Rect destinationRect;
 	Transform2D transform = *_pActor.getTransform();
 	destinationRect.w = static_cast<int>(transform.getSize().x * transform.getScale().x);
 	destinationRect.h = static_cast<int>(transform.getSize().y * transform.getScale().y);
-	destinationRect.x = static_cast<int>(transform.getLocation().x - (transform.getSize().x * _v2Origin.x));
-	destinationRect.y = static_cast<int>(transform.getLocation().y - (transform.getSize().y * _v2Origin.y));
+	destinationRect.x = static_cast<int>(transform.getLocation().x - (transform.getSize().x * _origin.x));
+	destinationRect.y = static_cast<int>(transform.getLocation().y - (transform.getSize().y * _origin.y));
 
 	SDL_Rect* sourceSDL = nullptr;
-	if (Equal(_SourceRect.size, Vector2Zero()))
+	if (Equal(_sourceRect.size, Vector2Zero()))
 	{
 		sourceSDL = new SDL_Rect{
 			Round(0),
@@ -78,10 +78,10 @@ void Renderer::DrawSprite(Actor& _pActor, const Texture& _pTex, Rectangle _Sourc
 	else
 	{
 		sourceSDL = new SDL_Rect{
-			Round(_SourceRect.position.x),
-			Round(_SourceRect.position.y),
-			Round(_SourceRect.size.x),
-			Round(_SourceRect.size.y) };
+			Round(_sourceRect.position.x),
+			Round(_sourceRect.position.y),
+			Round(_sourceRect.size.x),
+			Round(_sourceRect.size.y) };
 	}
 
 	SDL_RenderCopyEx(
@@ -91,12 +91,12 @@ void Renderer::DrawSprite(Actor& _pActor, const Texture& _pTex, Rectangle _Sourc
 		&destinationRect,
 		-ToDeg(transform.getRotation()),
 		nullptr,
-		SDL_FLIP_NONE);
+		(SDL_RendererFlip)_flip);
 
 	delete sourceSDL;
 }
 
-void Renderer::AddSprite(Sprite2D* pSprite)
+void RendererSdl::AddSprite(Sprite2D* pSprite)
 {
 	int spriteDrawOrder = pSprite->getDrawOrder();
 	std::vector<Sprite2D*>::iterator s2D;
@@ -107,7 +107,7 @@ void Renderer::AddSprite(Sprite2D* pSprite)
 	mSpriteList.insert(s2D, pSprite);
 }
 
-void Renderer::RemoveSprite(Sprite2D* pSprite)
+void RendererSdl::RemoveSprite(Sprite2D* pSprite)
 {
 	std::vector<Sprite2D*>::iterator s2D;
 	s2D = std::find(mSpriteList.begin(), mSpriteList.end(), pSprite);

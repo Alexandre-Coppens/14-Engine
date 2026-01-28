@@ -3,6 +3,8 @@
 #include "Actor.h"
 #include "Log.h"
 
+#include "cGravity2D.h"
+
 std::vector<Collider*> Collider::mColliderList;
 
 Collider::Collider(Actor* _pOwner, uint8_t _u8UpdateOrder):
@@ -30,6 +32,17 @@ void Collider::OnEnd()
 	mColliderList.push_back(this);
 }
 
+void Collider::SendToGravity()
+{
+    if (mIsColliding = false) return;
+    Gravity2D* g = getOwner()->GetComponent<Gravity2D>();
+    if (g == nullptr) return;
+    for (Actor* a : mCollidingActors)
+    {
+        g->Collided(a);
+    }
+}
+
 void Collider::CheckCollisions()
 {
     mIsColliding = false;
@@ -52,6 +65,7 @@ void Collider::CheckCollisions()
             break;
         }
     }
+    SendToGravity();
 }
 
 bool Collider::BoxCollision(Rectangle c)

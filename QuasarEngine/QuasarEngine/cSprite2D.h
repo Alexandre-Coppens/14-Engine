@@ -13,12 +13,15 @@ protected:
 	uint8_t  mDrawOrder;
 	uint16_t mTextureWidth;
 	uint16_t mTextureHeight;
+	bool mXFlipped;
 
 public:
 	uint16_t getDrawOrder()		  const	{ return mDrawOrder; }
 	uint16_t getTextureWidth()	  const	{ return mTextureWidth; }
 	uint16_t getTextureHeight()	  const	{ return mTextureHeight; }
 	Vector2  getTextureSize()	  const	{ return Vector2{ (float)mTextureWidth, (float)mTextureHeight }; }
+
+	void setXFlip(bool _b) { mXFlipped = _b; }
 
 private:
 public:
@@ -31,7 +34,7 @@ public:
 	void Update()	override {};
 
 	virtual void SetTexture(const Texture& _pTexture);
-	virtual void Draw(Renderer& _pRenderer);
+	virtual void Draw(RendererSdl& _pRenderer);
 };
 
 #endif // !1

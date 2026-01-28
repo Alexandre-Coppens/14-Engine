@@ -4,6 +4,7 @@
 
 #include "cBoxCollider2D.h"
 #include "cAnimation2D.h"
+#include "cGravity2D.h"
 
 Paddle::Paddle():
 	Actor()
@@ -20,6 +21,7 @@ void Paddle::Start()
 {
 	AddComponent(new BoxCollider2D(this, 0, Rectangle{ Vector2Zero(), Vector2{ 50.0f, 50.0f } }));
 	AddComponent(new AnimatedSprite2D(this, Assets::GetTextures("megaman"), 0));
+	AddComponent(new Gravity2D(this, 0));
 
 	Actor::Start();
 
@@ -32,12 +34,14 @@ void Paddle::Update(float _deltaTime)
 
 	if (Inputs::GetKey(SDLK_q))
 	{
-		mTransform.addLocationX(-500 * _deltaTime);
+		mTransform.addLocation(MultiplyScalar(mTransform.Right(), -500 * _deltaTime));
+		GetComponent<Sprite2D>()->setXFlip(true);
 	}
 
 	if (Inputs::GetKey(SDLK_d))
 	{
-		mTransform.addLocationX(500 * _deltaTime);
+		mTransform.addLocation(MultiplyScalar(mTransform.Right(), 500 * _deltaTime));
+		GetComponent<Sprite2D>()->setXFlip(false);
 	}
 
 	Actor::Update(_deltaTime);

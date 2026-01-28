@@ -3,7 +3,7 @@
 #include <SDL_image.h>
 #include "CommonLib.h"
 
-class Renderer;
+class RendererSdl;
 class Texture
 {
 private:
@@ -23,7 +23,7 @@ public:
 	Texture();
 	~Texture();
 
-	bool Load(Renderer& _renderer, const std::string& _filename);
+	bool Load(RendererSdl& _renderer, const std::string& _filename);
 	void Unload();
 	void UpdateInfo(uint16_t& _pWidthOut, uint16_t& _pHeightOut);
 };

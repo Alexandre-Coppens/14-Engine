@@ -13,18 +13,16 @@ class Scene;
 class Game
 {
 private:
-	bool mIsRunning;
 	Window* pWindow;
 	std::string mTitle;
 
-	Renderer* pRenderer;
+	RendererSdl* pRenderer;
 
 	std::vector<Scene*> mScenes;
 	Uint8 mCurrentScene{ 0 };
 	float mLastUpdate{ 0 };
 
 public:
-	bool getIsRunning() const { return mIsRunning; }
 
 private:
 public:

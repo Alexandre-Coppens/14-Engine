@@ -11,7 +11,7 @@ Texture::~Texture()
 {
 }
 
-bool Texture::Load(Renderer& _renderer, const std::string& _filename)
+bool Texture::Load(RendererSdl& _renderer, const std::string& _filename)
 {
 	mFileName = _filename;
 	SDL_Surface* surface = IMG_Load(mFileName.c_str());

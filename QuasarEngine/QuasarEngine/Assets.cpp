@@ -5,14 +5,14 @@
 
 std::map<std::string, Texture> Assets::mTextureList = {};
 
-Texture Assets::LoadTextureFromFile(Renderer& _pRenderer, const std::string& _pFileName)
+Texture Assets::LoadTextureFromFile(RendererSdl& _pRenderer, const std::string& _pFileName)
 {
 	Texture texture;
 	texture.Load(_pRenderer, _pFileName);
 	return texture;
 }
 
-Texture Assets::LoadTexture(Renderer& _pRenderer, const std::string& _pFileName, const std::string& _pName)
+Texture Assets::LoadTexture(RendererSdl& _pRenderer, const std::string& _pFileName, const std::string& _pName)
 {
 	mTextureList[_pName] = LoadTextureFromFile(_pRenderer, _pFileName);
 	return mTextureList[_pName];

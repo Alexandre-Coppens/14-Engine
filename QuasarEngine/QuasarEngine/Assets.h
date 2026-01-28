@@ -13,10 +13,10 @@ public:
 
 private:
 	Assets() = default;
-	static Texture LoadTextureFromFile(Renderer& _pRenderer, const std::string& _pFileName);
+	static Texture LoadTextureFromFile(RendererSdl& _pRenderer, const std::string& _pFileName);
 
 public:
-	static Texture LoadTexture(Renderer& _pRenderer, const std::string& _pFileName, const std::string& _pName);
+	static Texture LoadTexture(RendererSdl& _pRenderer, const std::string& _pFileName, const std::string& _pName);
 	static Texture& GetTexture(const std::string& _pName);
 	static std::vector<Texture*> GetTextures(const std::string& _pName);
 	static void Clear();

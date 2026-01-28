@@ -10,6 +10,8 @@ bool Inputs::mEventQuit = false;
 
 void Inputs::ComputeInputs()
 {
+	FlushLateInputs();
+
 	SDL_Event event;
 	while (SDL_PollEvent(&event))
 	{

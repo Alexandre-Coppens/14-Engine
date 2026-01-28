@@ -40,4 +40,6 @@ public:
 	void OnStart() override;
 	void Update() override;
 	void OnEnd() override;
+
+	void SendToGravity();
 };

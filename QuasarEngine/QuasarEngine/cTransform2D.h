@@ -3,6 +3,7 @@
 
 #include "Component.h"
 #include "CommonLib.h"
+#include "MathLib.h"
 
 class Transform2D : public Component
 {
@@ -30,9 +31,10 @@ public:
 	void setScaleX(float _f)	{ mScale.x = _f; }
 	void setScaleY(float _f)	{ mScale.y = _f; }
 
-	void addLocationX(float _f) { mLocation.x += _f; }
-	void addLocationY(float _f) { mLocation.y += _f; }
-	void addRotation(float _f)  { mRotation += _f; }
+	void addLocation(Vector2 _v) { mLocation = Add(mLocation, _v); }
+	void addLocationX(float _f)  { mLocation.x += _f; }
+	void addLocationY(float _f)  { mLocation.y += _f; }
+	void addRotation(float _f)   { mRotation += _f; }
 
 	void setTransform(Transform2D* _t2D) {
 		mLocation = _t2D->mLocation;
@@ -40,6 +42,9 @@ public:
 		mSize	  = _t2D->mSize;
 		mScale	  = _t2D->mScale;
 	}
+
+	Vector2 Right() const { return Vector2{ Cos(mRotation), -Sin(mRotation) }; }
+	Vector2 Up()	const { return Vector2{ Sin(mRotation), -Cos(mRotation) }; }
 
 protected:
 public:

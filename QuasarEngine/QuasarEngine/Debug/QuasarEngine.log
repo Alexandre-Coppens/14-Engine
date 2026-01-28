@@ -1,19 +1,5 @@
-﻿  Actor.cpp
-  Box.cpp
-  cBoxCollider2D.cpp
-  cCollider.cpp
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\cCollider.cpp(36,27): warning C4858: discarding return value: This member function returns a bool indicating whether the container is empty and has no other effects. It is not useful to call this member function and discard the return value. Use the 'clear()' member function if you want to erase all elements.
-  Component.cpp
-  cSprite2D.cpp
-  cTransform2D.cpp
-  CommonLib.h
-  MathLib.h
+﻿  CommonLib.h
   Paddle.cpp
-  Renderer.cpp
-  Scene.cpp
-  Scene_Pong.cpp
-  Scene_Pong.h
+  cGravity2D.cpp
   Generating Code...
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\cCollider.cpp(75): warning C4715: 'Collider::BoxCollision': not all control paths return a value
-Debug\Scene_Pong.obj : warning LNK4042: object specified more than once; extras ignored
   QuasarEngine.vcxproj -> E:\Github\14-Engine\QuasarEngine\Debug\QuasarEngine.exe
