@@ -16,6 +16,14 @@ void Scene_Pong::Start()
 	Log::Info("GAME: Loading Scene: '" + mName + "'.");
 
 	Assets::LoadTexture(*pRenderer, "Ressources/pokeball.png", "ball");
+	Assets::LoadTexture(*pRenderer, "Ressources/MegaAnim/00_megaman.png", "00_megaman");
+	Assets::LoadTexture(*pRenderer, "Ressources/MegaAnim/01_megaman.png", "01_megaman");
+	Assets::LoadTexture(*pRenderer, "Ressources/MegaAnim/02_megaman.png", "02_megaman");
+	Assets::LoadTexture(*pRenderer, "Ressources/MegaAnim/03_megaman.png", "03_megaman");
+	Assets::LoadTexture(*pRenderer, "Ressources/MegaAnim/04_megaman.png", "04_megaman");
+	Assets::LoadTexture(*pRenderer, "Ressources/MegaAnim/05_megaman.png", "05_megaman");
+	Assets::LoadTexture(*pRenderer, "Ressources/MegaAnim/06_megaman.png", "06_megaman");
+	Assets::LoadTexture(*pRenderer, "Ressources/MegaAnim/07_megaman.png", "07_megaman");
 
 	AddActor(new Paddle());
 	AddActor(new Box());

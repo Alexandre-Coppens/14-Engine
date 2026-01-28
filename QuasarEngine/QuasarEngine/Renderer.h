@@ -37,7 +37,7 @@ public:
 
 	void Draw();
 	void DrawSprites();
-	void DrawSprite(Actor& _pActor, const Texture& _pTex, Rectangle _SourceRect, Vector2 _v2Size, Vector2 _v2Origin, Flip _Flip) const;
+	void DrawSprite(Actor& _pActor, const Texture& _pTex, Rectangle _SourceRect, Vector2 _v2Origin, Flip _Flip) const;
 
 	void AddSprite(Sprite2D* sprite);
 	void RemoveSprite(Sprite2D* sprite);

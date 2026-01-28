@@ -82,6 +82,9 @@
     <Filter Include="Engine\GameBase\Scene\Actor\Components\Sprite2D">
       <UniqueIdentifier>{df30bf39-30ee-4360-b8e1-5588b0c133bc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\GameBase\Scene\Actor\Components\Sprite2D\Animation2D">
+      <UniqueIdentifier>{52932ea0-ed14-46f2-b2e8-5eaddabaa5aa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -150,6 +153,9 @@
     <ClCompile Include="cSprite2D.cpp">
       <Filter>Engine\GameBase\Scene\Actor\Components\Sprite2D</Filter>
     </ClCompile>
+    <ClCompile Include="cAnimation2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Rectangle.h">
@@ -205,6 +211,9 @@
     </ClInclude>
     <ClInclude Include="cSprite2D.h">
       <Filter>Engine\GameBase\Scene\Actor\Components\Sprite2D</Filter>
+    </ClInclude>
+    <ClInclude Include="cAnimation2D.h">
+      <Filter>Engine\GameBase\Scene\Actor\Components\Sprite2D\Animation2D</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

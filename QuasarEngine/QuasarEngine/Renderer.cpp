@@ -57,14 +57,14 @@ void Renderer::DrawSprites()
 	}
 }
 
-void Renderer::DrawSprite(Actor& _pActor, const Texture& _pTex, Rectangle _SourceRect, Vector2 _v2Size, Vector2 _v2Origin, Flip _Flip) const
+void Renderer::DrawSprite(Actor& _pActor, const Texture& _pTex, Rectangle _SourceRect, Vector2 _v2Origin, Flip _Flip) const
 {
 	SDL_Rect destinationRect;
 	Transform2D transform = *_pActor.getTransform();
-	destinationRect.w = static_cast<int>(_v2Size.x * transform.getScale().x);
-	destinationRect.h = static_cast<int>(_v2Size.y * transform.getScale().y);
-	destinationRect.x = static_cast<int>(transform.getLocation().x - ( _v2Size.x * _v2Origin.x));
-	destinationRect.y = static_cast<int>(transform.getLocation().y - (_v2Size.y * _v2Origin.y));
+	destinationRect.w = static_cast<int>(transform.getSize().x * transform.getScale().x);
+	destinationRect.h = static_cast<int>(transform.getSize().y * transform.getScale().y);
+	destinationRect.x = static_cast<int>(transform.getLocation().x - (transform.getSize().x * _v2Origin.x));
+	destinationRect.y = static_cast<int>(transform.getLocation().y - (transform.getSize().y * _v2Origin.y));
 
 	SDL_Rect* sourceSDL = nullptr;
 	if (Equal(_SourceRect.size, Vector2Zero())) //WTF IS RECTANGLE::NULLRECT SERIOUSLY

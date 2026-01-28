@@ -1,5 +1,10 @@
-﻿  cBoxCollider2D.cpp
+﻿  Actor.cpp
+  Box.cpp
   CommonLib.h
-  Window.cpp
+  Component.cpp
+  MathLib.h
+  Paddle.cpp
+  cSprite2D.cpp
+  cTransform2D.cpp
   Generating Code...
   QuasarEngine.vcxproj -> E:\Github\14-Engine\QuasarEngine\Debug\QuasarEngine.exe

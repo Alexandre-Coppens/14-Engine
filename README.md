@@ -17,8 +17,9 @@ function:    **PascalCase** (func var **_camelCase**).
 #### Variable
 Variables are **always** private even **Static** ones.
 They are followed by **getters & setters** to permit access & writing if needed.
-**Getters & Setters** are camelCase functions.
+**Getters & Setters** are camelCase "inline" functions -> always in the header.
 **Getters** are always put before **setter**.
+
 
 #### Classes
 Classes are presented as followed:

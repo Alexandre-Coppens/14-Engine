@@ -134,6 +134,7 @@
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="Assets.cpp" />
     <ClCompile Include="Box.cpp" />
+    <ClCompile Include="cAnimation2D.cpp" />
     <ClCompile Include="cBoxCollider2D.cpp" />
     <ClCompile Include="cCollider.cpp" />
     <ClCompile Include="Component.cpp" />
@@ -158,6 +159,7 @@
     <ClInclude Include="Actor.h" />
     <ClInclude Include="Assets.h" />
     <ClInclude Include="Box.h" />
+    <ClInclude Include="cAnimation2D.h" />
     <ClInclude Include="cBoxCollider2D.h" />
     <ClInclude Include="cCollider.h" />
     <ClInclude Include="Component.h" />

@@ -26,9 +26,9 @@ protected:
 	std::map<std::string, Component*> mComponentList;
 
 public:
-	std::string getName()		const	{ return mName; }
-	Scene*		getScene()		const	{ return pScene;  }
-	ActorState	getState()		const	{ return mState;  }
+	std::string  getName()		const	{ return mName; }
+	Scene*		 getScene()		const	{ return pScene;  }
+	ActorState	 getState()		const	{ return mState;  }
 	Transform2D* getTransform()			{ return &mTransform;  }
 	
 	Component* GetComponent(std::string c) {
