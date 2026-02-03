@@ -19,7 +19,7 @@ void Transform2D::OnStart()
 {
 }
 
-void Transform2D::Update()
+void Transform2D::Update(float _deltaTime)
 {
 }
 

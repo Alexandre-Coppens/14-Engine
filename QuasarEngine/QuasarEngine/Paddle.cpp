@@ -19,7 +19,7 @@ Paddle::~Paddle()
 
 void Paddle::Start()
 {
-	AddComponent(new BoxCollider2D(this, 0, Rectangle{ Vector2Zero(), Vector2{ 50.0f, 50.0f } }));
+	AddComponent(new BoxCollider2D(this, 1, Rectangle{ Vector2Zero(), Vector2{ 50.0f, 50.0f } }));
 	AddComponent(new AnimatedSprite2D(this, Assets::GetTextures("megaman"), 0));
 	AddComponent(new Gravity2D(this, 0));
 
@@ -31,17 +31,23 @@ void Paddle::Start()
 void Paddle::Update(float _deltaTime)
 {
 	Vector2 oldPos = mTransform.getLocation();
+	Gravity2D* gravity = GetComponent<Gravity2D>();
 
 	if (Inputs::GetKey(SDLK_q))
 	{
-		mTransform.addLocation(MultiplyScalar(mTransform.Right(), -500 * _deltaTime));
+		gravity->setVelocity(gravity->getVelocity() + MultiplyScalar(mTransform.Right(), -500 * _deltaTime));
 		GetComponent<Sprite2D>()->setXFlip(true);
 	}
 
 	if (Inputs::GetKey(SDLK_d))
 	{
-		mTransform.addLocation(MultiplyScalar(mTransform.Right(), 500 * _deltaTime));
+		gravity->setVelocity(gravity->getVelocity() + MultiplyScalar(mTransform.Right(), 500 * _deltaTime));
 		GetComponent<Sprite2D>()->setXFlip(false);
+	}
+
+	if (Inputs::GetKeyDown(SDLK_SPACE))
+	{
+		if(gravity->getVelocity().y < 50 && gravity->getVelocity().y > -0) gravity->setVelocity(gravity->getVelocity() + MultiplyScalar(mTransform.Up(), 500));
 	}
 
 	Actor::Update(_deltaTime);

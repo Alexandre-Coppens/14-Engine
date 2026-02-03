@@ -6,7 +6,7 @@
 #include "CommonLib.h"
 
 #include "Window.h"
-#include "Renderer.h"
+#include "RendererSdl.h"
 
 class Scene;
 

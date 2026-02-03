@@ -1,7 +1,8 @@
 #include "Texture.h"
-#include "Renderer.h"
+#include "RendererSdl.h"
 #include "Log.h"
 #include "Scene.h"
+#include "ShaderProgram.h"
 
 Texture::Texture()
 {

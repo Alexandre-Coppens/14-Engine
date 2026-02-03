@@ -141,6 +141,7 @@
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="cSprite2D.cpp" />
     <ClCompile Include="cTransform2D.cpp" />
+    <ClCompile Include="Floor.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Inputs.cpp" />
     <ClCompile Include="Log.cpp" />
@@ -148,12 +149,16 @@
     <ClCompile Include="CommonLib.h" />
     <ClCompile Include="MathLib.h" />
     <ClCompile Include="Paddle.cpp" />
-    <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="RendererGl.cpp" />
+    <ClCompile Include="RendererSdl.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Scene_Pong.cpp" />
     <ClCompile Include="Scene_Pong.h" />
+    <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="ShaderProgram.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Time.cpp" />
+    <ClCompile Include="VertexArray.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -167,17 +172,26 @@
     <ClInclude Include="Component.h" />
     <ClInclude Include="cSprite2D.h" />
     <ClInclude Include="cTransform2D.h" />
+    <ClInclude Include="Floor.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Inputs.h" />
     <ClInclude Include="IRenderer.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="Paddle.h" />
     <ClInclude Include="Rectangle.h" />
-    <ClInclude Include="Renderer.h" />
+    <ClInclude Include="RendererGl.h" />
+    <ClInclude Include="RendererSdl.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="Shader.h" />
+    <ClInclude Include="ShaderProgram.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Time.h" />
+    <ClInclude Include="VertexArray.h" />
     <ClInclude Include="Window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Ressources\Shaders\Basic.frag" />
+    <None Include="Ressources\Shaders\Basic.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

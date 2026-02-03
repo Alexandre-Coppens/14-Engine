@@ -25,7 +25,7 @@ void Actor::Update(float _deltaTime)
 {
 	for (const auto c : mComponentList)
 	{
-		c->Update();
+		c->Update(_deltaTime);
 	}
 }
 

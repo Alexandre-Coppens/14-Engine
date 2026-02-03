@@ -16,5 +16,5 @@ public:
 	BoxCollider2D(Actor* _pOwner, uint8_t _updateOrder, Rectangle _collision);
 	~BoxCollider2D();
 
-	void Update() override;
+	void Update(float _deltaTime) override;
 };

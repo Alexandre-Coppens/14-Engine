@@ -27,5 +27,5 @@ public:
 	AnimatedSprite2D(const AnimatedSprite2D&) = delete;
 	AnimatedSprite2D& operator= (const AnimatedSprite2D&) = delete;
 
-	void Update() override;
+	void Update(float _deltaTime) override;
 };

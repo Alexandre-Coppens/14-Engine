@@ -4,6 +4,7 @@
 
 #include "Paddle.h"
 #include "Box.h"
+#include "Floor.h"
 
 Scene_Pong::Scene_Pong(std::string _name):
 	Scene(_name)
@@ -27,6 +28,7 @@ void Scene_Pong::Start()
 
 	AddActor(new Paddle());
 	AddActor(new Box());
+	AddActor(new Floor());
 }
 
 void Scene_Pong::Update(float deltaTime)

@@ -49,32 +49,14 @@
     <Filter Include="Engine\Librairies\TimeLib">
       <UniqueIdentifier>{957927e3-4925-4d67-8287-02ed7f8e24bd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\GameBase\Scene\Actor\Components\Transform2D">
-      <UniqueIdentifier>{f6737aa9-9800-4448-b9e2-7d4083dfb53b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\Librairies\Inputs">
       <UniqueIdentifier>{88ed2afc-3b2c-4ebb-b268-4e7644ee3f23}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\GameBase\Scene\Actor\Components\Collider2D">
-      <UniqueIdentifier>{7c2bb18e-2632-4e02-8eb9-2cb3aa1c48d3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\GameBase\Scene\Actor\Components\Collider2D\BoxCollider2D">
-      <UniqueIdentifier>{59a5425a-515e-473e-9909-2c885649f403}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\Render\Asset">
       <UniqueIdentifier>{a8aca883-86c8-4fce-b86b-61056ce507b3}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\Render\Asset\Texture">
       <UniqueIdentifier>{c3383c45-3c39-47a5-a5ac-d349f41e44e3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\GameBase\Scene\Actor\Components\Sprite2D">
-      <UniqueIdentifier>{df30bf39-30ee-4360-b8e1-5588b0c133bc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\GameBase\Scene\Actor\Components\Sprite2D\Animation2D">
-      <UniqueIdentifier>{52932ea0-ed14-46f2-b2e8-5eaddabaa5aa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\GameBase\Scene\Actor\Components\Gravity2D">
-      <UniqueIdentifier>{83fd442a-7e4c-4a42-a828-c7cd82c66d9e}</UniqueIdentifier>
     </Filter>
     <Filter Include="Game2D">
       <UniqueIdentifier>{f72497ab-99aa-4170-8bcf-17b9a0a7c636}</UniqueIdentifier>
@@ -87,6 +69,51 @@
     </Filter>
     <Filter Include="Game2D\Components">
       <UniqueIdentifier>{3a7a8b32-f11f-4c54-a47e-9a43793be007}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Render\Renderer\SDL">
+      <UniqueIdentifier>{cf0c6e5b-c798-4b48-94c9-535881cfc077}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Render\Renderer\OPENGL">
+      <UniqueIdentifier>{7295849b-9339-4415-9b82-3f719fe2b313}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Render\Renderer\OPENGL\VAO">
+      <UniqueIdentifier>{9afc1a71-07a8-440e-9e08-be19f9842b5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Render\Asset\Shader">
+      <UniqueIdentifier>{5148d98a-8c70-4b81-96e9-22e509771740}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Render\Asset\Shader\ShaderProgram">
+      <UniqueIdentifier>{fcb956d3-96a0-4054-af3e-a9b5f29dd6e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Librairies\Shaders">
+      <UniqueIdentifier>{3a926f9e-c068-4983-951b-f85731deafaf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Librairies\Shaders\Basic">
+      <UniqueIdentifier>{ea30b2de-b3c9-4b42-b329-5a08d2d4df0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Librairies\Components">
+      <UniqueIdentifier>{999e9684-a9ad-4feb-be5e-4af4f69679d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Librairies\Components\2D">
+      <UniqueIdentifier>{e927bdd3-4222-45f9-83fd-757dbe5c51aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Librairies\Components\2D\Transform2D">
+      <UniqueIdentifier>{f6737aa9-9800-4448-b9e2-7d4083dfb53b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Librairies\Components\2D\Sprite2D">
+      <UniqueIdentifier>{df30bf39-30ee-4360-b8e1-5588b0c133bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Librairies\Components\2D\Sprite2D\Animation2D">
+      <UniqueIdentifier>{52932ea0-ed14-46f2-b2e8-5eaddabaa5aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Librairies\Components\2D\Gravity2D">
+      <UniqueIdentifier>{83fd442a-7e4c-4a42-a828-c7cd82c66d9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Librairies\Components\2D\Collider2D">
+      <UniqueIdentifier>{7c2bb18e-2632-4e02-8eb9-2cb3aa1c48d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Librairies\Components\2D\Collider2D\BoxCollider2D">
+      <UniqueIdentifier>{59a5425a-515e-473e-9909-2c885649f403}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -108,9 +135,6 @@
     <ClCompile Include="Window.cpp">
       <Filter>Engine\Render\Window</Filter>
     </ClCompile>
-    <ClCompile Include="Renderer.cpp">
-      <Filter>Engine\Render\Renderer</Filter>
-    </ClCompile>
     <ClCompile Include="Log.cpp">
       <Filter>Engine\Debug</Filter>
     </ClCompile>
@@ -124,7 +148,7 @@
       <Filter>Engine\Librairies\TimeLib</Filter>
     </ClCompile>
     <ClCompile Include="cTransform2D.cpp">
-      <Filter>Engine\GameBase\Scene\Actor\Components\Transform2D</Filter>
+      <Filter>Engine\Librairies\Components\2D\Transform2D</Filter>
     </ClCompile>
     <ClCompile Include="Inputs.cpp">
       <Filter>Engine\Librairies\Inputs</Filter>
@@ -139,10 +163,10 @@
       <Filter>Game2D\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="cBoxCollider2D.cpp">
-      <Filter>Engine\GameBase\Scene\Actor\Components\Collider2D\BoxCollider2D</Filter>
+      <Filter>Engine\Librairies\Components\2D\Collider2D\BoxCollider2D</Filter>
     </ClCompile>
     <ClCompile Include="cCollider.cpp">
-      <Filter>Engine\GameBase\Scene\Actor\Components\Collider2D</Filter>
+      <Filter>Engine\Librairies\Components\2D\Collider2D</Filter>
     </ClCompile>
     <ClCompile Include="Box.cpp">
       <Filter>Game2D\Actors</Filter>
@@ -154,13 +178,31 @@
       <Filter>Engine\Render\Asset</Filter>
     </ClCompile>
     <ClCompile Include="cSprite2D.cpp">
-      <Filter>Engine\GameBase\Scene\Actor\Components\Sprite2D</Filter>
+      <Filter>Engine\Librairies\Components\2D\Sprite2D</Filter>
+    </ClCompile>
+    <ClCompile Include="RendererSdl.cpp">
+      <Filter>Engine\Render\Renderer\SDL</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexArray.cpp">
+      <Filter>Engine\Render\Renderer\OPENGL\VAO</Filter>
+    </ClCompile>
+    <ClCompile Include="RendererGl.cpp">
+      <Filter>Engine\Render\Renderer\OPENGL</Filter>
     </ClCompile>
     <ClCompile Include="cAnimation2D.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Engine\Librairies\Components\2D\Sprite2D\Animation2D</Filter>
     </ClCompile>
     <ClCompile Include="cGravity2D.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Engine\Librairies\Components\2D\Gravity2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>Engine\Render\Asset\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderProgram.cpp">
+      <Filter>Engine\Render\Asset\Shader\ShaderProgram</Filter>
+    </ClCompile>
+    <ClCompile Include="Floor.cpp">
+      <Filter>Game2D\Actors</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -176,9 +218,6 @@
     <ClInclude Include="Window.h">
       <Filter>Engine\Render\Window</Filter>
     </ClInclude>
-    <ClInclude Include="Renderer.h">
-      <Filter>Engine\Render\Renderer</Filter>
-    </ClInclude>
     <ClInclude Include="Log.h">
       <Filter>Engine\Debug</Filter>
     </ClInclude>
@@ -192,7 +231,7 @@
       <Filter>Engine\Librairies\TimeLib</Filter>
     </ClInclude>
     <ClInclude Include="cTransform2D.h">
-      <Filter>Engine\GameBase\Scene\Actor\Components\Transform2D</Filter>
+      <Filter>Engine\Librairies\Components\2D\Transform2D</Filter>
     </ClInclude>
     <ClInclude Include="Paddle.h">
       <Filter>Game2D\Actors</Filter>
@@ -201,10 +240,10 @@
       <Filter>Engine\Librairies\Inputs</Filter>
     </ClInclude>
     <ClInclude Include="cBoxCollider2D.h">
-      <Filter>Engine\GameBase\Scene\Actor\Components\Collider2D\BoxCollider2D</Filter>
+      <Filter>Engine\Librairies\Components\2D\Collider2D\BoxCollider2D</Filter>
     </ClInclude>
     <ClInclude Include="cCollider.h">
-      <Filter>Engine\GameBase\Scene\Actor\Components\Collider2D</Filter>
+      <Filter>Engine\Librairies\Components\2D\Collider2D</Filter>
     </ClInclude>
     <ClInclude Include="Box.h">
       <Filter>Game2D\Actors</Filter>
@@ -216,16 +255,42 @@
       <Filter>Engine\Render\Asset</Filter>
     </ClInclude>
     <ClInclude Include="cSprite2D.h">
-      <Filter>Engine\GameBase\Scene\Actor\Components\Sprite2D</Filter>
+      <Filter>Engine\Librairies\Components\2D\Sprite2D</Filter>
     </ClInclude>
     <ClInclude Include="cAnimation2D.h">
-      <Filter>Engine\GameBase\Scene\Actor\Components\Sprite2D\Animation2D</Filter>
+      <Filter>Engine\Librairies\Components\2D\Sprite2D\Animation2D</Filter>
     </ClInclude>
     <ClInclude Include="cGravity2D.h">
-      <Filter>Engine\GameBase\Scene\Actor\Components\Gravity2D</Filter>
+      <Filter>Engine\Librairies\Components\2D\Gravity2D</Filter>
     </ClInclude>
     <ClInclude Include="IRenderer.h">
       <Filter>Engine\Render\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="RendererSdl.h">
+      <Filter>Engine\Render\Renderer\SDL</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexArray.h">
+      <Filter>Engine\Render\Renderer\OPENGL\VAO</Filter>
+    </ClInclude>
+    <ClInclude Include="RendererGl.h">
+      <Filter>Engine\Render\Renderer\OPENGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>Engine\Render\Asset\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderProgram.h">
+      <Filter>Engine\Render\Asset\Shader\ShaderProgram</Filter>
+    </ClInclude>
+    <ClInclude Include="Floor.h">
+      <Filter>Game2D\Actors</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Ressources\Shaders\Basic.frag">
+      <Filter>Engine\Librairies\Shaders\Basic</Filter>
+    </None>
+    <None Include="Ressources\Shaders\Basic.vert">
+      <Filter>Engine\Librairies\Shaders\Basic</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -13,8 +13,8 @@ BoxCollider2D::~BoxCollider2D()
 {
 }
 
-void BoxCollider2D::Update()
+void BoxCollider2D::Update(float _deltaTime)
 {
     mCollision = Rectangle{ getOwner()->getTransform()->getLocation(), mCollision.size};
-    Collider::Update();
+    Collider::Update(_deltaTime);
 }

@@ -12,9 +12,9 @@ AnimatedSprite2D::~AnimatedSprite2D()
 {
 }
 
-void AnimatedSprite2D::Update()
+void AnimatedSprite2D::Update(float _deltaTime)
 {
-	Sprite2D::Update();
+	Sprite2D::Update(_deltaTime);
 	if (mAnimationTextures.size() == 0) return;
 	mCurrentFrame += mAnimFPS * Time::deltaTime;
 	while (mCurrentFrame >= mAnimationTextures.size())

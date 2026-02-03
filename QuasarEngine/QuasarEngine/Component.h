@@ -29,7 +29,7 @@ public:
 	virtual ~Component();
 
 	virtual void OnStart();
-	virtual void Update() = 0;
+	virtual void Update(float _deltaTime) = 0;
 	virtual void OnEnd();
 };
 

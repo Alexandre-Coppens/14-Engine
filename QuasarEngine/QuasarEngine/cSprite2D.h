@@ -4,7 +4,7 @@
 #include "Component.h"
 #include "CommonLib.h"
 #include "Texture.h"
-#include "Renderer.h"
+#include "RendererSdl.h"
 
 class Sprite2D : public Component
 {
@@ -31,7 +31,7 @@ public:
 	Sprite2D(const Sprite2D&) = delete;
 	Sprite2D& operator= (const Sprite2D&) = delete;
 
-	void Update()	override {};
+	void Update(float _deltaTime)	override {};
 
 	virtual void SetTexture(const Texture& _pTexture);
 	virtual void Draw(RendererSdl& _pRenderer);

@@ -1,6 +1,6 @@
 #include "Scene.h"
 
-#include "Renderer.h"
+#include "RendererSdl.h"
 #include "Actor.h"
 #include "Assets.h"
 

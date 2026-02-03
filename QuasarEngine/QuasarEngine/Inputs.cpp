@@ -36,11 +36,6 @@ void Inputs::SortInput(SDL_Event& event)
 	switch (event.type)
 	{
 	case SDL_KEYDOWN:
-		if (mKeyDown[key])
-		{
-			mKeyDown[key] = false;
-			mKeyHold[key] = true;
-		}
 		if (mKeyTime[key] == 0)
 		{
 			mKeyTime[key] = Time::currentFrameTime;
@@ -62,6 +57,11 @@ void Inputs::FlushLateInputs()
 {
 	for (auto const& [key, val] : mKeyTime)
 	{
+		if (mKeyDown[key])
+		{
+			mKeyDown[key] = false;
+			mKeyHold[key] = true;
+		}
 		if (mKeyUp[key])
 		{
 			mKeyTime[key] = 0;

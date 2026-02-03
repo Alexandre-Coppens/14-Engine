@@ -54,7 +54,7 @@ public:
 	Transform2D& operator= (Transform2D* _pTransform) { setTransform(_pTransform); }
 
 	void OnStart()	override;
-	void Update()	override;
+	void Update(float _deltaTime)	override;
 	void OnEnd()	override;
 };
 

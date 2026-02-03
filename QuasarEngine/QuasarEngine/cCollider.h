@@ -17,6 +17,8 @@ class Collider : public Component
 private:
 	bool mIsColliding;
 	std::vector<Actor*> mCollidingActors;
+	Direction currentDirection;
+	Vector2 currentOverlap;
 
 protected:
 	static std::vector<Collider*> mColliderList;
@@ -38,7 +40,7 @@ public:
 	~Collider();
 
 	void OnStart() override;
-	void Update() override;
+	void Update(float _deltaTime) override;
 	void OnEnd() override;
 
 	void SendToGravity();
