@@ -14,6 +14,11 @@ Sprite2D::~Sprite2D()
 	pOwner->getScene()->getRenderer()->RemoveSprite(this);
 }
 
+void Sprite2D::OnEnd()
+{
+	pOwner->getScene()->getRenderer()->RemoveSprite(this);
+}
+
 void Sprite2D::SetTexture(const Texture& _pTexture)
 {
 	mTexture = _pTexture;
@@ -23,5 +28,5 @@ void Sprite2D::SetTexture(const Texture& _pTexture)
 void Sprite2D::Draw(RendererSdl& _pRenderer)
 {
 	Vector2 origin{ 0.5f, 0.5f };
-	_pRenderer.DrawSprite(*pOwner, mTexture, Rectangle(), origin, mXFlipped ? RendererSdl::Flip::Horizontal : RendererSdl::Flip::None);
+	_pRenderer.DrawSprite(*pOwner, mTexture, Rectangle(), origin, mXFlipped ? Flip::Horizontal : Flip::None);
 }

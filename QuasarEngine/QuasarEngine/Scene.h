@@ -5,15 +5,17 @@
 #include <vector>
 #include <map>
 
-class RendererSdl;
+class IRenderer;
 class Actor;
+class Game;
 
 class Scene
 {
 private:
 protected:
 	std::string mName;
-	RendererSdl* pRenderer;
+	IRenderer* pRenderer;
+	Game* pGame;
 
 	std::vector<Actor*> mActorList;
 	std::vector<Actor*> mAddActorList;
@@ -22,10 +24,11 @@ protected:
 public:
 	static Scene* sActiveScene;
 
-	RendererSdl*	getRenderer()	const	{ return pRenderer; }
-	std::string getSceneName()	const	{ return mName; }
-	
-	void setRenderer(RendererSdl* _pRenderer) { pRenderer = _pRenderer; }
+	IRenderer* getRenderer()	const	{ return pRenderer; }
+	std::string  getSceneName()	const	{ return mName; }
+	Game*		 getGame()		const	{ return pGame; }
+
+	void setRenderer(IRenderer* _pRenderer) { pRenderer = _pRenderer; }
 
 private:
 	void KillActors();
@@ -38,10 +41,10 @@ public:
 	virtual void LateUpdate();
 	virtual void Close();
 
-	virtual void Load();
+	virtual void Load(Game* _pGame);
 	virtual void UnLoad();
 
-	virtual void AddActor(Actor* _actor);
+	virtual Actor* AddActor(Actor* _actor);
 	virtual void DeleteActor(Actor* _actor);
 };
 

@@ -32,6 +32,7 @@ public:
 	Sprite2D& operator= (const Sprite2D&) = delete;
 
 	void Update(float _deltaTime)	override {};
+	void OnEnd() override;
 
 	virtual void SetTexture(const Texture& _pTexture);
 	virtual void Draw(RendererSdl& _pRenderer);

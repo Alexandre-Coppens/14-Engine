@@ -5,6 +5,7 @@ E:\Github\14-Engine\QuasarEngine\QuasarEngine\cAnimation2D.cpp;E:\Github\14-Engi
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\cBoxCollider2D.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\cBoxCollider2D.obj
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\cCollider.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\cCollider.obj
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\cGravity2D.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\cGravity2D.obj
+E:\Github\14-Engine\QuasarEngine\QuasarEngine\Coin.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Coin.obj
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\Component.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Component.obj
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\cSprite2D.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\cSprite2D.obj
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\cTransform2D.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\cTransform2D.obj
@@ -19,8 +20,10 @@ E:\Github\14-Engine\QuasarEngine\QuasarEngine\Paddle.cpp;E:\Github\14-Engine\Qua
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\RendererGl.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\RendererGl.obj
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\RendererSdl.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\RendererSdl.obj
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Scene.obj
+E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene_GameOver.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Scene_GameOver.obj
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene_Pong.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Scene_Pong.obj
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene_Pong.h;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Scene_Pong.obj
+E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene_Test.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Scene_Test.obj
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\Shader.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Shader.obj
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\ShaderProgram.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\ShaderProgram.obj
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\Texture.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Texture.obj

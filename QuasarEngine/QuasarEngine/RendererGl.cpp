@@ -58,6 +58,7 @@ void RendererGl::BeginDraw()
 
 void RendererGl::Draw()
 {
+	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 }
 
 void RendererGl::DrawSprites()

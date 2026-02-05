@@ -21,7 +21,7 @@ public:
 	RendererSdl(const RendererSdl&) = delete;
 	RendererSdl& operator= (const RendererSdl&) = delete;
 
-	IRenderer::RendererType getType() override { return RendererType::SDL; }
+	RendererType getType() override { return RendererType::SDL; }
 
 	bool Initialize(Window& _pWindow) override;
 	void BeginDraw() override;

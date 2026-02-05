@@ -7,6 +7,8 @@
 class Paddle : public Actor
 {
 private:
+	int life{ 3 };
+
 public:
 
 private:

@@ -4,8 +4,10 @@
 #include "Inputs.h"
 
 #include "Scene.h"
+#include "RendererSdl.h"
+#include "RendererGl.h"
 
-Game::Game(std::string _title, std::vector<Scene*> _scenes):
+Game::Game(std::string _title, std::vector<Scene*> _scenes, RendererType _rendererType):
 	mTitle(_title), mScenes(_scenes)
 {
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
@@ -16,13 +18,24 @@ Game::Game(std::string _title, std::vector<Scene*> _scenes):
 	{
 		SDL_Log("SDL initialization succeeded");
 	}
-	pRenderer = new RendererSdl();
+
+	switch (_rendererType)
+	{
+	case RendererType::SDL:
+		pRenderer = new RendererSdl();
+		break;
+
+	case RendererType::OPENGL:
+		pRenderer = new RendererGl();
+		break;
+	}
 
 	for (Scene* s : mScenes) s->setRenderer(pRenderer);
 }
 
 Game::~Game()
 {
+	Close();
 }
 
 void Game::Initialize()
@@ -31,7 +44,7 @@ void Game::Initialize()
 
 	if (pWindow->Open() && pRenderer->Initialize(*pWindow))
 	{
-		mScenes[mCurrentScene] -> Load();
+		mScenes[mCurrentScene] -> Load(this);
 		Loop();
 	}
 }
@@ -77,3 +90,4 @@ void Game::Close()
 	delete pWindow;
 	pWindow = nullptr;
 }
+

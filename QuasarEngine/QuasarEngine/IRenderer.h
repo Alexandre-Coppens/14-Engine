@@ -3,22 +3,24 @@
 #include "Rectangle.h"
 #include "Window.h"
 
+enum class Flip
+{
+	None = SDL_FLIP_NONE,
+	Horizontal = SDL_FLIP_HORIZONTAL,
+	Vertical = SDL_FLIP_VERTICAL
+};
+
+enum class RendererType
+{
+	SDL,
+	OPENGL
+};
+
+class Sprite2D;
 class Texture;
 class IRenderer
 {
 public:
-	enum class Flip
-	{
-		None	   = SDL_FLIP_NONE,
-		Horizontal = SDL_FLIP_HORIZONTAL,
-		Vertical   = SDL_FLIP_VERTICAL
-	};
-
-	enum class RendererType
-	{
-		SDL,
-		OPENGL
-	};
 	virtual ~IRenderer() = default;
 
 	virtual bool Initialize(Window& _rWindow) = 0;

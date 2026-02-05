@@ -15,10 +15,6 @@ Actor::~Actor()
 
 void Actor::Start()
 {
-	for(const auto c : mComponentList)
-	{
-		c->OnStart();
-	}
 }
 
 void Actor::Update(float _deltaTime)
@@ -35,6 +31,7 @@ void Actor::Destroy()
 	{
 		c->OnEnd();
 	}
+	RemoveComponents();
 }
 
 void Actor::AddComponent(Component* _c)
@@ -43,15 +40,12 @@ void Actor::AddComponent(Component* _c)
 	_c->OnStart();
 }
 
-//Remove All -Type- Components from Actor
-//(There is no way now to remove a specific Component so it's all or nothing.)
-template<typename T>
 void Actor::RemoveComponents()
 {
-	for (auto it = mComponentList.begin(); it != mComponentList.end(); it++)
+	for (Component* c : mComponentList)
 	{
-		delete* it;
-		mComponentList.erase(it);
+		delete c;
 	}
+	mComponentList.clear();
 }
 

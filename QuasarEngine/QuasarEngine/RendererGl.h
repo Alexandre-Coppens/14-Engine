@@ -15,6 +15,7 @@ private:
 	std::vector<Sprite2D*> mSprites;
 
 public:
+	void setShaderProgram(ShaderProgram* _pShaderProgram) { pShaderProgram = _pShaderProgram; }
 
 public:
 	RendererGl();
@@ -22,7 +23,7 @@ public:
 	RendererGl(const RendererGl&) = delete;
 	RendererGl& operator=(const RendererGl&) = delete;
 
-	IRenderer::RendererType getType() override { return RendererType::OPENGL; }
+	RendererType getType() override { return RendererType::OPENGL; }
 
 	bool Initialize(Window& _rWindow) override;
 	void BeginDraw() override;

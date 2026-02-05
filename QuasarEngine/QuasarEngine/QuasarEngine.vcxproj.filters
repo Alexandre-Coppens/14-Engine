@@ -115,6 +115,12 @@
     <Filter Include="Engine\Librairies\Components\2D\Collider2D\BoxCollider2D">
       <UniqueIdentifier>{59a5425a-515e-473e-9909-2c885649f403}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game3D">
+      <UniqueIdentifier>{863478ee-c510-4c98-a18f-d261ddb055a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game3D\Scenes">
+      <UniqueIdentifier>{cd0d5c19-e3ba-4d86-ac6b-aa45450070f6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -204,6 +210,15 @@
     <ClCompile Include="Floor.cpp">
       <Filter>Game2D\Actors</Filter>
     </ClCompile>
+    <ClCompile Include="Coin.cpp">
+      <Filter>Game2D\Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_GameOver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_Test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Rectangle.h">
@@ -283,6 +298,15 @@
     </ClInclude>
     <ClInclude Include="Floor.h">
       <Filter>Game2D\Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="Coin.h">
+      <Filter>Game2D\Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene_GameOver.h">
+      <Filter>Game2D\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene_Test.h">
+      <Filter>Game3D\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

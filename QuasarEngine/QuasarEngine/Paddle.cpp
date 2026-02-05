@@ -1,10 +1,14 @@
 #include "Paddle.h"
 #include "Inputs.h"
 #include "Assets.h"
+#include "Scene.h"
+#include "Game.h"
 
 #include "cBoxCollider2D.h"
 #include "cAnimation2D.h"
 #include "cGravity2D.h"
+#include "Scene_Pong.h"
+#include "Scene_GameOver.h"
 
 Paddle::Paddle():
 	Actor()
@@ -24,13 +28,10 @@ void Paddle::Start()
 	AddComponent(new Gravity2D(this, 0));
 
 	Actor::Start();
-
-	mTransform.setLocation(Vector2{375, 700});
 }
 
 void Paddle::Update(float _deltaTime)
 {
-	Vector2 oldPos = mTransform.getLocation();
 	Gravity2D* gravity = GetComponent<Gravity2D>();
 
 	if (Inputs::GetKey(SDLK_q))
@@ -52,11 +53,21 @@ void Paddle::Update(float _deltaTime)
 
 	Actor::Update(_deltaTime);
 
-	BoxCollider2D* c = GetComponent<BoxCollider2D>();
-	if (c == nullptr) return;
-	if (c->getIsColliding())
+	if (getTransform()->getLocation().y > 850)
 	{
-		mTransform.setLocation(oldPos);
+		getTransform()->setLocation(Vector2{ 200, 500 });
+		life--;
+		if (dynamic_cast<Scene_Pong*>(getScene()) != nullptr)
+		{
+			if (life == 0)
+			{
+				getScene()->getGame()->ChangeScene<Scene_GameOver>();
+			}
+		}
+		else
+		{
+			getScene()->getGame()->ChangeScene<Scene_Pong>();
+		}
 	}
 }
 

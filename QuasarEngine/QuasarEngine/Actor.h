@@ -65,7 +65,6 @@ public:
 	virtual	void	Destroy();
 
 	virtual void AddComponent(Component* _c);
-	template<typename T>
 	void RemoveComponents();
 };
 

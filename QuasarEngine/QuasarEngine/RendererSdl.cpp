@@ -51,6 +51,7 @@ void RendererSdl::Draw()
 
 void RendererSdl::DrawSprites()
 {
+	if (mSpriteList.empty()) return;
 	for (Sprite2D* sprite : mSpriteList)
 	{
 		sprite->Draw(*this);
@@ -111,5 +112,6 @@ void RendererSdl::RemoveSprite(Sprite2D* pSprite)
 {
 	std::vector<Sprite2D*>::iterator s2D;
 	s2D = std::find(mSpriteList.begin(), mSpriteList.end(), pSprite);
+	if (s2D == mSpriteList.end()) return;
 	mSpriteList.erase(s2D);
 }
