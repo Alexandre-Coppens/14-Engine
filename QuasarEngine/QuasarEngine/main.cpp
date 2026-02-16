@@ -15,22 +15,44 @@
 
 using namespace std;
 
+#ifdef _DEBUG
+#define DBG_NEW new ( _NORMAL_BLOCK , __FILE__ , __LINE__ )
+// Replace _NORMAL_BLOCK with _CLIENT_BLOCK if you want the
+// allocations to be of _CLIENT_BLOCK type
+#else
+#define DBG_NEW new
+#endif
+
 int main(int argc, char* argv[])
 {
-	//Scene_Pong pong = Scene_Pong("Pong Scene");
-	//Scene_GameOver gameover = Scene_GameOver("Game Over");
+	Scene_Pong pong = Scene_Pong("Pong Scene");
+	Scene_GameOver gameover = Scene_GameOver("Game Over");
 	Scene_Test test = Scene_Test("Scene Test");
 
-	std::vector<Scene*> SceneList;
-	//SceneList.push_back(&pong);
-	//SceneList.push_back(&gameover);
-	SceneList.push_back(&test);
+	std::vector<Scene*> SceneSdlList;
+	SceneSdlList.push_back(&pong);
+	SceneSdlList.push_back(&gameover);
 
-	Game* game = new Game("Open Gl", SceneList, RendererType::OPENGL);
+	std::vector<Scene*> SceneGlList;
+	SceneGlList.push_back(&test);
+
+	Game* game;
+	if (true)
+	{
+		game = new Game("Open Gl", SceneGlList, RendererType::OPENGL);
+	}
+	else
+	{
+		game = new Game("Pong", SceneSdlList, RendererType::SDL);
+	}
+	
 	game->Initialize();
 
 	delete game;
 	game = nullptr;
+
+	_CrtSetReportMode(_CRT_ERROR, _CRTDBG_MODE_DEBUG);
+	_CrtDumpMemoryLeaks();
 
 	return 0;
 }

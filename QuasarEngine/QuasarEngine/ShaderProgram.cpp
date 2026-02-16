@@ -1,4 +1,5 @@
 #include "ShaderProgram.h"
+#include "Log.h"
 
 ShaderProgram::ShaderProgram()
 {

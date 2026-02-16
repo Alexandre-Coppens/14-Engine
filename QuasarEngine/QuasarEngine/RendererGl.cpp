@@ -2,6 +2,7 @@
 #include "glew.h"
 #include "Log.h"
 #include "cSprite2D.h"
+#include "Assets.h"
 #include <SDL_image.h>
 
 RendererGl::RendererGl():
@@ -11,7 +12,7 @@ RendererGl::RendererGl():
 
 RendererGl::~RendererGl()
 {
-	delete pVao;
+	//Close();
 }
 
 bool RendererGl::Initialize(Window& _rWindow)
@@ -48,7 +49,7 @@ bool RendererGl::Initialize(Window& _rWindow)
 
 void RendererGl::BeginDraw()
 {
-	glClearColor(0.45f, 0.45f, 1.0f, 1.0f);
+	glClearColor(0.1f, 0.15f, 0.15f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -58,11 +59,16 @@ void RendererGl::BeginDraw()
 
 void RendererGl::Draw()
 {
-	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
+	DrawSprites();
 }
 
 void RendererGl::DrawSprites()
 {
+	if (mSpriteList.empty()) return;
+	for (Sprite2D* sprite : mSpriteList)
+	{
+		sprite->Draw(*this, DebugMode::DRAWCOLLISIONS);
+	}
 }
 
 void RendererGl::EndDraw()
@@ -72,6 +78,7 @@ void RendererGl::EndDraw()
 
 void RendererGl::DrawSprite(Actor& pActor, const Texture& pTex, Rectangle pSourceRect, Vector2 pOrigin,Flip pFlip) const
 {
+	pTex.SetActive();
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 }
 
@@ -80,22 +87,29 @@ void RendererGl::Close()
 {
 	SDL_GL_DeleteContext(mContext);
 	delete pVao;
+	pVao = nullptr;
+
+	for (Sprite2D* s : mSpriteList)
+	{
+		RemoveSprite(s);
+	}
+	mSpriteList.clear();
 }
 
 void RendererGl::AddSprite(Sprite2D* _pSprite)
 {
 	int spriteDrawOrder = _pSprite->getDrawOrder();
 	std::vector<Sprite2D*>::iterator it;
-	for (it = mSprites.begin(); it != mSprites.end(); it++)
+	for (it = mSpriteList.begin(); it != mSpriteList.end(); it++)
 	{
 		if (spriteDrawOrder < (*it)->getDrawOrder()) break;
 	}
-	mSprites.insert(it, _pSprite);
+	mSpriteList.insert(it, _pSprite);
 }
 
 void RendererGl::RemoveSprite(Sprite2D* _pSprite)
 {
 	std::vector<Sprite2D*>::iterator it;
-	it = std::find(mSprites.begin(), mSprites.end(), _pSprite);
-	mSprites.erase(it);
+	it = std::find(mSpriteList.begin(), mSpriteList.end(), _pSprite);
+	mSpriteList.erase(it);
 }

@@ -12,7 +12,7 @@ private:
 	VertexArray* pVao;
 	ShaderProgram* pShaderProgram;
 	SDL_GLContext mContext;
-	std::vector<Sprite2D*> mSprites;
+	std::vector<Sprite2D*> mSpriteList;
 
 public:
 	void setShaderProgram(ShaderProgram* _pShaderProgram) { pShaderProgram = _pShaderProgram; }

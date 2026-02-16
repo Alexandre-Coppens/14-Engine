@@ -121,6 +121,15 @@
     <Filter Include="Game3D\Scenes">
       <UniqueIdentifier>{cd0d5c19-e3ba-4d86-ac6b-aa45450070f6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game3D\Actors">
+      <UniqueIdentifier>{eb8e788b-7b7f-4e8f-b7fb-f74ebbb40a1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Librairies\Components\3D">
+      <UniqueIdentifier>{aea665f8-4675-4636-a748-9fa6d3992d80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Librairies\Components\3D\Material">
+      <UniqueIdentifier>{32b8e167-6d97-4ce0-be36-56e097b9a378}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -207,17 +216,20 @@
     <ClCompile Include="ShaderProgram.cpp">
       <Filter>Engine\Render\Asset\Shader\ShaderProgram</Filter>
     </ClCompile>
-    <ClCompile Include="Floor.cpp">
-      <Filter>Game2D\Actors</Filter>
-    </ClCompile>
     <ClCompile Include="Coin.cpp">
       <Filter>Game2D\Actors</Filter>
     </ClCompile>
     <ClCompile Include="Scene_GameOver.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Game2D\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="Scene_Test.cpp">
+      <Filter>Game3D\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="BoxGl.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>Engine\Librairies\Components\3D\Material</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -296,9 +308,6 @@
     <ClInclude Include="ShaderProgram.h">
       <Filter>Engine\Render\Asset\Shader\ShaderProgram</Filter>
     </ClInclude>
-    <ClInclude Include="Floor.h">
-      <Filter>Game2D\Actors</Filter>
-    </ClInclude>
     <ClInclude Include="Coin.h">
       <Filter>Game2D\Actors</Filter>
     </ClInclude>
@@ -307,6 +316,12 @@
     </ClInclude>
     <ClInclude Include="Scene_Test.h">
       <Filter>Game3D\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="BoxGl.h">
+      <Filter>Game3D\Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>Engine\Librairies\Components\3D\Material</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

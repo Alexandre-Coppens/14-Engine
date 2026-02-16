@@ -7,14 +7,10 @@
 
 std::vector<Collider*> Collider::mColliderList;
 
-Collider::Collider(Actor* _pOwner, uint8_t _u8UpdateOrder):
-	Component(_pOwner, _u8UpdateOrder), mForm(ColliderForm2D::None)
+Collider::Collider(Actor* _pOwner, uint8_t _u8UpdateOrder, CollisionPurpose _purpose):
+	Component(_pOwner, _u8UpdateOrder), mForm(ColliderForm2D::None), mCollisionPurpose(_purpose)
 {
     mName = "Collider";
-}
-
-Collider::~Collider()
-{
 }
 
 void Collider::OnStart()
@@ -55,34 +51,36 @@ void Collider::CheckCollisions()
         case ColliderForm2D::Box:
             if (BoxCollision(static_cast<BoxCollider2D*>(collider)->GetCollision()))
             {
-                std::string dir;
-                switch (currentDirection)
-                {
-                case Direction::UP:
-                    dir = "Up";
-                    break;
-                case Direction::DOWN:
-                    dir = "Down";
-                    break;
-                case Direction::LEFT:
-                    dir = "Left";
-                    break;
-                case Direction::RIGHT:
-                    dir = "Right";
-                    break;
-                case Direction::CENTER:
-                    dir = "Center";
-                    break;
-                }
-
                 mIsColliding = true;
-
-                SendToGravity();
+                if(collider->getCollisionPurpose() == CollisionPurpose::Block) SendToGravity();
             }
             break;
         }
     }
     
+    if (mIsColliding)
+    {
+        switch (mCollisionState)
+        {
+        case CollisionState::None:
+            mCollisionState = CollisionState::Started;
+            break;
+
+        case CollisionState::Started:
+            mCollisionState = CollisionState::Continued;
+            break;
+
+        case CollisionState::Continued:
+            break;
+
+        default:
+            break;
+        }
+    }
+    else
+    {
+        mCollisionState == CollisionState::None;
+    }
 }
 
 bool Collider::BoxCollision(Rectangle c)
@@ -114,10 +112,10 @@ bool Collider::BoxCollision(Rectangle c)
 
             for (int i = 0; i < corners.size(); i++)
             {
-                if (corners[i].x > c.position.x) left++;
-                if (corners[i].x < c.position.x) right++;
-                if (corners[i].y > c.position.y) up++;
-                if (corners[i].y < c.position.y) down++;
+                if (corners[i].x < c.position.x) left++;
+                if (corners[i].x > c.position.x) right++;
+                if (corners[i].y < c.position.y) up++;
+                if (corners[i].y > c.position.y) down++;
             }
 
             best = Max(Max(left, right), Max(up, down));
@@ -127,7 +125,24 @@ bool Collider::BoxCollision(Rectangle c)
             else if (best == right) currentDirection = Direction::RIGHT;
             else currentDirection = Direction::CENTER;
 
-            currentOverlap = Vector2((sizeX - abs(distX)) * distX > 0 ? 1 : -1, (sizeY - abs(distY)) * distY > 0 ? 1 : -1);
+            switch (currentDirection)
+            {
+            case Direction::UP:
+                currentOverlap = Vector2(0, c.position.y - sizeY);
+                break;
+            case Direction::DOWN:
+                currentOverlap = Vector2(0, c.position.y + sizeY);
+                break;
+            case Direction::LEFT:
+                currentOverlap = Vector2(c.position.x - sizeX, 0);
+                break;
+            case Direction::RIGHT:
+                currentOverlap = Vector2(c.position.x + sizeX, 0);
+                break;
+            case Direction::CENTER:
+                currentOverlap = Vector2(0, 0);
+                break;
+            }
 
             return true;
         }

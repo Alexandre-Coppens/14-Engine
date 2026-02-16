@@ -54,7 +54,7 @@ void RendererSdl::DrawSprites()
 	if (mSpriteList.empty()) return;
 	for (Sprite2D* sprite : mSpriteList)
 	{
-		sprite->Draw(*this);
+		sprite->Draw(*this, DebugMode::DRAWCOLLISIONS);
 	}
 }
 
@@ -114,4 +114,17 @@ void RendererSdl::RemoveSprite(Sprite2D* pSprite)
 	s2D = std::find(mSpriteList.begin(), mSpriteList.end(), pSprite);
 	if (s2D == mSpriteList.end()) return;
 	mSpriteList.erase(s2D);
+}
+
+void RendererSdl::DrawDebugBox(Rectangle _rect, Vector2 _origin)
+{
+	SDL_SetRenderDrawColor(pSDLRenderer, 0, 255, 0, 255);
+	SDL_Rect* sourceSDL = new SDL_Rect{
+			Round(_rect.position.x - (_rect.size.x * _origin.x)),
+			Round(_rect.position.y - (_rect.size.y * _origin.y)),
+			Round(_rect.size.x),
+			Round(_rect.size.y) };
+
+	SDL_RenderDrawRect(pSDLRenderer, sourceSDL);
+	delete sourceSDL;
 }

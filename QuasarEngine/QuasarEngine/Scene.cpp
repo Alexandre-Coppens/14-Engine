@@ -8,14 +8,19 @@
 Scene* Scene::sActiveScene = nullptr;
 
 Scene::Scene(std::string _name):
-	mName(_name)
+	mName(_name), pGame(nullptr)
 {
+}
+
+Scene::~Scene()
+{
+	Close();
 }
 
 void Scene::Start()
 {
 	sActiveScene = this;
-	Log::Info("GAME: Loading Scene: '" + mName + "'.");
+	Log::Info("GAME::Loading Scene: '" + mName + "'.");
 }
 
 //Update Before Inputs
@@ -50,7 +55,17 @@ void Scene::Close()
 	{
 		DeleteActor(a);
 	}
+	mAddActorList.clear();
+	
+	for (Actor* a : mActorList)
+	{
+		DeleteActor(a);
+	}
+	mActorList.clear();
+
 	KillActors();
+	pRenderer = nullptr;
+	pGame = nullptr;
 }
 
 Actor* Scene::AddActor(Actor* actor)

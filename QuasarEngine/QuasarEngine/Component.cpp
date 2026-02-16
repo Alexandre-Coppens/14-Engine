@@ -8,6 +8,7 @@ Component::Component(Actor* _pOwner, uint8_t _updateOrder):
 
 Component::~Component()
 {
+	OnEnd();
 }
 
 void Component::OnStart()
@@ -16,4 +17,5 @@ void Component::OnStart()
 
 void Component::OnEnd()
 {
+	pOwner = nullptr;
 }

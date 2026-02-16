@@ -10,6 +10,12 @@ AnimatedSprite2D::AnimatedSprite2D(Actor* _pOwner, const std::vector<Texture*>& 
 
 AnimatedSprite2D::~AnimatedSprite2D()
 {
+	for (Texture* a : mAnimationTextures)
+	{
+		delete a;
+		a = nullptr;
+	}
+	mAnimationTextures.clear();
 }
 
 void AnimatedSprite2D::Update(float _deltaTime)

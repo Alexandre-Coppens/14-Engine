@@ -4,7 +4,7 @@
 
 #include "Paddle.h"
 #include "Box.h"
-#include "Floor.h"
+#include "Coin.h"
 #include "RendererSdl.h"
 
 Scene_Pong::Scene_Pong(std::string _name):
@@ -28,12 +28,25 @@ void Scene_Pong::Start()
 	Assets::LoadTexture(*sdl, "Ressources/MegaAnim/06_megaman.png", "06_megaman");
 	Assets::LoadTexture(*sdl, "Ressources/MegaAnim/07_megaman.png", "07_megaman");
 
+	Assets::LoadTexture(*sdl, "Ressources/CoinAnim/Coin-01.png", "00_coin");
+	Assets::LoadTexture(*sdl, "Ressources/CoinAnim/Coin-02.png", "01_coin");
+	Assets::LoadTexture(*sdl, "Ressources/CoinAnim/Coin-03.png", "02_coin");
+	Assets::LoadTexture(*sdl, "Ressources/CoinAnim/Coin-04.png", "03_coin");
+	Assets::LoadTexture(*sdl, "Ressources/CoinAnim/Coin-05.png", "04_coin");
+	Assets::LoadTexture(*sdl, "Ressources/CoinAnim/Coin-06.png", "05_coin");
+
+
 	Actor* player = AddActor(new Paddle());
+
 	Actor* box1 = AddActor(new Box());
 	Actor* box2 = AddActor(new Box());
 	Actor* box3 = AddActor(new Box());
 	Actor* box4 = AddActor(new Box());
 	Actor* box5 = AddActor(new Box());
+
+	Actor* coin1 = AddActor(new Coin());
+	Actor* coin2 = AddActor(new Coin());
+	Actor* coin3 = AddActor(new Coin());
 
 	player->getTransform()->setLocation(Vector2{ 200, 500 });
 
@@ -51,6 +64,16 @@ void Scene_Pong::Start()
 
 	box5->getTransform()->setLocation(Vector2{ 650, 675 });
 	box5->getTransform()->setSize(Vector2{ 50, 50 });
+
+	coin1->getTransform()->setLocation(Vector2{ 500, 475 });
+	coin1->getTransform()->setSize(Vector2{ 50, 50 });
+
+	coin2->getTransform()->setLocation(Vector2{ 400, 475 });
+	coin2->getTransform()->setSize(Vector2{ 50, 50 });
+
+	coin3->getTransform()->setLocation(Vector2{ 300, 475 });
+	coin3->getTransform()->setSize(Vector2{ 50, 50 });
+
 }
 
 void Scene_Pong::Update(float deltaTime)

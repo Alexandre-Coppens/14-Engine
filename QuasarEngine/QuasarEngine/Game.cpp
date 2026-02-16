@@ -2,6 +2,7 @@
 #include "Game.h"
 #include "Time.h"
 #include "Inputs.h"
+#include "Assets.h"
 
 #include "Scene.h"
 #include "RendererSdl.h"
@@ -35,11 +36,13 @@ Game::Game(std::string _title, std::vector<Scene*> _scenes, RendererType _render
 
 Game::~Game()
 {
-	Close();
+	//Close();
+	Assets::Clear();
 }
 
 void Game::Initialize()
 {
+	Log::Info("GAME: Initializing " + mTitle);
 	pWindow = new Window(800, 800, mTitle);
 
 	if (pWindow->Open() && pRenderer->Initialize(*pWindow))
@@ -65,7 +68,6 @@ void Game::Loop()
 
 		Time::DelayTime();
 	}
-	Close();
 }
 
 void Game::Render()
@@ -80,6 +82,7 @@ void Game::Close()
 	for (Scene* scene : mScenes)
 	{
 		delete scene;
+		scene = nullptr;
 	}
 
 	pRenderer->Close();

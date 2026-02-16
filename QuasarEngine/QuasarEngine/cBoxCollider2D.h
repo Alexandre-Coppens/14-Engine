@@ -13,8 +13,7 @@ public:
 
 private:
 public:
-	BoxCollider2D(Actor* _pOwner, uint8_t _updateOrder, Rectangle _collision);
-	~BoxCollider2D();
+	BoxCollider2D(Actor* _pOwner, uint8_t _updateOrder, CollisionPurpose _purpose, Rectangle _collision);
 
 	void Update(float _deltaTime) override;
 };

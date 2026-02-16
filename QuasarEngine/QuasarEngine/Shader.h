@@ -25,5 +25,7 @@ public:
 	Shader(int _ID, std::string _file, ShaderType _shaderType);
 	~Shader();
 
+	void Load();
 	void Load(std::string _fileName, ShaderType _shaderType);
+	bool ValidateCompilation(int _ID);
 };

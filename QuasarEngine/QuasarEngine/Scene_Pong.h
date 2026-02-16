@@ -2,7 +2,6 @@
 #define SCENE_PONG_H
 
 #include "Scene.h"
-
 #include "CommonLib.h"
 
 class Scene_Pong : public Scene

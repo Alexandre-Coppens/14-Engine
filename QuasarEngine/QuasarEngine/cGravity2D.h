@@ -2,6 +2,7 @@
 #include "Component.h"
 #include "CommonLib.h"
 
+class Rectangle;
 class Actor;
 class Gravity2D : public Component
 {

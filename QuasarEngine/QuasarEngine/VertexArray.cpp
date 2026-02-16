@@ -9,14 +9,16 @@ VertexArray::VertexArray(const float* _pVertices, unsigned int _verticeCount, co
 
 	glGenBuffers(1, &mVertexBufferID);
 	glBindBuffer(GL_ARRAY_BUFFER, mVertexBufferID);
-	glBufferData(GL_ARRAY_BUFFER, mVerticeCount * 3 * sizeof(float), _pVertices, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, mVerticeCount * 5 * sizeof(float), _pVertices, GL_STATIC_DRAW);
 
 	glGenBuffers(1, &mIndexBufferID);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mIndexBufferID);
-	glBufferData(GL_ARRAY_BUFFER, mIndexCount * sizeof(float), _pIndices, GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, mIndexCount * sizeof(float), _pIndices, GL_STATIC_DRAW);
 
 	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 3, (void*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 5, (void*)0);
+	glEnableVertexAttribArray(1);
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 5, (void*)(sizeof(float) * 3));
 }
 
 VertexArray::~VertexArray()

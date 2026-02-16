@@ -1,2 +1,10 @@
-﻿  RendererGl.cpp
+﻿  BoxGl.cpp
+  MathLib.h
+  RendererGl.cpp
+  Scene_Test.cpp
+  Texture.cpp
+  cAnimation2D.cpp
+  cSprite2D.cpp
+  Generating Code...
+Debug\Scene_Pong.obj : warning LNK4042: object specified more than once; extras ignored
   QuasarEngine.vcxproj -> E:\Github\14-Engine\QuasarEngine\Debug\QuasarEngine.exe

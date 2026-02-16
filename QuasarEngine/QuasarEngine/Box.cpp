@@ -19,7 +19,7 @@ Box::~Box()
 void Box::Start()
 {
 	AddComponent(new Sprite2D(this, Assets::GetTexture("Block"), 0));
-	AddComponent(new BoxCollider2D(this, 0, Rectangle{ Vector2Zero(), mTransform.getSize() }));
+	AddComponent(new BoxCollider2D(this, 0, CollisionPurpose::Block, Rectangle{ Vector2Zero(), mTransform.getSize() }));
 
 	Actor::Start();
 }

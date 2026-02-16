@@ -11,6 +11,7 @@ Actor::Actor() :
 
 Actor::~Actor()
 {
+	Destroy();
 }
 
 void Actor::Start()
@@ -27,6 +28,7 @@ void Actor::Update(float _deltaTime)
 
 void Actor::Destroy()
 {
+	pScene = nullptr;
 	for (const auto c : mComponentList)
 	{
 		c->OnEnd();
@@ -36,7 +38,13 @@ void Actor::Destroy()
 
 void Actor::AddComponent(Component* _c)
 {
-	mComponentList.push_back(_c);
+	int componentUpdateOrder = _c->getUpdateOrder();
+	std::vector<Component*>::iterator it;
+	for (it = mComponentList.begin(); it != mComponentList.end(); it++)
+	{
+		if (componentUpdateOrder < (*it)->getUpdateOrder()) break;
+	}
+	mComponentList.insert(it, _c);
 	_c->OnStart();
 }
 
@@ -45,6 +53,7 @@ void Actor::RemoveComponents()
 	for (Component* c : mComponentList)
 	{
 		delete c;
+		c = nullptr;
 	}
 	mComponentList.clear();
 }

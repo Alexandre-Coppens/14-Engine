@@ -16,6 +16,12 @@ enum class RendererType
 	OPENGL
 };
 
+enum class DebugMode
+{
+	NONE,
+	DRAWCOLLISIONS
+};
+
 class Sprite2D;
 class Texture;
 class IRenderer

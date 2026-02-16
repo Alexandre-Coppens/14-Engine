@@ -35,7 +35,7 @@ public:
 	void OnEnd() override;
 
 	virtual void SetTexture(const Texture& _pTexture);
-	virtual void Draw(RendererSdl& _pRenderer);
+	virtual void Draw(RendererSdl& _pRenderer, DebugMode _debug);
 };
 
 #endif // !1

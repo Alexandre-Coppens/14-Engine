@@ -4,6 +4,7 @@
 #include <vector>
 #include "Texture.h"
 
+class IRenderer;
 class Assets
 {
 private:
@@ -13,10 +14,10 @@ public:
 
 private:
 	Assets() = default;
-	static Texture LoadTextureFromFile(RendererSdl& _pRenderer, const std::string& _pFileName);
+	static Texture LoadTextureFromFile(IRenderer& _pRenderer, const std::string& _pFileName);
 
 public:
-	static Texture LoadTexture(RendererSdl& _pRenderer, const std::string& _pFileName, const std::string& _pName);
+	static Texture LoadTexture(IRenderer& _pRenderer, const std::string& _pFileName, const std::string& _pName);
 	static Texture& GetTexture(const std::string& _pName);
 	static std::vector<Texture*> GetTextures(const std::string& _pName);
 	static void Clear();
