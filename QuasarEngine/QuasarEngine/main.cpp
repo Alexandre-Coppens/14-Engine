@@ -47,6 +47,7 @@ int main(int argc, char* argv[])
 	}
 	
 	game->Initialize();
+	game->Loop();
 
 	delete game;
 	game = nullptr;

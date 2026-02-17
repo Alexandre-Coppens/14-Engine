@@ -16,7 +16,7 @@ public:
 	void setFrameRate(float _fps) { mAnimFPS = _fps; }
 	void setAnimationTextures(const std::vector<Texture*>& _pTextures) {
 		mAnimationTextures = _pTextures;
-		if (mAnimationTextures.size() > 0) SetTexture(*mAnimationTextures[0]);
+		if (mAnimationTextures.size() > 0) SetTexture(mAnimationTextures[0]);
 	}
 
 private:

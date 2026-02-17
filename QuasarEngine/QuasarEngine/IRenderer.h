@@ -37,5 +37,5 @@ public:
 	virtual void Close() = 0;
 	virtual RendererType getType() = 0;
 
-	virtual void DrawSprite(Actor& _pActor, const Texture& _pTex, Rectangle _sourceRect, Vector2 _origin, Flip _flip = Flip::None) const = 0;
+	virtual void DrawSprite(Actor& _pActor, Texture* _pTex, Rectangle _sourceRect, Vector2 _origin, Flip _flip = Flip::None) const = 0;
 };

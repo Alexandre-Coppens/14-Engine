@@ -30,7 +30,7 @@ public:
 
 	void Draw() override;
 	void DrawSprites() override;
-	void DrawSprite(Actor& _pActor, const Texture& _pTex, Rectangle _SourceRect, Vector2 _v2Origin, Flip _Flip) const override;
+	void DrawSprite(Actor& _pActor, Texture* _pTex, Rectangle _SourceRect, Vector2 _v2Origin, Flip _Flip) const override;
 
 	void AddSprite(Sprite2D* _pSprite);
 	void RemoveSprite(Sprite2D* _pSprite);

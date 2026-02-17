@@ -225,11 +225,11 @@
     <ClCompile Include="Scene_Test.cpp">
       <Filter>Game3D\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="BoxGl.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Material.cpp">
       <Filter>Engine\Librairies\Components\3D\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="BoxGl.cpp">
+      <Filter>Game3D\Actors</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -322,6 +322,9 @@
     </ClInclude>
     <ClInclude Include="Material.h">
       <Filter>Engine\Librairies\Components\3D\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="Game3D.h">
+      <Filter>Game3D</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

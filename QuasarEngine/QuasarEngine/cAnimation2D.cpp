@@ -3,7 +3,7 @@
 #include "Time.h"
 
 AnimatedSprite2D::AnimatedSprite2D(Actor* _pOwner, const std::vector<Texture*>& _pTextures, int _drawOrder):
-	Sprite2D(_pOwner, *_pTextures[0], _drawOrder), mCurrentFrame(0.0f), mAnimFPS(24.0f)
+	Sprite2D(_pOwner, _pTextures[0], _drawOrder), mCurrentFrame(0.0f), mAnimFPS(24.0f)
 {
 	setAnimationTextures(_pTextures);
 }
@@ -27,5 +27,5 @@ void AnimatedSprite2D::Update(float _deltaTime)
 	{
 		mCurrentFrame -= mAnimationTextures.size();
 	}
-	SetTexture(*mAnimationTextures[static_cast<int>(mCurrentFrame)]);
+	SetTexture(mAnimationTextures[static_cast<int>(mCurrentFrame)]);
 }

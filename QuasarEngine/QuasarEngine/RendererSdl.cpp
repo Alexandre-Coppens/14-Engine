@@ -58,7 +58,7 @@ void RendererSdl::DrawSprites()
 	}
 }
 
-void RendererSdl::DrawSprite(Actor& _pActor, const Texture& _pTex, Rectangle _sourceRect, Vector2 _origin, Flip _flip) const
+void RendererSdl::DrawSprite(Actor& _pActor, Texture* _pTex, Rectangle _sourceRect, Vector2 _origin, Flip _flip) const
 {
 	SDL_Rect destinationRect;
 	Transform2D transform = *_pActor.getTransform();
@@ -73,8 +73,8 @@ void RendererSdl::DrawSprite(Actor& _pActor, const Texture& _pTex, Rectangle _so
 		sourceSDL = new SDL_Rect{
 			Round(0),
 			Round(0),
-			Round(_pTex.GetWidth()),
-			Round(_pTex.GetHeight()) };
+			Round(_pTex->GetWidth()),
+			Round(_pTex->GetHeight()) };
 	}
 	else
 	{
@@ -87,7 +87,7 @@ void RendererSdl::DrawSprite(Actor& _pActor, const Texture& _pTex, Rectangle _so
 
 	SDL_RenderCopyEx(
 		pSDLRenderer,
-		_pTex.GetSdlTexture(),
+		_pTex->GetSdlTexture(),
 		sourceSDL,
 		&destinationRect,
 		-ToDeg(transform.getRotation()),

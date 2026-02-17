@@ -2,6 +2,8 @@
 #include "Log.h"
 #include "Scene.h"
 
+#include "Time.h"
+
 #include "IRenderer.h"
 #include "RendererSdl.h"
 #include "RendererGl.h"
@@ -47,7 +49,7 @@ bool Texture::LoadGl(RendererGl* _renderer, const std::string& _filename, SDL_Su
 	glBindTexture(GL_TEXTURE_2D, mTextureID);
 	glTexImage2D(GL_TEXTURE_2D, 0, format, mWidth, mHeight, 0, format, GL_UNSIGNED_BYTE, _pSurface->pixels);
 	SDL_FreeSurface(_pSurface);
-	Log::Info("Loaded GL Texture : " + mFileName);
+	Log::Info("Loaded GL texture : " + mFileName);
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);

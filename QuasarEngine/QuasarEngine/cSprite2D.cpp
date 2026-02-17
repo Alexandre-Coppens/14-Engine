@@ -3,8 +3,8 @@
 #include "Actor.h"
 #include "Scene.h"
 
-Sprite2D::Sprite2D(Actor* _pOwner, Texture& _pTexture, uint8_t _drawOrder):
-	Component(_pOwner), mTexture(_pTexture), mDrawOrder(_drawOrder), mTextureWidth(mTexture.GetWidth()), mTextureHeight(_pTexture.GetHeight()), mXFlipped{false}
+Sprite2D::Sprite2D(Actor* _pOwner, Texture* _pTexture, uint8_t _drawOrder):
+	Component(_pOwner), mTexture(_pTexture), mDrawOrder(_drawOrder), mTextureWidth(mTexture->GetWidth()), mTextureHeight(_pTexture->GetHeight()), mXFlipped{false}
 {
 	pOwner->getScene()->getRendererSdl()->AddSprite(this);
 }
@@ -19,10 +19,10 @@ void Sprite2D::OnEnd()
 	pOwner->getScene()->getRendererSdl()->RemoveSprite(this);
 }
 
-void Sprite2D::SetTexture(const Texture& _pTexture)
+void Sprite2D::SetTexture(Texture* _pTexture)
 {
 	mTexture = _pTexture;
-	mTexture.UpdateInfo(mTextureWidth, mTextureHeight);
+	mTexture->UpdateInfo(mTextureWidth, mTextureHeight);
 }
 
 void Sprite2D::Draw(RendererSdl& _pRenderer, DebugMode _debug)

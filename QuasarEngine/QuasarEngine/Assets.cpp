@@ -5,22 +5,22 @@
 
 #include "Log.h"
 
-std::map<std::string, Texture> Assets::mTextureList = {};
+std::map<std::string, Texture*> Assets::mTextureList = {};
 
-Texture Assets::LoadTextureFromFile(IRenderer& _pRenderer, const std::string& _pFileName)
+Texture* Assets::LoadTexture(IRenderer& _pRenderer, const std::string& _pFileName, const std::string& _pName)
 {
-	Texture texture;
-	texture.Load(_pRenderer, _pFileName);
+	mTextureList[_pName] = LoadTextureFromFile(_pRenderer, _pFileName);
+	return mTextureList.at(_pName);
+}
+
+Texture* Assets::LoadTextureFromFile(IRenderer& _pRenderer, const std::string& _pFileName)
+{
+	Texture* texture = new Texture();
+	texture->Load(_pRenderer, _pFileName);
 	return texture;
 }
 
-Texture Assets::LoadTexture(IRenderer& _pRenderer, const std::string& _pFileName, const std::string& _pName)
-{
-	mTextureList[_pName] = LoadTextureFromFile(_pRenderer, _pFileName);
-	return mTextureList[_pName];
-}
-
-Texture& Assets::GetTexture(const std::string& _pName)
+Texture* Assets::GetTexture(const std::string& _pName)
 {
 	if (mTextureList.find(_pName) == mTextureList.end())
 	{
@@ -39,7 +39,7 @@ std::vector<Texture*> Assets::GetTextures(const std::string& _pName)
 	for (auto t = mTextureList.begin(); t != mTextureList.end(); t++)
 	{
 		if (t->first.find(_pName) != std::string::npos)
-			tList.push_back(&t->second);
+			tList.push_back(t->second);
 	}
 
 	return tList;
@@ -49,7 +49,7 @@ void Assets::Clear()
 {
 	for (auto iter : mTextureList)
 	{
-		iter.second.Unload();
+		iter.second->Unload();
 	}
 	mTextureList.clear();
 }

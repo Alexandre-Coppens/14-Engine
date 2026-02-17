@@ -9,7 +9,7 @@
 class Material : public Component
 {
 protected:
-	Texture	 mTexture;
+	Texture* mTexture;
 	uint8_t  mDrawOrder;
 	uint16_t mTextureWidth;
 	uint16_t mTextureHeight;
@@ -25,7 +25,7 @@ public:
 
 private:
 public:
-	Material(Actor* _pOwner, Texture& _pTexture, uint8_t _drawOrder);
+	Material(Actor* _pOwner, Texture* _pTexture, uint8_t _drawOrder);
 	virtual ~Material();
 	Material() = delete;
 	Material(const Material&) = delete;
@@ -34,8 +34,8 @@ public:
 	void Update(float _deltaTime)	override {};
 	void OnEnd() override;
 
-	virtual void SetTexture(const Texture& _pTexture);
-	virtual void Draw(RendererSdl& _pRenderer, DebugMode _debug);
+	virtual void SetTexture(Texture* _pTexture);
+	virtual void Draw(RendererGl& _pRenderer, DebugMode _debug);
 };
 
 #endif // !1

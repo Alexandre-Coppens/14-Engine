@@ -3,7 +3,7 @@
 #include "VertexArray.h"
 #include "ShaderProgram.h"
 
-class Sprite2D;
+class Material;
 
 class RendererGl : public IRenderer
 {
@@ -12,7 +12,7 @@ private:
 	VertexArray* pVao;
 	ShaderProgram* pShaderProgram;
 	SDL_GLContext mContext;
-	std::vector<Sprite2D*> mSpriteList;
+	std::vector<Material*> mSpriteList;
 
 public:
 	void setShaderProgram(ShaderProgram* _pShaderProgram) { pShaderProgram = _pShaderProgram; }
@@ -31,8 +31,8 @@ public:
 	void DrawSprites() override;
 	void EndDraw() override;
 
-	void DrawSprite(Actor& _pActor, const Texture& _pTex, Rectangle _sourceRect, Vector2 _origin, Flip _flip = Flip::None) const override;
-	void AddSprite(Sprite2D* _pSprite);
-	void RemoveSprite(Sprite2D* _pSprite);
+	void DrawSprite(Actor& _pActor, Texture* _pTex, Rectangle _sourceRect, Vector2 _origin, Flip _flip = Flip::None) const override;
+	void AddSprite(Material* _pSprite);
+	void RemoveSprite(Material* _pSprite);
 	void Close() override;
 };

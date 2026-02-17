@@ -1,8 +1,7 @@
 #include "BoxGl.h"
 #include "Assets.h"
 
-#include "cBoxCollider2D.h"
-#include "cSprite2D.h"
+#include "Material.h"
 
 BoxGl::BoxGl() :
 	Actor()
@@ -16,7 +15,8 @@ BoxGl::~BoxGl()
 
 void BoxGl::Start()
 {
-	AddComponent(new Sprite2D(this, Assets::GetTexture("Block"), 0));
+	Texture* t = Assets::GetTexture("Block");
+	AddComponent(new Material(this, t, 0));
 	Actor::Start();
 }
 

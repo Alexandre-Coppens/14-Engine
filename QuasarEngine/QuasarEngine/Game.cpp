@@ -36,7 +36,7 @@ Game::Game(std::string _title, std::vector<Scene*> _scenes, RendererType _render
 
 Game::~Game()
 {
-	//Close();
+	Close();
 	Assets::Clear();
 }
 
@@ -48,7 +48,6 @@ void Game::Initialize()
 	if (pWindow->Open() && pRenderer->Initialize(*pWindow))
 	{
 		mScenes[mCurrentScene] -> Load(this);
-		Loop();
 	}
 }
 

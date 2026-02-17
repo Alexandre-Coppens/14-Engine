@@ -1,10 +1,65 @@
-﻿  BoxGl.cpp
-  MathLib.h
-  RendererGl.cpp
-  Scene_Test.cpp
-  Texture.cpp
+﻿  Actor.cpp
+  Assets.cpp
+  Box.cpp
+  BoxGl.cpp
   cAnimation2D.cpp
+  cBoxCollider2D.cpp
+  cCollider.cpp
+E:\Github\14-Engine\QuasarEngine\QuasarEngine\cGravity2D.h(5,7): warning C4099: 'Rectangle': type name first seen using 'struct' now seen using 'class'
+  (compiling source file 'cCollider.cpp')
+      E:\Github\14-Engine\QuasarEngine\QuasarEngine\Rectangle.h(5,8):
+      see declaration of 'Rectangle'
+  
+E:\Github\14-Engine\QuasarEngine\QuasarEngine\cCollider.cpp(82,25): warning C4553: '==': result of expression not used; did you intend '='?
+E:\Github\14-Engine\QuasarEngine\QuasarEngine\cCollider.cpp(113,31): warning C4018: '<': signed/unsigned mismatch
+  cGravity2D.cpp
+E:\Github\14-Engine\QuasarEngine\QuasarEngine\Rectangle.h(5,8): warning C4099: 'Rectangle': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'cGravity2D.cpp')
+      E:\Github\14-Engine\QuasarEngine\QuasarEngine\Rectangle.h(5,8):
+      see declaration of 'Rectangle'
+  
+  Coin.cpp
+  Component.cpp
   cSprite2D.cpp
+  cTransform2D.cpp
+  Game.cpp
+  Inputs.cpp
+E:\Github\14-Engine\QuasarEngine\QuasarEngine\Inputs.cpp(41,26): warning C4244: '=': conversion from 'float' to 'unsigned short', possible loss of data
+  Log.cpp
+  main.cpp
+  CommonLib.h
+  Material.cpp
+  MathLib.h
+  Paddle.cpp
+E:\Github\14-Engine\QuasarEngine\QuasarEngine\cGravity2D.h(5,7): warning C4099: 'Rectangle': type name first seen using 'struct' now seen using 'class'
+  (compiling source file 'Paddle.cpp')
+      E:\Github\14-Engine\QuasarEngine\QuasarEngine\Rectangle.h(5,8):
+      see declaration of 'Rectangle'
+  
+E:\Github\14-Engine\QuasarEngine\QuasarEngine\Game.h(41,27): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file 'Paddle.cpp')
+      E:\Github\14-Engine\QuasarEngine\QuasarEngine\Game.h(41,27):
+      the template instantiation context (the oldest one first) is
+          E:\Github\14-Engine\QuasarEngine\QuasarEngine\Paddle.cpp(64,26):
+          see reference to function template instantiation 'void Game::ChangeScene<Scene_GameOver>(void)' being compiled
+  
+  Generating Code...
+  Compiling...
+  RendererGl.cpp
+  RendererSdl.cpp
+  Scene.cpp
+  Scene_GameOver.cpp
+  Scene_Pong.cpp
+  Scene_Pong.h
+  Scene_Test.cpp
+  Shader.cpp
+  ShaderProgram.cpp
+E:\Github\14-Engine\QuasarEngine\QuasarEngine\ShaderProgram.cpp(17,20): warning C4018: '<': signed/unsigned mismatch
+  Texture.cpp
+  Time.cpp
+E:\Github\14-Engine\QuasarEngine\QuasarEngine\Time.cpp(17,24): warning C4244: '=': conversion from 'unsigned int' to 'float', possible loss of data
+  VertexArray.cpp
+  Window.cpp
   Generating Code...
 Debug\Scene_Pong.obj : warning LNK4042: object specified more than once; extras ignored
   QuasarEngine.vcxproj -> E:\Github\14-Engine\QuasarEngine\Debug\QuasarEngine.exe

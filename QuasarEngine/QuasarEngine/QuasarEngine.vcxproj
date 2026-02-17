@@ -179,6 +179,7 @@
     <ClInclude Include="cSprite2D.h" />
     <ClInclude Include="cTransform2D.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Game3D.h" />
     <ClInclude Include="Inputs.h" />
     <ClInclude Include="IRenderer.h" />
     <ClInclude Include="Log.h" />
