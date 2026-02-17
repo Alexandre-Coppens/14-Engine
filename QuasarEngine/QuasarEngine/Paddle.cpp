@@ -14,7 +14,7 @@ Paddle::Paddle():
 	Actor()
 {
 	mName = "Paddle";
-	mTransform.setSize({ 51,51 });
+	mTransform2D.setSize({ 51,51 });
 }
 
 Paddle::~Paddle()
@@ -37,25 +37,25 @@ void Paddle::Update(float _deltaTime)
 
 	if (Inputs::GetKey(SDLK_q))
 	{
-		gravity->setVelocity(gravity->getVelocity() + MultiplyScalar(mTransform.Right(), -500 * _deltaTime));
+		gravity->setVelocity(gravity->getVelocity() + MultiplyScalar(mTransform2D.Right(), -500 * _deltaTime));
 		GetComponent<Sprite2D>()->setXFlip(true);
 	}
 
 	if (Inputs::GetKey(SDLK_d))
 	{
-		gravity->setVelocity(gravity->getVelocity() + MultiplyScalar(mTransform.Right(), 500 * _deltaTime));
+		gravity->setVelocity(gravity->getVelocity() + MultiplyScalar(mTransform2D.Right(), 500 * _deltaTime));
 		GetComponent<Sprite2D>()->setXFlip(false);
 	}
 
 	if (Inputs::GetKeyDown(SDLK_SPACE))
 	{
 		Log::Info(gravity->isTouchingFloor ? "true" : "false");
-		if(gravity->isTouchingFloor) gravity->setVelocity(gravity->getVelocity() + MultiplyScalar(mTransform.Up(), 500));
+		if(gravity->isTouchingFloor) gravity->setVelocity(gravity->getVelocity() + MultiplyScalar(mTransform2D.Up(), 500));
 	}
 
-	if (getTransform()->getLocation().y > 850)
+	if (getTransform2D()->getLocation().y > 850)
 	{
-		getTransform()->setLocation(Vector2{ 200, 500 });
+		getTransform2D()->setLocation(Vector2{ 200, 500 });
 		life--;
 		if (dynamic_cast<Scene_Pong*>(getScene()) != nullptr)
 		{

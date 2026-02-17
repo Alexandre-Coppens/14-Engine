@@ -3,6 +3,8 @@
 #include "VertexArray.h"
 #include "ShaderProgram.h"
 
+#include "CommonLib.h"
+
 class Material;
 
 class RendererGl : public IRenderer
@@ -13,6 +15,7 @@ private:
 	ShaderProgram* pShaderProgram;
 	SDL_GLContext mContext;
 	std::vector<Material*> mSpriteList;
+	Matrix4Row mViewProj = Matrix4Row::Mat4RowIdentity();
 
 public:
 	void setShaderProgram(ShaderProgram* _pShaderProgram) { pShaderProgram = _pShaderProgram; }

@@ -49,31 +49,31 @@ void Scene_Pong::Start()
 	Actor* coin2 = AddActor(new Coin());
 	Actor* coin3 = AddActor(new Coin());
 
-	player->getTransform()->setLocation(Vector2{ 200, 500 });
+	player->getTransform2D()->setLocation(Vector2{ 200, 500 });
 
-	box1->getTransform()->setLocation(Vector2{350, 750});
-	box1->getTransform()->setSize(Vector2{700, 100});
+	box1->getTransform2D()->setLocation(Vector2{350, 750});
+	box1->getTransform2D()->setSize(Vector2{700, 100});
 
-	box2->getTransform()->setLocation(Vector2{ 150, 550 });
-	box2->getTransform()->setSize(Vector2{ 25, 25 });
+	box2->getTransform2D()->setLocation(Vector2{ 150, 550 });
+	box2->getTransform2D()->setSize(Vector2{ 25, 25 });
 
-	box3->getTransform()->setLocation(Vector2{ 400, 550 });
-	box3->getTransform()->setSize(Vector2{ 125, 25 });
+	box3->getTransform2D()->setLocation(Vector2{ 400, 550 });
+	box3->getTransform2D()->setSize(Vector2{ 125, 25 });
 
-	box4->getTransform()->setLocation(Vector2{ 400, 350 });
-	box4->getTransform()->setSize(Vector2{ 25, 25 });
+	box4->getTransform2D()->setLocation(Vector2{ 400, 350 });
+	box4->getTransform2D()->setSize(Vector2{ 25, 25 });
 
-	box5->getTransform()->setLocation(Vector2{ 650, 675 });
-	box5->getTransform()->setSize(Vector2{ 50, 50 });
+	box5->getTransform2D()->setLocation(Vector2{ 650, 675 });
+	box5->getTransform2D()->setSize(Vector2{ 50, 50 });
 
-	coin1->getTransform()->setLocation(Vector2{ 500, 475 });
-	coin1->getTransform()->setSize(Vector2{ 50, 50 });
+	coin1->getTransform2D()->setLocation(Vector2{ 500, 475 });
+	coin1->getTransform2D()->setSize(Vector2{ 50, 50 });
 
-	coin2->getTransform()->setLocation(Vector2{ 400, 475 });
-	coin2->getTransform()->setSize(Vector2{ 50, 50 });
+	coin2->getTransform2D()->setLocation(Vector2{ 400, 475 });
+	coin2->getTransform2D()->setSize(Vector2{ 50, 50 });
 
-	coin3->getTransform()->setLocation(Vector2{ 300, 475 });
-	coin3->getTransform()->setSize(Vector2{ 50, 50 });
+	coin3->getTransform2D()->setLocation(Vector2{ 300, 475 });
+	coin3->getTransform2D()->setSize(Vector2{ 50, 50 });
 
 }
 

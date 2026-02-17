@@ -11,6 +11,6 @@ BoxCollider2D::BoxCollider2D(Actor* _pOwner, uint8_t _updateOrder, CollisionPurp
 
 void BoxCollider2D::Update(float _deltaTime)
 {
-    mCollision = Rectangle{ getOwner()->getTransform()->getLocation(), mCollision.size};
+    mCollision = Rectangle{ getOwner()->getTransform2D()->getLocation(), mCollision.size};
     Collider::Update(_deltaTime);
 }

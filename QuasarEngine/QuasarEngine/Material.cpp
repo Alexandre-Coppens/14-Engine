@@ -6,6 +6,7 @@
 Material::Material(Actor* _pOwner, Texture* _pTexture, uint8_t _drawOrder) :
 	Component(_pOwner), mTexture(_pTexture), mDrawOrder(_drawOrder), mTextureWidth(mTexture->GetWidth()), mTextureHeight(_pTexture->GetHeight()), mXFlipped{ false }
 {
+	mName = "Material";
 	pOwner->getScene()->getRendererGl()->AddSprite(this);
 }
 
@@ -32,7 +33,7 @@ void Material::Draw(RendererGl& _pRenderer, DebugMode _debug)
 
 	if (_debug == DebugMode::DRAWCOLLISIONS)
 	{
-		Rectangle rect = Rectangle(pOwner->getTransform()->getLocation(), pOwner->getTransform()->getSize());
+		Rectangle rect = Rectangle(pOwner->getTransform2D()->getLocation(), pOwner->getTransform2D()->getSize());
 		//_pRenderer.DrawDebugBox(rect, origin);
 	}
 }

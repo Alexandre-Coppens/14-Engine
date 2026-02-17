@@ -32,19 +32,19 @@ void Scene_GameOver::Start()
 	Actor* box3 = AddActor(new Box());
 	Actor* box4 = AddActor(new Box());
 
-	player->getTransform()->setLocation(Vector2{ 150, 400 });
+	player->getTransform2D()->setLocation(Vector2{ 150, 400 });
 
-	box1->getTransform()->setLocation(Vector2{ 400, 150 });
-	box1->getTransform()->setSize(Vector2{ 800, 300 });
+	box1->getTransform2D()->setLocation(Vector2{ 400, 150 });
+	box1->getTransform2D()->setSize(Vector2{ 800, 300 });
 
-	box2->getTransform()->setLocation(Vector2{ 300, 650 });
-	box2->getTransform()->setSize(Vector2{ 600, 300 });
+	box2->getTransform2D()->setLocation(Vector2{ 300, 650 });
+	box2->getTransform2D()->setSize(Vector2{ 600, 300 });
 
-	box3->getTransform()->setLocation(Vector2{ 50, 400 });
-	box3->getTransform()->setSize(Vector2{ 100, 800 });
+	box3->getTransform2D()->setLocation(Vector2{ 50, 400 });
+	box3->getTransform2D()->setSize(Vector2{ 100, 800 });
 
-	box4->getTransform()->setLocation(Vector2{ 750, 400 });
-	box4->getTransform()->setSize(Vector2{ 100, 800 });
+	box4->getTransform2D()->setLocation(Vector2{ 750, 400 });
+	box4->getTransform2D()->setSize(Vector2{ 100, 800 });
 }
 
 void Scene_GameOver::Update(float deltaTime)

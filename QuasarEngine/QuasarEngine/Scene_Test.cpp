@@ -16,8 +16,8 @@ Scene_Test::Scene_Test(std::string _name):
 void Scene_Test::Start()
 {
 	Scene::Start();
-	mVertex = Shader(0, "Basic.vert", ShaderType::VERTEX);
-	mFragment = Shader(0, "Basic.frag", ShaderType::FRAGMENT);
+	mVertex = Shader(0, "Transform.vert", ShaderType::VERTEX);
+	mFragment = Shader(0, "Transform.frag", ShaderType::FRAGMENT);
 
 	RendererGl* renderer = dynamic_cast<RendererGl*>(pRenderer);
 	if (renderer == nullptr)

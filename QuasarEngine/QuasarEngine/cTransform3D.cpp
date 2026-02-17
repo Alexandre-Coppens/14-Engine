@@ -1,0 +1,42 @@
+#include "cTransform3D.h"
+#include "Actor.h"
+
+Transform3D::Transform3D() :
+	Component(nullptr, 0) //Need to modify this
+{
+	mName = "Transform3D";
+}
+
+Transform3D::Transform3D(Actor* _pOwner, uint8_t _updateOrder) :
+	Component(_pOwner, _updateOrder)
+{
+	mName = "Transform3D";
+}
+
+Transform3D::~Transform3D()
+{
+}
+
+void Transform3D::OnStart()
+{
+}
+
+void Transform3D::Update(float _deltaTime)
+{
+}
+
+void Transform3D::OnEnd()
+{
+}
+
+void Transform3D::ComputeWorldTransform()
+{
+	if (!mNeedsUpdate) return;
+	mNeedsUpdate = false;
+	mWorldTransform =  Mat4RowCreateScale(mScale);
+	mWorldTransform *= Mat4RowCreateRotationX(mRotation.x);
+	mWorldTransform *= Mat4RowCreateRotationY(mRotation.y);
+	mWorldTransform *= Mat4RowCreateRotationZ(mRotation.z);
+	mWorldTransform *= Mat4RowCreateTranslation(mLocation);
+	//pOwner->UpdateComponentsTransform();
+}

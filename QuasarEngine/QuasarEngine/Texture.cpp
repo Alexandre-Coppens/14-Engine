@@ -37,18 +37,22 @@ bool Texture::Load(IRenderer& _renderer, const std::string& _filename)
 bool Texture::LoadGl(RendererGl* _renderer, const std::string& _filename, SDL_Surface* _pSurface)
 {
 	int format = 0;
-	if (_pSurface->format->format == SDL_PIXELFORMAT_RGB24)
+	SDL_Surface* glSurface = SDL_ConvertSurfaceFormat(_pSurface, SDL_PIXELFORMAT_RGBA32, 0);
+
+	if (glSurface->format->format == SDL_PIXELFORMAT_RGB24) // REMOVE OR FIND A WAY TO SEPARETE ALPHA OR NOT
 	{
 		format = GL_RGB;
 	}
-	else if (_pSurface->format->format == SDL_PIXELFORMAT_RGBA32)
+	else if (glSurface->format->format == SDL_PIXELFORMAT_RGBA32)
 	{
 		format = GL_RGBA;
 	}
+
 	glGenTextures(1, &mTextureID);
 	glBindTexture(GL_TEXTURE_2D, mTextureID);
-	glTexImage2D(GL_TEXTURE_2D, 0, format, mWidth, mHeight, 0, format, GL_UNSIGNED_BYTE, _pSurface->pixels);
+	glTexImage2D(GL_TEXTURE_2D, 0, format, mWidth, mHeight, 0, format, GL_UNSIGNED_BYTE, glSurface->pixels);
 	SDL_FreeSurface(_pSurface);
+	SDL_FreeSurface(glSurface);
 	Log::Info("Loaded GL texture : " + mFileName);
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);

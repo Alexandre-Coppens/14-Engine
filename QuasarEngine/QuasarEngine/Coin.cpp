@@ -9,7 +9,7 @@ Coin::Coin() :
 	Actor()
 {
 	mName = "Coin";
-	mTransform.setSize({ 51,51 });
+	mTransform2D.setSize({ 51,51 });
 }
 
 Coin::~Coin()

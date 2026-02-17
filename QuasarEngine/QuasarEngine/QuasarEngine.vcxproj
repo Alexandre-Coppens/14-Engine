@@ -143,6 +143,7 @@
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="cSprite2D.cpp" />
     <ClCompile Include="cTransform2D.cpp" />
+    <ClCompile Include="cTransform3D.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Inputs.cpp" />
     <ClCompile Include="Log.cpp" />
@@ -195,12 +196,15 @@
     <ClInclude Include="ShaderProgram.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Time.h" />
+    <ClInclude Include="cTransform3D.h" />
     <ClInclude Include="VertexArray.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Ressources\Shaders\Basic.frag" />
     <None Include="Ressources\Shaders\Basic.vert" />
+    <None Include="Transform.frag" />
+    <None Include="Transform.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

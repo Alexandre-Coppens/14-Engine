@@ -11,9 +11,9 @@ Gravity2D::Gravity2D(Actor* _pOwner, uint8_t _updateOrder):
 void Gravity2D::Update(float _deltaTime)
 {
 	if(mUseGravity) mVelocity = mVelocity + (mGravityDir * mGravity * mGravityStrength );
-	getOwner()->getTransform()->addLocation(mVelocity * _deltaTime);
-	mCurrentDistance = mLastPosition - pOwner->getTransform()->getLocation();
-	mLastPosition = pOwner->getTransform()->getLocation();
+	getOwner()->getTransform2D()->addLocation(mVelocity * _deltaTime);
+	mCurrentDistance = mLastPosition - pOwner->getTransform2D()->getLocation();
+	mLastPosition = pOwner->getTransform2D()->getLocation();
 	isTouchingFloor = false;
 }
 
@@ -24,34 +24,34 @@ void Gravity2D::Collided(Direction _direction, Vector2 _overlap)
 	case Direction::UP:
 		mVelocity.y = Min(0.0f, mVelocity.y);
 		isTouchingFloor = true;
-		pOwner->getTransform()->setLocationY(_overlap.y);
+		pOwner->getTransform2D()->setLocationY(_overlap.y);
 		break;
 
 	case Direction::DOWN:
 		mVelocity.y = Max(0.0f, mVelocity.y);
-		pOwner->getTransform()->setLocationY(_overlap.y);
+		pOwner->getTransform2D()->setLocationY(_overlap.y);
 		break;
 
 	case Direction::LEFT:
 		mVelocity.x = 0;
-		pOwner->getTransform()->setLocationX(_overlap.x);
+		pOwner->getTransform2D()->setLocationX(_overlap.x);
 		break;
 
 	case Direction::RIGHT:
 		mVelocity.x = 0;
-		pOwner->getTransform()->setLocationX(_overlap.x);
+		pOwner->getTransform2D()->setLocationX(_overlap.x);
 		break;
 
 	case Direction::CENTER:
 		if (mVelocity.x > mVelocity.y)
 		{
 			mVelocity.x = 0;
-			pOwner->getTransform()->addLocationX(_overlap.x);
+			pOwner->getTransform2D()->addLocationX(_overlap.x);
 		}
 		else
 		{
 			mVelocity.y = 0;
-			pOwner->getTransform()->addLocationY(_overlap.y);
+			pOwner->getTransform2D()->addLocationY(_overlap.y);
 		}
 		break;
 	}

@@ -111,6 +111,7 @@ static const Vector2 Vector2One()  { return Vector2{ 1.0f, 1.0f }; }
 //Vector 3
 
 static const Vector3 Vector3Zero()	{ return Vector3{ 0.0f, 0.0f, 0.0f }; }
+static const Vector3 Vector3One()	{ return Vector3{ 1.0f, 1.0f, 1.0f }; }
 static const Vector3 Vector3UnitX()	{ return Vector3{ 1.0f, 0.0f, 0.0f }; }
 static const Vector3 Vector3UnitY() { return Vector3{ 0.0f, 1.0f, 0.0f }; }
 static const Vector3 Vector3UnitZ() { return Vector3{ 0.0f, 0.0f, 1.0f }; }
@@ -666,7 +667,7 @@ static inline Matrix4Row operator*(const Matrix4Row& a, const Matrix4Row& b)
 	return retVal;
 }
 
-inline Matrix4Row& operator*=( Matrix4Row& m1, Matrix4Row& m2)
+inline Matrix4Row& operator*=( Matrix4Row& m1, const Matrix4Row& m2)
 {
 	m1 = m1 * m2;
 	return m1;

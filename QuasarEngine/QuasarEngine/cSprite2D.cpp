@@ -32,7 +32,7 @@ void Sprite2D::Draw(RendererSdl& _pRenderer, DebugMode _debug)
 	
 	if (_debug == DebugMode::DRAWCOLLISIONS)
 	{
-		Rectangle rect = Rectangle(pOwner->getTransform()->getLocation(), pOwner->getTransform()->getSize());
+		Rectangle rect = Rectangle(pOwner->getTransform2D()->getLocation(), pOwner->getTransform2D()->getSize());
 		//_pRenderer.DrawDebugBox(rect, origin);
 	}
 }

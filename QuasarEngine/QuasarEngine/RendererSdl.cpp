@@ -61,7 +61,7 @@ void RendererSdl::DrawSprites()
 void RendererSdl::DrawSprite(Actor& _pActor, Texture* _pTex, Rectangle _sourceRect, Vector2 _origin, Flip _flip) const
 {
 	SDL_Rect destinationRect;
-	Transform2D transform = *_pActor.getTransform();
+	Transform2D transform = *_pActor.getTransform2D();
 	destinationRect.w = static_cast<int>(transform.getSize().x * transform.getScale().x);
 	destinationRect.h = static_cast<int>(transform.getSize().y * transform.getScale().y);
 	destinationRect.x = static_cast<int>(transform.getLocation().x - (transform.getSize().x * _origin.x));

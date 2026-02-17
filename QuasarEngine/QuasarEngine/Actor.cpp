@@ -5,7 +5,7 @@
 #include "Scene.h"
 
 Actor::Actor() :
-	mState(ActorState::Active), mTransform(Transform2D()), pScene(Scene::sActiveScene)
+	mState(ActorState::Active), mTransform2D(Transform2D()), pScene(Scene::sActiveScene)
 {
 }
 
@@ -31,6 +31,7 @@ void Actor::Destroy()
 	pScene = nullptr;
 	for (const auto c : mComponentList)
 	{
+		Log::Info("Removing Component: " + c->getName());
 		c->OnEnd();
 	}
 	RemoveComponents();
