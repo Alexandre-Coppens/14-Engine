@@ -1,13 +1,20 @@
 #include "RendererGl.h"
+#include "Window.h"
 #include "glew.h"
 #include "Log.h"
-#include "Material.h"
+#include "cModel.h"
 #include "Assets.h"
 #include <SDL_image.h>
 
 RendererGl::RendererGl():
-	pWindow(nullptr), pVao(nullptr), mContext(nullptr)
+	pWindow(nullptr), 
+	pSpriteVao(nullptr), 
+	mContext(nullptr), 
+	pSpriteShaderProgram(nullptr),
+	mSpriteViewProj(Mat4RowCreateSimpleViewProj(Window::GetSize().x, Window::GetSize().y)),
+	continue here
 {
+
 }
 
 RendererGl::~RendererGl()
@@ -43,8 +50,8 @@ bool RendererGl::Initialize(Window& _rWindow)
 	{
 		Log::Error(LogType::Video, "Failed to initialize SDL_Image");
 	}
-	pVao = new VertexArray(vertices, 4, indices, 6);
-	mViewProj = Mat4RowCreateSimpleViewProj(800, 800);
+	pSpriteVao = new VertexArray(vertices, 4, indices, 6);
+	mView = Mat4RowCreateSimpleViewProj(800, 800);
 	return true;
 }
 
@@ -54,23 +61,21 @@ void RendererGl::BeginDraw()
 	glClear(GL_COLOR_BUFFER_BIT);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	if (pShaderProgram != nullptr) pShaderProgram->Use();
-	pShaderProgram->SetMatrix4Row("uViewProj", mViewProj);
 
-	pVao->SetActive();
+	pSpriteVao->SetActive();
 }
 
 void RendererGl::Draw()
 {
-	DrawSprites();
+	DrawModels();
 }
 
-void RendererGl::DrawSprites()
+void RendererGl::DrawModels()
 {
-	if (mSpriteList.empty()) return;
-	for (Material* sprite : mSpriteList)
+	if (mModelList.empty()) return;
+	for (Model* model : mModelList)
 	{
-		sprite->Draw(*this, DebugMode::DRAWCOLLISIONS);
+		model->Draw(mView);
 	}
 }
 
@@ -79,42 +84,21 @@ void RendererGl::EndDraw()
 	SDL_GL_SwapWindow(pWindow->GetSdlWindow());
 }
 
-void RendererGl::DrawSprite(Actor& pActor, Texture* pTex, Rectangle pSourceRect, Vector2 pOrigin,Flip pFlip) const
-{
-	pShaderProgram->Use();
-	pActor.getTransform3D()->ComputeWorldTransform();
-	Matrix4Row scaleMat = Mat4RowCreateScale(
-		pTex->GetWidth(),
-		pTex->GetHeight(),
-		0.0f);
-	Matrix4Row world = scaleMat * pActor.getTransform3D()->getWorldTransform();
-	pShaderProgram->SetMatrix4Row("uWorldTransform", world);
-	uniforms doesn't seems to work'
-	pTex->SetActive();
-	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
-}
-
 void RendererGl::Close()
 {
 	SDL_GL_DeleteContext(mContext);
-	delete pVao;
-	pVao = nullptr;
+	delete pSpriteVao;
+	pSpriteVao = nullptr;
 }
 
-void RendererGl::AddSprite(Material* _pSprite)
+void RendererGl::AddModel(Model* _pModel)
 {
-	int spriteDrawOrder = _pSprite->getDrawOrder();
-	std::vector<Material*>::iterator it;
-	for (it = mSpriteList.begin(); it != mSpriteList.end(); it++)
-	{
-		if (spriteDrawOrder < (*it)->getDrawOrder()) break;
-	}
-	mSpriteList.insert(it, _pSprite);
+	mModelList.push_back(_pModel);
 }
 
-void RendererGl::RemoveSprite(Material* _pSprite)
+void RendererGl::RemoveModel(Model* _pModel)
 {
-	std::vector<Material*>::iterator it;
-	it = std::find(mSpriteList.begin(), mSpriteList.end(), _pSprite);
-	mSpriteList.erase(it);
+	std::vector<Model*>::iterator it;
+	it = std::find(mModelList.begin(), mModelList.end(), _pModel);
+	mModelList.erase(it);
 }

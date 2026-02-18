@@ -14,7 +14,6 @@ Scene::Scene(std::string _name):
 
 Scene::~Scene()
 {
-	Close();
 }
 
 void Scene::Start()

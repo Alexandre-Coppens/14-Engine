@@ -8,31 +8,28 @@
 class Transform3D : public Component
 {
 protected:
-	Vector3 mLocation{ Vector3Zero() };
-	Vector3	mRotation{ Vector3Zero() };
-	Vector3 mScale   { Vector3One() };
+	Vector3		mLocation{ Vector3Zero() };
+	Quaternion	mRotation{ Quaternion() }; //Rechange this to a vector3
+	Vector3		mScale   { Vector3One() };
 
 	Matrix4Row mWorldTransform{ Matrix4Row::Mat4RowIdentity() };
 
 	bool mNeedsUpdate{ true };
 
 public:
-	Vector3 getLocation()	const { return mLocation; }
-	Vector3 getRotation()	const { return mRotation; }
-	Vector3 getScale()		const { return mScale; }
+	Vector3 getLocation()		const { return mLocation; }
+	Quaternion getRotation()	const { return mRotation; }
+	Vector3 getScale()			const { return mScale; }
 
 	Matrix4Row getWorldTransform() const { return mWorldTransform; }
 
-	void setLocation(Vector3 _v) { mLocation = _v; }
-	void setRotation(Vector3 _v) { mRotation = _v; }
-	void setScale(Vector3 _v)	 { mScale = _v; }
+	void setLocation(Vector3 _v)    { mLocation = _v; }
+	void setRotation(Quaternion _q) { mRotation = _q; }
+	void setScale(Vector3 _v)		{ mScale = _v; }
 
 	void setLocationX(float _f) { mLocation.x = _f; }
 	void setLocationY(float _f) { mLocation.y = _f; }
 	void setLocationZ(float _f) { mLocation.z = _f; }
-	void setRotationX(float _f) { mRotation.x = _f; }
-	void setRotationY(float _f) { mRotation.y = _f; }
-	void setRotationZ(float _f) { mRotation.z = _f; }
 	void setScaleX(float _f) { mScale.x = _f; }
 	void setScaleY(float _f) { mScale.y = _f; }
 	void setScaleZ(float _f) { mScale.z = _f; }
@@ -41,9 +38,11 @@ public:
 	void addLocationX(float _f) { mLocation.x += _f; }
 	void addLocationY(float _f) { mLocation.y += _f; }
 	void addLocationZ(float _f) { mLocation.z += _f; }
-	void addRotationX(float _f) { mRotation.x += _f; }
-	void addRotationY(float _f) { mRotation.y += _f; }
-	void addRotationZ(float _f) { mRotation.z += _f; }
+	
+	void combineRotation(Quaternion _q) { mRotation *= _q; }
+	void rotateAroundX(float _angle) { mRotation *= QuatFromAxisAngle(Vector3UnitX(), _angle); }
+	void rotateAroundY(float _angle) { mRotation *= QuatFromAxisAngle(Vector3UnitY(), _angle); }
+	void rotateAroundZ(float _angle) { mRotation *= QuatFromAxisAngle(Vector3UnitZ(), _angle); }
 
 	void setTransform(Transform3D* _t3D) {
 		mLocation = _t3D->mLocation;

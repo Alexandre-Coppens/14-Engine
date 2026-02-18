@@ -13,6 +13,10 @@ Scene_Test::Scene_Test(std::string _name):
 {
 }
 
+Scene_Test::~Scene_Test()
+{
+}
+
 void Scene_Test::Start()
 {
 	Scene::Start();
@@ -36,6 +40,7 @@ void Scene_Test::Start()
 
 void Scene_Test::Update(float _deltaTime)
 {
+	Scene::Update(_deltaTime);
 }
 
 void Scene_Test::Close()

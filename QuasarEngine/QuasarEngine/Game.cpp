@@ -36,7 +36,6 @@ Game::Game(std::string _title, std::vector<Scene*> _scenes, RendererType _render
 
 Game::~Game()
 {
-	Close();
 	Assets::Clear();
 }
 
@@ -80,6 +79,7 @@ void Game::Close()
 {
 	for (Scene* scene : mScenes)
 	{
+		scene->Close();
 		delete scene;
 		scene = nullptr;
 	}

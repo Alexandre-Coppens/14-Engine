@@ -55,9 +55,6 @@
     <Filter Include="Engine\Render\Asset">
       <UniqueIdentifier>{a8aca883-86c8-4fce-b86b-61056ce507b3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Render\Asset\Texture">
-      <UniqueIdentifier>{c3383c45-3c39-47a5-a5ac-d349f41e44e3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game2D">
       <UniqueIdentifier>{f72497ab-99aa-4170-8bcf-17b9a0a7c636}</UniqueIdentifier>
     </Filter>
@@ -87,9 +84,6 @@
     </Filter>
     <Filter Include="Engine\Librairies\Shaders">
       <UniqueIdentifier>{3a926f9e-c068-4983-951b-f85731deafaf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Librairies\Shaders\Basic">
-      <UniqueIdentifier>{ea30b2de-b3c9-4b42-b329-5a08d2d4df0c}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\Librairies\Components">
       <UniqueIdentifier>{999e9684-a9ad-4feb-be5e-4af4f69679d3}</UniqueIdentifier>
@@ -127,14 +121,23 @@
     <Filter Include="Engine\Librairies\Components\3D">
       <UniqueIdentifier>{aea665f8-4675-4636-a748-9fa6d3992d80}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Librairies\Components\3D\Material">
-      <UniqueIdentifier>{32b8e167-6d97-4ce0-be36-56e097b9a378}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\Librairies\Components\3D\Transform3D">
       <UniqueIdentifier>{4d2d1975-962e-4aab-8114-779f50bacb05}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\Librairies\Shaders\Transform">
       <UniqueIdentifier>{8db8f858-78a4-4c99-b67a-3a20b758ddd1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Librairies\Shaders\Texture">
+      <UniqueIdentifier>{ea30b2de-b3c9-4b42-b329-5a08d2d4df0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Render\Asset\Texture">
+      <UniqueIdentifier>{c3383c45-3c39-47a5-a5ac-d349f41e44e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Render\Asset\Shader\Mesh">
+      <UniqueIdentifier>{c0975e74-f40a-4aa3-9a63-380ae1808de9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Librairies\Components\3D\Model">
+      <UniqueIdentifier>{32b8e167-6d97-4ce0-be36-56e097b9a378}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -231,14 +234,17 @@
     <ClCompile Include="Scene_Test.cpp">
       <Filter>Game3D\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="Material.cpp">
-      <Filter>Engine\Librairies\Components\3D\Material</Filter>
+    <ClCompile Include="cModel.cpp">
+      <Filter>Engine\Librairies\Components\3D\Model</Filter>
     </ClCompile>
     <ClCompile Include="BoxGl.cpp">
       <Filter>Game3D\Actors</Filter>
     </ClCompile>
     <ClCompile Include="cTransform3D.cpp">
       <Filter>Engine\Librairies\Components\3D\Transform3D</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Engine\Render\Asset\Shader\Mesh</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -329,8 +335,8 @@
     <ClInclude Include="BoxGl.h">
       <Filter>Game3D\Actors</Filter>
     </ClInclude>
-    <ClInclude Include="Material.h">
-      <Filter>Engine\Librairies\Components\3D\Material</Filter>
+    <ClInclude Include="cModel.h">
+      <Filter>Engine\Librairies\Components\3D\Model</Filter>
     </ClInclude>
     <ClInclude Include="Game3D.h">
       <Filter>Game3D</Filter>
@@ -338,13 +344,16 @@
     <ClInclude Include="cTransform3D.h">
       <Filter>Engine\Librairies\Components\3D\Transform3D</Filter>
     </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Engine\Render\Asset\Shader\Mesh</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Ressources\Shaders\Basic.frag">
-      <Filter>Engine\Librairies\Shaders\Basic</Filter>
+    <None Include="Ressources\Shaders\Texture.frag">
+      <Filter>Engine\Librairies\Shaders\Texture</Filter>
     </None>
-    <None Include="Ressources\Shaders\Basic.vert">
-      <Filter>Engine\Librairies\Shaders\Basic</Filter>
+    <None Include="Ressources\Shaders\Texture.vert">
+      <Filter>Engine\Librairies\Shaders\Texture</Filter>
     </None>
     <None Include="Transform.vert">
       <Filter>Engine\Librairies\Shaders\Transform</Filter>

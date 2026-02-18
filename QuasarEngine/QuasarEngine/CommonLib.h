@@ -419,6 +419,25 @@ inline bool operator==(const Vector4& v1, const Vector4& v2)
 	return Equal(v1, v2);
 }
 
+//Quaternion
+static inline Quaternion Multiply(Quaternion q1, Quaternion q2)
+{
+	return Quaternion{ 
+		q1.x*q2.w + q1.y*q2.z - q1.z*q2.y + q1.w*q2.x,
+		q1.y*q2.w + q1.z*q2.x + q1.w*q2.y - q1.x*q2.z,
+		q1.z*q2.w + q1.w*q2.z + q1.x*q2.y - q1.y*q2.x,
+		q1.w*q2.w - q1.x*q2.x - q1.y*q2.y - q1.z*q2.z
+	};
+}
+inline Quaternion operator*(const Quaternion& q1, const Quaternion& q2)
+{
+	return Multiply(q1, q2);
+}
+inline Quaternion& operator*=(Quaternion& q1, Quaternion q2) {
+	return q1 = Multiply(q1, q2);
+}
+
+
 //Matrix4
 
 static inline Matrix4 operator+(const Matrix4& m1, const Matrix4& m2)

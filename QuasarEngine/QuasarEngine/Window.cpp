@@ -2,9 +2,12 @@
 #include "Log.h"
 #include "Game.h"
 
+Vector2 Window::mWindowSize{};
+
 Window::Window(Uint16 _u16Width, Uint16 _u16Height, std::string _sName):
-	pSdlWindow(nullptr), mWindowSize(Vector2{(float)_u16Width, (float)_u16Height}), mWindowName(_sName)
+	pSdlWindow(nullptr), mWindowName(_sName)
 {
+	mWindowSize = Vector2{ (float)_u16Width, (float)_u16Height };
 }
 
 bool Window::Open()

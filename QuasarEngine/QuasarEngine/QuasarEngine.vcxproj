@@ -149,7 +149,8 @@
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="CommonLib.h" />
-    <ClCompile Include="Material.cpp" />
+    <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="cModel.cpp" />
     <ClCompile Include="MathLib.h" />
     <ClCompile Include="Paddle.cpp" />
     <ClCompile Include="RendererGl.cpp" />
@@ -184,7 +185,8 @@
     <ClInclude Include="Inputs.h" />
     <ClInclude Include="IRenderer.h" />
     <ClInclude Include="Log.h" />
-    <ClInclude Include="Material.h" />
+    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="cModel.h" />
     <ClInclude Include="Paddle.h" />
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="RendererGl.h" />
@@ -201,8 +203,8 @@
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Ressources\Shaders\Basic.frag" />
-    <None Include="Ressources\Shaders\Basic.vert" />
+    <None Include="Ressources\Shaders\Texture.frag" />
+    <None Include="Ressources\Shaders\Texture.vert" />
     <None Include="Transform.frag" />
     <None Include="Transform.vert" />
   </ItemGroup>

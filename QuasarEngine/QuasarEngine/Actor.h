@@ -34,6 +34,7 @@ public:
 	ActorState	 getState()		const	{ return mState;  }
 	Transform2D* getTransform2D()			{ return &mTransform2D;  }
 	Transform3D* getTransform3D()			{ return &mTransform3D;  }
+	Matrix4Row   getWorldTransform() { return mTransform3D.getWorldTransform(); }
 	
 	template<typename T>
 	T* GetComponent() {

@@ -5,20 +5,22 @@
 
 #include "CommonLib.h"
 
-class Material;
+class Model;
 
 class RendererGl : public IRenderer
 {
 private:
 	Window* pWindow;
-	VertexArray* pVao;
-	ShaderProgram* pShaderProgram;
+	VertexArray* pSpriteVao;
+	ShaderProgram* pSpriteShaderProgram;
 	SDL_GLContext mContext;
-	std::vector<Material*> mSpriteList;
-	Matrix4Row mViewProj = Matrix4Row::Mat4RowIdentity();
+	std::vector<Sprite2D*> mSpriteList;
+	std::vector<Model*> mModelList;
+	Matrix4Row mView = Matrix4Row::Mat4RowIdentity();
+	Matrix4Row mSpriteViewProj = Matrix4Row::Mat4RowIdentity();
 
 public:
-	void setShaderProgram(ShaderProgram* _pShaderProgram) { pShaderProgram = _pShaderProgram; }
+	void setShaderProgram(ShaderProgram* _pShaderProgram) { pSpriteShaderProgram = _pShaderProgram; }
 
 public:
 	RendererGl();
@@ -31,11 +33,17 @@ public:
 	bool Initialize(Window& _rWindow) override;
 	void BeginDraw() override;
 	void Draw() override;
-	void DrawSprites() override;
 	void EndDraw() override;
 
-	void DrawSprite(Actor& _pActor, Texture* _pTex, Rectangle _sourceRect, Vector2 _origin, Flip _flip = Flip::None) const override;
-	void AddSprite(Material* _pSprite);
-	void RemoveSprite(Material* _pSprite);
+	void DrawModels();
+	void DrawSprites();
+	void DrawSprite(Actor& _pActor, Texture* _pTex, Rectangle _SourceRect, Vector2 _v2Origin, Flip _Flip) const;
+
+	void AddSprite(Sprite2D* _pSprite);
+	void RemoveSprite(Sprite2D* _pSprite);
+
+	void AddModel(Model* _pModel);
+	void RemoveModel(Model* _pModel);
+
 	void Close() override;
 };
