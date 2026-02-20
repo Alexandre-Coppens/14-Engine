@@ -23,26 +23,27 @@ public:
 
 	Matrix4Row getWorldTransform() const { return mWorldTransform; }
 
-	void setLocation(Vector3 _v)    { mLocation = _v; }
-	void setRotation(Quaternion _q) { mRotation = _q; }
-	void setScale(Vector3 _v)		{ mScale = _v; }
+	void setLocation(const Vector3 _v)    { mLocation = _v; }
+	void setRotation(const Quaternion _q) { mRotation = _q; }
+	void setScale(const Vector3 _v)		  { mScale = _v; }
 
-	void setLocationX(float _f) { mLocation.x = _f; }
-	void setLocationY(float _f) { mLocation.y = _f; }
-	void setLocationZ(float _f) { mLocation.z = _f; }
-	void setScaleX(float _f) { mScale.x = _f; }
-	void setScaleY(float _f) { mScale.y = _f; }
-	void setScaleZ(float _f) { mScale.z = _f; }
+	void setLocationX(const float _f) { mLocation.x = _f; }
+	void setLocationY(const float _f) { mLocation.y = _f; }
+	void setLocationZ(const float _f) { mLocation.z = _f; }
+	void setScaleX(const float _f) { mScale.x = _f; }
+	void setScaleY(const float _f) { mScale.y = _f; }
+	void setScaleZ(const float _f) { mScale.z = _f; }
 
-	void addLocation(Vector3 _v) { mLocation = Add(mLocation, _v); }
-	void addLocationX(float _f) { mLocation.x += _f; }
-	void addLocationY(float _f) { mLocation.y += _f; }
-	void addLocationZ(float _f) { mLocation.z += _f; }
+	void addLocation(const Vector3 _v) { mLocation = Add(mLocation, _v); }
+	void addLocationX(const float _f) { mLocation.x += _f; }
+	void addLocationY(const float _f) { mLocation.y += _f; }
+	void addLocationZ(const float _f) { mLocation.z += _f; }
 	
-	void combineRotation(Quaternion _q) { mRotation *= _q; }
-	void rotateAroundX(float _angle) { mRotation *= QuatFromAxisAngle(Vector3UnitX(), _angle); }
-	void rotateAroundY(float _angle) { mRotation *= QuatFromAxisAngle(Vector3UnitY(), _angle); }
-	void rotateAroundZ(float _angle) { mRotation *= QuatFromAxisAngle(Vector3UnitZ(), _angle); }
+	void combineRotation(const Quaternion _q) { mRotation *= _q; }
+	void rotateAroundAxis(const Vector3 _axis, const float _angle) { mRotation *= QuatFromAxisAngle(_axis, _angle); }
+	void rotateAroundX(const float _angle) { mRotation *= QuatFromAxisAngle(Vector3UnitX(), _angle); }
+	void rotateAroundY(const float _angle) { mRotation *= QuatFromAxisAngle(Vector3UnitY(), _angle); }
+	void rotateAroundZ(const float _angle) { mRotation *= QuatFromAxisAngle(Vector3UnitZ(), _angle); }
 
 	void setTransform(Transform3D* _t3D) {
 		mLocation = _t3D->mLocation;
@@ -50,9 +51,9 @@ public:
 		mScale	  = _t3D->mScale;
 	}
 
-	//Vector3 Forward() const { return Transform(Vector3{1,0,0}, mRotation); }
-	//Vector2 Right() const { return Vector2{ Cos(mRotation), -Sin(mRotation) }; }
-	//Vector2 Up()	const { return Vector2{ Sin(mRotation), -Cos(mRotation) }; }
+	Vector3 Forward()	const { return Transform(Vector3UnitX(), mRotation); }
+	Vector3 Right()		const { return Transform(Vector3UnitY(), mRotation); }
+	Vector3 Up()		const { return Transform(Vector3UnitZ(), mRotation); }
 
 protected:
 public:

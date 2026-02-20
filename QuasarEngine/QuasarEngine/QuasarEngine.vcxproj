@@ -135,6 +135,7 @@
     <ClCompile Include="Assets.cpp" />
     <ClCompile Include="Box.cpp" />
     <ClCompile Include="BoxGl.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="cAnimation2D.cpp" />
     <ClCompile Include="cBoxCollider2D.cpp" />
     <ClCompile Include="cCollider.cpp" />
@@ -153,6 +154,7 @@
     <ClCompile Include="cModel.cpp" />
     <ClCompile Include="MathLib.h" />
     <ClCompile Include="Paddle.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="RendererGl.cpp" />
     <ClCompile Include="RendererSdl.cpp" />
     <ClCompile Include="Scene.cpp" />
@@ -172,6 +174,7 @@
     <ClInclude Include="Assets.h" />
     <ClInclude Include="Box.h" />
     <ClInclude Include="BoxGl.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="cAnimation2D.h" />
     <ClInclude Include="cBoxCollider2D.h" />
     <ClInclude Include="cCollider.h" />
@@ -188,6 +191,7 @@
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="cModel.h" />
     <ClInclude Include="Paddle.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="RendererGl.h" />
     <ClInclude Include="RendererSdl.h" />

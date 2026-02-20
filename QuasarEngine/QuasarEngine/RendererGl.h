@@ -21,6 +21,7 @@ private:
 	Matrix4Row mSpriteViewProj = Matrix4Row::Mat4RowIdentity();
 
 public:
+	void setViewMatrix(const Matrix4Row _view) {mView = _view;}
 	void setShaderProgram(ShaderProgram* _pShaderProgram) { pSpriteShaderProgram = _pShaderProgram; }
 
 public:
