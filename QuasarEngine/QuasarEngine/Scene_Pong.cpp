@@ -1,6 +1,5 @@
-#include "Scene_Pong.h"
+﻿#include "Scene_Pong.h"
 #include "CommonLib.h"
-#include "Log.h"
 #include "Assets.h"
 
 #include "Paddle.h"
@@ -9,32 +8,38 @@
 #include "RendererSdl.h"
 
 Scene_Pong::Scene_Pong(std::string _name):
-	Scene(_name)
+	Scene(std::move(_name))
 {
 }
+
+Scene_Pong::~Scene_Pong()
+{
+	Scene::~Scene();
+}
+
 
 void Scene_Pong::Start()
 {
 	Scene::Start();
 
 	RendererSdl* sdl = dynamic_cast<RendererSdl*>(pRenderer);
-	Assets::LoadTexture(*sdl, "Ressources/pokeball.png", "ball");
-	Assets::LoadTexture(*sdl, "Ressources/Block.png", "Block");
-	Assets::LoadTexture(*sdl, "Ressources/MegaAnim/00_megaman.png", "00_megaman");
-	Assets::LoadTexture(*sdl, "Ressources/MegaAnim/01_megaman.png", "01_megaman");
-	Assets::LoadTexture(*sdl, "Ressources/MegaAnim/02_megaman.png", "02_megaman");
-	Assets::LoadTexture(*sdl, "Ressources/MegaAnim/03_megaman.png", "03_megaman");
-	Assets::LoadTexture(*sdl, "Ressources/MegaAnim/04_megaman.png", "04_megaman");
-	Assets::LoadTexture(*sdl, "Ressources/MegaAnim/05_megaman.png", "05_megaman");
-	Assets::LoadTexture(*sdl, "Ressources/MegaAnim/06_megaman.png", "06_megaman");
-	Assets::LoadTexture(*sdl, "Ressources/MegaAnim/07_megaman.png", "07_megaman");
+	Assets::LoadTexture(*sdl, "Resources/pokeball.png", "ball");
+	Assets::LoadTexture(*sdl, "Resources/Block.png", "Block");
+	Assets::LoadTexture(*sdl, "Resources/MegaAnim/00_megaman.png", "00_megaman");
+	Assets::LoadTexture(*sdl, "Resources/MegaAnim/01_megaman.png", "01_megaman");
+	Assets::LoadTexture(*sdl, "Resources/MegaAnim/02_megaman.png", "02_megaman");
+	Assets::LoadTexture(*sdl, "Resources/MegaAnim/03_megaman.png", "03_megaman");
+	Assets::LoadTexture(*sdl, "Resources/MegaAnim/04_megaman.png", "04_megaman");
+	Assets::LoadTexture(*sdl, "Resources/MegaAnim/05_megaman.png", "05_megaman");
+	Assets::LoadTexture(*sdl, "Resources/MegaAnim/06_megaman.png", "06_megaman");
+	Assets::LoadTexture(*sdl, "Resources/MegaAnim/07_megaman.png", "07_megaman");
 
-	Assets::LoadTexture(*sdl, "Ressources/CoinAnim/Coin-01.png", "00_coin");
-	Assets::LoadTexture(*sdl, "Ressources/CoinAnim/Coin-02.png", "01_coin");
-	Assets::LoadTexture(*sdl, "Ressources/CoinAnim/Coin-03.png", "02_coin");
-	Assets::LoadTexture(*sdl, "Ressources/CoinAnim/Coin-04.png", "03_coin");
-	Assets::LoadTexture(*sdl, "Ressources/CoinAnim/Coin-05.png", "04_coin");
-	Assets::LoadTexture(*sdl, "Ressources/CoinAnim/Coin-06.png", "05_coin");
+	Assets::LoadTexture(*sdl, "Resources/CoinAnim/Coin-01.png", "00_coin");
+	Assets::LoadTexture(*sdl, "Resources/CoinAnim/Coin-02.png", "01_coin");
+	Assets::LoadTexture(*sdl, "Resources/CoinAnim/Coin-03.png", "02_coin");
+	Assets::LoadTexture(*sdl, "Resources/CoinAnim/Coin-04.png", "03_coin");
+	Assets::LoadTexture(*sdl, "Resources/CoinAnim/Coin-05.png", "04_coin");
+	Assets::LoadTexture(*sdl, "Resources/CoinAnim/Coin-06.png", "05_coin");
 
 
 	Actor* player = AddActor(new Paddle());
@@ -77,9 +82,9 @@ void Scene_Pong::Start()
 
 }
 
-void Scene_Pong::Update(float deltaTime)
+void Scene_Pong::Update(const float _deltaTime)
 {
-	Scene::Update(deltaTime);
+	Scene::Update(_deltaTime);
 }
 
 void Scene_Pong::Close()

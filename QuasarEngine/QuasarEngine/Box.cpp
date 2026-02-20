@@ -14,6 +14,7 @@ Box::Box():
 
 Box::~Box()
 {
+	Actor::~Actor();
 }
 
 void Box::Start()
@@ -24,9 +25,9 @@ void Box::Start()
 	Actor::Start();
 }
 
-void Box::Update(float deltaTime)
+void Box::Update(const float _deltaTime)
 {
-	Actor::Update(deltaTime);
+	Actor::Update(_deltaTime);
 }
 
 void Box::Destroy()

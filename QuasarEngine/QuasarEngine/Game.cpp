@@ -9,8 +9,8 @@
 #include "RendererGl.h"
 
 Game::Game(std::string _title, std::vector<Scene*> _scenes, RendererType _rendererType):
-	mTitle(_title), mScenes(_scenes)
-{
+	mTitle(std::move(_title)), mScenes(std::move(_scenes))
+{ //TODO: Remove Scenes vector from init to put it in the game
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
 	{
 		SDL_Log("SDL initialization failed. SDL Error: %s", SDL_GetError());
@@ -42,7 +42,7 @@ Game::~Game()
 void Game::Initialize()
 {
 	Log::Info("GAME: Initializing " + mTitle);
-	pWindow = new Window(800, 800, mTitle);
+	pWindow = new Window(Window::GetSize().x, Window::GetSize().y, mTitle);
 
 	if (pWindow->Open() && pRenderer->Initialize(*pWindow))
 	{

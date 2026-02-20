@@ -3,8 +3,6 @@
 
 #include "Component.h"
 #include "CommonLib.h"
-#include "Texture.h"
-#include "RendererGl.h"
 
 class Mesh;
 class Model : public Component
@@ -15,12 +13,14 @@ protected:
 
 public:
 	virtual void SetMesh(Mesh* _pMesh) { mMesh = _pMesh; }
-	void setTextureIndex(size_t _pTextureIndex) { mTextureIndex = _pTextureIndex; }
+	void setTextureIndex(const size_t _pTextureIndex) { mTextureIndex = _pTextureIndex; }
 
 private:
 public:
 	Model(Actor* _pOwner);
 	virtual ~Model();
+
+	void Update(float _deltaTime) override {}
 
 	virtual void Draw(Matrix4Row _viewProj);
 };

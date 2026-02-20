@@ -1,5 +1,5 @@
-#ifndef SPRITE2D_H
-#define SPRITE2D_H
+#ifndef SPRITE_2D_H
+#define SPRITE_2D_H
 
 #include "Component.h"
 #include "CommonLib.h"
@@ -19,9 +19,9 @@ public:
 	uint16_t getDrawOrder()		  const	{ return mDrawOrder; }
 	uint16_t getTextureWidth()	  const	{ return mTextureWidth; }
 	uint16_t getTextureHeight()	  const	{ return mTextureHeight; }
-	Vector2  getTextureSize()	  const	{ return Vector2{ (float)mTextureWidth, (float)mTextureHeight }; }
+	Vector2  getTextureSize()	  const	{ return Vector2{ static_cast<float>(mTextureWidth), static_cast<float>(mTextureHeight) }; }
 
-	void setXFlip(bool _b) { mXFlipped = _b; }
+	void setXFlip(const bool _b) { mXFlipped = _b; }
 
 private:
 public:
@@ -35,7 +35,7 @@ public:
 	void OnEnd() override;
 
 	virtual void SetTexture(Texture* _pTexture);
-	virtual void Draw(RendererSdl& _pRenderer, DebugMode _debug);
+	virtual void Draw(const RendererSdl& _pRenderer, DebugMode _debug);
 };
 
 #endif // !1

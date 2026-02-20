@@ -139,6 +139,9 @@
     <Filter Include="Engine\Librairies\Components\3D\Model">
       <UniqueIdentifier>{32b8e167-6d97-4ce0-be36-56e097b9a378}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Librairies\Shaders\BasicModel">
+      <UniqueIdentifier>{aee98c68-04ce-45e5-b969-6e7ec273668f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -360,6 +363,12 @@
     </None>
     <None Include="Transform.frag">
       <Filter>Engine\Librairies\Shaders\Transform</Filter>
+    </None>
+    <None Include="Ressources\Shaders\BasicModel.frag">
+      <Filter>Engine\Librairies\Shaders\BasicModel</Filter>
+    </None>
+    <None Include="Ressources\Shaders\BasicModel.vert">
+      <Filter>Engine\Librairies\Shaders\BasicModel</Filter>
     </None>
   </ItemGroup>
 </Project>

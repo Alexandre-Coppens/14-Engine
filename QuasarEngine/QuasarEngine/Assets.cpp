@@ -31,7 +31,7 @@ Texture* Assets::GetTexture(const std::string& _pName)
 	return mTextureList[_pName];
 }
 
-//CAREFULL: This Function uses a find to EVERY textures so be precise in the name!
+//CAREFUL: This Function uses a find to EVERY textures so be precise in the name!
 std::vector<Texture*> Assets::GetTextures(const std::string& _pName)
 {
 	std::vector<Texture*> tList;
@@ -47,7 +47,7 @@ std::vector<Texture*> Assets::GetTextures(const std::string& _pName)
 
 void Assets::Clear()
 {
-	for (auto iter : mTextureList)
+	for (const auto& iter : mTextureList)
 	{
 		iter.second->Unload();
 	}

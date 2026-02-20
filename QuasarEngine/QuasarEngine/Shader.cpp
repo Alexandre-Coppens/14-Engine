@@ -3,7 +3,7 @@
 #include <glew.h>
 #include <vector>
 
-const std::string Shader::SHADER_PATH = "Ressources/Shaders/";
+const std::string Shader::SHADER_PATH = "Resources/Shaders/";
 
 Shader::Shader():
 	mID(0), mCode(""), mType(VERTEX)
@@ -35,11 +35,15 @@ void Shader::Load(std::string _fileName, ShaderType _shaderType)
 	std::string line = "";
 	while (getline(myFile, line))
 	{
+		if (line.empty()) continue;
 		fileText += line + '\n';
 	}
 
 	myFile.close();
 	mCode = fileText;
+
+	if(mCode == "") Log::Error(LogType::Video, "Error - " + _fileName + " has not been read or is empty!");
+
 
 	switch (mType)
 	{

@@ -2,7 +2,7 @@
 #include "Log.h"
 #include "Game.h"
 
-Vector2 Window::mWindowSize{};
+Vector2 Window::mWindowSize{800, 800};
 
 Window::Window(Uint16 _u16Width, Uint16 _u16Height, std::string _sName):
 	pSdlWindow(nullptr), mWindowName(_sName)

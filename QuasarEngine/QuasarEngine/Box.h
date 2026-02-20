@@ -2,7 +2,6 @@
 #define BOX_H
 
 #include "Actor.h"
-#include "CommonLib.h"
 
 class Box : public Actor
 {
@@ -15,7 +14,7 @@ public:
 	~Box();
 
 	void Start()					override;
-	void Update(float deltaTime)	override;
+	void Update(float _deltaTime)	override;
 	void Destroy()					override;
 };
 

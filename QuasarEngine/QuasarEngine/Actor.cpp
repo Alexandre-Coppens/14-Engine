@@ -4,21 +4,24 @@
 #include "Component.h"
 #include "Scene.h"
 
-Actor::Actor() :
-	mState(ActorState::Active), mTransform2D(Transform2D()), pScene(Scene::sActiveScene)
+Actor::Actor():
+	pScene(Scene::ActiveScene),
+	mState(ActorState::Active),
+	mTransform2D(Transform2D()),
+	mTransform3D(Transform3D())
 {
 }
 
 Actor::~Actor()
 {
-	Destroy();
+	Actor::Destroy();
 }
 
 void Actor::Start()
 {
 }
 
-void Actor::Update(float _deltaTime)
+void Actor::Update(const float _deltaTime)
 {
 	for (const auto c : mComponentList)
 	{
@@ -39,7 +42,7 @@ void Actor::Destroy()
 
 void Actor::AddComponent(Component* _c)
 {
-	int componentUpdateOrder = _c->getUpdateOrder();
+	const int componentUpdateOrder = _c->getUpdateOrder();
 	std::vector<Component*>::iterator it;
 	for (it = mComponentList.begin(); it != mComponentList.end(); it++)
 	{

@@ -5,7 +5,7 @@
 #include "Actor.h"
 #include "Texture.h"
 #include "cSprite2D.h"
-
+#include "Rectangle.h"
 
 RendererSdl::RendererSdl() :
 	pSDLRenderer(nullptr)
@@ -54,20 +54,20 @@ void RendererSdl::DrawSprites()
 	if (mSpriteList.empty()) return;
 	for (Sprite2D* sprite : mSpriteList)
 	{
-		sprite->Draw(*this, DebugMode::DRAWCOLLISIONS);
+		sprite->Draw(*this, DebugMode::DRAW_COLLISIONS);
 	}
 }
 
-void RendererSdl::DrawSprite(Actor& _pActor, Texture* _pTex, Rectangle _sourceRect, Vector2 _origin, Flip _flip) const
+void RendererSdl::DrawSprite(Actor& _pActor, const Texture* _pTex, const Rectangle& _sourceRect, const Vector2 _origin, Flip _flip) const
 {
 	SDL_Rect destinationRect;
-	Transform2D transform = *_pActor.getTransform2D();
+	const Transform2D transform = *_pActor.getTransform2D();
 	destinationRect.w = static_cast<int>(transform.getSize().x * transform.getScale().x);
 	destinationRect.h = static_cast<int>(transform.getSize().y * transform.getScale().y);
 	destinationRect.x = static_cast<int>(transform.getLocation().x - (transform.getSize().x * _origin.x));
 	destinationRect.y = static_cast<int>(transform.getLocation().y - (transform.getSize().y * _origin.y));
 
-	SDL_Rect* sourceSDL = nullptr;
+	const SDL_Rect* sourceSDL;
 	if (Equal(_sourceRect.size, Vector2Zero()))
 	{
 		sourceSDL = new SDL_Rect{
@@ -92,34 +92,34 @@ void RendererSdl::DrawSprite(Actor& _pActor, Texture* _pTex, Rectangle _sourceRe
 		&destinationRect,
 		-ToDeg(transform.getRotation()),
 		nullptr,
-		(SDL_RendererFlip)_flip);
+		static_cast<SDL_RendererFlip>(_flip));
 
 	delete sourceSDL;
 }
 
-void RendererSdl::AddSprite(Sprite2D* pSprite)
+void RendererSdl::AddSprite(Sprite2D* _pSprite)
 {
-	int spriteDrawOrder = pSprite->getDrawOrder();
+	int spriteDrawOrder = _pSprite->getDrawOrder();
 	std::vector<Sprite2D*>::iterator s2D;
 	for (s2D = mSpriteList.begin(); s2D != mSpriteList.end(); s2D++)
 	{
 		if (spriteDrawOrder < (*s2D)->getDrawOrder()) break;
 	}
-	mSpriteList.insert(s2D, pSprite);
+	mSpriteList.insert(s2D, _pSprite);
 }
 
-void RendererSdl::RemoveSprite(Sprite2D* pSprite)
+void RendererSdl::RemoveSprite(const Sprite2D* _pSprite)
 {
 	std::vector<Sprite2D*>::iterator s2D;
-	s2D = std::find(mSpriteList.begin(), mSpriteList.end(), pSprite);
+	s2D = std::find(mSpriteList.begin(), mSpriteList.end(), _pSprite);
 	if (s2D == mSpriteList.end()) return;
 	mSpriteList.erase(s2D);
 }
 
-void RendererSdl::DrawDebugBox(Rectangle _rect, Vector2 _origin)
+void RendererSdl::DrawDebugBox(const Rectangle& _rect, const Vector2 _origin) const
 {
 	SDL_SetRenderDrawColor(pSDLRenderer, 0, 255, 0, 255);
-	SDL_Rect* sourceSDL = new SDL_Rect{
+	const SDL_Rect* sourceSDL = new SDL_Rect{
 			Round(_rect.position.x - (_rect.size.x * _origin.x)),
 			Round(_rect.position.y - (_rect.size.y * _origin.y)),
 			Round(_rect.size.x),

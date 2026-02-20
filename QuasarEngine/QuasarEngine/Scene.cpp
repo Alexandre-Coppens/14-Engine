@@ -1,24 +1,23 @@
 #include "Scene.h"
 
-#include "RendererSdl.h"
 #include "Actor.h"
 #include "Assets.h"
 #include "Log.h"
 
-Scene* Scene::sActiveScene = nullptr;
+Scene* Scene::ActiveScene = nullptr;
 
 Scene::Scene(std::string _name):
-	mName(_name), pGame(nullptr)
+	mName(std::move(_name)),
+	pRenderer(nullptr),
+	pGame(nullptr)
 {
 }
 
-Scene::~Scene()
-{
-}
+Scene::~Scene() {}
 
 void Scene::Start()
 {
-	sActiveScene = this;
+	ActiveScene = this;
 	Log::Info("GAME::Loading Scene: '" + mName + "'.");
 }
 
@@ -34,12 +33,12 @@ void Scene::EarlyUpdate()
 	mAddActorList.clear();
 }
 
-void Scene::Update(float deltaTime)
+void Scene::Update(const float _deltaTime)
 {
 	for (Actor* actor : mActorList)
 	{
-		if (mActorList.size() == 0) return;
-		actor->Update(deltaTime);
+		if (mActorList.empty()) return;
+		actor->Update(_deltaTime);
 	}
 }
 

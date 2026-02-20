@@ -23,6 +23,8 @@ using namespace std;
 #define DBG_NEW new
 #endif
 
+//TODO Go around all the code to try to remove all the unused includes
+
 int main(int argc, char* argv[])
 {
 	Scene_Pong pong = Scene_Pong("Pong Scene");

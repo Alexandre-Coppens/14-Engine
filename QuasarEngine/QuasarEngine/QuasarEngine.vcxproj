@@ -157,9 +157,9 @@
     <ClCompile Include="RendererSdl.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Scene_GameOver.cpp" />
-    <ClCompile Include="Scene_Pong.cpp" />
     <ClCompile Include="Scene_Pong.h" />
     <ClCompile Include="Scene_Test.cpp" />
+    <ClCompile Include="Scene_Pong.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
     <ClCompile Include="Texture.cpp" />
@@ -203,10 +203,14 @@
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Ressources\Shaders\Texture.frag" />
-    <None Include="Ressources\Shaders\Texture.vert" />
-    <None Include="Transform.frag" />
-    <None Include="Transform.vert" />
+    <None Include="Resources\Shaders\BasicModel.frag" />
+    <None Include="Resources\Shaders\BasicModel.vert" />
+    <None Include="Resources\Shaders\Texture.frag" />
+    <None Include="Resources\Shaders\Texture.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Shaders\Transform.frag" />
+    <Content Include="Resources\Shaders\Transform.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

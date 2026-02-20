@@ -1,7 +1,6 @@
 #ifndef ACTOR_H
 #define ACTOR_H
 
-#include <map>
 #include <string>
 #include <vector>
 
@@ -15,9 +14,19 @@ enum class ActorState
 	Destroyed
 };
 
+inline const char* ToString(const ActorState _e)
+{
+	switch (_e)
+	{
+	case ActorState::Active: return "Active";
+	case ActorState::Paused: return "Paused";
+	case ActorState::Destroyed: return "Destroyed";
+	default: return "unknown";
+	}
+}
+
 class Scene;
 class Component;
-
 class Actor
 {
 protected:
@@ -34,7 +43,7 @@ public:
 	ActorState	 getState()		const	{ return mState;  }
 	Transform2D* getTransform2D()			{ return &mTransform2D;  }
 	Transform3D* getTransform3D()			{ return &mTransform3D;  }
-	Matrix4Row   getWorldTransform() { return mTransform3D.getWorldTransform(); }
+	Matrix4Row   getWorldTransform() const  { return mTransform3D.getWorldTransform(); }
 	
 	template<typename T>
 	T* GetComponent() {
@@ -58,11 +67,11 @@ public:
 		return list;
 	}
 
-	void SetActive(bool _b) { if (_b) mState = ActorState::Active; else mState = ActorState::Paused; }
+	void SetActive(const bool _b) { if (_b) mState = ActorState::Active; else mState = ActorState::Paused; }
 
 public:
 	Actor();
-	~Actor();
+	virtual ~Actor();
 
 	virtual	void	Start();
 	virtual	void	Update(float _deltaTime);

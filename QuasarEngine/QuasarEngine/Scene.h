@@ -3,19 +3,14 @@
 
 #include <string>
 #include <vector>
-#include <map>
 
 #include "IRenderer.h"
 #include "RendererGl.h"
 #include "RendererSdl.h"
 #include "Log.h"
 
-class IRenderer;
-class RendererGl;
-class RendererSdl;
 class Actor;
 class Game;
-
 class Scene
 {
 private:
@@ -29,11 +24,11 @@ protected:
 	std::vector<Actor*> mDestroyActorList;
 
 public:
-	static Scene* sActiveScene;
+	static Scene* ActiveScene;
 
 	IRenderer* getRenderer()	const	{ return pRenderer; }
-	std::string  getSceneName()const	{ return mName; }
-	Game*	getGame()						const	{ return pGame; }
+	std::string  getSceneName() const	{ return mName; }
+	Game* getGame()				const	{ return pGame; }
 
 	RendererSdl* getRendererSdl()	const {
 		RendererSdl* ret = dynamic_cast<RendererSdl*>(pRenderer);
@@ -60,7 +55,7 @@ private:
 
 public:
 	Scene(std::string _name = "Scene");
-	~Scene();
+	virtual ~Scene();
 
 	virtual void Start();
 	virtual void EarlyUpdate();

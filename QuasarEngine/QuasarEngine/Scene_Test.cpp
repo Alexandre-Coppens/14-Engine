@@ -9,7 +9,7 @@
 #include "BoxGl.h"
 
 Scene_Test::Scene_Test(std::string _name):
-	Scene(_name)
+	Scene(std::move(_name))
 {
 }
 
@@ -20,8 +20,8 @@ Scene_Test::~Scene_Test()
 void Scene_Test::Start()
 {
 	Scene::Start();
-	mVertex = Shader(0, "Transform.vert", ShaderType::VERTEX);
-	mFragment = Shader(0, "Transform.frag", ShaderType::FRAGMENT);
+	mVertex = Shader(0, "Texture.vert", ShaderType::VERTEX);
+	mFragment = Shader(0, "Texture.frag", ShaderType::FRAGMENT);
 
 	RendererGl* renderer = dynamic_cast<RendererGl*>(pRenderer);
 	if (renderer == nullptr)
@@ -33,7 +33,7 @@ void Scene_Test::Start()
 	renderer->setShaderProgram(&mProgram);
 	mProgram.Use();
 
-	Assets::LoadTexture(*renderer, "Ressources/Block.png", "Block");
+	Assets::LoadTexture(*renderer, "Resources/Block.png", "Block");
 
 	Actor* player = AddActor(new BoxGl());
 }

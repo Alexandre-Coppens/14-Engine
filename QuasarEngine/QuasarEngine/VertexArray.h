@@ -1,4 +1,5 @@
-#pragma once
+#ifndef VERTEX_ARRAY_H
+#define VERTEX_ARRAY_H
 
 constexpr float vertices[] = {
 -0.5f, 0.5f, 0.0f,            0.0f, 0.0f,     //top left
@@ -15,20 +16,22 @@ constexpr unsigned int indices[] = {
 class VertexArray
 {
 private:
-	unsigned int mVerticeCount;
+	unsigned int mVerticesCount;
 	unsigned int mIndexCount;
 	
-	unsigned int mVertexArrayID;
-	unsigned int mVertexBufferID;
-	unsigned int mIndexBufferID;
+	unsigned int mVertexArrayId;
+	unsigned int mVertexBufferId;
+	unsigned int mIndexBufferId;
 
 public:
-	unsigned int GetVerticeCount() const { return mVerticeCount; }
+	unsigned int GetVerticesCount() const { return mVerticesCount; }
 	unsigned int GetIndicesCount() const { return mIndexCount; }
 
 public:
-	VertexArray(const float* _pVertices, unsigned int _verticeCount, const unsigned int* _pIndices, unsigned int _indexCount);
+	VertexArray(const float* _pVertices, unsigned int _verticesCount, const unsigned int* _pIndices, unsigned int _indexCount);
 	~VertexArray();
 
-	void SetActive();
+	void SetActive() const;
 };
+
+#endif

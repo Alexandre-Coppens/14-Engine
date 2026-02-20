@@ -1,19 +1,19 @@
 #pragma once
-#include <SDL_Image.h>
 #include "IRenderer.h"
 
 #include <vector>
 
-class Sprite2D;
 class Actor;
 class Texture;
+class Sprite2D;
+struct Rectangle;
 class RendererSdl : public IRenderer
 {
 private:
 	SDL_Renderer* pSDLRenderer;
 	std::vector<Sprite2D*> mSpriteList = {};
 public:
-	SDL_Renderer* getSdlRenderer() { return pSDLRenderer; }
+	SDL_Renderer* getSdlRenderer() const { return pSDLRenderer; }
 
 private:
 public:
@@ -29,11 +29,11 @@ public:
 	void Close() override;
 
 	void Draw() override;
-	void DrawSprites() override;
-	void DrawSprite(Actor& _pActor, Texture* _pTex, Rectangle _SourceRect, Vector2 _v2Origin, Flip _Flip) const override;
+	void DrawSprites();
+	void DrawSprite(Actor& _pActor, const Texture* _pTex, const Rectangle& _sourceRect, Vector2 _origin, Flip _flip) const ;
 
 	void AddSprite(Sprite2D* _pSprite);
-	void RemoveSprite(Sprite2D* _pSprite);
+	void RemoveSprite(const Sprite2D* _pSprite);
 
-	void DrawDebugBox(Rectangle _rect, Vector2 _origin);
+	void DrawDebugBox(const Rectangle& _rect, Vector2 _origin) const;
 };

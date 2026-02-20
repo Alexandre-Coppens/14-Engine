@@ -1,12 +1,14 @@
 #include "Texture.h"
-#include "Log.h"
-#include "Scene.h"
+#include "glew.h"
 
+#include "Log.h"
 #include "Time.h"
 
 #include "IRenderer.h"
 #include "RendererSdl.h"
 #include "RendererGl.h"
+
+#include "Scene.h"
 
 Texture::Texture()
 {

@@ -1,10 +1,16 @@
 #include "RendererGl.h"
+
+#include <SDL_image.h>
 #include "Window.h"
 #include "glew.h"
 #include "Log.h"
-#include "cModel.h"
 #include "Assets.h"
-#include <SDL_image.h>
+
+#include "VertexArray.h"
+#include "ShaderProgram.h"
+
+#include "cModel.h"
+#include "cSprite2D.h"
 
 RendererGl::RendererGl():
 	pWindow(nullptr), 
@@ -12,15 +18,12 @@ RendererGl::RendererGl():
 	mContext(nullptr), 
 	pSpriteShaderProgram(nullptr),
 	mSpriteViewProj(Mat4RowCreateSimpleViewProj(Window::GetSize().x, Window::GetSize().y)),
-	continue here
+	mView(Mat4RowCreateLookAt(Vector3(0, 0, 5), Vector3UnitX(), Vector3UnitZ())),
+	mProj(Mat4RowCreatePerspectiveFOV(70.0f, Window::GetSize().x, Window::GetSize().y, 0.01f, 10000.0f))
 {
-
 }
 
-RendererGl::~RendererGl()
-{
-	//Close();
-}
+RendererGl::~RendererGl() = default;
 
 bool RendererGl::Initialize(Window& _rWindow)
 {
@@ -51,37 +54,65 @@ bool RendererGl::Initialize(Window& _rWindow)
 		Log::Error(LogType::Video, "Failed to initialize SDL_Image");
 	}
 	pSpriteVao = new VertexArray(vertices, 4, indices, 6);
-	mView = Mat4RowCreateSimpleViewProj(800, 800);
 	return true;
 }
 
 void RendererGl::BeginDraw()
 {
 	glClearColor(0.45f, 0.45f, 1.0f, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT);
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-	pSpriteVao->SetActive();
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
 void RendererGl::Draw()
 {
 	DrawModels();
+	DrawSprites();
 }
 
 void RendererGl::DrawModels()
 {
 	if (mModelList.empty()) return;
+
+	glEnable(GL_DEPTH_TEST);
+	glDisable(GL_BLEND);
+	
 	for (Model* model : mModelList)
 	{
-		model->Draw(mView);
+		model->Draw(mView * mProj);
 	}
+}
+
+void RendererGl::DrawSprites()
+{
+	if (mSpriteList.empty()) return;
+
+	glDisable(GL_DEPTH_TEST);
+	glEnable(GL_BLEND);
+	glBlendEquationSeparate(GL_FUNC_ADD, GL_FUNC_ADD);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	if (pSpriteShaderProgram != nullptr) pSpriteShaderProgram->Use();
+	pSpriteShaderProgram->SetMatrix4Row("uViewProj", mSpriteViewProj);
+	pSpriteVao->SetActive();
+
+	for (Sprite2D* sprite : mSpriteList)
+	{
+		//sprite->Draw(*this, DebugMode::DRAW_COLLISIONS);
+		//TODO: Add a plane object to create ui sprites
+	}
+}
+
+void RendererGl::AddSprite(Sprite2D* _pSprite)
+{
+}
+
+void RendererGl::RemoveSprite(Sprite2D* _pSprite)
+{
 }
 
 void RendererGl::EndDraw()
 {
-	SDL_GL_SwapWindow(pWindow->GetSdlWindow());
+	SDL_GL_SwapWindow(pWindow->GetSdlWindow()); //TODO Fix this breakpoint error
 }
 
 void RendererGl::Close()

@@ -1,6 +1,4 @@
 #pragma once
-#include "Actor.h"
-#include "Rectangle.h"
 #include "Window.h"
 
 enum class Flip
@@ -19,7 +17,7 @@ enum class RendererType
 enum class DebugMode
 {
 	NONE,
-	DRAWCOLLISIONS
+	DRAW_COLLISIONS
 };
 
 class Sprite2D;
@@ -32,10 +30,7 @@ public:
 	virtual bool Initialize(Window& _rWindow) = 0;
 	virtual void BeginDraw() = 0;
 	virtual void Draw() = 0;
-	virtual void DrawSprites() = 0;
 	virtual void EndDraw() = 0;
 	virtual void Close() = 0;
 	virtual RendererType getType() = 0;
-
-	virtual void DrawSprite(Actor& _pActor, Texture* _pTex, Rectangle _sourceRect, Vector2 _origin, Flip _flip = Flip::None) const = 0;
 };

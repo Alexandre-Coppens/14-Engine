@@ -1,18 +1,18 @@
 #include "VertexArray.h"
 #include <glew.h>
 
-VertexArray::VertexArray(const float* _pVertices, unsigned int _verticeCount, const unsigned int* _pIndices, unsigned int _indexCount) :
-	mVerticeCount(_verticeCount), mIndexCount(_indexCount), mVertexArrayID(0), mVertexBufferID(0), mIndexBufferID(0)
+VertexArray::VertexArray(const float* _pVertices, const unsigned int _verticesCount, const unsigned int* _pIndices, unsigned int _indexCount) :
+	mVerticesCount(_verticesCount), mIndexCount(_indexCount), mVertexArrayId(0), mVertexBufferId(0), mIndexBufferId(0)
 {
-	glGenVertexArrays(1, &mVertexArrayID);
-	glBindVertexArray(mVertexArrayID);
+	glGenVertexArrays(1, &mVertexArrayId);
+	glBindVertexArray(mVertexArrayId);
 
-	glGenBuffers(1, &mVertexBufferID);
-	glBindBuffer(GL_ARRAY_BUFFER, mVertexBufferID);
-	glBufferData(GL_ARRAY_BUFFER, mVerticeCount * 5 * sizeof(float), _pVertices, GL_STATIC_DRAW);
+	glGenBuffers(1, &mVertexBufferId);
+	glBindBuffer(GL_ARRAY_BUFFER, mVertexBufferId);
+	glBufferData(GL_ARRAY_BUFFER, mVerticesCount * 5 * sizeof(float), _pVertices, GL_STATIC_DRAW);
 
-	glGenBuffers(1, &mIndexBufferID);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mIndexBufferID);
+	glGenBuffers(1, &mIndexBufferId);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mIndexBufferId);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, mIndexCount * sizeof(float), _pIndices, GL_STATIC_DRAW);
 
 	glEnableVertexAttribArray(0);
@@ -23,13 +23,13 @@ VertexArray::VertexArray(const float* _pVertices, unsigned int _verticeCount, co
 
 VertexArray::~VertexArray()
 {
-	glDeleteBuffers(1, &mVertexBufferID);
-	glDeleteBuffers(1, &mIndexBufferID);
-	glDeleteBuffers(1, &mVertexArrayID);
+	glDeleteBuffers(1, &mVertexBufferId);
+	glDeleteBuffers(1, &mIndexBufferId);
+	glDeleteBuffers(1, &mVertexArrayId);
 }
 
-void VertexArray::SetActive()
+void VertexArray::SetActive() const
 {
-	glBindVertexArray(mVertexArrayID);
+	glBindVertexArray(mVertexArrayId);
 }
 
