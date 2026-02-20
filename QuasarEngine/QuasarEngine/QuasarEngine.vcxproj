@@ -136,6 +136,7 @@
     <ClCompile Include="Box.cpp" />
     <ClCompile Include="BoxGl.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CameraManager.cpp" />
     <ClCompile Include="cAnimation2D.cpp" />
     <ClCompile Include="cBoxCollider2D.cpp" />
     <ClCompile Include="cCollider.cpp" />
@@ -175,6 +176,7 @@
     <ClInclude Include="Box.h" />
     <ClInclude Include="BoxGl.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="CameraManager.h" />
     <ClInclude Include="cAnimation2D.h" />
     <ClInclude Include="cBoxCollider2D.h" />
     <ClInclude Include="cCollider.h" />

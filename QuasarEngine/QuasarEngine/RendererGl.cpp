@@ -5,6 +5,7 @@
 #include "glew.h"
 #include "Log.h"
 #include "Assets.h"
+#include "CameraManager.h"
 
 #include "VertexArray.h"
 #include "ShaderProgram.h"
@@ -59,6 +60,7 @@ bool RendererGl::Initialize(Window& _rWindow)
 
 void RendererGl::BeginDraw()
 {
+	CameraManager::UpdateCurrentCamera();
 	glClearColor(0.45f, 0.45f, 1.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }

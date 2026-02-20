@@ -18,7 +18,10 @@ Camera::~Camera()
 
 void Camera::Update(const float _deltaTime)
 {
-    Component::Update(_deltaTime);
+}
+
+void Camera::UpdateCameraView() const
+{
     Vector3 camPosition = pOwner->getTransform3D()->getLocation();
     Vector3 target = pOwner->getTransform3D()->getLocation() + pOwner->getTransform3D()->Forward() * 100.f;
     Vector3 up = Vector3UnitZ(); // TODO: Change this when gravity so up = -gravity

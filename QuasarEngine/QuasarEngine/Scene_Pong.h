@@ -11,7 +11,7 @@ public:
 private:
 public:
 	Scene_Pong(std::string _name);
-	~Scene_Pong();
+	~Scene_Pong() override;
 
 	void Start()					override;
 	void Update(float _deltaTime)	override;

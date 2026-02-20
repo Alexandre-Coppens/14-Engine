@@ -1,7 +1,5 @@
 e:\github\14-engine\quasarengine\quasarengine\debug\vc143.pdb
 e:\github\14-engine\quasarengine\quasarengine\debug\vc143.idb
-e:\github\14-engine\quasarengine\quasarengine\debug\cmodel.obj
-e:\github\14-engine\quasarengine\quasarengine\debug\mesh.obj
 e:\github\14-engine\quasarengine\quasarengine\debug\commonlib.obj
 e:\github\14-engine\quasarengine\quasarengine\debug\main.obj
 e:\github\14-engine\quasarengine\quasarengine\debug\log.obj
@@ -16,6 +14,8 @@ e:\github\14-engine\quasarengine\quasarengine\debug\cgravity2d.obj
 e:\github\14-engine\quasarengine\quasarengine\debug\ccollider.obj
 e:\github\14-engine\quasarengine\quasarengine\debug\cboxcollider2d.obj
 e:\github\14-engine\quasarengine\quasarengine\debug\canimation2d.obj
+e:\github\14-engine\quasarengine\quasarengine\debug\cameramanager.obj
+e:\github\14-engine\quasarengine\quasarengine\debug\camera.obj
 e:\github\14-engine\quasarengine\quasarengine\debug\boxgl.obj
 e:\github\14-engine\quasarengine\quasarengine\debug\box.obj
 e:\github\14-engine\quasarengine\quasarengine\debug\assets.obj
@@ -32,8 +32,11 @@ e:\github\14-engine\quasarengine\quasarengine\debug\scene_gameover.obj
 e:\github\14-engine\quasarengine\quasarengine\debug\scene.obj
 e:\github\14-engine\quasarengine\quasarengine\debug\renderersdl.obj
 e:\github\14-engine\quasarengine\quasarengine\debug\renderergl.obj
+e:\github\14-engine\quasarengine\quasarengine\debug\player.obj
 e:\github\14-engine\quasarengine\quasarengine\debug\paddle.obj
 e:\github\14-engine\quasarengine\quasarengine\debug\mathlib.obj
+e:\github\14-engine\quasarengine\quasarengine\debug\cmodel.obj
+e:\github\14-engine\quasarengine\quasarengine\debug\mesh.obj
 e:\github\14-engine\quasarengine\debug\quasarengine.pdb
 e:\github\14-engine\quasarengine\quasarengine\debug\quasarengine.tlog\cl.command.1.tlog
 e:\github\14-engine\quasarengine\quasarengine\debug\quasarengine.tlog\cl.read.1.tlog

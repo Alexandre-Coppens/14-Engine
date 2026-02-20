@@ -5,12 +5,14 @@
 #include "CommonLib.h"
 #include "VertexArray.h"
 
+class CameraManager;
 class Model;
 class ShaderProgram;
 class RendererGl : public IRenderer
 {
 private:
 	Window* pWindow;
+	CameraManager* pCameraManager;
 	VertexArray* pSpriteVao;
 	ShaderProgram* pSpriteShaderProgram;
 	SDL_GLContext mContext;

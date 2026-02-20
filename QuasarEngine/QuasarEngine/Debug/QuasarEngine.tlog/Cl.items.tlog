@@ -2,6 +2,8 @@ E:\Github\14-Engine\QuasarEngine\QuasarEngine\Actor.cpp;E:\Github\14-Engine\Quas
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\Assets.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Assets.obj
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\Box.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Box.obj
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\BoxGl.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\BoxGl.obj
+E:\Github\14-Engine\QuasarEngine\QuasarEngine\Camera.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Camera.obj
+E:\Github\14-Engine\QuasarEngine\QuasarEngine\CameraManager.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\CameraManager.obj
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\cAnimation2D.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\cAnimation2D.obj
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\cBoxCollider2D.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\cBoxCollider2D.obj
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\cCollider.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\cCollider.obj
@@ -20,6 +22,7 @@ E:\Github\14-Engine\QuasarEngine\QuasarEngine\Mesh.cpp;E:\Github\14-Engine\Quasa
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\cModel.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\cModel.obj
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\MathLib.h;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\MathLib.obj
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\Paddle.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Paddle.obj
+E:\Github\14-Engine\QuasarEngine\QuasarEngine\Player.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Player.obj
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\RendererGl.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\RendererGl.obj
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\RendererSdl.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\RendererSdl.obj
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\Scene.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Scene.obj

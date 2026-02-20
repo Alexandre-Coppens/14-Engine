@@ -27,13 +27,13 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-	Scene_Pong pong = Scene_Pong("Pong Scene");
-	Scene_GameOver gameover = Scene_GameOver("Game Over");
+	//Scene_Pong pong = Scene_Pong("Pong Scene");
+	//Scene_GameOver gameover = Scene_GameOver("Game Over");
 	Scene_Test test = Scene_Test("Scene Test");
 
 	std::vector<Scene*> SceneSdlList;
-	SceneSdlList.push_back(&pong);
-	SceneSdlList.push_back(&gameover);
+	//SceneSdlList.push_back(&pong);
+	//SceneSdlList.push_back(&gameover);
 
 	std::vector<Scene*> SceneGlList;
 	SceneGlList.push_back(&test);
@@ -45,7 +45,7 @@ int main(int argc, char* argv[])
 	}
 	else
 	{
-		game = new Game("Pong", SceneSdlList, RendererType::SDL);
+		//game = new Game("Pong", SceneSdlList, RendererType::SDL);
 	}
 	
 	game->Initialize();
