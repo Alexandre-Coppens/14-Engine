@@ -170,7 +170,7 @@ static inline Vector3 Transform(const Vector3& v, const Quaternion& q)
 	// v + 2.0*cross(q.xyz, cross(q.xyz,v) + q.w*v);
 	Vector3 qv(q.x, q.y, q.z);
 	Vector3 retVal = v;
-	retVal += Cross(qv, Cross(qv, v) + q.w * v) * 2.0f;
+	retVal += 2.0f * Cross(qv, Cross(qv, v) + q.w * v);
 	return retVal;
 }
 

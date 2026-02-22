@@ -420,6 +420,11 @@ inline bool operator==(const Vector4& v1, const Vector4& v2)
 }
 
 //Quaternion
+static inline std::string ToString(Quaternion v)
+{
+	return "( " + std::to_string(v.x) + ", " + std::to_string(v.y) + ", " + std::to_string(v.z) + ", " + std::to_string(v.w) + ")";
+}
+
 static inline Quaternion Multiply(Quaternion q1, Quaternion q2)
 {
 	return Quaternion{ 

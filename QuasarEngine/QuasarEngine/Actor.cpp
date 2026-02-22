@@ -40,7 +40,7 @@ void Actor::Destroy()
 	RemoveComponents();
 }
 
-void Actor::AddComponent(Component* _c)
+Component* Actor::AddComponent(Component* _c)
 {
 	const int componentUpdateOrder = _c->getUpdateOrder();
 	std::vector<Component*>::iterator it;
@@ -50,6 +50,7 @@ void Actor::AddComponent(Component* _c)
 	}
 	mComponentList.insert(it, _c);
 	_c->OnStart();
+	return _c;
 }
 
 void Actor::RemoveComponents()

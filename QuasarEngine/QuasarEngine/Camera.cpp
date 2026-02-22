@@ -34,9 +34,9 @@ void Camera::Update(const float _deltaTime)
 void Camera::UpdateCameraView() const
 {
     Vector3 camPosition = pOwner->getTransform3D()->getLocation() + mLocalTransform->getLocation();
-    Vector3 target = mLocalTransform->getLocation() + mLocalTransform->Forward() * 100.f;
+    Vector3 target = camPosition + mLocalTransform->Forward() * 100.f;
     Vector3 up = Vector3UnitZ(); // TODO: Change this when gravity so up = -gravity
-    Log::Info(ToString(camPosition));
+    Log::Info(ToString(mLocalTransform->Right()));
     Matrix4Row view = Mat4RowCreateLookAt(camPosition, target, up);
     pOwner->getScene()->getRendererGl()->setViewMatrix(view);
 }

@@ -1,6 +1,7 @@
 ﻿#ifndef CAMERA_H
 #define CAMERA_H
 
+#include "CommonLib.h"
 #include "Component.h"
 
 class Transform3D;

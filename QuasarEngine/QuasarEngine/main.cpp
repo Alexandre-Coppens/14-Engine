@@ -2,13 +2,9 @@
 #include <SDL.h>
 #include <glew.h>
 
-#include "CommonLib.h"
-#include "MathLib.h"
-
 #include "Game.h"
 #include "Scene.h"
 
-#include "Scene_Pong.h"
 #include "Scene_GameOver.h"
 #include "Scene_Test.h"
 #include "IRenderer.h"

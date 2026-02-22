@@ -3,7 +3,7 @@
 
 #include "Camera.h"
 #include "Inputs.h"
-#include "Time.h"
+#include "Log.h"
 
 Player3D::Player3D() :
     Actor()
@@ -17,32 +17,42 @@ Player3D::~Player3D()
 
 void Player3D::Start()
 {
-    AddComponent(new Camera(this));
+    pCamera = dynamic_cast<Camera*>(AddComponent(new Camera(this)));
     Actor::Start();
 }
 
 void Player3D::Update(const float _deltaTime)
 {
     Actor::Update(_deltaTime);
+    
     if (Inputs::GetKey(SDLK_z))
     {
-        mTransform3D.addLocationX(2 * _deltaTime);
+        mTransform3D.addLocation(pCamera->getLocalTransform()->Forward() * 10 * _deltaTime);
     }
 
     if (Inputs::GetKey(SDLK_s))
     {
-        mTransform3D.addLocationX(-2 * _deltaTime);
+        mTransform3D.addLocation(pCamera->getLocalTransform()->Forward() * -10 * _deltaTime);
     }
 
     if (Inputs::GetKey(SDLK_q))
     {
-        mTransform3D.addLocationY(-2 * _deltaTime);
+        mTransform3D.addLocation(pCamera->getLocalTransform()->Right() * -10 * _deltaTime);
     }
 
     if (Inputs::GetKey(SDLK_d))
     {
-        mTransform3D.addLocationY(2 * _deltaTime);
+        mTransform3D.addLocation(pCamera->getLocalTransform()->Right() * 10 * _deltaTime);
     }
+    
+    //Rotation is stocked in a vector before being transformed to quat via ZYX order
+    const float pitch = Inputs::GetMouseDeltaY() * 10.0f * _deltaTime;
+    const float yaw = Inputs::GetMouseDeltaX() * 10.0f * _deltaTime;
+    
+    pCamera->getLocalTransform()->addRotationZ(yaw);
+    pCamera->getLocalTransform()->addRotationY(pitch);
+    pCamera->getLocalTransform()->clampRotationY(-89.0f, 89.0f);
+    pCamera->getLocalTransform()->computeRotation();
 }
 
 void Player3D::Destroy()
