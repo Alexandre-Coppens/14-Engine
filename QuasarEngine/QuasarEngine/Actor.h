@@ -77,7 +77,7 @@ public:
 	virtual	void	Update(float _deltaTime);
 	virtual	void	Destroy();
 
-	virtual void AddComponent(Component* _c);
+	virtual Component* AddComponent(Component* _c);
 	void RemoveComponents();
 };
 

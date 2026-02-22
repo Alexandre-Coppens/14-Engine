@@ -7,6 +7,7 @@
 #include "RendererGl.h"
 #include "Log.h"
 #include "BoxGl.h"
+#include "Player3D.h"
 
 Scene_Test::Scene_Test(std::string _name):
 	Scene(std::move(_name))
@@ -35,7 +36,8 @@ void Scene_Test::Start()
 
 	Assets::LoadTexture(*renderer, "Resources/Block.png", "Block");
 
-	Actor* player = AddActor(new BoxGl());
+	Actor* box = AddActor(new BoxGl());
+	Actor* player = AddActor(new Player3D());
 }
 
 void Scene_Test::Update(float _deltaTime)

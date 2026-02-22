@@ -79,7 +79,7 @@ void Collider::CheckCollisions()
     }
     else
     {
-        mCollisionState == CollisionState::None;
+        mCollisionState = CollisionState::None;
     }
 }
 

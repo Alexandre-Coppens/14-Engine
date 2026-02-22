@@ -14,9 +14,9 @@ unsigned int Time::ComputeDeltaTime()
     u16FrameStart = SDL_GetTicks();
     unsigned int dt = u16FrameStart - u16LastFrame;
     u16LastFrame = u16FrameStart;
-    currentFrameTime = u16FrameStart;
+    currentFrameTime = static_cast<float>(u16FrameStart);
     dt = std::min(dt, MAX_DT);
-    deltaTime = dt / 1000.0f;
+    deltaTime = static_cast<float>(dt) / 1000.0f;
     return dt;
 }
 

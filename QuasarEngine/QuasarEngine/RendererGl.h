@@ -5,12 +5,14 @@
 #include "CommonLib.h"
 #include "VertexArray.h"
 
+class CameraManager;
 class Model;
 class ShaderProgram;
 class RendererGl : public IRenderer
 {
 private:
 	Window* pWindow;
+	CameraManager* pCameraManager;
 	VertexArray* pSpriteVao;
 	ShaderProgram* pSpriteShaderProgram;
 	SDL_GLContext mContext;
@@ -21,6 +23,7 @@ private:
 	Matrix4Row mSpriteViewProj = Matrix4Row::Mat4RowIdentity();
 
 public:
+	void setViewMatrix(const Matrix4Row _view) {mView = _view;}
 	void setShaderProgram(ShaderProgram* _pShaderProgram) { pSpriteShaderProgram = _pShaderProgram; }
 
 public:

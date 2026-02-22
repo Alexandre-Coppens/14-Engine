@@ -7,11 +7,15 @@ std::map<int, bool> Inputs::mKeyDown ;
 std::map<int, bool> Inputs::mKeyHold;
 std::map<int, bool> Inputs::mKeyUp;
 bool Inputs::mEventQuit = false;
+int Inputs::mMouseDeltaX = 0;
+int Inputs::mMouseDeltaY = 0;
 
 void Inputs::ComputeInputs()
 {
 	FlushLateInputs();
-
+	SDL_SetRelativeMouseMode(SDL_TRUE);
+	SDL_GetRelativeMouseState(&mMouseDeltaX, &mMouseDeltaY);
+	
 	SDL_Event event;
 	while (SDL_PollEvent(&event))
 	{
@@ -27,13 +31,15 @@ void Inputs::ComputeInputs()
 	}
 }
 
-void Inputs::SortInput(SDL_Event& event)
+void Inputs::SortInput(const SDL_Event& _event)
 {
-	if (event.type != SDL_KEYDOWN && event.type != SDL_KEYUP) return;
+	if (_event.type != SDL_KEYDOWN && _event.type != SDL_KEYUP) return;
 
-	int key = event.key.keysym.sym;
+	int key = _event.key.keysym.sym;
 
-	switch (event.type)
+	if (key == SDLK_ESCAPE) mEventQuit = true;
+	
+	switch (_event.type)
 	{
 	case SDL_KEYDOWN:
 		if (mKeyTime[key] == 0)
