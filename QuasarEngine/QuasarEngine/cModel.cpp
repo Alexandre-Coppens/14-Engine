@@ -22,14 +22,27 @@ Model::~Model()
 	Scene::ActiveScene->getRendererGl()->RemoveModel(this, Assets::GetShader(mShader));
 }
 
-void Model::Draw()
+void Model::Draw(int _option)
 {
 	if (mMesh)
 	{
 		const Matrix4Row wt = pOwner->getWorldTransform();
 		Assets::GetShader(mShader)->SetMatrix4Row("uWorldTransform", wt);
-		const Texture* t = mMesh->getTexture(static_cast<Uint16>(mTextureIndex));
-		if (t) t->SetActive();
+		Texture* t;
+		if (_option & DrawOption::NONE)
+		{
+			t = mMesh->getTexture(static_cast<Uint16>(mTextureIndex));
+			if (t) t->SetActive();
+		}
+		if (_option & DrawOption::NOSHADER)
+		{
+			t = Assets::GetTexture("NULL");
+			if (t) t->SetActive();
+		}
+		if (_option & DrawOption::DEBUG)
+		{
+			//TODO: Implement the debug draw box ON TOP of the mesh
+		}
 		mMesh->getVertexArray()->SetActive();
 		glDrawElements(GL_TRIANGLES, mMesh->getVertexArray()->GetIndicesCount(), GL_UNSIGNED_INT, nullptr);
 	}

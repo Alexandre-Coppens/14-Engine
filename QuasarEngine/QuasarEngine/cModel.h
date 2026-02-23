@@ -4,6 +4,13 @@
 #include "Component.h"
 #include "CommonLib.h"
 
+enum DrawOption
+{
+	NONE = 1,
+	NOSHADER = 2,
+	DEBUG = 4
+};
+
 class ShaderProgram;
 class Mesh;
 class Model : public Component
@@ -25,7 +32,7 @@ public:
 	~Model() override;
 
 	void Update(float _deltaTime) override {}
-	virtual void Draw();
+	virtual void Draw(int _option);
 
 	void SetShader(const std::string _shader);
 };

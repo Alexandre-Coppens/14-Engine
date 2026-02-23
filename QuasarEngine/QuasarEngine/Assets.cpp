@@ -83,7 +83,8 @@ ShaderProgram* Assets::LoadShader(RendererGl* pRendererGl, const std::string _ve
 
 ShaderProgram* Assets::GetShader(const std::string _name)
 {
-	return mShaderProgramList[_name];
+	if (mShaderProgramList.find(_name) != mShaderProgramList.end()) return mShaderProgramList[_name];
+	return mShaderProgramList["NULL"];
 }
 
 void Assets::Clear()

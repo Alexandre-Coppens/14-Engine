@@ -55,6 +55,11 @@ bool RendererGl::Initialize(Window& _rWindow)
 		Log::Error(LogType::Video, "Failed to initialize SDL_Image");
 	}
 	pSpriteVao = new VertexArray(vertices, 4, indices, 6);
+
+	//Load the NULL Shader
+	Assets::LoadShader(this, "Resources/NULL.vert", "Resources/NULL.frag", "NULL");
+	Assets::LoadTexture(*dynamic_cast<IRenderer*>(this), "Resources/NULL.png", "NULL");
+	
 	return true;
 }
 
@@ -78,14 +83,15 @@ void RendererGl::DrawModels() const
 
 	glEnable(GL_DEPTH_TEST);
 	glDisable(GL_BLEND);
-
+	
 	for (auto& shader : mModelDrawOrder)
 	{
+		DrawOption argument = (shader.first == Assets::GetShader("NULL") ? DrawOption::NOSHADER : DrawOption::NONE);
 		shader.first->Use();
 		shader.first->SetMatrix4Row("uViewProj", mView * mProj);
 		for (Model* model : shader.second)
 		{
-			model->Draw();
+			model->Draw(argument | DrawOption::DEBUG);
 		}
 	}
 }

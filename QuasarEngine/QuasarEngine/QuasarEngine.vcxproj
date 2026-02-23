@@ -211,6 +211,8 @@
   <ItemGroup>
     <None Include="Resources\Shaders\BasicModel.frag" />
     <None Include="Resources\Shaders\BasicModel.vert" />
+    <None Include="Resources\Shaders\NULL.frag" />
+    <None Include="Resources\Shaders\NULL.vert" />
     <None Include="Resources\Shaders\Texture.frag" />
     <None Include="Resources\Shaders\Texture.vert" />
   </ItemGroup>
