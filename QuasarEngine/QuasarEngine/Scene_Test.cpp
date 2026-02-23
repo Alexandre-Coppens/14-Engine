@@ -21,21 +21,20 @@ Scene_Test::~Scene_Test()
 void Scene_Test::Start()
 {
 	Scene::Start();
-	mVertex = Shader(0, "Texture.vert", ShaderType::VERTEX);
-	mFragment = Shader(0, "Texture.frag", ShaderType::FRAGMENT);
-
 	RendererGl* renderer = dynamic_cast<RendererGl*>(pRenderer);
 	if (renderer == nullptr)
 	{
 		Log::Error(LogType::Video, "Renderer not of type OPENGL");
 		return;
 	}
-	mProgram.Compose(std::vector<Shader*>{&mVertex, & mFragment});
-	renderer->setShaderProgram(&mProgram);
-	mProgram.Use();
 
+	//Load Shaders
+	Assets::LoadShader(renderer, "Resources/BasicModel.vert", "Resources/BasicModel.frag", "BasicModel");
+
+	//Load Textures
 	Assets::LoadTexture(*renderer, "Resources/Block.png", "Block");
 
+	//Load Actors
 	Actor* box = AddActor(new BoxGl());
 	Actor* player = AddActor(new Player3D());
 }

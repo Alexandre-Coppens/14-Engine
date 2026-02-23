@@ -64,8 +64,11 @@ void Shader::Load(std::string _fileName, ShaderType _shaderType)
 	const char* source = mCode.c_str();
 	glShaderSource(mID, 1, &source, NULL);
 	glCompileShader(mID);
-
-	ValidateCompilation(mID);
+	
+	if (ValidateCompilation(mID))
+	{
+		Log::Info("Shader - " + _fileName + " successfully loaded with ID: " + std::to_string(mID) );
+	}
 }
 
 bool Shader::ValidateCompilation(int _ID)

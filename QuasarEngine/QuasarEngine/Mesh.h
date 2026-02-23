@@ -11,9 +11,7 @@ class Mesh
 {
 private:
 	VertexArray* pVao;
-	Shader mVertexShader;
-	Shader mFragmentShader;
-	ShaderProgram mShaderProgram;
+	
 	std::vector<Texture*> pTextures;
 
 	uint16_t mVerticesCount;
@@ -56,10 +54,7 @@ private:
 
 public:
 	VertexArray* getVertexArray()	  const { return pVao; }
-	ShaderProgram* getShaderProgram()	    { return &mShaderProgram; }
 	Texture* getTexture(const uint16_t _i)  const { return pTextures[_i]; }
-
-	void setShader(const Shader& _vert, const Shader& _frag) { mVertexShader = _vert; mFragmentShader = _frag; }
 
 private:
 public:

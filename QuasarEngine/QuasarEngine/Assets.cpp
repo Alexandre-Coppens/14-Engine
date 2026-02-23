@@ -2,10 +2,16 @@
 #include <sstream>
 
 #include "IRenderer.h"
+#include "RendererGl.h"
 
 #include "Log.h"
+#include "Shader.h"
+#include "ShaderProgram.h"
 
 std::map<std::string, Texture*> Assets::mTextureList = {};
+std::map<std::string, Shader*> Assets::mShaderList = {};
+std::map<std::string, ShaderProgram*> Assets::mShaderProgramList = {};
+std::map<ShaderProgram*, std::vector<Model*>> Assets::mDrawOrder = {};
 
 Texture* Assets::LoadTexture(IRenderer& _pRenderer, const std::string& _pFileName, const std::string& _pName)
 {
@@ -45,6 +51,41 @@ std::vector<Texture*> Assets::GetTextures(const std::string& _pName)
 	return tList;
 }
 
+ShaderProgram* Assets::LoadShader(RendererGl* pRendererGl, const std::string _vertexFile, const std::string _fragmentFile,const std::string _name)
+{
+	ShaderProgram* shader = new ShaderProgram();
+	Shader* mTempVertex = nullptr;
+	Shader* mTempFragment = nullptr;
+
+	if (mShaderList.find(_vertexFile) != mShaderList.end()) mTempVertex = mShaderList[_vertexFile];
+	else
+	{
+		mTempVertex = new Shader();
+		mTempVertex->Load("BasicModel.vert", ShaderType::VERTEX);
+		mShaderList[_vertexFile] = std::move(mTempVertex);
+	}
+
+	if (mShaderList.find(_fragmentFile) != mShaderList.end()) mTempFragment = mShaderList[_fragmentFile];
+	else
+	{
+		mTempFragment = new Shader();
+		mTempFragment->Load("BasicModel.frag", ShaderType::FRAGMENT);
+		mShaderList[_fragmentFile] = std::move(mTempFragment);
+	}
+	
+	shader->Compose(std::vector<Shader*>{mShaderList[_vertexFile], mShaderList[_fragmentFile]});
+	mShaderProgramList[_name] = shader;
+	pRendererGl->AddShaderProgram(mShaderProgramList[_name]);
+	Log::Info("ShaderProgram - " + _name + " successfully composed.");
+	
+	return mShaderProgramList[_name];
+}
+
+ShaderProgram* Assets::GetShader(const std::string _name)
+{
+	return mShaderProgramList[_name];
+}
+
 void Assets::Clear()
 {
 	for (const auto& iter : mTextureList)
@@ -52,4 +93,16 @@ void Assets::Clear()
 		iter.second->Unload();
 	}
 	mTextureList.clear();
+
+	for (const auto& iter : mShaderList)
+	{
+		delete(iter.second);
+	}
+	mShaderProgramList.clear();
+	
+	for (const auto& iter : mShaderProgramList)
+	{
+		iter.second->Unload();
+	}
+	mShaderProgramList.clear();
 }
