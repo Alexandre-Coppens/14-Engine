@@ -1,9 +1,15 @@
 #include "ShaderProgram.h"
-#include "Log.h"
 
 ShaderProgram::ShaderProgram()
 {
 	mID = 0;
+	mDrawOptions = 0;
+}
+
+ShaderProgram::ShaderProgram(int _options)
+{
+	mID = 0;
+	mDrawOptions = _options;
 }
 
 void ShaderProgram::Unload() 

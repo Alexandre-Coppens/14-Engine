@@ -29,14 +29,28 @@ void Scene_Test::Start()
 	}
 
 	//Load Shaders
-	Assets::LoadShader(renderer, "Resources/BasicModel.vert", "Resources/BasicModel.frag", "BasicModel");
+	Assets::LoadShader(renderer, "Resources/BasicModel.vert", "Resources/BasicModel.frag", "BasicModel", TEXTURE);
+	Assets::LoadShader(renderer, "Resources/Simple.vert", "Resources/Simple.frag", "Simple", COLOR);
 
 	//Load Textures
 	Assets::LoadTexture(*renderer, "Resources/Block.png", "Block");
 
 	//Load Actors
-	Actor* box = AddActor(new BoxGl());
+	Actor* box1 = AddActor(new BoxGl());
+	Actor* box2 = AddActor(new BoxGl());
+	Actor* box3 = AddActor(new BoxGl());
 	Actor* player = AddActor(new Player3D());
+
+	//Start the new Actors to modify them
+	InitNewActors();
+
+	dynamic_cast<BoxGl*>(box2)->getModel()->SetShader("Simple");
+	dynamic_cast<BoxGl*>(box3)->getModel()->SetShader("");
+
+	box2->getTransform3D()->addLocationX(1.5f);
+	box3->getTransform3D()->addLocationY(3.0f);
+	box3->getTransform3D()->addLocationZ(3.0f);
+	box3->getTransform3D()->setScale(Vector3(2.0f));
 }
 
 void Scene_Test::Update(float _deltaTime)

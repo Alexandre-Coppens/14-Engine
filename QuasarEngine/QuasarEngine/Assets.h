@@ -28,7 +28,7 @@ public:
 	static Texture* GetTexture(const std::string& _pName);
 	static std::vector<Texture*> GetTextures(const std::string& _pName);
 
-	static ShaderProgram* LoadShader(RendererGl* pRendererGl, const std::string _vertexFile, const std::string _fragmentFile, const std::string _name);
+	static ShaderProgram* LoadShader(RendererGl* pRendererGl, const std::string _vertexFile, const std::string _fragmentFile, const std::string _name, int _options);
 	static ShaderProgram* GetShader(const std::string _name);
 	
 	static void Clear();

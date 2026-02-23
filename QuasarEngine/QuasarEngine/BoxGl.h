@@ -9,7 +9,9 @@ class BoxGl : public Actor
 {
 private:
 	Model* mModel;
+	
 public:
+	Model* getModel() const {return mModel;}
 
 private:
 public:

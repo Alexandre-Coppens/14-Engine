@@ -57,7 +57,7 @@ bool RendererGl::Initialize(Window& _rWindow)
 	pSpriteVao = new VertexArray(vertices, 4, indices, 6);
 
 	//Load the NULL Shader
-	Assets::LoadShader(this, "Resources/NULL.vert", "Resources/NULL.frag", "NULL");
+	Assets::LoadShader(this, "Resources/NULL.vert", "Resources/NULL.frag", "NULL", DrawOption::NULL_SHADER);
 	Assets::LoadTexture(*dynamic_cast<IRenderer*>(this), "Resources/NULL.png", "NULL");
 	
 	return true;
@@ -86,12 +86,13 @@ void RendererGl::DrawModels() const
 	
 	for (auto& shader : mModelDrawOrder)
 	{
-		DrawOption argument = (shader.first == Assets::GetShader("NULL") ? DrawOption::NOSHADER : DrawOption::NONE);
+		DrawOption argument = (shader.first == Assets::GetShader("NULL") ? DrawOption::NULL_SHADER : DrawOption::TEXTURE);
+		glBindTexture(GL_TEXTURE_2D, 0);
 		shader.first->Use();
 		shader.first->SetMatrix4Row("uViewProj", mView * mProj);
 		for (Model* model : shader.second)
 		{
-			model->Draw(argument | DrawOption::DEBUG);
+			model->Draw(shader.first->getDrawOptions() | DrawOption::DEBUG);
 		}
 	}
 }

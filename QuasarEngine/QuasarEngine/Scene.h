@@ -67,6 +67,7 @@ public:
 	virtual void UnLoad();
 
 	virtual Actor* AddActor(Actor* _actor);
+	void InitNewActors();
 	virtual void DeleteActor(Actor* _actor);
 };
 

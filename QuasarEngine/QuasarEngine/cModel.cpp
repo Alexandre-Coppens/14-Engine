@@ -29,15 +29,19 @@ void Model::Draw(int _option)
 		const Matrix4Row wt = pOwner->getWorldTransform();
 		Assets::GetShader(mShader)->SetMatrix4Row("uWorldTransform", wt);
 		Texture* t;
-		if (_option & DrawOption::NONE)
+		if (_option & DrawOption::NULL_SHADER)
+		{
+			t = Assets::GetTexture("NULL");
+			if (t) t->SetActive();
+		}
+		if (_option & DrawOption::TEXTURE)
 		{
 			t = mMesh->getTexture(static_cast<Uint16>(mTextureIndex));
 			if (t) t->SetActive();
 		}
-		if (_option & DrawOption::NOSHADER)
+		if (_option & DrawOption::COLOR)
 		{
-			t = Assets::GetTexture("NULL");
-			if (t) t->SetActive();
+			Assets::GetShader(mShader)->SetVector4f("uColor", Vector4(0.5f, 0.25f, 0.5f, 1.0f));
 		}
 		if (_option & DrawOption::DEBUG)
 		{

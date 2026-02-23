@@ -51,9 +51,9 @@ std::vector<Texture*> Assets::GetTextures(const std::string& _pName)
 	return tList;
 }
 
-ShaderProgram* Assets::LoadShader(RendererGl* pRendererGl, const std::string _vertexFile, const std::string _fragmentFile,const std::string _name)
+ShaderProgram* Assets::LoadShader(RendererGl* pRendererGl, const std::string _vertexFile, const std::string _fragmentFile,const std::string _name, int _options)
 {
-	ShaderProgram* shader = new ShaderProgram();
+	ShaderProgram* shader = new ShaderProgram(_options);
 	Shader* mTempVertex = nullptr;
 	Shader* mTempFragment = nullptr;
 

@@ -7,16 +7,27 @@
 #include "CommonLib.h"
 #include "MathLib.h"
 
+enum DrawOption
+{
+	NULL_SHADER = 1,
+	TEXTURE = 2,
+	COLOR = 4,
+	DEBUG = 8
+};
+
 class ShaderProgram
 {
 private:
 	unsigned int mID;
+	int mDrawOptions; //Bitmask of DrawOption
 
 public:
 	unsigned int getID() const { return mID; }
+	unsigned int getDrawOptions() const { return mDrawOptions; }
 
 public:
 	ShaderProgram();
+	ShaderProgram(int _options);
 	~ShaderProgram() = default;
 	void Unload();
 	void Compose(std::vector<Shader*> shaders);
