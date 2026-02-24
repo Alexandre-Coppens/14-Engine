@@ -2,12 +2,14 @@
 #include <SDL.h>
 #include <glew.h>
 
-#include "Game.h"
-#include "Scene.h"
+#include "Engine/Game.h"
+#include "Engine/Scene.h"
 
-#include "Scene_GameOver.h"
-#include "Scene_Test.h"
-#include "IRenderer.h"
+#include "Engine/Render/IRenderer.h"
+
+#include "Game2D/Scenes/Scene_Pong.h"
+#include "Game2D/Scenes/Scene_GameOver.h"
+#include "Game3D/Scenes/Scene_Test.h"
 
 using namespace std;
 
