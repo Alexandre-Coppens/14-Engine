@@ -12,7 +12,6 @@
 Model::Model(Actor* _pOwner, std::string _shader)  :
 	Component(_pOwner), mMesh(nullptr), mTextureIndex(0), mShader(_shader)
 {
-	mMesh = new Mesh();
 	Scene::ActiveScene->getRendererGl()->AddModel(this, Assets::GetShader(mShader));
 }
 
@@ -31,12 +30,13 @@ void Model::Draw(int _option)
 		Texture* t;
 		if (_option & DrawOption::NULL_SHADER)
 		{
-			t = Assets::GetTexture("NULL");
+			t = Assets::GetTexture("NULLSHADER");
 			if (t) t->SetActive();
 		}
-		if (_option & DrawOption::TEXTURE)
+		else if (_option & DrawOption::TEXTURE)
 		{
 			t = mMesh->getTexture(static_cast<Uint16>(mTextureIndex));
+			if (!t) t = Assets::GetTexture("NULLTEXTURE");
 			if (t) t->SetActive();
 		}
 		if (_option & DrawOption::COLOR)
@@ -48,7 +48,7 @@ void Model::Draw(int _option)
 			//TODO: Implement the debug draw box ON TOP of the mesh
 		}
 		mMesh->getVertexArray()->SetActive();
-		glDrawElements(GL_TRIANGLES, mMesh->getVertexArray()->GetIndicesCount(), GL_UNSIGNED_INT, nullptr);
+		glDrawArrays(GL_TRIANGLES, 0, mMesh->getVertexArray()->GetVerticesCount());
 	}
 }
 

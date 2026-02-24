@@ -27,11 +27,16 @@ void Scene_Test::Start()
 		Log::Error(LogType::Video, "Renderer not of type OPENGL");
 		return;
 	}
-
+	
+	//TODO: Auto load assets in folders
+	
 	//Load Shaders
-	Assets::LoadShader(renderer, "Resources/BasicModel.vert", "Resources/BasicModel.frag", "BasicModel", TEXTURE);
-	Assets::LoadShader(renderer, "Resources/Simple.vert", "Resources/Simple.frag", "Simple", COLOR);
+	Assets::LoadShader(renderer, "BasicModel.vert", "BasicModel.frag", "BasicModel", TEXTURE);
+	Assets::LoadShader(renderer, "Simple.vert", "Simple.frag", "Simple", COLOR);
 
+	//LoadModels
+	Assets::LoadMesh("Resources/Models/pin.obj", "Cube");
+	
 	//Load Textures
 	Assets::LoadTexture(*renderer, "Resources/Block.png", "Block");
 
@@ -43,11 +48,11 @@ void Scene_Test::Start()
 
 	//Start the new Actors to modify them
 	InitNewActors();
-
+	
 	dynamic_cast<BoxGl*>(box2)->getModel()->SetShader("Simple");
-	dynamic_cast<BoxGl*>(box3)->getModel()->SetShader("");
+	dynamic_cast<BoxGl*>(box3)->getModel()->SetShader(" ");
 
-	box2->getTransform3D()->addLocationX(1.5f);
+	box2->getTransform3D()->addLocationX(2.5f);
 	box3->getTransform3D()->addLocationY(3.0f);
 	box3->getTransform3D()->addLocationZ(3.0f);
 	box3->getTransform3D()->setScale(Vector3(2.0f));

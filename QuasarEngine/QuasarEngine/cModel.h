@@ -17,7 +17,7 @@ public:
 	Mesh* getMesh() const { return mMesh; }
 	std::string getShaderName() const { return mShader; }
 	
-	virtual void SetMesh(Mesh* _pMesh) { mMesh = _pMesh; }
+	virtual void setMesh(Mesh* _pMesh) { mMesh = _pMesh; }
 	void setTextureIndex(const size_t _pTextureIndex) { mTextureIndex = _pTextureIndex; }
 
 private:

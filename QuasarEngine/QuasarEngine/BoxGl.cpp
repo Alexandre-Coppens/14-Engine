@@ -18,6 +18,7 @@ BoxGl::~BoxGl()
 void BoxGl::Start()
 {
 	mModel = dynamic_cast<Model*>(AddComponent(new Model(this, "BasicModel")));
+	mModel->setMesh(Assets::GetMesh("Cube"));
 	mModel->getMesh()->AddTexture(Assets::GetTexture("Block"));
 	Actor::Start();
 }

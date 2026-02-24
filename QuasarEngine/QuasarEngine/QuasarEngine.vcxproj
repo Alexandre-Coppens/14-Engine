@@ -205,6 +205,7 @@
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="cTransform3D.h" />
+    <ClInclude Include="tiny_obj_loader.h" />
     <ClInclude Include="VertexArray.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
@@ -219,6 +220,11 @@
     <None Include="Resources\Shaders\Texture.vert" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Models\cube.obj" />
+    <Content Include="Resources\Models\pin.obj" />
+    <Content Include="Resources\Models\sphere.obj" />
+    <Content Include="Resources\Shaders\Sprite.frag" />
+    <Content Include="Resources\Shaders\Sprite.vert" />
     <Content Include="Resources\Shaders\Transform.frag" />
     <Content Include="Resources\Shaders\Transform.vert" />
   </ItemGroup>

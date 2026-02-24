@@ -24,6 +24,9 @@ void Player3D::Start()
 void Player3D::Update(const float _deltaTime)
 {
     Actor::Update(_deltaTime);
+
+    Log::Info(std::to_string(1 / _deltaTime));
+    Log::Info(ToString(mTransform3D.getLocation()));
     
     if (Inputs::GetKey(SDLK_z))
     {

@@ -5,12 +5,15 @@
 #include "RendererGl.h"
 
 #include "Log.h"
+#include "Mesh.h"
 #include "Shader.h"
 #include "ShaderProgram.h"
+#include "tiny_obj_loader.h"
 
 std::map<std::string, Texture*> Assets::mTextureList = {};
 std::map<std::string, Shader*> Assets::mShaderList = {};
 std::map<std::string, ShaderProgram*> Assets::mShaderProgramList = {};
+std::map<std::string, Mesh*> Assets::mMeshList = {};
 std::map<ShaderProgram*, std::vector<Model*>> Assets::mDrawOrder = {};
 
 Texture* Assets::LoadTexture(IRenderer& _pRenderer, const std::string& _pFileName, const std::string& _pName)
@@ -61,7 +64,7 @@ ShaderProgram* Assets::LoadShader(RendererGl* pRendererGl, const std::string _ve
 	else
 	{
 		mTempVertex = new Shader();
-		mTempVertex->Load("BasicModel.vert", ShaderType::VERTEX);
+		mTempVertex->Load(_vertexFile, ShaderType::VERTEX);
 		mShaderList[_vertexFile] = std::move(mTempVertex);
 	}
 
@@ -69,7 +72,7 @@ ShaderProgram* Assets::LoadShader(RendererGl* pRendererGl, const std::string _ve
 	else
 	{
 		mTempFragment = new Shader();
-		mTempFragment->Load("BasicModel.frag", ShaderType::FRAGMENT);
+		mTempFragment->Load(_fragmentFile, ShaderType::FRAGMENT);
 		mShaderList[_fragmentFile] = std::move(mTempFragment);
 	}
 	
@@ -85,6 +88,63 @@ ShaderProgram* Assets::GetShader(const std::string _name)
 {
 	if (mShaderProgramList.find(_name) != mShaderProgramList.end()) return mShaderProgramList[_name];
 	return mShaderProgramList["NULL"];
+}
+
+Mesh* Assets::LoadMesh(const std::string _fileName, std::string _name)
+{
+	mMeshList[_name] = LoadMeshFromFile(_fileName);
+	return mMeshList[_name];
+}
+
+Mesh* Assets::LoadMeshFromFile(const std::string& _pFileName)
+{
+	Mesh mesh;
+	tinyobj::attrib_t attributes;
+	std::vector<tinyobj::shape_t> shapes;
+	std::vector<tinyobj::material_t> materials;
+	std::string warning, errors;
+	bool success = LoadObj(&attributes, &shapes, &materials, &warning, &errors, _pFileName.c_str());
+	if (!success)
+	{
+		Log::Error(LogType::Application, "Error::Mesh::" + _pFileName + " does not exist or is not .obj.");
+		return new Mesh();
+	}
+	else
+	{
+		Log::Info("Mesh::" + _pFileName + " successfully loaded.");
+	}
+	std::vector<Vertex> vertices;
+	for (int i = 0; i < shapes.size(); i++)
+	{
+		tinyobj::shape_t& shape = shapes[i];
+		tinyobj::mesh_t &mesh = shape.mesh;
+		for (auto [vertex_index, normal_index, texcoord_index] : mesh.indices)
+		{
+			Vector3 position = Vector3{
+				attributes.vertices[vertex_index * 3],
+				attributes.vertices[vertex_index * 3 + 2],
+				attributes.vertices[vertex_index * 3 + 1]
+			};
+			Vector3 normal = Vector3{
+				attributes.normals[normal_index * 3],
+				attributes.normals[normal_index * 3 + 1],
+				attributes.normals[normal_index * 3 + 2]
+			};
+			Vector2 texCoord = {
+				attributes.texcoords[texcoord_index * 2],
+				-attributes.texcoords[texcoord_index * 2 + 1]
+			};
+			Vertex vertex = Vertex{position, normal, texCoord};
+			vertices.push_back(vertex);
+		}
+	}
+	return new Mesh(vertices);
+}
+
+Mesh* Assets::GetMesh(const std::string _name)
+{
+	if (mMeshList.find(_name) != mMeshList.end()) return mMeshList[_name];
+	return nullptr;
 }
 
 void Assets::Clear()

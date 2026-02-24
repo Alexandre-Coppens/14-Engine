@@ -1,34 +1,42 @@
 #ifndef VERTEX_ARRAY_H
 #define VERTEX_ARRAY_H
+#include "CommonLib.h"
 
-constexpr float vertices[] = {
--0.5f, 0.5f, 0.0f,            0.0f, 0.0f,     //top left
-0.5f, 0.5f, 0.0f,             1.0f, 0.0f,     //top right
-0.5f, -0.5f, 0.0f,            1.0f, 1.0f,     //bottom right
--0.5f, -0.5f, 0.0f,           0.0f, 1.0f };   //bottom left
+constexpr float spriteVertices[] = {
+	//POSITION                      NORMALS                     TEXCOORDS
+	-0.5f, 0.5f, 0.0f,              0.0f, 0.0f, 0.0f,           0.0f, 0.0f,     //top left
+	0.5f, 0.5f, 0.0f,               0.0f, 0.0f, 0.0f,           1.0f, 0.0f,     //top right
+	-0.5f, -0.5f, 0.0f,             0.0f, 0.0f, 0.0f,           0.0f, 1.0f,      //bottom left
+	0.5f, -0.5f, 0.0f,              0.0f, 0.0f, 0.0f,           1.0f, 1.0f,     //bottom right
+ };
 
-constexpr unsigned int indices[] = {
-0, 1, 2,
-2, 3, 0
+struct Vertex
+{
+	Vector3 position;
+	Vector3 normal;
+	Vector2 texCoord;
+	float* ToFloat() {
+		float ret[8] = {
+		position.x, position.y, position.z,
+		normal.x, normal.y, normal.z,
+		texCoord.x, texCoord.y};
+		return ret;
+	};
 };
-
 
 class VertexArray
 {
 private:
 	unsigned int mVerticesCount;
-	unsigned int mIndexCount;
 	
 	unsigned int mVertexArrayId;
 	unsigned int mVertexBufferId;
-	unsigned int mIndexBufferId;
 
 public:
 	unsigned int GetVerticesCount() const { return mVerticesCount; }
-	unsigned int GetIndicesCount() const { return mIndexCount; }
 
 public:
-	VertexArray(const float* _pVertices, unsigned int _verticesCount, const unsigned int* _pIndices, unsigned int _indexCount);
+	VertexArray(const float* _pVertices, unsigned int _verticesCount);
 	~VertexArray();
 
 	void SetActive() const;

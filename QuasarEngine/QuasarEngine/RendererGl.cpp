@@ -54,11 +54,13 @@ bool RendererGl::Initialize(Window& _rWindow)
 	{
 		Log::Error(LogType::Video, "Failed to initialize SDL_Image");
 	}
-	pSpriteVao = new VertexArray(vertices, 4, indices, 6);
+	
+	pSpriteVao = new VertexArray(spriteVertices, 4);
 
 	//Load the NULL Shader
-	Assets::LoadShader(this, "Resources/NULL.vert", "Resources/NULL.frag", "NULL", DrawOption::NULL_SHADER);
-	Assets::LoadTexture(*dynamic_cast<IRenderer*>(this), "Resources/NULL.png", "NULL");
+	Assets::LoadShader(this, "NULL.vert", "NULL.frag", "NULL", DrawOption::NULL_SHADER);
+	Assets::LoadTexture(*dynamic_cast<IRenderer*>(this), "Resources/NullShader.png", "NULLSHADER");
+	Assets::LoadTexture(*dynamic_cast<IRenderer*>(this), "Resources/NullTexture.png", "NULLTEXTURE");
 	
 	return true;
 }
@@ -113,6 +115,7 @@ void RendererGl::DrawSprites()
 	for (Sprite2D* sprite : mSpriteList)
 	{
 		//sprite->Draw(*this, DebugMode::DRAW_COLLISIONS);
+		glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 		//TODO: Add a plane object to create ui sprites
 	}
 }
