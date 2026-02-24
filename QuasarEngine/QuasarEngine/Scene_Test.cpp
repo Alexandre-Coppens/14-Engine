@@ -32,6 +32,7 @@ void Scene_Test::Start()
 	
 	//Load Shaders
 	Assets::LoadShader(renderer, "BasicModel.vert", "BasicModel.frag", "BasicModel", TEXTURE);
+	Assets::LoadShader(renderer, "BasicModel.vert", "Normal.frag", "Normal", TEXTURE);
 	Assets::LoadShader(renderer, "Simple.vert", "Simple.frag", "Simple", COLOR);
 
 	//LoadModels
@@ -49,7 +50,7 @@ void Scene_Test::Start()
 	//Start the new Actors to modify them
 	InitNewActors();
 	
-	dynamic_cast<BoxGl*>(box2)->getModel()->SetShader("Simple");
+	dynamic_cast<BoxGl*>(box2)->getModel()->SetShader("Normal");
 	dynamic_cast<BoxGl*>(box3)->getModel()->SetShader(" ");
 
 	box2->getTransform3D()->addLocationX(2.5f);
