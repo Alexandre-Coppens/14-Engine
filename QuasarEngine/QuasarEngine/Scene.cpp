@@ -24,13 +24,7 @@ void Scene::Start()
 //Update Before Inputs
 void Scene::EarlyUpdate()
 {
-	for(Actor* a : mAddActorList)
-	{
-		a->Start();
-		mActorList.push_back(a);
-		a = nullptr;
-	}
-	mAddActorList.clear();
+	InitNewActors();
 }
 
 void Scene::Update(const float _deltaTime)
@@ -70,6 +64,17 @@ Actor* Scene::AddActor(Actor* actor)
 {
 	mAddActorList.push_back(actor);
 	return actor;
+}
+
+void Scene::InitNewActors()
+{
+	for(Actor* a : mAddActorList)
+	{
+		a->Start();
+		mActorList.push_back(a);
+		a = nullptr;
+	}
+	mAddActorList.clear();
 }
 
 void Scene::DeleteActor(Actor* actor)

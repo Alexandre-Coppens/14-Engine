@@ -11,9 +11,6 @@
 class Scene_Test : public Scene
 {
 private:
-	Shader mVertex;
-	Shader mFragment;
-	ShaderProgram mProgram;
 
 protected:
 

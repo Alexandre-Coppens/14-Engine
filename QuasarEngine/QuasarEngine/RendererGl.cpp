@@ -54,7 +54,14 @@ bool RendererGl::Initialize(Window& _rWindow)
 	{
 		Log::Error(LogType::Video, "Failed to initialize SDL_Image");
 	}
-	pSpriteVao = new VertexArray(vertices, 4, indices, 6);
+	
+	pSpriteVao = new VertexArray(spriteVertices, 4);
+
+	//Load the NULL Shader
+	Assets::LoadShader(this, "NULL.vert", "NULL.frag", "NULL", DrawOption::NULL_SHADER);
+	Assets::LoadTexture(*dynamic_cast<IRenderer*>(this), "Resources/NullShader.png", "NULLSHADER");
+	Assets::LoadTexture(*dynamic_cast<IRenderer*>(this), "Resources/NullTexture.png", "NULLTEXTURE");
+	
 	return true;
 }
 
@@ -71,16 +78,24 @@ void RendererGl::Draw()
 	DrawSprites();
 }
 
-void RendererGl::DrawModels()
+//Draws all the Models via the ShaderLists
+void RendererGl::DrawModels() const
 {
-	if (mModelList.empty()) return;
+	if (mModelDrawOrder.empty()) return;
 
 	glEnable(GL_DEPTH_TEST);
 	glDisable(GL_BLEND);
 	
-	for (Model* model : mModelList)
+	for (auto& shader : mModelDrawOrder)
 	{
-		model->Draw(mView * mProj);
+		DrawOption argument = (shader.first == Assets::GetShader("NULL") ? DrawOption::NULL_SHADER : DrawOption::TEXTURE);
+		glBindTexture(GL_TEXTURE_2D, 0);
+		shader.first->Use();
+		shader.first->SetMatrix4Row("uViewProj", mView * mProj);
+		for (Model* model : shader.second)
+		{
+			model->Draw(shader.first->getDrawOptions() | DrawOption::DEBUG);
+		}
 	}
 }
 
@@ -100,6 +115,7 @@ void RendererGl::DrawSprites()
 	for (Sprite2D* sprite : mSpriteList)
 	{
 		//sprite->Draw(*this, DebugMode::DRAW_COLLISIONS);
+		glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 		//TODO: Add a plane object to create ui sprites
 	}
 }
@@ -124,14 +140,24 @@ void RendererGl::Close()
 	pSpriteVao = nullptr;
 }
 
-void RendererGl::AddModel(Model* _pModel)
+void RendererGl::AddModel(Model* _pModel, ShaderProgram* _pShaderProgram)
 {
-	mModelList.push_back(_pModel);
+	mModelDrawOrder[_pShaderProgram].push_back(_pModel);
 }
 
-void RendererGl::RemoveModel(Model* _pModel)
+void RendererGl::RemoveModel(Model* _pModel, ShaderProgram* _pShaderProgram )
 {
 	std::vector<Model*>::iterator it;
-	it = std::find(mModelList.begin(), mModelList.end(), _pModel);
-	mModelList.erase(it);
+	it = std::find(mModelDrawOrder[_pShaderProgram].begin(), mModelDrawOrder[_pShaderProgram].end(), _pModel);
+	mModelDrawOrder[_pShaderProgram].erase(it);
+}
+
+void RendererGl::AddShaderProgram(ShaderProgram* _pShaderProgram)
+{
+	mModelDrawOrder[_pShaderProgram];
+}
+
+void RendererGl::RemoveShaderProgram(ShaderProgram* _pShaderProgram)
+{
+	//TODO: Create a default shaderProgram for all the models without shaders
 }

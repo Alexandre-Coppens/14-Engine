@@ -205,18 +205,27 @@
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="cTransform3D.h" />
+    <ClInclude Include="tiny_obj_loader.h" />
     <ClInclude Include="VertexArray.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Shaders\BasicModel.frag" />
-    <None Include="Resources\Shaders\BasicModel.vert" />
+    <None Include="Resources\Shaders\NULL.frag" />
+    <None Include="Resources\Shaders\NULL.vert" />
+    <None Include="Resources\Shaders\Simple.frag" />
+    <None Include="Resources\Shaders\Simple.vert" />
     <None Include="Resources\Shaders\Texture.frag" />
     <None Include="Resources\Shaders\Texture.vert" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Shaders\Transform.frag" />
-    <Content Include="Resources\Shaders\Transform.vert" />
+    <Content Include="Resources\Models\cube.obj" />
+    <Content Include="Resources\Models\pin.obj" />
+    <Content Include="Resources\Models\sphere.obj" />
+    <Content Include="Resources\Shaders\Normal.frag" />
+    <Content Include="Resources\Shaders\Sprite.frag" />
+    <Content Include="Resources\Shaders\Sprite.vert" />
+    <Content Include="Resources\Shaders\BasicModel.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

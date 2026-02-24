@@ -22,6 +22,7 @@ struct Vector2
 	float x, y;
 
 	Vector2() : x(0.0f), y(0.0f) {};
+	Vector2(float _f) : x(_f), y(_f) {};
 	Vector2(float _x, float _y) : x(_x), y(_y) {};
 };
 
@@ -30,6 +31,7 @@ struct Vector3
 	float x, y, z;
 
 	Vector3() : x(0.0f), y(0.0f), z(0.0f) {};
+	Vector3(float _f) : x(_f), y(_f), z(_f) {};
 	Vector3(float _x, float _y, float _z) : x(_x), y(_y), z(_z) {};
 };
 
@@ -38,6 +40,7 @@ struct Vector4
 	float x, y, z, w;
 
 	Vector4() : x(0.0f), y(0.0f), z(0.0f), w(0.0f) {};
+	Vector4(float _f) : x(_f), y(_f), z(_f), w(_f) {};
 	Vector4(float _x, float _y, float _z, float _w) : x(_x), y(_y), z(_z), w(_w) {};
 };
 

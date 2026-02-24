@@ -1,4 +1,5 @@
 #pragma once
+#include <map>
 #include <vector>
 
 #include "IRenderer.h"
@@ -17,7 +18,7 @@ private:
 	ShaderProgram* pSpriteShaderProgram;
 	SDL_GLContext mContext;
 	std::vector<Sprite2D*> mSpriteList;
-	std::vector<Model*> mModelList;
+	std::map<ShaderProgram*, std::vector<Model*>> mModelDrawOrder;
 	Matrix4Row mView = Matrix4Row::Mat4RowIdentity();
 	Matrix4Row mProj = Matrix4Row::Mat4RowIdentity();
 	Matrix4Row mSpriteViewProj = Matrix4Row::Mat4RowIdentity();
@@ -39,14 +40,17 @@ public:
 	void Draw() override;
 	void EndDraw() override;
 
-	void DrawModels();
+	void DrawModels() const;
 	void DrawSprites();
 	
 	void AddSprite(Sprite2D* _pSprite);
 	void RemoveSprite(Sprite2D* _pSprite);
 
-	void AddModel(Model* _pModel);
-	void RemoveModel(Model* _pModel);
+	void AddModel(Model* _pModel, ShaderProgram* _pShaderProgram);
+	void RemoveModel(Model* _pModel, ShaderProgram* _pShaderProgram);
+
+	void AddShaderProgram(ShaderProgram* _pShaderProgram);
+	void RemoveShaderProgram(ShaderProgram* _pShaderProgram);
 
 	void Close() override;
 };

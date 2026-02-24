@@ -19,6 +19,7 @@ Actor::~Actor()
 
 void Actor::Start()
 {
+	Log::Info("Actor::" + mName + "::Started");
 }
 
 void Actor::Update(const float _deltaTime)
