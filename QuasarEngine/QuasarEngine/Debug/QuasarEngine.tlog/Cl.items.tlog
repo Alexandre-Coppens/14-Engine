@@ -32,8 +32,10 @@ E:\Github\14-Engine\QuasarEngine\QuasarEngine\Game2D\Actors\Paddle.cpp;E:\Github
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\Game2D\Scenes\Scene_GameOver.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Scene_GameOver.obj
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\Game2D\Scenes\Scene_Pong.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Scene_Pong.obj
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\Game2D\Scenes\Scene_Pong.h;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Scene_Pong.obj
+E:\Github\14-Engine\QuasarEngine\QuasarEngine\Game3D\Actors\Ball.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Ball.obj
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\Game3D\Actors\BowlingAlley.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\BowlingAlley.obj
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\Game3D\Actors\BoxGl.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\BoxGl.obj
+E:\Github\14-Engine\QuasarEngine\QuasarEngine\Game3D\Actors\Pin.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Pin.obj
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\Game3D\Actors\Player3D.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Player3D.obj
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\Game3D\Scenes\Scene_Test.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Scene_Test.obj
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\main.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\main.obj

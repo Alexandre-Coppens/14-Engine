@@ -2817,6 +2817,7 @@
       <AdditionalIncludeDirectories>E:\Github\14-Engine\QuasarEngine\\QuasarEngine\Dependencies\SDL2_image-2.8.2\include;E:\Github\14-Engine\QuasarEngine\\QuasarEngine\Dependencies\glew-2.2.0-win32\glew-2.2.0\include\GL;E:\Github\14-Engine\QuasarEngine\\QuasarEngine\Dependencies\GL\SDL\include;E:\Github\14-Engine\QuasarEngine\\QuasarEngine\Dependencies\include;E:\Github\14-Engine\QuasarEngine\\QuasarEngine</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="Game3D\Actors\Ball.cpp" />
     <ClCompile Include="Game3D\Actors\BowlingAlley.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -2975,6 +2976,7 @@
       <AdditionalIncludeDirectories>E:\Github\14-Engine\QuasarEngine\\QuasarEngine\Dependencies\SDL2_image-2.8.2\include;E:\Github\14-Engine\QuasarEngine\\QuasarEngine\Dependencies\glew-2.2.0-win32\glew-2.2.0\include\GL;E:\Github\14-Engine\QuasarEngine\\QuasarEngine\Dependencies\GL\SDL\include;E:\Github\14-Engine\QuasarEngine\\QuasarEngine\Dependencies\include;E:\Github\14-Engine\QuasarEngine\\QuasarEngine</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="Game3D\Actors\Pin.cpp" />
     <ClCompile Include="Game3D\Actors\Player3D.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -3169,8 +3171,10 @@
     <ClInclude Include="Game2D\Actors\Coin.h" />
     <ClInclude Include="Game2D\Actors\Paddle.h" />
     <ClInclude Include="Game2D\Scenes\Scene_GameOver.h" />
+    <ClInclude Include="Game3D\Actors\Ball.h" />
     <ClInclude Include="Game3D\Actors\BowlingAlley.h" />
     <ClInclude Include="Game3D\Actors\BoxGl.h" />
+    <ClInclude Include="Game3D\Actors\Pin.h" />
     <ClInclude Include="Game3D\Actors\Player3D.h" />
     <ClInclude Include="Game3D\Scenes\Scene_Test.h" />
   </ItemGroup>
@@ -3185,6 +3189,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Models\100 Pin Bowling Room.obj" />
+    <Content Include="Resources\Models\Ball.obj" />
     <Content Include="Resources\Models\Bowling\Bowling_Alley_Back.obj" />
     <Content Include="Resources\Models\Bowling\Bowling_Alley_BallReturn.obj" />
     <Content Include="Resources\Models\Bowling\Bowling_Alley_Balls.obj" />
@@ -3203,8 +3208,8 @@
     <Content Include="Resources\Models\Bowling\Bowling_Alley_TableBot.obj" />
     <Content Include="Resources\Models\Bowling\Bowling_Alley_TableTop.obj" />
     <Content Include="Resources\Models\Bowling\Bowling_Alley_Trash.obj" />
+    <Content Include="Resources\Models\Pin.obj" />
     <Content Include="Resources\Models\cube.obj" />
-    <Content Include="Resources\Models\pin.obj" />
     <Content Include="Resources\Models\sphere.obj" />
     <Content Include="Resources\Shaders\Normal.frag" />
     <Content Include="Resources\Shaders\Sprite.frag" />
@@ -3229,9 +3234,11 @@
     <Content Include="Resources\Textures\Bowling\Bowling_Alley_TableTop.png" />
     <Content Include="Resources\Textures\Bowling\Bowling_Alley_TableBot.png" />
     <Content Include="Resources\Textures\Bowling\Bowling_Alley_Trash.png" />
+    <Content Include="Resources\Textures\Pin.png" />
     <Content Include="Resources\Textures\NullShader.png" />
     <Content Include="Resources\Textures\NullTexture.png" />
     <Content Include="Resources\Textures\pokeball.png" />
+    <Content Include="Resources\Textures\Ball.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

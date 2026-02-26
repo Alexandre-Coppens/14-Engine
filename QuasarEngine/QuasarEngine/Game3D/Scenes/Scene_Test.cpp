@@ -6,9 +6,11 @@
 #include "Engine/Render/Shader.h"
 #include "Engine/Render/ShaderProgram.h"
 #include "Engine/Render/RendererGl.h"
+#include "Game3D/Actors/Ball.h"
 #include "Game3D/Actors/BowlingAlley.h"
 
 #include "Game3D/Actors/BoxGl.h"
+#include "Game3D/Actors/Pin.h"
 #include "Game3D/Actors/Player3D.h"
 
 Scene_Test::Scene_Test(std::string _name):
@@ -35,11 +37,13 @@ void Scene_Test::Start()
 	//Load Shaders
 	Assets::LoadShader(renderer, "BasicModel.vert", "BasicModel.frag", "BasicModel", TEXTURE);
 	Assets::LoadShader(renderer, "BasicModel.vert", "Normal.frag", "Normal", TEXTURE);
-	Assets::LoadShader(renderer, "BasicModel.vert", "Transparency.frag", "Transparency", COLOR);
+	Assets::LoadShader(renderer, "BasicModel.vert", "Transparency.frag", "Transparency", TEXTURE);
 	Assets::LoadShader(renderer, "Simple.vert", "Simple.frag", "Simple", COLOR);
 
 	//LoadModels
 	Assets::LoadMesh("Resources/Models/Cube.obj", "Cube");
+	Assets::LoadMesh("Resources/Models/Pin.obj", "Pin");
+	Assets::LoadMesh("Resources/Models/Ball.obj", "Ball");
 	Assets::LoadMesh("Resources/Models/Bowling/Bowling_Alley_Rails.obj", "B_Rails");
 	Assets::LoadMesh("Resources/Models/Bowling/Bowling_Alley_Walls.obj", "B_Walls");
 	Assets::LoadMesh("Resources/Models/Bowling/Bowling_Alley_LightWalls.obj", "B_LightWalls");
@@ -61,6 +65,8 @@ void Scene_Test::Start()
 	
 	//Load Textures
 	Assets::LoadTexture(*renderer, "Resources/Textures/Block.png", "Block");
+	Assets::LoadTexture(*renderer, "Resources/Textures/Pin.png", "Pin");
+	Assets::LoadTexture(*renderer, "Resources/Textures/Ball.png", "Ball");
 	Assets::LoadTexture(*renderer, "Resources/Textures/Bowling/Bowling_Alley_Rails.png", "B_Rails");
 	Assets::LoadTexture(*renderer, "Resources/Textures/Bowling/Bowling_Alley_Walls.png", "B_Walls");
 	Assets::LoadTexture(*renderer, "Resources/Textures/Bowling/Bowling_Alley_Carpet.png", "B_Carpet");
@@ -82,12 +88,17 @@ void Scene_Test::Start()
 	//Load Actors
 	Actor* alley = AddActor(new BowlingAlley());
 	Actor* player = AddActor(new Player3D());
+	Actor* ball = AddActor(new Ball());
+	Actor* pin = AddActor(new Pin());
 
 	//Start the new Actors to modify them
 	InitNewActors();
 
 	//Modify Actors
 	alley->getTransform3D()->addLocationZ(-0.25f);
+	ball->getTransform3D()->addLocationZ(-0.2f);
+	pin->getTransform3D()->addLocationX(-1.0f);
+	pin->getTransform3D()->addLocationZ(-0.20f);
 }
 
 void Scene_Test::Update(float _deltaTime)

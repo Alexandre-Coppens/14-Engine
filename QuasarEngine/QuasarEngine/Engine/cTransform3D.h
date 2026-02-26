@@ -13,7 +13,7 @@ protected:
 	Quaternion	mQRotation{ Quaternion() }; 
 	Vector3		mScale    { Vector3One() };
 
-	Matrix4Row mWorldTransform{ Matrix4Row::Mat4RowIdentity() };
+	mutable Matrix4Row mWorldTransform{ Matrix4Row::Mat4RowIdentity() };
 
 	bool mNeedsUpdate{ true };
 
@@ -22,34 +22,34 @@ public:
 	Vector3 getRotation()	const { return mRotation; }
 	Vector3 getScale()		const { return mScale; }
 
-	Matrix4Row getWorldTransform() const { return mWorldTransform; }
+	Matrix4Row getWorldTransform() { ComputeWorldTransform(); return mWorldTransform; }
 
-	void setLocation(const Vector3 _v)  { mLocation = _v; }
-	void setRotation(const Vector3 _v)  { mRotation = _v; }
-	void setScale	(const Vector3 _v)	{ mScale = _v; }
+	void setLocation(const Vector3 _v)  { mLocation = _v; mNeedsUpdate = true; }
+	void setRotation(const Vector3 _v)  { mRotation = _v; mNeedsUpdate = true; }
+	void setScale	(const Vector3 _v)	{ mScale = _v; mNeedsUpdate = true; }
 
-	void setLocationX(const float _f) { mLocation.x = _f; }
-	void setLocationY(const float _f) { mLocation.y = _f; }
-	void setLocationZ(const float _f) { mLocation.z = _f; }
-	void setScaleX(const float _f) { mScale.x = _f; }
-	void setScaleY(const float _f) { mScale.y = _f; }
-	void setScaleZ(const float _f) { mScale.z = _f; }
+	void setLocationX(const float _f) { mLocation.x = _f; mNeedsUpdate = true; }
+	void setLocationY(const float _f) { mLocation.y = _f; mNeedsUpdate = true; }
+	void setLocationZ(const float _f) { mLocation.z = _f; mNeedsUpdate = true; }
+	void setScaleX(const float _f) { mScale.x = _f; mNeedsUpdate = true; }
+	void setScaleY(const float _f) { mScale.y = _f; mNeedsUpdate = true; }
+	void setScaleZ(const float _f) { mScale.z = _f; mNeedsUpdate = true; }
 
-	void addLocation(const Vector3 _v) { mLocation = Add(mLocation, _v); }
-	void addLocationX(const float _f) { mLocation.x += _f; }
-	void addLocationY(const float _f) { mLocation.y += _f; }
-	void addLocationZ(const float _f) { mLocation.z += _f; }
-	void addRotationX(const float _f) { mRotation.x += _f; }
-	void addRotationY(const float _f) { mRotation.y += _f; }
-	void addRotationZ(const float _f) { mRotation.z += _f; }
+	void addLocation(const Vector3 _v) { mLocation = Add(mLocation, _v); mNeedsUpdate = true; }
+	void addLocationX(const float _f) { mLocation.x += _f; mNeedsUpdate = true; }
+	void addLocationY(const float _f) { mLocation.y += _f; mNeedsUpdate = true; }
+	void addLocationZ(const float _f) { mLocation.z += _f; mNeedsUpdate = true; }
+	void addRotationX(const float _f) { mRotation.x += _f; mNeedsUpdate = true; }
+	void addRotationY(const float _f) { mRotation.y += _f; mNeedsUpdate = true; }
+	void addRotationZ(const float _f) { mRotation.z += _f; mNeedsUpdate = true; }
 	
-	void clampRotationY(const float _min, const float _max) {mRotation.y = Clamp(mRotation.y, _min, _max); }
+	void clampRotationY(const float _min, const float _max) {mRotation.y = Clamp(mRotation.y, _min, _max); mNeedsUpdate = true; }
 	
-	void combineRotation(const Quaternion _q) { mQRotation = Concatenate(mQRotation, _q);}
-	void rotateAroundAxis(const Vector3 _axis, const float _angle) { combineRotation(QuatFromAxisAngle(_axis, ToRad(_angle))); }
-	void rotateAroundX(const float _angle) { combineRotation(QuatFromAxisAngle(Forward(), ToRad(_angle))) ; }
-	void rotateAroundY(const float _angle) { combineRotation(QuatFromAxisAngle(Right(), ToRad(_angle))); }
-	void rotateAroundZ(const float _angle) { combineRotation(QuatFromAxisAngle(Up(), ToRad(_angle))); }
+	void combineRotation(const Quaternion _q) { mQRotation = Concatenate(mQRotation, _q);mNeedsUpdate = true; }
+	void rotateAroundAxis(const Vector3 _axis, const float _angle) { combineRotation(QuatFromAxisAngle(_axis, ToRad(_angle))); mNeedsUpdate = true; }
+	void rotateAroundX(const float _angle) { combineRotation(QuatFromAxisAngle(Forward(), ToRad(_angle))) ; mNeedsUpdate = true; }
+	void rotateAroundY(const float _angle) { combineRotation(QuatFromAxisAngle(Right(), ToRad(_angle))); mNeedsUpdate = true; }
+	void rotateAroundZ(const float _angle) { combineRotation(QuatFromAxisAngle(Up(), ToRad(_angle))); mNeedsUpdate = true; }
 
 	void computeRotation(){
 		mQRotation = Quaternion();
@@ -63,6 +63,7 @@ public:
 		mLocation = _t3D->mLocation;
 		mRotation = _t3D->mRotation;
 		mScale	  = _t3D->mScale;
+		mNeedsUpdate = true; 
 	}
 
 	Vector3 Forward()	const { return Transform(Vector3UnitX(), mQRotation); }

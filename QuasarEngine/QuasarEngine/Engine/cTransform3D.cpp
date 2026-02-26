@@ -32,9 +32,8 @@ void Transform3D::OnEnd()
 void Transform3D::ComputeWorldTransform()
 {
 	if (!mNeedsUpdate) return;
-	//mNeedsUpdate = false;
+	mNeedsUpdate = false;
 	mWorldTransform =  Mat4RowCreateScale(mScale);
 	mWorldTransform *= Mat4RowCreateFromQuaternion(mQRotation);
 	mWorldTransform *= Mat4RowCreateTranslation(mLocation);
-	//pOwner->UpdateComponentsTransform();
 }

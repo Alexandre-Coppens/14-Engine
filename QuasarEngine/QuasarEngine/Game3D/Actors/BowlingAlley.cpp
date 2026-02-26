@@ -4,6 +4,7 @@
 
 #include "Engine/cModel.h"
 #include "Engine/Mesh.h"
+#include "Engine/Utilitaries/Time.h"
 
 BowlingAlley::BowlingAlley() :
     Actor()
@@ -80,7 +81,6 @@ void BowlingAlley::Start()
 void BowlingAlley::Update(const float _deltaTime)
 {
     Actor::Update(_deltaTime);
-    mTransform3D.ComputeWorldTransform();
 }
 
 void BowlingAlley::Destroy()
