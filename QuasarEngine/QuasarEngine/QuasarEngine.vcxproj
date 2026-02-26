@@ -3185,6 +3185,24 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Models\100 Pin Bowling Room.obj" />
+    <Content Include="Resources\Models\Bowling\Bowling_Alley_Back.obj" />
+    <Content Include="Resources\Models\Bowling\Bowling_Alley_BallReturn.obj" />
+    <Content Include="Resources\Models\Bowling\Bowling_Alley_Balls.obj" />
+    <Content Include="Resources\Models\Bowling\Bowling_Alley_BallsStandee.obj" />
+    <Content Include="Resources\Models\Bowling\Bowling_Alley_Bench.obj" />
+    <Content Include="Resources\Models\Bowling\Bowling_Alley_Alley.obj" />
+    <Content Include="Resources\Models\Bowling\Bowling_Alley_Rails.obj" />
+    <Content Include="Resources\Models\Bowling\Bowling_Alley_Walls.obj" />
+    <Content Include="Resources\Models\Bowling\Bowling_Alley_LightWalls.obj" />
+    <Content Include="Resources\Models\Bowling\Bowling_Alley_Carpet.obj" />
+    <Content Include="Resources\Models\Bowling\Bowling_Alley_Panel.obj" />
+    <Content Include="Resources\Models\Bowling\Bowling_Alley_GutterBot.obj" />
+    <Content Include="Resources\Models\Bowling\Bowling_Alley_GutterTop.obj" />
+    <Content Include="Resources\Models\Bowling\Bowling_Alley_Chairs.obj" />
+    <Content Include="Resources\Models\Bowling\Bowling_Alley_Decals.obj" />
+    <Content Include="Resources\Models\Bowling\Bowling_Alley_TableBot.obj" />
+    <Content Include="Resources\Models\Bowling\Bowling_Alley_TableTop.obj" />
+    <Content Include="Resources\Models\Bowling\Bowling_Alley_Trash.obj" />
     <Content Include="Resources\Models\cube.obj" />
     <Content Include="Resources\Models\pin.obj" />
     <Content Include="Resources\Models\sphere.obj" />
@@ -3192,6 +3210,28 @@
     <Content Include="Resources\Shaders\Sprite.frag" />
     <Content Include="Resources\Shaders\Sprite.vert" />
     <Content Include="Resources\Shaders\BasicModel.vert" />
+    <Content Include="Resources\Shaders\Transparency.frag" />
+    <Content Include="Resources\Textures\Block.png" />
+    <Content Include="Resources\Textures\Bowling\Bowling_Alley_BallsStandee.png" />
+    <Content Include="Resources\Textures\Bowling\Bowling_Alley_GutterTop.png" />
+    <Content Include="Resources\Textures\Bowling\Bowling_Alley_Rails.png" />
+    <Content Include="Resources\Textures\Bowling\Bowling_Alley_Walls.png" />
+    <Content Include="Resources\Textures\Bowling\Bowling_Alley_Carpet.png" />
+    <Content Include="Resources\Textures\Bowling\Bowling_Alley_Panel.png" />
+    <Content Include="Resources\Textures\Bowling\Bowling_Alley_Alley.png" />
+    <Content Include="Resources\Textures\Bowling\Bowling_Alley_GutterBot.png" />
+    <Content Include="Resources\Textures\Bowling\Bowling_Alley_Back.png" />
+    <Content Include="Resources\Textures\Bowling\Bowling_Alley_BallReturn.png" />
+    <Content Include="Resources\Textures\Bowling\Bowling_Alley_Balls.png" />
+    <Content Include="Resources\Textures\Bowling\Bowling_Alley_Bench.png" />
+    <Content Include="Resources\Textures\Bowling\Bowling_Alley_Chairs.png" />
+    <Content Include="Resources\Textures\Bowling\Bowling_Alley_Decals.png" />
+    <Content Include="Resources\Textures\Bowling\Bowling_Alley_TableTop.png" />
+    <Content Include="Resources\Textures\Bowling\Bowling_Alley_TableBot.png" />
+    <Content Include="Resources\Textures\Bowling\Bowling_Alley_Trash.png" />
+    <Content Include="Resources\Textures\NullShader.png" />
+    <Content Include="Resources\Textures\NullTexture.png" />
+    <Content Include="Resources\Textures\pokeball.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

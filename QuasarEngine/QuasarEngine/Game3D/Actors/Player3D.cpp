@@ -25,28 +25,25 @@ void Player3D::Start()
 void Player3D::Update(const float _deltaTime)
 {
     Actor::Update(_deltaTime);
-
-    Log::Info(std::to_string(1 / _deltaTime));
-    Log::Info(ToString(mTransform3D.getLocation()));
     
     if (Inputs::GetKey(SDLK_z))
     {
-        mTransform3D.addLocation(pCamera->getLocalTransform()->Forward() * 10 * _deltaTime);
+        mTransform3D.addLocation(pCamera->getLocalTransform()->Forward() * 1 * _deltaTime);
     }
 
     if (Inputs::GetKey(SDLK_s))
     {
-        mTransform3D.addLocation(pCamera->getLocalTransform()->Forward() * -10 * _deltaTime);
+        mTransform3D.addLocation(pCamera->getLocalTransform()->Forward() * -1 * _deltaTime);
     }
 
     if (Inputs::GetKey(SDLK_q))
     {
-        mTransform3D.addLocation(pCamera->getLocalTransform()->Right() * -10 * _deltaTime);
+        mTransform3D.addLocation(pCamera->getLocalTransform()->Right() * -1 * _deltaTime);
     }
 
     if (Inputs::GetKey(SDLK_d))
     {
-        mTransform3D.addLocation(pCamera->getLocalTransform()->Right() * 10 * _deltaTime);
+        mTransform3D.addLocation(pCamera->getLocalTransform()->Right() * 1 * _deltaTime);
     }
     
     //Rotation is stocked in a vector before being transformed to quat via ZYX order

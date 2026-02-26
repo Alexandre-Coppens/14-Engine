@@ -17,14 +17,16 @@ std::map<ShaderProgram*, std::vector<Model*>> Assets::mDrawOrder = {};
 
 Texture* Assets::LoadTexture(IRenderer& _pRenderer, const std::string& _pFileName, const std::string& _pName)
 {
-	mTextureList[_pName] = LoadTextureFromFile(_pRenderer, _pFileName);
+	Texture* temp = LoadTextureFromFile(_pRenderer, _pFileName);
+	if(temp == nullptr) return mTextureList["NULLTEXTURE"];
+	mTextureList[_pName] = temp;
 	return mTextureList.at(_pName);
 }
 
 Texture* Assets::LoadTextureFromFile(IRenderer& _pRenderer, const std::string& _pFileName)
 {
 	Texture* texture = new Texture();
-	texture->Load(_pRenderer, _pFileName);
+	if (!texture->Load(_pRenderer, _pFileName)) return nullptr;
 	return texture;
 }
 
@@ -35,6 +37,7 @@ Texture* Assets::GetTexture(const std::string& _pName)
 		std::ostringstream loadError;
 		loadError << "Texture " << _pName << " does not exist in assets manager\n";
 		Log::Error(LogType::Application, loadError.str());
+		return mTextureList["NULLTEXTURE"];
 	}
 	return mTextureList[_pName];
 }

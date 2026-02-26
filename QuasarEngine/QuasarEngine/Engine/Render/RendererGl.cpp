@@ -61,8 +61,8 @@ bool RendererGl::Initialize(Window& _rWindow)
 
 	//Load the NULL Shader
 	Assets::LoadShader(this, "NULL.vert", "NULL.frag", "NULL", DrawOption::NULL_SHADER);
-	Assets::LoadTexture(*dynamic_cast<IRenderer*>(this), "Resources/NullShader.png", "NULLSHADER");
-	Assets::LoadTexture(*dynamic_cast<IRenderer*>(this), "Resources/NullTexture.png", "NULLTEXTURE");
+	Assets::LoadTexture(*dynamic_cast<IRenderer*>(this), "Resources/Textures/NullShader.png", "NULLSHADER");
+	Assets::LoadTexture(*dynamic_cast<IRenderer*>(this), "Resources/Textures/NullTexture.png", "NULLTEXTURE");
 	
 	return true;
 }
