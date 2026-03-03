@@ -1,111 +1,66 @@
 ﻿  Actor.cpp
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\RendererGl.h(39,7): error C3668: 'RendererGl::DrawSprite': method with override specifier 'override' did not override any base class methods
-  (compiling source file 'Actor.cpp')
+  Camera.cpp
+H:\Github\14-Engine\QuasarEngine\QuasarEngine\Engine\Utilitaries\CameraManager.h(13,108): warning C4018: '>=': signed/unsigned mismatch
+  (compiling source file 'Engine/Camera.cpp')
   
-  Assets.cpp
-  Box.cpp
-  BoxGl.cpp
   cAnimation2D.cpp
   cBoxCollider2D.cpp
   cCollider.cpp
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\cCollider.cpp(82,25): warning C4553: '==': result of expression not used; did you intend '='?
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\cCollider.cpp(113,31): warning C4018: '<': signed/unsigned mismatch
+H:\Github\14-Engine\QuasarEngine\QuasarEngine\Engine\cCollider.cpp(112,31): warning C4018: '<': signed/unsigned mismatch
   cGravity2D.cpp
-  Coin.cpp
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\RendererGl.h(39,7): error C3668: 'RendererGl::DrawSprite': method with override specifier 'override' did not override any base class methods
-  (compiling source file 'Coin.cpp')
-  
+  cModel.cpp
   Component.cpp
+  cPhysic.cpp
   cSprite2D.cpp
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\RendererGl.h(39,7): error C3668: 'RendererGl::DrawSprite': method with override specifier 'override' did not override any base class methods
-  (compiling source file 'cSprite2D.cpp')
-  
   cTransform2D.cpp
   cTransform3D.cpp
   Game.cpp
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\RendererGl.h(39,7): error C3668: 'RendererGl::DrawSprite': method with override specifier 'override' did not override any base class methods
-  (compiling source file 'Game.cpp')
-  
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Game.cpp(30,19): error C2259: 'RendererGl': cannot instantiate abstract class
-      E:\Github\14-Engine\QuasarEngine\QuasarEngine\Texture.h(8,7):
-      see declaration of 'RendererGl'
-      E:\Github\14-Engine\QuasarEngine\QuasarEngine\Game.cpp(30,19):
-      due to following members:
-      E:\Github\14-Engine\QuasarEngine\QuasarEngine\Game.cpp(30,19):
-      'void IRenderer::DrawSprite(Actor &,Texture *,Rectangle,Vector2,Flip) const': is abstract
-      E:\Github\14-Engine\QuasarEngine\QuasarEngine\IRenderer.h(40,15):
-      see declaration of 'IRenderer::DrawSprite'
-  
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Game.cpp(30,29): error C2259: 'RendererGl': cannot instantiate abstract class
-      E:\Github\14-Engine\QuasarEngine\QuasarEngine\Texture.h(8,7):
-      see declaration of 'RendererGl'
-      E:\Github\14-Engine\QuasarEngine\QuasarEngine\Game.cpp(30,29):
-      due to following members:
-      E:\Github\14-Engine\QuasarEngine\QuasarEngine\Game.cpp(30,29):
-      'void IRenderer::DrawSprite(Actor &,Texture *,Rectangle,Vector2,Flip) const': is abstract
-      E:\Github\14-Engine\QuasarEngine\QuasarEngine\IRenderer.h(40,15):
-      see declaration of 'IRenderer::DrawSprite'
-  
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Game.cpp(45,61): warning C4244: 'argument': conversion from 'float' to 'Uint16', possible loss of data
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Game.cpp(45,40): warning C4244: 'argument': conversion from 'float' to 'Uint16', possible loss of data
-  Inputs.cpp
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Inputs.cpp(41,26): warning C4244: '=': conversion from 'float' to 'unsigned short', possible loss of data
-  Log.cpp
-  main.cpp
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\RendererGl.h(39,7): error C3668: 'RendererGl::DrawSprite': method with override specifier 'override' did not override any base class methods
-  (compiling source file 'main.cpp')
-  
-  CommonLib.h
+H:\Github\14-Engine\QuasarEngine\QuasarEngine\Engine\Game.cpp(48,61): warning C4244: 'argument': conversion from 'float' to 'Uint16', possible loss of data
+H:\Github\14-Engine\QuasarEngine\QuasarEngine\Engine\Game.cpp(48,40): warning C4244: 'argument': conversion from 'float' to 'Uint16', possible loss of data
   Mesh.cpp
-  cModel.cpp
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\RendererGl.h(39,7): error C3668: 'RendererGl::DrawSprite': method with override specifier 'override' did not override any base class methods
-  (compiling source file 'cModel.cpp')
-  
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\cModel.cpp(30,34): warning C4267: 'argument': conversion from 'size_t' to 'uint16_t', possible loss of data
-  Generating Code...
-  Compiling...
-  MathLib.h
-  Paddle.cpp
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\RendererGl.h(39,7): error C3668: 'RendererGl::DrawSprite': method with override specifier 'override' did not override any base class methods
-  (compiling source file 'Paddle.cpp')
-  
+H:\Github\14-Engine\QuasarEngine\QuasarEngine\Engine\Mesh.cpp(34,20): warning C4018: '<': signed/unsigned mismatch
   RendererGl.cpp
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\RendererGl.h(39,7): error C3668: 'RendererGl::DrawSprite': method with override specifier 'override' did not override any base class methods
-  (compiling source file 'RendererGl.cpp')
+H:\Github\14-Engine\QuasarEngine\QuasarEngine\Engine\Utilitaries\CameraManager.h(13,108): warning C4018: '>=': signed/unsigned mismatch
+  (compiling source file 'Engine/Render/RendererGl.cpp')
   
   RendererSdl.cpp
-  Scene.cpp
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\RendererGl.h(39,7): error C3668: 'RendererGl::DrawSprite': method with override specifier 'override' did not override any base class methods
-  (compiling source file 'Scene.cpp')
-  
-  Scene_GameOver.cpp
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\RendererGl.h(39,7): error C3668: 'RendererGl::DrawSprite': method with override specifier 'override' did not override any base class methods
-  (compiling source file 'Scene_GameOver.cpp')
-  
-  Scene_Pong.cpp
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\RendererGl.h(39,7): error C3668: 'RendererGl::DrawSprite': method with override specifier 'override' did not override any base class methods
-  (compiling source file 'Scene_Pong.cpp')
-  
-  Scene_Pong.h
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\RendererGl.h(39,7): error C3668: 'RendererGl::DrawSprite': method with override specifier 'override' did not override any base class methods
-  (compiling source file 'Scene_Pong.h')
-  
-  Scene_Test.cpp
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\RendererGl.h(39,7): error C3668: 'RendererGl::DrawSprite': method with override specifier 'override' did not override any base class methods
-  (compiling source file 'Scene_Test.cpp')
-  
   Shader.cpp
   ShaderProgram.cpp
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\ShaderProgram.cpp(17,20): warning C4018: '<': signed/unsigned mismatch
-  Texture.cpp
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\RendererGl.h(39,7): error C3668: 'RendererGl::DrawSprite': method with override specifier 'override' did not override any base class methods
-  (compiling source file 'Texture.cpp')
-  
-  Time.cpp
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\Time.cpp(17,24): warning C4244: '=': conversion from 'unsigned int' to 'float', possible loss of data
+H:\Github\14-Engine\QuasarEngine\QuasarEngine\Engine\Render\ShaderProgram.cpp(25,20): warning C4018: '<': signed/unsigned mismatch
   VertexArray.cpp
   Window.cpp
-E:\Github\14-Engine\QuasarEngine\QuasarEngine\RendererGl.h(39,7): error C3668: 'RendererGl::DrawSprite': method with override specifier 'override' did not override any base class methods
-  (compiling source file 'Window.cpp')
-  
   Generating Code...
+  Compiling...
+  Scene.cpp
+  Texture.cpp
+  Assets.cpp
+H:\Github\14-Engine\QuasarEngine\QuasarEngine\Engine\Utilitaries\Assets.cpp(119,20): warning C4018: '<': signed/unsigned mismatch
+  CameraManager.cpp
+H:\Github\14-Engine\QuasarEngine\QuasarEngine\Engine\Utilitaries\CameraManager.h(13,108): warning C4018: '>=': signed/unsigned mismatch
+  (compiling source file 'Engine/Utilitaries/CameraManager.cpp')
+  
+  Inputs.cpp
+H:\Github\14-Engine\QuasarEngine\QuasarEngine\Engine\Utilitaries\Inputs.cpp(47,26): warning C4244: '=': conversion from 'float' to 'unsigned short', possible loss of data
+  Log.cpp
+  Time.cpp
+  Box.cpp
+  Coin.cpp
+  Paddle.cpp
+H:\Github\14-Engine\QuasarEngine\QuasarEngine\Engine\Game.h(40,27): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file 'Game2D/Actors/Paddle.cpp')
+      H:\Github\14-Engine\QuasarEngine\QuasarEngine\Engine\Game.h(40,27):
+      the template instantiation context (the oldest one first) is
+          H:\Github\14-Engine\QuasarEngine\QuasarEngine\Game2D\Actors\Paddle.cpp(64,26):
+          see reference to function template instantiation 'void Game::ChangeScene<Scene_GameOver>(void)' being compiled
+  
+  Scene_GameOver.cpp
+  Scene_Pong.cpp
+  Ball.cpp
+  BowlingAlley.cpp
+  BoxGl.cpp
+  Pin.cpp
+  Player3D.cpp
+  Scene_Test.cpp
+  main.cpp
+  Generating Code...
+  QuasarEngine.vcxproj -> H:\Github\14-Engine\QuasarEngine\Debug\QuasarEngine.exe
