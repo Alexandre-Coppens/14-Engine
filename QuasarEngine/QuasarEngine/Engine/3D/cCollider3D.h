@@ -4,6 +4,7 @@
 
 #include "Engine/Component.h"
 #include "Engine/Utilitaries/CommonLib.h"
+#include "Engine/Utilitaries/MathLib.h"
 
 enum ColliderType
 { 
@@ -30,12 +31,17 @@ private:
 protected:
     ColliderType mColliderType;
     CollisionState mCollisionState;
+    float mFriction {0.5f};
     
     static std::vector<Collider3D*> ColliderList;
     
 public:
-    ColliderType getColliderType() { return mColliderType; }
-    CollisionState getCollisionState() { return mCollisionState; }
+    float getFriction()                 const {return mFriction;}
+    ColliderType getColliderType()      const { return mColliderType; }
+    CollisionState getCollisionState()  const { return mCollisionState; }
+    
+    //Friction clamped between 0 & 1
+    void setFriction(float _f)  {mFriction = Clamp(_f, 0.0f, 1.0f);}
     
 public:
     Collider3D(Actor* _pOwner);

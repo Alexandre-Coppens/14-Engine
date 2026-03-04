@@ -81,9 +81,11 @@ void BowlingAlley::Start()
     
     railLeft->setOffset(Vector3{-1.0f, 0.2f, 0.05f});
     railLeft->setSize(Vector3{1.0f, 0.05f, 0.1f});
+    railLeft->setFriction(0.1f);
     
     railRight->setOffset(Vector3{-1.0f, -0.2f, 0.05f});
     railRight->setSize(Vector3{1.0f, 0.05f, 0.1f});
+    railRight->setFriction(0.1f);
     
     Actor::Start();
 }

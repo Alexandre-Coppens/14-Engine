@@ -23,7 +23,7 @@ BoxCollider::~BoxCollider()
 void BoxCollider::DrawDebug()
 {
 	Matrix4Row wt;
-	wt =  Mat4RowCreateScale(mSize);
+	wt =  Mat4RowCreateScale(mSize * 0.5f);
 	wt *= Mat4RowCreateFromQuaternion(Quaternion::QuatIdentity());
 	wt *= Mat4RowCreateTranslation(getCenter());
 	

@@ -24,6 +24,7 @@ void Ball::Start()
     SphereCollider* sphereCollider = dynamic_cast<SphereCollider*>(AddComponent(new SphereCollider(this)));
     
     sphereCollider->setRadius(0.01f);
+    sphereCollider->setFriction(0.05f);
     
     mPhysicBody->setGravityEnabled(false);
     
@@ -35,7 +36,7 @@ void Ball::Start()
 void Ball::Update(const float _deltaTime)
 {
     Actor::Update(_deltaTime);
-    //Log::Info(ToString(mTransform3D.getLocation()));
+    Log::Info(ToString(mTransform3D.getLocation()));
     
     if (Inputs::GetKey(SDLK_UP)) mPhysicBody->addVelocityX(-1 * _deltaTime);
     if (Inputs::GetKey(SDLK_DOWN)) mPhysicBody->addVelocityX(1 * _deltaTime);

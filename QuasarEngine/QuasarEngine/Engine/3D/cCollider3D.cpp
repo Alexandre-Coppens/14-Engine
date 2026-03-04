@@ -38,10 +38,15 @@ void Collider3D::Update(const float _deltaTime)
         {
             Log::Info(pOwner->getName() + " Collision");
             mHasFrameCollision = true;
-            PhysicBody* colliderPhysic = collider->getOwner()->GetComponent<PhysicBody>();
-            colliderPhysic->ResolveCollision(this, mNearestPoint);
+            
+            //Resolve Collisions entering each others
+            PhysicBody* colliderPhysic = getOwner()->GetComponent<PhysicBody>();
             if (colliderPhysic == nullptr) continue;
-            //TODO: resolve velocity
+            colliderPhysic->ResolveCollision(this, mNearestPoint);
+            
+            //Resolve Velocities
+            PhysicBody* otherPhysic = collider->getOwner()->GetComponent<PhysicBody>();
+            colliderPhysic->ResolveVelocity(otherPhysic, mNearestPoint, mFriction + collider->getFriction());
         }
     }
     if (mHasFrameCollision)

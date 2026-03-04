@@ -32,4 +32,5 @@ public:
     
     void Update(float _deltaTime) override;
     void ResolveCollision(Collider3D* _pOwnerCollision, Vector3 _nearestPoint);
+    void ResolveVelocity(PhysicBody* _otherPhysic, Vector3 _nearestPoint, float _friction);
 };

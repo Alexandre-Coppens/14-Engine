@@ -39,8 +39,23 @@ void PhysicBody::ResolveCollision(Collider3D* _pOwnerCollision, Vector3 _nearest
         
     case SPHERE:
         float radius = dynamic_cast<SphereCollider*>(_pOwnerCollision)->getRadius();
-        pOwner->getTransform3D()->addLocation(collisionNormal * (radius + 0.01f));
+        pOwner->getTransform3D()->setLocation(_nearestPoint + (collisionNormal * (radius) * -1.0f));
         break;
+    }
+}
+
+void PhysicBody::ResolveVelocity(PhysicBody* _otherPhysic, Vector3 _nearestPoint, float _friction)
+{
+    Vector3 collisionNormal = Normalize(_nearestPoint - pOwner->getTransform3D()->getLocation());
+    if (_otherPhysic == nullptr)
+    {
+        //Friction is already between 0 & 2 since it's the combination of the 2 frictions
+        mVelocity = Subtract(mVelocity, collisionNormal * ( (2 - _friction) * Dot(mVelocity, collisionNormal)));
+    }
+    else
+    {
+        //TODO: Add mass to this
+        mVelocity = Subtract(mVelocity, collisionNormal * ( (2 - _friction) * Dot(mVelocity, collisionNormal)));
     }
 }
 
