@@ -6,7 +6,7 @@
 #include "Engine/Render/Shader.h"
 #include "Engine/Render/ShaderProgram.h"
 #include "Engine/Utilitaries/Log.h"
-#include "Engine/Mesh.h"
+#include "Engine/3D/Mesh.h"
 #include "Engine/Utilitaries/tiny_obj_loader.h"
 
 std::map<std::string, Texture*> Assets::mTextureList = {};

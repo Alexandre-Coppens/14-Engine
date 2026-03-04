@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "Engine/Actor.h"
-#include "Engine/cModel.h"
+#include "Engine/3D/cModel.h"
 
 class Pin : public Actor
 {

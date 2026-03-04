@@ -12,8 +12,8 @@
 #include "Engine/Utilitaries/Assets.h"
 #include "Engine/Utilitaries/CameraManager.h"
 
-#include "Engine/cModel.h"
-#include "Engine/cSprite2D.h"
+#include "Engine/3D/cModel.h"
+#include "Engine/2D/cSprite2D.h"
 
 RendererGl::RendererGl():
 	pWindow(nullptr), 

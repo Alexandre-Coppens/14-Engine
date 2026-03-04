@@ -1,6 +1,6 @@
 ﻿#include "CameraManager.h"
 
-#include "Engine/Camera.h"
+#include "Engine/3D/Camera.h"
 #include "Engine/Utilitaries/Log.h"
 
 Uint8 CameraManager::mCurrentCamera ;

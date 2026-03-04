@@ -4,9 +4,9 @@
 #include "Engine/Scene.h"
 #include "Engine/Game.h"
 
-#include "Engine/cBoxCollider2D.h"
-#include "Engine/cAnimation2D.h"
-#include "Engine/cGravity2D.h"
+#include "Engine/2D/cBoxCollider2D.h"
+#include "Engine/2D/cAnimation2D.h"
+#include "Engine/2D/cGravity2D.h"
 #include "Game2D/Scenes/Scene_Pong.h"
 #include "Game2D/Scenes/Scene_GameOver.h"
 

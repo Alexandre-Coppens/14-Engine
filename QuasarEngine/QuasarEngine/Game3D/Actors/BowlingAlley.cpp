@@ -2,8 +2,8 @@
 
 #include "Engine/Utilitaries/Assets.h"
 
-#include "Engine/cModel.h"
-#include "Engine/Mesh.h"
+#include "Engine/3D/cModel.h"
+#include "Engine/3D/Mesh.h"
 #include "Engine/Utilitaries/Time.h"
 
 BowlingAlley::BowlingAlley() :

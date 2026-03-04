@@ -2,7 +2,7 @@
 #define BOXGL_H
 
 #include "Engine/Actor.h"
-#include "Engine/cModel.h"
+#include "Engine/3D/cModel.h"
 
 class BoxGl : public Actor
 {

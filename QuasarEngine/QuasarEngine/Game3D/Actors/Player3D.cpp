@@ -4,7 +4,7 @@
 #include "Engine/Utilitaries/Inputs.h"
 #include "Engine/Utilitaries/Log.h"
 
-#include "Engine/Camera.h"
+#include "Engine/3D/Camera.h"
 
 Player3D::Player3D() :
     Actor()

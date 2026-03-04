@@ -4,8 +4,8 @@
 #include <string>
 #include <vector>
 
-#include "cTransform2D.h"
-#include "cTransform3D.h"
+#include "Engine/2D/cTransform2D.h"
+#include "Engine/3D/cTransform3D.h"
 
 enum class ActorState
 {

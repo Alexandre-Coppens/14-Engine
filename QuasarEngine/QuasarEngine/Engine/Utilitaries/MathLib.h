@@ -33,6 +33,7 @@ inline float Tan(float angle) { return tanf(angle); }
 inline float ACos(float angle) { return acosf(angle); }
 inline float ATan2(float opposite, float adjacent) { return atan2f(opposite, adjacent); }
 inline float Cot(float angle) { return 1.0f / Tan(angle); }
+inline float Pow(float x) { return x * x; }
 inline float Lerp(float a, float b, float t) { return a + t * (b - a); }
 inline float Sqrt(float val) { return sqrtf(val); }
 inline float Fmod(float numer, float denom) { return std::fmod(numer, denom); }
