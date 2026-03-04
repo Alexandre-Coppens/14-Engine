@@ -1204,7 +1204,7 @@
     <Content Include="Resources\Models\cube.obj" />
     <Content Include="Resources\Models\Pin.mtl" />
     <Content Include="Resources\Models\Pin.obj" />
-    <Content Include="Resources\Models\sphere.obj" />
+    <Content Include="Resources\Models\Sphere.obj" />
     <Content Include="Resources\Shaders\BasicModel.frag" />
     <Content Include="Resources\Shaders\BasicModel.vert" />
     <Content Include="Resources\Shaders\Normal.frag" />

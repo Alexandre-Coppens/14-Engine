@@ -59,10 +59,14 @@ bool RendererGl::Initialize(Window& _rWindow)
 	
 	pSpriteVao = new VertexArray(spriteVertices, 4);
 
-	//Load the NULL Shader
+	//TODO: separate Engine asset files & Game asset files
+	//Load the NULL Shader & important to engine assets
 	Assets::LoadShader(this, "NULL.vert", "NULL.frag", "NULL", DrawOption::NULL_SHADER);
 	Assets::LoadTexture(*dynamic_cast<IRenderer*>(this), "Resources/Textures/NullShader.png", "NULLSHADER");
 	Assets::LoadTexture(*dynamic_cast<IRenderer*>(this), "Resources/Textures/NullTexture.png", "NULLTEXTURE");
+	
+	Assets::LoadMesh("Resources/Models/Cube.obj", "Cube");
+	Assets::LoadMesh("Resources/Models/Sphere.obj", "Sphere");
 	
 	return true;
 }

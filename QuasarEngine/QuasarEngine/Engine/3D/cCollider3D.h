@@ -42,6 +42,7 @@ public:
     ~Collider3D() override;
     
     void Update(const float _deltaTime) override;
+    void virtual DrawDebug() = 0;
 
     bool AreCollidersColliding(Collider3D* _pOther);
     

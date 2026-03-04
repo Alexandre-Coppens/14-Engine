@@ -1,5 +1,6 @@
 ﻿#include "BowlingAlley.h"
 
+#include "Engine/3D/cBoxCollider.h"
 #include "Engine/Utilitaries/Assets.h"
 
 #include "Engine/3D/cModel.h"
@@ -74,6 +75,15 @@ void BowlingAlley::Start()
     tableTop->getMesh()->AddTexture(Assets::GetTexture("B_TableTop"));
     tableBot->getMesh()->AddTexture(Assets::GetTexture("B_TableBot"));
     trash->getMesh()->AddTexture(Assets::GetTexture("B_Trash"));
+    
+    BoxCollider* railLeft = dynamic_cast<BoxCollider*>(AddComponent(new BoxCollider(this)));
+    BoxCollider* railRight = dynamic_cast<BoxCollider*>(AddComponent(new BoxCollider(this)));
+    
+    railLeft->setOffset(Vector3{-1.0f, 0.2f, 0.05f});
+    railLeft->setSize(Vector3{1.0f, 0.05f, 0.1f});
+    
+    railRight->setOffset(Vector3{-1.0f, -0.2f, 0.05f});
+    railRight->setSize(Vector3{1.0f, 0.05f, 0.1f});
     
     Actor::Start();
 }

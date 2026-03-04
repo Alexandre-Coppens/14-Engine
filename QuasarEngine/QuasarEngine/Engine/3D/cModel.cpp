@@ -1,5 +1,6 @@
 #include "cModel.h"
 
+#include "cCollider3D.h"
 #include "Engine/Actor.h"
 #include "Engine/Scene.h"
 #include "Engine/Texture.h"
@@ -27,8 +28,6 @@ void Model::Draw(int _option)
 {
 	if (mMesh)
 	{
-		const Matrix4Row wt = pOwner->getWorldTransform();
-		Assets::GetShader(mShader)->SetMatrix4Row("uWorldTransform", wt);
 		Texture* t;
 		if (_option & DrawOption::NULL_SHADER)
 		{
@@ -48,7 +47,19 @@ void Model::Draw(int _option)
 		if (_option & DrawOption::DEBUG)
 		{
 			//TODO: Implement the debug draw box ON TOP of the mesh
+			std::vector<Collider3D*> colliders = pOwner->GetComponents<Collider3D>();
+			if (colliders.size() > 0)
+			{
+				for (Collider3D* collider : colliders)
+				{
+					collider->DrawDebug();
+				}
+			}
 		}
+		
+		const Matrix4Row wt = pOwner->getWorldTransform();
+		Assets::GetShader(mShader)->SetMatrix4Row("uWorldTransform", wt);
+		
 		mMesh->getVertexArray()->SetActive();
 		glDrawArrays(GL_TRIANGLES, 0, mMesh->getVertexArray()->GetVerticesCount());
 	}

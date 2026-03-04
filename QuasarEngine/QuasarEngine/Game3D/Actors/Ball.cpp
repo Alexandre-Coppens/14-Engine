@@ -1,5 +1,6 @@
 ﻿#include "Ball.h"
 
+#include "Engine/3D/cSphereCollider.h"
 #include "Engine/Utilitaries/Assets.h"
 
 #include "Engine/3D/Mesh.h"
@@ -20,6 +21,10 @@ void Ball::Start()
 {
     mModel = dynamic_cast<Model*>(AddComponent(new Model(this, "BasicModel")));
     mPhysicBody = dynamic_cast<PhysicBody*>(AddComponent(new PhysicBody(this)));
+    SphereCollider* sphereCollider = dynamic_cast<SphereCollider*>(AddComponent(new SphereCollider(this)));
+    
+    sphereCollider->setRadius(0.01f);
+    
     mPhysicBody->setGravityEnabled(false);
     
     mModel->setMesh(Assets::GetMesh("Ball"));

@@ -41,7 +41,6 @@ void Scene_Test::Start()
 	Assets::LoadShader(renderer, "Simple.vert", "Simple.frag", "Simple", COLOR);
 
 	//LoadModels
-	Assets::LoadMesh("Resources/Models/Cube.obj", "Cube");
 	Assets::LoadMesh("Resources/Models/Pin.obj", "Pin");
 	Assets::LoadMesh("Resources/Models/Ball.obj", "Ball");
 	Assets::LoadMesh("Resources/Models/Bowling/Bowling_Alley_Rails.obj", "B_Rails");

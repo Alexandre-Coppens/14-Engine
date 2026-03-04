@@ -4,12 +4,15 @@
 
 #include "Engine/Utilitaries/CommonLib.h"
 
+class Mesh;
 class Actor;
 class BoxCollider : public Collider3D
 {
 private:
 	Vector3 mOffset;
 	Vector3 mSize;
+	
+	Mesh* mDebugMesh;
 	
 public:
 	Vector3 getOffset() const {return mOffset;}
@@ -23,4 +26,6 @@ private:
 public:
 	BoxCollider(Actor* _pOwner);
 	~BoxCollider() override;
+	
+	void DrawDebug() override;
 };
