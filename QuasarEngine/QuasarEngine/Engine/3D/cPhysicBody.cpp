@@ -3,7 +3,11 @@
 #include "Engine/3D/cSphereCollider.h"
 #include "Engine/3D/cBoxCollider.h"
 #include "Engine/3D/cCollider3D.h"
+
 #include "Engine/Actor.h"
+
+#include "Engine/Utilitaries/Log.h"
+#include "Engine/Utilitaries/Time.h"
 
 PhysicBody::PhysicBody(Actor* _pOwner):
     Component(_pOwner)
@@ -24,6 +28,12 @@ void PhysicBody::Update(float _deltaTime)
 void PhysicBody::ResolveCollision(Collider3D* _pOwnerCollision, Vector3 _nearestPoint)
 {
     Vector3 collisionNormal = Normalize(_nearestPoint - pOwner->getTransform3D()->getLocation());
+    //Check if Normalize len == 0
+    if (collisionNormal == Vector3Zero())
+    {
+        collisionNormal = Normalize(_nearestPoint - pOwner->getTransform3D()->getLocation() - (mVelocity * Time::deltaTime));
+    }
+    
     switch (_pOwnerCollision->getColliderType())
     {
     case BOX:
@@ -40,6 +50,11 @@ void PhysicBody::ResolveCollision(Collider3D* _pOwnerCollision, Vector3 _nearest
     case SPHERE:
         float radius = dynamic_cast<SphereCollider*>(_pOwnerCollision)->getRadius();
         pOwner->getTransform3D()->setLocation(_nearestPoint + (collisionNormal * (radius) * -1.0f));
+        Log::Info("Start");
+        Log::Info("NearestPoint: " + ToString(_nearestPoint));
+        Log::Info("CollisionNormal: " + ToString(collisionNormal));
+        Log::Info("Radius: " + std::to_string(radius));
+        Log::Info("End");
         break;
     }
 }

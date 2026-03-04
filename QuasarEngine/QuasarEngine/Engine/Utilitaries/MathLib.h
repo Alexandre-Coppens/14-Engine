@@ -97,6 +97,7 @@ static inline Vector3 Normalize(const Vector3 v)
 {
 	Vector3 result = v;
 	float len = Length(v);
+	if (len == 0) return Vector3Zero();
 	float nLen = 1.0f / len;
 	result.x *= nLen;
 	result.y *= nLen;

@@ -6,12 +6,12 @@
 class Collider3D;
 class PhysicBody : public Component
 {
-protected:
+private:
     Vector3 mVelocity;
     
-    bool mGravityEnabled {false};
-    float mMass {0.1f};
-    float mGravityForce {9.8f};
+    bool mGravityEnabled      {true};
+    float mMass               {0.1f};
+    float mGravityForce       {9.8f};
     Vector3 mGravityDirection {Vector3UnitZ() * -1.0f};
 
 public:
