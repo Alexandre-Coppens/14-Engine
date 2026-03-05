@@ -34,8 +34,6 @@ void Ball::Start()
 void Ball::Update(const float _deltaTime)
 {
     Actor::Update(_deltaTime);
-    Log::Info(ToString(mTransform3D.getLocation()));
-    
     if (Inputs::GetKey(SDLK_UP)) mPhysicBody->addVelocityX(-1 * _deltaTime);
     if (Inputs::GetKey(SDLK_DOWN)) mPhysicBody->addVelocityX(1 * _deltaTime);
     if (Inputs::GetKey(SDLK_LEFT)) mPhysicBody->addVelocityY(1 * _deltaTime);

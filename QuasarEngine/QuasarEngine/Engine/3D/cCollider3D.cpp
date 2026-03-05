@@ -23,12 +23,18 @@ Collider3D::~Collider3D()
     it = std::find(ColliderList.begin(), ColliderList.end(), this);
     ColliderList.erase(it);
 }
+void Collider3D::OnActorStart()
+{
+    mPhysicBased = pOwner->GetComponent<PhysicBody>() != nullptr;
+}
 
 void Collider3D::Update(const float _deltaTime)
 {
+    //TODO: Tell the other collider to update its CollisionState
     mHasFrameCollision = false;
     if (mCollisionState == STOPPED_COLLIDING) mCollisionState = NOT_COLLIDING;
     if (mColliderType == NONE) return;
+    if (!mPhysicBased) return;
     for (Collider3D* collider : ColliderList)
     {
         if (collider == this) continue;
@@ -93,20 +99,30 @@ bool Collider3D::BoxToBox(Collider3D* _pBoxA, Collider3D* _pBoxB)
     BoxCollider* boxA = dynamic_cast<BoxCollider*>(_pBoxA);
     BoxCollider* boxB = dynamic_cast<BoxCollider*>(_pBoxB);
     
-    //This is only for the nearest point
-    const float x = Max(boxB->getCenter().x - (boxB->getSize().x * 0.5f), Min(boxA->getCenter().x, boxB->getCenter().x + (boxB->getSize().x * 0.5f)));
-    const float y = Max(boxB->getCenter().y - (boxB->getSize().y * 0.5f), Min(boxA->getCenter().y, boxB->getCenter().y + (boxB->getSize().y * 0.5f)));
-    const float z = Max(boxB->getCenter().z - (boxB->getSize().z * 0.5f), Min(boxA->getCenter().z, boxB->getCenter().z + (boxB->getSize().z * 0.5f)));
-    
-    mNearestPoint = Vector3(x, y, z);
-    return (
-          boxA->getCenter().x - (boxA->getSize().x * 0.5f) <= boxB->getCenter().x + (boxB->getSize().x * 0.5f) &&
+    if (not(boxA->getCenter().x - (boxA->getSize().x * 0.5f) <= boxB->getCenter().x + (boxB->getSize().x * 0.5f) &&
           boxA->getCenter().x + (boxA->getSize().x * 0.5f) >= boxB->getCenter().x - (boxB->getSize().x * 0.5f) &&
           boxA->getCenter().y - (boxA->getSize().y * 0.5f) <= boxB->getCenter().y + (boxB->getSize().y * 0.5f) &&
           boxA->getCenter().y + (boxA->getSize().y * 0.5f) >= boxB->getCenter().y - (boxB->getSize().y * 0.5f) &&
           boxA->getCenter().z - (boxA->getSize().z * 0.5f) <= boxB->getCenter().z + (boxB->getSize().z * 0.5f) &&
-          boxA->getCenter().z + (boxA->getSize().z * 0.5f) >= boxB->getCenter().z - (boxB->getSize().z * 0.5f) 
-        );
+          boxA->getCenter().z + (boxA->getSize().z * 0.5f) >= boxB->getCenter().z - (boxB->getSize().z * 0.5f) )) 
+        return false;
+    
+    //This is only for the nearest point
+    Vector3 distance = boxB->getCenter() - boxA->getCenter();
+    Vector3 absDistance;
+    absDistance.x = Abs(distance.x);
+    absDistance.y = Abs(distance.y);
+    absDistance.z = Abs(distance.z);
+    
+    const Vector3 overlapp = (boxB->getSize() * 0.5f + boxA->getSize() * 0.5f) - absDistance;
+    
+    if      ( Abs(overlapp.x) <= Abs(overlapp.y) && Abs(overlapp.x) <= Abs(overlapp.z)) mNearestPoint = Vector3UnitX() * overlapp.x * (distance.x > 0 ? 1 : -1);
+    else if ( Abs(overlapp.y) <= Abs(overlapp.x) && Abs(overlapp.y) <= Abs(overlapp.z)) mNearestPoint = Vector3UnitY() * overlapp.y * (distance.y > 0 ? 1 : -1);
+    else mNearestPoint = Vector3UnitZ() * overlapp.z * (distance.z > 0 ? 1 : -1);
+    
+    mNearestPoint = boxA->getCenter() + mNearestPoint;
+    
+    return true;
 }
 
 bool Collider3D::BoxToSphere(Collider3D* _pBox, Collider3D* _pSphere)

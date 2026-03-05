@@ -29,6 +29,7 @@ private:
     Vector3 mNearestPoint;
 
 protected:
+    bool mPhysicBased                  {false};
     ColliderType mColliderType;
     CollisionState mCollisionState;
     float mFriction {0.5f};
@@ -47,6 +48,7 @@ public:
     Collider3D(Actor* _pOwner);
     ~Collider3D() override;
     
+    void OnActorStart() override;
     void Update(const float _deltaTime) override;
     void virtual DrawDebug() = 0;
 

@@ -15,6 +15,7 @@ private:
     Vector3 mGravityDirection {Vector3UnitZ() * -1.0f};
 
 public:
+    float getMass() const {return mMass;}
     Vector3 getVelocity() const {return mVelocity;}
 
     void setVelocity(const Vector3 _velocity) {mVelocity = _velocity;}

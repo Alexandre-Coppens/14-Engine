@@ -15,6 +15,10 @@ void Component::OnStart()
 {
 }
 
+void Component::OnActorStart()
+{
+}
+
 void Component::OnEnd()
 {
 	pOwner = nullptr;

@@ -20,6 +20,7 @@ Actor::~Actor()
 
 void Actor::Start()
 {
+	for (Component* c : mComponentList) c->OnActorStart();
 	Log::Info("Actor::" + mName + "::Started");
 }
 
@@ -64,4 +65,3 @@ void Actor::RemoveComponents()
 	}
 	mComponentList.clear();
 }
-

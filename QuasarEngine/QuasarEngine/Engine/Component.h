@@ -27,6 +27,7 @@ public:
 	virtual ~Component();
 
 	virtual void OnStart();
+	virtual void OnActorStart();
 	virtual void Update(float _deltaTime) = 0;
 	virtual void OnEnd();
 };

@@ -4,6 +4,9 @@
 
 #include "Engine/3D/cModel.h"
 #include "Engine/3D/Mesh.h"
+#include "Engine/3D/cBoxCollider.h"
+#include "Engine/3D/cPhysicBody.h"
+#include "Engine/Utilitaries/Inputs.h"
 
 Pin::Pin() :
     Actor()
@@ -18,6 +21,12 @@ Pin::~Pin()
 void Pin::Start()
 {
     mModel = dynamic_cast<Model*>(AddComponent(new Model(this, "BasicModel")));
+    BoxCollider* collider = dynamic_cast<BoxCollider*>(AddComponent(new BoxCollider(this)));
+    mPhysicBody = dynamic_cast<PhysicBody*>(AddComponent(new PhysicBody(this)));
+    
+    collider->setOffset(Vector3{0.0f, 0.0f, 0.015f});
+    collider->setSize(Vector3{0.01f, 0.01f, 0.03f});
+    
     mModel->setMesh(Assets::GetMesh("Pin"));
     mModel->getMesh()->AddTexture(Assets::GetTexture("Pin"));
     Actor::Start();
@@ -26,6 +35,7 @@ void Pin::Start()
 void Pin::Update(const float _deltaTime)
 {
     Actor::Update(_deltaTime);
+    
 }
 
 void Pin::Destroy()
