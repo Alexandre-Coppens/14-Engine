@@ -20,6 +20,8 @@ void Player3D::Start()
 {
     pCamera = dynamic_cast<Camera*>(AddComponent(new Camera(this)));
     pCamera->getLocalTransform()->addRotationZ(180.0f);
+    pCamera->getLocalTransform()->addLocationX(0.15f);
+    pCamera->getLocalTransform()->addLocationZ(-0.2f);
     Actor::Start();
 }
 

@@ -107,15 +107,15 @@ void Scene_Test::Start()
 	alley->getTransform3D()->addLocationZ(-0.25f);
 	ball->getTransform3D()->addLocationZ(-0.2f);
 	pin1->getTransform3D()->setLocation(Vector3{-1.00f,  0.000f, -0.20f});
-	pin2->getTransform3D()->setLocation(Vector3{-1.05f,  0.025f, -0.20f});
-	pin3->getTransform3D()->setLocation(Vector3{-1.05f, -0.025f, -0.20f});
-	pin4->getTransform3D()->setLocation(Vector3{-1.10f,  0.050f, -0.20f});
-	pin5->getTransform3D()->setLocation(Vector3{-1.10f,  0.000f, -0.20f});
-	pin6->getTransform3D()->setLocation(Vector3{-1.10f, -0.050f, -0.20f});
-	pin7->getTransform3D()->setLocation(Vector3{-1.15f,  0.075f, -0.20f});
-	pin8->getTransform3D()->setLocation(Vector3{-1.15f,  0.025f, -0.20f});
-	pin9->getTransform3D()->setLocation(Vector3{-1.15f, -0.025f, -0.20f});
-	pin0->getTransform3D()->setLocation(Vector3{-1.15f, -0.075f, -0.20f});
+	pin2->getTransform3D()->setLocation(Vector3{-1.030f,  0.015f, -0.20f});
+	pin3->getTransform3D()->setLocation(Vector3{-1.030f, -0.015f, -0.20f});
+	pin4->getTransform3D()->setLocation(Vector3{-1.060f,  0.030f, -0.20f});
+	pin5->getTransform3D()->setLocation(Vector3{-1.060f,  0.000f, -0.20f});
+	pin6->getTransform3D()->setLocation(Vector3{-1.060f, -0.030f, -0.20f});
+	pin7->getTransform3D()->setLocation(Vector3{-1.090f,  0.045f, -0.20f});
+	pin8->getTransform3D()->setLocation(Vector3{-1.090f,  0.015f, -0.20f});
+	pin9->getTransform3D()->setLocation(Vector3{-1.090f, -0.015f, -0.20f});
+	pin0->getTransform3D()->setLocation(Vector3{-1.090f, -0.045f, -0.20f});
 }
 
 void Scene_Test::Update(float _deltaTime)

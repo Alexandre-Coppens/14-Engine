@@ -15,10 +15,16 @@ SphereCollider::SphereCollider(Actor* _pOwner):
 	mColliderType = SPHERE;
 	mDebugMesh = Assets::GetMesh("Sphere");
 }
+
 SphereCollider::~SphereCollider()
 {
 	Collider3D::~Collider3D();
 	mDebugMesh = nullptr;
+}
+
+Vector3 SphereCollider::getCenter()
+{
+	return pOwner->getTransform3D()->getLocation();
 }
 
 //TODO: Make it affect scale

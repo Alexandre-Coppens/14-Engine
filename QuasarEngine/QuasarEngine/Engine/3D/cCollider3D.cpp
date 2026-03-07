@@ -42,7 +42,6 @@ void Collider3D::Update(const float _deltaTime)
         
         if (AreCollidersColliding(collider))
         {
-            Log::Info(pOwner->getName() + " Collision");
             mHasFrameCollision = true;
             
             //Resolve Collisions entering each others

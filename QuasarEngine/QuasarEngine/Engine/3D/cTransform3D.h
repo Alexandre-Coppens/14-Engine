@@ -39,6 +39,7 @@ public:
 	void addLocationX(const float _f) { mLocation.x += _f; mNeedsUpdate = true; }
 	void addLocationY(const float _f) { mLocation.y += _f; mNeedsUpdate = true; }
 	void addLocationZ(const float _f) { mLocation.z += _f; mNeedsUpdate = true; }
+	void addRotation(const Vector3 _v) { mRotation = Add(mRotation, _v); mNeedsUpdate = true; }
 	void addRotationX(const float _f) { mRotation.x += _f; mNeedsUpdate = true; }
 	void addRotationY(const float _f) { mRotation.y += _f; mNeedsUpdate = true; }
 	void addRotationZ(const float _f) { mRotation.z += _f; mNeedsUpdate = true; }
@@ -56,7 +57,6 @@ public:
 		rotateAroundZ(mRotation.z);
 		rotateAroundY(mRotation.y);
 		rotateAroundX(mRotation.x);
-		ComputeWorldTransform();
 	}
 	
 	void setTransform(const Transform3D* _t3D) {

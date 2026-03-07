@@ -33,6 +33,9 @@ void Transform3D::ComputeWorldTransform()
 {
 	if (!mNeedsUpdate) return;
 	mNeedsUpdate = false;
+	while (mRotation.x < 0) {mRotation.x += 360;}
+	mRotation.x = Fmod(mRotation.x, 360.0f);
+	computeRotation();
 	mWorldTransform =  Mat4RowCreateScale(mScale);
 	mWorldTransform *= Mat4RowCreateFromQuaternion(mQRotation);
 	mWorldTransform *= Mat4RowCreateTranslation(mLocation);

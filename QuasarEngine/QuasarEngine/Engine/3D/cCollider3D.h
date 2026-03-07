@@ -43,13 +43,15 @@ public:
     
     //Friction clamped between 0 & 1
     void setFriction(float _f)  {mFriction = Clamp(_f, 0.0f, 1.0f);}
-    
+
 public:
     Collider3D(Actor* _pOwner);
     ~Collider3D() override;
     
     void OnActorStart() override;
     void Update(const float _deltaTime) override;
+    
+    virtual Vector3 getCenter() = 0;
     void virtual DrawDebug() = 0;
 
     bool AreCollidersColliding(Collider3D* _pOther);

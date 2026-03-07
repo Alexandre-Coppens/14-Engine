@@ -9,6 +9,8 @@ class Ball : public Actor
 private:
     Model* mModel;
     PhysicBody* mPhysicBody;
+    
+    bool mLaunched {false};
 	
 public:
     Model* getModel() const {return mModel;}

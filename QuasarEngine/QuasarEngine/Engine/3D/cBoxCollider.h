@@ -17,7 +17,6 @@ private:
 public:
 	Vector3 getOffset() const {return mOffset;}
 	Vector3 getSize() const {return mSize;}
-	Vector3 getCenter() const {return pOwner->getTransform3D()->getLocation() + mOffset;}
 	
 	void setOffset(const Vector3 _offset)  {mOffset = _offset;}
 	void setSize(const Vector3 _v) {mSize = _v;}
@@ -26,6 +25,9 @@ private:
 public:
 	BoxCollider(Actor* _pOwner);
 	~BoxCollider() override;
+	
+	Vector3 getCenter() override;
+
 	
 	void DrawDebug() override;
 };

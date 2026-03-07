@@ -3,34 +3,50 @@
 #include "Engine/Component.h"
 #include "Engine/Utilitaries/CommonLib.h"
 
+enum ColliderType;
 class Collider3D;
 class PhysicBody : public Component
 {
 private:
-    Vector3 mVelocity;
+    ColliderType mColliderType;
+    Collider3D* mpCollider;
     
+    Vector3 mVelocity           {Vector3Zero()};
+    Vector3 mAngularVelocity    {Vector3Zero()};
+    Vector3 mTorque             {Vector3Zero()};
+    Vector3 mInertia            {Vector3Zero()};
+    
+    //gravity
     bool mGravityEnabled      {true};
     float mMass               {0.1f};
     float mGravityForce       {9.8f};
-    Vector3 mGravityDirection {Vector3UnitZ() * -1.0f};
+    Vector3 mGravityDirection {Vector3NegUnitZ()};
 
 public:
-    float getMass() const {return mMass;}
-    Vector3 getVelocity() const {return mVelocity;}
-
+    float getMass()              const {return mMass;}
+    Vector3 getVelocity()        const {return mVelocity;}
+    Vector3 getAngularVelocity() const {return mAngularVelocity;}
+    Collider3D* getReferencedCollider() const {return mpCollider;}
+    
+    void setMass(const float _f) {mMass = _f; RecalculateInertia();}
     void setVelocity(const Vector3 _velocity) {mVelocity = _velocity;}
     void setGravityEnabled(const bool _enable) {mGravityEnabled = _enable;}
 
     void addVelocity(const Vector3 _v) {mVelocity += _v;}
-    void addVelocityX(const float _f) {mVelocity.x += _f;}
-    void addVelocityY(const float _f) {mVelocity.y += _f;}
-    void addVelocityZ(const float _f) {mVelocity.z += _f;}
+    void addVelocityX(const float _f)  {mVelocity.x += _f;}
+    void addVelocityY(const float _f)  {mVelocity.y += _f;}
+    void addVelocityZ(const float _f)  {mVelocity.z += _f;}
+    
+    void addTorque(const Vector3 _v)   {mTorque += _v;}
 
 private:
+    void RecalculateInertia();
+    
 public:
-    PhysicBody(Actor* _pOwner);
+    PhysicBody(Actor* _pOwner, ColliderType _colliderType);
     ~PhysicBody() override;
     
+    void OnStart() override;
     void Update(float _deltaTime) override;
     void ResolveCollision(Collider3D* _pOwnerCollision, Vector3 _nearestPoint);
     void ResolveVelocity(PhysicBody* _otherPhysic, Vector3 _nearestPoint, float _friction);

@@ -19,6 +19,10 @@ BoxCollider::~BoxCollider()
 	Collider3D::~Collider3D();
 	mDebugMesh = nullptr;
 }
+Vector3 BoxCollider::getCenter()
+{
+	return pOwner->getTransform3D()->getLocation() + mOffset;
+}
 
 void BoxCollider::DrawDebug()
 {

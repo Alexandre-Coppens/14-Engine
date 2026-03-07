@@ -79,18 +79,23 @@ void BowlingAlley::Start()
     BoxCollider* railLeft = dynamic_cast<BoxCollider*>(AddComponent(new BoxCollider(this)));
     BoxCollider* railRight = dynamic_cast<BoxCollider*>(AddComponent(new BoxCollider(this)));
     BoxCollider* floor = dynamic_cast<BoxCollider*>(AddComponent(new BoxCollider(this)));
+    BoxCollider* gutter = dynamic_cast<BoxCollider*>(AddComponent(new BoxCollider(this)));
     
-    railLeft->setOffset(Vector3{-1.0f, 0.2f, 0.05f});
-    railLeft->setSize(Vector3{5.0f, 0.05f, 0.1f});
+    railLeft->setOffset(Vector3{-1.0f, 0.1055f, 0.05f});
+    railLeft->setSize(Vector3{5.0f, 0.02f, 0.1f});
     railLeft->setFriction(0.1f);
     
-    railRight->setOffset(Vector3{-1.0f, -0.2f, 0.05f});
-    railRight->setSize(Vector3{5.0f, 0.05f, 0.1f});
+    railRight->setOffset(Vector3{-1.0f, -0.1055f, 0.05f});
+    railRight->setSize(Vector3{5.0f, 0.02f, 0.1f});
     railRight->setFriction(0.1f);
     
-    floor->setOffset(Vector3{-1.0f, 0, -0.0025f});
-    floor->setSize(Vector3{5.0f, 0.5f, 0.01f});
+    floor->setOffset(Vector3{-1.5f, 0, -0.0025f});
+    floor->setSize(Vector3{3.1f, 0.145f, 0.01f});
     floor->setFriction(0.1f);
+    
+    gutter->setOffset(Vector3{-1.5f, 0, -0.0075f});
+    gutter->setSize(Vector3{3.0f, 0.2f, 0.01f});
+    gutter->setFriction(0.1f);
     
     Actor::Start();
 }

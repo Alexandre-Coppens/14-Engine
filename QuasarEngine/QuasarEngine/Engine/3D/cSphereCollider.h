@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include "Engine/Actor.h"
 #include "Engine/3D/cCollider3D.h"
 
 class Mesh;
@@ -7,7 +8,7 @@ class Actor;
 class SphereCollider : public Collider3D
 {
 private:
-	float mRadius;
+	float mRadius {1.0f};
 	Mesh* mDebugMesh;
 	
 public:
@@ -19,6 +20,7 @@ public:
 	SphereCollider(Actor* _pOwner);
 	~SphereCollider() override;
 	
+	Vector3 getCenter() override;
 	void DrawDebug() override;
 	
 	Vector4 GetSphere();

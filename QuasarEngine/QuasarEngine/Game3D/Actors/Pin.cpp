@@ -21,8 +21,10 @@ Pin::~Pin()
 void Pin::Start()
 {
     mModel = dynamic_cast<Model*>(AddComponent(new Model(this, "BasicModel")));
-    BoxCollider* collider = dynamic_cast<BoxCollider*>(AddComponent(new BoxCollider(this)));
-    mPhysicBody = dynamic_cast<PhysicBody*>(AddComponent(new PhysicBody(this)));
+    mPhysicBody = dynamic_cast<PhysicBody*>(AddComponent(new PhysicBody(this, ColliderType::BOX)));
+    BoxCollider* collider = dynamic_cast<BoxCollider*>(mPhysicBody->getReferencedCollider());
+    
+    mPhysicBody->setMass(1.6f);
     
     collider->setOffset(Vector3{0.0f, 0.0f, 0.015f});
     collider->setSize(Vector3{0.01f, 0.01f, 0.03f});
