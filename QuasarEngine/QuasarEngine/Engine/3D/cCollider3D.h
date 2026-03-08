@@ -6,6 +6,7 @@
 #include "Engine/Utilitaries/CommonLib.h"
 #include "Engine/Utilitaries/MathLib.h"
 
+class BoxCollider;
 enum ColliderType
 { 
     NONE,
@@ -44,6 +45,15 @@ public:
     //Friction clamped between 0 & 1
     void setFriction(float _f)  {mFriction = Clamp(_f, 0.0f, 1.0f);}
 
+private:
+    bool AreCollidersColliding(Collider3D* _pOther);
+    
+    bool BoxToBox(Collider3D* _pBoxA, Collider3D* _pBoxB);
+    bool BoxToSphere(Collider3D* _pBox, Collider3D* _pSphere);
+    bool SphereToSphere(Collider3D* _pSphereA, Collider3D* _pSphereB);
+    
+    bool GetSeparatingPlane(const Vector3 _diffPos, const Vector3 _plane, BoxCollider* _boxA, BoxCollider* _boxB);
+    
 public:
     Collider3D(Actor* _pOwner);
     ~Collider3D() override;
@@ -53,10 +63,4 @@ public:
     
     virtual Vector3 getCenter() = 0;
     void virtual DrawDebug() = 0;
-
-    bool AreCollidersColliding(Collider3D* _pOther);
-    
-    bool BoxToBox(Collider3D* _pBoxA, Collider3D* _pBoxB);
-    bool BoxToSphere(Collider3D* _pBox, Collider3D* _pSphere);
-    bool SphereToSphere(Collider3D* _pSphereA, Collider3D* _pSphereB);
 };

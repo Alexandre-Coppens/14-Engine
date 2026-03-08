@@ -38,8 +38,8 @@ void Ball::Update(const float _deltaTime)
     Actor::Update(_deltaTime);
     //if (Inputs::GetKey(SDLK_UP)) mPhysicBody->addVelocityX(-1 * _deltaTime);
     //if (Inputs::GetKey(SDLK_DOWN)) mPhysicBody->addVelocityX(1 * _deltaTime);
-    if (Inputs::GetKey(SDLK_LEFT) && !mLaunched)    mTransform3D.addLocationY(0.1f * _deltaTime);
-    if (Inputs::GetKey(SDLK_RIGHT) && !mLaunched)   mTransform3D.addLocationY(-0.1f * _deltaTime);
+    if (Inputs::GetKey(SDLK_a) && !mLaunched)    mTransform3D.addLocationY(0.1f * _deltaTime);
+    if (Inputs::GetKey(SDLK_e) && !mLaunched)   mTransform3D.addLocationY(-0.1f * _deltaTime);
     if (Inputs::GetKeyDown(SDLK_SPACE) && !mLaunched)
     {
         mLaunched = true;

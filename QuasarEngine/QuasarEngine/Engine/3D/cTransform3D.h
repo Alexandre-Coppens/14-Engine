@@ -18,9 +18,10 @@ protected:
 	bool mNeedsUpdate{ true };
 
 public:
-	Vector3 getLocation()	const { return mLocation; }
-	Vector3 getRotation()	const { return mRotation; }
-	Vector3 getScale()		const { return mScale; }
+	Vector3 getLocation()		const { return mLocation; }
+	Vector3 getRotation()		const { return mRotation; }
+	Quaternion getQRotation()	const { return mQRotation; }
+	Vector3 getScale()			const { return mScale; }
 
 	Matrix4Row getWorldTransform() { ComputeWorldTransform(); return mWorldTransform; }
 

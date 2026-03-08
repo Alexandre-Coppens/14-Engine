@@ -12,12 +12,14 @@ BoxCollider::BoxCollider(Actor* _pOwner):
 {
 	mColliderType = BOX;
 	mDebugMesh = Assets::GetMesh("Cube");
+	mpParentTransform = pOwner->getTransform3D();
 }
 
 BoxCollider::~BoxCollider()
 {
 	Collider3D::~Collider3D();
 	mDebugMesh = nullptr;
+	mpParentTransform = nullptr;
 }
 Vector3 BoxCollider::getCenter()
 {
@@ -28,7 +30,7 @@ void BoxCollider::DrawDebug()
 {
 	Matrix4Row wt;
 	wt =  Mat4RowCreateScale(mSize * 0.5f);
-	wt *= Mat4RowCreateFromQuaternion(Quaternion::QuatIdentity());
+	wt *= Mat4RowCreateFromQuaternion(mpParentTransform->getQRotation());
 	wt *= Mat4RowCreateTranslation(getCenter());
 	
 	Assets::GetShader("Simple")->SetMatrix4Row("uWorldTransform", wt);

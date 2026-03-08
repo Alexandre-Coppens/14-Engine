@@ -23,6 +23,7 @@ PhysicBody::PhysicBody(Actor* _pOwner, ColliderType _colliderType) :
         mpCollider = dynamic_cast<Collider3D*>(pOwner->AddComponent(new BoxCollider(pOwner)));
         break;
     }
+    RecalculateInertia();
 }
 PhysicBody::~PhysicBody()
 {
@@ -85,11 +86,12 @@ void PhysicBody::ResolveVelocity(PhysicBody* _otherPhysic, Vector3 _nearestPoint
     if (_otherPhysic == nullptr)
     {
         //Friction is already between 0 & 2 since it's the combination of the 2 frictions
+        Vector3 oldVel = mVelocity;
         mVelocity = Subtract(mVelocity, collisionNormal * ( (2 - _friction) * Dot(mVelocity, collisionNormal)));
         switch (mColliderType)
         {
         case BOX:
-            force = mVelocity * -1;
+            force = mVelocity - oldVel;
             break;
             
         case SPHERE:
@@ -135,7 +137,7 @@ void PhysicBody::RecalculateInertia()
             Vector3 size = static_cast<BoxCollider*>(mpCollider)->getSize();
             mInertia.x = (1.0f/12.0f) * mMass * (Pow(size.z) + Pow(size.x));
             mInertia.y = (1.0f/12.0f) * mMass * (Pow(size.y) + Pow(size.x));
-            mInertia.x = (1.0f/12.0f) * mMass * (Pow(size.y) + Pow(size.z));
+            mInertia.z = (1.0f/12.0f) * mMass * (Pow(size.y) + Pow(size.z));
         }
         break;
         

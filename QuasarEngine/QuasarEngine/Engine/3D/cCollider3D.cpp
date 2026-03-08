@@ -23,6 +23,7 @@ Collider3D::~Collider3D()
     it = std::find(ColliderList.begin(), ColliderList.end(), this);
     ColliderList.erase(it);
 }
+
 void Collider3D::OnActorStart()
 {
     mPhysicBased = pOwner->GetComponent<PhysicBody>() != nullptr;
@@ -93,17 +94,29 @@ bool Collider3D::AreCollidersColliding(Collider3D* _pOther)
     return false;
 }
 
+
 bool Collider3D::BoxToBox(Collider3D* _pBoxA, Collider3D* _pBoxB)
 {
     BoxCollider* boxA = dynamic_cast<BoxCollider*>(_pBoxA);
     BoxCollider* boxB = dynamic_cast<BoxCollider*>(_pBoxB);
     
-    if (not(boxA->getCenter().x - (boxA->getSize().x * 0.5f) <= boxB->getCenter().x + (boxB->getSize().x * 0.5f) &&
-          boxA->getCenter().x + (boxA->getSize().x * 0.5f) >= boxB->getCenter().x - (boxB->getSize().x * 0.5f) &&
-          boxA->getCenter().y - (boxA->getSize().y * 0.5f) <= boxB->getCenter().y + (boxB->getSize().y * 0.5f) &&
-          boxA->getCenter().y + (boxA->getSize().y * 0.5f) >= boxB->getCenter().y - (boxB->getSize().y * 0.5f) &&
-          boxA->getCenter().z - (boxA->getSize().z * 0.5f) <= boxB->getCenter().z + (boxB->getSize().z * 0.5f) &&
-          boxA->getCenter().z + (boxA->getSize().z * 0.5f) >= boxB->getCenter().z - (boxB->getSize().z * 0.5f) )) 
+    Vector3 diffDist = boxB->getCenter() - boxA->getCenter();
+    
+    if (not(GetSeparatingPlane(diffDist, boxA->getForward(), boxA, boxB) ||
+          GetSeparatingPlane(diffDist, boxA->getRight(),     boxA, boxB) ||
+          GetSeparatingPlane(diffDist, boxA->getUp(),        boxA, boxB) ||
+          GetSeparatingPlane(diffDist, boxB->getForward(),   boxA, boxB) ||
+          GetSeparatingPlane(diffDist, boxB->getRight(),     boxA, boxB) ||
+          GetSeparatingPlane(diffDist, boxB->getUp(),        boxA, boxB) ||
+          GetSeparatingPlane(diffDist, Cross(boxA->getForward(), boxB->getForward()), boxA, boxB) ||
+          GetSeparatingPlane(diffDist, Cross(boxA->getForward(), boxB->getRight()),   boxA, boxB) ||
+          GetSeparatingPlane(diffDist, Cross(boxA->getForward(), boxB->getUp()),      boxA, boxB) ||
+          GetSeparatingPlane(diffDist, Cross(boxA->getRight(),   boxB->getForward()), boxA, boxB) ||
+          GetSeparatingPlane(diffDist, Cross(boxA->getRight(),   boxB->getRight()),   boxA, boxB) ||
+          GetSeparatingPlane(diffDist, Cross(boxA->getRight(),   boxB->getUp()),      boxA, boxB) ||
+          GetSeparatingPlane(diffDist, Cross(boxA->getUp(),      boxB->getForward()), boxA, boxB) ||
+          GetSeparatingPlane(diffDist, Cross(boxA->getUp(),      boxB->getRight()),   boxA, boxB) ||
+          GetSeparatingPlane(diffDist, Cross(boxA->getUp(),      boxB->getUp()),      boxA, boxB))) 
         return false;
     
     //This is only for the nearest point
@@ -157,5 +170,16 @@ bool Collider3D::SphereToSphere(Collider3D* _pSphereA, Collider3D* _pSphereB)
     
     mNearestPoint = Vector3(s2.x, s2.y, s2.z);
     return Pow(dist.x) + Pow(dist.y) + Pow(dist.z) - Pow(s1.w + s2.w) <= 0;
+}
+
+bool Collider3D::GetSeparatingPlane(const Vector3 _diffPos, const Vector3 _plane, BoxCollider* _boxA, BoxCollider* _boxB)
+{
+    return (Abs(Dot(_diffPos, _plane)) >
+        (Abs(Dot((_boxA->getForward() *  _boxA->getSize().x * 0.5f), _plane)) +
+         Abs(Dot((_boxA->getRight()   *  _boxA->getSize().y * 0.5f), _plane)) +
+         Abs(Dot((_boxA->getUp()      *  _boxA->getSize().z * 0.5f), _plane)) +
+         Abs(Dot((_boxB->getForward() *  _boxB->getSize().x * 0.5f), _plane)) +
+         Abs(Dot((_boxB->getRight()   *  _boxB->getSize().y * 0.5f), _plane)) +
+         Abs(Dot((_boxB->getUp()      *  _boxB->getSize().z * 0.5f), _plane))));
 }
 

@@ -7,6 +7,7 @@
 #include "Engine/3D/cBoxCollider.h"
 #include "Engine/3D/cPhysicBody.h"
 #include "Engine/Utilitaries/Inputs.h"
+#include "Engine/Utilitaries/Log.h"
 
 Pin::Pin() :
     Actor()
@@ -36,6 +37,7 @@ void Pin::Start()
 
 void Pin::Update(const float _deltaTime)
 {
+    Log::Info(ToString(mTransform3D.getRotation()));
     Actor::Update(_deltaTime);
     
 }
