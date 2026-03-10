@@ -51,43 +51,20 @@ void PhysicBody::Update(float _deltaTime)
 }
 
 //TODO: Change NearestPoint name because it does not represent the variable well anymore
-void PhysicBody::ResolveCollision(Collider3D* _pOwnerCollision, Vector3 _nearestPoint)
+void PhysicBody::ResolveCollision(Collider3D* _pOwnerCollision, CollisionData _collisionData)
 {
-    Vector3 collisionNormal = Normalize(pOwner->getTransform3D()->getLocation() - _nearestPoint);
-    switch (_pOwnerCollision->getColliderType())
-    {
-    case BOX:
-        {
-            Vector3 position = dynamic_cast<BoxCollider*>(_pOwnerCollision)->getCenter();
-            pOwner->getTransform3D()->addLocation(position - _nearestPoint);
-        }
-        break;
-        
-    case SPHERE:
-        {
-            //Check if Normalize len == 0
-            if (collisionNormal == Vector3Zero())
-            {
-                collisionNormal = Normalize(pOwner->getTransform3D()->getLocation() - (mVelocity * Time::deltaTime) - _nearestPoint);
-            }
-        
-            float radius = dynamic_cast<SphereCollider*>(_pOwnerCollision)->getRadius();
-            pOwner->getTransform3D()->setLocation(_nearestPoint + (collisionNormal * radius));
-        }
-        break;
-    }
+    pOwner->getTransform3D()->addLocation(_collisionData.normal * _collisionData.penetration);
 }
 
-void PhysicBody::ResolveVelocity(PhysicBody* _otherPhysic, Vector3 _nearestPoint, float _friction)
+void PhysicBody::ResolveVelocity(PhysicBody* _otherPhysic, CollisionData _collisionData, float _friction)
 {
-    Vector3 collisionNormal = Normalize(pOwner->getTransform3D()->getLocation() - _nearestPoint);
-    Vector3 r = _nearestPoint - pOwner->getTransform3D()->getLocation();
+    Vector3 r = _collisionData.collisionPoint - pOwner->getTransform3D()->getLocation();
     Vector3 force = Vector3Zero();
     if (_otherPhysic == nullptr)
     {
         //Friction is already between 0 & 2 since it's the combination of the 2 frictions
         Vector3 oldVel = mVelocity;
-        mVelocity = Subtract(mVelocity, collisionNormal * ( (2 - _friction) * Dot(mVelocity, collisionNormal)));
+        mVelocity = Subtract(mVelocity, _collisionData.normal * ( (2 - _friction) * Dot(mVelocity, _collisionData.normal)));
         switch (mColliderType)
         {
         case BOX:
@@ -96,7 +73,7 @@ void PhysicBody::ResolveVelocity(PhysicBody* _otherPhysic, Vector3 _nearestPoint
             
         case SPHERE:
             float radius = static_cast<SphereCollider*>(mpCollider)->getRadius();
-            mAngularVelocity = (1/radius) * Cross(collisionNormal, mVelocity);
+            mAngularVelocity = (1/radius) * Cross(_collisionData.normal, mVelocity);
             break;
         }
 
@@ -123,7 +100,7 @@ void PhysicBody::ResolveVelocity(PhysicBody* _otherPhysic, Vector3 _nearestPoint
         _otherPhysic->setVelocity(newVel2);
         
         force = newVel1 - oldVel1;
-        _otherPhysic->addTorque(Cross(_nearestPoint - _otherPhysic->getReferencedCollider()->getCenter(), newVel2 - oldVel2));
+        _otherPhysic->addTorque(Cross(_collisionData.collisionPoint - _otherPhysic->getReferencedCollider()->getCenter(), newVel2 - oldVel2));
     }
     mTorque += Cross(r, force);
 }

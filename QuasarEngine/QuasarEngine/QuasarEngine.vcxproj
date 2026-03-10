@@ -76,7 +76,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)/QuasarEngine;$(SolutionDir)/QuasarEngine/Dependencies/GL/SDL/include;$(SolutionDir)/QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;$(SolutionDir)/QuasarEngine/Dependencies/SDL2_image-2.8.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)QuasarEngine; $(SolutionDir)QuasarEngine\Dependencies\GL\SDL\include; $(SolutionDir)QuasarEngine\Dependencies\glew-2.2.0-win32\glew-2.2.0\include\GL; $(SolutionDir)QuasarEngine\Dependencies\SDL2_image-2.8.2\include; %(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -209,7 +209,7 @@
       <EnablePREfast>false</EnablePREfast>
       <OmitFramePointers>false</OmitFramePointers>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>H:\Github\14-Engine\QuasarEngine\/QuasarEngine;H:\Github\14-Engine\QuasarEngine\/QuasarEngine/Dependencies/GL/SDL/include;H:\Github\14-Engine\QuasarEngine\/QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;H:\Github\14-Engine\QuasarEngine\/QuasarEngine/Dependencies/SDL2_image-2.8.2\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)QuasarEngine;$(SolutionDir)QuasarEngine/Dependencies/GL/SDL/include;$(SolutionDir)QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;$(SolutionDir)QuasarEngine/Dependencies/SDL2_image-2.8.2\include;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="Engine\2D\cBoxCollider2D.cpp">
@@ -288,7 +288,7 @@
       <EnablePREfast>false</EnablePREfast>
       <OmitFramePointers>false</OmitFramePointers>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>H:\Github\14-Engine\QuasarEngine\/QuasarEngine;H:\Github\14-Engine\QuasarEngine\/QuasarEngine/Dependencies/GL/SDL/include;H:\Github\14-Engine\QuasarEngine\/QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;H:\Github\14-Engine\QuasarEngine\/QuasarEngine/Dependencies/SDL2_image-2.8.2\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)QuasarEngine;$(SolutionDir)QuasarEngine/Dependencies/GL/SDL/include;$(SolutionDir)QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;$(SolutionDir)QuasarEngine/Dependencies/SDL2_image-2.8.2\include;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="Engine\2D\cCollider.cpp">
@@ -367,7 +367,7 @@
       <EnablePREfast>false</EnablePREfast>
       <OmitFramePointers>false</OmitFramePointers>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>H:\Github\14-Engine\QuasarEngine\/QuasarEngine;H:\Github\14-Engine\QuasarEngine\/QuasarEngine/Dependencies/GL/SDL/include;H:\Github\14-Engine\QuasarEngine\/QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;H:\Github\14-Engine\QuasarEngine\/QuasarEngine/Dependencies/SDL2_image-2.8.2\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)QuasarEngine;$(SolutionDir)QuasarEngine/Dependencies/GL/SDL/include;$(SolutionDir)QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;$(SolutionDir)QuasarEngine/Dependencies/SDL2_image-2.8.2\include;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="Engine\2D\cGravity2D.cpp">
@@ -446,7 +446,7 @@
       <EnablePREfast>false</EnablePREfast>
       <OmitFramePointers>false</OmitFramePointers>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>H:\Github\14-Engine\QuasarEngine\/QuasarEngine;H:\Github\14-Engine\QuasarEngine\/QuasarEngine/Dependencies/GL/SDL/include;H:\Github\14-Engine\QuasarEngine\/QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;H:\Github\14-Engine\QuasarEngine\/QuasarEngine/Dependencies/SDL2_image-2.8.2\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)QuasarEngine;$(SolutionDir)QuasarEngine/Dependencies/GL/SDL/include;$(SolutionDir)QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;$(SolutionDir)QuasarEngine/Dependencies/SDL2_image-2.8.2\include;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="Engine\2D\cSprite2D.cpp">
@@ -525,7 +525,7 @@
       <EnablePREfast>false</EnablePREfast>
       <OmitFramePointers>false</OmitFramePointers>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>H:\Github\14-Engine\QuasarEngine\/QuasarEngine;H:\Github\14-Engine\QuasarEngine\/QuasarEngine/Dependencies/GL/SDL/include;H:\Github\14-Engine\QuasarEngine\/QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;H:\Github\14-Engine\QuasarEngine\/QuasarEngine/Dependencies/SDL2_image-2.8.2\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)QuasarEngine;$(SolutionDir)QuasarEngine/Dependencies/GL/SDL/include;$(SolutionDir)QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;$(SolutionDir)QuasarEngine/Dependencies/SDL2_image-2.8.2\include;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="Engine\2D\cTransform2D.cpp">
@@ -604,7 +604,7 @@
       <EnablePREfast>false</EnablePREfast>
       <OmitFramePointers>false</OmitFramePointers>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>H:\Github\14-Engine\QuasarEngine\/QuasarEngine;H:\Github\14-Engine\QuasarEngine\/QuasarEngine/Dependencies/GL/SDL/include;H:\Github\14-Engine\QuasarEngine\/QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;H:\Github\14-Engine\QuasarEngine\/QuasarEngine/Dependencies/SDL2_image-2.8.2\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)QuasarEngine;$(SolutionDir)QuasarEngine/Dependencies/GL/SDL/include;$(SolutionDir)QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;$(SolutionDir)QuasarEngine/Dependencies/SDL2_image-2.8.2\include;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="Engine\3D\Camera.cpp">
@@ -683,7 +683,7 @@
       <EnablePREfast>false</EnablePREfast>
       <OmitFramePointers>false</OmitFramePointers>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>H:\Github\14-Engine\QuasarEngine\/QuasarEngine;H:\Github\14-Engine\QuasarEngine\/QuasarEngine/Dependencies/GL/SDL/include;H:\Github\14-Engine\QuasarEngine\/QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;H:\Github\14-Engine\QuasarEngine\/QuasarEngine/Dependencies/SDL2_image-2.8.2\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)QuasarEngine;$(SolutionDir)QuasarEngine/Dependencies/GL/SDL/include;$(SolutionDir)QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;$(SolutionDir)QuasarEngine/Dependencies/SDL2_image-2.8.2\include;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="Engine\3D\cBoxCollider.cpp" />
@@ -763,7 +763,7 @@
       <EnablePREfast>false</EnablePREfast>
       <OmitFramePointers>false</OmitFramePointers>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>H:\Github\14-Engine\QuasarEngine\/QuasarEngine;H:\Github\14-Engine\QuasarEngine\/QuasarEngine/Dependencies/GL/SDL/include;H:\Github\14-Engine\QuasarEngine\/QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;H:\Github\14-Engine\QuasarEngine\/QuasarEngine/Dependencies/SDL2_image-2.8.2\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)QuasarEngine;$(SolutionDir)QuasarEngine/Dependencies/GL/SDL/include;$(SolutionDir)QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;$(SolutionDir)QuasarEngine/Dependencies/SDL2_image-2.8.2\include;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="Engine\3D\cModel.cpp">
@@ -842,7 +842,7 @@
       <EnablePREfast>false</EnablePREfast>
       <OmitFramePointers>false</OmitFramePointers>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>H:\Github\14-Engine\QuasarEngine\/QuasarEngine;H:\Github\14-Engine\QuasarEngine\/QuasarEngine/Dependencies/GL/SDL/include;H:\Github\14-Engine\QuasarEngine\/QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;H:\Github\14-Engine\QuasarEngine\/QuasarEngine/Dependencies/SDL2_image-2.8.2\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)QuasarEngine;$(SolutionDir)QuasarEngine/Dependencies/GL/SDL/include;$(SolutionDir)QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;$(SolutionDir)QuasarEngine/Dependencies/SDL2_image-2.8.2\include;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="Engine\3D\cPhysicBody.cpp">
@@ -921,7 +921,7 @@
       <EnablePREfast>false</EnablePREfast>
       <OmitFramePointers>false</OmitFramePointers>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>H:\Github\14-Engine\QuasarEngine\/QuasarEngine;H:\Github\14-Engine\QuasarEngine\/QuasarEngine/Dependencies/GL/SDL/include;H:\Github\14-Engine\QuasarEngine\/QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;H:\Github\14-Engine\QuasarEngine\/QuasarEngine/Dependencies/SDL2_image-2.8.2\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)QuasarEngine;$(SolutionDir)QuasarEngine/Dependencies/GL/SDL/include;$(SolutionDir)QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;$(SolutionDir)QuasarEngine/Dependencies/SDL2_image-2.8.2\include;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="Engine\3D\cSphereCollider.cpp" />
@@ -1001,7 +1001,7 @@
       <EnablePREfast>false</EnablePREfast>
       <OmitFramePointers>false</OmitFramePointers>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>H:\Github\14-Engine\QuasarEngine\/QuasarEngine;H:\Github\14-Engine\QuasarEngine\/QuasarEngine/Dependencies/GL/SDL/include;H:\Github\14-Engine\QuasarEngine\/QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;H:\Github\14-Engine\QuasarEngine\/QuasarEngine/Dependencies/SDL2_image-2.8.2\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)QuasarEngine;$(SolutionDir)QuasarEngine/Dependencies/GL/SDL/include;$(SolutionDir)QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;$(SolutionDir)QuasarEngine/Dependencies/SDL2_image-2.8.2\include;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="Engine\3D\Mesh.cpp">
@@ -1080,7 +1080,7 @@
       <EnablePREfast>false</EnablePREfast>
       <OmitFramePointers>false</OmitFramePointers>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>H:\Github\14-Engine\QuasarEngine\/QuasarEngine;H:\Github\14-Engine\QuasarEngine\/QuasarEngine/Dependencies/GL/SDL/include;H:\Github\14-Engine\QuasarEngine\/QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;H:\Github\14-Engine\QuasarEngine\/QuasarEngine/Dependencies/SDL2_image-2.8.2\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)QuasarEngine;$(SolutionDir)QuasarEngine/Dependencies/GL/SDL/include;$(SolutionDir)QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;$(SolutionDir)QuasarEngine/Dependencies/SDL2_image-2.8.2\include;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="Engine\Actor.cpp" />

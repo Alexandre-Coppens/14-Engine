@@ -48,11 +48,11 @@ void Collider3D::Update(const float _deltaTime)
             //Resolve Collisions entering each others
             PhysicBody* colliderPhysic = getOwner()->GetComponent<PhysicBody>();
             if (colliderPhysic == nullptr) continue;
-            colliderPhysic->ResolveCollision(this, mNearestPoint);
+            colliderPhysic->ResolveCollision(this, mCollisionData);
             
             //Resolve Velocities
             PhysicBody* otherPhysic = collider->getOwner()->GetComponent<PhysicBody>();
-            colliderPhysic->ResolveVelocity(otherPhysic, mNearestPoint, mFriction + collider->getFriction());
+            colliderPhysic->ResolveVelocity(otherPhysic, mCollisionData, mFriction + collider->getFriction());
         }
     }
     if (mHasFrameCollision)
@@ -102,79 +102,108 @@ bool Collider3D::BoxToBox(Collider3D* _pBoxA, Collider3D* _pBoxB)
     
     Vector3 diffDist = boxB->getCenter() - boxA->getCenter();
     
-    if (not(GetSeparatingPlane(diffDist, boxA->getForward(), boxA, boxB) ||
-          GetSeparatingPlane(diffDist, boxA->getRight(),     boxA, boxB) ||
-          GetSeparatingPlane(diffDist, boxA->getUp(),        boxA, boxB) ||
-          GetSeparatingPlane(diffDist, boxB->getForward(),   boxA, boxB) ||
-          GetSeparatingPlane(diffDist, boxB->getRight(),     boxA, boxB) ||
-          GetSeparatingPlane(diffDist, boxB->getUp(),        boxA, boxB) ||
-          GetSeparatingPlane(diffDist, Cross(boxA->getForward(), boxB->getForward()), boxA, boxB) ||
-          GetSeparatingPlane(diffDist, Cross(boxA->getForward(), boxB->getRight()),   boxA, boxB) ||
-          GetSeparatingPlane(diffDist, Cross(boxA->getForward(), boxB->getUp()),      boxA, boxB) ||
-          GetSeparatingPlane(diffDist, Cross(boxA->getRight(),   boxB->getForward()), boxA, boxB) ||
-          GetSeparatingPlane(diffDist, Cross(boxA->getRight(),   boxB->getRight()),   boxA, boxB) ||
-          GetSeparatingPlane(diffDist, Cross(boxA->getRight(),   boxB->getUp()),      boxA, boxB) ||
-          GetSeparatingPlane(diffDist, Cross(boxA->getUp(),      boxB->getForward()), boxA, boxB) ||
-          GetSeparatingPlane(diffDist, Cross(boxA->getUp(),      boxB->getRight()),   boxA, boxB) ||
-          GetSeparatingPlane(diffDist, Cross(boxA->getUp(),      boxB->getUp()),      boxA, boxB))) 
-        return false;
+    std::vector<Vector3> axisList = {
+        boxA->getForward(),
+        boxA->getRight(),     
+        boxA->getUp(),        
+        boxB->getForward(),   
+        boxB->getRight(),     
+        boxB->getUp(),        
+        Cross(boxA->getForward(), boxB->getForward()), 
+        Cross(boxA->getForward(), boxB->getRight()),   
+        Cross(boxA->getForward(), boxB->getUp()),      
+        Cross(boxA->getRight(),   boxB->getForward()), 
+        Cross(boxA->getRight(),   boxB->getRight()),   
+        Cross(boxA->getRight(),   boxB->getUp()),      
+        Cross(boxA->getUp(),      boxB->getForward()), 
+        Cross(boxA->getUp(),      boxB->getRight()),   
+        Cross(boxA->getUp(),      boxB->getUp())   
+    };
     
-    //This is only for the nearest point
-    Vector3 distance = boxB->getCenter() - boxA->getCenter();
-    Vector3 absDistance;
-    absDistance.x = Abs(distance.x);
-    absDistance.y = Abs(distance.y);
-    absDistance.z = Abs(distance.z);
+    Uint8 smallestAxeIndex = 0;
+    float smallestPenetration = INFINITY_POS;
+    float separatingPlane = 0;
     
-    const Vector3 overlapp = (boxB->getSize() * 0.5f + boxA->getSize() * 0.5f) - absDistance;
+    for (int i = 0; i < axisList.size(); i++)
+    {
+        separatingPlane = GetSeparatingPlane(diffDist, axisList[i], boxA, boxB);
+        if (separatingPlane < 0.0001f) return false;
+        if (separatingPlane < smallestPenetration)
+        {
+            smallestPenetration = separatingPlane;
+            smallestAxeIndex = i;
+        }
+    }
     
-    if      ( Abs(overlapp.x) <= Abs(overlapp.y) && Abs(overlapp.x) <= Abs(overlapp.z)) mNearestPoint = Vector3UnitX() * overlapp.x * (distance.x > 0 ? 1 : -1);
-    else if ( Abs(overlapp.y) <= Abs(overlapp.x) && Abs(overlapp.y) <= Abs(overlapp.z)) mNearestPoint = Vector3UnitY() * overlapp.y * (distance.y > 0 ? 1 : -1);
-    else mNearestPoint = Vector3UnitZ() * overlapp.z * (distance.z > 0 ? 1 : -1);
-    
-    mNearestPoint = boxA->getCenter() + mNearestPoint;
-    
+    mCollisionData.penetration = smallestPenetration;
+    mCollisionData.normal = axisList[smallestAxeIndex];
+   
     return true;
 }
 
 bool Collider3D::BoxToSphere(Collider3D* _pBox, Collider3D* _pSphere)
 {
     BoxCollider* box = dynamic_cast<BoxCollider*>(_pBox);
-    Vector4 sphere = dynamic_cast<SphereCollider*>(_pSphere)->GetSphere();
+    SphereCollider* sphere = dynamic_cast<SphereCollider*>(_pSphere);
     
-    // get box closest point to sphere center by clamping
-    const float x = Max(box->getCenter().x - (box->getSize().x * 0.5f), Min(sphere.x, box->getCenter().x + (box->getSize().x * 0.5f)));
-    const float y = Max(box->getCenter().y - (box->getSize().y * 0.5f), Min(sphere.y, box->getCenter().y + (box->getSize().y * 0.5f)));
-    const float z = Max(box->getCenter().z - (box->getSize().z * 0.5f), Min(sphere.z, box->getCenter().z + (box->getSize().z * 0.5f)));
+    Vector3 sphereLocation = sphere->getCenter();
+    float sphereRadius = sphere->getRadius();
     
-    const float distance =
-        Pow(x - sphere.x)+
-        Pow(y - sphere.y)+
-        Pow(z - sphere.z);
-
-    mNearestPoint = Vector3(x, y, z);
-    return distance < Pow(sphere.w);
+    Vector3 boxLocation = box->getCenter();
+    Vector3 forwardBoxAxis = box->getForward();
+    Vector3 rightBoxAxis = box->getRight();
+    Vector3 upBoxAxis = box->getUp();
+    
+    float projection = 0;
+    float clamp = 0;
+    Vector3 closestPoint = boxLocation;
+    Vector3 delta = sphereLocation - boxLocation;
+        
+    projection = Dot(delta, forwardBoxAxis);
+    clamp = Clamp(projection, -box->getSize().x * 0.5f, box->getSize().x * 0.5f);
+    closestPoint += forwardBoxAxis * clamp;
+    
+    projection = Dot(delta, rightBoxAxis);
+    clamp = Clamp(projection, -box->getSize().y * 0.5f, box->getSize().y * 0.5f);
+    closestPoint += rightBoxAxis * clamp;
+    
+    projection = Dot(delta, upBoxAxis);
+    clamp = Clamp(projection, -box->getSize().z * 0.5f, box->getSize().z * 0.5f);
+    closestPoint += upBoxAxis * clamp;
+        
+    Vector3 difference = sphereLocation - closestPoint;
+    
+    if (!(Pow(Length(difference)) < Pow(sphereRadius))) return false;
+    
+    mCollisionData.penetration = sphereRadius - Distance(sphereLocation, closestPoint);
+    if (mCollisionData.penetration < 0.0001f) return false;
+    
+    if (mCollisionData.penetration < 0.0001f) mCollisionData.normal = Normalize(delta);
+    else mCollisionData.normal = Normalize(sphereLocation - closestPoint);
+    mCollisionData.collisionPoint = closestPoint;
+    
+    return true;
 }
 
-//Check if dist2(sphereA, sphereB) <= dist2(sphereA.rad, sphereB.rad)
+//Check if sphere Distance < sphere combined Radius
 bool Collider3D::SphereToSphere(Collider3D* _pSphereA, Collider3D* _pSphereB)
 {
     Vector4 s1 = dynamic_cast<SphereCollider*>(_pSphereA)->GetSphere();
     Vector4 s2 = dynamic_cast<SphereCollider*>(_pSphereB)->GetSphere();
 
-    s2.w *= -1;
-
     Vector4 dist = s1 - s2;
 
-    dist.w *= -1;
+    if (!(Pow(dist.x) + Pow(dist.y) + Pow(dist.z) < Pow(s1.w + s2.w))) return false;
     
-    mNearestPoint = Vector3(s2.x, s2.y, s2.z);
-    return Pow(dist.x) + Pow(dist.y) + Pow(dist.z) - Pow(s1.w + s2.w) <= 0;
+    mCollisionData.penetration = s1.w + s2.w - Distance(Vector3{s1.x, s1.y, s1.z}, Vector3{s2.x, s2.y, s2.z});
+    mCollisionData.normal = Normalize(Vector3{dist.x, dist.y, dist.z});
+    mCollisionData.collisionPoint = mCollisionData.normal * s1.w + (mCollisionData.penetration);
+    return true;
 }
 
-bool Collider3D::GetSeparatingPlane(const Vector3 _diffPos, const Vector3 _plane, BoxCollider* _boxA, BoxCollider* _boxB)
+float Collider3D::GetSeparatingPlane(const Vector3 _diffPos, const Vector3 _plane, BoxCollider* _boxA, BoxCollider* _boxB)
 {
-    return (Abs(Dot(_diffPos, _plane)) >
+    return (Abs(Dot(_diffPos, _plane)) -
         (Abs(Dot((_boxA->getForward() *  _boxA->getSize().x * 0.5f), _plane)) +
          Abs(Dot((_boxA->getRight()   *  _boxA->getSize().y * 0.5f), _plane)) +
          Abs(Dot((_boxA->getUp()      *  _boxA->getSize().z * 0.5f), _plane)) +

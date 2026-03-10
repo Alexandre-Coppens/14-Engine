@@ -1,5 +1,6 @@
 ﻿#pragma once
 
+#include "cCollider3D.h"
 #include "Engine/Component.h"
 #include "Engine/Utilitaries/CommonLib.h"
 
@@ -48,6 +49,6 @@ public:
     
     void OnStart() override;
     void Update(float _deltaTime) override;
-    void ResolveCollision(Collider3D* _pOwnerCollision, Vector3 _nearestPoint);
-    void ResolveVelocity(PhysicBody* _otherPhysic, Vector3 _nearestPoint, float _friction);
+    void ResolveCollision(Collider3D* _pOwnerCollision, CollisionData _collisionData);
+    void ResolveVelocity(PhysicBody* _otherPhysic, CollisionData _collisionData, float _friction);
 };

@@ -92,6 +92,11 @@ static inline float Length(Vector3 v)
 	return (Sqrt(LengthSq(v)));
 }
 
+static inline float Distance(Vector3 v1, Vector3 v2)
+{
+	return (Sqrt(Pow(v2.x - v1.x) + Pow(v2.y - v1.y) + Pow(v2.z - v1.z)));
+}
+
 // Normalize the provided vector
 static inline Vector3 Normalize(const Vector3 v)
 {

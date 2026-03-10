@@ -22,12 +22,19 @@ enum CollisionState
     STOPPED_COLLIDING
 };
 
+struct CollisionData
+{
+    float penetration;
+    Vector3 normal;
+    Vector3 collisionPoint;
+};
+
 class Collider3D : public Component
 {
 private:
     bool mHasFrameCollision;
     //Used for PhysicBody repositions & velocity calculs
-    Vector3 mNearestPoint;
+    CollisionData mCollisionData;
 
 protected:
     bool mPhysicBased                  {false};
@@ -52,7 +59,7 @@ private:
     bool BoxToSphere(Collider3D* _pBox, Collider3D* _pSphere);
     bool SphereToSphere(Collider3D* _pSphereA, Collider3D* _pSphereB);
     
-    bool GetSeparatingPlane(const Vector3 _diffPos, const Vector3 _plane, BoxCollider* _boxA, BoxCollider* _boxB);
+    float GetSeparatingPlane(const Vector3 _diffPos, const Vector3 _plane, BoxCollider* _boxA, BoxCollider* _boxB);
     
 public:
     Collider3D(Actor* _pOwner);
