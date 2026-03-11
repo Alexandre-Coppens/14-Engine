@@ -43,11 +43,11 @@ void PhysicBody::Update(float _deltaTime)
     mVelocity += force * _deltaTime * 0.01f;
     pOwner->getTransform3D()->addLocation(mVelocity * _deltaTime);
     
-    Vector3 angularAcceleration = Vector3Zero();
+    /*Vector3 angularAcceleration = Vector3Zero();
     angularAcceleration = mTorque / mInertia;
     mAngularVelocity += angularAcceleration * _deltaTime;
     pOwner->getTransform3D()->addRotation((mAngularVelocity * 180.0f / PI) * _deltaTime);
-    mTorque = 0;
+    mTorque = 0;*/
 }
 
 //TODO: Change NearestPoint name because it does not represent the variable well anymore

@@ -1,6 +1,7 @@
 ﻿#include "Ball.h"
 
 #include "Engine/3D/cSphereCollider.h"
+#include "Engine/3D/Camera.h"
 #include "Engine/Utilitaries/Assets.h"
 
 #include "Engine/3D/Mesh.h"
@@ -21,9 +22,12 @@ void Ball::Start()
 {
     mModel = dynamic_cast<Model*>(AddComponent(new Model(this, "BasicModel")));
     mPhysicBody = dynamic_cast<PhysicBody*>(AddComponent(new PhysicBody(this, ColliderType::SPHERE)));
+    mCamera = dynamic_cast<Camera*>(AddComponent(new Camera(this)));
     SphereCollider* sphereCollider = dynamic_cast<SphereCollider*>(mPhysicBody->getReferencedCollider());
     
     mPhysicBody->setMass(7.3f);
+    mCamera->getLocalTransform()->setLocation(Vector3{0.1f, 0.0f, 0.1f});
+    mCamera->getLocalTransform()->addRotationZ(180.0f);
     
     sphereCollider->setRadius(0.01f);
     sphereCollider->setFriction(0.05f);
@@ -44,6 +48,12 @@ void Ball::Update(const float _deltaTime)
     {
         mLaunched = true;
         mPhysicBody->setVelocity(Vector3{-1, 0, 0});
+    }
+    if (Inputs::GetKeyDown(SDLK_r))
+    {
+        mLaunched = false;
+        mTransform3D.setLocation(Vector3{0, 0, -0.2f});
+        mPhysicBody->setVelocity(Vector3{0, 0, 0});
     }
     if (!mLaunched)
     {

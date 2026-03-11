@@ -52,10 +52,10 @@ void Player3D::Update(const float _deltaTime)
         mTransform3D.addLocation(pCamera->getLocalTransform()->Right() * 1 * _deltaTime);
     }
     
-    if (Inputs::GetKeyDown(SDLK_r))
+    /*if (Inputs::GetKeyDown(SDLK_r))
     {
         getScene()->getGame()->SetScene<Scene_Test>();
-    }
+    }*/
     
     //Rotation is stocked in a vector before being transformed to quat via ZYX order
     const float pitch = Inputs::GetMouseDeltaY() * 10.0f * _deltaTime;

@@ -4,11 +4,14 @@
 #include "Engine/3D/cModel.h"
 #include "Engine/3D/cPhysicBody.h"
 
+class Camera;
+
 class Ball : public Actor
 {
 private:
     Model* mModel;
     PhysicBody* mPhysicBody;
+    Camera* mCamera;
     
     bool mLaunched {false};
 	
