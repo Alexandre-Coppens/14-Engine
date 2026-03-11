@@ -14,7 +14,7 @@ Scene::Scene(std::string _name):
 {
 }
 
-Scene::~Scene() {}
+Scene::~Scene() = default;
 
 void Scene::Start()
 {
@@ -44,15 +44,15 @@ void Scene::LateUpdate()
 
 void Scene::Close()
 {
-	for (Actor* a : mAddActorList)
+	while (!mAddActorList.empty())
 	{
-		DeleteActor(a);
+		DeleteActorFromList(&mAddActorList, mAddActorList[0]);
 	}
 	mAddActorList.clear();
 	
-	for (Actor* a : mActorList)
+	while (!mActorList.empty())
 	{
-		DeleteActor(a);
+		DeleteActorFromList(&mActorList, mActorList[0]);
 	}
 	mActorList.clear();
 
@@ -78,6 +78,12 @@ void Scene::InitNewActors()
 	mAddActorList.clear();
 }
 
+void Scene::DeleteActorFromList(std::vector<Actor*>* list, Actor* actor)
+{
+	list->erase(std::remove(list->begin(), list->end(), actor), list->end());
+	mDestroyActorList.push_back(actor);
+}
+
 void Scene::DeleteActor(Actor* actor)
 {
 	mActorList.erase(std::remove(mActorList.begin(), mActorList.end(), actor), mActorList.end());
@@ -86,10 +92,14 @@ void Scene::DeleteActor(Actor* actor)
 
 void Scene::KillActors()
 {
-	for(Actor* a : mDestroyActorList)
+	for (Actor* a : mDestroyActorList)
 	{
-		a->Destroy();
-		delete a;
+		if (a != nullptr)
+		{
+			a->Destroy();
+			delete a;
+			a = nullptr;
+		}
 	}
 	mDestroyActorList.clear();
 }
@@ -102,11 +112,18 @@ void Scene::Load(Game* _pGame)
 
 void Scene::UnLoad()
 {
+	while (!mAddActorList.empty())
+	{
+		DeleteActorFromList(&mAddActorList, mAddActorList[0]);
+	}
+	mAddActorList.clear();
+	
 	while (!mActorList.empty())
 	{
-		mActorList.back()->Destroy();
-		delete mActorList.back();
-		mActorList.pop_back();
+		DeleteActorFromList(&mActorList, mActorList[0]);
 	}
+	mActorList.clear();
+
+	KillActors();
 	Assets::Clear();
 }

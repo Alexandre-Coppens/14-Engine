@@ -151,21 +151,31 @@ Mesh* Assets::GetMesh(const std::string _name)
 
 void Assets::Clear()
 {
-	for (const auto& iter : mTextureList)
+	if (!mTextureList.empty())
 	{
-		iter.second->Unload();
+		for (const auto& iter : mTextureList)
+		{
+			iter.second->Unload();
+		}
+		mTextureList.clear();
 	}
-	mTextureList.clear();
 
-	for (const auto& iter : mShaderList)
+	if (!mShaderList.empty())
 	{
-		delete(iter.second);
+		for (const auto& iter : mShaderList)
+		{
+			delete(iter.second);
+		}
+		mShaderProgramList.clear();
 	}
-	mShaderProgramList.clear();
 	
-	for (const auto& iter : mShaderProgramList)
+	if (!mShaderProgramList.empty())
 	{
-		iter.second->Unload();
+		for (const auto& iter : mShaderProgramList)
+		{
+			iter.second->Unload();
+		}
+		mShaderProgramList.clear();
 	}
-	mShaderProgramList.clear();
+	
 }

@@ -32,6 +32,9 @@ public:
 	~BoxCollider() override;
 	
 	Vector3 getCenter() override;
+	std::vector<Vector3> getWorldVertices();
 	
 	void DrawDebug() override;
+	
+	void OnEnd() override;
 };

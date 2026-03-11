@@ -11,7 +11,7 @@ protected:
 
 public:
 	Scene_Test(std::string _name);
-	~Scene_Test();
+	~Scene_Test() override;
 
 	void Start()					override;
 	void Update(float _deltaTime)	override;

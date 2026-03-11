@@ -61,12 +61,12 @@ void Paddle::Update(float _deltaTime)
 		{
 			if (life == 0)
 			{
-				getScene()->getGame()->ChangeScene<Scene_GameOver>();
+				getScene()->getGame()->SetScene<Scene_GameOver>();
 			}
 		}
 		else
 		{
-			getScene()->getGame()->ChangeScene<Scene_Pong>();
+			getScene()->getGame()->SetScene<Scene_Pong>();
 		}
 	}
 }

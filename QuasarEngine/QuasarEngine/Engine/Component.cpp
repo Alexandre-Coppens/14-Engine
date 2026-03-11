@@ -8,7 +8,6 @@ Component::Component(Actor* _pOwner, const uint8_t _updateOrder):
 
 Component::~Component()
 {
-	OnEnd();
 }
 
 void Component::OnStart()

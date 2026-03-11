@@ -37,10 +37,7 @@ Game::Game(std::string _title, std::vector<Scene*> _scenes, RendererType _render
 	for (Scene* s : mScenes) s->setRenderer(pRenderer);
 }
 
-Game::~Game()
-{
-	Assets::Clear();
-}
+Game::~Game() = default;
 
 void Game::Initialize()
 {
@@ -50,6 +47,7 @@ void Game::Initialize()
 	if (pWindow->Open() && pRenderer->Initialize(*pWindow))
 	{
 		mScenes[mCurrentScene] -> Load(this);
+		mChangeSceneTo = -1;
 	}
 }
 
@@ -68,6 +66,7 @@ void Game::Loop()
 		mScenes[mCurrentScene]->LateUpdate();
 
 		Time::DelayTime();
+		if (mChangeSceneTo != -1) ChangeScene();
 	}
 }
 
@@ -86,7 +85,8 @@ void Game::Close()
 		delete scene;
 		scene = nullptr;
 	}
-
+	mScenes.clear();
+	
 	pRenderer->Close();
 	delete pRenderer;
 	pRenderer = nullptr;
@@ -94,5 +94,7 @@ void Game::Close()
 	pWindow->Close();
 	delete pWindow;
 	pWindow = nullptr;
+	
+	Assets::Clear();
 }
 

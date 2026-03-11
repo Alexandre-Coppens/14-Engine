@@ -18,12 +18,27 @@ BoxCollider::BoxCollider(Actor* _pOwner):
 BoxCollider::~BoxCollider()
 {
 	Collider3D::~Collider3D();
-	mDebugMesh = nullptr;
-	mpParentTransform = nullptr;
 }
+
 Vector3 BoxCollider::getCenter()
 {
 	return pOwner->getTransform3D()->getLocation() + mOffset;
+}
+
+std::vector<Vector3> BoxCollider::getWorldVertices()
+{
+	Vector3 center = getCenter();
+	return std::vector<Vector3>
+	{
+		center + getForward() * mSize.x * 0.5f + getRight() * mSize.y * 0.5f + getUp() * mSize.z * 0.5f ,
+		center + getForward() * mSize.x * 0.5f + getRight() * mSize.y * 0.5f - getUp() * mSize.z * 0.5f ,
+		center + getForward() * mSize.x * 0.5f - getRight() * mSize.y * 0.5f + getUp() * mSize.z * 0.5f ,
+		center + getForward() * mSize.x * 0.5f - getRight() * mSize.y * 0.5f - getUp() * mSize.z * 0.5f ,
+		center - getForward() * mSize.x * 0.5f + getRight() * mSize.y * 0.5f + getUp() * mSize.z * 0.5f ,
+		center - getForward() * mSize.x * 0.5f + getRight() * mSize.y * 0.5f - getUp() * mSize.z * 0.5f ,
+		center - getForward() * mSize.x * 0.5f - getRight() * mSize.y * 0.5f + getUp() * mSize.z * 0.5f ,
+		center - getForward() * mSize.x * 0.5f - getRight() * mSize.y * 0.5f - getUp() * mSize.z * 0.5f ,
+	};
 }
 
 void BoxCollider::DrawDebug()
@@ -41,4 +56,10 @@ void BoxCollider::DrawDebug()
 	glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
 	glDrawArrays(GL_TRIANGLES, 0, mDebugMesh->getVertexArray()->GetVerticesCount());
 	glPolygonMode( GL_FRONT_AND_BACK, GL_FILL );
+}
+void BoxCollider::OnEnd()
+{
+	Collider3D::OnEnd();
+	mDebugMesh = nullptr;
+	mpParentTransform = nullptr;
 }

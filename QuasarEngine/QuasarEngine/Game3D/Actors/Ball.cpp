@@ -45,12 +45,6 @@ void Ball::Update(const float _deltaTime)
         mLaunched = true;
         mPhysicBody->setVelocity(Vector3{-1, 0, 0});
     }
-    if (Inputs::GetKeyDown(SDLK_r))
-    {
-        mPhysicBody->setVelocity(Vector3Zero());
-        mTransform3D.setLocation(Vector3(0, 0, -0.24f));
-        mLaunched = false;
-    }
     if (!mLaunched)
     {
         mTransform3D.setLocationY(Clamp(mTransform3D.getLocation().y, -0.05f, 0.05f));

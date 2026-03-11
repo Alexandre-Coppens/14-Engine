@@ -19,9 +19,6 @@ Collider3D::Collider3D(Actor* _pOwner):
 
 Collider3D::~Collider3D()
 {
-    std::vector<Collider3D*>::iterator it;
-    it = std::find(ColliderList.begin(), ColliderList.end(), this);
-    ColliderList.erase(it);
 }
 
 void Collider3D::OnActorStart()
@@ -66,6 +63,13 @@ void Collider3D::Update(const float _deltaTime)
         if (mCollisionState == NOT_COLLIDING) return;
         mCollisionState = STOPPED_COLLIDING;
     }
+}
+void Collider3D::OnEnd()
+{
+    Component::OnEnd();
+    std::vector<Collider3D*>::iterator it;
+    it = std::find(ColliderList.begin(), ColliderList.end(), this);
+    ColliderList.erase(it);
 }
 
 //Return is the 2 colliders are colliding.
@@ -120,24 +124,66 @@ bool Collider3D::BoxToBox(Collider3D* _pBoxA, Collider3D* _pBoxB)
         Cross(boxA->getUp(),      boxB->getUp())   
     };
     
-    Uint8 smallestAxeIndex = 0;
+    for (int i = 0; i < axisList.size(); i++)
+    {
+        if (Length(axisList[i]) < 0.001f)
+        {
+            axisList.erase(axisList.begin() + i);
+            i--;
+        }
+    }
+    
+    int smallestAxeIndex = 0;
     float smallestPenetration = INFINITY_POS;
     float separatingPlane = 0;
     
     for (int i = 0; i < axisList.size(); i++)
     {
         separatingPlane = GetSeparatingPlane(diffDist, axisList[i], boxA, boxB);
-        if (separatingPlane < 0.0001f) return false;
-        if (separatingPlane < smallestPenetration)
+        if (separatingPlane > 0) return false;
+        if (Abs(separatingPlane) < smallestPenetration)
         {
-            smallestPenetration = separatingPlane;
+            smallestPenetration = Abs(separatingPlane);
             smallestAxeIndex = i;
         }
     }
     
     mCollisionData.penetration = smallestPenetration;
     mCollisionData.normal = axisList[smallestAxeIndex];
+    if (Dot(mCollisionData.normal, diffDist) > 0) mCollisionData.normal *= -1;
+    Log::Info(ToString(mCollisionData.normal));
+    
+    std::vector<Vector3> vertexList = boxA->getWorldVertices();
+    Vector3 contactPointA = vertexList[0];
+    float maxProjection = Dot(vertexList[0], mCollisionData.normal);
+    float projection = 0;
+    
+    for (int i = 0; i < vertexList.size(); i++)
+    {
+        projection = Dot(vertexList[i], mCollisionData.normal);
+        if (projection > maxProjection)
+        {
+            maxProjection = projection;
+            contactPointA = vertexList[i];
+        }
+    }
+    
+    vertexList = boxB->getWorldVertices();
+    Vector3 contactPointB = vertexList[0];
+    maxProjection = Dot(vertexList[0], mCollisionData.normal * -1);
+    
+    for (int i = 0; i < vertexList.size(); i++)
+    {
+        projection = Dot(vertexList[i], mCollisionData.normal * -1);
+        if (projection > maxProjection)
+        {
+            maxProjection = projection;
+            contactPointB = vertexList[i];
+        }
+    }
    
+    mCollisionData.collisionPoint = (contactPointA + contactPointB) * 0.5f;
+    
     return true;
 }
 

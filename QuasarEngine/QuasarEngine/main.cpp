@@ -27,14 +27,15 @@ int main(int argc, char* argv[])
 {
 	//Scene_Pong pong = Scene_Pong("Pong Scene");
 	//Scene_GameOver gameover = Scene_GameOver("Game Over");
-	Scene_Test test = Scene_Test("Scene Test");
 
 	std::vector<Scene*> SceneSdlList;
 	//SceneSdlList.push_back(&pong);
 	//SceneSdlList.push_back(&gameover);
 
-	std::vector<Scene*> SceneGlList;
-	SceneGlList.push_back(&test);
+	std::vector<Scene*> SceneGlList{
+		new Scene_Test("Scene Test")
+	};
+
 
 	Game* game;
 	if (true)
@@ -55,6 +56,7 @@ int main(int argc, char* argv[])
 
 	_CrtSetReportMode(_CRT_ERROR, _CRTDBG_MODE_DEBUG);
 	_CrtDumpMemoryLeaks();
+	//TODO: Remove Memory Leaks Left
 
 	return 0;
 }

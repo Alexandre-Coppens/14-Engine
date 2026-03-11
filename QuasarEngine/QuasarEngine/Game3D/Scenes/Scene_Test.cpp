@@ -18,9 +18,7 @@ Scene_Test::Scene_Test(std::string _name):
 {
 }
 
-Scene_Test::~Scene_Test()
-{
-}
+Scene_Test::~Scene_Test() = default;
 
 void Scene_Test::Start()
 {
@@ -125,4 +123,5 @@ void Scene_Test::Update(float _deltaTime)
 
 void Scene_Test::Close()
 {
+	Scene::Close();
 }

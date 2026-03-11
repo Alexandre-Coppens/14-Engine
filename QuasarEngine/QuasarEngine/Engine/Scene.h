@@ -53,6 +53,8 @@ public:
 
 private:
 	void KillActors();
+	virtual void DeleteActorFromList(std::vector<Actor*>* list, Actor* actor);
+
 
 public:
 	Scene(std::string _name = "Scene");
@@ -69,7 +71,7 @@ public:
 
 	virtual Actor* AddActor(Actor* _actor);
 	void InitNewActors();
-	virtual void DeleteActor(Actor* _actor);
+	virtual void DeleteActor(Actor* actor);
 };
 
 #endif

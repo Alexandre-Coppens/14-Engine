@@ -125,5 +125,4 @@ void PhysicBody::RecalculateInertia()
         }
         break;
     }
-    
 }

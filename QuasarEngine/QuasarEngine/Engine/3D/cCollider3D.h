@@ -67,6 +67,7 @@ public:
     
     void OnActorStart() override;
     void Update(const float _deltaTime) override;
+    void OnEnd() override;
     
     virtual Vector3 getCenter() = 0;
     void virtual DrawDebug() = 0;

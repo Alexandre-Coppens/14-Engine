@@ -16,8 +16,6 @@ Camera::Camera(Actor* _pOwner):
 
 Camera::~Camera()
 {
-    delete mLocalTransform;
-    mLocalTransform = nullptr;
 }
 
 void Camera::OnStart()
@@ -38,4 +36,12 @@ void Camera::UpdateCameraView() const
     Vector3 up = Vector3UnitZ(); // TODO: Change this when gravity so up = -gravity
     Matrix4Row view = Mat4RowCreateLookAt(camPosition, target, up);
     pOwner->getScene()->getRendererGl()->setViewMatrix(view);
+}
+void Camera::OnEnd()
+{
+    Component::OnEnd();
+    CameraManager::RemoveCamera(this);
+    
+    delete mLocalTransform;
+    mLocalTransform = nullptr;
 }

@@ -1,10 +1,13 @@
 ﻿#include "Player3D.h"
 
+#include "Engine/Game.h"
+#include "Engine/Scene.h"
 #include "Engine/Utilitaries/Assets.h"
 #include "Engine/Utilitaries/Inputs.h"
 #include "Engine/Utilitaries/Log.h"
 
 #include "Engine/3D/Camera.h"
+#include "Game3D/Scenes/Scene_Test.h"
 
 Player3D::Player3D() :
     Actor()
@@ -47,6 +50,11 @@ void Player3D::Update(const float _deltaTime)
     if (Inputs::GetKey(SDLK_d))
     {
         mTransform3D.addLocation(pCamera->getLocalTransform()->Right() * 1 * _deltaTime);
+    }
+    
+    if (Inputs::GetKeyDown(SDLK_r))
+    {
+        getScene()->getGame()->SetScene<Scene_Test>();
     }
     
     //Rotation is stocked in a vector before being transformed to quat via ZYX order

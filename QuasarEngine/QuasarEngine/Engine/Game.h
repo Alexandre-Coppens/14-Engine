@@ -21,10 +21,20 @@ private:
 	std::vector<Scene*> mScenes;
 	Uint8 mCurrentScene{ 0 };
 	float mLastUpdate{ 0 };
+	
+	int mChangeSceneTo {-1};
 
 public:
 
 private:
+	inline void ChangeScene()
+	{
+		mScenes[mCurrentScene]->UnLoad();
+		mCurrentScene = mChangeSceneTo;
+		mScenes[mCurrentScene]->Load(this);
+		mChangeSceneTo = -1;
+	}
+	
 public:
 	Game(std::string _title, std::vector<Scene*> _scenes, RendererType _rendererType);
 	~Game();
@@ -35,7 +45,7 @@ public:
 	void Close();
 
     template<typename T>
-    inline void ChangeScene() {
+    inline void SetScene() {
         int target = -1;
         for (int i = 0; i < mScenes.size(); i++)
         {
@@ -45,12 +55,7 @@ public:
                 break;
             }
         }
-        if (target == -1) return;
-
-        mScenes[mCurrentScene]->Close();
-        mScenes[mCurrentScene]->UnLoad();
-        mCurrentScene = target;
-        mScenes[mCurrentScene]->Load(this);
+        mChangeSceneTo = target;
     }
 };
 

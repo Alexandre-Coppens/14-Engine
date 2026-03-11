@@ -37,9 +37,7 @@ void Pin::Start()
 
 void Pin::Update(const float _deltaTime)
 {
-    Log::Info(ToString(mTransform3D.getRotation()));
     Actor::Update(_deltaTime);
-    
 }
 
 void Pin::Destroy()
