@@ -1,0 +1,35 @@
+# Blender MTL File: 'None'
+# Material Count: 3
+
+newmtl floor_2
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 0.800000
+illum 9
+map_Kd C:\\Users\\Alex\\Downloads\\Wii - Wii Sports Resort - Bowling - 100-Pin Bowling Room\\floor.png
+
+newmtl floor_2.001
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 0.800000
+illum 9
+map_Kd C:\\Users\\Alex\\Downloads\\Wii - Wii Sports Resort - Bowling - 100-Pin Bowling Room\\floor.png
+
+newmtl floor_2.002
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 0.800000
+illum 9
+map_Kd C:\\Users\\Alex\\Downloads\\Wii - Wii Sports Resort - Bowling - 100-Pin Bowling Room\\floor.png

@@ -2,16 +2,14 @@
 #include <SDL.h>
 #include <glew.h>
 
-#include "CommonLib.h"
-#include "MathLib.h"
+#include "Engine/Game.h"
+#include "Engine/Scene.h"
 
-#include "Game.h"
-#include "Scene.h"
+#include "Engine/Render/IRenderer.h"
 
-#include "Scene_Pong.h"
-#include "Scene_GameOver.h"
-#include "Scene_Test.h"
-#include "IRenderer.h"
+#include "Game2D/Scenes/Scene_Pong.h"
+#include "Game2D/Scenes/Scene_GameOver.h"
+#include "Game3D/Bowling/Scenes/Scene_Bowling.h"
 
 using namespace std;
 
@@ -27,17 +25,16 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-	Scene_Pong pong = Scene_Pong("Pong Scene");
-	Scene_GameOver gameover = Scene_GameOver("Game Over");
-	Scene_Test test = Scene_Test("Scene Test");
 
-	std::vector<Scene*> SceneSdlList;
-	SceneSdlList.push_back(&pong);
-	SceneSdlList.push_back(&gameover);
+	std::vector<Scene*> SceneSdlList{
+		new Scene_Pong("Pong Scene"),
+		new Scene_GameOver("Game Over")
+	};
 
-	std::vector<Scene*> SceneGlList;
-	SceneGlList.push_back(&test);
-
+	std::vector<Scene*> SceneGlList{
+		new Scene_Bowling("Scene Bowling")
+	};
+	
 	Game* game;
 	if (true)
 	{
@@ -57,6 +54,7 @@ int main(int argc, char* argv[])
 
 	_CrtSetReportMode(_CRT_ERROR, _CRTDBG_MODE_DEBUG);
 	_CrtDumpMemoryLeaks();
+	//TODO: Remove Memory Leaks Left
 
 	return 0;
 }

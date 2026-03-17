@@ -13,362 +13,255 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Engine">
-      <UniqueIdentifier>{4089bd62-9b15-49bf-b1d9-291bb4df7a5c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Librairies">
-      <UniqueIdentifier>{3a6f110f-0067-47ea-8605-b30bc8790a0f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Librairies\Forms">
-      <UniqueIdentifier>{c57e24e7-e7fd-4b2e-971b-126290c2240e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Render">
-      <UniqueIdentifier>{c0f5a767-8336-4bf3-aea1-5f82aa8e345f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Render\Window">
-      <UniqueIdentifier>{830a77ed-2c3d-4193-bb25-4b982f8f2df8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Render\Renderer">
-      <UniqueIdentifier>{74b13617-056e-4e63-8430-ad56f0fd562a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Debug">
-      <UniqueIdentifier>{82c0635e-96b4-4f4c-9d43-0ba4a6ff3624}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\GameBase">
-      <UniqueIdentifier>{dd7518fc-ed91-4911-9d2b-d186fbbe9d6e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\GameBase\Scene">
-      <UniqueIdentifier>{272c23f0-c0d6-4e8b-a467-3688866b02ce}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\GameBase\Scene\Actor">
-      <UniqueIdentifier>{a017189f-8156-4e38-ac38-2b202b978f19}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\GameBase\Scene\Actor\Components">
-      <UniqueIdentifier>{66c43a75-f504-4752-83f8-94991351460e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Librairies\TimeLib">
-      <UniqueIdentifier>{957927e3-4925-4d67-8287-02ed7f8e24bd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Librairies\Inputs">
-      <UniqueIdentifier>{88ed2afc-3b2c-4ebb-b268-4e7644ee3f23}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Render\Asset">
-      <UniqueIdentifier>{a8aca883-86c8-4fce-b86b-61056ce507b3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game2D">
-      <UniqueIdentifier>{f72497ab-99aa-4170-8bcf-17b9a0a7c636}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game2D\Scenes">
-      <UniqueIdentifier>{41afc706-2212-422e-97b3-ddf3d741529a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game2D\Actors">
-      <UniqueIdentifier>{cc61f775-cd15-4c73-ad31-0a3abd2cf407}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game2D\Components">
-      <UniqueIdentifier>{3a7a8b32-f11f-4c54-a47e-9a43793be007}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Render\Renderer\SDL">
-      <UniqueIdentifier>{cf0c6e5b-c798-4b48-94c9-535881cfc077}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Render\Renderer\OPENGL">
-      <UniqueIdentifier>{7295849b-9339-4415-9b82-3f719fe2b313}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Render\Renderer\OPENGL\VAO">
-      <UniqueIdentifier>{9afc1a71-07a8-440e-9e08-be19f9842b5f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Render\Asset\Shader">
-      <UniqueIdentifier>{5148d98a-8c70-4b81-96e9-22e509771740}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Render\Asset\Shader\ShaderProgram">
-      <UniqueIdentifier>{fcb956d3-96a0-4054-af3e-a9b5f29dd6e7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Librairies\Shaders">
-      <UniqueIdentifier>{3a926f9e-c068-4983-951b-f85731deafaf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Librairies\Components">
-      <UniqueIdentifier>{999e9684-a9ad-4feb-be5e-4af4f69679d3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Librairies\Components\2D">
-      <UniqueIdentifier>{e927bdd3-4222-45f9-83fd-757dbe5c51aa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Librairies\Components\2D\Transform2D">
-      <UniqueIdentifier>{f6737aa9-9800-4448-b9e2-7d4083dfb53b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Librairies\Components\2D\Sprite2D">
-      <UniqueIdentifier>{df30bf39-30ee-4360-b8e1-5588b0c133bc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Librairies\Components\2D\Sprite2D\Animation2D">
-      <UniqueIdentifier>{52932ea0-ed14-46f2-b2e8-5eaddabaa5aa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Librairies\Components\2D\Gravity2D">
-      <UniqueIdentifier>{83fd442a-7e4c-4a42-a828-c7cd82c66d9e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Librairies\Components\2D\Collider2D">
-      <UniqueIdentifier>{7c2bb18e-2632-4e02-8eb9-2cb3aa1c48d3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Librairies\Components\2D\Collider2D\BoxCollider2D">
-      <UniqueIdentifier>{59a5425a-515e-473e-9909-2c885649f403}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game3D">
-      <UniqueIdentifier>{863478ee-c510-4c98-a18f-d261ddb055a0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game3D\Scenes">
-      <UniqueIdentifier>{cd0d5c19-e3ba-4d86-ac6b-aa45450070f6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game3D\Actors">
-      <UniqueIdentifier>{eb8e788b-7b7f-4e8f-b7fb-f74ebbb40a1c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Librairies\Components\3D">
-      <UniqueIdentifier>{aea665f8-4675-4636-a748-9fa6d3992d80}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Librairies\Components\3D\Transform3D">
-      <UniqueIdentifier>{4d2d1975-962e-4aab-8114-779f50bacb05}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Librairies\Shaders\Transform">
-      <UniqueIdentifier>{8db8f858-78a4-4c99-b67a-3a20b758ddd1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Librairies\Shaders\Texture">
-      <UniqueIdentifier>{ea30b2de-b3c9-4b42-b329-5a08d2d4df0c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Render\Asset\Texture">
-      <UniqueIdentifier>{c3383c45-3c39-47a5-a5ac-d349f41e44e3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Render\Asset\Shader\Mesh">
-      <UniqueIdentifier>{c0975e74-f40a-4aa3-9a63-380ae1808de9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Librairies\Components\3D\Model">
-      <UniqueIdentifier>{32b8e167-6d97-4ce0-be36-56e097b9a378}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Librairies\Shaders\BasicModel">
-      <UniqueIdentifier>{aee98c68-04ce-45e5-b969-6e7ec273668f}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CommonLib.h">
-      <Filter>Engine\Librairies</Filter>
+    <ClCompile Include="Engine\Actor.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MathLib.h">
-      <Filter>Engine\Librairies</Filter>
+    <ClCompile Include="Engine\Camera.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Actor.cpp">
-      <Filter>Engine\GameBase\Scene\Actor</Filter>
+    <ClCompile Include="Engine\cAnimation2D.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Component.cpp">
-      <Filter>Engine\GameBase\Scene\Actor\Components</Filter>
+    <ClCompile Include="Engine\cBoxCollider2D.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Window.cpp">
-      <Filter>Engine\Render\Window</Filter>
+    <ClCompile Include="Engine\cCollider.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Log.cpp">
-      <Filter>Engine\Debug</Filter>
+    <ClCompile Include="Engine\cGravity2D.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Engine\GameBase</Filter>
+    <ClCompile Include="Engine\cModel.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Scene.cpp">
-      <Filter>Engine\GameBase\Scene</Filter>
+    <ClCompile Include="Engine\Component.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Time.cpp">
-      <Filter>Engine\Librairies\TimeLib</Filter>
+    <ClCompile Include="Engine\cPhysic.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cTransform2D.cpp">
-      <Filter>Engine\Librairies\Components\2D\Transform2D</Filter>
+    <ClCompile Include="Engine\cSprite2D.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Inputs.cpp">
-      <Filter>Engine\Librairies\Inputs</Filter>
+    <ClCompile Include="Engine\cTransform2D.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Paddle.cpp">
-      <Filter>Game2D\Actors</Filter>
+    <ClCompile Include="Engine\cTransform3D.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Scene_Pong.h">
-      <Filter>Game2D\Scenes</Filter>
+    <ClCompile Include="Engine\Game.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Scene_Pong.cpp">
-      <Filter>Game2D\Scenes</Filter>
+    <ClCompile Include="Engine\Mesh.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cBoxCollider2D.cpp">
-      <Filter>Engine\Librairies\Components\2D\Collider2D\BoxCollider2D</Filter>
+    <ClCompile Include="Engine\Render\RendererGl.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cCollider.cpp">
-      <Filter>Engine\Librairies\Components\2D\Collider2D</Filter>
+    <ClCompile Include="Engine\Render\RendererSdl.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Box.cpp">
-      <Filter>Game2D\Actors</Filter>
+    <ClCompile Include="Engine\Render\Shader.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Texture.cpp">
-      <Filter>Engine\Render\Asset\Texture</Filter>
+    <ClCompile Include="Engine\Render\ShaderProgram.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Assets.cpp">
-      <Filter>Engine\Render\Asset</Filter>
+    <ClCompile Include="Engine\Render\VertexArray.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cSprite2D.cpp">
-      <Filter>Engine\Librairies\Components\2D\Sprite2D</Filter>
+    <ClCompile Include="Engine\Render\Window.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RendererSdl.cpp">
-      <Filter>Engine\Render\Renderer\SDL</Filter>
+    <ClCompile Include="Engine\Scene.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="VertexArray.cpp">
-      <Filter>Engine\Render\Renderer\OPENGL\VAO</Filter>
+    <ClCompile Include="Engine\Texture.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RendererGl.cpp">
-      <Filter>Engine\Render\Renderer\OPENGL</Filter>
+    <ClCompile Include="Engine\Utilitaries\Assets.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cAnimation2D.cpp">
-      <Filter>Engine\Librairies\Components\2D\Sprite2D\Animation2D</Filter>
+    <ClCompile Include="Engine\Utilitaries\CameraManager.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cGravity2D.cpp">
-      <Filter>Engine\Librairies\Components\2D\Gravity2D</Filter>
+    <ClCompile Include="Engine\Utilitaries\Inputs.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Shader.cpp">
-      <Filter>Engine\Render\Asset\Shader</Filter>
+    <ClCompile Include="Engine\Utilitaries\Log.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ShaderProgram.cpp">
-      <Filter>Engine\Render\Asset\Shader\ShaderProgram</Filter>
+    <ClCompile Include="Engine\Utilitaries\Time.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Coin.cpp">
-      <Filter>Game2D\Actors</Filter>
+    <ClCompile Include="Game2D\Actors\Box.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Scene_GameOver.cpp">
-      <Filter>Game2D\Scenes</Filter>
+    <ClCompile Include="Game2D\Actors\Coin.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Scene_Test.cpp">
-      <Filter>Game3D\Scenes</Filter>
+    <ClCompile Include="Game2D\Actors\Paddle.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cModel.cpp">
-      <Filter>Engine\Librairies\Components\3D\Model</Filter>
+    <ClCompile Include="Game2D\Scenes\Scene_GameOver.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BoxGl.cpp">
-      <Filter>Game3D\Actors</Filter>
+    <ClCompile Include="Game2D\Scenes\Scene_Pong.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cTransform3D.cpp">
-      <Filter>Engine\Librairies\Components\3D\Transform3D</Filter>
+    <ClCompile Include="Game3D\Actors\Ball.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Mesh.cpp">
-      <Filter>Engine\Render\Asset\Shader\Mesh</Filter>
+    <ClCompile Include="Game3D\Actors\BowlingAlley.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game3D\Actors\BoxGl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game3D\Actors\Pin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game3D\Actors\Player3D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game3D\Scenes\Scene_Test.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Rectangle.h">
-      <Filter>Engine\Librairies\Forms</Filter>
+    <ClInclude Include="Engine\Actor.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Actor.h">
-      <Filter>Engine\GameBase\Scene\Actor</Filter>
+    <ClInclude Include="Engine\Camera.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Component.h">
-      <Filter>Engine\GameBase\Scene\Actor\Components</Filter>
+    <ClInclude Include="Engine\cAnimation2D.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Window.h">
-      <Filter>Engine\Render\Window</Filter>
+    <ClInclude Include="Engine\cBoxCollider2D.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Log.h">
-      <Filter>Engine\Debug</Filter>
+    <ClInclude Include="Engine\cCollider.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Engine\GameBase</Filter>
+    <ClInclude Include="Engine\cGravity2D.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>Engine\GameBase\Scene</Filter>
+    <ClInclude Include="Engine\cModel.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Time.h">
-      <Filter>Engine\Librairies\TimeLib</Filter>
+    <ClInclude Include="Engine\Component.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cTransform2D.h">
-      <Filter>Engine\Librairies\Components\2D\Transform2D</Filter>
+    <ClInclude Include="Engine\cPhysic.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Paddle.h">
-      <Filter>Game2D\Actors</Filter>
+    <ClInclude Include="Engine\cSprite2D.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Inputs.h">
-      <Filter>Engine\Librairies\Inputs</Filter>
+    <ClInclude Include="Engine\cTransform2D.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cBoxCollider2D.h">
-      <Filter>Engine\Librairies\Components\2D\Collider2D\BoxCollider2D</Filter>
+    <ClInclude Include="Engine\cTransform3D.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cCollider.h">
-      <Filter>Engine\Librairies\Components\2D\Collider2D</Filter>
+    <ClInclude Include="Engine\Game.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Box.h">
-      <Filter>Game2D\Actors</Filter>
+    <ClInclude Include="Engine\Mesh.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Texture.h">
-      <Filter>Engine\Render\Asset\Texture</Filter>
+    <ClInclude Include="Engine\Render\IRenderer.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Assets.h">
-      <Filter>Engine\Render\Asset</Filter>
+    <ClInclude Include="Engine\Render\RendererGl.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cSprite2D.h">
-      <Filter>Engine\Librairies\Components\2D\Sprite2D</Filter>
+    <ClInclude Include="Engine\Render\RendererSdl.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cAnimation2D.h">
-      <Filter>Engine\Librairies\Components\2D\Sprite2D\Animation2D</Filter>
+    <ClInclude Include="Engine\Render\Shader.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cGravity2D.h">
-      <Filter>Engine\Librairies\Components\2D\Gravity2D</Filter>
+    <ClInclude Include="Engine\Render\ShaderProgram.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IRenderer.h">
-      <Filter>Engine\Render\Renderer</Filter>
+    <ClInclude Include="Engine\Render\VertexArray.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RendererSdl.h">
-      <Filter>Engine\Render\Renderer\SDL</Filter>
+    <ClInclude Include="Engine\Render\Window.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="VertexArray.h">
-      <Filter>Engine\Render\Renderer\OPENGL\VAO</Filter>
+    <ClInclude Include="Engine\Scene.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RendererGl.h">
-      <Filter>Engine\Render\Renderer\OPENGL</Filter>
+    <ClInclude Include="Engine\Texture.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Shader.h">
-      <Filter>Engine\Render\Asset\Shader</Filter>
+    <ClInclude Include="Engine\Utilitaries\Assets.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ShaderProgram.h">
-      <Filter>Engine\Render\Asset\Shader\ShaderProgram</Filter>
+    <ClInclude Include="Engine\Utilitaries\CameraManager.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Coin.h">
-      <Filter>Game2D\Actors</Filter>
+    <ClInclude Include="Engine\Utilitaries\CommonLib.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Scene_GameOver.h">
-      <Filter>Game2D\Scenes</Filter>
+    <ClInclude Include="Engine\Utilitaries\Inputs.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Scene_Test.h">
-      <Filter>Game3D\Scenes</Filter>
+    <ClInclude Include="Engine\Utilitaries\Log.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BoxGl.h">
-      <Filter>Game3D\Actors</Filter>
+    <ClInclude Include="Engine\Utilitaries\MathLib.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cModel.h">
-      <Filter>Engine\Librairies\Components\3D\Model</Filter>
+    <ClInclude Include="Engine\Utilitaries\Rectangle.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Game3D.h">
-      <Filter>Game3D</Filter>
+    <ClInclude Include="Engine\Utilitaries\Time.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cTransform3D.h">
-      <Filter>Engine\Librairies\Components\3D\Transform3D</Filter>
+    <ClInclude Include="Engine\Utilitaries\tiny_obj_loader.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Mesh.h">
-      <Filter>Engine\Render\Asset\Shader\Mesh</Filter>
+    <ClInclude Include="Game2D\Actors\Box.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Ressources\Shaders\Texture.frag">
-      <Filter>Engine\Librairies\Shaders\Texture</Filter>
-    </None>
-    <None Include="Ressources\Shaders\Texture.vert">
-      <Filter>Engine\Librairies\Shaders\Texture</Filter>
-    </None>
-    <None Include="Transform.vert">
-      <Filter>Engine\Librairies\Shaders\Transform</Filter>
-    </None>
-    <None Include="Transform.frag">
-      <Filter>Engine\Librairies\Shaders\Transform</Filter>
-    </None>
-    <None Include="Ressources\Shaders\BasicModel.frag">
-      <Filter>Engine\Librairies\Shaders\BasicModel</Filter>
-    </None>
-    <None Include="Ressources\Shaders\BasicModel.vert">
-      <Filter>Engine\Librairies\Shaders\BasicModel</Filter>
-    </None>
+    <ClInclude Include="Game2D\Actors\Coin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game2D\Actors\Paddle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game2D\Scenes\Scene_GameOver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game2D\Scenes\Scene_Pong.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game3D\Actors\Ball.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game3D\Actors\BowlingAlley.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game3D\Actors\BoxGl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game3D\Actors\Pin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game3D\Actors\Player3D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game3D\Scenes\Scene_Test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
