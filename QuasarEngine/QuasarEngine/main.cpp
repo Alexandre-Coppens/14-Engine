@@ -10,6 +10,7 @@
 #include "Game2D/Scenes/Scene_Pong.h"
 #include "Game2D/Scenes/Scene_GameOver.h"
 #include "Game3D/Bowling/Scenes/Scene_Bowling.h"
+#include "Game3D/Doom/Scenes/Scene_Doom_Test.h"
 
 using namespace std;
 
@@ -32,7 +33,7 @@ int main(int argc, char* argv[])
 	};
 
 	std::vector<Scene*> SceneGlList{
-		new Scene_Bowling("Scene Bowling")
+		new Scene_Doom_Test("Scene Doom Test")
 	};
 	
 	Game* game;

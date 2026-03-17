@@ -1,6 +1,4 @@
-#ifndef SCENE_TEST_H
-#define SCENE_TEST_H
-
+#pragma once
 #include "Engine/Scene.h"
 
 class Scene_Bowling : public Scene
@@ -17,5 +15,3 @@ public:
 	void Update(float _deltaTime)	override;
 	void Close()					override;
 };
-
-#endif

@@ -1,3 +1,4 @@
+E:\Github\14-Engine\QuasarEngine\QuasarEngine\Engine\.Prefabs\Object.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Object.obj
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\Engine\2D\cAnimation2D.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\cAnimation2D.obj
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\Engine\2D\cBoxCollider2D.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\cBoxCollider2D.obj
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\Engine\2D\cCollider.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\cCollider.obj
@@ -28,6 +29,8 @@ E:\Github\14-Engine\QuasarEngine\QuasarEngine\Engine\Utilitaries\CameraManager.c
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\Engine\Utilitaries\Inputs.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Inputs.obj
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\Engine\Utilitaries\Log.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Log.obj
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\Engine\Utilitaries\Time.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Time.obj
+E:\Github\14-Engine\QuasarEngine\QuasarEngine\Engine\.Presets\Preset_Actor.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Preset_Actor.obj
+E:\Github\14-Engine\QuasarEngine\QuasarEngine\Engine\.Presets\Preset_Scene.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Preset_Scene.obj
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\Game2D\Actors\Box.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Box.obj
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\Game2D\Actors\Coin.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Coin.obj
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\Game2D\Actors\Paddle.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Paddle.obj
@@ -39,4 +42,6 @@ E:\Github\14-Engine\QuasarEngine\QuasarEngine\Game3D\Bowling\Actors\BoxGl.cpp;E:
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\Game3D\Bowling\Actors\Pin.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Pin.obj
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\Game3D\Bowling\Actors\Player3D.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Player3D.obj
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\Game3D\Bowling\Scenes\Scene_Bowling.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Scene_Bowling.obj
+E:\Github\14-Engine\QuasarEngine\QuasarEngine\Game3D\Doom\Actors\DoomPlayer.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\DoomPlayer.obj
+E:\Github\14-Engine\QuasarEngine\QuasarEngine\Game3D\Doom\Scenes\Scene_Doom_Test.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Scene_Doom_Test.obj
 E:\Github\14-Engine\QuasarEngine\QuasarEngine\main.cpp;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\main.obj
