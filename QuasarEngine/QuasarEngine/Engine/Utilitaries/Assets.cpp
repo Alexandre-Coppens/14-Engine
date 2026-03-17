@@ -10,10 +10,16 @@
 #include "Engine/Utilitaries/tiny_obj_loader.h"
 
 std::map<std::string, Texture*> Assets::mTextureList = {};
+std::map<std::string, int> Assets::mTextureListUses = {};
+
 std::map<std::string, Shader*> Assets::mShaderList = {};
 std::map<std::string, ShaderProgram*> Assets::mShaderProgramList = {};
+
 std::map<std::string, Mesh*> Assets::mMeshList = {};
+
 std::map<ShaderProgram*, std::vector<Model*>> Assets::mDrawOrder = {};
+
+
 
 Texture* Assets::LoadTexture(IRenderer& _pRenderer, const std::string& _pFileName, const std::string& _pName)
 {

@@ -9,7 +9,7 @@
 
 #include "Game2D/Scenes/Scene_Pong.h"
 #include "Game2D/Scenes/Scene_GameOver.h"
-#include "Game3D/Scenes/Scene_Test.h"
+#include "Game3D/Bowling/Scenes/Scene_Bowling.h"
 
 using namespace std;
 
@@ -25,18 +25,16 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-	//Scene_Pong pong = Scene_Pong("Pong Scene");
-	//Scene_GameOver gameover = Scene_GameOver("Game Over");
 
-	std::vector<Scene*> SceneSdlList;
-	//SceneSdlList.push_back(&pong);
-	//SceneSdlList.push_back(&gameover);
-
-	std::vector<Scene*> SceneGlList{
-		new Scene_Test("Scene Test")
+	std::vector<Scene*> SceneSdlList{
+		new Scene_Pong("Pong Scene"),
+		new Scene_GameOver("Game Over")
 	};
 
-
+	std::vector<Scene*> SceneGlList{
+		new Scene_Bowling("Scene Bowling")
+	};
+	
 	Game* game;
 	if (true)
 	{
@@ -44,7 +42,7 @@ int main(int argc, char* argv[])
 	}
 	else
 	{
-		//game = new Game("Pong", SceneSdlList, RendererType::SDL);
+		game = new Game("Pong", SceneSdlList, RendererType::SDL);
 	}
 	
 	game->Initialize();

@@ -23,6 +23,7 @@ unsigned int Time::ComputeDeltaTime()
 void Time::DelayTime()
 {
     u16FrameTime = SDL_GetTicks() - u16FrameStart;
+
     if (u16FrameTime < FRAME_DELAY)
     {
         SDL_Delay(FRAME_DELAY - u16FrameTime);

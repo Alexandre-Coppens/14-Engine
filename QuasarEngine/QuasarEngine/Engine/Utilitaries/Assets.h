@@ -15,6 +15,7 @@ class Assets
 {
 private:
 	static std::map<std::string, Texture*> mTextureList;
+	static std::map<std::string, int> mTextureListUses;
 	static std::map<std::string, Shader*> mShaderList;
 	static std::map<std::string, ShaderProgram*> mShaderProgramList;
 	static std::map<std::string, Mesh*> mMeshList;

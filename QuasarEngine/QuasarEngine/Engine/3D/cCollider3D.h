@@ -6,6 +6,7 @@
 #include "Engine/Utilitaries/CommonLib.h"
 #include "Engine/Utilitaries/MathLib.h"
 
+class PhysicBody;
 class BoxCollider;
 enum ColliderType
 { 
@@ -24,6 +25,11 @@ enum CollisionState
 
 struct CollisionData
 {
+    PhysicBody* bodyA;
+    PhysicBody* bodyB;
+
+    float friction;
+    
     float penetration;
     Vector3 normal;
     Vector3 collisionPoint;
@@ -33,8 +39,7 @@ class Collider3D : public Component
 {
 private:
     bool mHasFrameCollision;
-    //Used for PhysicBody repositions & velocity calculs
-    CollisionData mCollisionData;
+    std::vector<CollisionData> mCollisionList;
 
 protected:
     bool mPhysicBased                  {false};
@@ -54,6 +59,7 @@ public:
 
 private:
     bool AreCollidersColliding(Collider3D* _pOther);
+    void ResolveCollisions();
     
     bool BoxToBox(Collider3D* _pBoxA, Collider3D* _pBoxB);
     bool BoxToSphere(Collider3D* _pBox, Collider3D* _pSphere);

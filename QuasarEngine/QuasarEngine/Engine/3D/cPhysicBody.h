@@ -49,6 +49,6 @@ public:
     
     void OnStart() override;
     void Update(float _deltaTime) override;
-    void ResolveCollision(Collider3D* _pOwnerCollision, CollisionData _collisionData);
-    void ResolveVelocity(PhysicBody* _otherPhysic, CollisionData _collisionData, float _friction);
+    void ResolveCollision(const CollisionData _data);
+    void ResolveVelocity(const CollisionData _data);
 };

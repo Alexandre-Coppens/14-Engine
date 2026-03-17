@@ -15,10 +15,10 @@ public:
 	static float currentFrameTime;
 
 private:
-	const static unsigned int FPS = 60;
+	const static unsigned int FPS = 99999;
 	const static unsigned int FRAME_DELAY = 1000 / FPS;
 	//Max Delta Time
-	const static unsigned int MAX_DT = 50;
+	const static unsigned int MAX_DT = 500;
 
 	//Time when current frame started
 	static unsigned int u16FrameStart;

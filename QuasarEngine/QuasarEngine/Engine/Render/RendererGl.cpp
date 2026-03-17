@@ -43,6 +43,8 @@ bool RendererGl::Initialize(Window& _rWindow)
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 	SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
 
+	SDL_GL_SetSwapInterval(0);
+	
 	mContext = SDL_GL_CreateContext(pWindow->GetSdlWindow());
 	glewExperimental = GL_TRUE;
 	if (glewInit() != GLEW_OK)

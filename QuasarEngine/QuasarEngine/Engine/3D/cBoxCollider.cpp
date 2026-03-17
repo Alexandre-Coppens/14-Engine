@@ -43,7 +43,21 @@ std::vector<Vector3> BoxCollider::getWorldVertices()
 
 void BoxCollider::DrawDebug()
 {
+	//Draw Box
 	Matrix4Row wt;
+	wt =  Mat4RowCreateScale(mSize * 0.5f);
+	wt *= Mat4RowCreateFromQuaternion(mpParentTransform->getQRotation());
+	wt *= Mat4RowCreateTranslation(getCenter());
+	
+	Assets::GetShader("Simple")->SetMatrix4Row("uWorldTransform", wt);
+	Assets::GetShader("Simple")->SetVector4f("uColor", Vector4(0.0f, 0.0f, 0.0f, 1.0f));
+	
+	mDebugMesh->getVertexArray()->SetActive();
+	
+	glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
+	glDrawArrays(GL_TRIANGLES, 0, mDebugMesh->getVertexArray()->GetVerticesCount());
+
+	//Draw Nearest Sphere
 	wt =  Mat4RowCreateScale(mSize * 0.5f);
 	wt *= Mat4RowCreateFromQuaternion(mpParentTransform->getQRotation());
 	wt *= Mat4RowCreateTranslation(getCenter());

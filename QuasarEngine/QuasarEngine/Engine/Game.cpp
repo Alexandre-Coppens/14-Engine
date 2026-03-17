@@ -56,7 +56,7 @@ void Game::Loop()
 	while (!Inputs::GetEventQuit())
 	{
 		Time::ComputeDeltaTime();
-
+		
 		mScenes[mCurrentScene]->EarlyUpdate();
 		Inputs::ComputeInputs();
 

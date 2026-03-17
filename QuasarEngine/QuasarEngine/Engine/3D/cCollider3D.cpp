@@ -33,6 +33,7 @@ void Collider3D::Update(const float _deltaTime)
     if (mCollisionState == STOPPED_COLLIDING) mCollisionState = NOT_COLLIDING;
     if (mColliderType == NONE) return;
     if (!mPhysicBased) return;
+    mCollisionList.clear();
     for (Collider3D* collider : ColliderList)
     {
         if (collider == this) continue;
@@ -40,20 +41,13 @@ void Collider3D::Update(const float _deltaTime)
         
         if (AreCollidersColliding(collider))
         {
+            Log::Info(pOwner->getName() + " is Colliding with " + collider->getOwner()->getName());
             mHasFrameCollision = true;
-            
-            //Resolve Collisions entering each others
-            PhysicBody* colliderPhysic = getOwner()->GetComponent<PhysicBody>();
-            if (colliderPhysic == nullptr) continue;
-            colliderPhysic->ResolveCollision(this, mCollisionData);
-            
-            //Resolve Velocities
-            PhysicBody* otherPhysic = collider->getOwner()->GetComponent<PhysicBody>();
-            colliderPhysic->ResolveVelocity(otherPhysic, mCollisionData, mFriction + collider->getFriction());
         }
     }
     if (mHasFrameCollision)
     {
+        ResolveCollisions();
         if (mCollisionState == COLLIDING) return;
         if (mCollisionState == NOT_COLLIDING) mCollisionState = START_COLLISION;
         else mCollisionState = COLLIDING;
@@ -64,12 +58,34 @@ void Collider3D::Update(const float _deltaTime)
         mCollisionState = STOPPED_COLLIDING;
     }
 }
+
 void Collider3D::OnEnd()
 {
     Component::OnEnd();
     std::vector<Collider3D*>::iterator it;
     it = std::find(ColliderList.begin(), ColliderList.end(), this);
     ColliderList.erase(it);
+}
+
+void Collider3D::ResolveCollisions()
+{
+    for (CollisionData data : mCollisionList)
+    {
+        bool elasticCollision = data.bodyA != nullptr && data.bodyB != nullptr;
+        if (elasticCollision) data.penetration *= 0.5f;
+
+        if (data.bodyA != nullptr)
+        {
+            data.bodyA->ResolveCollision(data);
+            data.bodyA->ResolveVelocity(data);
+        }
+        data.normal *= -1;
+        if (data.bodyB != nullptr)
+        {
+            data.bodyB->ResolveCollision(data);
+            data.bodyB->ResolveVelocity(data);
+        }
+    }
 }
 
 //Return is the 2 colliders are colliding.
@@ -97,7 +113,6 @@ bool Collider3D::AreCollidersColliding(Collider3D* _pOther)
     }
     return false;
 }
-
 
 bool Collider3D::BoxToBox(Collider3D* _pBoxA, Collider3D* _pBoxB)
 {
@@ -147,42 +162,48 @@ bool Collider3D::BoxToBox(Collider3D* _pBoxA, Collider3D* _pBoxB)
             smallestAxeIndex = i;
         }
     }
-    
-    mCollisionData.penetration = smallestPenetration;
-    mCollisionData.normal = axisList[smallestAxeIndex];
-    if (Dot(mCollisionData.normal, diffDist) > 0) mCollisionData.normal *= -1;
-    Log::Info(ToString(mCollisionData.normal));
+
+    CollisionData collisionData;
+    collisionData.penetration = smallestPenetration;
+    collisionData.normal = Normalize(axisList[smallestAxeIndex]);
+    if (Dot(collisionData.normal, diffDist) > 0) collisionData.normal *= -1;
     
     std::vector<Vector3> vertexList = boxA->getWorldVertices();
     Vector3 contactPointA = vertexList[0];
-    float maxProjection = Dot(vertexList[0], mCollisionData.normal);
+    float maxProjection = Dot(vertexList[0], collisionData.normal);
     float projection = 0;
     
     for (int i = 0; i < vertexList.size(); i++)
     {
-        projection = Dot(vertexList[i], mCollisionData.normal);
+        projection = Dot(vertexList[i], collisionData.normal);
         if (projection > maxProjection)
         {
             maxProjection = projection;
             contactPointA = vertexList[i];
         }
     }
-    
+
     vertexList = boxB->getWorldVertices();
     Vector3 contactPointB = vertexList[0];
-    maxProjection = Dot(vertexList[0], mCollisionData.normal * -1);
+    maxProjection = Dot(vertexList[0], collisionData.normal * -1);
     
     for (int i = 0; i < vertexList.size(); i++)
     {
-        projection = Dot(vertexList[i], mCollisionData.normal * -1);
+        projection = Dot(vertexList[i], collisionData.normal * -1);
         if (projection > maxProjection)
         {
             maxProjection = projection;
             contactPointB = vertexList[i];
         }
     }
-   
-    mCollisionData.collisionPoint = (contactPointA + contactPointB) * 0.5f;
+    
+    collisionData.collisionPoint = (contactPointA + contactPointB) * 0.5f;
+    collisionData.friction = boxA->getFriction() + boxB->getFriction();
+
+    collisionData.bodyA = boxA->getOwner()->GetComponent<PhysicBody>();
+    collisionData.bodyB = boxB->getOwner()->GetComponent<PhysicBody>();
+    
+    mCollisionList.push_back(collisionData);
     
     return true;
 }
@@ -200,13 +221,11 @@ bool Collider3D::BoxToSphere(Collider3D* _pBox, Collider3D* _pSphere)
     Vector3 rightBoxAxis = box->getRight();
     Vector3 upBoxAxis = box->getUp();
     
-    float projection = 0;
-    float clamp = 0;
     Vector3 closestPoint = boxLocation;
     Vector3 delta = sphereLocation - boxLocation;
         
-    projection = Dot(delta, forwardBoxAxis);
-    clamp = Clamp(projection, -box->getSize().x * 0.5f, box->getSize().x * 0.5f);
+    float projection = Dot(delta, forwardBoxAxis);
+    float clamp = Clamp(projection, -box->getSize().x * 0.5f, box->getSize().x * 0.5f);
     closestPoint += forwardBoxAxis * clamp;
     
     projection = Dot(delta, rightBoxAxis);
@@ -216,17 +235,27 @@ bool Collider3D::BoxToSphere(Collider3D* _pBox, Collider3D* _pSphere)
     projection = Dot(delta, upBoxAxis);
     clamp = Clamp(projection, -box->getSize().z * 0.5f, box->getSize().z * 0.5f);
     closestPoint += upBoxAxis * clamp;
-        
+    
     Vector3 difference = sphereLocation - closestPoint;
     
     if (!(Pow(Length(difference)) < Pow(sphereRadius))) return false;
+
+    //Add Collision to List
+    CollisionData collisionData;
     
-    mCollisionData.penetration = sphereRadius - Distance(sphereLocation, closestPoint);
-    if (mCollisionData.penetration < 0.0001f) return false;
+    collisionData.penetration = sphereRadius - Length(difference) /*Distance(sphereLocation, closestPoint)*/;
+    if (collisionData.penetration < 0.001f) return false;
     
-    if (mCollisionData.penetration < 0.0001f) mCollisionData.normal = Normalize(delta);
-    else mCollisionData.normal = Normalize(sphereLocation - closestPoint);
-    mCollisionData.collisionPoint = closestPoint;
+    collisionData.normal = Normalize(difference);
+    if (collisionData.normal == Vector3(0.0f, 0.0f, 0.0f)) collisionData.normal = Normalize(sphereLocation - boxLocation);
+    
+    collisionData.collisionPoint = closestPoint;
+    collisionData.friction = box->getFriction() + sphere->getFriction();
+
+    collisionData.bodyA = sphere->getOwner()->GetComponent<PhysicBody>();
+    collisionData.bodyB = box->getOwner()->GetComponent<PhysicBody>();
+    
+    mCollisionList.push_back(collisionData);
     
     return true;
 }
@@ -240,10 +269,21 @@ bool Collider3D::SphereToSphere(Collider3D* _pSphereA, Collider3D* _pSphereB)
     Vector4 dist = s1 - s2;
 
     if (!(Pow(dist.x) + Pow(dist.y) + Pow(dist.z) < Pow(s1.w + s2.w))) return false;
+
+    //Add Collision to List
+    CollisionData collisionData;
     
-    mCollisionData.penetration = s1.w + s2.w - Distance(Vector3{s1.x, s1.y, s1.z}, Vector3{s2.x, s2.y, s2.z});
-    mCollisionData.normal = Normalize(Vector3{dist.x, dist.y, dist.z});
-    mCollisionData.collisionPoint = mCollisionData.normal * s1.w + (mCollisionData.penetration);
+    collisionData.penetration = s1.w + s2.w - Distance(Vector3{s1.x, s1.y, s1.z}, Vector3{s2.x, s2.y, s2.z});
+    collisionData.normal = Normalize(Vector3{dist.x, dist.y, dist.z});
+    collisionData.collisionPoint = collisionData.normal * s1.w + (collisionData.penetration);
+    
+    collisionData.friction = _pSphereA->getFriction() + _pSphereB->getFriction();
+
+    collisionData.bodyA = _pSphereA->getOwner()->GetComponent<PhysicBody>();
+    collisionData.bodyB = _pSphereB->getOwner()->GetComponent<PhysicBody>();
+    
+    mCollisionList.push_back(collisionData);
+    
     return true;
 }
 

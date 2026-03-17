@@ -31,6 +31,7 @@ void Camera::Update(const float _deltaTime)
 
 void Camera::UpdateCameraView() const
 {
+    mLocalTransform->ComputeWorldTransform();
     Vector3 camPosition = pOwner->getTransform3D()->getLocation() + mLocalTransform->getLocation();
     Vector3 target = camPosition + mLocalTransform->Forward() * 100.f;
     Vector3 up = Vector3UnitZ(); // TODO: Change this when gravity so up = -gravity

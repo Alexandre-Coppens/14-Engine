@@ -275,7 +275,7 @@ inline Vector3 operator-=(Vector3& v1, Vector3& v2)
 	return v1;
 }
 
-static inline Vector3 MultiplyScalar(Vector3 v1, float f)
+static inline Vector3 MultiplyScalar(const Vector3& v1, const float& f)
 {
 	return Vector3{ v1.x * f, v1.y * f, v1.z * f };
 }

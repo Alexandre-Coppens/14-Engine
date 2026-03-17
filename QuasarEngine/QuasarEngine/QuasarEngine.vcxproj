@@ -1104,12 +1104,12 @@
     <ClCompile Include="Game2D\Actors\Paddle.cpp" />
     <ClCompile Include="Game2D\Scenes\Scene_GameOver.cpp" />
     <ClCompile Include="Game2D\Scenes\Scene_Pong.cpp" />
-    <ClCompile Include="Game3D\Actors\Ball.cpp" />
-    <ClCompile Include="Game3D\Actors\BowlingAlley.cpp" />
-    <ClCompile Include="Game3D\Actors\BoxGl.cpp" />
-    <ClCompile Include="Game3D\Actors\Pin.cpp" />
-    <ClCompile Include="Game3D\Actors\Player3D.cpp" />
-    <ClCompile Include="Game3D\Scenes\Scene_Test.cpp" />
+    <ClCompile Include="Game3D\Bowling\Actors\Ball.cpp" />
+    <ClCompile Include="Game3D\Bowling\Actors\BowlingAlley.cpp" />
+    <ClCompile Include="Game3D\Bowling\Actors\BoxGl.cpp" />
+    <ClCompile Include="Game3D\Bowling\Actors\Pin.cpp" />
+    <ClCompile Include="Game3D\Bowling\Actors\Player3D.cpp" />
+    <ClCompile Include="Game3D\Bowling\Scenes\Scene_Bowling.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -1153,12 +1153,12 @@
     <ClInclude Include="Game2D\Actors\Paddle.h" />
     <ClInclude Include="Game2D\Scenes\Scene_GameOver.h" />
     <ClInclude Include="Game2D\Scenes\Scene_Pong.h" />
-    <ClInclude Include="Game3D\Actors\Ball.h" />
-    <ClInclude Include="Game3D\Actors\BowlingAlley.h" />
-    <ClInclude Include="Game3D\Actors\BoxGl.h" />
-    <ClInclude Include="Game3D\Actors\Pin.h" />
-    <ClInclude Include="Game3D\Actors\Player3D.h" />
-    <ClInclude Include="Game3D\Scenes\Scene_Test.h" />
+    <ClInclude Include="Game3D\Bowling\Actors\Ball.h" />
+    <ClInclude Include="Game3D\Bowling\Actors\BowlingAlley.h" />
+    <ClInclude Include="Game3D\Bowling\Actors\BoxGl.h" />
+    <ClInclude Include="Game3D\Bowling\Actors\Pin.h" />
+    <ClInclude Include="Game3D\Bowling\Actors\Player3D.h" />
+    <ClInclude Include="Game3D\Bowling\Scenes\Scene_Bowling.h" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\CoinAnim\Coin-01.png" />

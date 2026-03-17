@@ -40,7 +40,7 @@ void PhysicBody::Update(float _deltaTime)
 {
     Vector3 force = Vector3Zero();
     if (mGravityEnabled) force += (mGravityDirection * mGravityForce) * mMass;
-    mVelocity += force * _deltaTime * 0.01f;
+    mVelocity += (force / mMass) * _deltaTime * 0.01f;
     pOwner->getTransform3D()->addLocation(mVelocity * _deltaTime);
     
     /*Vector3 angularAcceleration = Vector3Zero();
@@ -51,58 +51,34 @@ void PhysicBody::Update(float _deltaTime)
 }
 
 //TODO: Change NearestPoint name because it does not represent the variable well anymore
-void PhysicBody::ResolveCollision(Collider3D* _pOwnerCollision, CollisionData _collisionData)
+void PhysicBody::ResolveCollision(const CollisionData _data)
 {
-    pOwner->getTransform3D()->addLocation(_collisionData.normal * _collisionData.penetration);
+    pOwner->getTransform3D()->addLocation(_data.normal * _data.penetration);
 }
 
-void PhysicBody::ResolveVelocity(PhysicBody* _otherPhysic, CollisionData _collisionData, float _friction)
+void PhysicBody::ResolveVelocity(const CollisionData _data)
 {
-    Vector3 r = _collisionData.collisionPoint - pOwner->getTransform3D()->getLocation();
-    Vector3 force = Vector3Zero();
-    if (_otherPhysic == nullptr)
-    {
-        //Friction is already between 0 & 2 since it's the combination of the 2 frictions
-        Vector3 oldVel = mVelocity;
-        mVelocity = Subtract(mVelocity, _collisionData.normal * ( (2 - _friction) * Dot(mVelocity, _collisionData.normal)));
-        switch (mColliderType)
-        {
-        case BOX:
-            force = mVelocity - oldVel;
-            break;
-            
-        case SPHERE:
-            float radius = static_cast<SphereCollider*>(mpCollider)->getRadius();
-            mAngularVelocity = (1/radius) * Cross(_collisionData.normal, mVelocity);
-            break;
-        }
+    bool hasExchange = _data.bodyA != nullptr && _data.bodyB != nullptr;
+    PhysicBody* otherBody = nullptr;
+    if (hasExchange) otherBody = (_data.bodyA == this ? _data.bodyB : _data.bodyA);
 
-    }
-    else
+    Vector3 otherVelocity = Vector3Zero();
+    float otherMass = 0.0f;
+    if (hasExchange)
     {
-        //From: https://stackoverflow.com/questions/17593700/collision-equation-for-two-3d-objects
-        
-        float mass1 = mMass;
-        float mass2 = _otherPhysic->getMass();
-        
-        Vector3 oldVel1 = mVelocity;
-        Vector3 oldVel2 = _otherPhysic->getVelocity();
-        
-        Vector3 newVel1 = oldVel1;
-        Vector3 newVel2 = oldVel2;
-        
-        float e = _friction * 0.5f;
-        
-        newVel1 = ((mass1 - e*mass2) * oldVel1 + (1 + e) * mass2 * oldVel2) / (mass1 + mass2);
-        newVel2 = ((mass2 - e*mass1) * oldVel2 + (1 + e) * mass1 * oldVel1) / (mass1 + mass2);
-        
-        mVelocity = newVel1;
-        _otherPhysic->setVelocity(newVel2);
-        
-        force = newVel1 - oldVel1;
-        _otherPhysic->addTorque(Cross(_collisionData.collisionPoint - _otherPhysic->getReferencedCollider()->getCenter(), newVel2 - oldVel2));
+        otherVelocity = otherBody->getVelocity();
+        otherMass = otherBody->getMass();
     }
-    mTorque += Cross(r, force);
+    
+    float invMass1 = 1/mMass;
+    float invMass2 = otherMass != 0.0f ? 1/otherMass : 0.0f;
+
+    Vector3 n = Normalize(_data.normal);
+    
+    Vector3 relative = mVelocity - otherVelocity;
+    float j = -_data.friction * 0.5f * Dot(relative, n) / Dot(_data.normal, _data.normal * (invMass1 + invMass2));
+    
+    mVelocity += (j / mMass) * _data.normal;
 }
 
 void PhysicBody::RecalculateInertia()
