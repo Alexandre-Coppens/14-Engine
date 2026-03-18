@@ -46,7 +46,6 @@ void Model::Draw(int _option)
 		}
 		if (_option & DrawOption::DEBUG)
 		{
-			//TODO: Implement the debug draw box ON TOP of the mesh
 			std::vector<Collider3D*> colliders = pOwner->GetComponents<Collider3D>();
 			if (colliders.size() > 0)
 			{

@@ -43,24 +43,24 @@ void Ball::Update(const float _deltaTime)
     Actor::Update(_deltaTime);
     //if (Inputs::GetKey(SDLK_UP)) mPhysicBody->addVelocityX(-1 * _deltaTime);
     //if (Inputs::GetKey(SDLK_DOWN)) mPhysicBody->addVelocityX(1 * _deltaTime);
-    if (Inputs::GetKey(SDLK_a) && !mLaunched)   mTransform3D.addLocationY(  0.1f * _deltaTime);
-    if (Inputs::GetKey(SDLK_e) && !mLaunched)   mTransform3D.addLocationY(- 0.1f * _deltaTime);
-    if (Inputs::GetKey(SDLK_q) && !mLaunched)   mTransform3D.addRotationZ(-10.0f * _deltaTime);
-    if (Inputs::GetKey(SDLK_d) && !mLaunched)   mTransform3D.addRotationZ( 10.0f * _deltaTime);
+    if (Inputs::GetKey(SDLK_a) && !mLaunched)   mTransform3D->addLocationY(  0.1f * _deltaTime);
+    if (Inputs::GetKey(SDLK_e) && !mLaunched)   mTransform3D->addLocationY(- 0.1f * _deltaTime);
+    if (Inputs::GetKey(SDLK_q) && !mLaunched)   mTransform3D->addRotationZ(-10.0f * _deltaTime);
+    if (Inputs::GetKey(SDLK_d) && !mLaunched)   mTransform3D->addRotationZ( 10.0f * _deltaTime);
     if (Inputs::GetKeyDown(SDLK_SPACE) && !mLaunched)
     {
         mLaunched = true;
-        mPhysicBody->setVelocity(mTransform3D.Forward() * -0.2f);
+        mPhysicBody->setVelocity(mTransform3D->Forward() * -0.2f);
     }
     if (Inputs::GetKeyDown(SDLK_r))
     {
         mLaunched = false;
-        mTransform3D.setLocation(Vector3{0, 0, -0.225f});
+        mTransform3D->setLocation(Vector3{0, 0, -0.225f});
         mPhysicBody->setVelocity(Vector3{0, 0, 0});
     }
     if (!mLaunched)
     {
-        mTransform3D.setLocationY(Clamp(mTransform3D.getLocation().y, -0.05f, 0.05f));
+        mTransform3D->setLocationY(Clamp(mTransform3D->getLocation().y, -0.05f, 0.05f));
     }
     //Log::Info(ToString(mTransform3D.getRotation()));
 }

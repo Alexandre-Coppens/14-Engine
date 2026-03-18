@@ -10,7 +10,7 @@
 DoomPlayer::DoomPlayer() :
     Actor()
 {
-    mName = "Template";
+    mName = "Player";
 }
 
 DoomPlayer::~DoomPlayer()
@@ -19,37 +19,38 @@ DoomPlayer::~DoomPlayer()
 
 void DoomPlayer::Start()
 {
-    mCollider = dynamic_cast<BoxCollider*>(AddComponent(new BoxCollider(this)));
     mPhysicBody = dynamic_cast<PhysicBody*>(AddComponent(new PhysicBody(this, BOX)));
+    mCollider = mPhysicBody->getReferencedCollider();
     mCamera = dynamic_cast<Camera*>(AddComponent(new Camera(this)));
 
-    mPhysicBody->setGravityEnabled(true);
+    mPhysicBody->setGravityEnabled(false);
     
     Actor::Start();
 }
 
 void DoomPlayer::Update(const float _deltaTime)
 {
-    Actor::Update(_deltaTime);
-    
     if (Inputs::GetKey(SDLK_z))
     {
-        mTransform3D.addLocation(mCamera->getLocalTransform()->Forward() * 1 * _deltaTime);
+        //Vector3 forward = mCamera->getLocalTransform()->Forward();
+        //forward.z = 0.0f;
+        //forward = Normalize(forward);
+        mTransform3D->addLocation(mCamera->getLocalTransform()->Forward() * 1 * _deltaTime);
     }
 
     if (Inputs::GetKey(SDLK_s))
     {
-        mTransform3D.addLocation(mCamera->getLocalTransform()->Forward() * -1 * _deltaTime);
+        mTransform3D->addLocation(mCamera->getLocalTransform()->Forward() * -1 * _deltaTime);
     }
 
     if (Inputs::GetKey(SDLK_q))
     {
-        mTransform3D.addLocation(mCamera->getLocalTransform()->Right() * -1 * _deltaTime);
+        mTransform3D->addLocation(mCamera->getLocalTransform()->Right() * -1 * _deltaTime);
     }
 
     if (Inputs::GetKey(SDLK_d))
     {
-        mTransform3D.addLocation(mCamera->getLocalTransform()->Right() * 1 * _deltaTime);
+        mTransform3D->addLocation(mCamera->getLocalTransform()->Right() * 1 * _deltaTime);
     }
     
     /*if (Inputs::GetKeyDown(SDLK_r))
@@ -64,7 +65,8 @@ void DoomPlayer::Update(const float _deltaTime)
     mCamera->getLocalTransform()->addRotationZ(yaw);
     mCamera->getLocalTransform()->addRotationY(pitch);
     mCamera->getLocalTransform()->clampRotationY(-89.0f, 89.0f);
-    mCamera->getLocalTransform()->computeRotation();
+    
+    Actor::Update(_deltaTime);
 }
 
 void DoomPlayer::Destroy()

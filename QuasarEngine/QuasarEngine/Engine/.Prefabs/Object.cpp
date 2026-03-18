@@ -25,6 +25,7 @@ void Object::Start()
     mModel->getMesh()->AddTexture(Assets::GetTexture(mTextureName));
 
     mCollider = dynamic_cast<BoxCollider*>(AddComponent(new BoxCollider(this)));
+    dynamic_cast<BoxCollider*>(mCollider)->setSize(1.1f);
     Actor::Start();
 }
 

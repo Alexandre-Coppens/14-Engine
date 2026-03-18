@@ -33,22 +33,22 @@ void Player3D::Update(const float _deltaTime)
     
     if (Inputs::GetKey(SDLK_z))
     {
-        mTransform3D.addLocation(pCamera->getLocalTransform()->Forward() * 1 * _deltaTime);
+        mTransform3D->addLocation(pCamera->getLocalTransform()->Forward() * 1 * _deltaTime);
     }
 
     if (Inputs::GetKey(SDLK_s))
     {
-        mTransform3D.addLocation(pCamera->getLocalTransform()->Forward() * -1 * _deltaTime);
+        mTransform3D->addLocation(pCamera->getLocalTransform()->Forward() * -1 * _deltaTime);
     }
 
     if (Inputs::GetKey(SDLK_q))
     {
-        mTransform3D.addLocation(pCamera->getLocalTransform()->Right() * -1 * _deltaTime);
+        mTransform3D->addLocation(pCamera->getLocalTransform()->Right() * -1 * _deltaTime);
     }
 
     if (Inputs::GetKey(SDLK_d))
     {
-        mTransform3D.addLocation(pCamera->getLocalTransform()->Right() * 1 * _deltaTime);
+        mTransform3D->addLocation(pCamera->getLocalTransform()->Right() * 1 * _deltaTime);
     }
     
     /*if (Inputs::GetKeyDown(SDLK_r))
@@ -63,7 +63,6 @@ void Player3D::Update(const float _deltaTime)
     pCamera->getLocalTransform()->addRotationZ(yaw);
     pCamera->getLocalTransform()->addRotationY(pitch);
     pCamera->getLocalTransform()->clampRotationY(-89.0f, 89.0f);
-    pCamera->getLocalTransform()->computeRotation();
 }
 
 void Player3D::Destroy()

@@ -40,13 +40,16 @@ void Scene_Doom_Test::Start()
     Actor* player = AddActor(new DoomPlayer());
 
     Actor* floor = AddActor(new Object("Floor", "Cube", "Block", "BasicModel"));
+    Actor* floor1 = AddActor(new Object("Floor1", "Cube", "Block", "BasicModel"));
 
     //Start the new Actors to modify them
     InitNewActors();
 
     //Modify Actors
     floor->getTransform3D()->addLocationZ(-0.1f);
-    floor->getTransform3D()->setScale(Vector3(0.2f, 0.2f, 0.01f));
+    floor1->getTransform3D()->addLocationZ(-0.1f);
+    floor1->getTransform3D()->addLocationX(1.0f);
+    //floor->getTransform3D()->setScale(Vector3(0.2f, 0.2f, 0.01f));
 }
 
 void Scene_Doom_Test::Update(float _deltaTime)

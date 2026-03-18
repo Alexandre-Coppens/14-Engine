@@ -21,7 +21,7 @@ Camera::~Camera()
 void Camera::OnStart()
 {
     Component::OnStart();
-    mLocalTransform = new Transform3D();
+    mLocalTransform = new Transform3D(pOwner, LOCAL);
     CameraManager::AddCamera(this);
 }
 

@@ -22,3 +22,12 @@ void Component::OnEnd()
 {
 	pOwner = nullptr;
 }
+
+void Component::RecalculateTransform()
+{
+	if (mTransform != nullptr)
+	{
+		mTransform->setNeedRecalculate();
+		mTransform->ComputeWorldTransform();
+	}
+}

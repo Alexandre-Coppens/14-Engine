@@ -118,7 +118,7 @@ bool Collider3D::BoxToBox(Collider3D* _pBoxA, Collider3D* _pBoxB)
 {
     BoxCollider* boxA = dynamic_cast<BoxCollider*>(_pBoxA);
     BoxCollider* boxB = dynamic_cast<BoxCollider*>(_pBoxB);
-    
+
     Vector3 diffDist = boxB->getCenter() - boxA->getCenter();
     
     std::vector<Vector3> axisList = {
@@ -290,11 +290,11 @@ bool Collider3D::SphereToSphere(Collider3D* _pSphereA, Collider3D* _pSphereB)
 float Collider3D::GetSeparatingPlane(const Vector3 _diffPos, const Vector3 _plane, BoxCollider* _boxA, BoxCollider* _boxB)
 {
     return (Abs(Dot(_diffPos, _plane)) -
-        (Abs(Dot((_boxA->getForward() *  _boxA->getSize().x * 0.5f), _plane)) +
-         Abs(Dot((_boxA->getRight()   *  _boxA->getSize().y * 0.5f), _plane)) +
-         Abs(Dot((_boxA->getUp()      *  _boxA->getSize().z * 0.5f), _plane)) +
-         Abs(Dot((_boxB->getForward() *  _boxB->getSize().x * 0.5f), _plane)) +
-         Abs(Dot((_boxB->getRight()   *  _boxB->getSize().y * 0.5f), _plane)) +
-         Abs(Dot((_boxB->getUp()      *  _boxB->getSize().z * 0.5f), _plane))));
+        (Abs(Dot((_boxA->getForward() *  _boxA->getScale().x * 0.5f), _plane)) +
+         Abs(Dot((_boxA->getRight()   *  _boxA->getScale().y * 0.5f), _plane)) +
+         Abs(Dot((_boxA->getUp()      *  _boxA->getScale().z * 0.5f), _plane)) +
+         Abs(Dot((_boxB->getForward() *  _boxB->getScale().x * 0.5f), _plane)) +
+         Abs(Dot((_boxB->getRight()   *  _boxB->getScale().y * 0.5f), _plane)) +
+         Abs(Dot((_boxB->getUp()      *  _boxB->getScale().z * 0.5f), _plane))));
 }
 

@@ -27,9 +27,9 @@ void BoxGl::Update(const float _deltaTime)
 {
 	Actor::Update(_deltaTime);
 	//mTransform3D.rotateAroundX(_deltaTime * 1);
-	mTransform3D.rotateAroundZ(_deltaTime * 90.0f);
+	mTransform3D->rotateAroundZ(_deltaTime * 90.0f);
 	//mTransform3D.setLocationZ(cos(Time::currentFrameTime * 0.0005f));
-	mTransform3D.ComputeWorldTransform();
+	mTransform3D->ComputeWorldTransform();
 }
 
 void BoxGl::Destroy()

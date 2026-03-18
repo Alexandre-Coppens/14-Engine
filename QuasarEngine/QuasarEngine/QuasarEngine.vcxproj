@@ -209,7 +209,7 @@
       <EnablePREfast>false</EnablePREfast>
       <OmitFramePointers>false</OmitFramePointers>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>E:\Github\14-Engine\QuasarEngine\QuasarEngine; E:\Github\14-Engine\QuasarEngine\QuasarEngine\Dependencies\GL\SDL\include; E:\Github\14-Engine\QuasarEngine\QuasarEngine\Dependencies\glew-2.2.0-win32\glew-2.2.0\include\GL; E:\Github\14-Engine\QuasarEngine\QuasarEngine\Dependencies\SDL2_image-2.8.2\include; </AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/QuasarEngine;$(SolutionDir)/QuasarEngine/Dependencies/SDL2_image-2.8.2\include;$(SolutionDir)/QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include;$(SolutionDir)/QuasarEngine/Dependencies/GL/SDL/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="Engine\2D\cAnimation2D.cpp">

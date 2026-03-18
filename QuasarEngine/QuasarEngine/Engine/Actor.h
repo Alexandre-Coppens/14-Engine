@@ -33,17 +33,18 @@ protected:
 	std::string mName;
 	Scene* pScene;
 	ActorState mState;
-	Transform2D mTransform2D;
-	Transform3D mTransform3D;
+	Transform2D* mTransform2D;
+	Transform3D* mTransform3D;
 	std::vector<Component*> mComponentList;
 
 public:
 	std::string  getName()		const	{ return mName; }
 	Scene*		 getScene()		const	{ return pScene; }
 	ActorState	 getState()		const	{ return mState; }
-	Transform2D* getTransform2D()		{ return &mTransform2D; }
-	Transform3D* getTransform3D()		{ return &mTransform3D; }
-	Matrix4Row   getWorldTransform()	{ return mTransform3D.getWorldTransform(); }
+	Transform2D* getTransform2D()		{ return mTransform2D; }
+	Transform3D* getTransform3D()		{ return mTransform3D; }
+	Matrix4Row   getWorldTransform()	{ return mTransform3D->getWorldTransform(); }
+	std::vector<Component*> getComponentList()		{ return mComponentList; }
 	
 	template<typename T>
 	T* GetComponent() {

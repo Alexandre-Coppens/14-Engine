@@ -4,11 +4,13 @@
 #include <string>
 
 class Actor;
+class Transform3D;
 class Component
 {
 protected:
 	bool mIsActive				 { true };
 	Actor* pOwner				 { nullptr };
+	Transform3D* mTransform		 { nullptr };
 	uint8_t mUpdateOrder		 { 1 };
 
 	std::string mName		  { "Component" };
@@ -30,6 +32,8 @@ public:
 	virtual void OnActorStart();
 	virtual void Update(float _deltaTime) = 0;
 	virtual void OnEnd();
+
+	void RecalculateTransform();
 };
 
 #endif

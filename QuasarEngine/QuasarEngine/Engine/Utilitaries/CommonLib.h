@@ -295,6 +295,12 @@ inline Vector3 operator*(const Vector3& v1, const float& f)
 {
 	return MultiplyScalar(v1, f);
 }
+inline Vector3& operator*=(Vector3& v1, Vector3 v2) {
+	v1.x *= v2.x;
+	v1.y *= v2.y;
+	v1.z *= v2.z;
+	return v1;
+}
 inline Vector3& operator*=(Vector3& v, float f) {
 	v.x *= f;
 	v.y *= f;

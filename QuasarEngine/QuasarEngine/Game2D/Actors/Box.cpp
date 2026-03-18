@@ -8,8 +8,8 @@ Box::Box():
 	Actor()
 {
 	mName = "Box";
-	mTransform2D.setLocation(Vector2{ 100, 700 });
-	mTransform2D.setSize(Vector2{ 50, 50 });
+	mTransform2D->setLocation(Vector2{ 100, 700 });
+	mTransform2D->setSize(Vector2{ 50, 50 });
 }
 
 Box::~Box()
@@ -20,7 +20,7 @@ Box::~Box()
 void Box::Start()
 {
 	AddComponent(new Sprite2D(this, Assets::GetTexture("Block"), 0));
-	AddComponent(new BoxCollider2D(this, 0, CollisionPurpose::Block, Rectangle{ Vector2Zero(), mTransform2D.getSize() }));
+	AddComponent(new BoxCollider2D(this, 0, CollisionPurpose::Block, Rectangle{ Vector2Zero(), mTransform2D->getSize() }));
 
 	Actor::Start();
 }
