@@ -10,6 +10,12 @@ using std::string;
 using std::vector;
 using std::map;
 
+enum Gizmo
+{
+    Vertex,
+    Edge,
+};
+
 class Terrain {
 private:
 public:
@@ -39,6 +45,9 @@ public:
     
     static Vector2 position;
     static short maxLayer;
+    
+    static Gizmo nearGizmo;
+    static int nearIndice;
 
 private:
 public:
@@ -53,6 +62,8 @@ public:
     static void AddToDictionary(int index, string name);
     static int CheckInDictionary(string n);
 
+    static void ISCursorOnSomething(Vector2 position);
+    
     static void SaveMap(string fileName);
     static void LoadMap(string fileName);
     static vector<string> BreakString(string str, char breacker);

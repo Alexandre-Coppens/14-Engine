@@ -23,6 +23,9 @@ float Terrain::gridMeterInPixels;
 int Terrain::gridSubdivision;
 float Terrain::wallDrawSize;
 
+//
+Gizmo Terrain::nearGizmo {Vertex};
+int Terrain::nearIndice{-1};
 
 //void Terrain::SaveMap(string filename);
 //void Terrain::LoadMap(string filename);
@@ -84,6 +87,29 @@ int Terrain::CheckInDictionary(string name) {
 	int newInt = (int)dictionary.size();
 	dictionary[newInt] = name;
 	return newInt;
+}
+void Terrain::ISCursorOnSomething(Vector2 position)
+{
+	for (auto v : wallVertices)
+	{
+		if (Vector2Distance(position, v.second) <= 5)
+		{
+			nearGizmo = Vertex;
+			nearIndice = v.first;
+			return;
+		}
+	}
+	for (int i = 0; i < wallList.size(); i++)
+	{
+		Wall wall = wallList[i];
+		if (CheckCollisionPointLine(position, wallVertices[wall.start], wallVertices[wall.end], ceil(wallDrawSize)))
+		{
+			nearGizmo = Edge;
+			nearIndice = i;
+			return;
+		}
+	}
+	nearIndice = -1;
 }
 
 void Terrain::SaveMap(string fileName){

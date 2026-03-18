@@ -41,11 +41,24 @@ void Engine::Update() {
 	Vector2 mPos{ round(round(-scroll.x + GetMouseX()) / subgrid) * subgrid, round(round(-scroll.y + GetMouseY()) / subgrid) * subgrid };
 	
 	//TODO: check first if vertex behind
-	
+	Terrain::ISCursorOnSomething(mPos);
 	
 	if(IsMouseButtonPressed(0))
 	{		
-		if (selectedVertex == -1)
+		if (Terrain::nearIndice != -1 && Terrain::nearGizmo == Vertex)
+		{
+			if (selectedVertex == -1) selectedVertex = Terrain::nearIndice;
+			else
+			{
+				Terrain::Wall wall;
+				wall.start = selectedVertex;
+				wall.end = Terrain::nearIndice;
+				wall.dictionaryTexture = Terrain::CheckInDictionary(AssetList::GetNameAtPosition(currentTexture));
+				Terrain::AddNewWall(wall);
+				selectedVertex = wall.end;
+			}
+		}
+		else if (selectedVertex == -1)
 		{
 			selectedVertex = Terrain::AddNewVertex(mPos);
 		}
@@ -60,11 +73,25 @@ void Engine::Update() {
 		}
 	}
 	
-	if(IsMouseButtonReleased(0))
+	if(IsMouseButtonPressed(1))
 	{
-		
+		if (Terrain::nearIndice != -1)
+		{
+			switch (Terrain::nearGizmo)
+			{
+			case Vertex:
+				Terrain::wallVertices.erase(Terrain::nearIndice);
+				if (Terrain::nearIndice == selectedVertex) selectedVertex = -1;
+				Terrain::nearIndice = -1;
+				break;
+			
+			case Edge:
+				Terrain::wallList.erase(Terrain::wallList.begin() + Terrain::nearIndice);
+				Terrain::nearIndice = -1;
+				break;
+			}
+		}
 	}
-	//if(IsMouseButtonPressed(1)) Terrain::RemoveTile(layer, mPos);
 
 	//Change textures
 	if (GetMouseWheelMove()>0 || IsGamepadButtonPressed(0, GAMEPAD_BUTTON_LEFT_TRIGGER_1)) {
