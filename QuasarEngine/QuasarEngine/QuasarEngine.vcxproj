@@ -1292,6 +1292,7 @@
     <Content Include="Resources\Models\cube.obj" />
     <Content Include="Resources\Models\Pin.mtl" />
     <Content Include="Resources\Models\Pin.obj" />
+    <Content Include="Resources\Models\Plane.obj" />
     <Content Include="Resources\Models\Sphere.obj" />
     <Content Include="Resources\Shaders\BasicModel.frag" />
     <Content Include="Resources\Shaders\BasicModel.vert" />
@@ -1300,6 +1301,10 @@
     <Content Include="Resources\Shaders\NULL.vert" />
     <Content Include="Resources\Shaders\Simple.frag" />
     <Content Include="Resources\Shaders\Simple.vert" />
+    <Content Include="Resources\Shaders\SimpleTess.frag" />
+    <Content Include="Resources\Shaders\SimpleTess.tesc" />
+    <Content Include="Resources\Shaders\SimpleTess.tese" />
+    <Content Include="Resources\Shaders\SimpleTess.vert" />
     <Content Include="Resources\Shaders\Sprite.frag" />
     <Content Include="Resources\Shaders\Sprite.vert" />
     <Content Include="Resources\Shaders\Texture.frag" />
