@@ -12,7 +12,13 @@
 #include "Engine/Render/VertexArray.h"
 
 Model::Model(Actor* _pOwner, std::string _shader)  :
-	Component(_pOwner), mMesh(nullptr), mTextureIndex(0), mShader(_shader)
+	Component(_pOwner), mMesh(nullptr), mTextureIndex(0), mShader(_shader), mParent(nullptr)
+{
+	Scene::ActiveScene->getRendererGl()->AddModel(this, Assets::GetShader(mShader));
+}
+
+Model::Model(Actor* _pOwner,Transform3D* _parent, std::string _shader)  :
+	Component(_pOwner), mMesh(nullptr), mTextureIndex(0), mShader(_shader), mParent(_parent)
 {
 	Scene::ActiveScene->getRendererGl()->AddModel(this, Assets::GetShader(mShader));
 }
@@ -21,13 +27,19 @@ Model::~Model()
 {
 	Component::~Component();
 }
+void Model::OnActorStart()
+{
+	if (mParent == nullptr) mParent = pOwner->getTransform3D();
+	Component::OnActorStart();
+}
 
 void Model::Draw(DrawOption _option)
 {
 	if (mMesh)
 	{
+		if (!mVisible) return;
 		Texture* texture = nullptr;
-		const Matrix4Row wt = pOwner->getWorldTransform();
+		const Matrix4Row wt = mParent->getWorldTransform();
 		glBindTexture(GL_TEXTURE_2D, 0);
 		glPolygonMode( GL_FRONT_AND_BACK, GL_FILL );
 		
@@ -71,6 +83,8 @@ void Model::Draw(DrawOption _option)
 void Model::Destroy()
 {
 	Scene::ActiveScene->getRendererGl()->RemoveModel(this, Assets::GetShader(mShader));
+	mParent = nullptr;
+	mMesh = nullptr;
 	Component::Destroy();
 }
 

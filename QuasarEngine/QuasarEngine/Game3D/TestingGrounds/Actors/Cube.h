@@ -11,7 +11,7 @@ private:
 	std::string mShaderName;
     
 	Model* mModel            {nullptr};
-	//Collider3D* mCollider    {nullptr};
+	Collider3D* mCollider    {nullptr};
 	float mTime {0};
 
 public:

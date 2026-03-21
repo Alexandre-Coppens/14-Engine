@@ -11,6 +11,7 @@
 #include "Engine/Render/RendererSdl.h"
 
 class Actor;
+class Collider3D;
 class Game;
 class Scene
 {
@@ -24,6 +25,8 @@ protected:
 	std::vector<Actor*> mAddActorList;
 	std::vector<Actor*> mDestroyActorList;
 
+	std::vector<Collider3D*> mCollidersList;
+	
 public:
 	static Scene* ActiveScene;
 

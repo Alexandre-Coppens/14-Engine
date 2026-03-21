@@ -5,7 +5,7 @@
 #include "Engine/3D/Camera.h"
 #include "Engine/3D/cBoxCollider.h"
 #include "Engine/3D/cPhysicBody.h"
-#include "Engine/Utilitaries/Inputs.h"
+#include "Engine/Utilitaries/Managers/Inputs.h"
 
 DoomPlayer::DoomPlayer() :
     Actor()

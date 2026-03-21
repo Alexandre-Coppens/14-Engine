@@ -10,7 +10,7 @@
 
 #include "Engine/Utilitaries/Log.h"
 #include "Engine/Utilitaries/Assets.h"
-#include "Engine/Utilitaries/CameraManager.h"
+#include "Engine/Utilitaries/Managers/CameraManager.h"
 
 #include "Engine/3D/cModel.h"
 #include "Engine/2D/Sprite2D.h"

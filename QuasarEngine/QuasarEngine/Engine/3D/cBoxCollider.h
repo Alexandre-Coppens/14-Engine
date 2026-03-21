@@ -31,7 +31,5 @@ public:
 	Vector3 getScale();
 	std::vector<Vector3> getWorldVertices();
 	
-	void DrawDebug() override;
-	
 	void Destroy() override;
 };

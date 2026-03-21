@@ -2,6 +2,7 @@
 
 #include <vector>
 
+#include "cModel.h"
 #include "Engine/Component.h"
 #include "Engine/Utilitaries/CommonLib.h"
 #include "Engine/Utilitaries/MathLib.h"
@@ -23,18 +24,8 @@ enum CollisionState
     STOPPED_COLLIDING
 };
 
-struct CollisionData
-{
-    PhysicBody* bodyA;
-    PhysicBody* bodyB;
-
-    float friction;
-    
-    float penetration;
-    Vector3 normal;
-    Vector3 collisionPoint;
-};
-
+struct CollisionData;
+class Model;
 class Collider3D : public Component
 {
 private:
@@ -43,12 +34,11 @@ private:
 
 protected:
     bool mPhysicBased                  {false};
+    Model* mDebugModel                {nullptr};
     ColliderType mColliderType;
     CollisionState mCollisionState;
     float mFriction {0.5f};
-    
-    static std::vector<Collider3D*> ColliderList;
-    
+
 public:
     float getFriction()                 const {return mFriction;}
     ColliderType getColliderType()      const { return mColliderType; }
@@ -56,6 +46,8 @@ public:
     
     //Friction clamped between 0 & 1
     void setFriction(float _f)  {mFriction = Clamp(_f, 0.0f, 1.0f);}
+    void setDebugColor(Vector4 _v)  {mDebugModel->setColor(_v);}
+    void setDrawDebug(bool _b)  {mDebugModel->setVisible(_b);}
 
 private:
     bool AreCollidersColliding(Collider3D* _pOther);
@@ -72,9 +64,9 @@ public:
     ~Collider3D() override;
     
     void OnActorStart() override;
-    void Update(const float _deltaTime) override;
+    void Update(float _deltaTime) override;
+    void CheckCollisions();
     void Destroy() override;
     
     virtual Vector3 getCenter() = 0;
-    void virtual DrawDebug() = 0;
 };

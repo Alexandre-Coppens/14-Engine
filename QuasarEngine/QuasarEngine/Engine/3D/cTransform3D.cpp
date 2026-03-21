@@ -37,10 +37,10 @@ void Transform3D::ComputeWorldTransform()
         mWorldRotation += pOwner->getTransform3D()->getRotation();
         mWorldLocation += pOwner->getTransform3D()->getLocation();
     }
-    mWorldScale *= getScale() * 0.1f;
+    mWorldScale *= getScale();
     mWorldRotation += getRotation();
     mWorldLocation += getLocation();
-    mWorldLocation *= 0.2f;
+    //mWorldLocation *= 0.2f;
     mRotation.x = Fmod(mRotation.x, 360.0f);
     mWorldRotation.x = Fmod(mWorldRotation.x, 360.0f);
     computeRotations();

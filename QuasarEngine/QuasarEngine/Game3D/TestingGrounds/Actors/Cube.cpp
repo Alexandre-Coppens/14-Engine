@@ -1,6 +1,7 @@
 ﻿#include "Cube.h"
 
 //#include "Engine/3D/cBoxCollider.h"
+#include "Engine/3D/cBoxCollider.h"
 #include "Engine/Utilitaries/Assets.h"
 
 #include "Engine/3D/Mesh.h"
@@ -25,8 +26,8 @@ void Cube::Start()
 	mModel->setMesh(Assets::GetMesh(mModelName));
 	mModel->getMesh()->AddTexture(Assets::GetTexture(mTextureName));
 
-	//mCollider = dynamic_cast<BoxCollider*>(AddComponent(new BoxCollider(this)));
-	//dynamic_cast<BoxCollider*>(mCollider)->setSize(1.1f);
+	mCollider = dynamic_cast<BoxCollider*>(AddComponent(new BoxCollider(this)));
+	dynamic_cast<BoxCollider*>(mCollider)->setSize(1.0f);
 	Actor::Start();
 }
 

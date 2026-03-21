@@ -3,11 +3,16 @@
 #include "Engine/Actor.h"
 
 class Camera;
+class PhysicBody;
+class BoxCollider;
 class ActorCamera : public Actor
 {
 private:
 	Camera* mCamera;
-
+	BoxCollider* mCollider   {nullptr};
+	PhysicBody* mPhysicBody  {nullptr};
+	
+	float mSpeed {2.0f};
 public:
 
 private:

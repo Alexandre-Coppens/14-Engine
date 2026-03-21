@@ -6,7 +6,7 @@
 #include "Engine/3D/Mesh.h"
 #include "Engine/3D/cBoxCollider.h"
 #include "Engine/3D/cPhysicBody.h"
-#include "Engine/Utilitaries/Inputs.h"
+#include "Engine/Utilitaries/Managers/Inputs.h"
 #include "Engine/Utilitaries/Log.h"
 
 Pin::Pin() :

@@ -3,7 +3,7 @@
 
 #include "Engine/Utilitaries/Time.h"
 #include "Engine/Utilitaries/Log.h"
-#include "Engine/Utilitaries/Inputs.h"
+#include "Engine/Utilitaries/Managers/Inputs.h"
 #include "Engine/Utilitaries/Assets.h"
 #include "Utilitaries/DebugMemoryLeakCatcher.h"
 

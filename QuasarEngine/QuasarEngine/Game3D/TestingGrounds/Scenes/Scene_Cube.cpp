@@ -30,6 +30,7 @@ void Scene_Cube::Start()
 
 	//Load Shaders
 	Assets::LoadShader(renderer, "BasicModel.vert", "BasicModel.frag", "BasicModel", TEXTURE);
+	Assets::LoadShader(renderer, "Simple.vert", "Simple.frag", "Wireframe", WIREFRAME);
 	
 	//LoadModels
 

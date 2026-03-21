@@ -25,9 +25,10 @@ H:\Github\14-Engine\QuasarEngine\QuasarEngine\Engine\Render\Window.cpp;H:\Github
 H:\Github\14-Engine\QuasarEngine\QuasarEngine\Engine\Scene.cpp;H:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Scene.obj
 H:\Github\14-Engine\QuasarEngine\QuasarEngine\Engine\Texture.cpp;H:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Texture.obj
 H:\Github\14-Engine\QuasarEngine\QuasarEngine\Engine\Utilitaries\Assets.cpp;H:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Assets.obj
-H:\Github\14-Engine\QuasarEngine\QuasarEngine\Engine\Utilitaries\CameraManager.cpp;H:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\CameraManager.obj
-H:\Github\14-Engine\QuasarEngine\QuasarEngine\Engine\Utilitaries\Inputs.cpp;H:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Inputs.obj
 H:\Github\14-Engine\QuasarEngine\QuasarEngine\Engine\Utilitaries\Log.cpp;H:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Log.obj
+H:\Github\14-Engine\QuasarEngine\QuasarEngine\Engine\Utilitaries\Managers\CameraManager.cpp;H:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\CameraManager.obj
+H:\Github\14-Engine\QuasarEngine\QuasarEngine\Engine\Utilitaries\Managers\CollisionManager.cpp;H:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\CollisionManager.obj
+H:\Github\14-Engine\QuasarEngine\QuasarEngine\Engine\Utilitaries\Managers\Inputs.cpp;H:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Inputs.obj
 H:\Github\14-Engine\QuasarEngine\QuasarEngine\Engine\Utilitaries\Time.cpp;H:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Time.obj
 H:\Github\14-Engine\QuasarEngine\QuasarEngine\Engine\.Presets\Preset_Actor.cpp;H:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Preset_Actor.obj
 H:\Github\14-Engine\QuasarEngine\QuasarEngine\Engine\.Presets\Preset_Scene.cpp;H:\Github\14-Engine\QuasarEngine\QuasarEngine\Debug\Preset_Scene.obj

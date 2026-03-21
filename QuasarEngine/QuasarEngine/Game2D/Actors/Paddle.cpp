@@ -1,5 +1,5 @@
 #include "Paddle.h"
-#include "Engine/Utilitaries/Inputs.h"
+#include "Engine/Utilitaries/Managers/Inputs.h"
 #include "Engine/Utilitaries/Assets.h"
 #include "Engine/Scene.h"
 #include "Engine/Game.h"

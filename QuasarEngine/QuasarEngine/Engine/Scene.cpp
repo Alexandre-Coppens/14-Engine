@@ -4,6 +4,7 @@
 #include "Engine/Utilitaries/DebugMemoryLeakCatcher.h"
 
 #include "Engine/Actor.h"
+#include "Utilitaries/Managers/CollisionManager.h"
 
 Scene* Scene::ActiveScene = nullptr;
 
@@ -42,6 +43,7 @@ void Scene::Update(const float _deltaTime)
 		if (mActorList.empty()) return;
 		actor->Update(_deltaTime);
 	}
+	CollisionManager::UpdatesCollisions();
 }
 
 //Update After Rendering

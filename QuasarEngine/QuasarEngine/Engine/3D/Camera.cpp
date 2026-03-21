@@ -1,7 +1,7 @@
 ﻿#include "Camera.h"
 
 #include "Engine/Utilitaries/MathLib.h"
-#include "Engine/Utilitaries/CameraManager.h"
+#include "Engine/Utilitaries/Managers/CameraManager.h"
 
 #include "Engine/Actor.h"
 #include "Engine/Scene.h"

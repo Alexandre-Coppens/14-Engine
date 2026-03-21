@@ -5,7 +5,7 @@
 #include "Engine/Utilitaries/Assets.h"
 
 #include "Engine/3D/Mesh.h"
-#include "Engine/Utilitaries/Inputs.h"
+#include "Engine/Utilitaries/Managers/Inputs.h"
 #include "Engine/Utilitaries/Log.h"
 
 Ball::Ball() :

@@ -51,4 +51,5 @@ public:
     void Update(float _deltaTime) override;
     void ResolveCollision(const CollisionData _data);
     void ResolveVelocity(const CollisionData _data);
+    void Destroy() override;
 };

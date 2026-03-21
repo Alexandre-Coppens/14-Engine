@@ -9,7 +9,6 @@ class SphereCollider : public Collider3D
 {
 private:
 	float mRadius {1.0f};
-	Mesh* mDebugMesh;
 	
 public:
 	float getRadius() const {return mRadius;}
@@ -21,7 +20,6 @@ public:
 	~SphereCollider() override;
 	
 	Vector3 getCenter() override;
-	void DrawDebug() override;
 	
 	Vector4 GetSphere();
 };
