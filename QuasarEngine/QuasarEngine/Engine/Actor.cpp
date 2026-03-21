@@ -38,7 +38,6 @@ void Actor::Destroy()
 	mScene = nullptr;
 	for (const auto component : mComponentList)
 	{
-		Log::Info("Removing Component: " + component->getName());
 		component->Destroy();
 	}
 	RemoveComponents();

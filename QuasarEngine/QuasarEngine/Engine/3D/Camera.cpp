@@ -42,6 +42,7 @@ void Camera::Destroy()
 {
     CameraManager::RemoveCamera(this);
     
+    mLocalTransform->Destroy();
     delete mLocalTransform;
     mLocalTransform = nullptr;
     Component::Destroy();

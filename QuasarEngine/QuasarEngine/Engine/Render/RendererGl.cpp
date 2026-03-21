@@ -65,7 +65,7 @@ bool RendererGl::Initialize(Window& _rWindow)
 
 	//TODO: separate Engine asset files & Game asset files
 	//Load the NULL Shader & important to engine assets
-	//Assets::LoadShader(this, "NULL.vert", "NULL.frag", "NULL", DrawOption::NULL_SHADER);
+	Assets::LoadShader(this, "NULL.vert", "NULL.frag", "NULL", DrawOption::NULL_SHADER);
 	Assets::LoadTexture(*dynamic_cast<IRenderer*>(this), "Engine/.EngineAssets/Textures/NullShader.png", "NULLSHADER");
 	Assets::LoadTexture(*dynamic_cast<IRenderer*>(this), "Engine/.EngineAssets/Textures/NullTexture.png", "NULLTEXTURE");
 	

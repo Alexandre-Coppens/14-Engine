@@ -155,7 +155,6 @@ Mesh* Assets::LoadMesh(const std::string _fileName, std::string _name)
 
 Mesh* Assets::LoadMeshFromFile(const std::string& _pFileName)
 {
-	Mesh mesh;
 	tinyobj::attrib_t attributes;
 	std::vector<tinyobj::shape_t> shapes;
 	std::vector<tinyobj::material_t> materials;
@@ -221,7 +220,7 @@ void Assets::Clear()
 		{
 			delete(iter.second);
 		}
-		mShaderProgramList.clear();
+		mShaderList.clear();
 	}
 	
 	if (!mShaderProgramList.empty())
@@ -233,4 +232,12 @@ void Assets::Clear()
 		mShaderProgramList.clear();
 	}
 	
+	if (!mMeshList.empty())
+	{
+		for (const auto& iter : mMeshList)
+		{
+			iter.second->Unload();
+		}
+		mMeshList.clear();
+	}
 }

@@ -23,6 +23,7 @@ void Mesh::Unload()
 	delete pVao;
 	pVao = nullptr;
 }
+
 float* Mesh::ToVerticeArray()
 {
 	float* array = new float[mVertices.size() * 8];

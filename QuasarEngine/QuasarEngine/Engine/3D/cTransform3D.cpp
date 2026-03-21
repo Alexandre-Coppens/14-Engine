@@ -22,6 +22,7 @@ void Transform3D::Update(float _deltaTime)
 
 void Transform3D::Destroy()
 {
+    Component::Destroy();
 }
 
 void Transform3D::ComputeWorldTransform()

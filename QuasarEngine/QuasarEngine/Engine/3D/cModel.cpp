@@ -20,7 +20,6 @@ Model::Model(Actor* _pOwner, std::string _shader)  :
 Model::~Model()
 {
 	Component::~Component();
-	Scene::ActiveScene->getRendererGl()->RemoveModel(this, Assets::GetShader(mShader));
 }
 
 void Model::Draw(DrawOption _option)
@@ -65,9 +64,14 @@ void Model::Draw(DrawOption _option)
 		mMesh->getVertexArray()->SetActive();
 		
 		glPointSize(5.0f);
-		glDrawArrays(GL_PATCHES, 0, mMesh->getVertexArray()->GetVerticesCount());
-		//glDrawArrays(GL_TRIANGLES, 0, mMesh->getVertexArray()->GetVerticesCount());
+		//glDrawArrays(GL_PATCHES, 0, mMesh->getVertexArray()->GetVerticesCount());
+		glDrawArrays(GL_TRIANGLES, 0, mMesh->getVertexArray()->GetVerticesCount());
 	}
+}
+void Model::Destroy()
+{
+	Scene::ActiveScene->getRendererGl()->RemoveModel(this, Assets::GetShader(mShader));
+	Component::Destroy();
 }
 
 //Remove the Model from his old ShaderList to a new one

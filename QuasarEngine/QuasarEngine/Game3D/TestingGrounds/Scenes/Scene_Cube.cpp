@@ -38,6 +38,7 @@ void Scene_Cube::Start()
 
 	//Load Actors
 	Actor* cube = AddActor(new Cube("Cube", "Cube", "Block", "BasicModel"));
+	Actor* cube1 = AddActor(new Cube("Cube1", "Cube", "Block", "BasicModel"));
 	Actor* player = AddActor(new ActorCamera());
 
 	//Start the new Actors to modify them
@@ -45,6 +46,7 @@ void Scene_Cube::Start()
 
 	//Modify Actors
 	player->getTransform3D()->addLocationX(-1.0f);
+	cube1->getTransform3D()->addLocationY(-1.0f);
 }
 
 void Scene_Cube::Update(float _deltaTime)

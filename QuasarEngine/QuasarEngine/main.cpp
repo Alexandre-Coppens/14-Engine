@@ -64,5 +64,6 @@ int main(int argc, char* argv[])
 	//TODO: Remove Memory Leaks Left
 
 	DEBUGPrintList();
+	Log::Info("Closing..");
 	return 0;
 }
