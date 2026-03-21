@@ -6,11 +6,14 @@
 #include "Engine/Scene.h"
 
 #include "Engine/Render/IRenderer.h"
+#include "Engine/Utilitaries/DebugMemoryLeakCatcher.h"
+#include "Engine/Utilitaries/Log.h"
+#include "Game3D/TestingGrounds/Scenes/Scene_Cube.h"
 
-#include "Game2D/Scenes/Scene_Pong.h"
-#include "Game2D/Scenes/Scene_GameOver.h"
-#include "Game3D/Bowling/Scenes/Scene_Bowling.h"
-#include "Game3D/Doom/Scenes/Scene_Doom_Test.h"
+// #include "Game2D/Scenes/Scene_Pong.h"
+// #include "Game2D/Scenes/Scene_GameOver.h"
+// #include "Game3D/Bowling/Scenes/Scene_Bowling.h"
+// #include "Game3D/Doom/Scenes/Scene_Doom_Test.h"
 
 using namespace std;
 
@@ -26,24 +29,27 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-
-	std::vector<Scene*> SceneSdlList{
-		new Scene_Pong("Pong Scene"),
-		new Scene_GameOver("Game Over")
-	};
+	RendererType gameType = RendererType::OPENGL;
+	Game* game = nullptr;
+	
+	// std::vector<Scene*> SceneSdlList{
+	// 	new Scene_Pong("Pong Scene"),
+	// 	new Scene_GameOver("Game Over")
+	// };
 
 	std::vector<Scene*> SceneGlList{
-		new Scene_Doom_Test("Scene Doom Test")
+		new Scene_Cube("Cube")
 	};
 	
-	Game* game;
-	if (true)
+	switch (gameType)
 	{
-		game = new Game("Open Gl", SceneGlList, RendererType::OPENGL);
-	}
-	else
-	{
-		game = new Game("Pong", SceneSdlList, RendererType::SDL);
+	case RendererType::OPENGL:
+		game = new Game("Open Gl", SceneGlList, gameType);
+		break;
+
+	case RendererType::SDL:
+		// game = new Game("Pong", SceneSdlList, gameType);
+		break;
 	}
 	
 	game->Initialize();
@@ -57,5 +63,6 @@ int main(int argc, char* argv[])
 	_CrtDumpMemoryLeaks();
 	//TODO: Remove Memory Leaks Left
 
+	DEBUGPrintList();
 	return 0;
 }

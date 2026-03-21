@@ -212,7 +212,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)/QuasarEngine;$(SolutionDir)/QuasarEngine/Dependencies/SDL2_image-2.8.2\include;$(SolutionDir)/QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include;$(SolutionDir)/QuasarEngine/Dependencies/GL/SDL/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
-    <ClCompile Include="Engine\2D\cAnimation2D.cpp">
+    <ClCompile Include="Engine\2D\Animation2D.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <Optimization>Disabled</Optimization>
@@ -291,7 +291,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)QuasarEngine;$(SolutionDir)QuasarEngine/Dependencies/GL/SDL/include;$(SolutionDir)QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;$(SolutionDir)QuasarEngine/Dependencies/SDL2_image-2.8.2\include;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
-    <ClCompile Include="Engine\2D\cBoxCollider2D.cpp">
+    <ClCompile Include="Engine\2D\BoxCollider2D.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <Optimization>Disabled</Optimization>
@@ -370,7 +370,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)QuasarEngine;$(SolutionDir)QuasarEngine/Dependencies/GL/SDL/include;$(SolutionDir)QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;$(SolutionDir)QuasarEngine/Dependencies/SDL2_image-2.8.2\include;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
-    <ClCompile Include="Engine\2D\cCollider.cpp">
+    <ClCompile Include="Engine\2D\Collider.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <Optimization>Disabled</Optimization>
@@ -449,7 +449,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)QuasarEngine;$(SolutionDir)QuasarEngine/Dependencies/GL/SDL/include;$(SolutionDir)QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;$(SolutionDir)QuasarEngine/Dependencies/SDL2_image-2.8.2\include;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
-    <ClCompile Include="Engine\2D\cGravity2D.cpp">
+    <ClCompile Include="Engine\2D\Gravity2D.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <Optimization>Disabled</Optimization>
@@ -528,7 +528,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)QuasarEngine;$(SolutionDir)QuasarEngine/Dependencies/GL/SDL/include;$(SolutionDir)QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;$(SolutionDir)QuasarEngine/Dependencies/SDL2_image-2.8.2\include;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
-    <ClCompile Include="Engine\2D\cSprite2D.cpp">
+    <ClCompile Include="Engine\2D\Sprite2D.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <Optimization>Disabled</Optimization>
@@ -607,7 +607,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)QuasarEngine;$(SolutionDir)QuasarEngine/Dependencies/GL/SDL/include;$(SolutionDir)QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;$(SolutionDir)QuasarEngine/Dependencies/SDL2_image-2.8.2\include;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
-    <ClCompile Include="Engine\2D\cTransform2D.cpp">
+    <ClCompile Include="Engine\2D\Transform2D.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <Optimization>Disabled</Optimization>
@@ -1193,16 +1193,19 @@
     <ClCompile Include="Game3D\Bowling\Scenes\Scene_Bowling.cpp" />
     <ClCompile Include="Game3D\Doom\Actors\DoomPlayer.cpp" />
     <ClCompile Include="Game3D\Doom\Scenes\Scene_Doom_Test.cpp" />
+    <ClCompile Include="Game3D\TestingGrounds\Actors\ActorCamera.cpp" />
+    <ClCompile Include="Game3D\TestingGrounds\Actors\Cube.cpp" />
+    <ClCompile Include="Game3D\TestingGrounds\Scenes\Scene_Cube.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\.Prefabs\Object.h" />
-    <ClInclude Include="Engine\2D\cAnimation2D.h" />
-    <ClInclude Include="Engine\2D\cBoxCollider2D.h" />
-    <ClInclude Include="Engine\2D\cCollider.h" />
-    <ClInclude Include="Engine\2D\cGravity2D.h" />
-    <ClInclude Include="Engine\2D\cSprite2D.h" />
-    <ClInclude Include="Engine\2D\cTransform2D.h" />
+    <ClInclude Include="Engine\2D\Animation2D.h" />
+    <ClInclude Include="Engine\2D\BoxCollider2D.h" />
+    <ClInclude Include="Engine\2D\Collider.h" />
+    <ClInclude Include="Engine\2D\Gravity2D.h" />
+    <ClInclude Include="Engine\2D\Sprite2D.h" />
+    <ClInclude Include="Engine\2D\Transform2D.h" />
     <ClInclude Include="Engine\3D\Camera.h" />
     <ClInclude Include="Engine\3D\cBoxCollider.h" />
     <ClInclude Include="Engine\3D\cCollider3D.h" />
@@ -1226,6 +1229,7 @@
     <ClInclude Include="Engine\Utilitaries\Assets.h" />
     <ClInclude Include="Engine\Utilitaries\CameraManager.h" />
     <ClInclude Include="Engine\Utilitaries\CommonLib.h" />
+    <ClInclude Include="Engine\Utilitaries\DebugMemoryLeakCatcher.h" />
     <ClInclude Include="Engine\Utilitaries\Inputs.h" />
     <ClInclude Include="Engine\Utilitaries\Log.h" />
     <ClInclude Include="Engine\Utilitaries\MathLib.h" />
@@ -1247,8 +1251,18 @@
     <ClInclude Include="Game3D\Bowling\Scenes\Scene_Bowling.h" />
     <ClInclude Include="Game3D\Doom\Actors\DoomPlayer.h" />
     <ClInclude Include="Game3D\Doom\Scenes\Scene_Doom_Test.h" />
+    <ClInclude Include="Game3D\TestingGrounds\Actors\ActorCamera.h" />
+    <ClInclude Include="Game3D\TestingGrounds\Actors\Cube.h" />
+    <ClInclude Include="Game3D\TestingGrounds\Scenes\Scene_Cube.h" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Engine\.EngineAssets\Models\Cube.obj" />
+    <Content Include="Engine\.EngineAssets\Models\Plane.obj" />
+    <Content Include="Engine\.EngineAssets\Models\Sphere.obj" />
+    <Content Include="Engine\.EngineAssets\Shaders\NULL.frag" />
+    <Content Include="Engine\.EngineAssets\Shaders\NULL.vert" />
+    <Content Include="Engine\.EngineAssets\Textures\NullShader.png" />
+    <Content Include="Engine\.EngineAssets\Textures\NullTexture.png" />
     <Content Include="Resources\CoinAnim\Coin-01.png" />
     <Content Include="Resources\CoinAnim\Coin-02.png" />
     <Content Include="Resources\CoinAnim\Coin-03.png" />
@@ -1289,16 +1303,11 @@
     <Content Include="Resources\Models\Bowling\Bowling_Alley_Trash.obj" />
     <Content Include="Resources\Models\Bowling\Bowling_Alley_Walls.mtl" />
     <Content Include="Resources\Models\Bowling\Bowling_Alley_Walls.obj" />
-    <Content Include="Resources\Models\cube.obj" />
     <Content Include="Resources\Models\Pin.mtl" />
     <Content Include="Resources\Models\Pin.obj" />
-    <Content Include="Resources\Models\Plane.obj" />
-    <Content Include="Resources\Models\Sphere.obj" />
     <Content Include="Resources\Shaders\BasicModel.frag" />
     <Content Include="Resources\Shaders\BasicModel.vert" />
     <Content Include="Resources\Shaders\Normal.frag" />
-    <Content Include="Resources\Shaders\NULL.frag" />
-    <Content Include="Resources\Shaders\NULL.vert" />
     <Content Include="Resources\Shaders\Simple.frag" />
     <Content Include="Resources\Shaders\Simple.vert" />
     <Content Include="Resources\Shaders\SimpleTess.frag" />
@@ -1329,8 +1338,6 @@
     <Content Include="Resources\Textures\Bowling\Bowling_Alley_TableTop.png" />
     <Content Include="Resources\Textures\Bowling\Bowling_Alley_Trash.png" />
     <Content Include="Resources\Textures\Bowling\Bowling_Alley_Walls.png" />
-    <Content Include="Resources\Textures\NullShader.png" />
-    <Content Include="Resources\Textures\NullTexture.png" />
     <Content Include="Resources\Textures\Pin.png" />
     <Content Include="Resources\Textures\pokeball.png" />
   </ItemGroup>
