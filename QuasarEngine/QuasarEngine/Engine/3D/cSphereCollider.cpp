@@ -14,8 +14,10 @@ SphereCollider::SphereCollider(Actor* _pOwner):
 	Collider3D(_pOwner)
 {
 	mColliderType = SPHERE;
-	mDebugModel = new Model(pOwner, "Wireframe");
+	mTransform = new Transform3D(pOwner, LOCAL);
+	mDebugModel = new Model(pOwner, mTransform, "Wireframe");
 	mDebugModel->setMesh(Assets::GetMesh("Sphere"));
+	setDebugColor(Vector4(1.0f, 1.0f, 0.0f, 1.0f));
 }
 
 SphereCollider::~SphereCollider()

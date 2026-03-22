@@ -13,7 +13,6 @@ BoxCollider::BoxCollider(Actor* _pOwner):
 	Collider3D(_pOwner)
 {
 	mColliderType = BOX;
-	mDebugMesh = Assets::GetMesh("Cube");
 	mTransform = new Transform3D(pOwner, LOCAL);
 	mDebugModel = new Model(pOwner, mTransform, "Wireframe");
 	mDebugModel->setMesh(Assets::GetMesh("Cube"));
@@ -58,5 +57,4 @@ void BoxCollider::Destroy()
 	Collider3D::Destroy();
 	delete mTransform;
 	mTransform = nullptr;
-	mDebugMesh = nullptr;
 }

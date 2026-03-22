@@ -8,6 +8,7 @@
 #include "Engine/Render/IRenderer.h"
 #include "Engine/Utilitaries/DebugMemoryLeakCatcher.h"
 #include "Engine/Utilitaries/Log.h"
+#include "Game3D/Bowling/Scenes/Scene_Bowling.h"
 #include "Game3D/TestingGrounds/Scenes/Scene_Cube.h"
 
 // #include "Game2D/Scenes/Scene_Pong.h"
@@ -38,7 +39,7 @@ int main(int argc, char* argv[])
 	// };
 
 	std::vector<Scene*> SceneGlList{
-		new Scene_Cube("Cube")
+		new Scene_Bowling("Bowling")
 	};
 	
 	switch (gameType)

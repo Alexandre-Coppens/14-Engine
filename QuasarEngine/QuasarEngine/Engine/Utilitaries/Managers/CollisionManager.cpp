@@ -21,7 +21,7 @@ CollisionData CollisionManager::GetIsColliding(Collider3D* _colliderA, Collider3
 {
     if (_colliderA->getColliderType() == BOX)
     {
-        switch (_colliderA->getColliderType())
+        switch (_colliderB->getColliderType())
         {
             case BOX:
                 return BoxToBox(_colliderA, _colliderB);
@@ -31,7 +31,7 @@ CollisionData CollisionManager::GetIsColliding(Collider3D* _colliderA, Collider3
     }
     else if (_colliderA->getColliderType() == SPHERE)
     {
-        switch (_colliderA->getColliderType())
+        switch (_colliderB->getColliderType())
         {
         case BOX:
             return BoxToSphere(_colliderB, _colliderA);

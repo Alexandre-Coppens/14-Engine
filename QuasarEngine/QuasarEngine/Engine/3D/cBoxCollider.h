@@ -9,7 +9,6 @@ class Actor;
 class BoxCollider : public Collider3D
 {
 private:
-	Mesh* mDebugMesh {nullptr};
 	
 public:
 	Vector3 getOffset() const {return mTransform->getLocation();}
