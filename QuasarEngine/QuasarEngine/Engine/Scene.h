@@ -4,13 +4,14 @@
 #include <string>
 #include <vector>
 
-#include "Engine/Utilitaries//Log.h"
+#include "Engine/Utilitaries/Log.h"
 
 #include "Engine/Render/IRenderer.h"
 #include "Engine/Render/RendererGl.h"
 #include "Engine/Render/RendererSdl.h"
 
 class Actor;
+class Collider3D;
 class Game;
 class Scene
 {
@@ -24,6 +25,8 @@ protected:
 	std::vector<Actor*> mAddActorList;
 	std::vector<Actor*> mDestroyActorList;
 
+	std::vector<Collider3D*> mCollidersList;
+	
 public:
 	static Scene* ActiveScene;
 
@@ -33,8 +36,7 @@ public:
 
 	RendererSdl* getRendererSdl()	const {
 		RendererSdl* ret = dynamic_cast<RendererSdl*>(pRenderer);
-		if (ret == nullptr)
-		{
+		if (ret == nullptr){
 			Log::Error(LogType::Error, "Renderer not of type SDL.");
 		}
 		return ret;
@@ -42,8 +44,7 @@ public:
 
 	RendererGl* getRendererGl()	const {
 		RendererGl* ret = dynamic_cast<RendererGl*>(pRenderer);
-		if (ret == nullptr)
-		{
+		if (ret == nullptr){
 			Log::Error(LogType::Error, "Renderer not of type OPENGL.");
 		}
 		return ret;
@@ -64,10 +65,9 @@ public:
 	virtual void EarlyUpdate();
 	virtual void Update(float _deltaTime);
 	virtual void LateUpdate();
-	virtual void Close();
 
-	virtual void Load(Game* _pGame);
-	virtual void UnLoad();
+	virtual void Open(Game* _pGame);
+	virtual void Close();
 
 	virtual Actor* AddActor(Actor* _actor);
 	void InitNewActors();

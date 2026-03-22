@@ -8,28 +8,28 @@
 
 enum DrawOption
 {
-	NULL_SHADER = 1,
-	TEXTURE = 2,
-	COLOR = 4,
-	DEBUG = 8
+	COLOR,
+	NULL_SHADER,
+	TEXTURE,
+	WIREFRAME,
+	DEBUG
 };
 
 class ShaderProgram
 {
 private:
 	unsigned int mID;
-	int mDrawOptions; //Bitmask of DrawOption
+	DrawOption mDrawOptions;
 
 public:
 	unsigned int getID() const { return mID; }
-	unsigned int getDrawOptions() const { return mDrawOptions; }
+	DrawOption getDrawOptions() const { return mDrawOptions; }
 
 public:
-	ShaderProgram();
-	ShaderProgram(int _options);
+	ShaderProgram(DrawOption _option);
 	~ShaderProgram() = default;
 	void Unload();
-	void Compose(std::vector<Shader*> shaders);
+	void Compose(std::vector<Shader*> _shaders);
 
 	void Use();
 	void SetFloat		(const GLchar* _name, GLfloat _f);

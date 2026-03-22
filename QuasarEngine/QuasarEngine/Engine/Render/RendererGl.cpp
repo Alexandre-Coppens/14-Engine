@@ -10,10 +10,11 @@
 
 #include "Engine/Utilitaries/Log.h"
 #include "Engine/Utilitaries/Assets.h"
-#include "Engine/Utilitaries/CameraManager.h"
+#include "Engine/Utilitaries/Managers/CameraManager.h"
 
 #include "Engine/3D/cModel.h"
-#include "Engine/2D/cSprite2D.h"
+#include "Engine/2D/Sprite2D.h"
+#include "Engine/Utilitaries/DebugMemoryLeakCatcher.h"
 
 RendererGl::RendererGl():
 	pWindow(nullptr), 
@@ -24,6 +25,7 @@ RendererGl::RendererGl():
 	mView(Mat4RowCreateLookAt(Vector3(0, 0, 5), Vector3UnitX(), Vector3UnitZ())),
 	mProj(Mat4RowCreatePerspectiveFOV(70.0f, Window::GetSize().x, Window::GetSize().y, 0.01f, 10000.0f))
 {
+	DEBUGAddClass("RendererGL");
 }
 
 RendererGl::~RendererGl() = default;
@@ -64,11 +66,14 @@ bool RendererGl::Initialize(Window& _rWindow)
 	//TODO: separate Engine asset files & Game asset files
 	//Load the NULL Shader & important to engine assets
 	Assets::LoadShader(this, "NULL.vert", "NULL.frag", "NULL", DrawOption::NULL_SHADER);
-	Assets::LoadTexture(*dynamic_cast<IRenderer*>(this), "Resources/Textures/NullShader.png", "NULLSHADER");
-	Assets::LoadTexture(*dynamic_cast<IRenderer*>(this), "Resources/Textures/NullTexture.png", "NULLTEXTURE");
+	Assets::LoadTexture(*dynamic_cast<IRenderer*>(this), "Engine/.EngineAssets/Textures/NullShader.png", "NULLSHADER");
+	Assets::LoadTexture(*dynamic_cast<IRenderer*>(this), "Engine/.EngineAssets/Textures/NullTexture.png", "NULLTEXTURE");
 	
-	Assets::LoadMesh("Resources/Models/Cube.obj", "Cube");
-	Assets::LoadMesh("Resources/Models/Sphere.obj", "Sphere");
+	Assets::LoadMesh("Engine/.EngineAssets/Models/Cube.obj", "Cube");
+	Assets::LoadMesh("Engine/.EngineAssets/Models/Sphere.obj", "Sphere");
+	Assets::LoadMesh("Engine/.EngineAssets/Models/Plane.obj", "Plane");
+
+	glPatchParameteri(GL_PATCH_VERTICES, 3);
 	
 	return true;
 }
@@ -96,13 +101,12 @@ void RendererGl::DrawModels() const
 	
 	for (auto& shader : mModelDrawOrder)
 	{
-		DrawOption argument = (shader.first == Assets::GetShader("NULL") ? DrawOption::NULL_SHADER : DrawOption::TEXTURE);
-		glBindTexture(GL_TEXTURE_2D, 0);
+		DrawOption argument = (shader.first == Assets::GetShader("NULL") ? DrawOption::NULL_SHADER : shader.first->getDrawOptions() );
 		shader.first->Use();
 		shader.first->SetMatrix4Row("uViewProj", mView * mProj);
 		for (Model* model : shader.second)
 		{
-			model->Draw(shader.first->getDrawOptions() | DrawOption::DEBUG);
+			model->Draw(argument);
 		}
 	}
 }
@@ -138,7 +142,7 @@ void RendererGl::RemoveSprite(Sprite2D* _pSprite)
 
 void RendererGl::EndDraw()
 {
-	SDL_GL_SwapWindow(pWindow->GetSdlWindow()); //TODO Fix this breakpoint error
+	SDL_GL_SwapWindow(pWindow->GetSdlWindow());
 }
 
 void RendererGl::Close()
@@ -146,6 +150,13 @@ void RendererGl::Close()
 	SDL_GL_DeleteContext(mContext);
 	delete pSpriteVao;
 	pSpriteVao = nullptr;
+
+	pWindow = nullptr;
+	pSpriteShaderProgram = nullptr;
+	mModelDrawOrder.clear();
+	mSpriteList.clear();
+	
+	DEBUGRemoveClass("RendererGL");
 }
 
 void RendererGl::AddModel(Model* _pModel, ShaderProgram* _pShaderProgram)

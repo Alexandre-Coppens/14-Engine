@@ -1,6 +1,5 @@
 #include "cModel.h"
 
-#include "cCollider3D.h"
 #include "Engine/Actor.h"
 #include "Engine/Scene.h"
 #include "Engine/Texture.h"
@@ -13,7 +12,13 @@
 #include "Engine/Render/VertexArray.h"
 
 Model::Model(Actor* _pOwner, std::string _shader)  :
-	Component(_pOwner), mMesh(nullptr), mTextureIndex(0), mShader(_shader)
+	Component(_pOwner), mMesh(nullptr), mTextureIndex(0), mShader(_shader), mParent(nullptr)
+{
+	Scene::ActiveScene->getRendererGl()->AddModel(this, Assets::GetShader(mShader));
+}
+
+Model::Model(Actor* _pOwner,Transform3D* _parent, std::string _shader)  :
+	Component(_pOwner), mMesh(nullptr), mTextureIndex(0), mShader(_shader), mParent(_parent)
 {
 	Scene::ActiveScene->getRendererGl()->AddModel(this, Assets::GetShader(mShader));
 }
@@ -21,47 +26,66 @@ Model::Model(Actor* _pOwner, std::string _shader)  :
 Model::~Model()
 {
 	Component::~Component();
-	Scene::ActiveScene->getRendererGl()->RemoveModel(this, Assets::GetShader(mShader));
+}
+void Model::OnActorStart()
+{
+	if (mParent == nullptr) mParent = pOwner->getTransform3D();
+	Component::OnActorStart();
 }
 
-void Model::Draw(int _option)
+void Model::Draw(DrawOption _option)
 {
 	if (mMesh)
 	{
-		Texture* t;
-		if (_option & DrawOption::NULL_SHADER)
+		if (!mVisible) return;
+		Texture* texture = nullptr;
+		const Matrix4Row wt = mParent->getWorldTransform();
+		glBindTexture(GL_TEXTURE_2D, 0);
+		glPolygonMode( GL_FRONT_AND_BACK, GL_FILL );
+		
+		switch (_option)
 		{
-			t = Assets::GetTexture("NULLSHADER");
-			if (t) t->SetActive();
-		}
-		else if (_option & DrawOption::TEXTURE)
-		{
-			t = mMesh->getTexture(static_cast<Uint16>(mTextureIndex));
-			if (!t) t = Assets::GetTexture("NULLTEXTURE");
-			if (t) t->SetActive();
-		}
-		if (_option & DrawOption::COLOR)
-		{
-			Assets::GetShader(mShader)->SetVector4f("uColor", Vector4(0.5f, 0.25f, 0.5f, 1.0f));
-		}
-		if (_option & DrawOption::DEBUG)
-		{
-			std::vector<Collider3D*> colliders = pOwner->GetComponents<Collider3D>();
-			if (colliders.size() > 0)
-			{
-				for (Collider3D* collider : colliders)
-				{
-					collider->DrawDebug();
-				}
-			}
+		case DrawOption::NULL_SHADER:
+			texture = Assets::GetTexture("NULLSHADER");
+			break;
+
+		case DrawOption::TEXTURE:
+			texture = mMesh->getTexture(static_cast<Uint16>(mTextureIndex));
+			if (!texture) texture = Assets::GetTexture("NULLTEXTURE");
+			break;
+		
+		case DrawOption::WIREFRAME:
+			glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
+			break;
+
+		case DrawOption::DEBUG:
+			glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
+			break;
+			
+		case COLOR:
+			break;
+			
+		default:
+			break;
 		}
 		
-		const Matrix4Row wt = pOwner->getWorldTransform();
+		Assets::GetShader(mShader)->SetVector4f("uColor", mColor);
+		if (texture != nullptr) texture->SetActive();
+
 		Assets::GetShader(mShader)->SetMatrix4Row("uWorldTransform", wt);
-		
 		mMesh->getVertexArray()->SetActive();
+		
+		glPointSize(5.0f);
+		//glDrawArrays(GL_PATCHES, 0, mMesh->getVertexArray()->GetVerticesCount());
 		glDrawArrays(GL_TRIANGLES, 0, mMesh->getVertexArray()->GetVerticesCount());
 	}
+}
+void Model::Destroy()
+{
+	Scene::ActiveScene->getRendererGl()->RemoveModel(this, Assets::GetShader(mShader));
+	mParent = nullptr;
+	mMesh = nullptr;
+	Component::Destroy();
 }
 
 //Remove the Model from his old ShaderList to a new one

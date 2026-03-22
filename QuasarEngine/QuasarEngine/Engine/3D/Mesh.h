@@ -1,7 +1,6 @@
 #pragma once
 #include <SDL_stdinc.h>
 
-#include "Engine/Render/Shader.h"
 #include "Engine/Render/ShaderProgram.h"
 
 struct Vertex; 

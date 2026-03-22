@@ -7,6 +7,7 @@
 #include "Engine/Render/ShaderProgram.h"
 #include "Engine/Utilitaries/Log.h"
 #include "Engine/3D/Mesh.h"
+#include "Engine/Render/VertexArray.h"
 #include "Engine/Utilitaries/tiny_obj_loader.h"
 
 std::map<std::string, Texture*> Assets::mTextureList = {};
@@ -62,9 +63,9 @@ std::vector<Texture*> Assets::GetTextures(const std::string& _pName)
 	return tList;
 }
 
-ShaderProgram* Assets::LoadShader(RendererGl* pRendererGl, const std::string _vertexFile, const std::string _fragmentFile,const std::string _name, int _options)
+ShaderProgram* Assets::LoadShader(RendererGl* pRendererGl, const std::string _vertexFile, const std::string _fragmentFile,const std::string _name, DrawOption _option)
 {
-	ShaderProgram* shader = new ShaderProgram(_options);
+	ShaderProgram* shader = new ShaderProgram(_option);
 	Shader* mTempVertex = nullptr;
 	Shader* mTempFragment = nullptr;
 
@@ -92,6 +93,54 @@ ShaderProgram* Assets::LoadShader(RendererGl* pRendererGl, const std::string _ve
 	return mShaderProgramList[_name];
 }
 
+ShaderProgram* Assets::LoadShader(RendererGl* pRendererGl, const std::string _vertexFile, const std::string _tesselationControlFile, const std::string _tesselationEvaluationFile, const std::string _fragmentFile,const std::string _name, DrawOption _option)
+{
+	ShaderProgram* shader = new ShaderProgram(_option);
+	Shader* mTempVertex = nullptr;
+	Shader* mTempTessControl = nullptr;
+	Shader* mTempTessEval = nullptr;
+	Shader* mTempFragment = nullptr;
+
+	if (mShaderList.find(_vertexFile) != mShaderList.end()) mTempVertex = mShaderList[_vertexFile];
+	else
+	{
+		mTempVertex = new Shader();
+		mTempVertex->Load(_vertexFile, ShaderType::VERTEX);
+		mShaderList[_vertexFile] = std::move(mTempVertex);
+	}
+
+	if (mShaderList.find(_tesselationControlFile) != mShaderList.end()) mTempTessControl = mShaderList[_tesselationControlFile];
+	else
+	{
+		mTempTessControl = new Shader();
+		mTempTessControl->Load(_tesselationControlFile, ShaderType::TESSELLATION_CONTROL);
+		mShaderList[_tesselationControlFile] = std::move(mTempTessControl);
+	}
+
+	if (mShaderList.find(_tesselationEvaluationFile) != mShaderList.end()) mTempTessEval = mShaderList[_tesselationEvaluationFile];
+	else
+	{
+		mTempTessEval = new Shader();
+		mTempTessEval->Load(_tesselationEvaluationFile, ShaderType::TESSELLATION_EVAL);
+		mShaderList[_tesselationEvaluationFile] = std::move(mTempTessEval);
+	}
+
+	if (mShaderList.find(_fragmentFile) != mShaderList.end()) mTempFragment = mShaderList[_fragmentFile];
+	else
+	{
+		mTempFragment = new Shader();
+		mTempFragment->Load(_fragmentFile, ShaderType::FRAGMENT);
+		mShaderList[_fragmentFile] = std::move(mTempFragment);
+	}
+	
+	shader->Compose(std::vector<Shader*>{mShaderList[_vertexFile], mShaderList[_tesselationControlFile], mShaderList[_tesselationEvaluationFile], mShaderList[_fragmentFile]});
+	mShaderProgramList[_name] = shader;
+	pRendererGl->AddShaderProgram(mShaderProgramList[_name]);
+	Log::Info("ShaderProgram - " + _name + " successfully composed.");
+	
+	return mShaderProgramList[_name];
+}
+
 ShaderProgram* Assets::GetShader(const std::string _name)
 {
 	if (mShaderProgramList.find(_name) != mShaderProgramList.end()) return mShaderProgramList[_name];
@@ -106,7 +155,6 @@ Mesh* Assets::LoadMesh(const std::string _fileName, std::string _name)
 
 Mesh* Assets::LoadMeshFromFile(const std::string& _pFileName)
 {
-	Mesh mesh;
 	tinyobj::attrib_t attributes;
 	std::vector<tinyobj::shape_t> shapes;
 	std::vector<tinyobj::material_t> materials;
@@ -172,7 +220,7 @@ void Assets::Clear()
 		{
 			delete(iter.second);
 		}
-		mShaderProgramList.clear();
+		mShaderList.clear();
 	}
 	
 	if (!mShaderProgramList.empty())
@@ -184,4 +232,12 @@ void Assets::Clear()
 		mShaderProgramList.clear();
 	}
 	
+	if (!mMeshList.empty())
+	{
+		for (const auto& iter : mMeshList)
+		{
+			iter.second->Unload();
+		}
+		mMeshList.clear();
+	}
 }

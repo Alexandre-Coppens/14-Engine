@@ -2,21 +2,18 @@
 #include "glew.h"
 
 #include "Engine/Utilitaries/Log.h"
+#include "Engine/Utilitaries/DebugMemoryLeakCatcher.h"
 
 #include "Engine/Render/IRenderer.h"
 #include "Engine/Render/RendererSdl.h"
 #include "Engine/Render/RendererGl.h"
 
-#include "Scene.h"
-
 Texture::Texture()
 {
+	DEBUGAddClass("Texture");
 }
 
-Texture::~Texture()
-{
-	Unload();
-}
+Texture::~Texture() = default;
 
 bool Texture::Load(IRenderer& _renderer, const std::string& _filename)
 {
@@ -27,8 +24,8 @@ bool Texture::Load(IRenderer& _renderer, const std::string& _filename)
 		Log::Error(LogType::Application, "Failed to load texture file :" + mFileName);
 		return false;
 	}
-	mWidth = surface->w;
-	mHeight = surface->h;
+	mWidth  = static_cast<Uint16>(surface->w);
+	mHeight = static_cast<Uint16>(surface->h);
 
 	if (_renderer.getType() == RendererType::SDL)
 		return LoadSdl(dynamic_cast<RendererSdl*>(&_renderer), _filename, surface);
@@ -40,7 +37,7 @@ bool Texture::LoadGl(RendererGl* _renderer, const std::string& _filename, SDL_Su
 	int format = 0;
 	SDL_Surface* glSurface = SDL_ConvertSurfaceFormat(_pSurface, SDL_PIXELFORMAT_RGBA32, 0);
 
-	if (glSurface->format->format == SDL_PIXELFORMAT_RGB24) // REMOVE OR FIND A WAY TO SEPARETE ALPHA OR NOT
+	if (glSurface->format->format == SDL_PIXELFORMAT_RGB24) // REMOVE OR FIND A WAY TO SEPARATE ALPHA OR NOT
 	{
 		format = GL_RGB;
 	}
@@ -49,22 +46,23 @@ bool Texture::LoadGl(RendererGl* _renderer, const std::string& _filename, SDL_Su
 		format = GL_RGBA;
 	}
 
-	glGenTextures(1, &mTextureID);
-	glBindTexture(GL_TEXTURE_2D, mTextureID);
+	glGenTextures(1, &mTextureId);
+	glBindTexture(GL_TEXTURE_2D, mTextureId);
 	glTexImage2D(GL_TEXTURE_2D, 0, format, mWidth, mHeight, 0, format, GL_UNSIGNED_BYTE, glSurface->pixels);
+	glGenerateMipmap(GL_TEXTURE_2D);
 	SDL_FreeSurface(_pSurface);
 	SDL_FreeSurface(glSurface);
 	Log::Info("Loaded GL texture : " + mFileName);
 
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 
 	return true;
 }
 
 void Texture::SetActive() const
 {
-	glBindTexture(GL_TEXTURE_2D, mTextureID);
+	glBindTexture(GL_TEXTURE_2D, mTextureId);
 }
 
 bool Texture::LoadSdl(RendererSdl* _renderer, const std::string& _filename, SDL_Surface* _pSurface)
@@ -84,7 +82,8 @@ bool Texture::LoadSdl(RendererSdl* _renderer, const std::string& _filename, SDL_
 void Texture::Unload()
 {
 	if (pSdlTexture) SDL_DestroyTexture(pSdlTexture);
-	else glDeleteTextures(1, &mTextureID);
+	else glDeleteTextures(1, &mTextureId);
+	DEBUGRemoveClass("Texture");
 }
 
 void Texture::UpdateInfo(uint16_t& _pWidthOut, uint16_t& _pHeightOut)

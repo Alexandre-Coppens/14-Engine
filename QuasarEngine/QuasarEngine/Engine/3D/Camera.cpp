@@ -1,7 +1,7 @@
 ﻿#include "Camera.h"
 
 #include "Engine/Utilitaries/MathLib.h"
-#include "Engine/Utilitaries/CameraManager.h"
+#include "Engine/Utilitaries/Managers/CameraManager.h"
 
 #include "Engine/Actor.h"
 #include "Engine/Scene.h"
@@ -38,11 +38,12 @@ void Camera::UpdateCameraView() const
     Matrix4Row view = Mat4RowCreateLookAt(camPosition, target, up);
     pOwner->getScene()->getRendererGl()->setViewMatrix(view);
 }
-void Camera::OnEnd()
+void Camera::Destroy()
 {
-    Component::OnEnd();
     CameraManager::RemoveCamera(this);
     
+    mLocalTransform->Destroy();
     delete mLocalTransform;
     mLocalTransform = nullptr;
+    Component::Destroy();
 }

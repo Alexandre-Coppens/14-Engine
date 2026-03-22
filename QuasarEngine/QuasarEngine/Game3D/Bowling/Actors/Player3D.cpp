@@ -3,7 +3,7 @@
 #include "Engine/Game.h"
 #include "Engine/Scene.h"
 #include "Engine/Utilitaries/Assets.h"
-#include "Engine/Utilitaries/Inputs.h"
+#include "Engine/Utilitaries/Managers/Inputs.h"
 
 #include "Engine/3D/Camera.h"
 

@@ -3,22 +3,26 @@
 #include <glew.h>
 #include <vector>
 
+#include "Engine/Utilitaries/DebugMemoryLeakCatcher.h"
+
 const std::string Shader::SHADER_PATH = "Resources/Shaders/";
 
 Shader::Shader():
 	mID(0), mCode(""), mType(VERTEX)
 {
-
+	DEBUGAddClass("Shader");
 }
 
 Shader::Shader(int _ID, std::string _file, ShaderType _shaderType):
 	mID(_ID), mCode(_file), mType(_shaderType)
 {
+	DEBUGAddClass("Shader");
 	Load(_file, _shaderType);
 }
 
 Shader::~Shader()
 {
+	DEBUGRemoveClass("Shader");
 }
 
 void Shader::Load(std::string _fileName, ShaderType _shaderType)
@@ -49,6 +53,14 @@ void Shader::Load(std::string _fileName, ShaderType _shaderType)
 	{
 	case VERTEX:
 		mID = glCreateShader(GL_VERTEX_SHADER);
+		break;
+
+	case TESSELLATION_CONTROL:
+		mID = glCreateShader(GL_TESS_CONTROL_SHADER);
+		break;
+
+	case TESSELLATION_EVAL:
+		mID = glCreateShader(GL_TESS_EVALUATION_SHADER);
 		break;
 
 	case FRAGMENT:

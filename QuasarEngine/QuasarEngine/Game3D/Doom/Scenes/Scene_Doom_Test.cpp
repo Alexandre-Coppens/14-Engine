@@ -30,9 +30,10 @@ void Scene_Doom_Test::Start()
 
     //Load Shaders
     Assets::LoadShader(renderer, "BasicModel.vert", "BasicModel.frag", "BasicModel", TEXTURE);
+    Assets::LoadShader(renderer, "SimpleTess.vert", "SimpleTess.tesc", "SimpleTess.tese", "SimpleTess.frag", "SimpleTess", TEXTURE);
 
     //LoadModels
-
+    Assets::LoadMesh("Resources/Models/Plane.obj", "Plane");
     //Load Textures
     Assets::LoadTexture(*renderer, "Resources/Textures/Block.png", "Block");
 
@@ -42,14 +43,19 @@ void Scene_Doom_Test::Start()
     Actor* floor = AddActor(new Object("Floor", "Cube", "Block", "BasicModel"));
     Actor* floor1 = AddActor(new Object("Floor1", "Cube", "Block", "BasicModel"));
 
+    Actor* tunnelb = AddActor(new Object("tunnelb", "Plane", "Block", "BasicModel"));
+
     //Start the new Actors to modify them
     InitNewActors();
 
     //Modify Actors
+    player->getTransform3D()->addLocationZ(0.2f);
+    
     floor->getTransform3D()->addLocationZ(-0.1f);
     floor1->getTransform3D()->addLocationZ(-0.1f);
     floor1->getTransform3D()->addLocationX(1.0f);
-    //floor->getTransform3D()->setScale(Vector3(0.2f, 0.2f, 0.01f));
+    
+    tunnelb->getTransform3D()->setScale(Vector3(10.0f, 10.0f, 0.01f));
 }
 
 void Scene_Doom_Test::Update(float _deltaTime)

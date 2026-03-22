@@ -1,6 +1,6 @@
 ﻿#include "Object.h"
 
-#include "Engine/3D/cBoxCollider.h"
+//#include "Engine/3D/cBoxCollider.h"
 #include "Engine/Utilitaries/Assets.h"
 
 #include "Engine/3D/Mesh.h"
@@ -24,8 +24,8 @@ void Object::Start()
     mModel->setMesh(Assets::GetMesh(mModelName));
     mModel->getMesh()->AddTexture(Assets::GetTexture(mTextureName));
 
-    mCollider = dynamic_cast<BoxCollider*>(AddComponent(new BoxCollider(this)));
-    dynamic_cast<BoxCollider*>(mCollider)->setSize(1.1f);
+    //mCollider = dynamic_cast<BoxCollider*>(AddComponent(new BoxCollider(this)));
+    //dynamic_cast<BoxCollider*>(mCollider)->setSize(1.1f);
     Actor::Start();
 }
 
@@ -38,5 +38,5 @@ void Object::Destroy()
 {
     Actor::Destroy();
     mModel = nullptr;
-    mCollider = nullptr;
+    //mCollider = nullptr;
 }

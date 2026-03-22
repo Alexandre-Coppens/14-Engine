@@ -8,6 +8,7 @@
 
 #include "Engine/Utilitaries/Log.h"
 #include "Engine/Utilitaries/Time.h"
+#include "Engine/Utilitaries/Managers/CollisionManager.h"
 
 //PhysicBody have it's own collider to calculate Inertia for the angular velocity
 PhysicBody::PhysicBody(Actor* _pOwner, ColliderType _colliderType) :
@@ -23,6 +24,7 @@ PhysicBody::PhysicBody(Actor* _pOwner, ColliderType _colliderType) :
         mpCollider = dynamic_cast<Collider3D*>(pOwner->AddComponent(new BoxCollider(pOwner)));
         break;
     }
+    mpCollider->setDebugColor(Vector4(1.0f, 0.0f, 0.0f, 1.0f));
     RecalculateInertia();
 }
 PhysicBody::~PhysicBody()
@@ -53,7 +55,9 @@ void PhysicBody::Update(float _deltaTime)
 //TODO: Change NearestPoint name because it does not represent the variable well anymore
 void PhysicBody::ResolveCollision(const CollisionData _data)
 {
-    pOwner->getTransform3D()->addLocation(_data.normal * _data.penetration);
+    pOwner->getTransform3D()->addLocation(_data.normal * (_data.penetration + 0.0001f));
+    pOwner->getTransform3D()->ComputeWorldTransform();
+    Log::Info(pOwner->getName() + "::" + ToString(_data.normal)+ " : " + std::to_string(_data.penetration));
 }
 
 void PhysicBody::ResolveVelocity(const CollisionData _data)
@@ -79,6 +83,14 @@ void PhysicBody::ResolveVelocity(const CollisionData _data)
     float j = -_data.friction * 0.5f * Dot(relative, n) / Dot(_data.normal, _data.normal * (invMass1 + invMass2));
     
     mVelocity += (j / mMass) * _data.normal;
+}
+void PhysicBody::Destroy()
+{
+    mpCollider->Destroy();
+    delete mpCollider;
+    mpCollider = nullptr;
+    
+    Component::Destroy();
 }
 
 void PhysicBody::RecalculateInertia()

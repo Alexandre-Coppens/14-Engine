@@ -3,8 +3,9 @@
 
 #include "Engine/Utilitaries/Time.h"
 #include "Engine/Utilitaries/Log.h"
-#include "Engine/Utilitaries/Inputs.h"
+#include "Engine/Utilitaries/Managers/Inputs.h"
 #include "Engine/Utilitaries/Assets.h"
+#include "Utilitaries/DebugMemoryLeakCatcher.h"
 
 #include "Engine/Render/RendererSdl.h"
 #include "Engine/Render/RendererGl.h"
@@ -14,6 +15,7 @@
 Game::Game(std::string _title, std::vector<Scene*> _scenes, RendererType _rendererType):
 	mTitle(std::move(_title)), mScenes(std::move(_scenes))
 { //TODO: Remove Scenes vector from init to put it in the game
+	DEBUGAddClass("Game");
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
 	{
 		SDL_Log("SDL initialization failed. SDL Error: %s", SDL_GetError());
@@ -26,15 +28,13 @@ Game::Game(std::string _title, std::vector<Scene*> _scenes, RendererType _render
 	switch (_rendererType)
 	{
 	case RendererType::SDL:
-		pRenderer = new RendererSdl();
+		mRenderer = new RendererSdl();
 		break;
 
 	case RendererType::OPENGL:
-		pRenderer = new RendererGl();
+		mRenderer = new RendererGl();
 		break;
 	}
-
-	for (Scene* s : mScenes) s->setRenderer(pRenderer);
 }
 
 Game::~Game() = default;
@@ -42,12 +42,12 @@ Game::~Game() = default;
 void Game::Initialize()
 {
 	Log::Info("GAME: Initializing " + mTitle);
-	pWindow = new Window(Window::GetSize().x, Window::GetSize().y, mTitle);
+	mWindow = new Window(Window::GetSize().x, Window::GetSize().y, mTitle);
 
-	if (pWindow->Open() && pRenderer->Initialize(*pWindow))
+	if (mWindow->Open() && mRenderer->Initialize(*mWindow))
 	{
-		mScenes[mCurrentScene] -> Load(this);
-		mChangeSceneTo = -1;
+		mScenes[0]->setRenderer(mRenderer);
+		mScenes[0]->Open(this);
 	}
 }
 
@@ -72,9 +72,9 @@ void Game::Loop()
 
 void Game::Render()
 {
-	pRenderer->BeginDraw();
-	pRenderer->Draw();
-	pRenderer->EndDraw();
+	mRenderer->BeginDraw();
+	mRenderer->Draw();
+	mRenderer->EndDraw();
 }
 
 void Game::Close()
@@ -87,14 +87,15 @@ void Game::Close()
 	}
 	mScenes.clear();
 	
-	pRenderer->Close();
-	delete pRenderer;
-	pRenderer = nullptr;
+	mRenderer->Close();
+	delete mRenderer;
+	mRenderer = nullptr;
 
-	pWindow->Close();
-	delete pWindow;
-	pWindow = nullptr;
+	mWindow->Close();
+	delete mWindow;
+	mWindow = nullptr;
 	
 	Assets::Clear();
+	DEBUGRemoveClass("Game");
 }
 

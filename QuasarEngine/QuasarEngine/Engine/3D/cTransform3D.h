@@ -81,16 +81,16 @@ public:
 		rotateAroundX(mRotation.x);
 
 		mWorldQRotation = Quaternion();
-		Concatenate(mQRotation, QuatFromAxisAngle(Up(), ToRad(mWorldRotation.z)));
-		Concatenate(mQRotation, QuatFromAxisAngle(Right(), ToRad(mWorldRotation.y)));
-		Concatenate(mQRotation, QuatFromAxisAngle(Forward(), ToRad(mWorldRotation.x)));
+		mWorldQRotation = Concatenate(mQRotation, QuatFromAxisAngle(Up(), ToRad(mWorldRotation.z)));
+		mWorldQRotation = Concatenate(mQRotation, QuatFromAxisAngle(Right(), ToRad(mWorldRotation.y)));
+		mWorldQRotation = Concatenate(mQRotation, QuatFromAxisAngle(Forward(), ToRad(mWorldRotation.x)));
 	}
 	
 	void setTransform(const Transform3D* _t3D) {
 		mLocation = _t3D->mLocation;
 		mRotation = _t3D->mRotation;
 		mScale	  = _t3D->mScale;
-		mNeedsUpdate = true; 
+		mNeedsUpdate = true;
 	}
 
 	Vector3 Forward()	const { return Transform(Vector3UnitX(), mQRotation); }
@@ -101,11 +101,11 @@ protected:
 public:
 	Transform3D(Actor* _pOwner, Space _space);
 	~Transform3D() override;
-	Transform3D& operator= (const Transform3D* _pTransform) { setTransform(_pTransform); }
+	Transform3D& operator= (const Transform3D* _pTransform) { setTransform(_pTransform); return *this; }
 
 	void OnStart()	override;
 	void Update(float _deltaTime)	override;
-	void OnEnd()	override;
+	void Destroy()	override;
 
 	void ComputeWorldTransform();
 };

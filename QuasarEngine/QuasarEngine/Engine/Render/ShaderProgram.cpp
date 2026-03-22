@@ -1,22 +1,19 @@
 #include "ShaderProgram.h"
 
+#include "Engine/Utilitaries/DebugMemoryLeakCatcher.h"
 #include "Engine/Utilitaries/MathLib.h"
 
-ShaderProgram::ShaderProgram()
+ShaderProgram::ShaderProgram(DrawOption _option)
 {
 	mID = 0;
-	mDrawOptions = 0;
-}
-
-ShaderProgram::ShaderProgram(int _options)
-{
-	mID = 0;
-	mDrawOptions = _options;
+	mDrawOptions = _option;
+	DEBUGAddClass("ShaderProgram");
 }
 
 void ShaderProgram::Unload() 
 {
 	glDeleteProgram(mID);
+	DEBUGRemoveClass("ShaderProgram");
 }
 
 void ShaderProgram::Compose(std::vector<Shader*> _shaders)

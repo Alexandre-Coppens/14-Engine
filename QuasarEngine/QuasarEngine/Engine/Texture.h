@@ -10,12 +10,13 @@ class Texture
 {
 private:
 	std::string mFileName;
-	SDL_Texture* pSdlTexture;
-	uint16_t mWidth, mHeight;
-	unsigned int mTextureID ;
+	SDL_Texture* pSdlTexture  {nullptr};
+	Uint16   mWidth           {0},
+			 mHeight		  {0};
+	unsigned int mTextureId   {0};
 
 public:
-	Vector2 GetSize()			 const	{ return Vector2{ (float)mWidth, (float)mHeight }; }
+	Vector2 GetSize()			 const	{ return Vector2{ static_cast<float>(mWidth), static_cast<float>(mHeight) }; }
 	uint16_t GetWidth()			 const	{ return mWidth; }
 	uint16_t GetHeight()		 const	{ return mHeight; }
 	SDL_Texture* GetSdlTexture() const	{ return pSdlTexture; }

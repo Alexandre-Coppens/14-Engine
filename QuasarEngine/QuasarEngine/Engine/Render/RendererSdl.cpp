@@ -6,7 +6,7 @@
 
 #include "Engine/Actor.h"
 #include "Engine/Texture.h"
-#include "Engine/2D/cSprite2D.h"
+#include "Engine/2D/Sprite2D.h"
 
 RendererSdl::RendererSdl() :
 	pSDLRenderer(nullptr)

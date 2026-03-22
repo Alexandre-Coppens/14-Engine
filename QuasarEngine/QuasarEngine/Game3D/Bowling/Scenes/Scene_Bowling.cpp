@@ -34,7 +34,8 @@ void Scene_Bowling::Start()
 	Assets::LoadShader(renderer, "BasicModel.vert", "BasicModel.frag", "BasicModel", TEXTURE);
 	Assets::LoadShader(renderer, "BasicModel.vert", "Normal.frag", "Normal", TEXTURE);
 	Assets::LoadShader(renderer, "BasicModel.vert", "Transparency.frag", "Transparency", TEXTURE);
-	Assets::LoadShader(renderer, "Simple.vert", "Simple.frag", "Simple", COLOR);
+	Assets::LoadShader(renderer, "Simple.vert", "Simple.frag", "Simple", DrawOption::COLOR);
+	Assets::LoadShader(renderer, "Simple.vert", "Simple.frag", "WireFrame", DrawOption::WIREFRAME);
 
 	//LoadModels
 	Assets::LoadMesh("Resources/Models/Pin.obj", "Pin");

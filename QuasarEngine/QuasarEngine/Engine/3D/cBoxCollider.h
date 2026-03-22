@@ -9,7 +9,6 @@ class Actor;
 class BoxCollider : public Collider3D
 {
 private:
-	Mesh* mDebugMesh {nullptr};
 	
 public:
 	Vector3 getOffset() const {return mTransform->getLocation();}
@@ -31,7 +30,5 @@ public:
 	Vector3 getScale();
 	std::vector<Vector3> getWorldVertices();
 	
-	void DrawDebug() override;
-	
-	void OnEnd() override;
+	void Destroy() override;
 };

@@ -1,7 +1,5 @@
 #include "cTransform3D.h"
 #include "Engine/Actor.h"
-#include "Engine/Utilitaries/Log.h"
-#include "Game3D/Doom/Actors/DoomPlayer.h"
 
 Transform3D::Transform3D(Actor* _pOwner, Space _space) :
     Component(_pOwner, 0), mSpace(_space)
@@ -22,8 +20,9 @@ void Transform3D::Update(float _deltaTime)
     ComputeWorldTransform();
 }
 
-void Transform3D::OnEnd()
+void Transform3D::Destroy()
 {
+    Component::Destroy();
 }
 
 void Transform3D::ComputeWorldTransform()
@@ -38,10 +37,10 @@ void Transform3D::ComputeWorldTransform()
         mWorldRotation += pOwner->getTransform3D()->getRotation();
         mWorldLocation += pOwner->getTransform3D()->getLocation();
     }
-    mWorldScale *= getScale() * 0.1f;
+    mWorldScale *= getScale();
     mWorldRotation += getRotation();
     mWorldLocation += getLocation();
-    mWorldLocation *= 0.2f;
+    //mWorldLocation *= 0.2f;
     mRotation.x = Fmod(mRotation.x, 360.0f);
     mWorldRotation.x = Fmod(mWorldRotation.x, 360.0f);
     computeRotations();

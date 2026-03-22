@@ -1,9 +1,10 @@
 #include "Scene.h"
 
-#include "Engine/Utilitaries/Assets.h"
 #include "Engine/Utilitaries/Log.h"
+#include "Engine/Utilitaries/DebugMemoryLeakCatcher.h"
 
 #include "Engine/Actor.h"
+#include "Utilitaries/Managers/CollisionManager.h"
 
 Scene* Scene::ActiveScene = nullptr;
 
@@ -12,9 +13,16 @@ Scene::Scene(std::string _name):
 	pRenderer(nullptr),
 	pGame(nullptr)
 {
+	DEBUGAddClass("Scene");
 }
 
 Scene::~Scene() = default;
+
+void Scene::Open(Game* _pGame)
+{
+	pGame = _pGame;
+	Start();
+}
 
 void Scene::Start()
 {
@@ -35,6 +43,7 @@ void Scene::Update(const float _deltaTime)
 		if (mActorList.empty()) return;
 		actor->Update(_deltaTime);
 	}
+	CollisionManager::UpdatesCollisions();
 }
 
 //Update After Rendering
@@ -59,6 +68,7 @@ void Scene::Close()
 	KillActors();
 	pRenderer = nullptr;
 	pGame = nullptr;
+	DEBUGRemoveClass("Scene");
 }
 
 Actor* Scene::AddActor(Actor* actor)
@@ -102,28 +112,4 @@ void Scene::KillActors()
 		}
 	}
 	mDestroyActorList.clear();
-}
-
-void Scene::Load(Game* _pGame)
-{
-	pGame = _pGame;
-	Start();
-}
-
-void Scene::UnLoad()
-{
-	while (!mAddActorList.empty())
-	{
-		DeleteActorFromList(&mAddActorList, mAddActorList[0]);
-	}
-	mAddActorList.clear();
-	
-	while (!mActorList.empty())
-	{
-		DeleteActorFromList(&mActorList, mActorList[0]);
-	}
-	mActorList.clear();
-
-	KillActors();
-	Assets::Clear();
 }

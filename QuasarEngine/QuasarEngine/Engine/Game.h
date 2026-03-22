@@ -13,25 +13,26 @@ class Scene;
 class Game
 {
 private:
-	Window* pWindow;
-	std::string mTitle;
+	Window*	   mWindow   { nullptr };
+	IRenderer* mRenderer { nullptr };
 
-	IRenderer* pRenderer;
-
-	std::vector<Scene*> mScenes;
-	Uint8 mCurrentScene{ 0 };
-	float mLastUpdate{ 0 };
+	std::string mTitle	 { "Game" };
 	
-	int mChangeSceneTo {-1};
+	std::vector<Scene*> mScenes;
+	Uint8 mCurrentScene { 0 };
+	int mChangeSceneTo  {-1 };
+
+	float mLastUpdate   { 0 };
 
 public:
 
 private:
 	inline void ChangeScene()
 	{
-		mScenes[mCurrentScene]->UnLoad();
-		mCurrentScene = mChangeSceneTo;
-		mScenes[mCurrentScene]->Load(this);
+		mScenes[mCurrentScene]->Close();
+		mCurrentScene = static_cast<Uint8>(mChangeSceneTo);
+		mScenes[mCurrentScene]->setRenderer(mRenderer);
+		mScenes[mCurrentScene]->Open(this);
 		mChangeSceneTo = -1;
 	}
 	

@@ -5,6 +5,7 @@
 #define TINYOBJLOADER_IMPLEMENTATION
 
 #include "Engine/Texture.h"
+#include "Engine/Render/ShaderProgram.h"
 
 class Mesh;
 class Model;
@@ -33,7 +34,8 @@ public:
 	static Texture* GetTexture(const std::string& _pName);
 	static std::vector<Texture*> GetTextures(const std::string& _pName);
 
-	static ShaderProgram* LoadShader(RendererGl* pRendererGl, const std::string _vertexFile, const std::string _fragmentFile, const std::string _name, int _options);
+	static ShaderProgram* LoadShader(RendererGl* pRendererGl, std::string _vertexFile, std::string _fragmentFile, std::string _name, DrawOption _option);
+	static ShaderProgram* LoadShader(RendererGl* pRendererGl, std::string _vertexFile, std::string _tesselationControlFile, std::string _tesselationEvaluationFile, std::string _fragmentFile, std::string _name, DrawOption _option);
 	static ShaderProgram* GetShader(const std::string _name);
 	
 	static Mesh* LoadMesh(std::string _fileName, std::string _name);

@@ -1,12 +1,12 @@
 #include "Paddle.h"
-#include "Engine/Utilitaries/Inputs.h"
+#include "Engine/Utilitaries/Managers/Inputs.h"
 #include "Engine/Utilitaries/Assets.h"
 #include "Engine/Scene.h"
 #include "Engine/Game.h"
 
-#include "Engine/2D/cBoxCollider2D.h"
-#include "Engine/2D/cAnimation2D.h"
-#include "Engine/2D/cGravity2D.h"
+#include "Engine/2D/BoxCollider2D.h"
+#include "Engine/2D/Animation2D.h"
+#include "Engine/2D/Gravity2D.h"
 #include "Game2D/Scenes/Scene_Pong.h"
 #include "Game2D/Scenes/Scene_GameOver.h"
 

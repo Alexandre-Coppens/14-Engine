@@ -21,7 +21,7 @@ struct Vertex
 		normal.x, normal.y, normal.z,
 		texCoord.x, texCoord.y};
 		return ret;
-	};
+	}
 };
 
 class VertexArray

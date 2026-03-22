@@ -1,8 +1,8 @@
 #include "Coin.h"
 #include "Engine/Utilitaries/Assets.h"
 
-#include "Engine/2D/cBoxCollider2D.h"
-#include "Engine/2D/cAnimation2D.h"
+#include "Engine/2D/BoxCollider2D.h"
+#include "Engine/2D/Animation2D.h"
 #include "Engine/Scene.h"
 
 Coin::Coin() :

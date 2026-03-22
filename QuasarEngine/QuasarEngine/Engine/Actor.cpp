@@ -4,19 +4,18 @@
 
 #include "Engine/Component.h"
 #include "Engine/Scene.h"
+#include "Utilitaries/DebugMemoryLeakCatcher.h"
 
 Actor::Actor():
-	pScene(Scene::ActiveScene),
+	mScene(Scene::ActiveScene),
 	mState(ActorState::Active),
 	mTransform2D(nullptr),
 	mTransform3D(nullptr)
 {
+	DEBUGAddClass("Actor");
 }
 
-Actor::~Actor()
-{
-	Actor::Destroy();
-}
+Actor::~Actor() = default;
 
 void Actor::Start()
 {
@@ -36,34 +35,34 @@ void Actor::Update(const float _deltaTime)
 
 void Actor::Destroy()
 {
-	pScene = nullptr;
-	for (const auto c : mComponentList)
+	mScene = nullptr;
+	for (const auto component : mComponentList)
 	{
-		Log::Info("Removing Component: " + c->getName());
-		c->OnEnd();
+		component->Destroy();
 	}
 	RemoveComponents();
+	DEBUGRemoveClass("Actor");
 }
 
-Component* Actor::AddComponent(Component* _c)
+Component* Actor::AddComponent(Component* _component)
 {
-	const int componentUpdateOrder = _c->getUpdateOrder();
+	const int componentUpdateOrder = _component->getUpdateOrder();
 	std::vector<Component*>::iterator it;
 	for (it = mComponentList.begin(); it != mComponentList.end(); it++)
 	{
 		if (componentUpdateOrder < (*it)->getUpdateOrder()) break;
 	}
-	mComponentList.insert(it, _c);
-	_c->OnStart();
-	return _c;
+	mComponentList.insert(it, _component);
+	_component->OnStart();
+	return _component;
 }
 
 void Actor::RemoveComponents()
 {
-	for (Component* c : mComponentList)
+	for (Component* component : mComponentList)
 	{
-		delete c;
-		c = nullptr;
+		delete component;
+		component = nullptr;
 	}
 	mComponentList.clear();
 }

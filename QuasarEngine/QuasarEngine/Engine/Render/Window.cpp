@@ -1,12 +1,15 @@
 #include "Window.h"
+
+#include "Engine/Utilitaries/DebugMemoryLeakCatcher.h"
 #include "Engine/Utilitaries/Log.h"
 
-Vector2 Window::mWindowSize{800, 800};
+Vector2 Window::windowSize{800, 800};
 
-Window::Window(Uint16 _u16Width, Uint16 _u16Height, std::string _sName):
-	pSdlWindow(nullptr), mWindowName(_sName)
+Window::Window(const Uint16 _width, const Uint16 _height, const std::string _name):
+	pSdlWindow(nullptr), mWindowName(_name)
 {
-	mWindowSize = Vector2{ (float)_u16Width, (float)_u16Height };
+	DEBUGAddClass("Window");
+	windowSize = Vector2{ static_cast<float>(_width), static_cast<float>(_height)};
 }
 
 bool Window::Open()
@@ -16,7 +19,7 @@ bool Window::Open()
 		Log::Error(LogType::Video, "Unable to initialize video");
 		return false;
 	}
-	pSdlWindow = SDL_CreateWindow(mWindowName.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, static_cast<int>(mWindowSize.x), static_cast<int>(mWindowSize.y), SDL_WINDOW_OPENGL);
+	pSdlWindow = SDL_CreateWindow(mWindowName.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, static_cast<int>(windowSize.x), static_cast<int>(windowSize.y), SDL_WINDOW_OPENGL);
 	if (!pSdlWindow)
 	{
 		Log::Error(LogType::System, "Failed to create window");
@@ -28,4 +31,5 @@ bool Window::Open()
 void Window::Close()
 {
 	SDL_DestroyWindow(pSdlWindow);
+	DEBUGRemoveClass("Window");
 }

@@ -5,7 +5,7 @@
 #include "Engine/3D/Camera.h"
 #include "Engine/3D/cBoxCollider.h"
 #include "Engine/3D/cPhysicBody.h"
-#include "Engine/Utilitaries/Inputs.h"
+#include "Engine/Utilitaries/Managers/Inputs.h"
 
 DoomPlayer::DoomPlayer() :
     Actor()
@@ -23,6 +23,7 @@ void DoomPlayer::Start()
     mCollider = mPhysicBody->getReferencedCollider();
     mCamera = dynamic_cast<Camera*>(AddComponent(new Camera(this)));
 
+    dynamic_cast<BoxCollider*>(mCollider)->setSize(Vector3One() * 0.1f);
     mPhysicBody->setGravityEnabled(false);
     
     Actor::Start();

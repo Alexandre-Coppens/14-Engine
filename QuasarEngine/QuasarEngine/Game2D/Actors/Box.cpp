@@ -1,8 +1,8 @@
 #include "Box.h"
 #include "Engine/Utilitaries/Assets.h"
 
-#include "Engine/2D/cBoxCollider2D.h"
-#include "Engine/2D/cSprite2D.h"
+#include "Engine/2D/BoxCollider2D.h"
+#include "Engine/2D/Sprite2D.h"
 
 Box::Box():
 	Actor()

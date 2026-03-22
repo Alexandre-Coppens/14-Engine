@@ -6,12 +6,14 @@
 class Window
 {
 private:
-	static Vector2 mWindowSize;
+	static Vector2 windowSize;
+	
 	SDL_Window* pSdlWindow;
 	std::string mWindowName;
+	
 public:
 	SDL_Window* GetSdlWindow() const { return pSdlWindow; }
-	static Vector2 GetSize() { return mWindowSize; }
+	static Vector2 GetSize() { return windowSize; }
 
 private:
 public:
@@ -21,5 +23,4 @@ public:
 
 	bool Open();
 	void Close();
-	void Update();
 };

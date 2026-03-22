@@ -31,7 +31,7 @@ public:
 	virtual void OnStart();
 	virtual void OnActorStart();
 	virtual void Update(float _deltaTime) = 0;
-	virtual void OnEnd();
+	virtual void Destroy();
 
 	void RecalculateTransform();
 };

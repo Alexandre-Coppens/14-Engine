@@ -3,9 +3,9 @@
 
 enum class Flip
 {
-	None = SDL_FLIP_NONE,
+	None	   = SDL_FLIP_NONE,
 	Horizontal = SDL_FLIP_HORIZONTAL,
-	Vertical = SDL_FLIP_VERTICAL
+	Vertical   = SDL_FLIP_VERTICAL
 };
 
 enum class RendererType
