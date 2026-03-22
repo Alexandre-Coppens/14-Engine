@@ -52,13 +52,13 @@ void CollisionManager::ResolveCollisions(std::vector<CollisionData> _collisionLi
         if (data.bodyA != nullptr)
         {
             data.bodyA->ResolveCollision(data);
-            //data.bodyA->ResolveVelocity(data);
+            data.bodyA->ResolveVelocity(data);
         }
         data.normal *= -1;
         if (data.bodyB != nullptr)
         {
             data.bodyB->ResolveCollision(data);
-            //data.bodyB->ResolveVelocity(data);
+            data.bodyB->ResolveVelocity(data);
         }
     }
 }

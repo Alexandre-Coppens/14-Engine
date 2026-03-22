@@ -2,6 +2,7 @@
 
 #include "Engine/3D/cSphereCollider.h"
 #include "Engine/3D/Camera.h"
+#include "Engine/3D/cPhysicBody.h"
 #include "Engine/Utilitaries/Assets.h"
 
 #include "Engine/3D/Mesh.h"
@@ -50,7 +51,7 @@ void Ball::Update(const float _deltaTime)
     if (Inputs::GetKeyDown(SDLK_SPACE) && !mLaunched)
     {
         mLaunched = true;
-        mPhysicBody->setVelocity(mTransform3D->Forward() * -0.2f);
+        mPhysicBody->setVelocity(mTransform3D->Forward() * -0.1f);
     }
     if (Inputs::GetKeyDown(SDLK_r))
     {

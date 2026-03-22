@@ -57,7 +57,7 @@ void PhysicBody::ResolveCollision(const CollisionData _data)
 {
     pOwner->getTransform3D()->addLocation(_data.normal * (_data.penetration + 0.0001f));
     pOwner->getTransform3D()->ComputeWorldTransform();
-    Log::Info(pOwner->getName() + "::" + ToString(_data.normal)+ " : " + std::to_string(_data.penetration));
+    //Log::Info(pOwner->getName() + "::" + ToString(_data.normal)+ " : " + std::to_string(_data.penetration));
 }
 
 void PhysicBody::ResolveVelocity(const CollisionData _data)
@@ -79,11 +79,15 @@ void PhysicBody::ResolveVelocity(const CollisionData _data)
 
     Vector3 n = Normalize(_data.normal);
     
+    float e = 0.25f;
     Vector3 relative = mVelocity - otherVelocity;
-    float j = -_data.friction * 0.5f * Dot(relative, n) / Dot(_data.normal, _data.normal * (invMass1 + invMass2));
+    float j = -(1 + e) * Dot(relative, n) / Dot(_data.normal, _data.normal * (invMass1 + invMass2));
     
-    mVelocity += (j / mMass) * _data.normal;
+    mVelocity += (j * invMass1) * _data.normal;
+    
+    Log::Info(pOwner->getName() + "::" + ToString(mVelocity));
 }
+
 void PhysicBody::Destroy()
 {
     mpCollider->Destroy();

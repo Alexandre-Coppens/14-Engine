@@ -1436,7 +1436,6 @@
     <Content Include="Resources\MegaAnim\06_megaman.png" />
     <Content Include="Resources\MegaAnim\07_megaman.png" />
     <Content Include="Resources\Models\100 Pin Bowling Room.obj" />
-    <Content Include="Resources\Models\Ball.mtl" />
     <Content Include="Resources\Models\Ball.obj" />
     <Content Include="Resources\Models\Bowling\Bowling_Alley_Alley.mtl" />
     <Content Include="Resources\Models\Bowling\Bowling_Alley_Alley.obj" />
@@ -1461,7 +1460,6 @@
     <Content Include="Resources\Models\Bowling\Bowling_Alley_Trash.obj" />
     <Content Include="Resources\Models\Bowling\Bowling_Alley_Walls.mtl" />
     <Content Include="Resources\Models\Bowling\Bowling_Alley_Walls.obj" />
-    <Content Include="Resources\Models\Pin.mtl" />
     <Content Include="Resources\Models\Pin.obj" />
     <Content Include="Resources\Shaders\BasicModel.frag" />
     <Content Include="Resources\Shaders\BasicModel.vert" />
