@@ -15,16 +15,16 @@ void Scene_GameOver::Start()
 	Scene::Start();
 	
 	RendererSdl* sdl = dynamic_cast<RendererSdl*>(pRenderer);
-	Assets::LoadTexture(*sdl, "Resources/pokeball.png", "ball");
-	Assets::LoadTexture(*sdl, "Resources/Block.png", "Block");
-	Assets::LoadTexture(*sdl, "Resources/MegaAnim/00_megaman.png", "00_megaman");
-	Assets::LoadTexture(*sdl, "Resources/MegaAnim/01_megaman.png", "01_megaman");
-	Assets::LoadTexture(*sdl, "Resources/MegaAnim/02_megaman.png", "02_megaman");
-	Assets::LoadTexture(*sdl, "Resources/MegaAnim/03_megaman.png", "03_megaman");
-	Assets::LoadTexture(*sdl, "Resources/MegaAnim/04_megaman.png", "04_megaman");
-	Assets::LoadTexture(*sdl, "Resources/MegaAnim/05_megaman.png", "05_megaman");
-	Assets::LoadTexture(*sdl, "Resources/MegaAnim/06_megaman.png", "06_megaman");
-	Assets::LoadTexture(*sdl, "Resources/MegaAnim/07_megaman.png", "07_megaman");
+	Assets::LoadTexture(*sdl, "Resources/pokeball.png");
+	Assets::LoadTexture(*sdl, "Resources/Block.png");
+	Assets::LoadTexture(*sdl, "Resources/MegaAnim/00_megaman.png");
+	Assets::LoadTexture(*sdl, "Resources/MegaAnim/01_megaman.png");
+	Assets::LoadTexture(*sdl, "Resources/MegaAnim/02_megaman.png");
+	Assets::LoadTexture(*sdl, "Resources/MegaAnim/03_megaman.png");
+	Assets::LoadTexture(*sdl, "Resources/MegaAnim/04_megaman.png");
+	Assets::LoadTexture(*sdl, "Resources/MegaAnim/05_megaman.png");
+	Assets::LoadTexture(*sdl, "Resources/MegaAnim/06_megaman.png");
+	Assets::LoadTexture(*sdl, "Resources/MegaAnim/07_megaman.png");
 
 	Actor* player = AddActor(new Paddle());
 	Actor* box1 = AddActor(new Box());

@@ -18,7 +18,7 @@ void Preset_Actor::Start()
 {
     mModel = dynamic_cast<Model*>(AddComponent(new Model(this, "Null")));
     
-    mModel->setMesh(Assets::GetMesh("Cube"));
+    mModel->setMesh(Assets::GetMesh(TODO));
     mModel->getMesh()->AddTexture(Assets::GetTexture("Null"));
     Actor::Start();
 }

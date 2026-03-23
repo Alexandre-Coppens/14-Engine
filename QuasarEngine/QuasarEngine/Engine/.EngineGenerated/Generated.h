@@ -134,7 +134,7 @@ static std::string getTexturePath(GENERATED_TEXTURE _texture)
 	}
 };
 
-static std::string getTexturePath(GENERATED_MODELS _model)
+static std::string getMeshPath(GENERATED_MODELS _model)
 {
    switch (_model)
 	{
@@ -165,7 +165,7 @@ static std::string getTexturePath(GENERATED_MODELS _model)
 	}
 };
 
-static std::string getTexturePath(GENERATED_SHADERS _shader)
+static std::string getShaderPath(GENERATED_SHADERS _shader)
 {
    switch (_shader)
 	{

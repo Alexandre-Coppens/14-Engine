@@ -32,7 +32,7 @@ void Pin::Start()
     collider->setOffset(Vector3{0.0f, 0.0f, 0.02f});
     collider->setSize(Vector3{0.01f, 0.01f, 0.03f});
     
-    mModel->setMesh(Assets::GetMesh("Pin"));
+    mModel->setMesh(Assets::GetMesh(TODO));
     mModel->getMesh()->AddTexture(Assets::GetTexture("Pin"));
     Actor::Start();
 }

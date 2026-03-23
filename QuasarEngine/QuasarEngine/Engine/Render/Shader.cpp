@@ -25,14 +25,14 @@ Shader::~Shader()
 	DEBUGRemoveClass("Shader");
 }
 
-void Shader::Load(std::string _fileName, ShaderType _shaderType)
+void Shader::Load(std::string _filePath, ShaderType _shaderType)
 {
 	mType = _shaderType;
 	std::ifstream myFile;
-	myFile.open(SHADER_PATH + _fileName);
+	myFile.open(_filePath);
 	if (myFile.fail())
 	{
-		Log::Error(LogType::Video, "Error - failed to open " + _fileName);
+		Log::Error(LogType::Video, "Error - failed to open " + myFile.);
 	}
 
 	std::string fileText = "";
@@ -46,7 +46,7 @@ void Shader::Load(std::string _fileName, ShaderType _shaderType)
 	myFile.close();
 	mCode = fileText;
 
-	if(mCode == "") Log::Error(LogType::Video, "Error - " + _fileName + " has not been read or is empty!");
+	if(mCode == "") Log::Error(LogType::Video, "Error - " + _filePath + " has not been read or is empty!");
 
 
 	switch (mType)
@@ -79,7 +79,7 @@ void Shader::Load(std::string _fileName, ShaderType _shaderType)
 	
 	if (ValidateCompilation(mID))
 	{
-		Log::Info("Shader - " + _fileName + " successfully loaded with ID: " + std::to_string(mID) );
+		Log::Info("Shader - " +  + " successfully loaded with ID: " + std::to_string(mID) );
 	}
 }
 

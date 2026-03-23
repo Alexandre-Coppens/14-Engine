@@ -5,6 +5,7 @@
 
 # Added Files
 QuasarEngine/.vs
+!QuasarEngine\QuasarEngine\Dependencies
 !QuasarEngine/Debug
 !QuasarEngine/Release
 !QuasarEngine/QuasarEngine/Engine/.EngineAssets/Models

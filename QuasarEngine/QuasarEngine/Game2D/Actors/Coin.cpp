@@ -19,7 +19,7 @@ Coin::~Coin()
 void Coin::Start()
 {
 	AddComponent(new BoxCollider2D(this, 1, CollisionPurpose::Overlapp, Rectangle{ Vector2Zero(),  Vector2{ 50.0f, 50.0f } }));
-	AddComponent(new AnimatedSprite2D(this, Assets::GetTextures("coin"), 0));
+	AddComponent(new AnimatedSprite2D(this, Assets::GetTextures(TODO), 0));
 
 	Actor::Start();
 }

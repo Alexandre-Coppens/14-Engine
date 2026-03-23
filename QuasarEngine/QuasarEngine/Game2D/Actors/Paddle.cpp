@@ -24,7 +24,7 @@ Paddle::~Paddle()
 void Paddle::Start()
 {
 	AddComponent(new BoxCollider2D(this, 1, CollisionPurpose::Block, Rectangle{ Vector2Zero(),  Vector2{ 50.0f, 50.0f } }));
-	AddComponent(new AnimatedSprite2D(this, Assets::GetTextures("megaman"), 0));
+	AddComponent(new AnimatedSprite2D(this, Assets::GetTextures(TODO), 0));
 	AddComponent(new Gravity2D(this, 0));
 
 	Actor::Start();

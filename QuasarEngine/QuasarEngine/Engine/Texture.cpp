@@ -15,9 +15,9 @@ Texture::Texture()
 
 Texture::~Texture() = default;
 
-bool Texture::Load(IRenderer& _renderer, const std::string& _filename)
+bool Texture::Load(IRenderer& _renderer, const std::string& _filePath)
 {
-	mFileName = _filename;
+	mFileName = _filePath;
 	SDL_Surface* surface = IMG_Load(mFileName.c_str());
 	if (!surface)
 	{
@@ -28,8 +28,8 @@ bool Texture::Load(IRenderer& _renderer, const std::string& _filename)
 	mHeight = static_cast<Uint16>(surface->h);
 
 	if (_renderer.getType() == RendererType::SDL)
-		return LoadSdl(dynamic_cast<RendererSdl*>(&_renderer), _filename, surface);
-	return LoadGl(dynamic_cast<RendererGl*>(&_renderer), _filename, surface);
+		return LoadSdl(dynamic_cast<RendererSdl*>(&_renderer), _filePath, surface);
+	return LoadGl(dynamic_cast<RendererGl*>(&_renderer), _filePath, surface);
 }
 
 bool Texture::LoadGl(RendererGl* _renderer, const std::string& _filename, SDL_Surface* _pSurface)

@@ -94,7 +94,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)/QuasarEngine;$(SolutionDir)/QuasarEngine/Dependencies/GL/SDL/include;$(SolutionDir)/QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;$(SolutionDir)/QuasarEngine/Dependencies/SDL2_image-2.8.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)QuasarEngine; $(SolutionDir)QuasarEngine\Dependencies\GL\SDL\include; $(SolutionDir)QuasarEngine\Dependencies\glew-2.2.0-win32\glew-2.2.0\include\GL; $(SolutionDir)QuasarEngine\Dependencies\SDL2_image-2.8.2\include; %(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

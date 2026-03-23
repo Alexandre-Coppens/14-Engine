@@ -8,20 +8,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8aaab4d2-4f5d-4712-9cf7-40708eb9c5f6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.EngineAssets/Models/Plane.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.EngineAssets/Models/cube.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.EngineAssets/Models/sphere.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.EngineGenerated/Generated.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.QuasarEngine/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.QuasarEngine/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/QuasarEngine.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Debug/QuasarEngine.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Debug/QuasarEngine.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Debug/QuasarEngine.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Debug/QuasarEngine.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Debug/QuasarEngine.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Dependencies/SDL2_image-2.8.2/LICENSE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Dependencies/SDL2_image-2.8.2/LICENSE.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Dependencies/SDL2_image-2.8.2/cmake/sdl2_image-config-version.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Dependencies/SDL2_image-2.8.2/cmake/sdl2_image-config-version.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Dependencies/SDL2_image-2.8.2/cmake/sdl2_image-config.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Dependencies/SDL2_image-2.8.2/cmake/sdl2_image-config.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Dependencies/SDL2_image-2.8.2/include/SDL_image.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Dependencies/SDL2_image-2.8.2/include/SDL_image.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Dependencies/SDL2_image-2.8.2/lib/x64/optional/LICENSE.dav1d.txt" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Dependencies/SDL2_image-2.8.2/lib/x64/optional/LICENSE.dav1d.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Dependencies/SDL2_image-2.8.2/lib/x86/optional/LICENSE.dav1d.txt" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Dependencies/SDL2_image-2.8.2/lib/x86/optional/LICENSE.dav1d.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/.EngineGenerated/Generated.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.EngineGenerated/Generated.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/.Prefabs/Object.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.Prefabs/Object.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/.Presets/Preset_Actor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.Presets/Preset_Actor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cBoxCollider.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cBoxCollider.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cSphereCollider.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cSphereCollider.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Render/RendererGl.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Render/RendererGl.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Render/Shader.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Render/Shader.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Render/Shader.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Render/Shader.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Texture.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Texture.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Texture.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Texture.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Assets.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Assets.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Assets.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Assets.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Managers/CameraManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Managers/CameraManager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game2D/Actors/Coin.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game2D/Actors/Coin.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game2D/Actors/Paddle.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game2D/Actors/Paddle.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game2D/Scenes/Scene_GameOver.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game2D/Scenes/Scene_GameOver.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game2D/Scenes/Scene_Pong.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game2D/Scenes/Scene_Pong.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Actors/Ball.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Actors/Ball.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Actors/BowlingAlley.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Actors/BowlingAlley.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Actors/BoxGl.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Actors/BoxGl.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Actors/Pin.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Actors/Pin.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Scenes/Scene_Bowling.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Scenes/Scene_Bowling.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Scenes/Scene_Doom_Test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Scenes/Scene_Doom_Test.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/TestingGrounds/Actors/Cube.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/TestingGrounds/Actors/Cube.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/TestingGrounds/Scenes/Scene_Cube.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/TestingGrounds/Scenes/Scene_Cube.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/QuasarEngine.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/QuasarEngine.vcxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Resources/Models/100 Pin Bowling Room.obj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/QuasarEngine.vcxproj.filters" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/QuasarEngine.vcxproj.filters" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,24 +77,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "C/C++ Project.QuasarEngine.executor": "Debug",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "Assets-AutoLoader",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.C/C++",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;C/C++ Project.QuasarEngine.executor&quot;: &quot;Debug&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Assets-AutoLoader&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.C/C++&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="QuasarEngine" type="CppProject" factoryName="C++ Project">
       <configuration_1 setup="1">
@@ -152,6 +175,10 @@
       <workItem from="1774171258858" duration="7409000" />
       <workItem from="1774180016296" duration="2996000" />
       <workItem from="1774190658315" duration="18364000" />
+      <workItem from="1774253286529" duration="2676000" />
+      <workItem from="1774270005283" duration="2114000" />
+      <workItem from="1774276917125" duration="568000" />
+      <workItem from="1774277591460" duration="4429000" />
     </task>
     <servers />
   </component>
@@ -178,11 +205,6 @@
           <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
           <option name="timeStamp" value="3" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Assets.cpp</url>
-          <line>59</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

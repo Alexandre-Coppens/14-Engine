@@ -66,12 +66,12 @@ bool RendererGl::Initialize(Window& _rWindow)
 	//TODO: separate Engine asset files & Game asset files
 	//Load the NULL Shader & important to engine assets
 	Assets::LoadShader(this, "NULL.vert", "NULL.frag", "NULL", DrawOption::NULL_SHADER);
-	Assets::LoadTexture(*dynamic_cast<IRenderer*>(this), "Engine/.EngineAssets/Textures/NullShader.png", "NULLSHADER");
-	Assets::LoadTexture(*dynamic_cast<IRenderer*>(this), "Engine/.EngineAssets/Textures/NullTexture.png", "NULLTEXTURE");
+	Assets::LoadTexture(*dynamic_cast<IRenderer*>(this), "Engine/.EngineAssets/Textures/NullShader.png");
+	Assets::LoadTexture(*dynamic_cast<IRenderer*>(this), "Engine/.EngineAssets/Textures/NullTexture.png");
 	
-	Assets::LoadMesh("Engine/.EngineAssets/Models/Cube.obj", "Cube");
-	Assets::LoadMesh("Engine/.EngineAssets/Models/Sphere.obj", "Sphere");
-	Assets::LoadMesh("Engine/.EngineAssets/Models/Plane.obj", "Plane");
+	Assets::LoadMesh(TODO);
+	Assets::LoadMesh(TODO);
+	Assets::LoadMesh(TODO);
 
 	glPatchParameteri(GL_PATCH_VERTICES, 3);
 	

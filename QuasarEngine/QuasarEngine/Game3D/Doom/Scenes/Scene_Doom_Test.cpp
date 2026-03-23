@@ -33,9 +33,9 @@ void Scene_Doom_Test::Start()
     Assets::LoadShader(renderer, "SimpleTess.vert", "SimpleTess.tesc", "SimpleTess.tese", "SimpleTess.frag", "SimpleTess", TEXTURE);
 
     //LoadModels
-    Assets::LoadMesh("Resources/Models/Plane.obj", "Plane");
+    Assets::LoadMesh(TODO);
     //Load Textures
-    Assets::LoadTexture(*renderer, "Resources/Textures/Block.png", "Block");
+    Assets::LoadTexture(*renderer, "Resources/Textures/Block.png");
 
     //Load Actors
     Actor* player = AddActor(new DoomPlayer());

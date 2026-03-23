@@ -34,7 +34,7 @@ void Ball::Start()
     sphereCollider->setRadius(0.01f);
     sphereCollider->setFriction(0.1f);
     
-    mModel->setMesh(Assets::GetMesh("Ball"));
+    mModel->setMesh(Assets::GetMesh(TODO));
     mModel->getMesh()->AddTexture(Assets::GetTexture("Ball"));
     Actor::Start();
 }

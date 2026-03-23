@@ -35,7 +35,7 @@ void Scene_Cube::Start()
 	//LoadModels
 
 	//Load Textures
-	Assets::LoadTexture(*renderer, "Resources/Textures/Block.png", "Block");
+	Assets::LoadTexture(*renderer, "Resources/Textures/Block.png");
 
 	//Load Actors
 	Actor* cube = AddActor(new Cube("Cube", "Cube", "Block", "BasicModel"));

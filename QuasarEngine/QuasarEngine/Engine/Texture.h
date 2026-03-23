@@ -26,7 +26,7 @@ public:
 	Texture();
 	~Texture();
 
-	bool Load(IRenderer& _renderer, const std::string& _filename);
+	bool Load(IRenderer& _renderer, const std::string& _filePath);
 	bool LoadSdl(RendererSdl* _renderer, const std::string& _filename, SDL_Surface* _pSurface);
 	bool LoadGl(RendererGl* _renderer, const std::string& _filename, SDL_Surface* _pSurface);
 	void SetActive() const;

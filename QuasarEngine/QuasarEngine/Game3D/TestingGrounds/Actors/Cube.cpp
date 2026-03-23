@@ -23,7 +23,7 @@ Cube::~Cube()
 void Cube::Start()
 {
 	mModel = dynamic_cast<Model*>(AddComponent(new Model(this, mShaderName)));
-	mModel->setMesh(Assets::GetMesh(mModelName));
+	mModel->setMesh(Assets::GetMesh(TODO));
 	mModel->getMesh()->AddTexture(Assets::GetTexture(mTextureName));
 
 	mCollider = dynamic_cast<BoxCollider*>(AddComponent(new BoxCollider(this)));
