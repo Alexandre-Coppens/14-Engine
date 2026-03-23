@@ -23,6 +23,9 @@ public:
         int start;
         int end;
         int dictionaryTexture{ 0 };
+        
+        bool computed{ false };
+        float rotation;
     };
     
     static int verticesCount;
@@ -50,10 +53,11 @@ public:
 
     static int AddNewVertex(Vector2 pos);
     static void AddNewWall(Wall wall);
-    static void RemoveTile(int layer, Vector2 pos);
     static void AddToDictionary(int index, string name);
     static int CheckInDictionary(string n);
 
+    static void ComputeWall(Wall* wall);
+    
     static void ISCursorOnSomething(Vector2 position);
     
     static void SaveMap(string fileName);

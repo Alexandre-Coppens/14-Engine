@@ -69,6 +69,13 @@ int Terrain::CheckInDictionary(string name) {
 	dictionary[newInt] = name;
 	return newInt;
 }
+
+void Terrain::ComputeWall(Wall* wall)
+{
+	wall->rotation = Vector2LineAngle(Terrain::wallVertices[wall->start], Terrain::wallVertices[wall->end]) * RAD2DEG;
+	wall->computed = true;
+}
+
 void Terrain::ISCursorOnSomething(Vector2 position)
 {
 	for (auto v : wallVertices)
