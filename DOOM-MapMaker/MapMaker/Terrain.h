@@ -19,13 +19,6 @@ enum Gizmo
 class Terrain {
 private:
 public:
-    struct Tile {
-        Vector2 position{};
-        short layer{};
-        int rotation{};
-        int dictionaryTexture{};
-    };
-    
     struct Wall{
         int start;
         int end;
@@ -37,7 +30,6 @@ public:
     static vector<Wall> wallList;
 
     static map<int, string> dictionary;
-    static vector<vector<Tile>> terrain;
     
     static float gridMeterInPixels;
     static int   gridSubdivision;

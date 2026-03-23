@@ -50,12 +50,26 @@ void Engine::Update() {
 			if (selectedVertex == -1) selectedVertex = Terrain::nearIndice;
 			else
 			{
-				Terrain::Wall wall;
-				wall.start = selectedVertex;
-				wall.end = Terrain::nearIndice;
-				wall.dictionaryTexture = Terrain::CheckInDictionary(AssetList::GetNameAtPosition(currentTexture));
-				Terrain::AddNewWall(wall);
-				selectedVertex = wall.end;
+				//Check if the wall already exist
+				bool isAlreadyUsed = false;
+				for (Terrain::Wall wall : Terrain::wallList)
+				{
+					if (wall.start == selectedVertex && wall.end == Terrain::nearIndice || wall.start == Terrain::nearIndice && wall.end == selectedVertex) isAlreadyUsed = true;
+				}
+				
+				if (!isAlreadyUsed)
+				{
+					Terrain::Wall wall;
+					wall.start = selectedVertex;
+					wall.end = Terrain::nearIndice;
+					wall.dictionaryTexture = Terrain::CheckInDictionary(AssetList::GetNameAtPosition(currentTexture));
+					Terrain::AddNewWall(wall);
+					selectedVertex = wall.end;
+				}
+				else
+				{
+					selectedVertex = Terrain::nearIndice;
+				}
 			}
 		}
 		else if (selectedVertex == -1)
@@ -81,6 +95,19 @@ void Engine::Update() {
 			{
 			case Vertex:
 				Terrain::wallVertices.erase(Terrain::nearIndice);
+				
+				
+				Terrain::wallList.erase(
+					std::remove_if(
+						Terrain::wallList.begin(),
+						Terrain::wallList.end(),
+						[](const Terrain::Wall& w){
+									return w.start == Terrain::nearIndice || w.end == Terrain::nearIndice;
+							}
+						),
+				Terrain::wallList.end()
+				);
+				
 				if (Terrain::nearIndice == selectedVertex) selectedVertex = -1;
 				Terrain::nearIndice = -1;
 				break;
@@ -91,6 +118,7 @@ void Engine::Update() {
 				break;
 			}
 		}
+		else selectedVertex = -1;
 	}
 
 	//Change textures
@@ -104,8 +132,8 @@ void Engine::Update() {
 	}
 
 	//Save / Load
-	if((IsKeyDown(KEY_LEFT_CONTROL) && IsKeyPressed(KEY_S)) || IsGamepadButtonPressed(0, GAMEPAD_BUTTON_MIDDLE_RIGHT))Terrain::SaveMap("TowerPath");
-	if((IsKeyDown(KEY_LEFT_CONTROL) && IsKeyPressed(KEY_O)) || IsGamepadButtonPressed(0, GAMEPAD_BUTTON_MIDDLE_LEFT))Terrain::LoadMap("TowerPath");
+	if(IsKeyDown(KEY_LEFT_CONTROL) && IsKeyPressed(KEY_S))Terrain::SaveMap("Output_Map");
+	if(IsKeyDown(KEY_LEFT_CONTROL) && IsKeyPressed(KEY_O))Terrain::LoadMap("Output_Map");
 	if (IsKeyPressed(KEY_ESCAPE)) selectedVertex = -1;
 }
 
