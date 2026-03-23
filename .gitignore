@@ -7,6 +7,7 @@
 QuasarEngine/.vs
 !QuasarEngine/Debug
 !QuasarEngine/Release
+!QuasarEngine/QuasarEngine/Engine/.EngineAssets/Models
 
 # User-specific files
 *.rsuser

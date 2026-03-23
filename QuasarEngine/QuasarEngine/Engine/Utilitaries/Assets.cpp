@@ -1,5 +1,7 @@
 #include "Assets.h"
 #include <sstream>
+#include <iostream>
+#include <filesystem>
 
 #include "Engine/Render/RendererGl.h"
 
@@ -20,7 +22,163 @@ std::map<std::string, Mesh*> Assets::mMeshList = {};
 
 std::map<ShaderProgram*, std::vector<Model*>> Assets::mDrawOrder = {};
 
+std::vector<std::string> Assets::mSupportedShaderTypes = {".vert", ".frag", ".tesc", ".tese"};
+std::map<std::string, std::string> Assets::mGeneratedTextures = {};
+std::map<std::string, std::string> Assets::mGeneratedMeshes = {};
+std::map<std::string, std::string> Assets::mGeneratedShader = {};
 
+static std::string toUpper(std::string s) {
+	std::transform(s.begin(), s.end(), s.begin(),
+				   [](unsigned char c) { return std::toupper(c); });
+	return s;
+}
+
+void Assets::ScanFiles()
+{
+	std::string engineFile = "Engine/.EngineAssets";
+	std::string resourceFile = "Resources";
+	std::string outputPath = "Engine/.EngineGenerated";
+    
+	const std::filesystem::path engineFilePath{ engineFile };
+	const std::filesystem::path resourceFilePath{ resourceFile };
+	std::vector<std::filesystem::path> assetsPaths {resourceFilePath, engineFilePath};
+
+	for (const auto& path : assetsPaths)
+	{
+		for (const auto& entry : std::filesystem::directory_iterator(path)) {
+			Log::Info("PATH::" + entry.path().string());
+
+			const auto filenameStr = entry.path().filename().string();
+
+			if (entry.is_directory()) {
+				std::cout << "dir:  " << filenameStr << '\n';
+				Assets::RecursiveScan(path.string() + "/" + filenameStr);
+			}
+		}
+	}
+	WriteAssetsOnFile(outputPath);
+}
+
+void Assets::RecursiveScan(std::string _path)
+{
+	const std::filesystem::path resourcePath{ _path };
+
+	for (const auto& entry : std::filesystem::directory_iterator(resourcePath)) {
+		const auto filenameStr = entry.path().filename().string();
+		
+		if (entry.is_directory()) {
+			Log::Info("PATH::" + entry.path().string());
+			Assets::RecursiveScan(_path + "/" + filenameStr);
+			continue;
+		}
+		
+		Log::Info("FILE::" + filenameStr);
+		const auto fileStemStr = entry.path().stem().string();
+		const auto fileExtensionStr = entry.path().extension().string();
+
+		std::cout << "      -file: " << filenameStr << '\n';
+		if (fileExtensionStr == ".png") {
+			mGeneratedTextures[_path + "/" + filenameStr] = toUpper(fileExtensionStr.substr(1)) + "_" + Clean(fileStemStr);
+		}
+		else if (fileExtensionStr == ".obj") {
+			mGeneratedMeshes[_path + "/" + filenameStr] = toUpper(fileExtensionStr.substr(1)) + "_" + Clean(fileStemStr);
+		}
+		else if (find(mSupportedShaderTypes.begin(), mSupportedShaderTypes.end(), fileExtensionStr) != mSupportedShaderTypes.end()) {
+			mGeneratedShader[_path + "/" + filenameStr] = toUpper(fileExtensionStr.substr(1)) + "_" + Clean(fileStemStr);
+		}
+		else {
+			Log::Info("Assets::Generation - " + fileExtensionStr + " not supported.");
+		}
+	}
+}
+
+std::string Assets::Clean(std::string _fileName)
+{
+	std::string result;
+	std::vector<char> charList {'.','-',' '};
+	for (char& c : _fileName)
+	{
+		if (std::find(charList.begin(), charList.end(), c) != charList.end()) 
+			result += '_';
+		else result += c;
+	}
+	return result;
+}
+
+void Assets::WriteAssetsOnFile(std::string _filePath)
+{ 
+	std::ofstream file;
+	file.open( _filePath + "/" + "Generated.h");
+	file << "#pragma once \n";
+	file << "//Do not write anything in it. Auto-Generated in Assets.cpp.\n";
+	
+	//Create ENUM Part
+	file << "\n";
+	file << "enum GENERATED_TEXTURE\n";
+	file << "{\n";
+	for (auto it = mGeneratedTextures.begin(); it != mGeneratedTextures.end(); it++)
+	{
+		file << "    " + it->second +",\n";
+	}
+	file << "};\n";
+	
+	file << "\n";
+	file << "enum GENERATED_MODELS\n";
+	file << "{\n";
+	for (auto it = mGeneratedMeshes.begin(); it != mGeneratedMeshes.end(); it++)
+	{
+		file << "    " + it->second +",\n";
+	}
+	file << "};\n";
+	
+	file << "\n";
+	file << "enum GENERATED_SHADERS\n";
+	file << "{\n";
+	for (auto it = mGeneratedShader.begin(); it != mGeneratedShader.end(); it++)
+	{
+		file << "    " + it->second +",\n";
+	}
+	file << "};\n";
+	
+	//Create TRANSLATION Part
+	file << "\n";
+	file << "static std::string getTexturePath(GENERATED_TEXTURE _texture)\n";
+	file << "{\n";
+	file << "   switch (_texture)\n";
+	file << "	{\n";
+	for (auto it = mGeneratedTextures.begin(); it != mGeneratedTextures.end(); it++)
+	{
+		file << "   case " + it->second +":  return" + '"' + it->first + '"' + ";\n";
+	}
+	file << "	}\n";
+	file << "};\n";
+	
+	file << "\n";
+	file << "static std::string getTexturePath(GENERATED_MODELS _model)\n";
+	file << "{\n";
+	file << "   switch (_model)\n";
+	file << "	{\n";
+	for (auto it = mGeneratedMeshes.begin(); it != mGeneratedMeshes.end(); it++)
+	{
+		file << "   case " + it->second +":  return" + '"'  + it->first + '"'  + ";\n";
+	}
+	file << "	}\n";
+	file << "};\n";
+	
+	file << "\n";
+	file << "static std::string getTexturePath(GENERATED_SHADERS _shader)\n";
+	file << "{\n";
+	file << "   switch (_shader)\n";
+	file << "	{\n";
+	for (auto it = mGeneratedShader.begin(); it != mGeneratedShader.end(); it++)
+	{
+		file << "   case " + it->second +":  return" + '"'  + it->first + '"'  + ";\n";
+	}
+	file << "	}\n";
+	file << "};\n";
+	
+	file.close();
+}
 
 Texture* Assets::LoadTexture(IRenderer& _pRenderer, const std::string& _pFileName, const std::string& _pName)
 {
@@ -197,10 +355,9 @@ Mesh* Assets::LoadMeshFromFile(const std::string& _pFileName)
 	return new Mesh(vertices);
 }
 
-Mesh* Assets::GetMesh(const std::string _name)
+Mesh* Assets::GetMesh(const GENERATED_MODELS _models)
 {
-	if (mMeshList.find(_name) != mMeshList.end()) return mMeshList[_name];
-	return nullptr;
+	return mMeshList[]; FINISH THE TRANSLATION ENUM -> MESH
 }
 
 void Assets::Clear()

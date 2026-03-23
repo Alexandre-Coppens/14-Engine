@@ -1356,6 +1356,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Engine\.EngineGenerated\Generated.h" />
     <ClInclude Include="Engine\.Prefabs\Object.h" />
     <ClInclude Include="Engine\2D\Animation2D.h" />
     <ClInclude Include="Engine\2D\BoxCollider2D.h" />
@@ -1435,7 +1436,7 @@
     <Content Include="Resources\MegaAnim\05_megaman.png" />
     <Content Include="Resources\MegaAnim\06_megaman.png" />
     <Content Include="Resources\MegaAnim\07_megaman.png" />
-    <Content Include="Resources\Models\100 Pin Bowling Room.obj" />
+    <Content Include="Resources\Models\100_Pin_Bowling_Room.obj" />
     <Content Include="Resources\Models\Ball.obj" />
     <Content Include="Resources\Models\Bowling\Bowling_Alley_Alley.mtl" />
     <Content Include="Resources\Models\Bowling\Bowling_Alley_Alley.obj" />
