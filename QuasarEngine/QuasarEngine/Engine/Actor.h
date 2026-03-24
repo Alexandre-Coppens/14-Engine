@@ -79,5 +79,4 @@ public:
 	virtual	void	Destroy();
 
 	virtual Component* AddComponent(Component* _c);
-	void RemoveComponents();
 };

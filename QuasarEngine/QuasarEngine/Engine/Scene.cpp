@@ -102,14 +102,15 @@ void Scene::DeleteActor(Actor* actor)
 
 void Scene::KillActors()
 {
-	for (Actor* a : mDestroyActorList)
+	while (!mDestroyActorList.empty())
 	{
-		if (a != nullptr)
+		if (mDestroyActorList[0] != nullptr)
 		{
-			a->Destroy();
-			delete a;
-			a = nullptr;
+			mDestroyActorList[0]->Destroy();
+			delete mDestroyActorList[0];
+			mDestroyActorList[0] = nullptr;
 		}
+		mDestroyActorList.erase(mDestroyActorList.begin());
 	}
 	mDestroyActorList.clear();
 }

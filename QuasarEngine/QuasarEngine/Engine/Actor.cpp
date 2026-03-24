@@ -36,11 +36,13 @@ void Actor::Update(const float _deltaTime)
 void Actor::Destroy()
 {
 	mScene = nullptr;
-	for (const auto component : mComponentList)
+	while (!mComponentList.empty())
 	{
-		component->Destroy();
+		mComponentList[0]->Destroy();
+		delete mComponentList[0];
+		mComponentList[0] = nullptr;
+		mComponentList.erase(mComponentList.begin());
 	}
-	RemoveComponents();
 	DEBUGRemoveClass("Actor");
 }
 
@@ -55,14 +57,4 @@ Component* Actor::AddComponent(Component* _component)
 	mComponentList.insert(it, _component);
 	_component->OnStart();
 	return _component;
-}
-
-void Actor::RemoveComponents()
-{
-	for (Component* component : mComponentList)
-	{
-		delete component;
-		component = nullptr;
-	}
-	mComponentList.clear();
 }
