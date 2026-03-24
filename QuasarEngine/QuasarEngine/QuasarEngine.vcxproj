@@ -94,7 +94,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)QuasarEngine; $(SolutionDir)QuasarEngine\Dependencies\GL\SDL\include; $(SolutionDir)QuasarEngine\Dependencies\glew-2.2.0-win32\glew-2.2.0\include\GL; $(SolutionDir)QuasarEngine\Dependencies\SDL2_image-2.8.2\include; %(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/QuasarEngine;$(SolutionDir)/QuasarEngine/Dependencies/GL/SDL/include;$(SolutionDir)/QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;$(SolutionDir)/QuasarEngine/Dependencies/SDL2_image-2.8.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -115,7 +115,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)/QuasarEngine/Dependencies/SDL2_image-2.8.2\lib\x86;$(SolutionDir)/QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\lib\Release\Win32;$(SolutionDir)/QuasarEngine/Dependencies/GL/SDL/lib/x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>%glu32.lib;%glew32.lib;%opengl32.lib;%SDL2.lib;%SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Shell32.lib;glu32.lib;glew32.lib;opengl32.lib;SDL2.lib;SDL2main.lib;SDL2_image.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -1251,7 +1251,7 @@
       <EnablePREfast>false</EnablePREfast>
       <OmitFramePointers>false</OmitFramePointers>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>H:\Github\14-Engine\QuasarEngine\QuasarEngine; H:\Github\14-Engine\QuasarEngine\QuasarEngine\Dependencies\GL\SDL\include; H:\Github\14-Engine\QuasarEngine\QuasarEngine\Dependencies\glew-2.2.0-win32\glew-2.2.0\include\GL; H:\Github\14-Engine\QuasarEngine\QuasarEngine\Dependencies\SDL2_image-2.8.2\include; </AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)QuasarEngine;$(SolutionDir)QuasarEngine/Dependencies/GL/SDL/include;$(SolutionDir)QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;$(SolutionDir)QuasarEngine/Dependencies/SDL2_image-2.8.2\include;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="Engine\Utilitaries\Managers\CollisionManager.cpp" />
@@ -1331,7 +1331,7 @@
       <EnablePREfast>false</EnablePREfast>
       <OmitFramePointers>false</OmitFramePointers>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>H:\Github\14-Engine\QuasarEngine\QuasarEngine; H:\Github\14-Engine\QuasarEngine\QuasarEngine\Dependencies\GL\SDL\include; H:\Github\14-Engine\QuasarEngine\QuasarEngine\Dependencies\glew-2.2.0-win32\glew-2.2.0\include\GL; H:\Github\14-Engine\QuasarEngine\QuasarEngine\Dependencies\SDL2_image-2.8.2\include; </AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)QuasarEngine;$(SolutionDir)QuasarEngine/Dependencies/GL/SDL/include;$(SolutionDir)QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;$(SolutionDir)QuasarEngine/Dependencies/SDL2_image-2.8.2\include;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="Engine\Utilitaries\Time.cpp" />
@@ -1356,7 +1356,6 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Engine\.EngineGenerated\Generated.h" />
     <ClInclude Include="Engine\.Prefabs\Object.h" />
     <ClInclude Include="Engine\2D\Animation2D.h" />
     <ClInclude Include="Engine\2D\BoxCollider2D.h" />
@@ -1436,7 +1435,7 @@
     <Content Include="Resources\MegaAnim\05_megaman.png" />
     <Content Include="Resources\MegaAnim\06_megaman.png" />
     <Content Include="Resources\MegaAnim\07_megaman.png" />
-    <Content Include="Resources\Models\100_Pin_Bowling_Room.obj" />
+    <Content Include="Resources\Models\100 Pin Bowling Room.obj" />
     <Content Include="Resources\Models\Ball.obj" />
     <Content Include="Resources\Models\Bowling\Bowling_Alley_Alley.mtl" />
     <Content Include="Resources\Models\Bowling\Bowling_Alley_Alley.obj" />

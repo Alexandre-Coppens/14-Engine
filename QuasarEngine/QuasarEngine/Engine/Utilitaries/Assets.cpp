@@ -18,18 +18,18 @@ std::string Assets::outputPath   = "Engine/.EngineGenerated";
 
 std::vector<std::string> Assets::mSupportedShaderTypes = {".vert", ".frag", ".tesc", ".tese"};
 std::map<std::string, std::string> Assets::mGeneratedTextures = {};
-std::map<std::string, std::string> Assets::mGeneratedMeshes = {};
-std::map<std::string, std::string> Assets::mGeneratedShader = {};
+std::map<std::string, std::string> Assets::mGeneratedMeshes	  = {};
+std::map<std::string, std::string> Assets::mGeneratedShader   = {};
 
-std::map<GENERATED_TEXTURE,	Texture*>	Assets::mLoadedTextures;
-std::map<GENERATED_MODELS,	Mesh*>		Assets::mLoadedMeshes;
-std::map<GENERATED_SHADERS,	Shader*>	Assets::mLoadedShaders;
+std::map<GENERATED_TEXTURE,	Texture*>	Assets::mLoadedTextures = {};
+std::map<GENERATED_MESHES,	Mesh*>		Assets::mLoadedMeshes	= {};
+std::map<GENERATED_SHADERS,	Shader*>	Assets::mLoadedShaders	= {};
 
 std::map<std::string, int> Assets::mTextureListUses = {};
 std::map<std::string, ShaderProgram*> Assets::mShaderProgramList = {};
 std::map<ShaderProgram*, std::vector<Model*>> Assets::mDrawOrder = {};
 
-
+IRenderer* Assets::mRenderer;
 
 
 
@@ -129,7 +129,7 @@ void Assets::WriteAssetsOnFile(std::string _filePath)
 	file << "};\n";
 	
 	file << "\n";
-	file << "enum GENERATED_MODELS\n";
+	file << "enum GENERATED_MESHES\n";
 	file << "{\n";
 	for (auto it = mGeneratedMeshes.begin(); it != mGeneratedMeshes.end(); it++)
 	{
@@ -191,7 +191,7 @@ void Assets::WriteAssetsOnFile(std::string _filePath)
 //Returns the pointer of the asked for Texture
 Texture* Assets::GetTexture(const GENERATED_TEXTURE& _texture)
 {
-	if (std::find(mLoadedTextures.begin(), mLoadedTextures.end(), _texture) == mLoadedTextures.end())
+	if (mLoadedTextures.count(_texture) == 0)
 	{
 		mLoadedTextures[_texture] = LoadTexture(getTexturePath(_texture));
 	}
@@ -205,7 +205,7 @@ std::vector<Texture*> Assets::GetTextures(const std::vector<GENERATED_TEXTURE>& 
 
 	for (auto t = _searchList.begin(); t != _searchList.end(); t++)
 	{
-		if (std::find(mLoadedTextures.begin(), mLoadedTextures.end(), t) != mLoadedTextures.end())
+		if (mLoadedTextures.count(*t) == 0)
 		{
 			mLoadedTextures[*t] = LoadTexture(getTexturePath(*t));
 		}
@@ -217,16 +217,16 @@ std::vector<Texture*> Assets::GetTextures(const std::vector<GENERATED_TEXTURE>& 
 
 ShaderProgram* Assets::GetShaderProgram(const std::string _shaderName)
 {
-	if (std::find(mShaderProgramList.begin(), mShaderProgramList.end(), _shaderName) != mShaderProgramList.end())
+	if (mShaderProgramList.count(_shaderName) == 0)
 	{
-		return mShaderProgramList["NULLSHADER"];
+		return mShaderProgramList["NULL_SHADER"];
 	}
 	return mShaderProgramList[(_shaderName)];
 }
 
-Mesh* Assets::GetMesh(const GENERATED_MODELS _mesh)
+Mesh* Assets::GetMesh(const GENERATED_MESHES _mesh)
 {
-	if (std::find(mLoadedMeshes.begin(), mLoadedMeshes.end(), _mesh) != mLoadedMeshes.end())
+	if (mLoadedMeshes.count(_mesh) == 0)
 	{
 		mLoadedMeshes[_mesh] = LoadMeshFromFile(getMeshPath(_mesh));
 	}
@@ -250,20 +250,21 @@ Texture* Assets::LoadTextureFromFile(const std::string& _pFileName)
 }
 
 //TODO: Add the shaderPrograms to the Generated File
-ShaderProgram* Assets::LoadShader(const GENERATED_SHADERS _vertexFile, const GENERATED_SHADERS _fragmentFile,const std::string _name, DrawOption _option)
+
+ShaderProgram* Assets::LoadShader(const GENERATED_SHADERS _vertexFile, const GENERATED_SHADERS _fragmentFile, const std::string& _name, DrawOption _option)
 {
 	ShaderProgram* shader = new ShaderProgram(_option);
 	Shader* mTempVertex = nullptr;
 	Shader* mTempFragment = nullptr;
 
-	if (std::find(mLoadedShaders.begin(), mLoadedShaders.end(), _vertexFile) != mLoadedShaders.end())
+	if (mLoadedShaders.count(_vertexFile) == 0)
 	{
 		mTempVertex = new Shader();
 		mTempVertex->Load(getShaderPath(_vertexFile), ShaderType::VERTEX);
 		mLoadedShaders[_vertexFile] = mTempVertex;
 	}
 
-	if (std::find(mLoadedShaders.begin(), mLoadedShaders.end(), _fragmentFile) != mLoadedShaders.end())
+	if (mLoadedShaders.count(_fragmentFile) == 0)
 	{
 		mTempFragment = new Shader();
 		mTempFragment->Load(getShaderPath(_fragmentFile), ShaderType::FRAGMENT);
@@ -278,7 +279,7 @@ ShaderProgram* Assets::LoadShader(const GENERATED_SHADERS _vertexFile, const GEN
 	return mShaderProgramList[_name];
 }
 
-ShaderProgram* Assets::LoadShader(const GENERATED_SHADERS _vertexFile, const GENERATED_SHADERS _tesselationControlFile, const GENERATED_SHADERS _tesselationEvaluationFile, const GENERATED_SHADERS _fragmentFile,const std::string _name, DrawOption _option)
+ShaderProgram* Assets::LoadShader(const GENERATED_SHADERS _vertexFile, const GENERATED_SHADERS _tesselationControlFile, const GENERATED_SHADERS _tesselationEvaluationFile, const GENERATED_SHADERS _fragmentFile, const std::string& _name, DrawOption _option)
 {
 	ShaderProgram* shader = new ShaderProgram(_option);
 	Shader* mTempVertex = nullptr;
@@ -286,28 +287,28 @@ ShaderProgram* Assets::LoadShader(const GENERATED_SHADERS _vertexFile, const GEN
 	Shader* mTempTessEval = nullptr;
 	Shader* mTempFragment = nullptr;
 
-	if (std::find(mLoadedShaders.begin(), mLoadedShaders.end(), _vertexFile) == mLoadedShaders.end())
+	if (mLoadedShaders.count(_vertexFile) == 0)
 	{
 		mTempVertex = new Shader();
 		mTempVertex->Load(getShaderPath(_vertexFile), ShaderType::VERTEX);
 		mLoadedShaders[_vertexFile] = mTempVertex;
 	}
 
-	if (std::find(mLoadedShaders.begin(), mLoadedShaders.end(), _fragmentFile) == mLoadedShaders.end())
+	if (mLoadedShaders.count(_fragmentFile) == 0)
 	{
 		mTempFragment = new Shader();
 		mTempFragment->Load(getShaderPath(_fragmentFile), ShaderType::FRAGMENT);
 		mLoadedShaders[_fragmentFile] = mTempFragment;
 	}
 
-	if (std::find(mLoadedShaders.begin(), mLoadedShaders.end(), _tesselationControlFile) == mLoadedShaders.end())
+	if (mLoadedShaders.count(_tesselationControlFile) == 0)
 	{
 		mTempTessControl = new Shader();
 		mTempTessControl->Load(getShaderPath(_tesselationControlFile), ShaderType::TESSELLATION_CONTROL);
 		mLoadedShaders[_tesselationControlFile] = mTempTessControl;
 	}
 
-	if (std::find(mLoadedShaders.begin(), mLoadedShaders.end(), _tesselationEvaluationFile) == mLoadedShaders.end())
+	if (mLoadedShaders.count(_tesselationEvaluationFile) == 0)
 	{
 		mTempTessEval = new Shader();
 		mTempTessEval->Load(getShaderPath(_tesselationEvaluationFile), ShaderType::TESSELLATION_EVAL);

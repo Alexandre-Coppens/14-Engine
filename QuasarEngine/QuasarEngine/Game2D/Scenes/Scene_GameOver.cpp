@@ -13,18 +13,6 @@ Scene_GameOver::Scene_GameOver(std::string _name) :
 void Scene_GameOver::Start()
 {
 	Scene::Start();
-	
-	RendererSdl* sdl = dynamic_cast<RendererSdl*>(pRenderer);
-	Assets::LoadTexture(*sdl, "Resources/pokeball.png");
-	Assets::LoadTexture(*sdl, "Resources/Block.png");
-	Assets::LoadTexture(*sdl, "Resources/MegaAnim/00_megaman.png");
-	Assets::LoadTexture(*sdl, "Resources/MegaAnim/01_megaman.png");
-	Assets::LoadTexture(*sdl, "Resources/MegaAnim/02_megaman.png");
-	Assets::LoadTexture(*sdl, "Resources/MegaAnim/03_megaman.png");
-	Assets::LoadTexture(*sdl, "Resources/MegaAnim/04_megaman.png");
-	Assets::LoadTexture(*sdl, "Resources/MegaAnim/05_megaman.png");
-	Assets::LoadTexture(*sdl, "Resources/MegaAnim/06_megaman.png");
-	Assets::LoadTexture(*sdl, "Resources/MegaAnim/07_megaman.png");
 
 	Actor* player = AddActor(new Paddle());
 	Actor* box1 = AddActor(new Box());

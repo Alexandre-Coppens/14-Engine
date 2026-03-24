@@ -15,7 +15,7 @@ BoxCollider::BoxCollider(Actor* _pOwner):
 	mColliderType = BOX;
 	mTransform = new Transform3D(pOwner, LOCAL);
 	mDebugModel = new Model(pOwner, mTransform, "Wireframe");
-	mDebugModel->setMesh(Assets::GetMesh(TODO));
+	mDebugModel->setMesh(Assets::GetMesh(OBJ_cube));
 	setDebugColor(Vector4(1.0f, 1.0f, 0.0f, 1.0f));
 }
 

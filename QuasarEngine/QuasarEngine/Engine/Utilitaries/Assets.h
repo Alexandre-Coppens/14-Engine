@@ -32,7 +32,7 @@ private:
 
 	//Loaded Asset List
 	static std::map<GENERATED_TEXTURE,	Texture*>	mLoadedTextures;
-	static std::map<GENERATED_MODELS,	Mesh*>		mLoadedMeshes;
+	static std::map<GENERATED_MESHES,	Mesh*>		mLoadedMeshes;
 	static std::map<GENERATED_SHADERS,	Shader*>	mLoadedShaders;
 
 	//Used Assets
@@ -57,13 +57,13 @@ public:
 	static Texture* GetTexture(const GENERATED_TEXTURE& _texture);
 	static std::vector<Texture*> GetTextures(const std::vector<GENERATED_TEXTURE>& _searchList);
 	static ShaderProgram* GetShaderProgram(const std::string _name);
-	static Mesh* GetMesh(GENERATED_MODELS _mesh);
+	static Mesh* GetMesh(GENERATED_MESHES _mesh);
 
 	static Texture* LoadTexture(const std::string& _filePath);
-	static ShaderProgram* LoadShader(GENERATED_SHADERS _vertexFile, GENERATED_SHADERS _fragmentFile, std::string _name, DrawOption
+	static ShaderProgram* LoadShader(GENERATED_SHADERS _vertexFile, GENERATED_SHADERS _fragmentFile, const std::string& _name, DrawOption
 	                                 _option);
 	static ShaderProgram* LoadShader(GENERATED_SHADERS _vertexFile, GENERATED_SHADERS _tesselationControlFile, GENERATED_SHADERS
-	                                 _tesselationEvaluationFile, GENERATED_SHADERS _fragmentFile, std::string _name, DrawOption _option);
+	                                 _tesselationEvaluationFile, GENERATED_SHADERS _fragmentFile, const std::string& _name, DrawOption _option);
 	
 	static void Clear();
 };

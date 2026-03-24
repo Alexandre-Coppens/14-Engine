@@ -32,7 +32,7 @@ void Shader::Load(std::string _filePath, ShaderType _shaderType)
 	myFile.open(_filePath);
 	if (myFile.fail())
 	{
-		Log::Error(LogType::Video, "Error - failed to open " + myFile.);
+		Log::Error(LogType::Video, "Error - failed to open " + _filePath);
 	}
 
 	std::string fileText = "";
@@ -79,7 +79,7 @@ void Shader::Load(std::string _filePath, ShaderType _shaderType)
 	
 	if (ValidateCompilation(mID))
 	{
-		Log::Info("Shader - " +  + " successfully loaded with ID: " + std::to_string(mID) );
+		Log::Info("Shader - " + _filePath  + " successfully loaded with ID: " + std::to_string(mID) );
 	}
 }
 

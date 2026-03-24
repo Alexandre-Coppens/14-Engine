@@ -7,12 +7,12 @@
 #include "Engine/3D/Mesh.h"
 #include "Engine/Utilitaries/Time.h"
 
-Cube::Cube(std::string _name, std::string _model, std::string _texture, std::string _shader) :
+Cube::Cube(std::string _name, std::string _model, GENERATED_TEXTURE _texture, std::string _shader) :
 	Actor()
 {
 	mName = _name;
 	mModelName = _model;
-	mTextureName = _texture;
+	mTexture = _texture;
 	mShaderName = _shader;
 }
 
@@ -23,8 +23,8 @@ Cube::~Cube()
 void Cube::Start()
 {
 	mModel = dynamic_cast<Model*>(AddComponent(new Model(this, mShaderName)));
-	mModel->setMesh(Assets::GetMesh(TODO));
-	mModel->getMesh()->AddTexture(Assets::GetTexture(mTextureName));
+	mModel->setMesh(Assets::GetMesh(OBJ_cube));
+	mModel->getMesh()->AddTexture(Assets::GetTexture(mTexture));
 
 	mCollider = dynamic_cast<BoxCollider*>(AddComponent(new BoxCollider(this)));
 	dynamic_cast<BoxCollider*>(mCollider)->setSize(1.0f);

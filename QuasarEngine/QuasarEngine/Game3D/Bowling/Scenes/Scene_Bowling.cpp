@@ -28,58 +28,12 @@ void Scene_Bowling::Start()
 		return;
 	}
 	
-	//TODO: Auto load assets in folders
-	
 	//Load Shaders
-	Assets::LoadShader(renderer, "BasicModel.vert", "BasicModel.frag", "BasicModel", TEXTURE);
-	Assets::LoadShader(renderer, "BasicModel.vert", "Normal.frag", "Normal", TEXTURE);
-	Assets::LoadShader(renderer, "BasicModel.vert", "Transparency.frag", "Transparency", TEXTURE);
-	Assets::LoadShader(renderer, "Simple.vert", "Simple.frag", "Simple", DrawOption::COLOR);
-	Assets::LoadShader(renderer, "Simple.vert", "Simple.frag", "WireFrame", DrawOption::WIREFRAME);
-
-	//LoadModels
-	Assets::LoadMesh(TODO);
-	Assets::LoadMesh(TODO);
-	Assets::LoadMesh(TODO);
-	Assets::LoadMesh(TODO);
-	Assets::LoadMesh(TODO);
-	Assets::LoadMesh(TODO);
-	Assets::LoadMesh(TODO);
-	Assets::LoadMesh(TODO);
-	Assets::LoadMesh(TODO);
-	Assets::LoadMesh(TODO);
-	Assets::LoadMesh(TODO);
-	Assets::LoadMesh(TODO);
-	Assets::LoadMesh(TODO);
-	Assets::LoadMesh(TODO);
-	Assets::LoadMesh(TODO);
-	Assets::LoadMesh(TODO);
-	Assets::LoadMesh(TODO);
-	Assets::LoadMesh(TODO);
-	Assets::LoadMesh(TODO);
-	Assets::LoadMesh(TODO);
-	
-	//Load Textures
-	Assets::LoadTexture(*renderer, "Resources/Textures/Block.png");
-	Assets::LoadTexture(*renderer, "Resources/Textures/Pin.png");
-	Assets::LoadTexture(*renderer, "Resources/Textures/Ball.png");
-	Assets::LoadTexture(*renderer, "Resources/Textures/Bowling/Bowling_Alley_Rails.png");
-	Assets::LoadTexture(*renderer, "Resources/Textures/Bowling/Bowling_Alley_Walls.png");
-	Assets::LoadTexture(*renderer, "Resources/Textures/Bowling/Bowling_Alley_Carpet.png");
-	Assets::LoadTexture(*renderer, "Resources/Textures/Bowling/Bowling_Alley_Panel.png");
-	Assets::LoadTexture(*renderer, "Resources/Textures/Bowling/Bowling_Alley_Alley.png");
-	Assets::LoadTexture(*renderer, "Resources/Textures/Bowling/Bowling_Alley_GutterTop.png");
-	Assets::LoadTexture(*renderer, "Resources/Textures/Bowling/Bowling_Alley_GutterBot.png");
-	Assets::LoadTexture(*renderer, "Resources/Textures/Bowling/Bowling_Alley_Back.png");
-	Assets::LoadTexture(*renderer, "Resources/Textures/Bowling/Bowling_Alley_BallReturn.png");
-	Assets::LoadTexture(*renderer, "Resources/Textures/Bowling/Bowling_Alley_Balls.png");
-	Assets::LoadTexture(*renderer, "Resources/Textures/Bowling/Bowling_Alley_BallsStandee.png");
-	Assets::LoadTexture(*renderer, "Resources/Textures/Bowling/Bowling_Alley_Bench.png");
-	Assets::LoadTexture(*renderer, "Resources/Textures/Bowling/Bowling_Alley_Chairs.png");
-	Assets::LoadTexture(*renderer, "Resources/Textures/Bowling/Bowling_Alley_Decals.png");
-	Assets::LoadTexture(*renderer, "Resources/Textures/Bowling/Bowling_Alley_TableTop.png");
-	Assets::LoadTexture(*renderer, "Resources/Textures/Bowling/Bowling_Alley_TableBot.png");
-	Assets::LoadTexture(*renderer, "Resources/Textures/Bowling/Bowling_Alley_Trash.png");
+	Assets::LoadShader(VERT_BasicModel, FRAG_BasicModel, "BasicModel", TEXTURE);
+	Assets::LoadShader(VERT_BasicModel, FRAG_Normal, "Normal", TEXTURE);
+	Assets::LoadShader(VERT_BasicModel, FRAG_Transparency, "Transparency", TEXTURE);
+	Assets::LoadShader(VERT_Simple, FRAG_Simple, "Simple", DrawOption::COLOR);
+	Assets::LoadShader(VERT_Simple, FRAG_Simple, "Wireframe", DrawOption::WIREFRAME);
 
 	//Load Actors
 	Actor* alley = AddActor(new BowlingAlley());

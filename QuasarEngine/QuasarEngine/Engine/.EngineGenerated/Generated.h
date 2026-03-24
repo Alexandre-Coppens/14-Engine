@@ -42,12 +42,11 @@ enum GENERATED_TEXTURE
     PNG_pokeball,
 };
 
-enum GENERATED_MODELS
+enum GENERATED_MESHES
 {
     OBJ_Plane,
     OBJ_cube,
     OBJ_sphere,
-    OBJ_100_Pin_Bowling_Room,
     OBJ_Ball,
     OBJ_Bowling_Alley_Alley,
     OBJ_Bowling_Alley_Back,
@@ -134,14 +133,13 @@ static std::string getTexturePath(GENERATED_TEXTURE _texture)
 	}
 };
 
-static std::string getMeshPath(GENERATED_MODELS _model)
+static std::string getMeshPath(GENERATED_MESHES _mesh)
 {
-   switch (_model)
+   switch (_mesh)
 	{
    case OBJ_Plane:  return"Engine/.EngineAssets/Models/Plane.obj";
    case OBJ_cube:  return"Engine/.EngineAssets/Models/cube.obj";
    case OBJ_sphere:  return"Engine/.EngineAssets/Models/sphere.obj";
-   case OBJ_100_Pin_Bowling_Room:  return"Resources/Models/100_Pin_Bowling_Room.obj";
    case OBJ_Ball:  return"Resources/Models/Ball.obj";
    case OBJ_Bowling_Alley_Alley:  return"Resources/Models/Bowling/Bowling_Alley_Alley.obj";
    case OBJ_Bowling_Alley_Back:  return"Resources/Models/Bowling/Bowling_Alley_Back.obj";

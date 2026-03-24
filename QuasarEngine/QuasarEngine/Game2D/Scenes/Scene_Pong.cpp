@@ -23,24 +23,6 @@ void Scene_Pong::Start()
 	Scene::Start();
 
 	RendererSdl* sdl = dynamic_cast<RendererSdl*>(pRenderer);
-	Assets::LoadTexture(*sdl, "Resources/pokeball.png");
-	Assets::LoadTexture(*sdl, "Resources/Block.png");
-	Assets::LoadTexture(*sdl, "Resources/MegaAnim/00_megaman.png");
-	Assets::LoadTexture(*sdl, "Resources/MegaAnim/01_megaman.png");
-	Assets::LoadTexture(*sdl, "Resources/MegaAnim/02_megaman.png");
-	Assets::LoadTexture(*sdl, "Resources/MegaAnim/03_megaman.png");
-	Assets::LoadTexture(*sdl, "Resources/MegaAnim/04_megaman.png");
-	Assets::LoadTexture(*sdl, "Resources/MegaAnim/05_megaman.png");
-	Assets::LoadTexture(*sdl, "Resources/MegaAnim/06_megaman.png");
-	Assets::LoadTexture(*sdl, "Resources/MegaAnim/07_megaman.png");
-
-	Assets::LoadTexture(*sdl, "Resources/CoinAnim/Coin-01.png");
-	Assets::LoadTexture(*sdl, "Resources/CoinAnim/Coin-02.png");
-	Assets::LoadTexture(*sdl, "Resources/CoinAnim/Coin-03.png");
-	Assets::LoadTexture(*sdl, "Resources/CoinAnim/Coin-04.png");
-	Assets::LoadTexture(*sdl, "Resources/CoinAnim/Coin-05.png");
-	Assets::LoadTexture(*sdl, "Resources/CoinAnim/Coin-06.png");
-
 
 	Actor* player = AddActor(new Paddle());
 

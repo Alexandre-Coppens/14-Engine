@@ -29,17 +29,12 @@ void Scene_Cube::Start()
 	}
 
 	//Load Shaders
-	Assets::LoadShader(renderer, "BasicModel.vert", "BasicModel.frag", "BasicModel", TEXTURE);
-	Assets::LoadShader(renderer, "Simple.vert", "Simple.frag", "Wireframe", WIREFRAME);
-	
-	//LoadModels
-
-	//Load Textures
-	Assets::LoadTexture(*renderer, "Resources/Textures/Block.png");
+	Assets::LoadShader(VERT_BasicModel, FRAG_BasicModel, "BasicModel", TEXTURE);
+	Assets::LoadShader(VERT_Simple, FRAG_Simple, "WireFrame", DrawOption::WIREFRAME);
 
 	//Load Actors
-	Actor* cube = AddActor(new Cube("Cube", "Cube", "Block", "BasicModel"));
-	Actor* cube1 = AddActor(new Cube("Cube1", "Cube", "Block", "BasicModel"));
+	Actor* cube = AddActor(new Cube("Cube", "Cube", PNG_Block, "BasicModel"));
+	Actor* cube1 = AddActor(new Cube("Cube1", "Cube", PNG_Block, "BasicModel"));
 	Actor* player = AddActor(new ActorCamera());
 
 	//Start the new Actors to modify them
