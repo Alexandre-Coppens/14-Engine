@@ -21,43 +21,10 @@
     <ClCompile Include="Engine\Actor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Camera.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\cAnimation2D.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\cBoxCollider2D.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\cCollider.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\cGravity2D.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\cModel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Component.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\cPhysic.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\cSprite2D.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\cTransform2D.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\cTransform3D.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Game.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Mesh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Render\RendererGl.cpp">
@@ -87,12 +54,6 @@
     <ClCompile Include="Engine\Utilitaries\Assets.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Utilitaries\CameraManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Utilitaries\Inputs.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Utilitaries\Log.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -114,22 +75,97 @@
     <ClCompile Include="Game2D\Scenes\Scene_Pong.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game3D\Actors\Ball.cpp">
+    <ClCompile Include="Engine\.Prefabs\Object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game3D\Actors\BowlingAlley.cpp">
+    <ClCompile Include="Engine\2D\Animation2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game3D\Actors\BoxGl.cpp">
+    <ClCompile Include="Engine\2D\BoxCollider2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game3D\Actors\Pin.cpp">
+    <ClCompile Include="Engine\2D\Collider.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game3D\Actors\Player3D.cpp">
+    <ClCompile Include="Engine\2D\Gravity2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game3D\Scenes\Scene_Test.cpp">
+    <ClCompile Include="Engine\2D\Sprite2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\2D\Transform2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\3D\Camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\3D\cBoxCollider.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\3D\cCollider3D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\3D\cModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\3D\cPhysicBody.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\3D\cSphereCollider.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\3D\cTransform3D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\3D\Mesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Utilitaries\Managers\CameraManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Utilitaries\Managers\CollisionManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Utilitaries\Managers\Inputs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\.Presets\Preset_Actor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\.Presets\Preset_Scene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game3D\Bowling\Actors\Ball.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game3D\Bowling\Actors\BowlingAlley.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game3D\Bowling\Actors\BoxGl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game3D\Bowling\Actors\Pin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game3D\Bowling\Actors\Player3D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game3D\Bowling\Scenes\Scene_Bowling.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game3D\Doom\Actors\DoomPlayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game3D\Doom\Scenes\Scene_Doom_Test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game3D\TestingGrounds\Actors\ActorCamera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game3D\TestingGrounds\Actors\Cube.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game3D\TestingGrounds\Scenes\Scene_Cube.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -137,43 +173,10 @@
     <ClInclude Include="Engine\Actor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Camera.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\cAnimation2D.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\cBoxCollider2D.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\cCollider.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\cGravity2D.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\cModel.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Component.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\cPhysic.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\cSprite2D.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\cTransform2D.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\cTransform3D.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Game.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Mesh.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Render\IRenderer.h">
@@ -206,13 +209,7 @@
     <ClInclude Include="Engine\Utilitaries\Assets.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Utilitaries\CameraManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Utilitaries\CommonLib.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Utilitaries\Inputs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Utilitaries\Log.h">
@@ -245,22 +242,103 @@
     <ClInclude Include="Game2D\Scenes\Scene_Pong.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Game3D\Actors\Ball.h">
+    <ClInclude Include="Engine\.EngineGenerated\Generated.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Game3D\Actors\BowlingAlley.h">
+    <ClInclude Include="Engine\.Prefabs\Object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Game3D\Actors\BoxGl.h">
+    <ClInclude Include="Engine\2D\Animation2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Game3D\Actors\Pin.h">
+    <ClInclude Include="Engine\2D\BoxCollider2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Game3D\Actors\Player3D.h">
+    <ClInclude Include="Engine\2D\Collider.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Game3D\Scenes\Scene_Test.h">
+    <ClInclude Include="Engine\2D\Gravity2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\2D\Sprite2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\2D\Transform2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\3D\Camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\3D\cBoxCollider.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\3D\cCollider3D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\3D\cModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\3D\cPhysicBody.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\3D\cSphereCollider.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\3D\cTransform3D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\3D\Mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Utilitaries\DebugMemoryLeakCatcher.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Utilitaries\Managers\CameraManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Utilitaries\Managers\CollisionManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Utilitaries\Managers\Inputs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\.Presets\Preset_Actor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\.Presets\Preset_Scene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game3D\Bowling\Actors\Ball.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game3D\Bowling\Actors\BowlingAlley.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game3D\Bowling\Actors\BoxGl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game3D\Bowling\Actors\Pin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game3D\Bowling\Actors\Player3D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game3D\Bowling\Scenes\Scene_Bowling.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game3D\Doom\Actors\DoomPlayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game3D\Doom\Scenes\Scene_Doom_Test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game3D\TestingGrounds\Actors\ActorCamera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game3D\TestingGrounds\Actors\Cube.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game3D\TestingGrounds\Scenes\Scene_Cube.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,16 +1,15 @@
 ﻿#pragma once
-#include <SDL_stdinc.h>
 #include <vector>
 
 class Camera;
 class CameraManager
 {
 protected:
-    static Uint8 mCurrentCamera;
+    static uint8_t mCurrentCamera;
     static std::vector<Camera*> mCameraList;
 
 public:
-    static void setCurrentCamera(const int _cameraIndex) {mCurrentCamera = (static_cast<int>(_cameraIndex) >= static_cast<int>(mCameraList.size()) ? 0 : static_cast<Uint8>(_cameraIndex));}
+    static void setCurrentCamera(const int _cameraIndex) {mCurrentCamera = (static_cast<int>(_cameraIndex) >= static_cast<int>(mCameraList.size()) ? 0 : static_cast<uint8_t>(_cameraIndex));}
 
 private:
 public:

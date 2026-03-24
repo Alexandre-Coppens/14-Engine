@@ -6,6 +6,7 @@
 #include "Engine/Scene.h"
 
 #include "Engine/Render/IRenderer.h"
+#include "Engine/Utilitaries/Assets.h"
 #include "Engine/Utilitaries/DebugMemoryLeakCatcher.h"
 #include "Engine/Utilitaries/Log.h"
 #include "Game3D/Bowling/Scenes/Scene_Bowling.h"
@@ -30,6 +31,7 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
+	Assets::ScanFiles();
 	RendererType gameType = RendererType::OPENGL;
 	Game* game = nullptr;
 	

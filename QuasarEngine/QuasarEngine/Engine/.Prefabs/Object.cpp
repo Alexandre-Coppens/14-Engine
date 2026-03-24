@@ -21,8 +21,8 @@ Object::~Object()
 void Object::Start()
 {
     mModel = dynamic_cast<Model*>(AddComponent(new Model(this, mShaderName)));
-    mModel->setMesh(Assets::GetMesh(mModelName));
-    mModel->getMesh()->AddTexture(Assets::GetTexture(mTextureName));
+    mModel->setMesh(Assets::GetMesh(OBJ_cube));
+    mModel->getMesh()->AddTexture(Assets::GetTexture(PNG_Block));
 
     //mCollider = dynamic_cast<BoxCollider*>(AddComponent(new BoxCollider(this)));
     //dynamic_cast<BoxCollider*>(mCollider)->setSize(1.1f);

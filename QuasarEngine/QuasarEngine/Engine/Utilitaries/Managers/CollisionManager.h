@@ -31,6 +31,7 @@ public:
 	static void RemoveCollider(const Collider3D* _collider) {
 		std::vector<Collider3D*>::iterator it;
 		it = std::find(collidersList.begin(), collidersList.end(), _collider);
+		if (it == collidersList.end()) return;
 		collidersList.erase(it);
 	}
 	static std::vector<Collider3D*> getAllColliders() {return collidersList;}

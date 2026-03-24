@@ -1,5 +1,7 @@
 #include "Assets.h"
 #include <sstream>
+#include <iostream>
+#include <filesystem>
 
 #include "Engine/Render/RendererGl.h"
 
@@ -10,90 +12,274 @@
 #include "Engine/Render/VertexArray.h"
 #include "Engine/Utilitaries/tiny_obj_loader.h"
 
-std::map<std::string, Texture*> Assets::mTextureList = {};
+std::string Assets::engineFile   = "Engine/.EngineAssets";
+std::string Assets::resourceFile = "Resources";
+std::string Assets::outputPath   = "Engine/.EngineGenerated";
+
+std::vector<std::string> Assets::mSupportedShaderTypes = {".vert", ".frag", ".tesc", ".tese"};
+std::map<std::string, std::string> Assets::mGeneratedTextures = {};
+std::map<std::string, std::string> Assets::mGeneratedMeshes	  = {};
+std::map<std::string, std::string> Assets::mGeneratedShader   = {};
+
+std::map<GENERATED_TEXTURE,	Texture*>	Assets::mLoadedTextures = {};
+std::map<GENERATED_MESHES,	Mesh*>		Assets::mLoadedMeshes	= {};
+std::map<GENERATED_SHADERS,	Shader*>	Assets::mLoadedShaders	= {};
+
 std::map<std::string, int> Assets::mTextureListUses = {};
-
-std::map<std::string, Shader*> Assets::mShaderList = {};
 std::map<std::string, ShaderProgram*> Assets::mShaderProgramList = {};
-
-std::map<std::string, Mesh*> Assets::mMeshList = {};
-
 std::map<ShaderProgram*, std::vector<Model*>> Assets::mDrawOrder = {};
 
+IRenderer* Assets::mRenderer;
 
 
-Texture* Assets::LoadTexture(IRenderer& _pRenderer, const std::string& _pFileName, const std::string& _pName)
-{
-	Texture* temp = LoadTextureFromFile(_pRenderer, _pFileName);
-	if(temp == nullptr) return mTextureList["NULLTEXTURE"];
-	mTextureList[_pName] = temp;
-	return mTextureList.at(_pName);
+
+static std::string toUpper(std::string s) {
+	std::transform(s.begin(), s.end(), s.begin(),
+				   [](unsigned char c) { return std::toupper(c); });
+	return s;
 }
 
-Texture* Assets::LoadTextureFromFile(IRenderer& _pRenderer, const std::string& _pFileName)
-{
-	Texture* texture = new Texture();
-	if (!texture->Load(_pRenderer, _pFileName)) return nullptr;
-	return texture;
-}
+// -=-=-=-=- FILE GENERATION -=-=-=-=-
 
-Texture* Assets::GetTexture(const std::string& _pName)
+//Parse through the Engine Assets and Resources
+void Assets::ScanFiles()
 {
-	if (mTextureList.find(_pName) == mTextureList.end())
+	const std::filesystem::path engineFilePath{ engineFile };
+	const std::filesystem::path resourceFilePath{ resourceFile };
+	std::vector<std::filesystem::path> assetsPaths {resourceFilePath, engineFilePath};
+
+	for (const auto& path : assetsPaths)
 	{
-		std::ostringstream loadError;
-		loadError << "Texture " << _pName << " does not exist in assets manager\n";
-		Log::Error(LogType::Application, loadError.str());
-		return mTextureList["NULLTEXTURE"];
+		for (const auto& entry : std::filesystem::directory_iterator(path)) {
+			Log::Info("PATH::" + entry.path().string());
+
+			const auto filenameStr = entry.path().filename().string();
+
+			if (entry.is_directory()) {
+				std::cout << "dir:  " << filenameStr << '\n';
+				Assets::RecursiveScan(path.string() + "/" + filenameStr);
+			}
+		}
 	}
-	return mTextureList[_pName];
+	WriteAssetsOnFile(outputPath);
 }
 
-//CAREFUL: This Function uses a find to EVERY textures so be precise in the name!
-std::vector<Texture*> Assets::GetTextures(const std::string& _pName)
+//Recursive scan until it find a file
+void Assets::RecursiveScan(std::string _path)
+{
+	const std::filesystem::path resourcePath{ _path };
+
+	for (const auto& entry : std::filesystem::directory_iterator(resourcePath)) {
+		const auto filenameStr = entry.path().filename().string();
+		
+		if (entry.is_directory()) {
+			Log::Info("PATH::" + entry.path().string());
+			Assets::RecursiveScan(_path + "/" + filenameStr);
+			continue;
+		}
+		
+		Log::Info("FILE::" + filenameStr);
+		const auto fileStemStr = entry.path().stem().string();
+		const auto fileExtensionStr = entry.path().extension().string();
+
+		std::cout << "      -file: " << filenameStr << '\n';
+		if (fileExtensionStr == ".png") {
+			mGeneratedTextures[_path + "/" + filenameStr] = toUpper(fileExtensionStr.substr(1)) + "_" + CleanFileName(fileStemStr);
+		}
+		else if (fileExtensionStr == ".obj") {
+			mGeneratedMeshes[_path + "/" + filenameStr] = toUpper(fileExtensionStr.substr(1)) + "_" + CleanFileName(fileStemStr);
+		}
+		else if (find(mSupportedShaderTypes.begin(), mSupportedShaderTypes.end(), fileExtensionStr) != mSupportedShaderTypes.end()) {
+			mGeneratedShader[_path + "/" + filenameStr] = toUpper(fileExtensionStr.substr(1)) + "_" + CleanFileName(fileStemStr);
+		}
+		else {
+			Log::Info("Assets::Generation - " + fileExtensionStr + " not supported.");
+		}
+	}
+}
+
+std::string Assets::CleanFileName(std::string _fileName)
+{
+	std::string result;
+	std::vector<char> charList {'.','-',' '};
+	for (char& c : _fileName)
+	{
+		if (std::find(charList.begin(), charList.end(), c) != charList.end()) 
+			result += '_';
+		else result += c;
+	}
+	return result;
+}
+
+void Assets::WriteAssetsOnFile(std::string _filePath)
+{ 
+	std::ofstream file;
+	file.open( _filePath + "/" + "Generated.h");
+	file << "#pragma once \n";
+	file << "//Do not write anything in it. Auto-Generated in Assets.cpp.\n";
+	
+	//Create ENUM Part
+	file << "\n";
+	file << "enum GENERATED_TEXTURE\n";
+	file << "{\n";
+	for (auto it = mGeneratedTextures.begin(); it != mGeneratedTextures.end(); it++)
+	{
+		file << "    " + it->second +",\n";
+	}
+	file << "};\n";
+	
+	file << "\n";
+	file << "enum GENERATED_MESHES\n";
+	file << "{\n";
+	for (auto it = mGeneratedMeshes.begin(); it != mGeneratedMeshes.end(); it++)
+	{
+		file << "    " + it->second +",\n";
+	}
+	file << "};\n";
+	
+	file << "\n";
+	file << "enum GENERATED_SHADERS\n";
+	file << "{\n";
+	for (auto it = mGeneratedShader.begin(); it != mGeneratedShader.end(); it++)
+	{
+		file << "    " + it->second +",\n";
+	}
+	file << "};\n";
+	
+	//Create TRANSLATION Part
+	file << "\n";
+	file << "static std::string getTexturePath(GENERATED_TEXTURE _texture)\n";
+	file << "{\n";
+	file << "   switch (_texture)\n";
+	file << "	{\n";
+	for (auto it = mGeneratedTextures.begin(); it != mGeneratedTextures.end(); it++)
+	{
+		file << "   case " + it->second +":  return" + '"' + it->first + '"' + ";\n";
+	}
+	file << "	}\n";
+	file << "};\n";
+	
+	file << "\n";
+	file << "static std::string getMeshPath(GENERATED_MESHES _mesh)\n";
+	file << "{\n";
+	file << "   switch (_mesh)\n";
+	file << "	{\n";
+	for (auto it = mGeneratedMeshes.begin(); it != mGeneratedMeshes.end(); it++)
+	{
+		file << "   case " + it->second +":  return" + '"'  + it->first + '"'  + ";\n";
+	}
+	file << "	}\n";
+	file << "};\n";
+	
+	file << "\n";
+	file << "static std::string getShaderPath(GENERATED_SHADERS _shader)\n";
+	file << "{\n";
+	file << "   switch (_shader)\n";
+	file << "	{\n";
+	for (auto it = mGeneratedShader.begin(); it != mGeneratedShader.end(); it++)
+	{
+		file << "   case " + it->second +":  return" + '"'  + it->first + '"'  + ";\n";
+	}
+	file << "	}\n";
+	file << "};\n";
+	
+	file.close();
+}
+
+// -=-=-=-=- GET ASSETS -=-=-=-=-
+
+//Returns the pointer of the asked for Texture
+Texture* Assets::GetTexture(const GENERATED_TEXTURE& _texture)
+{
+	if (mLoadedTextures.count(_texture) == 0)
+	{
+		mLoadedTextures[_texture] = LoadTexture(getTexturePath(_texture));
+	}
+	return mLoadedTextures[_texture];
+}
+
+//Returns a list of Textures
+std::vector<Texture*> Assets::GetTextures(const std::vector<GENERATED_TEXTURE>& _searchList)
 {
 	std::vector<Texture*> tList;
 
-	for (auto t = mTextureList.begin(); t != mTextureList.end(); t++)
+	for (auto t = _searchList.begin(); t != _searchList.end(); t++)
 	{
-		if (t->first.find(_pName) != std::string::npos)
-			tList.push_back(t->second);
+		if (mLoadedTextures.count(*t) == 0)
+		{
+			mLoadedTextures[*t] = LoadTexture(getTexturePath(*t));
+		}
+		tList.push_back(mLoadedTextures[*t]);
 	}
 
 	return tList;
 }
 
-ShaderProgram* Assets::LoadShader(RendererGl* pRendererGl, const std::string _vertexFile, const std::string _fragmentFile,const std::string _name, DrawOption _option)
+ShaderProgram* Assets::GetShaderProgram(const std::string _shaderName)
+{
+	if (mShaderProgramList.count(_shaderName) == 0)
+	{
+		return mShaderProgramList["NULL_SHADER"];
+	}
+	return mShaderProgramList[(_shaderName)];
+}
+
+Mesh* Assets::GetMesh(const GENERATED_MESHES _mesh)
+{
+	if (mLoadedMeshes.count(_mesh) == 0)
+	{
+		mLoadedMeshes[_mesh] = LoadMeshFromFile(getMeshPath(_mesh));
+	}
+	return mLoadedMeshes[_mesh];
+}
+
+// -=-=-=-=- LOAD ASSETS -=-=-=-=-
+
+Texture* Assets::LoadTexture(const std::string& _filePath)
+{
+	Texture* temp = LoadTextureFromFile(_filePath);
+	if(temp == nullptr) return mLoadedTextures[PNG_NullTexture];
+	return temp;
+}
+
+Texture* Assets::LoadTextureFromFile(const std::string& _pFileName)
+{
+	Texture* texture = new Texture();
+	if (!texture->Load(*mRenderer, _pFileName)) return nullptr;
+	return texture;
+}
+
+//TODO: Add the shaderPrograms to the Generated File
+
+ShaderProgram* Assets::LoadShader(const GENERATED_SHADERS _vertexFile, const GENERATED_SHADERS _fragmentFile, const std::string& _name, DrawOption _option)
 {
 	ShaderProgram* shader = new ShaderProgram(_option);
 	Shader* mTempVertex = nullptr;
 	Shader* mTempFragment = nullptr;
 
-	if (mShaderList.find(_vertexFile) != mShaderList.end()) mTempVertex = mShaderList[_vertexFile];
-	else
+	if (mLoadedShaders.count(_vertexFile) == 0)
 	{
 		mTempVertex = new Shader();
-		mTempVertex->Load(_vertexFile, ShaderType::VERTEX);
-		mShaderList[_vertexFile] = std::move(mTempVertex);
+		mTempVertex->Load(getShaderPath(_vertexFile), ShaderType::VERTEX);
+		mLoadedShaders[_vertexFile] = mTempVertex;
 	}
 
-	if (mShaderList.find(_fragmentFile) != mShaderList.end()) mTempFragment = mShaderList[_fragmentFile];
-	else
+	if (mLoadedShaders.count(_fragmentFile) == 0)
 	{
 		mTempFragment = new Shader();
-		mTempFragment->Load(_fragmentFile, ShaderType::FRAGMENT);
-		mShaderList[_fragmentFile] = std::move(mTempFragment);
+		mTempFragment->Load(getShaderPath(_fragmentFile), ShaderType::FRAGMENT);
+		mLoadedShaders[_fragmentFile] = mTempFragment;
 	}
 	
-	shader->Compose(std::vector<Shader*>{mShaderList[_vertexFile], mShaderList[_fragmentFile]});
+	shader->Compose(std::vector<Shader*>{mLoadedShaders[_vertexFile], mLoadedShaders[_fragmentFile]});
 	mShaderProgramList[_name] = shader;
-	pRendererGl->AddShaderProgram(mShaderProgramList[_name]);
+	dynamic_cast<RendererGl*>(mRenderer)->AddShaderProgram(mShaderProgramList[_name]);
 	Log::Info("ShaderProgram - " + _name + " successfully composed.");
 	
 	return mShaderProgramList[_name];
 }
 
-ShaderProgram* Assets::LoadShader(RendererGl* pRendererGl, const std::string _vertexFile, const std::string _tesselationControlFile, const std::string _tesselationEvaluationFile, const std::string _fragmentFile,const std::string _name, DrawOption _option)
+ShaderProgram* Assets::LoadShader(const GENERATED_SHADERS _vertexFile, const GENERATED_SHADERS _tesselationControlFile, const GENERATED_SHADERS _tesselationEvaluationFile, const GENERATED_SHADERS _fragmentFile, const std::string& _name, DrawOption _option)
 {
 	ShaderProgram* shader = new ShaderProgram(_option);
 	Shader* mTempVertex = nullptr;
@@ -101,73 +287,57 @@ ShaderProgram* Assets::LoadShader(RendererGl* pRendererGl, const std::string _ve
 	Shader* mTempTessEval = nullptr;
 	Shader* mTempFragment = nullptr;
 
-	if (mShaderList.find(_vertexFile) != mShaderList.end()) mTempVertex = mShaderList[_vertexFile];
-	else
+	if (mLoadedShaders.count(_vertexFile) == 0)
 	{
 		mTempVertex = new Shader();
-		mTempVertex->Load(_vertexFile, ShaderType::VERTEX);
-		mShaderList[_vertexFile] = std::move(mTempVertex);
+		mTempVertex->Load(getShaderPath(_vertexFile), ShaderType::VERTEX);
+		mLoadedShaders[_vertexFile] = mTempVertex;
 	}
 
-	if (mShaderList.find(_tesselationControlFile) != mShaderList.end()) mTempTessControl = mShaderList[_tesselationControlFile];
-	else
-	{
-		mTempTessControl = new Shader();
-		mTempTessControl->Load(_tesselationControlFile, ShaderType::TESSELLATION_CONTROL);
-		mShaderList[_tesselationControlFile] = std::move(mTempTessControl);
-	}
-
-	if (mShaderList.find(_tesselationEvaluationFile) != mShaderList.end()) mTempTessEval = mShaderList[_tesselationEvaluationFile];
-	else
-	{
-		mTempTessEval = new Shader();
-		mTempTessEval->Load(_tesselationEvaluationFile, ShaderType::TESSELLATION_EVAL);
-		mShaderList[_tesselationEvaluationFile] = std::move(mTempTessEval);
-	}
-
-	if (mShaderList.find(_fragmentFile) != mShaderList.end()) mTempFragment = mShaderList[_fragmentFile];
-	else
+	if (mLoadedShaders.count(_fragmentFile) == 0)
 	{
 		mTempFragment = new Shader();
-		mTempFragment->Load(_fragmentFile, ShaderType::FRAGMENT);
-		mShaderList[_fragmentFile] = std::move(mTempFragment);
+		mTempFragment->Load(getShaderPath(_fragmentFile), ShaderType::FRAGMENT);
+		mLoadedShaders[_fragmentFile] = mTempFragment;
+	}
+
+	if (mLoadedShaders.count(_tesselationControlFile) == 0)
+	{
+		mTempTessControl = new Shader();
+		mTempTessControl->Load(getShaderPath(_tesselationControlFile), ShaderType::TESSELLATION_CONTROL);
+		mLoadedShaders[_tesselationControlFile] = mTempTessControl;
+	}
+
+	if (mLoadedShaders.count(_tesselationEvaluationFile) == 0)
+	{
+		mTempTessEval = new Shader();
+		mTempTessEval->Load(getShaderPath(_tesselationEvaluationFile), ShaderType::TESSELLATION_EVAL);
+		mLoadedShaders[_tesselationEvaluationFile] = mTempTessEval;
 	}
 	
-	shader->Compose(std::vector<Shader*>{mShaderList[_vertexFile], mShaderList[_tesselationControlFile], mShaderList[_tesselationEvaluationFile], mShaderList[_fragmentFile]});
+	shader->Compose(std::vector<Shader*>{mLoadedShaders[_vertexFile], mLoadedShaders[_tesselationControlFile], mLoadedShaders[_tesselationEvaluationFile], mLoadedShaders[_fragmentFile]});
 	mShaderProgramList[_name] = shader;
-	pRendererGl->AddShaderProgram(mShaderProgramList[_name]);
+	dynamic_cast<RendererGl*>(mRenderer)->AddShaderProgram(mShaderProgramList[_name]);
 	Log::Info("ShaderProgram - " + _name + " successfully composed.");
 	
 	return mShaderProgramList[_name];
 }
 
-ShaderProgram* Assets::GetShader(const std::string _name)
-{
-	if (mShaderProgramList.find(_name) != mShaderProgramList.end()) return mShaderProgramList[_name];
-	return mShaderProgramList["NULL"];
-}
-
-Mesh* Assets::LoadMesh(const std::string _fileName, std::string _name)
-{
-	mMeshList[_name] = LoadMeshFromFile(_fileName);
-	return mMeshList[_name];
-}
-
-Mesh* Assets::LoadMeshFromFile(const std::string& _pFileName)
+Mesh* Assets::LoadMeshFromFile(const std::string& _filePath)
 {
 	tinyobj::attrib_t attributes;
 	std::vector<tinyobj::shape_t> shapes;
 	std::vector<tinyobj::material_t> materials;
 	std::string warning, errors;
-	bool success = LoadObj(&attributes, &shapes, &materials, &warning, &errors, _pFileName.c_str());
+	bool success = LoadObj(&attributes, &shapes, &materials, &warning, &errors, _filePath.c_str());
 	if (!success)
 	{
-		Log::Error(LogType::Application, "Error::Mesh::" + _pFileName + " does not exist or is not .obj.");
+		Log::Error(LogType::Application, "Error::Mesh::" + _filePath + " does not exist or is not .obj.");
 		return new Mesh();
 	}
 	else
 	{
-		Log::Info("Mesh::" + _pFileName + " successfully loaded.");
+		Log::Info("Mesh::" + _filePath + " successfully loaded.");
 	}
 	std::vector<Vertex> vertices;
 	for (int i = 0; i < shapes.size(); i++)
@@ -197,30 +367,26 @@ Mesh* Assets::LoadMeshFromFile(const std::string& _pFileName)
 	return new Mesh(vertices);
 }
 
-Mesh* Assets::GetMesh(const std::string _name)
-{
-	if (mMeshList.find(_name) != mMeshList.end()) return mMeshList[_name];
-	return nullptr;
-}
+//-=-=-=-=- CLEAR ASSETS -=-=-=-=-
 
 void Assets::Clear()
 {
-	if (!mTextureList.empty())
+	if (!mLoadedTextures.empty())
 	{
-		for (const auto& iter : mTextureList)
+		for (const auto& iter : mLoadedTextures)
 		{
 			iter.second->Unload();
 		}
-		mTextureList.clear();
+		mLoadedTextures.clear();
 	}
 
-	if (!mShaderList.empty())
+	if (!mLoadedShaders.empty())
 	{
-		for (const auto& iter : mShaderList)
+		for (const auto& iter : mLoadedShaders)
 		{
 			delete(iter.second);
 		}
-		mShaderList.clear();
+		mLoadedShaders.clear();
 	}
 	
 	if (!mShaderProgramList.empty())
@@ -232,12 +398,13 @@ void Assets::Clear()
 		mShaderProgramList.clear();
 	}
 	
-	if (!mMeshList.empty())
+	if (!mLoadedMeshes.empty())
 	{
-		for (const auto& iter : mMeshList)
+		for (const auto& iter : mLoadedMeshes)
 		{
 			iter.second->Unload();
 		}
-		mMeshList.clear();
+		mLoadedMeshes.clear();
 	}
+	mRenderer = nullptr;
 }

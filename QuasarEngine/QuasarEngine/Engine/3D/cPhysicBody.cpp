@@ -90,10 +90,7 @@ void PhysicBody::ResolveVelocity(const CollisionData _data)
 
 void PhysicBody::Destroy()
 {
-    mpCollider->Destroy();
-    delete mpCollider;
     mpCollider = nullptr;
-    
     Component::Destroy();
 }
 

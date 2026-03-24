@@ -44,6 +44,7 @@ void Game::Initialize()
 	Log::Info("GAME: Initializing " + mTitle);
 	mWindow = new Window(Window::GetSize().x, Window::GetSize().y, mTitle);
 
+	Assets::setRenderer(mRenderer);
 	if (mWindow->Open() && mRenderer->Initialize(*mWindow))
 	{
 		mScenes[0]->setRenderer(mRenderer);

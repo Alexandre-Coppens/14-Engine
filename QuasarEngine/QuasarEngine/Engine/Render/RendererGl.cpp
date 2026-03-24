@@ -21,6 +21,7 @@ RendererGl::RendererGl():
 	pSpriteVao(nullptr), 
 	mContext(nullptr), 
 	pSpriteShaderProgram(nullptr),
+	mModelDrawOrder(std::map<ShaderProgram*, std::vector<Model*>>()),
 	mSpriteViewProj(Mat4RowCreateSimpleViewProj(Window::GetSize().x, Window::GetSize().y)),
 	mView(Mat4RowCreateLookAt(Vector3(0, 0, 5), Vector3UnitX(), Vector3UnitZ())),
 	mProj(Mat4RowCreatePerspectiveFOV(70.0f, Window::GetSize().x, Window::GetSize().y, 0.01f, 10000.0f))
@@ -65,13 +66,7 @@ bool RendererGl::Initialize(Window& _rWindow)
 
 	//TODO: separate Engine asset files & Game asset files
 	//Load the NULL Shader & important to engine assets
-	Assets::LoadShader(this, "NULL.vert", "NULL.frag", "NULL", DrawOption::NULL_SHADER);
-	Assets::LoadTexture(*dynamic_cast<IRenderer*>(this), "Engine/.EngineAssets/Textures/NullShader.png", "NULLSHADER");
-	Assets::LoadTexture(*dynamic_cast<IRenderer*>(this), "Engine/.EngineAssets/Textures/NullTexture.png", "NULLTEXTURE");
-	
-	Assets::LoadMesh("Engine/.EngineAssets/Models/Cube.obj", "Cube");
-	Assets::LoadMesh("Engine/.EngineAssets/Models/Sphere.obj", "Sphere");
-	Assets::LoadMesh("Engine/.EngineAssets/Models/Plane.obj", "Plane");
+	Assets::LoadShader(VERT_NULL, FRAG_NULL, "NULL", DrawOption::NULL_SHADER);
 
 	glPatchParameteri(GL_PATCH_VERTICES, 3);
 	
@@ -101,7 +96,8 @@ void RendererGl::DrawModels() const
 	
 	for (auto& shader : mModelDrawOrder)
 	{
-		DrawOption argument = (shader.first == Assets::GetShader("NULL") ? DrawOption::NULL_SHADER : shader.first->getDrawOptions() );
+		if (shader.first == nullptr) continue;
+		DrawOption argument = (shader.first == Assets::GetShaderProgram("NULL") ? DrawOption::NULL_SHADER : shader.first->getDrawOptions() );
 		shader.first->Use();
 		shader.first->SetMatrix4Row("uViewProj", mView * mProj);
 		for (Model* model : shader.second)
@@ -173,7 +169,7 @@ void RendererGl::RemoveModel(Model* _pModel, ShaderProgram* _pShaderProgram )
 
 void RendererGl::AddShaderProgram(ShaderProgram* _pShaderProgram)
 {
-	mModelDrawOrder[_pShaderProgram];
+	mModelDrawOrder[_pShaderProgram] = std::vector<Model*>();
 }
 
 void RendererGl::RemoveShaderProgram(ShaderProgram* _pShaderProgram)

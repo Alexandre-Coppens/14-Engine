@@ -23,8 +23,9 @@ Paddle::~Paddle()
 
 void Paddle::Start()
 {
+	std::vector<GENERATED_TEXTURE> animation {PNG_00_megaman, PNG_01_megaman, PNG_02_megaman, PNG_03_megaman, PNG_04_megaman, PNG_05_megaman, PNG_06_megaman, PNG_07_megaman};
 	AddComponent(new BoxCollider2D(this, 1, CollisionPurpose::Block, Rectangle{ Vector2Zero(),  Vector2{ 50.0f, 50.0f } }));
-	AddComponent(new AnimatedSprite2D(this, Assets::GetTextures("megaman"), 0));
+	AddComponent(new AnimatedSprite2D(this, Assets::GetTextures(animation), 0));
 	AddComponent(new Gravity2D(this, 0));
 
 	Actor::Start();

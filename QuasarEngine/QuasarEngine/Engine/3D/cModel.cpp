@@ -14,13 +14,13 @@
 Model::Model(Actor* _pOwner, std::string _shader)  :
 	Component(_pOwner), mMesh(nullptr), mTextureIndex(0), mShader(_shader), mParent(nullptr)
 {
-	Scene::ActiveScene->getRendererGl()->AddModel(this, Assets::GetShader(mShader));
+	Scene::ActiveScene->getRendererGl()->AddModel(this, Assets::GetShaderProgram(mShader));
 }
 
 Model::Model(Actor* _pOwner,Transform3D* _parent, std::string _shader)  :
 	Component(_pOwner), mMesh(nullptr), mTextureIndex(0), mShader(_shader), mParent(_parent)
 {
-	Scene::ActiveScene->getRendererGl()->AddModel(this, Assets::GetShader(mShader));
+	Scene::ActiveScene->getRendererGl()->AddModel(this, Assets::GetShaderProgram(mShader));
 }
 
 Model::~Model()
@@ -46,12 +46,12 @@ void Model::Draw(DrawOption _option)
 		switch (_option)
 		{
 		case DrawOption::NULL_SHADER:
-			texture = Assets::GetTexture("NULLSHADER");
+			texture = Assets::GetTexture(PNG_NullShader);
 			break;
 
 		case DrawOption::TEXTURE:
 			texture = mMesh->getTexture(static_cast<Uint16>(mTextureIndex));
-			if (!texture) texture = Assets::GetTexture("NULLTEXTURE");
+			if (!texture) texture = Assets::GetTexture(PNG_NullTexture);
 			break;
 		
 		case DrawOption::WIREFRAME:
@@ -69,10 +69,10 @@ void Model::Draw(DrawOption _option)
 			break;
 		}
 		
-		Assets::GetShader(mShader)->SetVector4f("uColor", mColor);
+		Assets::GetShaderProgram(mShader)->SetVector4f("uColor", mColor);
 		if (texture != nullptr) texture->SetActive();
 
-		Assets::GetShader(mShader)->SetMatrix4Row("uWorldTransform", wt);
+		Assets::GetShaderProgram(mShader)->SetMatrix4Row("uWorldTransform", wt);
 		mMesh->getVertexArray()->SetActive();
 		
 		glPointSize(5.0f);
@@ -82,7 +82,7 @@ void Model::Draw(DrawOption _option)
 }
 void Model::Destroy()
 {
-	Scene::ActiveScene->getRendererGl()->RemoveModel(this, Assets::GetShader(mShader));
+	Scene::ActiveScene->getRendererGl()->RemoveModel(this, Assets::GetShaderProgram(mShader));
 	mParent = nullptr;
 	mMesh = nullptr;
 	Component::Destroy();
@@ -91,7 +91,7 @@ void Model::Destroy()
 //Remove the Model from his old ShaderList to a new one
 void Model::SetShader(const std::string _shader)
 {
-	Scene::ActiveScene->getRendererGl()->RemoveModel(this, Assets::GetShader(mShader));
+	Scene::ActiveScene->getRendererGl()->RemoveModel(this, Assets::GetShaderProgram(mShader));
 	mShader = _shader;
-	Scene::ActiveScene->getRendererGl()->AddModel(this, Assets::GetShader(mShader));
+	Scene::ActiveScene->getRendererGl()->AddModel(this, Assets::GetShaderProgram(mShader));
 }
