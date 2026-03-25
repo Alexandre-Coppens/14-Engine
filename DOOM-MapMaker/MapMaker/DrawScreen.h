@@ -14,16 +14,16 @@ static void DrawScreen(Vector2* scroll);
 
 //Draw the terrain and the gameObjects on screen
 static void DrawScreen(Vector2* scroll){
-	for (Terrain::Wall wall : Terrain::wallList)
+	for (Terrain::Wall& wall : Terrain::wallList)
 	{
-		if (!wall.computed) Terrain::ComputeWall(&wall);
+		if (!wall.computed) Terrain::ComputeWall(wall);
 		Texture2D* sprite = &AssetList::SpriteList[Terrain::dictionary[wall.dictionaryTexture]];
 		//Draw Wall
 		DrawTexturePro(*sprite, 
 					   Rectangle{0, 0, static_cast<float>(sprite->width), static_cast<float>(sprite->height)},
 					   Rectangle{Terrain::wallVertices[wall.start].x + scroll->x, Terrain::wallVertices[wall.start].y + scroll->y, Vector2Distance(Terrain::wallVertices[wall.start], Terrain::wallVertices[wall.end]), Terrain::wallDrawSize},
 					   Vector2{0.0f, Terrain::wallDrawSize * 0.5f},
-					   wall.rotation,
+					   wall.rotation.z,
 					   WHITE);
 		
 		//Draw Forward
@@ -32,7 +32,7 @@ static void DrawScreen(Vector2* scroll){
 					   Rectangle{0, 0, static_cast<float>(sprite->width), static_cast<float>(sprite->height)},
 					   Rectangle{center.x + scroll->x, center.y + scroll->y, 15.0f, 5.0f},
 					   Vector2{0.0f, Terrain::wallDrawSize * 0.5f},
-					   wall.rotation + 90,
+					   wall.rotation.z + 90,
 					   WHITE);
 	}
 	for (auto vertex : Terrain::wallVertices)

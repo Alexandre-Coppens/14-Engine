@@ -70,10 +70,22 @@ int Terrain::CheckInDictionary(string name) {
 	return newInt;
 }
 
-void Terrain::ComputeWall(Wall* wall)
+void Terrain::ComputeWall(Wall& wall)
 {
-	wall->rotation = Vector2LineAngle(Terrain::wallVertices[wall->start], Terrain::wallVertices[wall->end]) * RAD2DEG;
-	wall->computed = true;
+	wall.location = Vector3{
+		(Terrain::wallVertices[wall.start].x + Terrain::wallVertices[wall.end].x) * 0.5f,
+		(Terrain::wallVertices[wall.start].y + Terrain::wallVertices[wall.end].y) * 0.5f,
+		(wall.floor + wall.ceiling) * 0.5f };
+	wall.rotation = Vector3{
+		0.0f,
+		0.0f,
+		Vector2LineAngle(Terrain::wallVertices[wall.start], Terrain::wallVertices[wall.end]) * RAD2DEG };
+	wall.size = Vector3{
+		1.0f,
+		Vector2Distance(Terrain::wallVertices[wall.start], Terrain::wallVertices[wall.end]),
+		wall.ceiling - wall.floor};
+	
+	wall.computed = true;
 }
 
 void Terrain::ISCursorOnSomething(Vector2 position)
@@ -114,18 +126,26 @@ void Terrain::SaveMap(string fileName){
 	ofstream saveFile;
 	saveFile.open(fileName + ".txt");
 	if (saveFile.is_open()) {
+		saveFile << "$ 2 " << "\n";
+		saveFile << "\n";
+		for (const auto wall : wallList) {
+			std::cout << wall.computed << " " << wall.location.x << std::endl;
+		}
 		for (auto d : dictionary) {
 			saveFile << "D " + to_string(d.first) + ":" + d.second + "\n";
 		}
-		for (auto vertice : wallVertices) {
+		for (const auto vertice : wallVertices) {
 			saveFile << "V " + to_string(vertice.first)  + " " +
 					to_string(vertice.second.x) + ":" + to_string(vertice.second.y) + "\n";
 		}
-		for (auto wall : wallList) {
+		for (const Wall& wall : wallList) {
 			saveFile << "W " + 
 					to_string(wall.start)  + " " +
 					to_string(wall.end)  + " " +
-					to_string(wall.dictionaryTexture)  + "\n";
+					to_string(wall.dictionaryTexture)  + " " +
+					to_string(wall.location.x) + ":" + to_string(wall.location.y) + ":" + to_string(wall.location.z) +  " " +
+					to_string(wall.rotation.x) + ":" + to_string(wall.rotation.y) + ":" + to_string(wall.rotation.z) +  " " +
+					to_string(wall.size.x)	   + ":" + to_string(wall.size.y)     + ":" + to_string(wall.size.z)     +  "\n";
 		}
 		saveFile.close();
 	}

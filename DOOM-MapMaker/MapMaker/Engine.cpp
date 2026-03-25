@@ -35,6 +35,18 @@ void Engine::Update() {
 	if (IsMouseButtonDown(2)) {
 		scroll = Vector2Add(scroll, GetMouseDelta());
 	}
+	if(IsKeyDown(KEY_W)){
+		scroll = Vector2Add(scroll, Vector2Scale(Vector2{0.0f, 500.0f}, GetFrameTime()));
+	}
+	if(IsKeyDown(KEY_S)){
+		scroll = Vector2Add(scroll, Vector2Scale(Vector2{0.0f, 500.0f}, -GetFrameTime()));
+	}
+	if(IsKeyDown(KEY_A)){
+		scroll = Vector2Add(scroll, Vector2Scale(Vector2{500.0f, 0.0f}, GetFrameTime()));
+	}
+	if(IsKeyDown(KEY_D)){
+		scroll = Vector2Add(scroll, Vector2Scale(Vector2{500.0f, 0.0f}, -GetFrameTime()));
+	}
 
 	//Tiles placement
 	float subgrid = Terrain::gridMeterInPixels / Terrain::gridSubdivision;
@@ -144,26 +156,26 @@ void Engine::Draw() {
 	rlPushMatrix();
 	rlTranslatef(0 + scroll.x, 25 * Terrain::gridMeterInPixels + scroll.y, 0);
 	rlRotatef(90, 1, 0, 0);
-	DrawGrid(100, Terrain::gridMeterInPixels);
+	DrawGrid(1000, Terrain::gridMeterInPixels);
 	rlPopMatrix();
 	
 	rlPushMatrix();
 	rlTranslatef(1 + scroll.x, 1 + 25 * Terrain::gridMeterInPixels + scroll.y, 0);
 	rlRotatef(90, 1, 0, 0);
-	DrawGrid(100, Terrain::gridMeterInPixels);
+	DrawGrid(1000, Terrain::gridMeterInPixels);
 	rlPopMatrix();
 	
 	rlPushMatrix();
 	rlTranslatef(-1 + scroll.x, -1 + 25 * Terrain::gridMeterInPixels + scroll.y, 0);
 	rlRotatef(90, 1, 0, 0);
-	DrawGrid(100, Terrain::gridMeterInPixels);
+	DrawGrid(1000, Terrain::gridMeterInPixels);
 	rlPopMatrix();
 	
 	float subgrid = Terrain::gridMeterInPixels / Terrain::gridSubdivision;
 	rlPushMatrix();
 	rlTranslatef(0 + scroll.x, 25 * Terrain::gridMeterInPixels + scroll.y, 0);
 	rlRotatef(90, 1, 0, 0);
-	DrawGrid(100 * Terrain::gridSubdivision, subgrid);
+	DrawGrid(1000 * Terrain::gridSubdivision, subgrid);
 	rlPopMatrix();
 	
 	DrawScreen(&scroll);
@@ -185,6 +197,6 @@ void Engine::Draw() {
 		DrawText(TextFormat("CURRENT FPS: %i", (int)(1.0f / GetFrameTime())), 10, GetScreenHeight() - 30, 20, BLACK);
 	}
 
-	DrawRectangle(GetScreenWidth() * 0.5f - 5, GetScreenHeight() * 0.5f - 5, 10, 10, BLACK);
+	DrawRectangle(scroll.x - 5.0f, scroll.y - 5.0f, 10, 10, BLACK);
 	EndDrawing();
 }

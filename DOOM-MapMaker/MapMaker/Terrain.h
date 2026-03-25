@@ -22,10 +22,14 @@ public:
     struct Wall{
         int start;
         int end;
+        float floor   { 0 };
+        float ceiling { 3 };
         int dictionaryTexture{ 0 };
         
         bool computed{ false };
-        float rotation;
+        Vector3 location {Vector3Zero()};
+        Vector3 rotation {Vector3Zero()};
+        Vector3 size     {Vector3Zero()};
     };
     
     static int verticesCount;
@@ -56,7 +60,7 @@ public:
     static void AddToDictionary(int index, string name);
     static int CheckInDictionary(string n);
 
-    static void ComputeWall(Wall* wall);
+    static void ComputeWall(Wall& wall);
     
     static void ISCursorOnSomething(Vector2 position);
     
