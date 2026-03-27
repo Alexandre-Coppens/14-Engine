@@ -1,4 +1,4 @@
-#version 330 core
+#version 450 core
 
 layout(triangles, fractional_even_spacing, cw) in;
 

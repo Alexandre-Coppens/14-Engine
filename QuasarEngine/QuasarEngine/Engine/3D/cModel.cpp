@@ -58,6 +58,10 @@ void Model::Draw(DrawOption _option)
 			glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
 			break;
 
+		case DrawOption::TESSELATION:
+			glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
+			break;
+
 		case DrawOption::DEBUG:
 			glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
 			break;
@@ -75,9 +79,8 @@ void Model::Draw(DrawOption _option)
 		Assets::GetShaderProgram(mShader)->SetMatrix4Row("uWorldTransform", wt);
 		mMesh->getVertexArray()->SetActive();
 		
-		glPointSize(5.0f);
-		//glDrawArrays(GL_PATCHES, 0, mMesh->getVertexArray()->GetVerticesCount());
-		glDrawArrays(GL_TRIANGLES, 0, mMesh->getVertexArray()->GetVerticesCount());
+		//glPointSize(5.0f);
+		glDrawArrays((_option == TESSELATION) ? GL_PATCHES : GL_TRIANGLES, 0, mMesh->getVertexArray()->GetVerticesCount());
 	}
 }
 void Model::Destroy()

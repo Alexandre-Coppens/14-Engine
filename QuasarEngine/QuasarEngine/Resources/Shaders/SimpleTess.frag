@@ -1,4 +1,4 @@
-#version 330 core
+#version 450 core
 
 in TESE_OUT{
    vec4 color;

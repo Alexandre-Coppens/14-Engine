@@ -10,6 +10,7 @@
 #include "Engine/Utilitaries/DebugMemoryLeakCatcher.h"
 #include "Engine/Utilitaries/Log.h"
 #include "Game3D/Bowling/Scenes/Scene_Bowling.h"
+#include "Game3D/Doom/Scenes/Scene_Doom_Test.h"
 #include "Game3D/TestingGrounds/Scenes/Scene_Cube.h"
 
 // #include "Game2D/Scenes/Scene_Pong.h"
@@ -41,7 +42,7 @@ int main(int argc, char* argv[])
 	// };
 
 	std::vector<Scene*> SceneGlList{
-		new Scene_Bowling("Bowling")
+		new Scene_Doom_Test("Doom Test")
 	};
 	
 	switch (gameType)

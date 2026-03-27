@@ -373,36 +373,44 @@ void Assets::Clear()
 {
 	if (!mLoadedTextures.empty())
 	{
-		for (const auto& iter : mLoadedTextures)
+		for (auto& iter : mLoadedTextures)
 		{
 			iter.second->Unload();
+			delete iter.second;
+			iter.second = nullptr;
 		}
 		mLoadedTextures.clear();
 	}
 
 	if (!mLoadedShaders.empty())
 	{
-		for (const auto& iter : mLoadedShaders)
+		for (auto& iter : mLoadedShaders)
 		{
-			delete(iter.second);
+			delete iter.second;
+			iter.second = nullptr;
 		}
 		mLoadedShaders.clear();
 	}
 	
 	if (!mShaderProgramList.empty())
 	{
-		for (const auto& iter : mShaderProgramList)
+		for (auto& iter : mShaderProgramList)
 		{
+			if (iter.second == nullptr) continue;
 			iter.second->Unload();
+			delete iter.second;
+			iter.second = nullptr;
 		}
 		mShaderProgramList.clear();
 	}
 	
 	if (!mLoadedMeshes.empty())
 	{
-		for (const auto& iter : mLoadedMeshes)
+		for (auto& iter : mLoadedMeshes)
 		{
 			iter.second->Unload();
+			delete iter.second;
+			iter.second = nullptr;
 		}
 		mLoadedMeshes.clear();
 	}

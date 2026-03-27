@@ -12,6 +12,7 @@ enum DrawOption
 	NULL_SHADER,
 	TEXTURE,
 	WIREFRAME,
+	TESSELATION,
 	DEBUG
 };
 

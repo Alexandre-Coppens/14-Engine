@@ -76,7 +76,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)QuasarEngine; $(SolutionDir)QuasarEngine\Dependencies\GL\SDL\include; $(SolutionDir)QuasarEngine\Dependencies\glew-2.2.0-win32\glew-2.2.0\include\GL; $(SolutionDir)QuasarEngine\Dependencies\SDL2_image-2.8.2\include; %(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)QuasarEngine;$(SolutionDir)QuasarEngine\Dependencies\GL\SDL\include;$(SolutionDir)QuasarEngine\Dependencies\glew-2.2.0-win32\glew-2.2.0\include\GL;$(SolutionDir)QuasarEngine\Dependencies\SDL2_image-2.8.2\include;$(SolutionDir)QuasarEngine\Dependencies\imgui-1.92.6-docking\backends;$(SolutionDir)QuasarEngine\Dependencies\imgui-1.92.6-docking;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -1435,7 +1435,6 @@
     <Content Include="Resources\MegaAnim\05_megaman.png" />
     <Content Include="Resources\MegaAnim\06_megaman.png" />
     <Content Include="Resources\MegaAnim\07_megaman.png" />
-    <Content Include="Resources\Models\100 Pin Bowling Room.obj" />
     <Content Include="Resources\Models\Ball.obj" />
     <Content Include="Resources\Models\Bowling\Bowling_Alley_Alley.mtl" />
     <Content Include="Resources\Models\Bowling\Bowling_Alley_Alley.obj" />

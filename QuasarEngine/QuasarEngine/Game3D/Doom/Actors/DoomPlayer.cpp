@@ -33,24 +33,33 @@ void DoomPlayer::Update(const float _deltaTime)
 {
     if (Inputs::GetKey(SDLK_z))
     {
-        //Vector3 forward = mCamera->getLocalTransform()->Forward();
-        //forward.z = 0.0f;
-        //forward = Normalize(forward);
+        // Vector3 forward = mCamera->getLocalTransform()->Forward();
+        // forward.z = 0.0f;
+        // forward = Normalize(forward);
+        // mTransform3D->addLocation(forward * 1 * _deltaTime);
         mTransform3D->addLocation(mCamera->getLocalTransform()->Forward() * 1 * _deltaTime);
     }
 
     if (Inputs::GetKey(SDLK_s))
     {
+        // Vector3 backward = mCamera->getLocalTransform()->Forward() * -1;
+        // backward.z = 0.0f;
+        // backward = Normalize(backward);
+        // mTransform3D->addLocation(backward * 1 * _deltaTime);
         mTransform3D->addLocation(mCamera->getLocalTransform()->Forward() * -1 * _deltaTime);
     }
 
     if (Inputs::GetKey(SDLK_q))
     {
+        // Vector3 left = mCamera->getLocalTransform()->Right() * -1;
+        // mTransform3D->addLocation(left * 1 * _deltaTime);
         mTransform3D->addLocation(mCamera->getLocalTransform()->Right() * -1 * _deltaTime);
     }
 
     if (Inputs::GetKey(SDLK_d))
     {
+        // Vector3 right = mCamera->getLocalTransform()->Right();
+        // mTransform3D->addLocation(right * 1 * _deltaTime);
         mTransform3D->addLocation(mCamera->getLocalTransform()->Right() * 1 * _deltaTime);
     }
     
