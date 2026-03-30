@@ -13,18 +13,18 @@ using std::map;
 class UI_TilesMenu : public Actor {
 private:
     bool open{ false };
-    Rectangle interactibleBar{};
+    Rectangle rectangle{};
+    float scroll = 0;
+    string currentTextureName {};
 
-public:
-
-private:
 public:
     UI_TilesMenu();
     ~UI_TilesMenu();
 
     void Draw();
     void Update();
-    int Clicked();
 
     void OpenTilesTab();
+    bool GetOpen() { return open; }
+    string GetTexture() {return currentTextureName;}
 };

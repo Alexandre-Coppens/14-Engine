@@ -14,6 +14,7 @@ static void DrawScreen(Vector2* scroll);
 
 //Draw the terrain and the gameObjects on screen
 static void DrawScreen(Vector2* scroll){
+	//Draw Walls
 	for (Terrain::Wall& wall : Terrain::wallList)
 	{
 		if (!wall.computed) Terrain::ComputeWall(wall);
@@ -35,10 +36,12 @@ static void DrawScreen(Vector2* scroll){
 					   wall.rotation.z + 90,
 					   WHITE);
 	}
+	//Draw Points
 	for (auto vertex : Terrain::wallVertices)
 	{
 		DrawCircle(vertex.second.x + scroll->x, vertex.second.y + scroll->y, 5.0f, BLACK);
 	}
+	//Show Object under the cursor
 	if (Terrain::nearIndice != -1)
 	{
 		switch (Terrain::nearGizmo)
@@ -56,6 +59,7 @@ static void DrawScreen(Vector2* scroll){
 			break;
 		}
 	}
+	//Show selected object
 	if (selectedVertex != -1)
 	{
 		DrawCircle(Terrain::wallVertices[selectedVertex].x + scroll->x, Terrain::wallVertices[selectedVertex].y + scroll->y, 7.0f, RED);

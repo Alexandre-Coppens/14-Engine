@@ -8,7 +8,7 @@
 using std::cout;
 using std::to_string;
 
-int currentTexture{ 0 };
+//int currentTexture{ 0 };
 
 Engine::Engine() {
 }
@@ -31,6 +31,8 @@ void Engine::Update() {
 		}
 	}
 
+	tileMenu.Update();
+	
 	//Move
 	if (IsMouseButtonDown(2)) {
 		scroll = Vector2Add(scroll, GetMouseDelta());
@@ -57,7 +59,15 @@ void Engine::Update() {
 	
 	if(IsMouseButtonPressed(0))
 	{		
-		if (Terrain::nearIndice != -1 && Terrain::nearGizmo == Vertex)
+		if (GetMouseX() >= 460 && GetMouseX() <= 540 && GetMouseY() >= 10 && GetMouseY() <= 90)
+		{
+			tileMenu.OpenTilesTab();
+		}
+		else if (tileMenu.GetOpen())
+		{
+			//do nothing
+		}
+		else if (Terrain::nearIndice != -1 && Terrain::nearGizmo == Vertex)
 		{
 			if (selectedVertex == -1) selectedVertex = Terrain::nearIndice;
 			else
@@ -74,7 +84,7 @@ void Engine::Update() {
 					Terrain::Wall wall;
 					wall.start = selectedVertex;
 					wall.end = Terrain::nearIndice;
-					wall.dictionaryTexture = Terrain::CheckInDictionary(AssetList::GetNameAtPosition(currentTexture));
+					wall.dictionaryTexture = Terrain::CheckInDictionary(tileMenu.GetTexture());
 					Terrain::AddNewWall(wall);
 					selectedVertex = wall.end;
 				}
@@ -83,6 +93,10 @@ void Engine::Update() {
 					selectedVertex = Terrain::nearIndice;
 				}
 			}
+		}
+		else if (Terrain::nearGizmo == Edge)
+		{
+			
 		}
 		else if (selectedVertex == -1)
 		{
@@ -93,7 +107,7 @@ void Engine::Update() {
 			Terrain::Wall wall;
 			wall.start = selectedVertex;
 			wall.end = Terrain::AddNewVertex(mPos);
-			wall.dictionaryTexture = Terrain::CheckInDictionary(AssetList::GetNameAtPosition(currentTexture));
+			wall.dictionaryTexture = Terrain::CheckInDictionary(tileMenu.GetTexture());
 			Terrain::AddNewWall(wall);
 			selectedVertex = wall.end;
 		}
@@ -134,14 +148,14 @@ void Engine::Update() {
 	}
 
 	//Change textures
-	if (GetMouseWheelMove()>0 || IsGamepadButtonPressed(0, GAMEPAD_BUTTON_LEFT_TRIGGER_1)) {
-		if (currentTexture == 0)currentTexture = AssetList::SpriteList.size() - 1;
-		else currentTexture--;
-	}
-	if (GetMouseWheelMove() < 0 || IsGamepadButtonPressed(0, GAMEPAD_BUTTON_RIGHT_TRIGGER_1)) {
-		if (currentTexture == AssetList::SpriteList.size() - 1)currentTexture = 0;
-		else currentTexture++;
-	}
+	// if (GetMouseWheelMove()>0 && !tileMenu.GetOpen()) {
+	// 	if (currentTexture == 0)currentTexture = AssetList::SpriteList.size() - 1;
+	// 	else currentTexture--;
+	// }
+	// if (GetMouseWheelMove() < 0 && !tileMenu.GetOpen()) {
+	// 	if (currentTexture == AssetList::SpriteList.size() - 1)currentTexture = 0;
+	// 	else currentTexture++;
+	// }
 
 	//Save / Load
 	if(IsKeyDown(KEY_LEFT_CONTROL) && IsKeyPressed(KEY_S))Terrain::SaveMap("Output_Map");
@@ -179,12 +193,15 @@ void Engine::Draw() {
 	rlPopMatrix();
 	
 	DrawScreen(&scroll);
+	tileMenu.Draw();
 	
 	DrawText(("X. " + to_string((scroll.x - GetMouseX()) / Terrain::gridMeterInPixels)).c_str(), 10, 10, 20, GRAY);
 	DrawText(("Y. " + to_string((scroll.y - GetMouseY()) / Terrain::gridMeterInPixels)).c_str(), 10, 30, 20, GRAY);
-	DrawText(("Current Sprite:  " + AssetList::GetNameAtPosition(currentTexture)).c_str(), 10, 50, 20, ORANGE);
+	DrawText(("Current Sprite:  " + tileMenu.GetTexture()).c_str(), 10, 50, 20, ORANGE);
 
-	Texture2D* sprite = &AssetList::SpriteList[AssetList::GetNameAtPosition(currentTexture)];
+	Texture2D* sprite;
+	if (tileMenu.GetTexture() == "") sprite = &AssetList::SpriteList[AssetList::GetNameAtPosition(0)];
+	else sprite = &AssetList::SpriteList[tileMenu.GetTexture()];
 	DrawTexturePro(*sprite,
 		Rectangle{ 0, 0, (float)sprite->width, (float)sprite->height },
 		Rectangle{ 500, 50, 80, 80 },
