@@ -39,6 +39,7 @@ enum GENERATED_TEXTURE
     PNG_Bowling_Alley_Trash,
     PNG_Bowling_Alley_Walls,
     PNG_Pin,
+    PNG_Voronoi,
     PNG_pokeball,
 };
 
@@ -75,6 +76,10 @@ enum GENERATED_SHADERS
     VERT_NULL,
     FRAG_BasicModel,
     VERT_BasicModel,
+    FRAG_NoiseHeight,
+    TESC_NoiseHeight,
+    TESE_NoiseHeight,
+    VERT_NoiseHeight,
     FRAG_Normal,
     FRAG_Simple,
     VERT_Simple,
@@ -129,6 +134,7 @@ static std::string getTexturePath(GENERATED_TEXTURE _texture)
    case PNG_Bowling_Alley_Trash:  return"Resources/Textures/Bowling/Bowling_Alley_Trash.png";
    case PNG_Bowling_Alley_Walls:  return"Resources/Textures/Bowling/Bowling_Alley_Walls.png";
    case PNG_Pin:  return"Resources/Textures/Pin.png";
+   case PNG_Voronoi:  return"Resources/Textures/Voronoi.png";
    case PNG_pokeball:  return"Resources/Textures/pokeball.png";
 	}
 };
@@ -171,6 +177,10 @@ static std::string getShaderPath(GENERATED_SHADERS _shader)
    case VERT_NULL:  return"Engine/.EngineAssets/Shaders/NULL.vert";
    case FRAG_BasicModel:  return"Resources/Shaders/BasicModel.frag";
    case VERT_BasicModel:  return"Resources/Shaders/BasicModel.vert";
+   case FRAG_NoiseHeight:  return"Resources/Shaders/NoiseHeight.frag";
+   case TESC_NoiseHeight:  return"Resources/Shaders/NoiseHeight.tesc";
+   case TESE_NoiseHeight:  return"Resources/Shaders/NoiseHeight.tese";
+   case VERT_NoiseHeight:  return"Resources/Shaders/NoiseHeight.vert";
    case FRAG_Normal:  return"Resources/Shaders/Normal.frag";
    case FRAG_Simple:  return"Resources/Shaders/Simple.frag";
    case VERT_Simple:  return"Resources/Shaders/Simple.vert";

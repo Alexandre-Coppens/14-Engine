@@ -57,9 +57,11 @@ void Model::Draw(DrawOption _option)
 		case DrawOption::WIREFRAME:
 			glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
 			break;
-
+			
 		case DrawOption::TESSELATION:
-			glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
+			//glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
+			texture = mMesh->getTexture(static_cast<Uint16>(mTextureIndex));
+			if (!texture) texture = Assets::GetTexture(PNG_NullTexture);
 			break;
 
 		case DrawOption::DEBUG:

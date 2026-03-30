@@ -2,16 +2,14 @@
 
 //#include "Engine/3D/cBoxCollider.h"
 #include "Engine/3D/cBoxCollider.h"
-#include "Engine/Utilitaries/Assets.h"
-
 #include "Engine/3D/Mesh.h"
 
-Object::Object(std::string _name, std::string _model, std::string _texture, std::string _shader) :
+Object::Object(std::string _name, GENERATED_MESHES _model, GENERATED_TEXTURE _texture, std::string _shader) :
     Actor()
 {
     mName = _name;
-    mModelName = _model;
-    mTextureName = _texture;
+    mMesh = _model;
+    mTexture = _texture;
     mShaderName = _shader;
 }
 
@@ -22,8 +20,8 @@ Object::~Object()
 void Object::Start()
 {
     mModel = dynamic_cast<Model*>(AddComponent(new Model(this, mShaderName)));
-    mModel->setMesh(Assets::GetMesh(OBJ_cube));
-    mModel->getMesh()->AddTexture(Assets::GetTexture(PNG_Block));
+    mModel->setMesh(Assets::GetMesh(mMesh));
+    mModel->getMesh()->AddTexture(Assets::GetTexture(mTexture));
 
     mCollider = dynamic_cast<BoxCollider*>(AddComponent(new BoxCollider(this)));
     dynamic_cast<BoxCollider*>(mCollider)->setSize(1.1f);

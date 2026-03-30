@@ -44,6 +44,11 @@ static std::string toUpper(std::string s) {
 //Parse through the Engine Assets and Resources
 void Assets::ScanFiles()
 {
+	if (true)
+	{
+		Log::Error(LogType::Application, "SKIPPED ASSET SCANNING!");
+		return;
+	}
 	const std::filesystem::path engineFilePath{ engineFile };
 	const std::filesystem::path resourceFilePath{ resourceFile };
 	std::vector<std::filesystem::path> assetsPaths {resourceFilePath, engineFilePath};
@@ -358,7 +363,7 @@ Mesh* Assets::LoadMeshFromFile(const std::string& _filePath)
 			};
 			Vector2 texCoord = {
 				attributes.texcoords[texcoord_index * 2],
-				-attributes.texcoords[texcoord_index * 2 + 1]
+				attributes.texcoords[texcoord_index * 2 + 1]
 			};
 			Vertex vertex = Vertex{position, normal, texCoord};
 			vertices.push_back(vertex);

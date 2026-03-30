@@ -1462,6 +1462,10 @@
     <Content Include="Resources\Models\Pin.obj" />
     <Content Include="Resources\Shaders\BasicModel.frag" />
     <Content Include="Resources\Shaders\BasicModel.vert" />
+    <Content Include="Resources\Shaders\NoiseHeight.frag" />
+    <Content Include="Resources\Shaders\NoiseHeight.tesc" />
+    <Content Include="Resources\Shaders\NoiseHeight.tese" />
+    <Content Include="Resources\Shaders\NoiseHeight.vert" />
     <Content Include="Resources\Shaders\Normal.frag" />
     <Content Include="Resources\Shaders\Simple.frag" />
     <Content Include="Resources\Shaders\Simple.vert" />
@@ -1495,6 +1499,7 @@
     <Content Include="Resources\Textures\Bowling\Bowling_Alley_Walls.png" />
     <Content Include="Resources\Textures\Pin.png" />
     <Content Include="Resources\Textures\pokeball.png" />
+    <Content Include="Resources\Textures\Voronoi.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

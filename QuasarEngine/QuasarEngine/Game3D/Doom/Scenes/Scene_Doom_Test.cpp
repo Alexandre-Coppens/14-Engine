@@ -30,15 +30,15 @@ void Scene_Doom_Test::Start()
 
     //Load Shaders
     Assets::LoadShader(VERT_BasicModel, FRAG_BasicModel, "BasicModel", TEXTURE);
-    Assets::LoadShader(VERT_SimpleTess, TESC_SimpleTess, TESE_SimpleTess, FRAG_SimpleTess, "SimpleTess", TESSELATION);
+    Assets::LoadShader(VERT_NoiseHeight, TESC_NoiseHeight, TESE_NoiseHeight, FRAG_NoiseHeight, "NoiseHeight", TESSELATION);
 
     //Load Actors
     Actor* player = AddActor(new DoomPlayer());
 
-    Actor* cube = AddActor(new Object("Cube", "Cube", "Block", "BasicModel"));
-    Actor* cube1 = AddActor(new Object("Cube1", "Cube", "Block", "BasicModel"));
+    Actor* cube = AddActor(new Object("Cube", OBJ_cube, PNG_Block, "BasicModel"));
+    Actor* cube1 = AddActor(new Object("Cube1", OBJ_cube, PNG_Block, "BasicModel"));
 
-    Actor* floor = AddActor(new Object("Floor", "Plane", "Block", "SimpleTess"));
+    Actor* floor = AddActor(new Object("Floor", OBJ_Plane, PNG_Voronoi, "NoiseHeight"));
 
     //Start the new Actors to modify them
     InitNewActors();
@@ -50,7 +50,7 @@ void Scene_Doom_Test::Start()
     cube1->getTransform3D()->addLocationZ(-0.1f);
     cube1->getTransform3D()->addLocationX(1.0f);
     
-    floor->getTransform3D()->setScale(Vector3(10.0f, 10.0f, 0.01f));
+    floor->getTransform3D()->setScale(Vector3(5.0f, 5.0f, 0.01f));
 }
 
 void Scene_Doom_Test::Update(float _deltaTime)

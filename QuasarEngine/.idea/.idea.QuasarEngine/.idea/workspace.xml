@@ -8,23 +8,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8aaab4d2-4f5d-4712-9cf7-40708eb9c5f6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/NoiseHeight.frag" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/NoiseHeight.tesc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/NoiseHeight.tese" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/NoiseHeight.vert" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Textures/Voronoi.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.QuasarEngine/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.QuasarEngine/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/.EngineAssets/Models/cube.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.EngineAssets/Models/cube.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/.EngineAssets/Models/Plane.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.EngineAssets/Models/Plane.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/.EngineGenerated/Generated.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.EngineGenerated/Generated.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/.Prefabs/Object.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.Prefabs/Object.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/.Prefabs/Object.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.Prefabs/Object.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cModel.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cModel.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Render/RendererGl.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Render/RendererGl.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Render/ShaderProgram.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Render/ShaderProgram.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Assets.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Assets.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Actors/DoomPlayer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Actors/DoomPlayer.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Scenes/Scene_Doom_Test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Scenes/Scene_Doom_Test.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/QuasarEngine.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/QuasarEngine.vcxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/QuasarEngine.vcxproj.filters" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/QuasarEngine.vcxproj.filters" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/SimpleTess.frag" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/SimpleTess.frag" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/SimpleTess.tesc" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/SimpleTess.tesc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/SimpleTess.tese" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/SimpleTess.tese" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/SimpleTess.vert" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/SimpleTess.vert" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,10 +37,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://C:/VisualStudio/VC/Tools/MSVC/14.38.33130/include/xmemory" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://C:/VisualStudio/VC/Tools/MSVC/14.38.33130/include/xstring" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://C:/VisualStudio/VC/Tools/MSVC/14.38.33130/include/xtree" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://C:/VisualStudio/VC/Tools/MSVC/14.38.33130/include/xutility" root0="SKIP_HIGHLIGHTING" />
+    <setting file="cidr-memory-view://33" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Engine/.EngineGenerated/Generated.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Engine/Render/Window.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Managers/CollisionManager.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -61,24 +57,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "C/C++ Project.QuasarEngine.executor": "Debug",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "Project-Doom",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "editor.preferences.tabs",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;C/C++ Project.QuasarEngine.executor&quot;: &quot;Debug&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Project-Doom&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.tabs&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="QuasarEngine" type="CppProject" factoryName="C++ Project">
       <configuration_1 setup="1">
@@ -170,6 +166,10 @@
       <workItem from="1774603189374" duration="14000" />
       <workItem from="1774603228760" duration="739000" />
       <workItem from="1774603980228" duration="2261000" />
+      <workItem from="1774606652457" duration="5591000" />
+      <workItem from="1774687818822" duration="6709000" />
+      <workItem from="1774772415134" duration="11861000" />
+      <workItem from="1774861518486" duration="5052000" />
     </task>
     <servers />
   </component>
