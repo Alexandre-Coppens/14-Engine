@@ -25,6 +25,8 @@ public:
     void Update();
 
     void OpenTilesTab();
+    void Interact();
     bool GetOpen() { return open; }
     string GetTexture() {return currentTextureName;}
+    void SetTexture(string textureName) {currentTextureName = textureName;}
 };

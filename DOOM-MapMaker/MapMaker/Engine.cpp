@@ -18,6 +18,7 @@ void Engine::Start(){
 	Terrain::gridMeterInPixels = 50.0f;
 	Terrain::gridSubdivision = 5;
 	Terrain::wallDrawSize = 5.0f;
+	tileMenu.SetTexture(AssetList::GetNameAtPosition(0));
 	scroll = { GetScreenWidth() * 0.5f ,GetScreenHeight() * 0.5f };
 }
 
@@ -65,7 +66,7 @@ void Engine::Update() {
 		}
 		else if (tileMenu.GetOpen())
 		{
-			//do nothing
+			tileMenu.Interact();
 		}
 		else if (Terrain::nearIndice != -1 && Terrain::nearGizmo == Vertex)
 		{
@@ -96,7 +97,7 @@ void Engine::Update() {
 		}
 		else if (Terrain::nearGizmo == Edge)
 		{
-			
+			cout << "nope \n";
 		}
 		else if (selectedVertex == -1)
 		{

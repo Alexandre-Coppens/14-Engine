@@ -12,6 +12,7 @@ using std::map;
 
 enum Gizmo
 {
+    None,
     Vertex,
     Edge,
 };

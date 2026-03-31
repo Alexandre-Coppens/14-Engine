@@ -90,6 +90,7 @@ void Terrain::ComputeWall(Wall& wall)
 
 void Terrain::ISCursorOnSomething(Vector2 position)
 {
+	nearGizmo = None;
 	for (auto v : wallVertices)
 	{
 		if (Vector2Distance(position, v.second) <= 5)

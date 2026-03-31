@@ -51,3 +51,22 @@ void UI_TilesMenu::OpenTilesTab(){
 	open = !open;
 	rectangle = Rectangle{ 0, GetScreenHeight() * 0.250f, 250, GetScreenHeight() * 0.500f};
 }
+
+void UI_TilesMenu::Interact(){
+	int i = 0;
+	if (not(GetMouseX() > 0 && GetMouseX() < 250 + 50 && GetMouseY() > GetScreenHeight() * 0.250f && GetMouseY() < GetScreenHeight() * 0.750f))
+	{
+		open = false;
+		return;
+	}
+	for (auto texture : AssetList::SpriteList)
+	{
+		int x = 10 + (60 * (i % 4));
+		int y = 250 + (60 * (i / 4)) - scroll;
+		if (GetMouseX() > x && GetMouseX() < x + 50 && GetMouseY() > y - 25 && GetMouseY() < y + 25)
+		{
+			currentTextureName = texture.first;
+		}
+		i++;
+	}
+}
