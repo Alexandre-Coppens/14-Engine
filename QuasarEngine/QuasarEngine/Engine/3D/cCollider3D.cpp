@@ -46,7 +46,7 @@ void Collider3D::CheckCollisions()
         if (data.isColliding)
         {
             mCollisionList.push_back(data);
-            Log::Info(pOwner->getName() + " is Colliding with " + collider->getOwner()->getName());
+            //Log::Info(pOwner->getName() + " is Colliding with " + collider->getOwner()->getName());
             CollisionManager::ResolveCollisions(mCollisionList);
             mHasFrameCollision = true;
         }

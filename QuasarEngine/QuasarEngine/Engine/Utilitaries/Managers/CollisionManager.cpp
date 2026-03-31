@@ -1,10 +1,13 @@
 ﻿#include "CollisionManager.h"
 
 #include "Engine/3D/cCollider3D.h"
+#include "Engine/3D/cBoxCollider.h"
 #include "Engine/3D/cPhysicBody.h"
 #include "Engine/3D/cSphereCollider.h"
+#include "Engine/Utilitaries/tiny_obj_loader.h"
 
 CollisionData CollisionManager::NO_COLLISION;
+RaycastResult CollisionManager::NO_RAYCAST_HIT;
 std::vector<Collider3D*> CollisionManager::collidersList;
 
 void CollisionManager::UpdatesCollisions()
@@ -242,4 +245,129 @@ float CollisionManager::GetSeparatingPlane(const Vector3 _diffPos, const Vector3
          Abs(Dot((_boxB->getForward() *  _boxB->getScale().x * 0.5f), _plane)) +
          Abs(Dot((_boxB->getRight()   *  _boxB->getScale().y * 0.5f), _plane)) +
          Abs(Dot((_boxB->getUp()      *  _boxB->getScale().z * 0.5f), _plane))));
+}
+
+RaycastResult CollisionManager::Raycast(Vector3 _origin, Vector3 _direction, float _length)
+{
+    std::vector<RaycastResult> results;
+    bool hit {false};
+    int closest {0};
+    float distance {std::numeric_limits<float>::max()};
+    
+    for (Collider3D* collider : collidersList)
+    {
+        switch (collider->getColliderType())
+        {
+        case NONE:
+            break;
+            
+        case BOX:
+            results.push_back(RaycastToOBB(_origin, _direction, _length, dynamic_cast<BoxCollider*>(collider)));
+            break;
+            
+        case SPHERE:
+            results.push_back(RaycastToSphere(_origin, _direction, _length, dynamic_cast<SphereCollider*>(collider)));
+            break;
+            
+        default:
+            break;
+        }
+    }
+    if (results.empty()) return NO_RAYCAST_HIT;
+    for (int i = 0; i < results.size(); i++)
+    {
+        hit = hit || results[i].hasHit;
+        if (results[i].distance < distance)distance = results[i].distance;
+        closest = i;
+    }
+    if (!hit) return NO_RAYCAST_HIT;
+    return results[closest];
+}
+
+RaycastResult CollisionManager::RaycastToOBB(Vector3 _origin, Vector3 _direction, float _length, BoxCollider* _box)
+{
+    Vector3 difference = _box->getCenter() - _origin;
+    Vector3 transDir {
+        Dot(_box->getForward(), _direction),
+        Dot(_box->getRight(), _direction),
+        Dot(_box->getUp(), _direction)};
+
+    Vector3 transOrigin {
+        Dot(_box->getForward(), difference),
+        Dot(_box->getRight(), difference),
+        Dot(_box->getUp(), difference)};
+    
+    float tmin = 0.0f, tmax = std::numeric_limits<float>::max();
+    Vector3 boxMin = Vector3{_box->getSize().x * -0.5f * _box->getScale().x, _box->getSize().y * -0.5f * _box->getScale().y, _box->getSize().z * -0.5f * _box->getScale().z};
+    Vector3 boxMax = {_box->getSize().x *  0.5f * _box->getScale().x, _box->getSize().y *  0.5f * _box->getScale().y, _box->getSize().z *  0.5f * _box->getScale().z};
+
+    Vector3 t1 = Vector3{(boxMin.x - transOrigin.x) / transDir.x, (boxMin.y - transOrigin.y) / transDir.y, (boxMin.z - transOrigin.z) / transDir.z};
+    Vector3 t2 = Vector3{(boxMax.x - transOrigin.x) / transDir.x, (boxMax.y - transOrigin.y) / transDir.y, (boxMax.z - transOrigin.z) / transDir.z};
+    
+    tmin = Max(tmin, Min(t1.x, t2.x));
+    tmin = Max(tmin, Min(t1.y, t2.y));
+    tmin = Max(tmin, Min(t1.z, t2.z));
+
+    tmax = Min(tmax, Max(t1.x, t2.x));
+    tmax = Min(tmax, Max(t1.y, t2.y));
+    tmax = Min(tmax, Max(t1.z, t2.z));
+
+    if (tmin > tmax || tmax <= 0.0f) return NO_RAYCAST_HIT;
+    if (tmin > _length) return NO_RAYCAST_HIT;
+
+    float tResult = tmin;
+    if (tmin < tmax) tResult = tmax;
+
+    RaycastResult result{};
+    result.hasHit = true;
+    result.distance = tResult;
+
+    result.actor = _box->getOwner();
+    result.collisionPoint = _origin + _direction * tResult;
+
+    Vector3 directions[6]{
+        _box->getForward(),
+        _box->getForward() * -1,
+        _box->getRight(),
+        _box->getRight() * -1,
+        _box->getUp(),
+        _box->getUp() * -1,
+    };
+
+    float dist = 0.0f;
+    int closest {0};
+    Vector3 normDiff = Normalize(difference) * -1.0f;
+    for (int i = 0; i < 6; i++)
+    {
+        float dot = Dot(directions[i], normDiff);
+        if (dot > dist)
+        {
+            dist = dot;
+            closest = i;
+        }
+    }
+    
+    result.normal = directions[closest];
+    return result;
+}
+
+RaycastResult CollisionManager::RaycastToSphere(Vector3 _origin, Vector3 _direction, float _length, SphereCollider* _sphere)
+{
+    Vector3 oc = _origin - _sphere->getOwner()->getTransform3D()->getLocation();
+    float b = Dot(oc, _direction);
+    Vector3 qc = oc - b * _direction;
+    float h = Pow(_sphere->getRadius()) - Dot(qc, qc);
+    if (h < 0) return NO_RAYCAST_HIT;
+    
+    h = sqrt(h);
+    if (h > _length) return NO_RAYCAST_HIT;
+
+    RaycastResult result{};
+    result.hasHit = true;
+    result.distance = h;
+
+    result.actor = _sphere->getOwner();
+    result.collisionPoint = _origin + _direction * h;
+    result.normal = Normalize(result.collisionPoint - _sphere->getOwner()->getTransform3D()->getLocation());
+    return result;
 }

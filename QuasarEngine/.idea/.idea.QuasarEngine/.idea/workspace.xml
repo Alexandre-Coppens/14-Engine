@@ -8,22 +8,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8aaab4d2-4f5d-4712-9cf7-40708eb9c5f6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/NoiseHeight.frag" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/NoiseHeight.tesc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/NoiseHeight.tese" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/NoiseHeight.vert" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Textures/Voronoi.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.QuasarEngine/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.QuasarEngine/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/.EngineAssets/Models/Plane.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.EngineAssets/Models/Plane.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/.EngineGenerated/Generated.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.EngineGenerated/Generated.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/.Prefabs/Object.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.Prefabs/Object.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/.Prefabs/Object.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.Prefabs/Object.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cModel.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cModel.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Assets.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Assets.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Scenes/Scene_Doom_Test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Scenes/Scene_Doom_Test.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/QuasarEngine.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/QuasarEngine.vcxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/SimpleTess.frag" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/SimpleTess.frag" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/SimpleTess.tese" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/SimpleTess.tese" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cCollider3D.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cCollider3D.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cPhysicBody.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cPhysicBody.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Managers/CollisionManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Managers/CollisionManager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Managers/CollisionManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Managers/CollisionManager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Managers/Inputs.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Managers/Inputs.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Managers/Inputs.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Managers/Inputs.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Actors/DoomPlayer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Actors/DoomPlayer.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +29,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="cidr-memory-view://33" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/QuasarEngine/Dependencies/GL/SDL/include/SDL_events.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/QuasarEngine/Dependencies/GL/SDL/include/SDL_stdinc.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Engine/.EngineGenerated/Generated.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Engine/Render/Window.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Managers/CollisionManager.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -170,6 +171,10 @@
       <workItem from="1774687818822" duration="6709000" />
       <workItem from="1774772415134" duration="11861000" />
       <workItem from="1774861518486" duration="5052000" />
+      <workItem from="1774874435069" duration="4725000" />
+      <workItem from="1774892189575" duration="13000" />
+      <workItem from="1774940201484" duration="4341000" />
+      <workItem from="1774956683166" duration="10114000" />
     </task>
     <servers />
   </component>

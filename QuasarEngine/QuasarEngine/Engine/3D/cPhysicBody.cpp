@@ -85,7 +85,7 @@ void PhysicBody::ResolveVelocity(const CollisionData _data)
     
     mVelocity += (j * invMass1) * _data.normal;
     
-    Log::Info(pOwner->getName() + "::" + ToString(mVelocity));
+    //Log::Info(pOwner->getName() + "::" + ToString(mVelocity));
 }
 
 void PhysicBody::Destroy()

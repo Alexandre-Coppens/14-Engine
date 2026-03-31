@@ -2,10 +2,14 @@
 #include "Engine/Utilitaries/Time.h"
 #include <SDL.h>
 
-std::map<int, float>	Inputs::mKeyTime;
+std::map<int, float>Inputs::mKeyTime;
 std::map<int, bool> Inputs::mKeyDown ;
 std::map<int, bool> Inputs::mKeyHold;
 std::map<int, bool> Inputs::mKeyUp;
+std::map<int, float>Inputs::mMouseTime;
+std::map<int, bool> Inputs::mMouseDown ;
+std::map<int, bool> Inputs::mMouseHold;
+std::map<int, bool> Inputs::mMouseUp;
 bool Inputs::mEventQuit = false;
 int Inputs::mMouseDeltaX = 0;
 int Inputs::mMouseDeltaY = 0;
@@ -36,6 +40,7 @@ void Inputs::SortInput(const SDL_Event& _event)
 	if (_event.type != SDL_KEYDOWN && _event.type != SDL_KEYUP) return;
 
 	int key = _event.key.keysym.sym;
+	int button = _event.button.button;
 
 	if (key == SDLK_ESCAPE) mEventQuit = true;
 	
@@ -54,6 +59,20 @@ void Inputs::SortInput(const SDL_Event& _event)
 		mKeyUp[key] = true;
 		break;
 
+	case SDL_MOUSEBUTTONDOWN:
+		if (mMouseTime[button] == 0.0f)
+		{
+			mMouseTime[button] = Time::currentFrameTime;
+			mMouseDown[button] = true;
+		}
+		break;
+
+	case SDL_MOUSEBUTTONUP:
+		mMouseDown[button] = false;
+		mMouseHold[button] = false;
+		mMouseUp[button] = true;
+		break;
+		
 	default:
 		break;
 	}
@@ -72,6 +91,19 @@ void Inputs::FlushLateInputs()
 		{
 			mKeyTime[key] = 0;
 			mKeyUp[key] = false;
+		}
+	}
+	for (auto const& [key, val] : mMouseTime)
+	{
+		if (mMouseDown[key])
+		{
+			mMouseDown[key] = false;
+			mMouseHold[key] = true;
+		}
+		if (mMouseUp[key])
+		{
+			mMouseTime[key] = 0;
+			mMouseUp[key] = false;
 		}
 	}
 }
@@ -94,4 +126,19 @@ bool Inputs::GetKeyHold(int key)
 bool Inputs::GetKeyUp(int key)
 {
 	return mKeyUp[key];
+}
+
+bool Inputs::GetMouseDown(MouseButton _button)
+{
+	return mMouseDown[_button];
+}
+
+bool Inputs::GetMouseHold(MouseButton _button)
+{
+	return mMouseHold[_button];
+}
+
+bool Inputs::GetMouseUp(MouseButton _button)
+{
+	return mMouseUp[_button];
 }
