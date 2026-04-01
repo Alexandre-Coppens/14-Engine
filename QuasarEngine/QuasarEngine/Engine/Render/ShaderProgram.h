@@ -6,13 +6,14 @@
 #include "Engine/Render/Shader.h"
 #include <vector>
 
-enum DrawOption
+enum class DrawOption
 {
 	COLOR,
 	NULL_SHADER,
 	TEXTURE,
 	WIREFRAME,
 	TESSELATION,
+	GEOMETRY,
 	DEBUG
 };
 

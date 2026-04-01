@@ -24,7 +24,7 @@ void main(void)
       const int MIN_TESS_LEVEL = 1;
       const int MAX_TESS_LEVEL = 60;
       const float MIN_DISTANCE = 0.1;
-      const float MAX_DISTANCE = 800;
+      const float MAX_DISTANCE = 100;
       
       vec4 eyeSpace0 = uViewProj * uWorldTransform * gl_in[0].gl_Position;
       vec4 eyeSpace1 = uViewProj * uWorldTransform * gl_in[1].gl_Position;

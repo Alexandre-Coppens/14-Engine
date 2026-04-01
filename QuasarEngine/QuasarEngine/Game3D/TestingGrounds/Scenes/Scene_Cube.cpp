@@ -29,8 +29,8 @@ void Scene_Cube::Start()
 	}
 
 	//Load Shaders
-	Assets::LoadShader(VERT_BasicModel, FRAG_BasicModel, "BasicModel", TEXTURE);
-	Assets::LoadShader(VERT_Simple, FRAG_Simple, "WireFrame", DrawOption::WIREFRAME);
+	Assets::LoadShader(std::vector<GENERATED_SHADERS>{VERT_BasicModel, FRAG_BasicModel}, "BasicModel", DrawOption::TEXTURE);
+	Assets::LoadShader(std::vector<GENERATED_SHADERS>{VERT_Simple, FRAG_Simple}, "WireFrame", DrawOption::WIREFRAME);
 
 	//Load Actors
 	Actor* cube = AddActor(new Cube("Cube", "Cube", PNG_Block, "BasicModel"));

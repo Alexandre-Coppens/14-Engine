@@ -60,10 +60,8 @@ public:
 	static Mesh* GetMesh(GENERATED_MESHES _mesh);
 
 	static Texture* LoadTexture(const std::string& _filePath);
-	static ShaderProgram* LoadShader(GENERATED_SHADERS _vertexFile, GENERATED_SHADERS _fragmentFile, const std::string& _name, DrawOption
+	static ShaderProgram* LoadShader(std::vector<GENERATED_SHADERS> _shaders, std::string _name, DrawOption
 	                                 _option);
-	static ShaderProgram* LoadShader(GENERATED_SHADERS _vertexFile, GENERATED_SHADERS _tesselationControlFile, GENERATED_SHADERS
-	                                 _tesselationEvaluationFile, GENERATED_SHADERS _fragmentFile, const std::string& _name, DrawOption _option);
-	
+
 	static void Clear();
 };

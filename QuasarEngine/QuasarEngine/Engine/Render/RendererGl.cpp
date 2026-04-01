@@ -66,7 +66,7 @@ bool RendererGl::Initialize(Window& _rWindow)
 
 	//TODO: separate Engine asset files & Game asset files
 	//Load the NULL Shader & important to engine assets
-	Assets::LoadShader(VERT_NULL, FRAG_NULL, "NULL", DrawOption::NULL_SHADER);
+	Assets::LoadShader(std::vector<GENERATED_SHADERS>{VERT_NULL, FRAG_NULL}, "NULL", DrawOption::NULL_SHADER);
 
 	glPatchParameteri(GL_PATCH_VERTICES, 3);
 	

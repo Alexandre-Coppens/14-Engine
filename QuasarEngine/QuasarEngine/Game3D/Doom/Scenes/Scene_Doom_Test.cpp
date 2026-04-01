@@ -29,14 +29,15 @@ void Scene_Doom_Test::Start()
     }
 
     //Load Shaders
-    Assets::LoadShader(VERT_BasicModel, FRAG_BasicModel, "BasicModel", TEXTURE);
-    Assets::LoadShader(VERT_NoiseHeight, TESC_NoiseHeight, TESE_NoiseHeight, FRAG_NoiseHeight, "NoiseHeight", TESSELATION);
+    Assets::LoadShader(std::vector<GENERATED_SHADERS>{VERT_BasicModel, FRAG_BasicModel}, "BasicModel", DrawOption::TEXTURE);
+    Assets::LoadShader(std::vector<GENERATED_SHADERS>{VERT_NoiseHeight, TESC_NoiseHeight, TESE_NoiseHeight, FRAG_NoiseHeight}, "NoiseHeight", DrawOption::TESSELATION);
+    Assets::LoadShader(std::vector<GENERATED_SHADERS>{VERT_Geometry, GEOM_Geometry, FRAG_Geometry}, "Geometry", DrawOption::GEOMETRY);
 
     //Load Actors
     Actor* player = AddActor(new DoomPlayer());
 
     Actor* cube = AddActor(new Object("Cube", OBJ_cube, PNG_Block, "BasicModel"));
-    Actor* cube1 = AddActor(new Object("Cube1", OBJ_cube, PNG_Block, "BasicModel"));
+    Actor* cube1 = AddActor(new Object("Cube1", OBJ_cube, PNG_Block, "Geometry"));
 
     Actor* floor = AddActor(new Object("Floor", OBJ_Plane, PNG_Voronoi, "NoiseHeight"));
 

@@ -1462,6 +1462,9 @@
     <Content Include="Resources\Models\Pin.obj" />
     <Content Include="Resources\Shaders\BasicModel.frag" />
     <Content Include="Resources\Shaders\BasicModel.vert" />
+    <Content Include="Resources\Shaders\Geometry.frag" />
+    <Content Include="Resources\Shaders\Geometry.geom" />
+    <Content Include="Resources\Shaders\Geometry.vert" />
     <Content Include="Resources\Shaders\NoiseHeight.frag" />
     <Content Include="Resources\Shaders\NoiseHeight.tesc" />
     <Content Include="Resources\Shaders\NoiseHeight.tese" />

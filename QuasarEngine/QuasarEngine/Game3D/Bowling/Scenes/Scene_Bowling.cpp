@@ -29,11 +29,11 @@ void Scene_Bowling::Start()
 	}
 	
 	//Load Shaders
-	Assets::LoadShader(VERT_BasicModel, FRAG_BasicModel, "BasicModel", TEXTURE);
-	Assets::LoadShader(VERT_BasicModel, FRAG_Normal, "Normal", TEXTURE);
-	Assets::LoadShader(VERT_BasicModel, FRAG_Transparency, "Transparency", TEXTURE);
-	Assets::LoadShader(VERT_Simple, FRAG_Simple, "Simple", DrawOption::COLOR);
-	Assets::LoadShader(VERT_Simple, FRAG_Simple, "Wireframe", DrawOption::WIREFRAME);
+	Assets::LoadShader(std::vector<GENERATED_SHADERS>{VERT_BasicModel, FRAG_BasicModel}, "BasicModel", DrawOption::TEXTURE);
+	Assets::LoadShader(std::vector<GENERATED_SHADERS>{VERT_BasicModel, FRAG_Normal}, "Normal", DrawOption::TEXTURE);
+	Assets::LoadShader(std::vector<GENERATED_SHADERS>{VERT_BasicModel, FRAG_Transparency}, "Transparency", DrawOption::TEXTURE);
+	Assets::LoadShader(std::vector<GENERATED_SHADERS>{VERT_Simple, FRAG_Simple}, "Simple", DrawOption::COLOR);
+	Assets::LoadShader(std::vector<GENERATED_SHADERS>{VERT_Simple, FRAG_Simple}, "Wireframe", DrawOption::WIREFRAME);
 
 	//Load Actors
 	Actor* alley = AddActor(new BowlingAlley());

@@ -8,7 +8,7 @@
 const std::string Shader::SHADER_PATH = "Resources/Shaders/";
 
 Shader::Shader():
-	mID(0), mCode(""), mType(VERTEX)
+	mID(0), mCode(""), mType(ShaderType::VERTEX)
 {
 	DEBUGAddClass("Shader");
 }
@@ -51,19 +51,23 @@ void Shader::Load(std::string _filePath, ShaderType _shaderType)
 
 	switch (mType)
 	{
-	case VERTEX:
+	case ShaderType::VERTEX:
 		mID = glCreateShader(GL_VERTEX_SHADER);
 		break;
 
-	case TESSELLATION_CONTROL:
+	case ShaderType::TESSELLATION_CONTROL:
 		mID = glCreateShader(GL_TESS_CONTROL_SHADER);
 		break;
 
-	case TESSELLATION_EVAL:
+	case ShaderType::TESSELLATION_EVAL:
 		mID = glCreateShader(GL_TESS_EVALUATION_SHADER);
 		break;
 
-	case FRAGMENT:
+	case ShaderType::GEOMETRY:
+		mID = glCreateShader(GL_GEOMETRY_SHADER);
+		break;
+		
+	case ShaderType::FRAGMENT:
 		mID = glCreateShader(GL_FRAGMENT_SHADER);
 		break;
 
@@ -94,14 +98,15 @@ bool Shader::ValidateCompilation(int _ID)
 	//Print compile error info
 	if (compileError)
 	{
-		//Get log length
 		GLint infoLength;
 		glGetShaderiv(_ID, GL_INFO_LOG_LENGTH, &infoLength);
 
 		GLchar* info = new GLchar[infoLength + 1];
 		glGetShaderInfoLog(_ID, infoLength, NULL, info);
 
-		Log::Error(LogType::Render, "SHADER COMPILE ERROR: " + *info);
+		Log::Error(LogType::Render, std::string("SHADER COMPILE ERROR: ") + info);
+
+		delete[] info; // Don't forget to free memory!
 	}
 
 	//Return true if no compile error and false otherwise

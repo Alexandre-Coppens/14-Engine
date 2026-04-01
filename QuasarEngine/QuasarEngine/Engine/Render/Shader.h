@@ -2,8 +2,9 @@
 #include <string>
 #include <fstream>
 
-enum ShaderType
+enum class ShaderType
 {
+	NONE,
 	VERTEX,
 	FRAGMENT,
 	TESSELLATION_CONTROL,

@@ -3,6 +3,7 @@
 #include <iostream>
 #include <filesystem>
 
+#include "MathLib.h"
 #include "Engine/Render/RendererGl.h"
 
 #include "Engine/Render/Shader.h"
@@ -16,7 +17,7 @@ std::string Assets::engineFile   = "Engine/.EngineAssets";
 std::string Assets::resourceFile = "Resources";
 std::string Assets::outputPath   = "Engine/.EngineGenerated";
 
-std::vector<std::string> Assets::mSupportedShaderTypes = {".vert", ".frag", ".tesc", ".tese"};
+std::vector<std::string> Assets::mSupportedShaderTypes = {".vert", ".frag", ".tesc", ".tese", ".geom"};
 std::map<std::string, std::string> Assets::mGeneratedTextures = {};
 std::map<std::string, std::string> Assets::mGeneratedMeshes	  = {};
 std::map<std::string, std::string> Assets::mGeneratedShader   = {};
@@ -147,7 +148,7 @@ void Assets::WriteAssetsOnFile(std::string _filePath)
 	file << "{\n";
 	for (auto it = mGeneratedShader.begin(); it != mGeneratedShader.end(); it++)
 	{
-		file << "    " + it->second +",\n";
+		file << "    " + it->second + ",\n";
 	}
 	file << "};\n";
 	
@@ -259,74 +260,34 @@ Texture* Assets::LoadTextureFromFile(const std::string& _pFileName)
 
 //TODO: Add the shaderPrograms to the Generated File
 
-ShaderProgram* Assets::LoadShader(const GENERATED_SHADERS _vertexFile, const GENERATED_SHADERS _fragmentFile, const std::string& _name, DrawOption _option)
+ShaderProgram* Assets::LoadShader(const std::vector<GENERATED_SHADERS> _shaders, const std::string _name, DrawOption _option)
 {
-	ShaderProgram* shader = new ShaderProgram(_option);
-	Shader* mTempVertex = nullptr;
-	Shader* mTempFragment = nullptr;
+	ShaderProgram* shaderProgram = new ShaderProgram(_option);
+	std::vector<Shader*> mShaderList {};
+	Shader* tempShader;
 
-	if (mLoadedShaders.count(_vertexFile) == 0)
+	for (GENERATED_SHADERS shader : _shaders)
 	{
-		mTempVertex = new Shader();
-		mTempVertex->Load(getShaderPath(_vertexFile), ShaderType::VERTEX);
-		mLoadedShaders[_vertexFile] = mTempVertex;
-	}
-
-	if (mLoadedShaders.count(_fragmentFile) == 0)
-	{
-		mTempFragment = new Shader();
-		mTempFragment->Load(getShaderPath(_fragmentFile), ShaderType::FRAGMENT);
-		mLoadedShaders[_fragmentFile] = mTempFragment;
+		tempShader = new Shader();
+		ShaderType type;
+		std::string extension = getShaderPath(shader).substr(getShaderPath(shader).length() - 5, getShaderPath(shader).length() - 1);
+		if (extension == ".vert") type = ShaderType::VERTEX;
+		else if (extension == ".frag") type = ShaderType::FRAGMENT;
+		else if (extension == ".geom") type = ShaderType::GEOMETRY;
+		else if (extension == ".tesc") type = ShaderType::TESSELLATION_CONTROL;
+		else if (extension == ".tese") type = ShaderType::TESSELLATION_EVAL;
+		else type = ShaderType::NONE;
+		tempShader->Load(getShaderPath(shader), type);
+		mLoadedShaders[shader] = tempShader;
+		mShaderList.push_back(tempShader);
+		tempShader = nullptr;
 	}
 	
-	shader->Compose(std::vector<Shader*>{mLoadedShaders[_vertexFile], mLoadedShaders[_fragmentFile]});
-	mShaderProgramList[_name] = shader;
+	shaderProgram->Compose(mShaderList);
+	mShaderProgramList[_name] = shaderProgram;
 	dynamic_cast<RendererGl*>(mRenderer)->AddShaderProgram(mShaderProgramList[_name]);
 	Log::Info("ShaderProgram - " + _name + " successfully composed.");
-	
-	return mShaderProgramList[_name];
-}
-
-ShaderProgram* Assets::LoadShader(const GENERATED_SHADERS _vertexFile, const GENERATED_SHADERS _tesselationControlFile, const GENERATED_SHADERS _tesselationEvaluationFile, const GENERATED_SHADERS _fragmentFile, const std::string& _name, DrawOption _option)
-{
-	ShaderProgram* shader = new ShaderProgram(_option);
-	Shader* mTempVertex = nullptr;
-	Shader* mTempTessControl = nullptr;
-	Shader* mTempTessEval = nullptr;
-	Shader* mTempFragment = nullptr;
-
-	if (mLoadedShaders.count(_vertexFile) == 0)
-	{
-		mTempVertex = new Shader();
-		mTempVertex->Load(getShaderPath(_vertexFile), ShaderType::VERTEX);
-		mLoadedShaders[_vertexFile] = mTempVertex;
-	}
-
-	if (mLoadedShaders.count(_fragmentFile) == 0)
-	{
-		mTempFragment = new Shader();
-		mTempFragment->Load(getShaderPath(_fragmentFile), ShaderType::FRAGMENT);
-		mLoadedShaders[_fragmentFile] = mTempFragment;
-	}
-
-	if (mLoadedShaders.count(_tesselationControlFile) == 0)
-	{
-		mTempTessControl = new Shader();
-		mTempTessControl->Load(getShaderPath(_tesselationControlFile), ShaderType::TESSELLATION_CONTROL);
-		mLoadedShaders[_tesselationControlFile] = mTempTessControl;
-	}
-
-	if (mLoadedShaders.count(_tesselationEvaluationFile) == 0)
-	{
-		mTempTessEval = new Shader();
-		mTempTessEval->Load(getShaderPath(_tesselationEvaluationFile), ShaderType::TESSELLATION_EVAL);
-		mLoadedShaders[_tesselationEvaluationFile] = mTempTessEval;
-	}
-	
-	shader->Compose(std::vector<Shader*>{mLoadedShaders[_vertexFile], mLoadedShaders[_tesselationControlFile], mLoadedShaders[_tesselationEvaluationFile], mLoadedShaders[_fragmentFile]});
-	mShaderProgramList[_name] = shader;
-	dynamic_cast<RendererGl*>(mRenderer)->AddShaderProgram(mShaderProgramList[_name]);
-	Log::Info("ShaderProgram - " + _name + " successfully composed.");
+	shaderProgram = nullptr;
 	
 	return mShaderProgramList[_name];
 }

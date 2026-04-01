@@ -76,6 +76,9 @@ enum GENERATED_SHADERS
     VERT_NULL,
     FRAG_BasicModel,
     VERT_BasicModel,
+    FRAG_Geometry,
+    GEOM_Geometry,
+    VERT_Geometry,
     FRAG_NoiseHeight,
     TESC_NoiseHeight,
     TESE_NoiseHeight,
@@ -177,6 +180,9 @@ static std::string getShaderPath(GENERATED_SHADERS _shader)
    case VERT_NULL:  return"Engine/.EngineAssets/Shaders/NULL.vert";
    case FRAG_BasicModel:  return"Resources/Shaders/BasicModel.frag";
    case VERT_BasicModel:  return"Resources/Shaders/BasicModel.vert";
+   case FRAG_Geometry:  return"Resources/Shaders/Geometry.frag";
+   case GEOM_Geometry:  return"Resources/Shaders/Geometry.geom";
+   case VERT_Geometry:  return"Resources/Shaders/Geometry.vert";
    case FRAG_NoiseHeight:  return"Resources/Shaders/NoiseHeight.frag";
    case TESC_NoiseHeight:  return"Resources/Shaders/NoiseHeight.tesc";
    case TESE_NoiseHeight:  return"Resources/Shaders/NoiseHeight.tese";
@@ -193,5 +199,35 @@ static std::string getShaderPath(GENERATED_SHADERS _shader)
    case FRAG_Texture:  return"Resources/Shaders/Texture.frag";
    case VERT_Texture:  return"Resources/Shaders/Texture.vert";
    case FRAG_Transparency:  return"Resources/Shaders/Transparency.frag";
+	}
+};
+
+static std::string getShaderType(GENERATED_SHADERS _shader)
+{
+   switch (_shader)
+	{
+   case FRAG_NULL:  return "FRAG" ;
+   case VERT_NULL:  return "VERT" ;
+   case FRAG_BasicModel:  return "FRAG" ;
+   case VERT_BasicModel:  return "VERT" ;
+   case FRAG_Geometry:  return "FRAG" ;
+   case GEOM_Geometry:  return "GEOM" ;
+   case VERT_Geometry:  return "VERT" ;
+   case FRAG_NoiseHeight:  return "FRAG" ;
+   case TESC_NoiseHeight:  return "TESC" ;
+   case TESE_NoiseHeight:  return "TESE" ;
+   case VERT_NoiseHeight:  return "VERT" ;
+   case FRAG_Normal:  return "FRAG" ;
+   case FRAG_Simple:  return "FRAG" ;
+   case VERT_Simple:  return "VERT" ;
+   case FRAG_SimpleTess:  return "FRAG" ;
+   case TESC_SimpleTess:  return "TESC" ;
+   case TESE_SimpleTess:  return "TESE" ;
+   case VERT_SimpleTess:  return "VERT" ;
+   case FRAG_Sprite:  return "FRAG" ;
+   case VERT_Sprite:  return "VERT" ;
+   case FRAG_Texture:  return "FRAG" ;
+   case VERT_Texture:  return "VERT" ;
+   case FRAG_Transparency:  return "FRAG" ;
 	}
 };
