@@ -9,13 +9,12 @@
   <component name="ChangeListManager">
     <list default="true" id="8aaab4d2-4f5d-4712-9cf7-40708eb9c5f6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.QuasarEngine/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.QuasarEngine/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cCollider3D.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cCollider3D.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cPhysicBody.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cPhysicBody.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Managers/CollisionManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Managers/CollisionManager.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Managers/CollisionManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Managers/CollisionManager.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Managers/Inputs.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Managers/Inputs.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Managers/Inputs.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Managers/Inputs.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/.EngineAssets/Models/Plane.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.EngineAssets/Models/Plane.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Render/RendererSdl.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Render/RendererSdl.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Scene.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Scene.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Assets.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Assets.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Actors/DoomPlayer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Actors/DoomPlayer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/NoiseHeight.tese" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/NoiseHeight.tese" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +36,11 @@
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="cidr-memory-view://11" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Dependencies/GL/SDL/include/SDL_events.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Dependencies/GL/SDL/include/SDL_stdinc.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Engine/.EngineGenerated/Generated.h" root0="SKIP_HIGHLIGHTING" />
@@ -175,6 +179,7 @@
       <workItem from="1774892189575" duration="13000" />
       <workItem from="1774940201484" duration="4341000" />
       <workItem from="1774956683166" duration="10114000" />
+      <workItem from="1775027299349" duration="3697000" />
     </task>
     <servers />
   </component>
@@ -201,6 +206,16 @@
           <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
           <option name="timeStamp" value="3" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Actors/DoomPlayer.cpp</url>
+          <line>83</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Actors/DoomPlayer.cpp</url>
+          <line>84</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

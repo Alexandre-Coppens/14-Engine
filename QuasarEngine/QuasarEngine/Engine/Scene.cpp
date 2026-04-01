@@ -38,9 +38,9 @@ void Scene::EarlyUpdate()
 
 void Scene::Update(const float _deltaTime)
 {
+	if (mActorList.empty()) return;
 	for (Actor* actor : mActorList)
 	{
-		if (mActorList.empty()) return;
 		actor->Update(_deltaTime);
 	}
 	CollisionManager::UpdatesCollisions();
@@ -49,6 +49,8 @@ void Scene::Update(const float _deltaTime)
 //Update After Rendering
 void Scene::LateUpdate()
 {
+	if (mDestroyActorList.empty()) return;
+	KillActors();
 }
 
 void Scene::Close()

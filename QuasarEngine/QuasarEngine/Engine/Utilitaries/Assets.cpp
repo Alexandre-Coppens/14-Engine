@@ -250,7 +250,10 @@ Texture* Assets::LoadTexture(const std::string& _filePath)
 Texture* Assets::LoadTextureFromFile(const std::string& _pFileName)
 {
 	Texture* texture = new Texture();
-	if (!texture->Load(*mRenderer, _pFileName)) return nullptr;
+	if (!texture->Load(*mRenderer, _pFileName)){
+		delete texture;
+		return nullptr;
+	}
 	return texture;
 }
 

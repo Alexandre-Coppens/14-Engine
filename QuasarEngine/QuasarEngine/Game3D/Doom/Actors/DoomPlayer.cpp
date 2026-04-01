@@ -1,5 +1,7 @@
 ﻿#include "DoomPlayer.h"
 
+#include "Engine/Scene.h"
+#include "Engine/.Prefabs/Object.h"
 #include "Engine/Utilitaries/Assets.h"
 
 #include "Engine/3D/Camera.h"
@@ -74,7 +76,14 @@ void DoomPlayer::Update(const float _deltaTime)
     {
         RaycastResult raycast = CollisionManager::Raycast(mCamera->getLocalTransform()->getWorldLocation(), mCamera->getLocalTransform()->Forward(), 99999.0f);
         Log::Info("Raycast result:" + std::to_string(raycast.hasHit));
-        if (raycast.hasHit)Log::Info("Hit Actor:" + raycast.actor->getName());
+        if (raycast.hasHit)
+        {
+            Log::Info("Hit Actor:" + raycast.actor->getName());
+            Actor* cube = getScene()->AddActor(new Object("Cube", OBJ_Ball, PNG_Block, "BasicModel"));
+            getScene()->InitNewActors();
+            cube->getTransform3D()->setScale(0.2f);
+            cube->getTransform3D()->setLocation(raycast.collisionPoint);
+        }
     }
     
     //Rotation is stocked in a vector before being transformed to quat via ZYX order

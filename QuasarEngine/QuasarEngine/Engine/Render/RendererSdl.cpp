@@ -68,10 +68,10 @@ void RendererSdl::DrawSprite(Actor& _pActor, const Texture* _pTex, const Rectang
 	destinationRect.x = static_cast<int>(transform.getLocation().x - (transform.getSize().x * _origin.x));
 	destinationRect.y = static_cast<int>(transform.getLocation().y - (transform.getSize().y * _origin.y));
 
-	const SDL_Rect* sourceSDL;
+	SDL_Rect sourceSDL;
 	if (Equal(_sourceRect.size, Vector2Zero()))
 	{
-		sourceSDL = new SDL_Rect{
+		sourceSDL = SDL_Rect{
 			Round(0),
 			Round(0),
 			Round(_pTex->GetWidth()),
@@ -79,7 +79,7 @@ void RendererSdl::DrawSprite(Actor& _pActor, const Texture* _pTex, const Rectang
 	}
 	else
 	{
-		sourceSDL = new SDL_Rect{
+		sourceSDL = SDL_Rect{
 			Round(_sourceRect.position.x),
 			Round(_sourceRect.position.y),
 			Round(_sourceRect.size.x),
@@ -89,13 +89,12 @@ void RendererSdl::DrawSprite(Actor& _pActor, const Texture* _pTex, const Rectang
 	SDL_RenderCopyEx(
 		pSDLRenderer,
 		_pTex->GetSdlTexture(),
-		sourceSDL,
+		&sourceSDL,
 		&destinationRect,
 		-ToDeg(transform.getRotation()),
 		nullptr,
 		static_cast<SDL_RendererFlip>(_flip));
-
-	delete sourceSDL;
+	
 }
 
 void RendererSdl::AddSprite(Sprite2D* _pSprite)
