@@ -596,6 +596,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)\raylib;$(SolutionDir)\raylib\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="MapMaker\WinDialogue.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MapMaker\Actor.h" />
@@ -604,6 +605,7 @@
     <ClInclude Include="MapMaker\Engine.h" />
     <ClInclude Include="MapMaker\Terrain.h" />
     <ClInclude Include="MapMaker\UI_TilesMenu.h" />
+    <ClInclude Include="MapMaker\WinDialogue.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

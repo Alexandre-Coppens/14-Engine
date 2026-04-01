@@ -28,6 +28,9 @@ public:
     bool enabled{ true };
     bool hasCollision{ true };
     bool needToDestroy{ false };
+    
+    bool hovered{ false };
+    bool clicked{ true };
 
     string name{ "" };
     Vector2 position{ 0,0 };
@@ -54,9 +57,6 @@ public:
     //Mouse Gestion
     bool IsCursorInBounds();
     virtual int Clicked();
-
-    //Collision Gestion
-    virtual void Collided();
 
     static void CreateActor(const string id, Actor* gO);
 

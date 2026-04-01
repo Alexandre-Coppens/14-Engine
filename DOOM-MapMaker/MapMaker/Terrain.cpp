@@ -2,6 +2,7 @@
 #include <fstream>
 
 #include "Terrain.h"
+#include "WinDialogue.h"
 
 using std::ofstream;
 using std::ifstream;
@@ -113,19 +114,12 @@ void Terrain::ISCursorOnSomething(Vector2 position)
 	nearIndice = -1;
 }
 
-void Terrain::SaveMap(string fileName){
-	bool checkIfSure = true;
-	while (checkIfSure) {
-		BeginDrawing();
-		DrawText("Do you want to SAVE ?.", 150, 300, 20, RED);
-		DrawText("Enter. Yes   -   Del. No", 150, 330, 20, RED);
-		EndDrawing();
-		if (IsKeyPressed(KEY_ENTER)) checkIfSure = false;
-		else if (IsKeyPressed(KEY_BACKSPACE)) return;
-	}
-
+void Terrain::SaveMap(){
+	std::string path = WinDialogue::SaveFileWindow();
+	if (path == "") return;
+	
 	ofstream saveFile;
-	saveFile.open(fileName + ".txt");
+	saveFile.open(path);
 	if (saveFile.is_open()) {
 		saveFile << "$ 2 " << "\n";
 		saveFile << "\n";
@@ -151,27 +145,21 @@ void Terrain::SaveMap(string fileName){
 		saveFile.close();
 	}
 	else {
-		cout << "Could not load " + fileName + ".txt ." + "\n";
+		cout << "Could not load " + path + "\n";
 	}
 }
 
-void Terrain::LoadMap(string fileName){
-	bool checkIfSure = true;
-	while (checkIfSure) {
-		BeginDrawing();
-		DrawText("Do you want to LOAD ?.", 150, 300, 20, RED);
-		DrawText("Enter. Yes   -   Del. No", 150, 330, 20, RED);
-		EndDrawing();
-		if (IsKeyPressed(KEY_ENTER)) checkIfSure = false;
-		else if (IsKeyPressed(KEY_BACKSPACE)) return;
-	}
+void Terrain::LoadMap(){
+	
+	std::string path = WinDialogue::OpenFileWindow();
+	if (path == "") return;
 
 	dictionary.clear();
 	wallVertices.clear();
 	wallList.clear();
 
 	string line;
-	ifstream loadFile(fileName + ".txt");
+	ifstream loadFile(path);
 
 	if (loadFile.is_open()) {
 		while (getline(loadFile, line) ){
@@ -198,7 +186,7 @@ void Terrain::LoadMap(string fileName){
 		loadFile.close();
 	}
 	else {
-		cout << "Could not load " + fileName + ".txt ." + "\n";
+		cout << "Could not load " + path + "\n";
 	}
 }
 

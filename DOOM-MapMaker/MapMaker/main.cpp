@@ -7,7 +7,7 @@ Engine engine;
 
 int main()
 {
-    InitWindow(590, 650, "Raylib");
+    InitWindow(1280, 720, "Raylib");
     SetTargetFPS(60);
 	SetExitKey(KEY_NULL);
 

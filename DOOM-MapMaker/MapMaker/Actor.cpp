@@ -23,6 +23,7 @@ Actor::~Actor(){
 }
 
 void Actor::Update() {
+	hovered = IsCursorInBounds();
 }
 
 void Actor::Draw(Vector2 scroll) {
@@ -39,9 +40,6 @@ void Actor::CreateRect(){
 	rect.y = 0;
 	rect.width = size.x;
 	rect.height = size.y;
-}
-
-void Actor::Collided(){
 }
 
 void Actor::CreateActor(const string id, Actor* gO){

@@ -65,7 +65,7 @@ public:
     
     static void ISCursorOnSomething(Vector2 position);
     
-    static void SaveMap(string fileName);
-    static void LoadMap(string fileName);
+    static void SaveMap();
+    static void LoadMap();
     static vector<string> BreakString(string str, char breacker);
 };

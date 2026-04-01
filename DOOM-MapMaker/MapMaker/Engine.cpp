@@ -60,7 +60,7 @@ void Engine::Update() {
 	
 	if(IsMouseButtonPressed(0))
 	{		
-		if (GetMouseX() >= 460 && GetMouseX() <= 540 && GetMouseY() >= 10 && GetMouseY() <= 90)
+		if (GetMouseX() >= 1160 && GetMouseX() <= 1240 && GetMouseY() >= 10 && GetMouseY() <= 90)
 		{
 			tileMenu.OpenTilesTab();
 		}
@@ -159,8 +159,8 @@ void Engine::Update() {
 	// }
 
 	//Save / Load
-	if(IsKeyDown(KEY_LEFT_CONTROL) && IsKeyPressed(KEY_S))Terrain::SaveMap("Output_Map");
-	if(IsKeyDown(KEY_LEFT_CONTROL) && IsKeyPressed(KEY_O))Terrain::LoadMap("Output_Map");
+	if(IsKeyDown(KEY_LEFT_CONTROL) && IsKeyPressed(KEY_S))Terrain::SaveMap();
+	if(IsKeyDown(KEY_LEFT_CONTROL) && IsKeyPressed(KEY_O))Terrain::LoadMap();
 	if (IsKeyPressed(KEY_ESCAPE)) selectedVertex = -1;
 }
 
@@ -205,7 +205,7 @@ void Engine::Draw() {
 	else sprite = &AssetList::SpriteList[tileMenu.GetTexture()];
 	DrawTexturePro(*sprite,
 		Rectangle{ 0, 0, (float)sprite->width, (float)sprite->height },
-		Rectangle{ 500, 50, 80, 80 },
+		Rectangle{ 1200, 50, 80, 80 },
 		Vector2{ 40,40 },
 		0.0f,
 		WHITE);
