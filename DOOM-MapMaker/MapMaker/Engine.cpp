@@ -4,26 +4,39 @@
 #include "Terrain.h"
 #include "DrawScreen.h"
 
-
 using std::cout;
 using std::to_string;
 
 //int currentTexture{ 0 };
+Actor* hoveredActor = nullptr;
 
-Engine::Engine() {
+Engine::Engine() 
+{
 }
 
-void Engine::Start(){
+Engine::~Engine()
+{
+	delete tileMenu;
+	delete currentTexture;
+	
+	tileMenu = nullptr;
+	currentTexture = nullptr;
+}
+
+void Engine::Start()
+{
+	tileMenu = new UI_TilesMenu{};
+	currentTexture = new UI_CurrentTexture{};
+	
 	assets = AssetList::GetInstance();
 	Terrain::gridMeterInPixels = 50.0f;
 	Terrain::gridSubdivision = 5;
 	Terrain::wallDrawSize = 5.0f;
-	tileMenu.SetTexture(AssetList::GetNameAtPosition(0));
+	tileMenu->SetTexture(AssetList::GetNameAtPosition(0));
 	scroll = { GetScreenWidth() * 0.5f ,GetScreenHeight() * 0.5f };
 }
 
 void Engine::Update() {
-
 	vector<Actor*> goList = Actor::GetAllActors();
 	for (Actor* go : goList) {
 		if (go->enabled) go->Update();
@@ -32,7 +45,10 @@ void Engine::Update() {
 		}
 	}
 
-	tileMenu.Update();
+	for (Actor* actor : Actor::GetAllActors())
+	{
+		if (actor->enabled) actor->Update();
+	}
 	
 	//Move
 	if (IsMouseButtonDown(2)) {
@@ -55,19 +71,38 @@ void Engine::Update() {
 	float subgrid = Terrain::gridMeterInPixels / Terrain::gridSubdivision;
 	Vector2 mPos{ round(round(-scroll.x + GetMouseX()) / subgrid) * subgrid, round(round(-scroll.y + GetMouseY()) / subgrid) * subgrid };
 	
-	//TODO: check first if vertex behind
-	Terrain::ISCursorOnSomething(mPos);
+	//Check is an actor is hovered
+	bool isHoveringActor = false;
+	hoveredActor = nullptr;
+	for (std::vector<Actor*> actorLayer : *Actor::GetAllActorsLayered())
+	{
+		for (Actor* actor : actorLayer)
+		{
+			if (!actor->enabled) continue;
+			if (actor->IsCursorInBounds())
+			{
+				actor->hovered = true;
+				hoveredActor = actor;
+				isHoveringActor = true;
+				break;
+			}
+			actor->hovered = false;
+		}
+	}
+	
+	if (!isHoveringActor)
+	{
+		Terrain::ISCursorOnSomething(mPos);
+	}
 	
 	if(IsMouseButtonPressed(0))
 	{		
-		if (GetMouseX() >= 1160 && GetMouseX() <= 1240 && GetMouseY() >= 10 && GetMouseY() <= 90)
+		if (!isHoveringActor || hoveredActor != tileMenu) tileMenu->enabled = false;
+		if (isHoveringActor)
 		{
-			tileMenu.OpenTilesTab();
+			hoveredActor->Clicked();
 		}
-		else if (tileMenu.GetOpen())
-		{
-			tileMenu.Interact();
-		}
+		//If close to a already existing vertex
 		else if (Terrain::nearIndice != -1 && Terrain::nearGizmo == Vertex)
 		{
 			if (selectedVertex == -1) selectedVertex = Terrain::nearIndice;
@@ -85,7 +120,7 @@ void Engine::Update() {
 					Terrain::Wall wall;
 					wall.start = selectedVertex;
 					wall.end = Terrain::nearIndice;
-					wall.dictionaryTexture = Terrain::CheckInDictionary(tileMenu.GetTexture());
+					wall.dictionaryTexture = Terrain::CheckInDictionary(tileMenu->GetTexture());
 					Terrain::AddNewWall(wall);
 					selectedVertex = wall.end;
 				}
@@ -95,20 +130,23 @@ void Engine::Update() {
 				}
 			}
 		}
+		//If clicking on a wall
 		else if (Terrain::nearGizmo == Edge)
 		{
 			cout << "nope \n";
 		}
+		//If no vertexes has been selected
 		else if (selectedVertex == -1)
 		{
 			selectedVertex = Terrain::AddNewVertex(mPos);
 		}
+		//Else, New Vertex Created and wall placed
 		else
 		{
 			Terrain::Wall wall;
 			wall.start = selectedVertex;
 			wall.end = Terrain::AddNewVertex(mPos);
-			wall.dictionaryTexture = Terrain::CheckInDictionary(tileMenu.GetTexture());
+			wall.dictionaryTexture = Terrain::CheckInDictionary(tileMenu->GetTexture());
 			Terrain::AddNewWall(wall);
 			selectedVertex = wall.end;
 		}
@@ -194,21 +232,18 @@ void Engine::Draw() {
 	rlPopMatrix();
 	
 	DrawScreen(&scroll);
-	tileMenu.Draw();
+	auto actors = Actor::GetAllActorsLayered();
+	for (int i = 0; i < actors->size(); i++)
+	{
+		for (int j = 0; j < actors->at(i).size(); j++)
+		{
+			actors->at(i)[j]->Draw(scroll);
+		}
+	}
 	
 	DrawText(("X. " + to_string((scroll.x - GetMouseX()) / Terrain::gridMeterInPixels)).c_str(), 10, 10, 20, GRAY);
 	DrawText(("Y. " + to_string((scroll.y - GetMouseY()) / Terrain::gridMeterInPixels)).c_str(), 10, 30, 20, GRAY);
-	DrawText(("Current Sprite:  " + tileMenu.GetTexture()).c_str(), 10, 50, 20, ORANGE);
-
-	Texture2D* sprite;
-	if (tileMenu.GetTexture() == "") sprite = &AssetList::SpriteList[AssetList::GetNameAtPosition(0)];
-	else sprite = &AssetList::SpriteList[tileMenu.GetTexture()];
-	DrawTexturePro(*sprite,
-		Rectangle{ 0, 0, (float)sprite->width, (float)sprite->height },
-		Rectangle{ 1200, 50, 80, 80 },
-		Vector2{ 40,40 },
-		0.0f,
-		WHITE);
+	DrawText(("Current Sprite:  " + tileMenu->GetTexture()).c_str(), 10, 50, 20, ORANGE);
 
 	if (GetFrameTime() != 0)
 	{

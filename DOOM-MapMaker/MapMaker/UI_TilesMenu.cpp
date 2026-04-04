@@ -1,13 +1,19 @@
 #include "UI_TilesMenu.h"
 
-UI_TilesMenu::UI_TilesMenu(){
+#include "Actors/UI_CurrentTexture.h"
+
+UI_TilesMenu::UI_TilesMenu():
+	Actor(false, "UI_Texture", Vector2{0, 0.5f}, Vector2{125, 0}, Vector2{250, 400}, &AssetList::SpriteList["Unknown"], 3)
+{
 }
 
-UI_TilesMenu::~UI_TilesMenu(){
+UI_TilesMenu::~UI_TilesMenu()
+{
 }
 
-void UI_TilesMenu::Update(){
-	if (open)
+void UI_TilesMenu::Update()
+{
+	if (enabled)
 	{
 		if (GetMouseWheelMove()>0) {
 			scroll -= 600.0f * GetFrameTime();
@@ -19,26 +25,27 @@ void UI_TilesMenu::Update(){
 	}
 }
 
-void UI_TilesMenu::Draw(){
-	if (open)
+void UI_TilesMenu::Draw(Vector2 Scroll)
+{
+	if (enabled)
 	{
-		DrawRectangleRec(rectangle, GRAY);
+		DrawRectangleRec(rect, BLACK);
 		int i = 0;
 		for (auto texture : AssetList::SpriteList)
 		{
 			int x = 10 + (60 * (i % 4));
-			int y = 250 + (60 * (i / 4)) - scroll;
-			if (y > 210 && y < 460)
+			int y = 170 + (60 * (i / 4)) - scroll;
+			if (y > rect.y - 50 && y < rect.y + rect.height - 10)
 			{
 				if (currentTextureName == texture.first)
 				{
-					DrawRectangleRec(Rectangle{ x - 5.0f, y - 30.0f, 60, 60 }, SKYBLUE);
+					DrawRectangleRec(Rectangle{ x - 5.0f, Clamp(y - 5.0f, rect.y + 5.0f, GetScreenHeight()), 60, Clamp(std::min(rect.y + rect.height - y, y - rect.y + 50), 0 ,60)}, SKYBLUE);
 				}
 				Texture* sprite = &texture.second;
 				DrawTexturePro(*sprite,
 					Rectangle{ 0, 0, (float)sprite->width, (float)sprite->height },
-					Rectangle{ x + 25.0f, y + 0.25f, 50, 50 },
-					Vector2{ 25,25 },
+					Rectangle{ (float)x, Clamp(y, rect.y + 10, GetScreenHeight()), 50, Clamp(std::min(rect.y + rect.height - y - 10, y - rect.y + 40), 0 ,50) },
+					Vector2Zero(),
 					0.0f,
 					WHITE);
 			}
@@ -47,25 +54,17 @@ void UI_TilesMenu::Draw(){
 	}
 }
 
-void UI_TilesMenu::OpenTilesTab(){
-	open = !open;
-	rectangle = Rectangle{ 0, GetScreenHeight() * 0.250f, 250, GetScreenHeight() * 0.500f};
-}
-
-void UI_TilesMenu::Interact(){
+void UI_TilesMenu::Clicked()
+{
 	int i = 0;
-	if (not(GetMouseX() > 0 && GetMouseX() < 250 + 50 && GetMouseY() > GetScreenHeight() * 0.250f && GetMouseY() < GetScreenHeight() * 0.750f))
-	{
-		open = false;
-		return;
-	}
 	for (auto texture : AssetList::SpriteList)
 	{
 		int x = 10 + (60 * (i % 4));
-		int y = 250 + (60 * (i / 4)) - scroll;
+		int y = 195 + (60 * (i / 4)) - scroll;
 		if (GetMouseX() > x && GetMouseX() < x + 50 && GetMouseY() > y - 25 && GetMouseY() < y + 25)
 		{
 			currentTextureName = texture.first;
+			dynamic_cast<UI_CurrentTexture*>(GetActorWithName("UI_CurrentTexture"))->sprite = &AssetList::SpriteList[texture.first];
 		}
 		i++;
 	}

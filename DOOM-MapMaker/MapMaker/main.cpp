@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "Engine.h"
+#include "AssetsList.h"
 
 using std::string;
 Engine engine;
@@ -13,6 +14,7 @@ int main()
 
     InitAudioDevice();
 
+	AssetList::LoadRessources();
 	engine.Start();
 
 	srand(time(NULL));

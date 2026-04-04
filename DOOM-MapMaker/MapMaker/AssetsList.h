@@ -23,15 +23,15 @@ public:
 private:
     AssetList();
     ~AssetList();
-    void LoadRessources();
+    
+    static void LoadFontFolder(string path);
+    static void LoadSoundFolder(string path);
+    static void LoadTextureFolder(string path);
 
-    void LoadFontFolder(string path);
-    void LoadSoundFolder(string path);
-    void LoadTextureFolder(string path);
-
-    void LoadTexture2D(string name, string link);
+    static void LoadTexture2D(string name, string link);
 
 public:
+    static void LoadRessources();
     static string GetNameAtPosition(int position);
     static AssetList* GetInstance();
 };

@@ -1,53 +1,53 @@
 #include "Actor.h"
+#include "raymath.h"
 
 map<string, Actor*> Actor::ActorList;
 vector<vector<Actor*>> Actor::ActorsByLayer;
 
-Actor::Actor(){
+Actor::Actor(bool _enabled, string _name, Vector2 _anchor, Vector2 _pos, Vector2 _size, Texture2D* _sprite, short _layer):
+	enabled(_enabled),
+	name(_name),
+	position(_pos),
+	size(_size),
+	sprite(_sprite),
+	layer(_layer),
+	anchor(_anchor)
+{
+	ActorList[name] = this;
+	while (ActorsByLayer.size() <= layer)
+	{
+		ActorsByLayer.push_back({});
+	}
+	ActorsByLayer[layer].push_back(this);
 	CreateRect();
 }
 
-Actor::Actor(bool _enabled, string _name, Vector2 _pos, Vector2 _size, Texture2D* _sprite, ActorType _type) {
-	enabled = _enabled;
-	name = _name;
-	position = _pos;
-	size = _size;
-	sprite = _sprite;
-	type = _type;
-
-	CreateRect();
-}
-
-Actor::~Actor(){
+Actor::~Actor()
+{
 	ActorList.erase(name);
 }
 
-void Actor::Update() {
-	hovered = IsCursorInBounds();
-}
+// void Actor::Draw(Vector2 _scroll) {
+// 	DrawTextureRec(*sprite, rect, Vector2Add(position, _scroll), WHITE);
+// }
 
-void Actor::Draw(Vector2 scroll) {
-	DrawTextureRec(*sprite, rect, Vector2Add(position, scroll), WHITE);
-}
-
-bool Actor::IsCursorInBounds(){
+bool Actor::IsCursorInBounds()
+{
 	if (!enabled)return false;
-	return GetMouseX() >= position.x && GetMouseX() <= position.x + size.x && GetMouseY() >= position.y && GetMouseY() <= position.y + size.y;
+	return CheckCollisionPointRec(GetMousePosition(), rect);
 }
 
-void Actor::CreateRect(){
-	rect.x = 0;
-	rect.y = 0;
+void Actor::CreateRect()
+{
+	float width = GetScreenWidth();
+	rect.x = position.x + (anchor.x * GetScreenWidth())  - size.x * 0.5;
+	rect.y = position.y + (anchor.y * GetScreenHeight()) - size.y * 0.5;
 	rect.width = size.x;
 	rect.height = size.y;
 }
 
-void Actor::CreateActor(const string id, Actor* gO){
-	gO->name = id;
-	ActorList[id] = gO;
-}
-
-Actor* Actor::GetActorWithName(string _name) {
+Actor* Actor::GetActorWithName(string _name)
+{
 	for (auto const& i : ActorList) {
 		if (i.first == _name) {
 			return const_cast<Actor*>(i.second);
@@ -70,24 +70,17 @@ vector<vector<Actor*>>* Actor::GetAllActorsLayered()
 	return &ActorsByLayer;
 }
 
-vector<Actor*> Actor::GetAllActorsWith(ActorType type){
-	vector<Actor*> ret;
-	for(auto const& i : ActorList){
-		if (i.second->type == type) {
-			ret.push_back(const_cast<Actor*>(i.second));
-		}
-	}
-    return ret;
-}
-
-void Actor::DestroyActorList(){
+void Actor::DestroyActorList()
+{
 	ActorList.clear();
+	for (auto& i : ActorList)
+	{
+		delete i.second;
+		i.second = nullptr;
+	}
 }
 
-int Actor::Clicked() {
-	return 0;
-}
-
-void Actor::Destroy() {
+void Actor::Destroy()
+{
 	needToDestroy = true;
 }

@@ -21,11 +21,11 @@ public:
     UI_TilesMenu();
     ~UI_TilesMenu();
 
-    void Draw();
+    void Draw(Vector2 Scroll);
     void Update();
+    void Clicked();
 
     void OpenTilesTab();
-    void Interact();
     bool GetOpen() { return open; }
     string GetTexture() {return currentTextureName;}
     void SetTexture(string textureName) {currentTextureName = textureName;}
