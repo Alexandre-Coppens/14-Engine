@@ -14,6 +14,7 @@ enum class DrawOption
 	WIREFRAME,
 	TESSELATION,
 	GEOMETRY,
+	INSTANCED,
 	DEBUG
 };
 

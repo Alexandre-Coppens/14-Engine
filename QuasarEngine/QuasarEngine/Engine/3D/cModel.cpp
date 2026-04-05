@@ -10,6 +10,7 @@
 #include "Engine/Render/ShaderProgram.h"
 #include "Engine/Render/RendererGl.h"
 #include "Engine/Render/VertexArray.h"
+#include "Engine/Utilitaries/Time.h"
 
 Model::Model(Actor* _pOwner, std::string _shader)  :
 	Component(_pOwner), mMesh(nullptr), mTextureIndex(0), mShader(_shader), mParent(nullptr)
@@ -59,13 +60,18 @@ void Model::Draw(DrawOption _option)
 			break;
 			
 		case DrawOption::TESSELATION:
-			glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
+			//glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
 			texture = mMesh->getTexture(static_cast<Uint16>(mTextureIndex));
 			if (!texture) texture = Assets::GetTexture(PNG_NullTexture);
 			break;
 
 		case DrawOption::GEOMETRY:
 			glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
+			break;
+
+		case DrawOption::INSTANCED:
+			texture = mMesh->getTexture(static_cast<Uint16>(mTextureIndex));
+			if (!texture) texture = Assets::GetTexture(PNG_NullTexture);
 			break;
 
 		case DrawOption::DEBUG:
@@ -78,6 +84,9 @@ void Model::Draw(DrawOption _option)
 		default:
 			break;
 		}
+
+		float time = Time::currentFrameTime;
+		Assets::GetShaderProgram(mShader)->SetFloat("uTime", time);
 		
 		Assets::GetShaderProgram(mShader)->SetVector4f("uColor", mColor);
 		if (texture != nullptr) texture->SetActive();
@@ -86,7 +95,20 @@ void Model::Draw(DrawOption _option)
 		mMesh->getVertexArray()->SetActive();
 		
 		//glPointSize(5.0f);
-		glDrawArrays((_option == DrawOption::TESSELATION) ? GL_PATCHES : GL_TRIANGLES, 0, mMesh->getVertexArray()->GetVerticesCount());
+		switch (_option)
+		{
+		case DrawOption::INSTANCED:
+			glDrawArraysInstanced(GL_TRIANGLE_STRIP, 0, mMesh->getVertexArray()->GetVerticesCount(), 1024 * 1024);
+			break;
+			
+		case DrawOption::TESSELATION:
+			glDrawArrays(GL_PATCHES, 0, mMesh->getVertexArray()->GetVerticesCount());
+			break;
+			
+		default:
+			glDrawArrays(GL_TRIANGLES, 0, mMesh->getVertexArray()->GetVerticesCount());
+			break;
+		}
 	}
 }
 void Model::Destroy()

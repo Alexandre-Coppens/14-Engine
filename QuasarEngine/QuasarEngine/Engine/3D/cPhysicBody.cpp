@@ -42,7 +42,7 @@ void PhysicBody::Update(float _deltaTime)
 {
     Vector3 force = Vector3Zero();
     if (mGravityEnabled) force += (mGravityDirection * mGravityForce) * mMass;
-    mVelocity += (force / mMass) * _deltaTime * 0.01f;
+    mVelocity += (force / mMass) * _deltaTime * 0.1f;
     pOwner->getTransform3D()->addLocation(mVelocity * _deltaTime);
     
     /*Vector3 angularAcceleration = Vector3Zero();

@@ -45,11 +45,6 @@ static std::string toUpper(std::string s) {
 //Parse through the Engine Assets and Resources
 void Assets::ScanFiles()
 {
-	if (true)
-	{
-		Log::Error(LogType::Application, "SKIPPED ASSET SCANNING!");
-		return;
-	}
 	const std::filesystem::path engineFilePath{ engineFile };
 	const std::filesystem::path resourceFilePath{ resourceFile };
 	std::vector<std::filesystem::path> assetsPaths {resourceFilePath, engineFilePath};
@@ -67,6 +62,31 @@ void Assets::ScanFiles()
 			}
 		}
 	}
+
+	//Check in Generated.h if it needs to be Updated;
+	int oldTextureNbr { 0 };
+	int oldModelsNbr  { 0 };
+	int oldShadersNbr { 0 };
+	int currentLine = 1;
+	std::string line;
+	std::ifstream loadFile(outputPath + "/" + "Generated.h");
+
+	if (loadFile.is_open())
+	{
+		while (getline(loadFile, line) ){
+			if (currentLine == 4) oldTextureNbr = stoi(BreakString(line, ' ')[4]);
+			if (currentLine == 5) oldModelsNbr = stoi(BreakString(line, ' ')[4]);
+			if (currentLine == 6) oldShadersNbr = stoi(BreakString(line, ' ')[4]);
+			currentLine++;
+		}
+		loadFile.close();
+	}
+	if (oldTextureNbr == mGeneratedTextures.size() && oldModelsNbr == mGeneratedMeshes.size() && oldShadersNbr == mGeneratedShader.size())
+	{
+		Log::Info("Asset Generation: No new Asset Detected.");
+		return;
+	}
+	
 	WriteAssetsOnFile(outputPath);
 }
 
@@ -123,6 +143,10 @@ void Assets::WriteAssetsOnFile(std::string _filePath)
 	file.open( _filePath + "/" + "Generated.h");
 	file << "#pragma once \n";
 	file << "//Do not write anything in it. Auto-Generated in Assets.cpp.\n";
+	file << "\n";
+	file << "static int texturesCount = " + std::to_string(mGeneratedTextures.size()) + " ;\n";
+	file << "static int meshesCount = " + std::to_string(mGeneratedMeshes.size()) + " ;\n";
+	file << "static int shadersCount = " + std::to_string(mGeneratedShader.size()) + " ;\n";
 	
 	//Create ENUM Part
 	file << "\n";

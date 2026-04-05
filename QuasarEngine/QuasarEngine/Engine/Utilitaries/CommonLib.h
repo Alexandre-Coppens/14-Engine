@@ -4,6 +4,7 @@
 #include <cstring>
 #include <string>
 #include <array>
+#include <vector>
 
 using std::array;
 
@@ -15,6 +16,24 @@ enum Direction
 	RIGHT,
 	CENTER
 };
+
+//Break a string via a breaker
+static inline std::vector<std::string> BreakString(std::string _str, char _breaker) {
+	std::vector<std::string> r;
+	std::string word;
+	for(int i = 0; i < _str.size(); i++)
+	{
+		if (_str[i] == _breaker) {
+			r.push_back(word);
+			word.clear();
+		}
+		else{
+			word += _str[i];
+		}
+	}
+	r.push_back(word);
+	return r;
+}
 
 //All Structs
 struct Vector2

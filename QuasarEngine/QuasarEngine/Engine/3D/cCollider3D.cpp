@@ -41,6 +41,7 @@ void Collider3D::CheckCollisions()
     {
         if (collider == this) continue;
         if (collider->getColliderType() == NONE) continue;
+        if (collider->getIsActive() == false) continue;
         
         CollisionData data = CollisionManager::GetIsColliding(this, collider);
         if (data.isColliding)

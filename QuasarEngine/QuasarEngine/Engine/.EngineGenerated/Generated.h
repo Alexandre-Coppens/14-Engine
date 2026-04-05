@@ -1,6 +1,10 @@
 #pragma once 
 //Do not write anything in it. Auto-Generated in Assets.cpp.
 
+static int texturesCount = 39 ;
+static int meshesCount = 24 ;
+static int shadersCount = 25 ;
+
 enum GENERATED_TEXTURE
 {
     PNG_NullShader,
@@ -38,6 +42,7 @@ enum GENERATED_TEXTURE
     PNG_Bowling_Alley_TableTop,
     PNG_Bowling_Alley_Trash,
     PNG_Bowling_Alley_Walls,
+    PNG_Grass_Gradient,
     PNG_Pin,
     PNG_Voronoi,
     PNG_pokeball,
@@ -67,6 +72,7 @@ enum GENERATED_MESHES
     OBJ_Bowling_Alley_TableTop,
     OBJ_Bowling_Alley_Trash,
     OBJ_Bowling_Alley_Walls,
+    OBJ_Grass,
     OBJ_Pin,
 };
 
@@ -79,6 +85,8 @@ enum GENERATED_SHADERS
     FRAG_Geometry,
     GEOM_Geometry,
     VERT_Geometry,
+    FRAG_Grass,
+    VERT_Grass,
     FRAG_NoiseHeight,
     TESC_NoiseHeight,
     TESE_NoiseHeight,
@@ -136,6 +144,7 @@ static std::string getTexturePath(GENERATED_TEXTURE _texture)
    case PNG_Bowling_Alley_TableTop:  return"Resources/Textures/Bowling/Bowling_Alley_TableTop.png";
    case PNG_Bowling_Alley_Trash:  return"Resources/Textures/Bowling/Bowling_Alley_Trash.png";
    case PNG_Bowling_Alley_Walls:  return"Resources/Textures/Bowling/Bowling_Alley_Walls.png";
+   case PNG_Grass_Gradient:  return"Resources/Textures/Grass_Gradient.png";
    case PNG_Pin:  return"Resources/Textures/Pin.png";
    case PNG_Voronoi:  return"Resources/Textures/Voronoi.png";
    case PNG_pokeball:  return"Resources/Textures/pokeball.png";
@@ -168,6 +177,7 @@ static std::string getMeshPath(GENERATED_MESHES _mesh)
    case OBJ_Bowling_Alley_TableTop:  return"Resources/Models/Bowling/Bowling_Alley_TableTop.obj";
    case OBJ_Bowling_Alley_Trash:  return"Resources/Models/Bowling/Bowling_Alley_Trash.obj";
    case OBJ_Bowling_Alley_Walls:  return"Resources/Models/Bowling/Bowling_Alley_Walls.obj";
+   case OBJ_Grass:  return"Resources/Models/Grass.obj";
    case OBJ_Pin:  return"Resources/Models/Pin.obj";
 	}
 };
@@ -183,6 +193,8 @@ static std::string getShaderPath(GENERATED_SHADERS _shader)
    case FRAG_Geometry:  return"Resources/Shaders/Geometry.frag";
    case GEOM_Geometry:  return"Resources/Shaders/Geometry.geom";
    case VERT_Geometry:  return"Resources/Shaders/Geometry.vert";
+   case FRAG_Grass:  return"Resources/Shaders/Grass.frag";
+   case VERT_Grass:  return"Resources/Shaders/Grass.vert";
    case FRAG_NoiseHeight:  return"Resources/Shaders/NoiseHeight.frag";
    case TESC_NoiseHeight:  return"Resources/Shaders/NoiseHeight.tesc";
    case TESE_NoiseHeight:  return"Resources/Shaders/NoiseHeight.tese";
@@ -199,35 +211,5 @@ static std::string getShaderPath(GENERATED_SHADERS _shader)
    case FRAG_Texture:  return"Resources/Shaders/Texture.frag";
    case VERT_Texture:  return"Resources/Shaders/Texture.vert";
    case FRAG_Transparency:  return"Resources/Shaders/Transparency.frag";
-	}
-};
-
-static std::string getShaderType(GENERATED_SHADERS _shader)
-{
-   switch (_shader)
-	{
-   case FRAG_NULL:  return "FRAG" ;
-   case VERT_NULL:  return "VERT" ;
-   case FRAG_BasicModel:  return "FRAG" ;
-   case VERT_BasicModel:  return "VERT" ;
-   case FRAG_Geometry:  return "FRAG" ;
-   case GEOM_Geometry:  return "GEOM" ;
-   case VERT_Geometry:  return "VERT" ;
-   case FRAG_NoiseHeight:  return "FRAG" ;
-   case TESC_NoiseHeight:  return "TESC" ;
-   case TESE_NoiseHeight:  return "TESE" ;
-   case VERT_NoiseHeight:  return "VERT" ;
-   case FRAG_Normal:  return "FRAG" ;
-   case FRAG_Simple:  return "FRAG" ;
-   case VERT_Simple:  return "VERT" ;
-   case FRAG_SimpleTess:  return "FRAG" ;
-   case TESC_SimpleTess:  return "TESC" ;
-   case TESE_SimpleTess:  return "TESE" ;
-   case VERT_SimpleTess:  return "VERT" ;
-   case FRAG_Sprite:  return "FRAG" ;
-   case VERT_Sprite:  return "VERT" ;
-   case FRAG_Texture:  return "FRAG" ;
-   case VERT_Texture:  return "VERT" ;
-   case FRAG_Transparency:  return "FRAG" ;
 	}
 };

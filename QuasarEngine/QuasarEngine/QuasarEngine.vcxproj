@@ -1459,12 +1459,15 @@
     <Content Include="Resources\Models\Bowling\Bowling_Alley_Trash.obj" />
     <Content Include="Resources\Models\Bowling\Bowling_Alley_Walls.mtl" />
     <Content Include="Resources\Models\Bowling\Bowling_Alley_Walls.obj" />
+    <Content Include="Resources\Models\Grass.obj" />
     <Content Include="Resources\Models\Pin.obj" />
     <Content Include="Resources\Shaders\BasicModel.frag" />
     <Content Include="Resources\Shaders\BasicModel.vert" />
     <Content Include="Resources\Shaders\Geometry.frag" />
     <Content Include="Resources\Shaders\Geometry.geom" />
     <Content Include="Resources\Shaders\Geometry.vert" />
+    <Content Include="Resources\Shaders\Grass.frag" />
+    <Content Include="Resources\Shaders\Grass.vert" />
     <Content Include="Resources\Shaders\NoiseHeight.frag" />
     <Content Include="Resources\Shaders\NoiseHeight.tesc" />
     <Content Include="Resources\Shaders\NoiseHeight.tese" />
@@ -1500,9 +1503,11 @@
     <Content Include="Resources\Textures\Bowling\Bowling_Alley_TableTop.png" />
     <Content Include="Resources\Textures\Bowling\Bowling_Alley_Trash.png" />
     <Content Include="Resources\Textures\Bowling\Bowling_Alley_Walls.png" />
+    <Content Include="Resources\Textures\Grass_Gradient.png" />
     <Content Include="Resources\Textures\Pin.png" />
     <Content Include="Resources\Textures\pokeball.png" />
     <Content Include="Resources\Textures\Voronoi.png" />
+    <Content Include="TODO.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -8,24 +8,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8aaab4d2-4f5d-4712-9cf7-40708eb9c5f6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Geometry.frag" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Geometry.geom" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Geometry.vert" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Models/Grass.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Models/Grass.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Grass.frag" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Grass.vert" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Textures/Grass_Gradient.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/TODO.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.QuasarEngine/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.QuasarEngine/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine.sln.DotSettings.user" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/.EngineGenerated/Generated.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.EngineGenerated/Generated.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cCollider3D.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cCollider3D.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cModel.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cModel.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Render/RendererGl.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Render/RendererGl.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Render/Shader.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Render/Shader.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Render/Shader.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Render/Shader.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cPhysicBody.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cPhysicBody.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Render/ShaderProgram.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Render/ShaderProgram.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Assets.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Assets.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Assets.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Assets.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Scenes/Scene_Bowling.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Scenes/Scene_Bowling.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/CommonLib.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/CommonLib.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Actors/DoomPlayer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Actors/DoomPlayer.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Scenes/Scene_Doom_Test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Scenes/Scene_Doom_Test.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/TestingGrounds/Scenes/Scene_Cube.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/TestingGrounds/Scenes/Scene_Cube.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/QuasarEngine.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/QuasarEngine.vcxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/NoiseHeight.tesc" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/NoiseHeight.tesc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,37 +38,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="cidr-memory-view://26" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Dependencies/GL/SDL/include/SDL_events.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Dependencies/GL/SDL/include/SDL_stdinc.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Engine/.EngineGenerated/Generated.h" root0="SKIP_HIGHLIGHTING" />
@@ -211,6 +180,11 @@
       <workItem from="1775027299349" duration="3697000" />
       <workItem from="1775045041687" duration="1303000" />
       <workItem from="1775046527125" duration="8788000" />
+      <workItem from="1775055420215" duration="1697000" />
+      <workItem from="1775112507523" duration="2422000" />
+      <workItem from="1775115034471" duration="16975000" />
+      <workItem from="1775199617525" duration="22279000" />
+      <workItem from="1775377246219" duration="9813000" />
     </task>
     <servers />
   </component>
