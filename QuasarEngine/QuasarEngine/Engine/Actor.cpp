@@ -8,19 +8,17 @@
 
 Actor::Actor():
 	mScene(Scene::ActiveScene),
-	mState(ActorState::Active),
-	mTransform2D(nullptr),
-	mTransform3D(nullptr)
+	mState(ActorState::Active)
 {
 	DEBUGAddClass("Actor");
+	mTransform2D = dynamic_cast<Transform2D*>(AddComponent(new Transform2D()));
+	mTransform3D = dynamic_cast<Transform3D*>(AddComponent(new Transform3D(this, WORLD)));
 }
 
 Actor::~Actor() = default;
 
 void Actor::Start()
 {
-	mTransform2D = dynamic_cast<Transform2D*>(AddComponent(new Transform2D()));
-	mTransform3D = dynamic_cast<Transform3D*>(AddComponent(new Transform3D(this, WORLD)));
 	for (Component* c : mComponentList) c->OnActorStart();
 	Log::Info("Actor::" + mName + "::Started");
 }

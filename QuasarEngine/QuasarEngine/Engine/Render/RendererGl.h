@@ -30,6 +30,7 @@ public:
 	void setShaderProgram(ShaderProgram* _pShaderProgram) { pSpriteShaderProgram = _pShaderProgram; }
 
 	Matrix4Row getViewMatrix() { return mView * mProj; }
+	SDL_GLContext getContext() { return mContext; }
 	
 public:
 	RendererGl();

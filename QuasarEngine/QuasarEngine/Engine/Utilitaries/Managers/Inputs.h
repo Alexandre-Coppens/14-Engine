@@ -26,6 +26,7 @@ private:
 	static std::map<int, bool> mMouseUp;
 	static bool mEventQuit;
 	static int mMouseDeltaX, mMouseDeltaY;
+	static bool getMouse;
 
 public:
 	Inputs() = default;

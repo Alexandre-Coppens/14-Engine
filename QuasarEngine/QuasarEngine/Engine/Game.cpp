@@ -11,6 +11,7 @@
 #include "Engine/Render/RendererGl.h"
 
 #include "Engine/Scene.h"
+#include "Utilitaries/Managers/ImguiManager.h"
 
 Game::Game(std::string _title, std::vector<Scene*> _scenes, RendererType _rendererType):
 	mTitle(std::move(_title)), mScenes(std::move(_scenes))
@@ -50,6 +51,8 @@ void Game::Initialize()
 		mScenes[0]->setRenderer(mRenderer);
 		mScenes[0]->Open(this);
 	}
+	
+	ImguiManager::Initialize(mRenderer, mWindow);
 }
 
 void Game::Loop()
@@ -62,6 +65,7 @@ void Game::Loop()
 		Inputs::ComputeInputs();
 
 		mScenes[mCurrentScene]->Update(Time::deltaTime);
+		ImguiManager::Update();
 
 		Render();
 		mScenes[mCurrentScene]->LateUpdate();
@@ -75,11 +79,13 @@ void Game::Render()
 {
 	mRenderer->BeginDraw();
 	mRenderer->Draw();
+	ImguiManager::Render();
 	mRenderer->EndDraw();
 }
 
 void Game::Close()
 {
+	ImguiManager::Close();
 	for (Scene* scene : mScenes)
 	{
 		scene->Close();

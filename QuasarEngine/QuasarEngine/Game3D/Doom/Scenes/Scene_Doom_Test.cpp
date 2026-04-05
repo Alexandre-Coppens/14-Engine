@@ -47,7 +47,7 @@ void Scene_Doom_Test::Start()
     InitNewActors();
 
     //Modify Actors
-    player->getTransform3D()->addLocationZ(0.2f);
+    player->getTransform3D()->addLocationZ(1.0f);
     player->getTransform3D()->addRotationZ(180.0f);
     
     cube->getTransform3D()->addLocationX(-2.0f);

@@ -2,6 +2,8 @@
 #include "Engine/Utilitaries/Time.h"
 #include <SDL.h>
 
+#include "ImguiManager.h"
+
 std::map<int, float>Inputs::mKeyTime;
 std::map<int, bool> Inputs::mKeyDown ;
 std::map<int, bool> Inputs::mKeyHold;
@@ -13,12 +15,22 @@ std::map<int, bool> Inputs::mMouseUp;
 bool Inputs::mEventQuit = false;
 int Inputs::mMouseDeltaX = 0;
 int Inputs::mMouseDeltaY = 0;
+bool Inputs::getMouse {true};
 
 void Inputs::ComputeInputs()
 {
 	FlushLateInputs();
-	SDL_SetRelativeMouseMode(SDL_TRUE);
-	SDL_GetRelativeMouseState(&mMouseDeltaX, &mMouseDeltaY);
+	if (getMouse)
+	{
+		SDL_SetRelativeMouseMode(SDL_TRUE);
+		SDL_GetRelativeMouseState(&mMouseDeltaX, &mMouseDeltaY);
+	}
+	else
+	{
+		SDL_SetRelativeMouseMode(SDL_FALSE);
+		mMouseDeltaX = 0;
+		mMouseDeltaY = 0;
+	}
 	
 	SDL_Event event;
 	while (SDL_PollEvent(&event))
@@ -33,6 +45,7 @@ void Inputs::ComputeInputs()
 			break;
 		}
 	}
+	ImguiManager::PullEvents(&event);
 }
 
 void Inputs::SortInput(const SDL_Event& _event)
@@ -42,7 +55,8 @@ void Inputs::SortInput(const SDL_Event& _event)
 	int key = _event.key.keysym.sym;
 	int button = _event.button.button;
 
-	if (key == SDLK_ESCAPE) mEventQuit = true;
+	if (key == SDLK_F4 && GetKey(SDLK_LCTRL)) mEventQuit = true;
+	if (key == SDLK_ESCAPE && !GetKey(SDLK_ESCAPE)) getMouse = !getMouse;
 	
 	switch (_event.type)
 	{

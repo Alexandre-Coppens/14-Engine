@@ -8,20 +8,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8aaab4d2-4f5d-4712-9cf7-40708eb9c5f6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Models/Grass.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Models/Grass.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Grass.frag" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Grass.vert" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Textures/Grass_Gradient.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/TODO.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.ImGuiFiles/imgui.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.ImGuiFiles/imgui.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.ImGuiFiles/imgui_demo.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.ImGuiFiles/imgui_draw.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.ImGuiFiles/imgui_impl_opengl3.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.ImGuiFiles/imgui_impl_opengl3.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.ImGuiFiles/imgui_impl_sdl2.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.ImGuiFiles/imgui_impl_sdl2.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.ImGuiFiles/imgui_internal.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.ImGuiFiles/imgui_stdlib.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.ImGuiFiles/imgui_stdlib.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.ImGuiFiles/imgui_tables.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.ImGuiFiles/imgui_widgets.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.ImGuiFiles/imstb_rectpack.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.ImGuiFiles/imstb_textedit.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.ImGuiFiles/imstb_truetype.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Managers/ImguiManager.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Managers/ImguiManager.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.QuasarEngine/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.QuasarEngine/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/.EngineGenerated/Generated.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.EngineGenerated/Generated.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cCollider3D.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cCollider3D.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cModel.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cModel.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cPhysicBody.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cPhysicBody.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Render/ShaderProgram.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Render/ShaderProgram.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Assets.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Assets.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/CommonLib.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/CommonLib.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Dependencies/imgui-1.92.6-docking/examples/example_android_opengl3/android/gradle/libs.versions.toml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Actor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Actor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Game.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Game.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Render/RendererGl.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Render/RendererGl.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Managers/Inputs.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Managers/Inputs.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Managers/Inputs.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Managers/Inputs.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Actors/DoomPlayer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Actors/DoomPlayer.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Scenes/Scene_Doom_Test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Scenes/Scene_Doom_Test.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/QuasarEngine.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/QuasarEngine.vcxproj" afterDir="false" />
@@ -38,13 +49,15 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="cidr-memory-view://26" root0="FORCE_HIGHLIGHTING" />
+    <setting file="cidr-memory-view://6" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Dependencies/GL/SDL/include/SDL_events.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Dependencies/GL/SDL/include/SDL_stdinc.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Engine/.EngineGenerated/Generated.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Engine/Render/Window.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Managers/CollisionManager.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Managers/CollisionManager.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Managers/ImguiManager.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Managers/ImguiManager.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Game3D/TestingGrounds/Actors/ActorCamera.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Game3D/TestingGrounds/Actors/ActorCamera.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Game3D/TestingGrounds/Actors/Cube.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -185,6 +198,8 @@
       <workItem from="1775115034471" duration="16975000" />
       <workItem from="1775199617525" duration="22279000" />
       <workItem from="1775377246219" duration="9813000" />
+      <workItem from="1775393054118" duration="2116000" />
+      <workItem from="1775395536126" duration="5316000" />
     </task>
     <servers />
   </component>
