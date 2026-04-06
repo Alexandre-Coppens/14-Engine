@@ -74,6 +74,7 @@ public:
 	Actor();
 	virtual ~Actor();
 
+	virtual void	Initialize();
 	virtual	void	Start();
 	virtual	void	Update(float _deltaTime);
 	virtual	void	Destroy();

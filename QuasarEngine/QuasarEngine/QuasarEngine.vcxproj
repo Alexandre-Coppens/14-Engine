@@ -1416,6 +1416,7 @@
     <ClCompile Include="Engine\Scene.cpp" />
     <ClCompile Include="Engine\Texture.cpp" />
     <ClCompile Include="Engine\Utilitaries\Assets.cpp" />
+    <ClCompile Include="Engine\Utilitaries\Debug\DebugLine.cpp" />
     <ClCompile Include="Engine\Utilitaries\Log.cpp" />
     <ClCompile Include="Engine\Utilitaries\Managers\CameraManager.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
@@ -1637,6 +1638,7 @@
     <ClInclude Include="Engine\Utilitaries\Assets.h" />
     <ClInclude Include="Engine\Utilitaries\CommonLib.h" />
     <ClInclude Include="Engine\Utilitaries\DebugMemoryLeakCatcher.h" />
+    <ClInclude Include="Engine\Utilitaries\Debug\DebugLine.h" />
     <ClInclude Include="Engine\Utilitaries\Log.h" />
     <ClInclude Include="Engine\Utilitaries\Managers\CameraManager.h" />
     <ClInclude Include="Engine\Utilitaries\Managers\CollisionManager.h" />

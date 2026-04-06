@@ -28,10 +28,11 @@ Model::~Model()
 {
 	Component::~Component();
 }
-void Model::OnActorStart()
+
+void Model::OnStart()
 {
 	if (mParent == nullptr) mParent = pOwner->getTransform3D();
-	Component::OnActorStart();
+	Component::OnStart();
 }
 
 void Model::Draw(DrawOption _option)

@@ -14,10 +14,6 @@ void Component::OnStart()
 {
 }
 
-void Component::OnActorStart()
-{
-}
-
 void Component::Destroy()
 {
 	delete mTransform;

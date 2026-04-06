@@ -22,7 +22,8 @@ private:
 public:
     Object(std::string _name, GENERATED_MESHES _model, GENERATED_TEXTURE _texture, std::string _shader);
     ~Object() override;
-
+    
+    void Initialize()               override;
     void Start()					override;
     void Update(float _deltaTime)	override;
     void Destroy()					override;

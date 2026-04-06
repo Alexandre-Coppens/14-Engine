@@ -7,25 +7,34 @@
 #include "Engine/3D/Camera.h"
 #include "Engine/3D/cBoxCollider.h"
 #include "Engine/3D/cPhysicBody.h"
+#include "Engine/3D/Mesh.h"
 #include "Engine/Utilitaries/Log.h"
+#include "Engine/Utilitaries/Debug/DebugLine.h"
 #include "Engine/Utilitaries/Managers/CollisionManager.h"
 #include "Engine/Utilitaries/Managers/Inputs.h"
+#include "Game3D/TestingGrounds/Actors/Cube.h"
 
 DoomPlayer::DoomPlayer() :
     Actor()
 {
     mName = "Player";
+    Initialize();
 }
 
 DoomPlayer::~DoomPlayer()
 {
 }
 
-void DoomPlayer::Start()
+void DoomPlayer::Initialize()
 {
     mPhysicBody = dynamic_cast<PhysicBody*>(AddComponent(new PhysicBody(this, BOX)));
-    mCollider = mPhysicBody->getReferencedCollider();
     mCamera = dynamic_cast<Camera*>(AddComponent(new Camera(this)));
+    Actor::Initialize();
+}
+
+void DoomPlayer::Start()
+{
+    mCollider = mPhysicBody->getReferencedCollider();
 
     dynamic_cast<BoxCollider*>(mCollider)->setSize(Vector3{0.2f, 0.2f, 1.0f});
     mPhysicBody->setGravityEnabled(true);
@@ -74,14 +83,12 @@ void DoomPlayer::Update(const float _deltaTime)
 
     if (Inputs::GetKeyDown(SDLK_SPACE))
     {
-        RaycastResult raycast = CollisionManager::Raycast(mCamera->getLocalTransform()->getWorldLocation(), mCamera->getLocalTransform()->Forward(), 99999.0f);
+        RaycastResult raycast = CollisionManager::Raycast(mCamera->getLocalTransform()->getWorldLocation(), mCamera->getLocalTransform()->Forward(), this, 99999.0f);
         Log::Info("Raycast result:" + std::to_string(raycast.hasHit));
         if (raycast.hasHit)
         {
             Log::Info("Hit Actor:" + raycast.actor->getName());
-            Actor* cube = getScene()->AddActor(new Object("Cube", OBJ_Ball, PNG_Block, "BasicModel"));
-            cube->getTransform3D()->setScale(0.2f);
-            cube->getTransform3D()->setLocation(raycast.collisionPoint);
+            Actor* line = getScene()->AddActor(new DebugLine(raycast));
         }
     }
     

@@ -3,7 +3,7 @@
 #include "Engine/Utilitaries/DebugMemoryLeakCatcher.h"
 #include "Engine/Utilitaries/Log.h"
 
-Vector2 Window::windowSize{800, 800};
+Vector2 Window::windowSize{1280, 720};
 
 Window::Window(const Uint16 _width, const Uint16 _height, const std::string _name):
 	pSdlWindow(nullptr), mWindowName(_name)

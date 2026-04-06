@@ -11,15 +11,20 @@ Actor::Actor():
 	mState(ActorState::Active)
 {
 	DEBUGAddClass("Actor");
-	mTransform2D = dynamic_cast<Transform2D*>(AddComponent(new Transform2D()));
-	mTransform3D = dynamic_cast<Transform3D*>(AddComponent(new Transform3D(this, WORLD)));
 }
 
 Actor::~Actor() = default;
 
+//Call this at the end of your Initialize
+void Actor::Initialize()
+{
+	mTransform2D = dynamic_cast<Transform2D*>(AddComponent(new Transform2D()));
+	mTransform3D = dynamic_cast<Transform3D*>(AddComponent(new Transform3D(this, WORLD)));
+	for (Component* c : mComponentList) c->OnStart();
+}
+
 void Actor::Start()
 {
-	for (Component* c : mComponentList) c->OnActorStart();
 	Log::Info("Actor::" + mName + "::Started");
 }
 

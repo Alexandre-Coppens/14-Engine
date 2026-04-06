@@ -18,6 +18,8 @@ public:
 	VertexArray* getVertexArray()	  const { return pVao; }
 	Texture* getTexture(const uint16_t _i)  const { return pTextures[_i]; }
 
+	void setTexture(Texture* _t) {pTextures[0] = _t;}
+	
 private:
 public:
 	Mesh();

@@ -28,6 +28,10 @@ struct RaycastResult
 	bool hasHit				{ false };
 	float distance			{ -1.0f };
 
+	Vector3 rayStart		{ Vector3Zero()};
+	Vector3 rayEnd			{ Vector3Zero()};
+	Vector3 rayDirection	{ Vector3Zero()};
+	
 	Actor* actor			{ nullptr };
 	Vector3 normal			{ Vector3Zero()};
 	Vector3 collisionPoint	{ Vector3Zero()};
@@ -59,7 +63,7 @@ public:
 	static CollisionData SphereToSphere(Collider3D* _pSphereA, Collider3D* _pSphereB);
 	static float GetSeparatingPlane(Vector3 _diffPos, Vector3 _plane, BoxCollider* _boxA, BoxCollider* _boxB);
 
-	static RaycastResult Raycast(Vector3 _origin, Vector3 _direction, float _length);
+	static RaycastResult Raycast(Vector3 _origin, Vector3 _direction, Actor* _parent, float _length);
 	static RaycastResult RaycastToOBB(Vector3 _origin, Vector3 _direction, float _length, BoxCollider* _box);
 	static RaycastResult RaycastToSphere(Vector3 _origin, Vector3 _direction, float _length, SphereCollider* _sphere);
 };

@@ -5,3 +5,11 @@
 SHADERS/
     -Add a simplification of modification of the uniform in the shaders.
     -Add a way to add multiple textures in a shader.
+    
+    
+    
+    
+    
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=    
+FOR NEXT ENGINE:
+change normal pointers to std ones

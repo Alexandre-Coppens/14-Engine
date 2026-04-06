@@ -63,7 +63,7 @@ public:
     Collider3D(Actor* _pOwner);
     ~Collider3D() override;
     
-    void OnActorStart() override;
+    void OnStart() override;
     void Update(float _deltaTime) override;
     void CheckCollisions();
     void Destroy() override;

@@ -247,7 +247,7 @@ float CollisionManager::GetSeparatingPlane(const Vector3 _diffPos, const Vector3
          Abs(Dot((_boxB->getUp()      *  _boxB->getScale().z * 0.5f), _plane))));
 }
 
-RaycastResult CollisionManager::Raycast(Vector3 _origin, Vector3 _direction, float _length)
+RaycastResult CollisionManager::Raycast(Vector3 _origin, Vector3 _direction, Actor* _parent, float _length)
 {
     std::vector<RaycastResult> results;
     bool hit {false};
@@ -256,6 +256,8 @@ RaycastResult CollisionManager::Raycast(Vector3 _origin, Vector3 _direction, flo
     
     for (Collider3D* collider : collidersList)
     {
+        if (collider ->getOwner() == _parent) continue;
+        if (!collider ->getIsActive()) continue;
         switch (collider->getColliderType())
         {
         case NONE:
@@ -276,9 +278,13 @@ RaycastResult CollisionManager::Raycast(Vector3 _origin, Vector3 _direction, flo
     if (results.empty()) return NO_RAYCAST_HIT;
     for (int i = 0; i < results.size(); i++)
     {
-        hit = hit || results[i].hasHit;
-        if (results[i].distance < distance)distance = results[i].distance;
-        closest = i;
+        if (!results[i].hasHit) continue;
+        hit = true;
+        if (results[i].distance < distance)
+        {
+            distance = results[i].distance;
+            closest = i;
+        }
     }
     if (!hit) return NO_RAYCAST_HIT;
     return results[closest];
@@ -286,11 +292,11 @@ RaycastResult CollisionManager::Raycast(Vector3 _origin, Vector3 _direction, flo
 
 RaycastResult CollisionManager::RaycastToOBB(Vector3 _origin, Vector3 _direction, float _length, BoxCollider* _box)
 {
-    Vector3 difference = _box->getCenter() - _origin;
+    Vector3 difference = _box->getCenter() - _origin ;
     Vector3 transDir {
-        Dot(_box->getForward(), _direction),
-        Dot(_box->getRight(), _direction),
-        Dot(_box->getUp(), _direction)};
+        Dot(_box->getForward(), _direction * -1.0f),
+        Dot(_box->getRight(), _direction * -1.0f),
+        Dot(_box->getUp(), _direction * -1.0f)};
 
     Vector3 transOrigin {
         Dot(_box->getForward(), difference),
@@ -316,12 +322,16 @@ RaycastResult CollisionManager::RaycastToOBB(Vector3 _origin, Vector3 _direction
     if (tmin > _length) return NO_RAYCAST_HIT;
 
     float tResult = tmin;
-    if (tmin < tmax) tResult = tmax;
+    if (tmin > tmax) tResult = tmax;
 
     RaycastResult result{};
     result.hasHit = true;
     result.distance = tResult;
 
+    result.rayStart = _origin;
+    result.rayDirection = _direction;
+    result.rayEnd = _origin + (_direction * _length);
+    
     result.actor = _box->getOwner();
     result.collisionPoint = _origin + _direction * tResult;
 
@@ -365,6 +375,10 @@ RaycastResult CollisionManager::RaycastToSphere(Vector3 _origin, Vector3 _direct
     RaycastResult result{};
     result.hasHit = true;
     result.distance = h;
+    
+    result.rayStart = _origin;
+    result.rayDirection = _direction;
+    result.rayEnd = _origin + (_direction * _length);
 
     result.actor = _sphere->getOwner();
     result.collisionPoint = _origin + _direction * h;

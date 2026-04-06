@@ -20,10 +20,11 @@ Collider3D::~Collider3D()
 {
 }
 
-void Collider3D::OnActorStart()
+void Collider3D::OnStart()
 {
     mPhysicBased = pOwner->GetComponent<PhysicBody>() != nullptr;
 }
+
 void Collider3D::Update(float _deltaTime)
 {
 }

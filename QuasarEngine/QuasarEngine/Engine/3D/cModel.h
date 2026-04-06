@@ -34,7 +34,7 @@ public:
 	Model(Actor* _pOwner, Transform3D* _parent, const std::string _shader);
 	~Model() override;
 
-	void OnActorStart() override;
+	void OnStart() override;
 	void Update(float _deltaTime) override {}
 	virtual void Draw(DrawOption _option);
 	void Destroy() override;

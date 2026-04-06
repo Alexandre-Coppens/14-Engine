@@ -20,7 +20,8 @@ private:
 public:
     DoomPlayer();
     ~DoomPlayer() override;
-
+    
+    void Initialize()               override;
     void Start()					override;
     void Update(float _deltaTime)	override;
     void Destroy()					override;
