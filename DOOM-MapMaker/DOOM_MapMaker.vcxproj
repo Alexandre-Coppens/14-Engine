@@ -213,6 +213,7 @@
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="MapMaker\Actors\UI_CurrentTexture.cpp" />
+    <ClCompile Include="MapMaker\Actors\UI_ModeSelector.cpp" />
     <ClCompile Include="MapMaker\AssetsList.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -603,6 +604,7 @@
   <ItemGroup>
     <ClInclude Include="MapMaker\Actor.h" />
     <ClInclude Include="MapMaker\Actors\UI_CurrentTexture.h" />
+    <ClInclude Include="MapMaker\Actors\UI_ModeSelector.h" />
     <ClInclude Include="MapMaker\AssetsList.h" />
     <ClInclude Include="MapMaker\DrawScreen.h" />
     <ClInclude Include="MapMaker\Engine.h" />

@@ -33,6 +33,19 @@ public:
         Vector3 size     {Vector3Zero()};
     };
     
+    struct Floor
+    {
+        std::vector<int> vertices;
+        float floor   { 0 };
+        float ceiling { 3 };
+        int dictionaryTexture{ 0 };
+        
+        bool computed{ false };
+        Vector3 location {Vector3Zero()};
+        Vector3 rotation {Vector3Zero()};
+        Vector3 size     {Vector3Zero()};
+    };
+    
     static int verticesCount;
     static map<int, Vector2> wallVertices;
     static vector<Wall> wallList;

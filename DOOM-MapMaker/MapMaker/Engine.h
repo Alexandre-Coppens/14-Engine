@@ -10,6 +10,7 @@
 
 #include "UI_TilesMenu.h"
 #include "Actors/UI_CurrentTexture.h"
+#include "Actors/UI_ModeSelector.h"
 
 using std::string;
 using std::vector;
@@ -17,8 +18,10 @@ using std::vector;
 class Engine {
 private:
 	AssetList* assets{};
+	
 	UI_TilesMenu* tileMenu;
 	UI_CurrentTexture* currentTexture;
+	UI_ModeSelector* modeSelector;
 	
 	Vector2 scroll{};
 	Vector2 scrollSpeed{ 150, 150};

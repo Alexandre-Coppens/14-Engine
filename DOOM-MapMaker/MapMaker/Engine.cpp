@@ -18,6 +18,7 @@ Engine::~Engine()
 {
 	delete tileMenu;
 	delete currentTexture;
+	delete modeSelector;
 	
 	tileMenu = nullptr;
 	currentTexture = nullptr;
@@ -27,6 +28,7 @@ void Engine::Start()
 {
 	tileMenu = new UI_TilesMenu{};
 	currentTexture = new UI_CurrentTexture{};
+	modeSelector = new UI_ModeSelector{};
 	
 	assets = AssetList::GetInstance();
 	Terrain::gridMeterInPixels = 50.0f;
@@ -36,9 +38,11 @@ void Engine::Start()
 	scroll = { GetScreenWidth() * 0.5f ,GetScreenHeight() * 0.5f };
 }
 
-void Engine::Update() {
+void Engine::Update() 
+{
 	vector<Actor*> goList = Actor::GetAllActors();
-	for (Actor* go : goList) {
+	for (Actor* go : goList) 
+	{
 		if (go->enabled) go->Update();
 		if (go->needToDestroy) {
 			delete go;
@@ -103,106 +107,116 @@ void Engine::Update() {
 			hoveredActor->Clicked();
 		}
 		//If close to a already existing vertex
-		else if (Terrain::nearIndice != -1 && Terrain::nearGizmo == Vertex)
+		else
 		{
-			if (selectedVertex == -1) selectedVertex = Terrain::nearIndice;
-			else
+			switch (modeSelector->currentMode)
 			{
-				//Check if the wall already exist
-				bool isAlreadyUsed = false;
-				for (Terrain::Wall wall : Terrain::wallList)
+			case CurrentMode::Walls:
+				if (Terrain::nearIndice != -1 && Terrain::nearGizmo == Vertex)
 				{
-					if (wall.start == selectedVertex && wall.end == Terrain::nearIndice || wall.start == Terrain::nearIndice && wall.end == selectedVertex) isAlreadyUsed = true;
-				}
+					if (selectedVertex == -1) selectedVertex = Terrain::nearIndice;
+					else
+					{
+						//Check if the wall already exist
+						bool isAlreadyUsed = false;
+						for (Terrain::Wall wall : Terrain::wallList)
+						{
+							if (wall.start == selectedVertex && wall.end == Terrain::nearIndice || wall.start == Terrain::nearIndice && wall.end == selectedVertex) isAlreadyUsed = true;
+						}
 				
-				if (!isAlreadyUsed)
+						if (!isAlreadyUsed)
+						{
+							Terrain::Wall wall;
+							wall.start = selectedVertex;
+							wall.end = Terrain::nearIndice;
+							wall.dictionaryTexture = Terrain::CheckInDictionary(tileMenu->GetTexture());
+							Terrain::AddNewWall(wall);
+							selectedVertex = wall.end;
+						}
+						else
+						{
+							selectedVertex = Terrain::nearIndice;
+						}
+					}
+				}
+				//If clicking on a wall
+				else if (Terrain::nearGizmo == Edge)
+				{
+					cout << "nope \n";
+				}
+				//If no vertexes has been selected
+				else if (selectedVertex == -1)
+				{
+					selectedVertex = Terrain::AddNewVertex(mPos);
+				}
+				//Else, New Vertex Created and wall placed
+				else
 				{
 					Terrain::Wall wall;
 					wall.start = selectedVertex;
-					wall.end = Terrain::nearIndice;
+					wall.end = Terrain::AddNewVertex(mPos);
 					wall.dictionaryTexture = Terrain::CheckInDictionary(tileMenu->GetTexture());
 					Terrain::AddNewWall(wall);
 					selectedVertex = wall.end;
 				}
-				else
-				{
-					selectedVertex = Terrain::nearIndice;
-				}
+				break;
+				
+			case CurrentMode::Floors:
+				cout << "NOT IMPLEMENTED WAIT JUST A BIT (1-2 Days) \n";
+				break;
 			}
-		}
-		//If clicking on a wall
-		else if (Terrain::nearGizmo == Edge)
-		{
-			cout << "nope \n";
-		}
-		//If no vertexes has been selected
-		else if (selectedVertex == -1)
-		{
-			selectedVertex = Terrain::AddNewVertex(mPos);
-		}
-		//Else, New Vertex Created and wall placed
-		else
-		{
-			Terrain::Wall wall;
-			wall.start = selectedVertex;
-			wall.end = Terrain::AddNewVertex(mPos);
-			wall.dictionaryTexture = Terrain::CheckInDictionary(tileMenu->GetTexture());
-			Terrain::AddNewWall(wall);
-			selectedVertex = wall.end;
 		}
 	}
 	
 	if(IsMouseButtonPressed(1))
 	{
-		if (Terrain::nearIndice != -1)
+		switch (modeSelector->currentMode)
 		{
-			switch (Terrain::nearGizmo)
+		case CurrentMode::Walls:
+			if (Terrain::nearIndice != -1)
 			{
-			case Vertex:
-				Terrain::wallVertices.erase(Terrain::nearIndice);
+				if(Terrain::nearGizmo == Vertex)
+				{
+					Terrain::wallVertices.erase(Terrain::nearIndice);
 				
 				
-				Terrain::wallList.erase(
-					std::remove_if(
-						Terrain::wallList.begin(),
-						Terrain::wallList.end(),
-						[](const Terrain::Wall& w){
-									return w.start == Terrain::nearIndice || w.end == Terrain::nearIndice;
-							}
-						),
-				Terrain::wallList.end()
-				);
+					Terrain::wallList.erase(
+						std::remove_if(
+							Terrain::wallList.begin(),
+							Terrain::wallList.end(),
+							[](const Terrain::Wall& w){
+										return w.start == Terrain::nearIndice || w.end == Terrain::nearIndice;
+								}
+							),
+					Terrain::wallList.end()
+					);
 				
-				if (Terrain::nearIndice == selectedVertex) selectedVertex = -1;
-				Terrain::nearIndice = -1;
-				break;
-			
-			case Edge:
-				Terrain::wallList.erase(Terrain::wallList.begin() + Terrain::nearIndice);
-				Terrain::nearIndice = -1;
-				break;
+					if (Terrain::nearIndice == selectedVertex) selectedVertex = -1;
+					Terrain::nearIndice = -1;
+				}
+				else if(Terrain::nearGizmo == Vertex)
+				{
+					Terrain::wallList.erase(Terrain::wallList.begin() + Terrain::nearIndice);
+					Terrain::nearIndice = -1;
+				}
 			}
+			else selectedVertex = -1;
+			break;
+			
+		case CurrentMode::Floors:
+			cout << "NOT IMPLEMENTED WAIT JUST A BIT (1-2 Days) \n";
+			break;
 		}
-		else selectedVertex = -1;
 	}
-
-	//Change textures
-	// if (GetMouseWheelMove()>0 && !tileMenu.GetOpen()) {
-	// 	if (currentTexture == 0)currentTexture = AssetList::SpriteList.size() - 1;
-	// 	else currentTexture--;
-	// }
-	// if (GetMouseWheelMove() < 0 && !tileMenu.GetOpen()) {
-	// 	if (currentTexture == AssetList::SpriteList.size() - 1)currentTexture = 0;
-	// 	else currentTexture++;
-	// }
-
+	
 	//Save / Load
 	if(IsKeyDown(KEY_LEFT_CONTROL) && IsKeyPressed(KEY_S))Terrain::SaveMap();
 	if(IsKeyDown(KEY_LEFT_CONTROL) && IsKeyPressed(KEY_O))Terrain::LoadMap();
 	if (IsKeyPressed(KEY_ESCAPE)) selectedVertex = -1;
 }
 
-void Engine::Draw() {
+void Engine::Draw() 
+	{
 	BeginDrawing();
 	ClearBackground(RAYWHITE);
 
