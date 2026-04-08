@@ -14,6 +14,8 @@ map<int, string> Terrain::dictionary;
 vector<Terrain::Wall> Terrain::wallList;
 map<int, Vector2> Terrain::wallVertices;
 
+vector<Terrain::Floor> Terrain::floorList;
+
 int Terrain::verticesCount { 0 };
 Vector2 Terrain::position{ 0,0 };
 short Terrain::maxLayer{ 5 };
@@ -49,6 +51,11 @@ int Terrain::AddNewVertex(Vector2 pos) {
 void Terrain::AddNewWall(Wall wall)
 {
 	wallList.push_back(wall);
+}
+
+void Terrain::AddNewFloor(Floor _floor)
+{
+	floorList.push_back(_floor);
 }
 
 void Terrain::AddToDictionary(int index, string name) {
@@ -87,6 +94,22 @@ void Terrain::ComputeWall(Wall& wall)
 		wall.ceiling - wall.floor};
 	
 	wall.computed = true;
+}
+void Terrain::ComputeFloor(Floor& _floor)
+{
+	_floor.verticesLocation.empty();
+	Vector2 center = Vector2Zero();
+	Vector2 v2;
+	for (int i : _floor.vertices)
+	{
+		v2 = Terrain::wallVertices[i];
+		_floor.verticesLocation.push_back(v2);
+		center = Vector2Add(center, v2);
+	}
+	_floor.center = Vector2{center.x / _floor.vertices.size(), center.y / _floor.vertices.size() };
+	_floor.verticesLocation.insert(_floor.verticesLocation.begin(), _floor.center);
+	
+	_floor.computed = true;
 }
 
 void Terrain::ISCursorOnSomething(Vector2 position)

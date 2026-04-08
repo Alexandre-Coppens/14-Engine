@@ -7,11 +7,18 @@
 using std::cout;
 using std::to_string;
 
+Engine* Engine::instance;
+
 //int currentTexture{ 0 };
 Actor* hoveredActor = nullptr;
 
 Engine::Engine() 
 {
+	if (instance == nullptr) instance = this;
+	else
+	{
+		delete this;
+	}
 }
 
 Engine::~Engine()
@@ -36,6 +43,8 @@ void Engine::Start()
 	Terrain::wallDrawSize = 5.0f;
 	tileMenu->SetTexture(AssetList::GetNameAtPosition(0));
 	scroll = { GetScreenWidth() * 0.5f ,GetScreenHeight() * 0.5f };
+	
+	Terrain::floorList.push_back(Terrain::Floor());
 }
 
 void Engine::Update() 
@@ -162,7 +171,15 @@ void Engine::Update()
 				break;
 				
 			case CurrentMode::Floors:
-				cout << "NOT IMPLEMENTED WAIT JUST A BIT (1-2 Days) \n";
+				if (Terrain::nearIndice != -1 && Terrain::nearGizmo == Vertex)
+				{
+					//Check if the vertex is already on the floor list
+					if (not(std::find(Terrain::floorList[currentFloor].vertices.begin(), Terrain::floorList[currentFloor].vertices.end(), Terrain::nearIndice) != Terrain::floorList[currentFloor].vertices.end()))
+					{
+						Terrain::floorList[currentFloor].vertices.push_back(Terrain::nearIndice);
+					}
+					selectedVertex = Terrain::nearIndice;
+				}
 				break;
 			}
 		}
@@ -220,6 +237,7 @@ void Engine::Draw()
 	BeginDrawing();
 	ClearBackground(RAYWHITE);
 
+	//Draw Grid (yes, this many grids)
 	rlPushMatrix();
 	rlTranslatef(0 + scroll.x, 25 * Terrain::gridMeterInPixels + scroll.y, 0);
 	rlRotatef(90, 1, 0, 0);
@@ -245,7 +263,10 @@ void Engine::Draw()
 	DrawGrid(1000 * Terrain::gridSubdivision, subgrid);
 	rlPopMatrix();
 	
+	//Draw Terrain
 	DrawScreen(&scroll);
+	
+	//Draw Actors
 	auto actors = Actor::GetAllActorsLayered();
 	for (int i = 0; i < actors->size(); i++)
 	{
@@ -255,6 +276,7 @@ void Engine::Draw()
 		}
 	}
 	
+	//Draw Infos
 	DrawText(("X. " + to_string((scroll.x - GetMouseX()) / Terrain::gridMeterInPixels)).c_str(), 10, 10, 20, GRAY);
 	DrawText(("Y. " + to_string((scroll.y - GetMouseY()) / Terrain::gridMeterInPixels)).c_str(), 10, 30, 20, GRAY);
 	DrawText(("Current Sprite:  " + tileMenu->GetTexture()).c_str(), 10, 50, 20, ORANGE);
@@ -263,7 +285,8 @@ void Engine::Draw()
 	{
 		DrawText(TextFormat("CURRENT FPS: %i", (int)(1.0f / GetFrameTime())), 10, GetScreenHeight() - 30, 20, BLACK);
 	}
-
+	
+	//Center of world
 	DrawRectangle(scroll.x - 5.0f, scroll.y - 5.0f, 10, 10, BLACK);
 	EndDrawing();
 }

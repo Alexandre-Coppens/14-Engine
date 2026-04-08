@@ -25,10 +25,15 @@ private:
 	
 	Vector2 scroll{};
 	Vector2 scrollSpeed{ 150, 150};
-	
-	int startVertex;
-	int endVertex;
 
+	int currentFloor{ 0 };
+	
+public:
+	static Engine* instance;
+	
+	CurrentMode GetCurrentMode() {return modeSelector->currentMode;}
+	int GetCurrentFloor() {return currentFloor;}
+	
 private:
 
 public:

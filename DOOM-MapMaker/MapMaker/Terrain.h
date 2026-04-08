@@ -41,6 +41,8 @@ public:
         int dictionaryTexture{ 0 };
         
         bool computed{ false };
+        std::vector<Vector2> verticesLocation;
+        Vector2 center   {Vector2Zero()};
         Vector3 location {Vector3Zero()};
         Vector3 rotation {Vector3Zero()};
         Vector3 size     {Vector3Zero()};
@@ -49,6 +51,8 @@ public:
     static int verticesCount;
     static map<int, Vector2> wallVertices;
     static vector<Wall> wallList;
+    
+    static vector<Floor> floorList;
 
     static map<int, string> dictionary;
     
@@ -71,10 +75,12 @@ public:
 
     static int AddNewVertex(Vector2 pos);
     static void AddNewWall(Wall wall);
+    static void AddNewFloor(Floor _floor);
     static void AddToDictionary(int index, string name);
     static int CheckInDictionary(string n);
 
     static void ComputeWall(Wall& wall);
+    static void ComputeFloor(Floor& _floor);
     
     static void ISCursorOnSomething(Vector2 position);
     

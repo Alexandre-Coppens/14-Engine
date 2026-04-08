@@ -6,6 +6,7 @@
 #include "AssetsList.h"
 #include "Actor.h"
 #include "Terrain.h"
+#include "Engine.h"
 
 using std::vector;
 
@@ -14,6 +15,31 @@ static void DrawScreen(Vector2* scroll);
 
 //Draw the terrain and the gameObjects on screen
 static void DrawScreen(Vector2* scroll){
+	//Draw Floors
+	for (Terrain::Floor floor : Terrain::floorList)
+	{
+		if (!floor.computed) Terrain::ComputeFloor(floor);
+		Texture2D* sprite = &AssetList::SpriteList[Terrain::dictionary[floor.dictionaryTexture]];
+		//Transform vertices location to scrolled
+		if (floor.verticesLocation.size() > 3)
+		{
+			std::vector<Vector2> verticesScrolled;
+			verticesScrolled.reserve(floor.vertices.size());
+			for (auto vertex : floor.verticesLocation)
+			{
+				verticesScrolled.push_back(Vector2Add(vertex, *scroll));
+			}
+			//Add the second one again to close the triangle strip
+			verticesScrolled.push_back(verticesScrolled[1]);
+			DrawTriangleFan(&(verticesScrolled[0]), (int)verticesScrolled.size(), BROWN);
+		}
+		DrawTexturePro(*sprite, 
+					   Rectangle{0, 0, static_cast<float>(sprite->width), static_cast<float>(sprite->height)},
+					   Rectangle{floor.center.x + scroll->x, floor.center.y + scroll->y, 50.0f, 50.0f},
+					   Vector2{static_cast<float>(sprite->width) * 0.5f, static_cast<float>(sprite->height) * 0.5f},
+					   0.0f,
+					   WHITE);
+	}
 	//Draw Walls
 	for (Terrain::Wall& wall : Terrain::wallList)
 	{
@@ -39,7 +65,15 @@ static void DrawScreen(Vector2* scroll){
 	//Draw Points
 	for (auto vertex : Terrain::wallVertices)
 	{
-		DrawCircle(vertex.second.x + scroll->x, vertex.second.y + scroll->y, 5.0f, BLACK);
+		Color color = BLACK;
+		if (Engine::instance->GetCurrentMode() == CurrentMode::Floors)
+		{
+			Terrain::Floor currentFloor = Terrain::floorList[Engine::instance->GetCurrentFloor()]; 
+			if (std::find(currentFloor.vertices.begin(), currentFloor.vertices.end(), vertex.first) != currentFloor.vertices.end()){
+				color = GREEN;
+			}
+		}
+		DrawCircle(vertex.second.x + scroll->x, vertex.second.y + scroll->y, 5.0f, color);
 	}
 	//Show Object under the cursor
 	if (Terrain::nearIndice != -1)
