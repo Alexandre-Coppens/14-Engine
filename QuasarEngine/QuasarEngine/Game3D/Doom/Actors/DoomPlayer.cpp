@@ -1,5 +1,6 @@
 ﻿#include "DoomPlayer.h"
 
+#include "Door.h"
 #include "Engine/Scene.h"
 #include "Engine/.Prefabs/Object.h"
 #include "Engine/Utilitaries/Assets.h"
@@ -9,7 +10,7 @@
 #include "Engine/3D/cPhysicBody.h"
 #include "Engine/3D/Mesh.h"
 #include "Engine/Utilitaries/Log.h"
-#include "Engine/Utilitaries/Debug/DebugLine.h"
+#include "Engine/Utilitaries/Helpers/DebugLine.h"
 #include "Engine/Utilitaries/Managers/CollisionManager.h"
 #include "Engine/Utilitaries/Managers/Inputs.h"
 #include "Game3D/TestingGrounds/Actors/Cube.h"
@@ -89,6 +90,12 @@ void DoomPlayer::Update(const float _deltaTime)
         {
             Log::Info("Hit Actor:" + raycast.actor->getName());
             Actor* line = getScene()->AddActor(new DebugLine(raycast));
+
+            Door* door = dynamic_cast<Door*>(raycast.actor);
+            if (door != nullptr)
+            {
+                door->Interact();
+            }
         }
     }
     

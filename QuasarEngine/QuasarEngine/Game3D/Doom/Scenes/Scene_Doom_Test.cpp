@@ -9,6 +9,7 @@
 #include "Engine/Render/ShaderProgram.h"
 #include "Engine/Render/RendererGl.h"
 #include "Game3D/Doom/Actors/DoomPlayer.h"
+#include "Game3D/Doom/Actors/Door.h"
 
 Scene_Doom_Test::Scene_Doom_Test(std::string _name)
 {
@@ -39,8 +40,8 @@ void Scene_Doom_Test::Start()
     //Load Actors
     Actor* player = AddActor(new DoomPlayer());
 
-    Actor* cube = AddActor(new Object("Cube", OBJ_cube, PNG_Block, "BasicModel"));
-    Actor* cube1 = AddActor(new Object("Grass", OBJ_Grass, PNG_Grass_Gradient, "Grass"));
+    Actor* door = AddActor(new Door());
+    Actor* grass = AddActor(new Object("Grass", OBJ_Grass, PNG_Grass_Gradient, "Grass"));
 
     Actor* floor = AddActor(new Object("Floor", OBJ_Plane, PNG_Voronoi, "NoiseHeight"));
 
@@ -48,9 +49,9 @@ void Scene_Doom_Test::Start()
     player->getTransform3D()->addLocationZ(10.0f);
     player->getTransform3D()->addRotationZ(180.0f);
     
-    cube->getTransform3D()->addLocationX(-2.0f);
+    //door->getTransform3D()->addLocationX(-2.0f);
     //cube1->getTransform3D()->addLocationZ(-0.1f);
-    cube1->GetComponent<Collider3D>()->setActive(false);
+    grass->GetComponent<Collider3D>()->setActive(false);
     
     floor->getTransform3D()->setScale(Vector3(20.0f, 20.0f, 0.01f));
 }

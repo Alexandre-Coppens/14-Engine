@@ -212,7 +212,7 @@
       <EnablePREfast>false</EnablePREfast>
       <OmitFramePointers>false</OmitFramePointers>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>H:\Github\14-Engine\QuasarEngine\QuasarEngine;H:\Github\14-Engine\QuasarEngine\QuasarEngine/Dependencies/GL/SDL/include;H:\Github\14-Engine\QuasarEngine\QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;H:\Github\14-Engine\QuasarEngine\QuasarEngine/Dependencies/SDL2_image-2.8.2\include;H:\Github\14-Engine\QuasarEngine\QuasarEngine\Dependencies\imgui-1.92.7-docking\backends;H:\Github\14-Engine\QuasarEngine\QuasarEngine/Dependencies/imgui-1.92.7-docking</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)QuasarEngine;$(SolutionDir)QuasarEngine/Dependencies/GL/SDL/include;$(SolutionDir)QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;$(SolutionDir)QuasarEngine/Dependencies/SDL2_image-2.8.2\include;$(SolutionDir)QuasarEngine\Dependencies\imgui-1.92.7-docking\backends;$(SolutionDir)QuasarEngine/Dependencies/imgui-1.92.7-docking</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="Engine\.ImGuiFiles\imgui_impl_sdl2.cpp">
@@ -291,7 +291,7 @@
       <EnablePREfast>false</EnablePREfast>
       <OmitFramePointers>false</OmitFramePointers>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>H:\Github\14-Engine\QuasarEngine\QuasarEngine;H:\Github\14-Engine\QuasarEngine\QuasarEngine/Dependencies/GL/SDL/include;H:\Github\14-Engine\QuasarEngine\QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;H:\Github\14-Engine\QuasarEngine\QuasarEngine/Dependencies/SDL2_image-2.8.2\include;H:\Github\14-Engine\QuasarEngine\QuasarEngine\Dependencies\imgui-1.92.7-docking\backends;H:\Github\14-Engine\QuasarEngine\QuasarEngine/Dependencies/imgui-1.92.7-docking</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)QuasarEngine;$(SolutionDir)QuasarEngine/Dependencies/GL/SDL/include;$(SolutionDir)QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;$(SolutionDir)QuasarEngine/Dependencies/SDL2_image-2.8.2\include;$(SolutionDir)QuasarEngine\Dependencies\imgui-1.92.7-docking\backends;$(SolutionDir)QuasarEngine/Dependencies/imgui-1.92.7-docking</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="Engine\.ImGuiFiles\imgui_stdlib.cpp">
@@ -370,7 +370,7 @@
       <EnablePREfast>false</EnablePREfast>
       <OmitFramePointers>false</OmitFramePointers>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>H:\Github\14-Engine\QuasarEngine\QuasarEngine;H:\Github\14-Engine\QuasarEngine\QuasarEngine/Dependencies/GL/SDL/include;H:\Github\14-Engine\QuasarEngine\QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;H:\Github\14-Engine\QuasarEngine\QuasarEngine/Dependencies/SDL2_image-2.8.2\include;H:\Github\14-Engine\QuasarEngine\QuasarEngine\Dependencies\imgui-1.92.7-docking\backends;H:\Github\14-Engine\QuasarEngine\QuasarEngine/Dependencies/imgui-1.92.7-docking</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)QuasarEngine;$(SolutionDir)QuasarEngine/Dependencies/GL/SDL/include;$(SolutionDir)QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;$(SolutionDir)QuasarEngine/Dependencies/SDL2_image-2.8.2\include;$(SolutionDir)QuasarEngine\Dependencies\imgui-1.92.7-docking\backends;$(SolutionDir)QuasarEngine/Dependencies/imgui-1.92.7-docking</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="Engine\.ImGuiFiles\imgui_tables.cpp" />
@@ -1416,7 +1416,7 @@
     <ClCompile Include="Engine\Scene.cpp" />
     <ClCompile Include="Engine\Texture.cpp" />
     <ClCompile Include="Engine\Utilitaries\Assets.cpp" />
-    <ClCompile Include="Engine\Utilitaries\Debug\DebugLine.cpp" />
+    <ClCompile Include="Engine\Utilitaries\Helpers\DebugLine.cpp" />
     <ClCompile Include="Engine\Utilitaries\Log.cpp" />
     <ClCompile Include="Engine\Utilitaries\Managers\CameraManager.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
@@ -1593,6 +1593,7 @@
     <ClCompile Include="Game3D\Bowling\Actors\Player3D.cpp" />
     <ClCompile Include="Game3D\Bowling\Scenes\Scene_Bowling.cpp" />
     <ClCompile Include="Game3D\Doom\Actors\DoomPlayer.cpp" />
+    <ClCompile Include="Game3D\Doom\Actors\Door.cpp" />
     <ClCompile Include="Game3D\Doom\Scenes\Scene_Doom_Test.cpp" />
     <ClCompile Include="Game3D\TestingGrounds\Actors\ActorCamera.cpp" />
     <ClCompile Include="Game3D\TestingGrounds\Actors\Cube.cpp" />
@@ -1638,7 +1639,7 @@
     <ClInclude Include="Engine\Utilitaries\Assets.h" />
     <ClInclude Include="Engine\Utilitaries\CommonLib.h" />
     <ClInclude Include="Engine\Utilitaries\DebugMemoryLeakCatcher.h" />
-    <ClInclude Include="Engine\Utilitaries\Debug\DebugLine.h" />
+    <ClInclude Include="Engine\Utilitaries\Helpers\DebugLine.h" />
     <ClInclude Include="Engine\Utilitaries\Log.h" />
     <ClInclude Include="Engine\Utilitaries\Managers\CameraManager.h" />
     <ClInclude Include="Engine\Utilitaries\Managers\CollisionManager.h" />
@@ -1662,6 +1663,7 @@
     <ClInclude Include="Game3D\Bowling\Actors\Player3D.h" />
     <ClInclude Include="Game3D\Bowling\Scenes\Scene_Bowling.h" />
     <ClInclude Include="Game3D\Doom\Actors\DoomPlayer.h" />
+    <ClInclude Include="Game3D\Doom\Actors\Door.h" />
     <ClInclude Include="Game3D\Doom\Scenes\Scene_Doom_Test.h" />
     <ClInclude Include="Game3D\TestingGrounds\Actors\ActorCamera.h" />
     <ClInclude Include="Game3D\TestingGrounds\Actors\Cube.h" />
