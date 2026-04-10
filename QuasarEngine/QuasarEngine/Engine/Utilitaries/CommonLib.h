@@ -21,7 +21,7 @@ enum Direction
 static inline std::vector<std::string> BreakString(std::string _str, char _breaker) {
 	std::vector<std::string> r;
 	std::string word;
-	for(int i = 0; i < _str.size(); i++)
+	for(int i = 0; i < static_cast<int>(_str.size()); i++)
 	{
 		if (_str[i] == _breaker) {
 			r.push_back(word);

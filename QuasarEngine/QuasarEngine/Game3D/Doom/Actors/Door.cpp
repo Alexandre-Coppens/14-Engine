@@ -6,7 +6,7 @@
 #include "Engine/3D/Mesh.h"
 
 Door::Door() :
-    Actor()
+    DoomBaseActor()
 {
     mName = "Door";
     Initialize();
@@ -20,15 +20,15 @@ void Door::Initialize()
 {
     mModel = dynamic_cast<Model*>(AddComponent(new Model(this, "BasicModel")));
     mCollider = dynamic_cast<BoxCollider*>(AddComponent(new BoxCollider(this)));
-    Actor::Initialize();
+    DoomBaseActor::Initialize();
 }
 
 void Door::Start()
 {
     mModel->setMesh(Assets::GetMesh(OBJ_cube));
-    mModel->getMesh()->AddTexture(Assets::GetTexture(PNG_Block));
+    mModel->AddTexture(Assets::GetTexture(PNG_Block));
     
-    Actor::Start();
+    DoomBaseActor::Start();
 }
 
 void Door::Update(const float _deltaTime)
@@ -45,12 +45,12 @@ void Door::Update(const float _deltaTime)
             needOpening = false;
         }
     }
-    Actor::Update(_deltaTime);
+    DoomBaseActor::Update(_deltaTime);
 }
 
 void Door::Destroy()
 {
-    Actor::Destroy();
+    DoomBaseActor::Destroy();
 }
 
 void Door::Interact()

@@ -48,7 +48,7 @@ public:
     template<typename T>
     inline void SetScene() {
         int target = -1;
-        for (int i = 0; i < mScenes.size(); i++)
+        for (int i = 0; i < static_cast<int>(mScenes.size()); i++)
         {
             if (dynamic_cast<T*>(mScenes[i]) != nullptr)
             {

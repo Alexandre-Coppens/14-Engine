@@ -333,7 +333,7 @@ Mesh* Assets::LoadMeshFromFile(const std::string& _filePath)
 		Log::Info("Mesh::" + _filePath + " successfully loaded.");
 	}
 	std::vector<Vertex> vertices;
-	for (int i = 0; i < shapes.size(); i++)
+	for (int i = 0; i < static_cast<int>(shapes.size()); i++)
 	{
 		tinyobj::shape_t& shape = shapes[i];
 		tinyobj::mesh_t &mesh = shape.mesh;

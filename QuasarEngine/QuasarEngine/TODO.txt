@@ -9,9 +9,6 @@ SHADERS/
 COLLISIONS/
     -Add a first sphere check before testing every collisions in it.
     
-ACTOR/
-    -Make an Interactible Parent
-    
     
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=    
 FOR NEXT ENGINE:

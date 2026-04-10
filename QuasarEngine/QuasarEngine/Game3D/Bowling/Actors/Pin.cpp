@@ -33,7 +33,7 @@ void Pin::Start()
     collider->setSize(Vector3{0.01f, 0.01f, 0.03f});
     
     mModel->setMesh(Assets::GetMesh(OBJ_Pin));
-    mModel->getMesh()->AddTexture(Assets::GetTexture(PNG_Pin));
+    mModel->AddTexture(Assets::GetTexture(PNG_Pin));
     Actor::Start();
 }
 

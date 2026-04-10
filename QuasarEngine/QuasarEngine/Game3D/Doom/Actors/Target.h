@@ -1,31 +1,30 @@
 ﻿#pragma once
 #include "DoomBaseActor.h"
-#include "Engine/Actor.h"
 #include "Engine/3D/cModel.h"
 
 class BoxCollider;
-class Camera;
-class Door : public DoomBaseActor
+class Target : public DoomBaseActor
 {
 private:
     Model* mModel            {nullptr};
     BoxCollider* mCollider   {nullptr};
 
-    float openHeight    {1.0f};
-    float currentHeight {0.0f};
-    float speed         {1.0f};
-    
-    bool isOpen      {false};
-    bool needOpening {false};
-    bool needClosing {false};
+    int mMaxLife { 3 };
+    int mLife    { 0 };
+
+    float mResurectTime { 3.0f };
+    float mResurecting  { 0.0f };
     
 public:
     Model* getModel() const {return mModel;}
 
 private:
+    void GetDown();
+    void GetUp();
+    
 public:
-    Door();
-    ~Door() override;
+    Target();
+    ~Target() override;
 
     virtual void Initialize()               override;
     virtual void Start()					override;
@@ -33,6 +32,5 @@ public:
     virtual void Destroy()					override;
 
     void Interact() override;
-    void Open();
-    void Close();
+    void Shoot()    override;
 };

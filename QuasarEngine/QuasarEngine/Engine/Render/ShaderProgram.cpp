@@ -19,7 +19,7 @@ void ShaderProgram::Unload()
 void ShaderProgram::Compose(std::vector<Shader*> _shaders)
 {
 	mID = glCreateProgram();
-	for (int i = 0; i < _shaders.size(); i++)
+	for (int i = 0; i < static_cast<int>(_shaders.size()); i++)
 	{
 		glAttachShader(mID, _shaders[i]->getID());
 	}

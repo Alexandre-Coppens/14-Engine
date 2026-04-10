@@ -1,7 +1,7 @@
 #pragma once 
 //Do not write anything in it. Auto-Generated in Assets.cpp.
 
-static int texturesCount = 39 ;
+static int texturesCount = 40 ;
 static int meshesCount = 24 ;
 static int shadersCount = 25 ;
 
@@ -42,6 +42,7 @@ enum GENERATED_TEXTURE
     PNG_Bowling_Alley_TableTop,
     PNG_Bowling_Alley_Trash,
     PNG_Bowling_Alley_Walls,
+    PNG_DemonFacing,
     PNG_Grass_Gradient,
     PNG_Pin,
     PNG_Voronoi,
@@ -144,6 +145,7 @@ static std::string getTexturePath(GENERATED_TEXTURE _texture)
    case PNG_Bowling_Alley_TableTop:  return"Resources/Textures/Bowling/Bowling_Alley_TableTop.png";
    case PNG_Bowling_Alley_Trash:  return"Resources/Textures/Bowling/Bowling_Alley_Trash.png";
    case PNG_Bowling_Alley_Walls:  return"Resources/Textures/Bowling/Bowling_Alley_Walls.png";
+   case PNG_DemonFacing:  return"Resources/Textures/Doom/DemonFacing.png";
    case PNG_Grass_Gradient:  return"Resources/Textures/Grass_Gradient.png";
    case PNG_Pin:  return"Resources/Textures/Pin.png";
    case PNG_Voronoi:  return"Resources/Textures/Voronoi.png";

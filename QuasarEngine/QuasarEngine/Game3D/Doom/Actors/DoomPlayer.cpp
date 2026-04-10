@@ -81,7 +81,7 @@ void DoomPlayer::Update(const float _deltaTime)
     {
         getScene()->getGame()->SetScene<Scene_Test>();
     }*/
-
+    //Shoot
     if (Inputs::GetKeyDown(SDLK_SPACE))
     {
         RaycastResult raycast = CollisionManager::Raycast(mCamera->getLocalTransform()->getWorldLocation(), mCamera->getLocalTransform()->Forward(), this, 99999.0f);
@@ -91,10 +91,27 @@ void DoomPlayer::Update(const float _deltaTime)
             Log::Info("Hit Actor:" + raycast.actor->getName());
             Actor* line = getScene()->AddActor(new DebugLine(raycast));
 
-            Door* door = dynamic_cast<Door*>(raycast.actor);
-            if (door != nullptr)
+            DoomBaseActor* actor = dynamic_cast<DoomBaseActor*>(raycast.actor);
+            if (actor != nullptr)
             {
-                door->Interact();
+                actor->Shoot();
+            }
+        }
+    }
+    //Interact
+    if (Inputs::GetKeyDown(SDLK_e))
+    {
+        RaycastResult raycast = CollisionManager::Raycast(mCamera->getLocalTransform()->getWorldLocation(), mCamera->getLocalTransform()->Forward(), this, 1.0f);
+        Log::Info("Raycast result:" + std::to_string(raycast.hasHit));
+        if (raycast.hasHit)
+        {
+            Log::Info("Hit Actor:" + raycast.actor->getName());
+            Actor* line = getScene()->AddActor(new DebugLine(raycast));
+
+            DoomBaseActor* interactible = dynamic_cast<DoomBaseActor*>(raycast.actor);
+            if (interactible != nullptr)
+            {
+                interactible->Interact();
             }
         }
     }

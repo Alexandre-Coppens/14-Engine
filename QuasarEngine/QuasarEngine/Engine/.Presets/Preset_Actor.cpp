@@ -24,7 +24,7 @@ void Preset_Actor::Initialize()
 void Preset_Actor::Start()
 {
     mModel->setMesh(Assets::GetMesh(OBJ_cube));
-    mModel->getMesh()->AddTexture(Assets::GetTexture(PNG_NullTexture));
+    mModel->AddTexture(Assets::GetTexture(PNG_NullTexture));
     Actor::Start();
 }
 

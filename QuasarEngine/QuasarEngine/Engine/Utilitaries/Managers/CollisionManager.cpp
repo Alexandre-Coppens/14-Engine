@@ -276,7 +276,7 @@ RaycastResult CollisionManager::Raycast(Vector3 _origin, Vector3 _direction, Act
         }
     }
     if (results.empty()) return NO_RAYCAST_HIT;
-    for (int i = 0; i < results.size(); i++)
+    for (int i = 0; i < static_cast<int>(results.size()); i++)
     {
         if (!results[i].hasHit) continue;
         hit = true;

@@ -52,7 +52,7 @@ void Model::Draw(DrawOption _option)
 			break;
 
 		case DrawOption::TEXTURE:
-			texture = mMesh->getTexture(static_cast<Uint16>(mTextureIndex));
+			texture = getTexture(static_cast<Uint16>(mTextureIndex));
 			if (!texture) texture = Assets::GetTexture(PNG_NullTexture);
 			break;
 		
@@ -62,7 +62,7 @@ void Model::Draw(DrawOption _option)
 			
 		case DrawOption::TESSELATION:
 			//glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
-			texture = mMesh->getTexture(static_cast<Uint16>(mTextureIndex));
+			texture = getTexture(static_cast<Uint16>(mTextureIndex));
 			if (!texture) texture = Assets::GetTexture(PNG_NullTexture);
 			break;
 
@@ -71,7 +71,7 @@ void Model::Draw(DrawOption _option)
 			break;
 
 		case DrawOption::INSTANCED:
-			texture = mMesh->getTexture(static_cast<Uint16>(mTextureIndex));
+			texture = getTexture(static_cast<Uint16>(mTextureIndex));
 			if (!texture) texture = Assets::GetTexture(PNG_NullTexture);
 			break;
 
