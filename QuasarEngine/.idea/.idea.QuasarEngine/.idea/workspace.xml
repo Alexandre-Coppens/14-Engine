@@ -8,36 +8,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8aaab4d2-4f5d-4712-9cf7-40708eb9c5f6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Actors/DoomBaseActor.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Actors/DoomBaseActor.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Actors/Target.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Actors/Target.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Textures/Doom/DemonFacing.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Actors/Switch.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Actors/Switch.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Textures/Doom/Door.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Textures/Doom/Switch_Off.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Textures/Doom/Switch_On.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.QuasarEngine/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.QuasarEngine/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/.EngineAssets/Models/Plane.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.EngineAssets/Models/Plane.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/.EngineGenerated/Generated.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.EngineGenerated/Generated.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/.Prefabs/Object.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.Prefabs/Object.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/.Presets/Preset_Actor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.Presets/Preset_Actor.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/3D/Mesh.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/3D/Mesh.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cModel.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cModel.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cModel.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cModel.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Game.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Game.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Game.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Game.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Render/ShaderProgram.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Render/ShaderProgram.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Assets.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Assets.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/CommonLib.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/CommonLib.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Managers/CollisionManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Managers/CollisionManager.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Actors/Ball.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Actors/Ball.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Actors/BowlingAlley.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Actors/BowlingAlley.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Actors/BoxGl.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Actors/BoxGl.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Actors/Pin.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Actors/Pin.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Actors/DoomPlayer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Actors/DoomPlayer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Texture.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Texture.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Actors/Door.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Actors/Door.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Actors/Door.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Actors/Door.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Scenes/Scene_Doom_Test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Scenes/Scene_Doom_Test.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/TestingGrounds/Actors/Cube.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/TestingGrounds/Actors/Cube.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Actors/Target.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Actors/Target.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/QuasarEngine.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/QuasarEngine.vcxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/TODO.txt" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/TODO.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +35,6 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="cidr-memory-view://0" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Dependencies/GL/SDL/include/SDL_events.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Dependencies/GL/SDL/include/SDL_stdinc.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Engine/.EngineGenerated/Generated.h" root0="SKIP_HIGHLIGHTING" />
@@ -62,6 +45,8 @@
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Managers/CollisionManager.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Managers/ImguiManager.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Managers/ImguiManager.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Actors/Switch.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Actors/Switch.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Game3D/TestingGrounds/Actors/ActorCamera.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Game3D/TestingGrounds/Actors/ActorCamera.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Game3D/TestingGrounds/Actors/Cube.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -212,6 +197,10 @@
       <workItem from="1775722865591" duration="9701000" />
       <workItem from="1775813580818" duration="942000" />
       <workItem from="1775828735583" duration="1147000" />
+      <workItem from="1775831053041" duration="2011000" />
+      <workItem from="1775899911942" duration="21363000" />
+      <workItem from="1775984282280" duration="6842000" />
+      <workItem from="1776005402290" duration="12304000" />
     </task>
     <servers />
   </component>

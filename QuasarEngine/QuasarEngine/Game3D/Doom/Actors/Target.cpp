@@ -26,13 +26,13 @@ void Target::Initialize()
 
 void Target::Start()
 {
-    mModel->setMesh(Assets::GetMesh(OBJ_cube));
+    mModel->setMesh(Assets::GetMesh(OBJ_Plane));
     mModel->AddTexture(Assets::GetTexture(PNG_DemonFacing));
 
     mLife = mMaxLife;
 
     mTransform3D->addLocationZ(0.5f);
-    mTransform3D->setScale(Vector3(0.05f, 0.5f, 0.5f));
+    mTransform3D->setScale(Vector3(0.5f, 0.5f, 0.5f));
     
     DoomBaseActor::Start();
 }
@@ -73,16 +73,16 @@ void Target::Shoot()
 
 void Target::GetDown()
 {
-    if (mTransform3D->getRotation().y < 89.0f)
+    if (mTransform3D->getRotation().y > 1.0f)
     {
-        mTransform3D->addRotationY(90.0f * Time::deltaTime);
+        mTransform3D->addRotationY(-90.0f * Time::deltaTime);
     }
 }
 
 void Target::GetUp()
 {
-    if (mTransform3D->getRotation().y > 1.0f)
+    if (mTransform3D->getRotation().y < 89.0f)
     {
-        mTransform3D->addRotationY(-30.0f * Time::deltaTime);
+        mTransform3D->addRotationY(30.0f * Time::deltaTime);
     }
 }

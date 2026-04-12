@@ -26,10 +26,25 @@ bool Texture::Load(IRenderer& _renderer, const std::string& _filePath)
 	}
 	mWidth  = static_cast<Uint16>(surface->w);
 	mHeight = static_cast<Uint16>(surface->h);
-
+	
+	SDL_Surface* flipped = SDL_CreateRGBSurface(0, surface->h, surface->w, surface->format->BitsPerPixel, surface->format->Rmask, surface->format->Gmask, surface->format->Bmask, surface->format->Amask);
+	
+	for (int y = 1; y < surface->h; y++)
+	{
+		for (int x = 1; x < surface->w; x++) {
+			memcpy(
+				(char*)flipped->pixels + (flipped->pitch * x) + (flipped->pitch - (y + 1) * flipped->format->BytesPerPixel),
+				(char*)surface->pixels + (y * flipped->pitch) + (x * flipped->format->BytesPerPixel),
+				flipped->format->BytesPerPixel
+			);
+		}
+	}
+	
+	SDL_FreeSurface(surface);
+	
 	if (_renderer.getType() == RendererType::SDL)
-		return LoadSdl(dynamic_cast<RendererSdl*>(&_renderer), _filePath, surface);
-	return LoadGl(dynamic_cast<RendererGl*>(&_renderer), _filePath, surface);
+		return LoadSdl(dynamic_cast<RendererSdl*>(&_renderer), _filePath, flipped);
+	return LoadGl(dynamic_cast<RendererGl*>(&_renderer), _filePath, flipped);
 }
 
 bool Texture::LoadGl(RendererGl* _renderer, const std::string& _filename, SDL_Surface* _pSurface)

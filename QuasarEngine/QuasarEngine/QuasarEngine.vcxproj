@@ -1595,6 +1595,7 @@
     <ClCompile Include="Game3D\Doom\Actors\DoomPlayer.cpp" />
     <ClCompile Include="Game3D\Doom\Actors\Door.cpp" />
     <ClCompile Include="Game3D\Doom\Actors\DoomBaseActor.cpp" />
+    <ClCompile Include="Game3D\Doom\Actors\Switch.cpp" />
     <ClCompile Include="Game3D\Doom\Actors\Target.cpp" />
     <ClCompile Include="Game3D\Doom\Scenes\Scene_Doom_Test.cpp" />
     <ClCompile Include="Game3D\TestingGrounds\Actors\ActorCamera.cpp" />
@@ -1667,6 +1668,7 @@
     <ClInclude Include="Game3D\Doom\Actors\DoomPlayer.h" />
     <ClInclude Include="Game3D\Doom\Actors\Door.h" />
     <ClInclude Include="Game3D\Doom\Actors\DoomBaseActor.h" />
+    <ClInclude Include="Game3D\Doom\Actors\Switch.h" />
     <ClInclude Include="Game3D\Doom\Actors\Target.h" />
     <ClInclude Include="Game3D\Doom\Scenes\Scene_Doom_Test.h" />
     <ClInclude Include="Game3D\TestingGrounds\Actors\ActorCamera.h" />
@@ -1763,7 +1765,10 @@
     <Content Include="Resources\Textures\Bowling\Bowling_Alley_TableTop.png" />
     <Content Include="Resources\Textures\Bowling\Bowling_Alley_Trash.png" />
     <Content Include="Resources\Textures\Bowling\Bowling_Alley_Walls.png" />
+    <Content Include="Resources\Textures\Doom\Switch_Off.png" />
+    <Content Include="Resources\Textures\Doom\Switch_On.png" />
     <Content Include="Resources\Textures\Doom\DemonFacing.png" />
+    <Content Include="Resources\Textures\Doom\Door.png" />
     <Content Include="Resources\Textures\Grass_Gradient.png" />
     <Content Include="Resources\Textures\Pin.png" />
     <Content Include="Resources\Textures\pokeball.png" />
