@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "Engine/Actor.h"
+#include "Engine/2D/Sprite2D.h"
 #include "Engine/3D/cModel.h"
 
 class Collider3D;
@@ -12,6 +13,7 @@ private:
     Collider3D* mCollider    {nullptr};
     PhysicBody* mPhysicBody  {nullptr};
     Camera* mCamera          {nullptr};
+    Sprite2D* mSprite        {nullptr};
 
 public:
     Model* getModel() const {return mModel;}

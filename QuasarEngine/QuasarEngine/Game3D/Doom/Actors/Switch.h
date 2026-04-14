@@ -13,6 +13,8 @@ private:
 	BoxCollider* mCollider   {nullptr};
     
 	Door* referencedDoor     {nullptr};
+
+	bool isOpen				 {false};
     
 public:
 	Model* getModel() const {return mModel;}

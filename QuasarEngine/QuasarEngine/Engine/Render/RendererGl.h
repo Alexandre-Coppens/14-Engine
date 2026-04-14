@@ -17,7 +17,7 @@ private:
 	
 	VertexArray* pSpriteVao;
 	ShaderProgram* pSpriteShaderProgram;
-	std::vector<Sprite2D*> mSpriteList;
+	std::vector<std::vector<Sprite2D*>> mSpriteList;
 	
 	std::map<ShaderProgram*, std::vector<Model*>> mModelDrawOrder;
 	
@@ -48,8 +48,8 @@ public:
 	void DrawModels() const;
 	void DrawSprites();
 	
-	void AddSprite(Sprite2D* _pSprite);
-	void RemoveSprite(Sprite2D* _pSprite);
+	void AddSprite(Sprite2D* _pSprite, int _drawOrder);
+	void RemoveSprite(Sprite2D* _pSprite, int _drawOrder);
 
 	void AddModel(Model* _pModel, ShaderProgram* _pShaderProgram);
 	void RemoveModel(Model* _pModel, ShaderProgram* _pShaderProgram);

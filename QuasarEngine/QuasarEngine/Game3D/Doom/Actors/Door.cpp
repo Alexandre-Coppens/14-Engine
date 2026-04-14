@@ -61,6 +61,7 @@ void Door::Destroy()
 
 void Door::Interact()
 {
+    if (isLocked) return;
     if (needClosing) return;
     needOpening = true;
 }

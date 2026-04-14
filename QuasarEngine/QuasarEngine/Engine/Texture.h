@@ -31,5 +31,5 @@ public:
 	bool LoadGl(RendererGl* _renderer, const std::string& _filename, SDL_Surface* _pSurface);
 	void SetActive() const;
 	void Unload();
-	void UpdateInfo(uint16_t& _pWidthOut, uint16_t& _pHeightOut);
+	void UpdateInfo(float& _pWidthOut, float& _pHeightOut);
 };

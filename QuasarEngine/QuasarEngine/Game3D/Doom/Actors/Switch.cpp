@@ -8,6 +8,7 @@
 Switch::Switch(Door* _reference):
 	DoomBaseActor(), referencedDoor(_reference)
 {
+	Initialize();
 }
 
 Switch::~Switch() = default;
@@ -23,8 +24,8 @@ void Switch::Start()
 {
 	referencedDoor->Lock();
 	mModel->setMesh(Assets::GetMesh(OBJ_Plane));
-	mModel->AddTexture(Assets::GetTexture(PNG_Door));
-	mTransform3D->addRotationY(-90.0f);
+	mModel->AddTexture(Assets::GetTexture(PNG_Switch_Off));
+	mTransform3D->setScale(Vector3{0.1f, 0.1f, 0.05f});
 	DoomBaseActor::Start();
 }
 
@@ -40,8 +41,11 @@ void Switch::Destroy()
 
 void Switch::Interact()
 {
+	if (isOpen) return;
+	isOpen = true;
 	referencedDoor->Unlock();
 	referencedDoor->Interact();
+	mModel->setTexture(Assets::GetTexture(PNG_Switch_On));
 	DoomBaseActor::Interact();
 }
 

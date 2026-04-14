@@ -10,6 +10,7 @@
 #include "Engine/Render/RendererGl.h"
 #include "Game3D/Doom/Actors/DoomPlayer.h"
 #include "Game3D/Doom/Actors/Door.h"
+#include "Game3D/Doom/Actors/Switch.h"
 #include "Game3D/Doom/Actors/Target.h"
 
 Scene_Doom_Test::Scene_Doom_Test(std::string _name)
@@ -43,14 +44,18 @@ void Scene_Doom_Test::Start()
     Actor* player = AddActor(new DoomPlayer());
 
     Actor* door = AddActor(new Door());
+    Actor* lever = AddActor(new Switch(dynamic_cast<Door*>(door)));
     Actor* target = AddActor(new Target());
     Actor* grass = AddActor(new Object("Grass", OBJ_Grass, PNG_Grass_Gradient, "Grass"));
 
     Actor* floor = AddActor(new Object("Floor", OBJ_Plane, PNG_Voronoi, "NoiseHeight"));
 
     //Modify Actors
-    player->getTransform3D()->addLocationZ(10.0f);
+    player->getTransform3D()->addLocationZ(1.0f);
     player->getTransform3D()->addRotationZ(180.0f);
+
+    lever->getTransform3D()->setLocation(Vector3{1.0f, 0.0f, 0.5f});
+    lever->getTransform3D()->addRotationY(90.0f);
     
     target->getTransform3D()->addLocationX(-2.0f);
     //target->getTransform3D()->addLocationZ(0.5f);

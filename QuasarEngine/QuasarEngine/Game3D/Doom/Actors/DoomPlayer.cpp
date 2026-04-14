@@ -30,6 +30,7 @@ void DoomPlayer::Initialize()
 {
     mPhysicBody = dynamic_cast<PhysicBody*>(AddComponent(new PhysicBody(this, BOX)));
     mCamera = dynamic_cast<Camera*>(AddComponent(new Camera(this)));
+    mSprite = dynamic_cast<Sprite2D*>(AddComponent(new Sprite2D(this, Assets::GetTexture(PNG_HUD_InfoBar), "BasicModel", 0)));
     Actor::Initialize();
 }
 
@@ -45,6 +46,8 @@ void DoomPlayer::Start()
 
 void DoomPlayer::Update(const float _deltaTime)
 {
+    //mSprite->getTransform()->addRotation(90.0f * _deltaTime);
+    //mSprite->getTransform()->addLocationX(50.0f * _deltaTime);
     if (Inputs::GetKey(SDLK_z))
     {
         Vector3 forward = mCamera->getLocalTransform()->Forward();

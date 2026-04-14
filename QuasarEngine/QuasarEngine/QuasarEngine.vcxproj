@@ -1325,6 +1325,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)QuasarEngine;$(SolutionDir)QuasarEngine/Dependencies/GL/SDL/include;$(SolutionDir)QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;$(SolutionDir)QuasarEngine/Dependencies/SDL2_image-2.8.2\include;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="Engine\3D\cUISprite.cpp" />
     <ClCompile Include="Engine\3D\Mesh.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -1626,6 +1627,7 @@
     <ClInclude Include="Engine\3D\cPhysicBody.h" />
     <ClInclude Include="Engine\3D\cSphereCollider.h" />
     <ClInclude Include="Engine\3D\cTransform3D.h" />
+    <ClInclude Include="Engine\3D\cUISprite.h" />
     <ClInclude Include="Engine\3D\Mesh.h" />
     <ClInclude Include="Engine\Actor.h" />
     <ClInclude Include="Engine\Component.h" />
@@ -1769,6 +1771,7 @@
     <Content Include="Resources\Textures\Doom\Switch_On.png" />
     <Content Include="Resources\Textures\Doom\DemonFacing.png" />
     <Content Include="Resources\Textures\Doom\Door.png" />
+    <Content Include="Resources\Textures\Doom\UI\HUD_InfoBar.png" />
     <Content Include="Resources\Textures\Grass_Gradient.png" />
     <Content Include="Resources\Textures\Pin.png" />
     <Content Include="Resources\Textures\pokeball.png" />

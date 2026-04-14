@@ -117,23 +117,29 @@ void RendererGl::DrawSprites()
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	if (pSpriteShaderProgram != nullptr) pSpriteShaderProgram->Use();
-	pSpriteShaderProgram->SetMatrix4Row("uViewProj", mSpriteViewProj);
 	pSpriteVao->SetActive();
 
-	for (Sprite2D* sprite : mSpriteList)
+	for (int i = 0; i < static_cast<int>(mSpriteList.size()); i++)
 	{
-		//sprite->Draw(*this, DebugMode::DRAW_COLLISIONS);
-		glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-		//TODO: Add a plane object to create ui sprites
+		for (Sprite2D* sprite : mSpriteList[i])
+		{
+			sprite->DrawGL();
+		}
 	}
 }
 
-void RendererGl::AddSprite(Sprite2D* _pSprite)
+void RendererGl::AddSprite(Sprite2D* _pSprite, int _drawOrder)
 {
+	while (mSpriteList.size() <= _drawOrder)
+	{
+		mSpriteList.push_back(std::vector<Sprite2D*>());
+	}
+	mSpriteList[_drawOrder].push_back(_pSprite);
 }
 
-void RendererGl::RemoveSprite(Sprite2D* _pSprite)
+void RendererGl::RemoveSprite(Sprite2D* _pSprite, int _drawOrder)
 {
+	mSpriteList[_drawOrder].erase(std::find(mSpriteList[_drawOrder].begin(), mSpriteList[_drawOrder].end(), _pSprite));
 }
 
 void RendererGl::EndDraw()

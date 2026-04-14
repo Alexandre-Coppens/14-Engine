@@ -101,7 +101,7 @@ void Texture::Unload()
 	DEBUGRemoveClass("Texture");
 }
 
-void Texture::UpdateInfo(uint16_t& _pWidthOut, uint16_t& _pHeightOut)
+void Texture::UpdateInfo(float& _pWidthOut, float& _pHeightOut)
 {
 	_pWidthOut	= mWidth;
 	_pHeightOut = mHeight;

@@ -3,29 +3,38 @@
 
 #include "Engine/Component.h"
 #include "Engine/Texture.h"
+#include "Engine/2D/Transform2D.h"
 #include "Engine/Utilitaries/CommonLib.h"
 #include "Engine/Render/RendererSdl.h"
 
+class ShaderProgram;
 class Sprite2D : public Component
 {
 protected:
-	Texture*	 mTexture;
+	Texture* mTexture;
 	uint8_t  mDrawOrder;
-	uint16_t mTextureWidth;
-	uint16_t mTextureHeight;
+	float mTextureWidth;
+	float mTextureHeight;
 	bool mXFlipped;
+
+	//GL
+	std::string mShader {""};
+	Transform2D mTransform;
 
 public:
 	uint16_t getDrawOrder()		  const	{ return mDrawOrder; }
-	uint16_t getTextureWidth()	  const	{ return mTextureWidth; }
-	uint16_t getTextureHeight()	  const	{ return mTextureHeight; }
+	float getTextureWidth()	  const	{ return mTextureWidth; }
+	float getTextureHeight()	  const	{ return mTextureHeight; }
 	Vector2  getTextureSize()	  const	{ return Vector2{ static_cast<float>(mTextureWidth), static_cast<float>(mTextureHeight) }; }
 
 	void setXFlip(const bool _b) { mXFlipped = _b; }
 
+	Transform2D* getTransform()	        { return &mTransform; }
+
 private:
 public:
 	Sprite2D(Actor* _pOwner, Texture* _pTexture, uint8_t _drawOrder);
+	Sprite2D(Actor* _pOwner, Texture* _pTexture, std::string _shaderProgram, uint8_t _drawOrder);
 	~Sprite2D() override;
 	Sprite2D() = delete;
 	Sprite2D(const Sprite2D&) = delete;
@@ -36,6 +45,7 @@ public:
 
 	virtual void SetTexture(Texture* _pTexture);
 	virtual void Draw(const RendererSdl& _pRenderer, DebugMode _debug);
+	void DrawGL();
 };
 
 #endif // !1
