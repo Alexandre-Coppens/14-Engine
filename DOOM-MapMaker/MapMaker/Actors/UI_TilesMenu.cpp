@@ -1,6 +1,7 @@
 #include "UI_TilesMenu.h"
 
-#include "Actors/UI_CurrentTexture.h"
+#include "MapMaker/Engine.h"
+#include "MapMaker/Actors/UI_CurrentTexture.h"
 
 UI_TilesMenu::UI_TilesMenu():
 	Actor(false, "UI_Texture", Vector2{0, 0.5f}, Vector2{125, 0}, Vector2{250, 400}, &AssetList::SpriteList["Unknown"], 3)
@@ -65,6 +66,7 @@ void UI_TilesMenu::Clicked()
 		{
 			currentTextureName = texture.first;
 			dynamic_cast<UI_CurrentTexture*>(GetActorWithName("UI_CurrentTexture"))->sprite = &AssetList::SpriteList[texture.first];
+			Engine::instance->ChangeCurrentTexture();
 		}
 		i++;
 	}

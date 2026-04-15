@@ -16,8 +16,9 @@ static void DrawScreen(Vector2* scroll);
 //Draw the terrain and the gameObjects on screen
 static void DrawScreen(Vector2* scroll){
 	//Draw Floors
-	for (Terrain::Floor floor : Terrain::floorList)
+	for (int i = 0; i < Terrain::floorList.size(); i++)
 	{
+		Terrain::Floor& floor = Terrain::floorList[i];
 		if (!floor.computed) Terrain::ComputeFloor(floor);
 		Texture2D* sprite = &AssetList::SpriteList[Terrain::dictionary[floor.dictionaryTexture]];
 		//Transform vertices location to scrolled
@@ -32,11 +33,26 @@ static void DrawScreen(Vector2* scroll){
 			//Add the second one again to close the triangle strip
 			verticesScrolled.push_back(verticesScrolled[1]);
 			DrawTriangleFan(&(verticesScrolled[0]), (int)verticesScrolled.size(), BROWN);
+			
+			for (int i = 1; i < static_cast<int>(verticesScrolled.size()) - 1; i++)
+			{
+				DrawLineV(verticesScrolled[i], verticesScrolled[i + 1], GRAY);
+			}
+		}
+		if (Engine::instance->GetCurrentMode() == CurrentMode::Floors)
+		{
+			if (Terrain::nearGizmo == Floors)
+			{
+				if (Terrain::nearIndice == i)
+				{
+					DrawRectangleRec(Rectangle{floor.center.x + scroll->x - 27.0f, floor.center.y + scroll->y - 27.0f, 54.0f, 54.0f}, BLUE);
+				}
+			}
 		}
 		DrawTexturePro(*sprite, 
 					   Rectangle{0, 0, static_cast<float>(sprite->width), static_cast<float>(sprite->height)},
 					   Rectangle{floor.center.x + scroll->x, floor.center.y + scroll->y, 50.0f, 50.0f},
-					   Vector2{static_cast<float>(sprite->width) * 0.5f, static_cast<float>(sprite->height) * 0.5f},
+					   Vector2{25.0f, 25.0f},
 					   0.0f,
 					   WHITE);
 	}
@@ -68,12 +84,15 @@ static void DrawScreen(Vector2* scroll){
 		Color color = BLACK;
 		if (Engine::instance->GetCurrentMode() == CurrentMode::Floors)
 		{
-			Terrain::Floor currentFloor = Terrain::floorList[Engine::instance->GetCurrentFloor()]; 
-			if (std::find(currentFloor.vertices.begin(), currentFloor.vertices.end(), vertex.first) != currentFloor.vertices.end()){
-				color = GREEN;
+			if (Engine::instance->GetCurrentFloor() != -1)
+			{
+				Terrain::Floor currentFloor = Terrain::floorList[Engine::instance->GetCurrentFloor()]; 
+				if (std::find(currentFloor.vertices.begin(), currentFloor.vertices.end(), vertex.first) != currentFloor.vertices.end()){
+					color = GREEN;
+				}
 			}
 		}
-		DrawCircle(vertex.second.x + scroll->x, vertex.second.y + scroll->y, 5.0f, color);
+		DrawCircle(static_cast<int>(vertex.second.x + scroll->x), static_cast<int>(vertex.second.y + scroll->y), 5.0f, color);
 	}
 	//Show Object under the cursor
 	if (Terrain::nearIndice != -1)
@@ -81,7 +100,7 @@ static void DrawScreen(Vector2* scroll){
 		switch (Terrain::nearGizmo)
 		{
 		case Vertex:
-			DrawCircle(Terrain::wallVertices[Terrain::nearIndice].x + scroll->x, Terrain::wallVertices[Terrain::nearIndice].y + scroll->y, 7.0f, BLUE);
+			DrawCircle(static_cast<int>(Terrain::wallVertices[Terrain::nearIndice].x + scroll->x), static_cast<int>(Terrain::wallVertices[Terrain::nearIndice].y + scroll->y), 7.0f, BLUE);
 			break;
 			
 		case Edge:
@@ -96,6 +115,6 @@ static void DrawScreen(Vector2* scroll){
 	//Show selected object
 	if (selectedVertex != -1)
 	{
-		DrawCircle(Terrain::wallVertices[selectedVertex].x + scroll->x, Terrain::wallVertices[selectedVertex].y + scroll->y, 7.0f, RED);
+		DrawCircle(static_cast<int>(Terrain::wallVertices[selectedVertex].x + scroll->x), static_cast<int>(Terrain::wallVertices[selectedVertex].y + scroll->y), 7.0f, RED);
 	}
 };

@@ -8,7 +8,7 @@
 #include <vector>
 #include "AssetsList.h"
 
-#include "UI_TilesMenu.h"
+#include "Actors/UI_TilesMenu.h"
 #include "Actors/UI_CurrentTexture.h"
 #include "Actors/UI_ModeSelector.h"
 
@@ -31,6 +31,8 @@ private:
 public:
 	static Engine* instance;
 	
+	UI_TilesMenu* GetTileMenu() {return tileMenu;}
+	
 	CurrentMode GetCurrentMode() {return modeSelector->currentMode;}
 	int GetCurrentFloor() {return currentFloor;}
 	
@@ -42,4 +44,6 @@ public:
 	void Start();
 	void Update();
 	void Draw();
+
+	void ChangeCurrentTexture();
 };

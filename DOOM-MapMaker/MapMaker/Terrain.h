@@ -15,6 +15,7 @@ enum Gizmo
     None,
     Vertex,
     Edge,
+    Floors,
 };
 
 class Terrain {

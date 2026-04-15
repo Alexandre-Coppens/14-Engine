@@ -1,6 +1,6 @@
 ﻿#include "UI_CurrentTexture.h"
 
-#include "MapMaker/UI_TilesMenu.h"
+#include "MapMaker/Actors/UI_TilesMenu.h"
 
 UI_CurrentTexture::UI_CurrentTexture():
 	Actor(

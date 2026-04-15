@@ -113,6 +113,7 @@ void Engine::Update()
 		if (!isHoveringActor || hoveredActor != tileMenu) tileMenu->enabled = false;
 		if (isHoveringActor)
 		{
+			selectedVertex = -1;
 			hoveredActor->Clicked();
 		}
 		//If close to a already existing vertex
@@ -173,12 +174,31 @@ void Engine::Update()
 			case CurrentMode::Floors:
 				if (Terrain::nearIndice != -1 && Terrain::nearGizmo == Vertex)
 				{
+					//Check if a floor is selected else create new
+					if (currentFloor == -1)
+					{
+						currentFloor = static_cast<int>(Terrain::floorList.size());
+						Terrain::floorList.push_back(Terrain::Floor());
+					}
 					//Check if the vertex is already on the floor list
 					if (not(std::find(Terrain::floorList[currentFloor].vertices.begin(), Terrain::floorList[currentFloor].vertices.end(), Terrain::nearIndice) != Terrain::floorList[currentFloor].vertices.end()))
 					{
 						Terrain::floorList[currentFloor].vertices.push_back(Terrain::nearIndice);
+						Terrain::floorList[currentFloor].computed = false;
 					}
 					selectedVertex = Terrain::nearIndice;
+				}
+				if (Terrain::nearGizmo == Floors)
+				{
+					if (currentFloor != -1)
+					{
+						currentTexture->Clicked();
+					}
+					currentFloor = Terrain::nearIndice;
+				}
+				if (Terrain::nearIndice == -1)
+				{
+					currentFloor = -1;
 				}
 				break;
 			}
@@ -221,7 +241,25 @@ void Engine::Update()
 			break;
 			
 		case CurrentMode::Floors:
-			cout << "NOT IMPLEMENTED WAIT JUST A BIT (1-2 Days) \n";
+			if(Terrain::nearGizmo == Vertex)
+			{
+				std::vector<int>& floorVertices = Terrain::floorList[currentFloor].vertices;
+				auto find = std::find(floorVertices.begin(), floorVertices.end(), Terrain::nearIndice);
+				if (find != floorVertices.end()) Terrain::floorList[currentFloor].vertices.erase(find);
+				Terrain::nearIndice = -1;
+				Terrain::floorList[currentFloor].computed = false;
+			}
+			else if(Terrain::nearGizmo == Floors)
+			{
+				Terrain::floorList.erase(Terrain::floorList.begin() + currentFloor);
+				Terrain::nearGizmo = None;
+				currentFloor = -1;
+			}
+			else
+			{
+				currentFloor = -1;
+				selectedVertex = -1;
+			}
 			break;
 		}
 	}
@@ -283,10 +321,18 @@ void Engine::Draw()
 
 	if (GetFrameTime() != 0)
 	{
-		DrawText(TextFormat("CURRENT FPS: %i", (int)(1.0f / GetFrameTime())), 10, GetScreenHeight() - 30, 20, BLACK);
+		DrawText(TextFormat("CURRENT FPS: %i", static_cast<int>(1.0f / GetFrameTime())), 10, GetScreenHeight() - 30, 20, BLACK);
 	}
 	
 	//Center of world
-	DrawRectangle(scroll.x - 5.0f, scroll.y - 5.0f, 10, 10, BLACK);
+	DrawRectangle(static_cast<int>(scroll.x - 5.0f), static_cast<int>(scroll.y - 5.0f), 10, 10, BLACK);
 	EndDrawing();
+}
+
+void Engine::ChangeCurrentTexture()
+{
+	if (currentFloor != -1)
+	{
+		Terrain::floorList[currentFloor].dictionaryTexture = Terrain::CheckInDictionary(tileMenu->GetTexture());;
+	}
 }

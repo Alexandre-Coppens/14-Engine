@@ -1,5 +1,7 @@
 ﻿#include "UI_ModeSelector.h"
 
+#include "MapMaker/DrawScreen.h"
+
 UI_ModeSelector::UI_ModeSelector():
 	Actor(
 		true, 
@@ -43,6 +45,7 @@ void UI_ModeSelector::Update()
 
 void UI_ModeSelector::Clicked()
 {
+	selectedVertex =-1;
 	switch (hoveredOn)
 	{
 		case 0:

@@ -2,6 +2,8 @@
 #include <fstream>
 
 #include "Terrain.h"
+
+#include "Engine.h"
 #include "WinDialogue.h"
 
 using std::ofstream;
@@ -95,9 +97,11 @@ void Terrain::ComputeWall(Wall& wall)
 	
 	wall.computed = true;
 }
+
 void Terrain::ComputeFloor(Floor& _floor)
 {
-	_floor.verticesLocation.empty();
+	_floor.dictionaryTexture = CheckInDictionary(Engine::instance->GetTileMenu()->GetTexture());
+	_floor.verticesLocation.clear();
 	Vector2 center = Vector2Zero();
 	Vector2 v2;
 	for (int i : _floor.vertices)
@@ -132,6 +136,18 @@ void Terrain::ISCursorOnSomething(Vector2 position)
 			nearGizmo = Edge;
 			nearIndice = i;
 			return;
+		}
+	}
+	if (Engine::instance->GetCurrentMode() == CurrentMode::Floors)
+	{
+		for (int i = 0; i < floorList.size(); i++)
+		{
+			if (CheckCollisionPointRec(position, Rectangle{floorList[i].center.x - 25.0f , floorList[i].center.y - 25.0f, 50.0f, 50.0f}))
+			{
+				nearGizmo = Floors;
+				nearIndice = i;
+				return;
+			}
 		}
 	}
 	nearIndice = -1;
