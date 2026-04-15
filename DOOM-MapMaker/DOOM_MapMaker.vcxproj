@@ -288,8 +288,7 @@
       <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>E:\Github\14-Engine\DOOM-MapMaker\\raylib;E:\Github\14-Engine\DOOM-MapMaker\\raylib\external;E:\Github\14-Engine\DOOM-MapMaker\\raylib;E:\Github\14-Engine\DOOM-MapMaker\;E:\Github\14-Engine\DOOM-MapMaker\\raylib\external;</AdditionalIncludeDirectories>
-      <LinkCompiled>true</LinkCompiled>
+	  <AdditionalIncludeDirectories>$(SolutionDir)\raylib;$(SolutionDir);$(SolutionDir)\raylib\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>      <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="MapMaker\AssetsList.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>

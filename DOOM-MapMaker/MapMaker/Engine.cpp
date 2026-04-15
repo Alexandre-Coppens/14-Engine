@@ -231,7 +231,7 @@ void Engine::Update()
 					if (Terrain::nearIndice == selectedVertex) selectedVertex = -1;
 					Terrain::nearIndice = -1;
 				}
-				else if(Terrain::nearGizmo == Vertex)
+				else if(Terrain::nearGizmo == Edge)
 				{
 					Terrain::wallList.erase(Terrain::wallList.begin() + Terrain::nearIndice);
 					Terrain::nearIndice = -1;

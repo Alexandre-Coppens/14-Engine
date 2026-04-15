@@ -100,7 +100,7 @@ void Terrain::ComputeWall(Wall& wall)
 
 void Terrain::ComputeFloor(Floor& _floor)
 {
-	_floor.dictionaryTexture = CheckInDictionary(Engine::instance->GetTileMenu()->GetTexture());
+	//_floor.dictionaryTexture = CheckInDictionary(Engine::instance->GetTileMenu()->GetTexture());
 	_floor.verticesLocation.clear();
 	Vector2 center = Vector2Zero();
 	Vector2 v2;
@@ -181,6 +181,18 @@ void Terrain::SaveMap(){
 					to_string(wall.rotation.x) + ":" + to_string(wall.rotation.y) + ":" + to_string(wall.rotation.z) +  " " +
 					to_string(wall.size.x)	   + ":" + to_string(wall.size.y)     + ":" + to_string(wall.size.z)     +  "\n";
 		}
+		for (const Floor& floor : floorList) {
+			saveFile << "F " + 
+					to_string(floor.vertices.size())  + " " +				
+					to_string(floor.center.x)  + ":" + to_string(floor.center.y)  + " ";	
+			for (int i = 0; i < floor.vertices.size(); i++)							
+			{
+				saveFile << to_string(floor.vertices[i]);
+				if (i != floor.vertices.size() - 1) saveFile << ":";
+				else saveFile << " ";
+			}
+			saveFile << to_string(floor.dictionaryTexture) + "\n";
+		}
 		saveFile.close();
 	}
 	else {
@@ -221,8 +233,22 @@ void Terrain::LoadMap(){
 				wall.dictionaryTexture = stoi(wallString[3]);
 				wallList.push_back(wall);
 			}
+			if (line[0] == 'F') {	// F int(nbr vertices) Vector2(center) vec<int>(vertices) int(dictionaryPointer)
+				vector<string> floorString = BreakString(line, ' ');
+				vector<string> vertices = BreakString(floorString[3], ':');
+				Floor floor;
+				for (int i = 0; i < stoi(floorString[1]); i++)	{
+					floor.vertices.push_back(stoi(vertices[i]));
+				}
+				floor.dictionaryTexture = stoi(floorString[4]);
+				floorList.push_back(floor);
+			}
 		}
 		loadFile.close();
+		
+		int highest = 0;
+		for (auto wall : wallVertices) if (wall.first > highest) highest = wall.first;
+		verticesCount = highest;
 	}
 	else {
 		cout << "Could not load " + path + "\n";
