@@ -5,12 +5,13 @@ enum class CurrentMode
 {
 	Walls = 0,
 	Floors = 1,
+	Actors = 2,
 };
 
 class UI_ModeSelector : public Actor
 {
 private:
-	std::vector<std::string> selections {std::vector<std::string>{"Wall", "Floor"}};
+	std::vector<std::string> selections {std::vector<std::string>{"Wall", "Floor", "Actor"}};
 	Vector2 optionsSize;
 	
 	int hoveredOn {0};

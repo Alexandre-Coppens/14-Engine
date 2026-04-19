@@ -24,6 +24,7 @@ Engine::Engine()
 Engine::~Engine()
 {
 	delete tileMenu;
+	delete actorMenu;
 	delete currentTexture;
 	delete modeSelector;
 	
@@ -34,6 +35,7 @@ Engine::~Engine()
 void Engine::Start()
 {
 	tileMenu = new UI_TilesMenu{};
+	actorMenu = new UI_ActorMenu{};
 	currentTexture = new UI_CurrentTexture{};
 	modeSelector = new UI_ModeSelector{};
 	
@@ -195,6 +197,23 @@ void Engine::Update()
 						currentTexture->Clicked();
 					}
 					currentFloor = Terrain::nearIndice;
+				}
+				if (Terrain::nearIndice == -1)
+				{
+					currentFloor = -1;
+				}
+				break;
+			case CurrentMode::Actors:
+				if (Terrain::nearIndice != -1 && Terrain::nearGizmo == Actors)
+				{
+
+				}
+				else
+				{
+					Terrain::Actor actor;
+					actor.name = actorMenu->GetActor();
+					actor.location = mPos;
+					Terrain::actorList.push_back(actor);
 				}
 				if (Terrain::nearIndice == -1)
 				{

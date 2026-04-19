@@ -212,6 +212,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)\raylib;$(SolutionDir)\raylib\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="MapMaker\Actors\UI_ActorMenu.cpp" />
     <ClCompile Include="MapMaker\Actors\UI_CurrentTexture.cpp" />
     <ClCompile Include="MapMaker\Actors\UI_ModeSelector.cpp" />
     <ClCompile Include="MapMaker\Actors\UI_TilesMenu.cpp">
@@ -602,6 +603,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MapMaker\Actor.h" />
+    <ClInclude Include="MapMaker\Actors\UI_ActorMenu.h" />
     <ClInclude Include="MapMaker\Actors\UI_CurrentTexture.h" />
     <ClInclude Include="MapMaker\Actors\UI_ModeSelector.h" />
     <ClInclude Include="MapMaker\Actors\UI_TilesMenu.h" />

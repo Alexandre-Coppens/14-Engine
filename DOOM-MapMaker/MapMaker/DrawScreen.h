@@ -56,6 +56,36 @@ static void DrawScreen(Vector2* scroll){
 					   0.0f,
 					   WHITE);
 	}
+	//Draw Actors
+	for (int i = 0; i < Terrain::actorList.size(); i++)
+	{
+		Terrain::Actor* actor = &Terrain::actorList[i];
+		Texture2D* sprite = &AssetList::ActorList[actor->name];
+		//Draw Forward
+		DrawRectanglePro(	Rectangle{actor->location.x + scroll->x, actor->location.y + scroll->y, 5.0f, 35.0f},
+							Vector2{2.5f, 0.0f},
+							actor->rotation,
+							 BLACK);
+		//Draw Background
+		DrawCircleV(Vector2Add(actor->location, *scroll), 25.0f, BLACK);
+		//Draw Actor
+		DrawTexturePro(*sprite, 
+					   Rectangle{0, 0, static_cast<float>(sprite->width), static_cast<float>(sprite->height)},
+					   Rectangle{actor->location.x + scroll->x, actor->location.y + scroll->y, 25.0f, 25.0f},
+					   Vector2{12.5f, 12.5f},
+					   0.0f,
+					   WHITE);
+		Color color = DARKGRAY;
+		if (Terrain::nearGizmo == Actors)
+		{
+			if (Terrain::nearIndice == i)
+			{
+				color = BLUE;
+			}
+		}
+		//Draw Border
+		DrawRing(Vector2Add(actor->location, *scroll), 20.0f, 25.0f, 0.0f, 360.0f, 20, color);
+	}
 	//Draw Walls
 	for (Terrain::Wall& wall : Terrain::wallList)
 	{

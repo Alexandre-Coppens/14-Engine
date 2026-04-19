@@ -17,6 +17,7 @@ vector<Terrain::Wall> Terrain::wallList;
 map<int, Vector2> Terrain::wallVertices;
 
 vector<Terrain::Floor> Terrain::floorList;
+vector<Terrain::Actor> Terrain::actorList;
 
 int Terrain::verticesCount { 0 };
 Vector2 Terrain::position{ 0,0 };
@@ -119,6 +120,19 @@ void Terrain::ComputeFloor(Floor& _floor)
 void Terrain::ISCursorOnSomething(Vector2 position)
 {
 	nearGizmo = None;
+	if (Engine::instance->GetCurrentMode() == CurrentMode::Actors)
+	{
+		for (int i = 0; i < static_cast<int>(actorList.size()); i++)
+		{
+			if (Vector2Distance(position, actorList[i].location) <= 25.0f)
+			{
+				nearGizmo = Actors;
+				nearIndice = i;
+				return;
+			}
+		}
+		return;
+	}
 	for (auto v : wallVertices)
 	{
 		if (Vector2Distance(position, v.second) <= 5)
@@ -193,6 +207,14 @@ void Terrain::SaveMap(){
 			}
 			saveFile << to_string(floor.dictionaryTexture) + "\n";
 		}
+		for (const Actor& actor : actorList) {
+			saveFile << "A " + 
+					actor.name					+ " " +
+					to_string(actor.location.x) + ":" + to_string(actor.location.y) + " " +
+					to_string(actor.rotation)   + " " +
+					to_string(actor.heigth)     + " " +
+					actor.bonus					+  "\n";
+		} 
 		saveFile.close();
 	}
 	else {
@@ -236,12 +258,24 @@ void Terrain::LoadMap(){
 			if (line[0] == 'F') {	// F int(nbr vertices) Vector2(center) vec<int>(vertices) int(dictionaryPointer)
 				vector<string> floorString = BreakString(line, ' ');
 				vector<string> vertices = BreakString(floorString[3], ':');
+				if (stoi(floorString[1]) == 0) continue;
 				Floor floor;
 				for (int i = 0; i < stoi(floorString[1]); i++)	{
 					floor.vertices.push_back(stoi(vertices[i]));
 				}
 				floor.dictionaryTexture = stoi(floorString[4]);
 				floorList.push_back(floor);
+			}
+			if (line[0] == 'A') {	// A string(name) Vector2(location) float(rotation) float(height) string(bonus)
+				vector<string> actorString = BreakString(line, ' ');
+				vector<string> location   = BreakString(actorString[2], ':');
+				Actor actor;
+				actor.name     = actorString[1];
+				actor.location = Vector2{stof(location[0]), stof(location[1])};
+				actor.rotation = stof(actorString[3]);
+				actor.heigth   = stof(actorString[4]);
+				actor.bonus    = actorString[5];
+				actorList.push_back(actor);
 			}
 		}
 		loadFile.close();

@@ -7,6 +7,7 @@ Music AssetList::music;
 AssetList* AssetList::instance = nullptr;
 map<string, Font> AssetList::textFont;
 map<string, Texture2D> AssetList:: SpriteList;
+map<string, Texture2D> AssetList:: ActorList;
 map<string, Sound> AssetList:: soundList;
 
 AssetList::AssetList() {
@@ -29,6 +30,7 @@ void AssetList::LoadRessources(){
             std::cout << "dir:  " << filenameStr << '\n';
             if (filenameStr == "fonts") LoadFontFolder(path + "/" + filenameStr);
             if (filenameStr == "sprites") LoadTextureFolder(path + "/" + filenameStr);
+            if (filenameStr == "actors") LoadActorFolder(path + "/" + filenameStr);
         }
         else if (entry.is_regular_file()) {
             std::cout << "file: " << filenameStr << '\n';
@@ -82,6 +84,29 @@ void AssetList::LoadTextureFolder(string path) {
     }
 }
 
+void AssetList::LoadActorFolder(string path) {
+    const std::filesystem::path resourcePath{ path };
+
+    for (const auto& entry : std::filesystem::directory_iterator(resourcePath)) {
+        if (!entry.is_regular_file()) {
+            std::cout << "??    " << entry.path().filename().string() << '\n';
+            continue;
+        }
+
+        const auto filenameStr = entry.path().filename().string();
+        const auto fileStemStr = entry.path().stem().string();
+        const auto fileExtensionStr = entry.path().extension().string();
+
+        std::cout << "      -file: " << filenameStr << '\n';
+        if (fileExtensionStr == ".png") {
+            LoadTexture2DActors(fileStemStr, path + "/" + filenameStr);
+        }
+        else {
+            std::cout << "ResourceLoader: File skipped, other files than png are not supported.          " << '\n';
+        }
+    }
+}
+
 string AssetList::GetNameAtPosition(int position) {
     int i = 0;
     for (auto s : SpriteList) {
@@ -95,6 +120,13 @@ void AssetList::LoadTexture2D(string name, string link) {
     Image temp = LoadImage(link.c_str());
     textureTemp = LoadTextureFromImage(temp);
     SpriteList[name] = textureTemp;
+    UnloadImage(temp);
+}
+
+void AssetList::LoadTexture2DActors(string name, string link) {
+    Image temp = LoadImage(link.c_str());
+    textureTemp = LoadTextureFromImage(temp);
+    ActorList[name] = textureTemp;
     UnloadImage(temp);
 }
 

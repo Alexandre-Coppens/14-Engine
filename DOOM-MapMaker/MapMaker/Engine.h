@@ -7,6 +7,7 @@
 #include <string>
 #include <vector>
 #include "AssetsList.h"
+#include "Actors/UI_ActorMenu.h"
 
 #include "Actors/UI_TilesMenu.h"
 #include "Actors/UI_CurrentTexture.h"
@@ -20,6 +21,7 @@ private:
 	AssetList* assets{};
 	
 	UI_TilesMenu* tileMenu;
+	UI_ActorMenu* actorMenu;
 	UI_CurrentTexture* currentTexture;
 	UI_ModeSelector* modeSelector;
 	
@@ -32,6 +34,7 @@ public:
 	static Engine* instance;
 	
 	UI_TilesMenu* GetTileMenu() {return tileMenu;}
+	UI_ActorMenu* GetActorMenu() {return actorMenu;}
 	
 	CurrentMode GetCurrentMode() {return modeSelector->currentMode;}
 	int GetCurrentFloor() {return currentFloor;}

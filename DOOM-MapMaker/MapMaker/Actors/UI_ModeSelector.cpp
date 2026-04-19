@@ -8,7 +8,7 @@ UI_ModeSelector::UI_ModeSelector():
 		"UI_ModeSelector", 
 		Vector2{0.5f, 0.0f}, 
 		Vector2{0.0f, 40}, 
-		Vector2{200, 40},
+		Vector2{300, 40},
 		&AssetList::SpriteList["Unknown"], 
 		3)
 {
@@ -45,15 +45,24 @@ void UI_ModeSelector::Update()
 
 void UI_ModeSelector::Clicked()
 {
+	Engine::instance->GetActorMenu()->enabled = false;
+	dynamic_cast<UI_CurrentTexture*>(GetActorWithName("UI_CurrentTexture"))->sprite = &AssetList::SpriteList[Engine::instance->GetTileMenu()->GetTexture()];
 	selectedVertex =-1;
 	switch (hoveredOn)
 	{
-		case 0:
-			currentMode = CurrentMode::Walls;
-			break;
+	case 0:
+		currentMode = CurrentMode::Walls;
+		break;
 		
-		case 1:
-			currentMode = CurrentMode::Floors;
-			break;
+	case 1:
+		currentMode = CurrentMode::Floors;
+		
+		break;
+		
+	case 2:
+		currentMode = CurrentMode::Actors;
+		Engine::instance->GetActorMenu()->enabled = true;
+		dynamic_cast<UI_CurrentTexture*>(GetActorWithName("UI_CurrentTexture"))->sprite = &AssetList::SpriteList[Engine::instance->GetActorMenu()->GetActor()];
+		break;
 	}
 }

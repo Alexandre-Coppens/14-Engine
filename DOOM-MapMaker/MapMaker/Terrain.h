@@ -16,6 +16,7 @@ enum Gizmo
     Vertex,
     Edge,
     Floors,
+    Actors,
 };
 
 class Terrain {
@@ -49,11 +50,21 @@ public:
         Vector3 size     {Vector3Zero()};
     };
     
+    struct Actor
+    {
+        std::string name;
+        Vector2 location {Vector2Zero()};
+        float heigth   {0.0f};
+        float rotation {0.0f};
+        std::string bonus;
+    };
+    
     static int verticesCount;
     static map<int, Vector2> wallVertices;
     static vector<Wall> wallList;
     
     static vector<Floor> floorList;
+    static vector<Actor> actorList;
 
     static map<int, string> dictionary;
     

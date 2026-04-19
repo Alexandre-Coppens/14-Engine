@@ -18,6 +18,7 @@ public:
     static map<string, Sound> soundList;
     static map<string, Font> textFont;
     static map<string, Texture2D> SpriteList;
+    static map<string, Texture2D> ActorList;
     static AssetList* instance;
 
 private:
@@ -27,8 +28,10 @@ private:
     static void LoadFontFolder(string path);
     static void LoadSoundFolder(string path);
     static void LoadTextureFolder(string path);
+    static void LoadActorFolder(string path);
 
     static void LoadTexture2D(string name, string link);
+    static void LoadTexture2DActors(string name, string link);
 
 public:
     static void LoadRessources();
