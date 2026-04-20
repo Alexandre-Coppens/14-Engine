@@ -2,8 +2,8 @@
 //Do not write anything in it. Auto-Generated in Assets.cpp.
 
 static int texturesCount = 44 ;
-static int meshesCount = 24 ;
-static int shadersCount = 25 ;
+static int meshesCount = 25 ;
+static int shadersCount = 26 ;
 
 enum GENERATED_TEXTURE
 {
@@ -56,6 +56,7 @@ enum GENERATED_TEXTURE
 enum GENERATED_MESHES
 {
     OBJ_Plane,
+    OBJ_UI_Plane,
     OBJ_cube,
     OBJ_sphere,
     OBJ_Ball,
@@ -87,6 +88,7 @@ enum GENERATED_SHADERS
     VERT_NULL,
     FRAG_BasicModel,
     VERT_BasicModel,
+    FRAG_FragTex,
     FRAG_Geometry,
     GEOM_Geometry,
     VERT_Geometry,
@@ -166,6 +168,7 @@ static std::string getMeshPath(GENERATED_MESHES _mesh)
    switch (_mesh)
 	{
    case OBJ_Plane:  return"Engine/.EngineAssets/Models/Plane.obj";
+   case OBJ_UI_Plane:  return"Engine/.EngineAssets/Models/UI_Plane.obj";
    case OBJ_cube:  return"Engine/.EngineAssets/Models/cube.obj";
    case OBJ_sphere:  return"Engine/.EngineAssets/Models/sphere.obj";
    case OBJ_Ball:  return"Resources/Models/Ball.obj";
@@ -200,6 +203,7 @@ static std::string getShaderPath(GENERATED_SHADERS _shader)
    case VERT_NULL:  return"Engine/.EngineAssets/Shaders/NULL.vert";
    case FRAG_BasicModel:  return"Resources/Shaders/BasicModel.frag";
    case VERT_BasicModel:  return"Resources/Shaders/BasicModel.vert";
+   case FRAG_FragTex:  return"Resources/Shaders/Debug/FragTex.frag";
    case FRAG_Geometry:  return"Resources/Shaders/Geometry.frag";
    case GEOM_Geometry:  return"Resources/Shaders/Geometry.geom";
    case VERT_Geometry:  return"Resources/Shaders/Geometry.vert";

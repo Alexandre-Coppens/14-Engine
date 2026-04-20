@@ -3,7 +3,7 @@
 
 void Log::Info(const std::string& message)
 {
-	SDL_Log(message.c_str());
+	printf("\033[37m[INFO] %s\033[0m\n", message.c_str());
 }
 
 void Log::Error(LogType category, const std::string& message)

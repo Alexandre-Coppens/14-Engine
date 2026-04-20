@@ -75,8 +75,8 @@ bool Texture::LoadGl(RendererGl* _renderer, const std::string& _filename, SDL_Su
 	return true;
 }
 
-void Texture::SetActive() const
-{
+void Texture::SetActive() const {
+	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, mTextureId);
 }
 

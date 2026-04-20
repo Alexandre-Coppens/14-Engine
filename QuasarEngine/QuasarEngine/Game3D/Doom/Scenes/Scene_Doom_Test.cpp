@@ -34,7 +34,9 @@ void Scene_Doom_Test::Start()
 
     //Load Shaders
     Assets::LoadShader(std::vector<GENERATED_SHADERS>{VERT_BasicModel, FRAG_BasicModel}, "BasicModel", DrawOption::TEXTURE);
+    Assets::LoadShader(std::vector<GENERATED_SHADERS>{VERT_BasicModel, FRAG_FragTex}, "DebugUV", DrawOption::TEXTURE);
     Assets::LoadShader(std::vector<GENERATED_SHADERS>{VERT_Simple, FRAG_Simple}, "Simple", DrawOption::COLOR);
+    Assets::LoadShader(std::vector<GENERATED_SHADERS>{VERT_Sprite, VERT_Sprite}, "Sprite", DrawOption::TEXTURE);
     Assets::LoadShader(std::vector<GENERATED_SHADERS>{VERT_NoiseHeight, TESC_NoiseHeight, TESE_NoiseHeight, FRAG_NoiseHeight}, "NoiseHeight", DrawOption::TESSELATION);
     Assets::LoadShader(std::vector<GENERATED_SHADERS>{VERT_Geometry, GEOM_Geometry, FRAG_Geometry}, "Geometry", DrawOption::GEOMETRY);
     Assets::LoadShader(std::vector<GENERATED_SHADERS>{VERT_Grass, FRAG_Grass}, "Grass", DrawOption::INSTANCED);

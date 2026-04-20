@@ -92,6 +92,9 @@ void Model::Draw(DrawOption _option)
 		Assets::GetShaderProgram(mShader)->SetVector4f("uColor", mColor);
 		if (texture != nullptr) texture->SetActive();
 
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
 		Assets::GetShaderProgram(mShader)->SetMatrix4Row("uWorldTransform", wt);
 		mMesh->getVertexArray()->SetActive();
 		
@@ -112,6 +115,7 @@ void Model::Draw(DrawOption _option)
 		}
 	}
 }
+
 void Model::Destroy()
 {
 	Scene::ActiveScene->getRendererGl()->RemoveModel(this, Assets::GetShaderProgram(mShader));

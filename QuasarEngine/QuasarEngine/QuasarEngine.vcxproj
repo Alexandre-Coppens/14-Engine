@@ -1418,6 +1418,7 @@
     <ClCompile Include="Engine\Texture.cpp" />
     <ClCompile Include="Engine\Utilitaries\Assets.cpp" />
     <ClCompile Include="Engine\Utilitaries\Helpers\DebugLine.cpp" />
+    <ClCompile Include="Engine\Utilitaries\IMGUI\ImguiSimpleDemoFile.cpp" />
     <ClCompile Include="Engine\Utilitaries\Log.cpp" />
     <ClCompile Include="Engine\Utilitaries\Managers\CameraManager.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
@@ -1681,6 +1682,7 @@
     <Content Include="Engine\.EngineAssets\Models\Cube.obj" />
     <Content Include="Engine\.EngineAssets\Models\Plane.obj" />
     <Content Include="Engine\.EngineAssets\Models\Sphere.obj" />
+    <Content Include="Engine\.EngineAssets\Models\UI_Plane.obj" />
     <Content Include="Engine\.EngineAssets\Shaders\NULL.frag" />
     <Content Include="Engine\.EngineAssets\Shaders\NULL.vert" />
     <Content Include="Engine\.EngineAssets\Textures\NullShader.png" />
@@ -1727,6 +1729,7 @@
     <Content Include="Resources\Models\Pin.obj" />
     <Content Include="Resources\Shaders\BasicModel.frag" />
     <Content Include="Resources\Shaders\BasicModel.vert" />
+    <Content Include="Resources\Shaders\Debug\FragTex.frag" />
     <Content Include="Resources\Shaders\Geometry.frag" />
     <Content Include="Resources\Shaders\Geometry.geom" />
     <Content Include="Resources\Shaders\Geometry.vert" />

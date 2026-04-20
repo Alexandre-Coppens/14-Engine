@@ -116,8 +116,7 @@ void RendererGl::DrawSprites()
 	glBlendEquationSeparate(GL_FUNC_ADD, GL_FUNC_ADD);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	if (pSpriteShaderProgram != nullptr) pSpriteShaderProgram->Use();
-	pSpriteVao->SetActive();
+	//pSpriteVao->SetActive();
 
 	for (int i = 0; i < static_cast<int>(mSpriteList.size()); i++)
 	{
@@ -126,6 +125,7 @@ void RendererGl::DrawSprites()
 			sprite->DrawGL();
 		}
 	}
+	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
 void RendererGl::AddSprite(Sprite2D* _pSprite, int _drawOrder)

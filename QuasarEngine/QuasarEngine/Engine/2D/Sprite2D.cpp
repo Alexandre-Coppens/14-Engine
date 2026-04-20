@@ -5,6 +5,8 @@
 #include "Engine/Actor.h"
 #include "Engine/Utilitaries/Rectangle.h"
 #include "Engine/Scene.h"
+#include "Engine/3D/Mesh.h"
+#include "Engine/Render/VertexArray.h"
 #include "Engine/Utilitaries/Assets.h"
 #include "Engine/Utilitaries/Time.h"
 
@@ -54,19 +56,19 @@ void Sprite2D::Draw(const RendererSdl& _pRenderer, DebugMode _debug)
 void Sprite2D::DrawGL()
 {
 	if (!mIsActive) return;
-	
 	Assets::GetShaderProgram(mShader)->Use();
-	Assets::GetShaderProgram(mShader)->SetMatrix4Row("uWorldTransform", mTransform.getViewportTransform());
-	Assets::GetShaderProgram(mShader)->SetMatrix4Row("uViewProj", Mat4RowCreateSimpleViewProj(Window::GetSize().x, Window::GetSize().y));
 	
-	glBindTexture(GL_TEXTURE_2D, 0);
-	glPolygonMode( GL_FRONT_AND_BACK, GL_FILL );
-	
+	glPolygonMode( GL_FRONT, GL_FILL );
+
 	float time = Time::currentFrameTime;
 	Assets::GetShaderProgram(mShader)->SetFloat("uTime", time);
+	Assets::GetShaderProgram(mShader)->SetVector2f("uLocation", mTransform.getLocation());
 	
 	mTexture->SetActive();
-	TEXTURE NOT WORKING WELL
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
+
+	Assets::GetMesh(OBJ_Plane)->getVertexArray()->SetActive();
 	
-	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+	glDrawArrays(GL_TRIANGLES, 0, Assets::GetMesh(OBJ_Plane)->getVertexArray()->GetVerticesCount());
 }
