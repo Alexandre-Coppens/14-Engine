@@ -7,6 +7,7 @@
 #include <string>
 #include <vector>
 #include "AssetsList.h"
+#include "Actors/UI_ActionMenu.h"
 #include "Actors/UI_ActorMenu.h"
 
 #include "Actors/UI_TilesMenu.h"
@@ -24,9 +25,13 @@ private:
 	UI_ActorMenu* actorMenu;
 	UI_CurrentTexture* currentTexture;
 	UI_ModeSelector* modeSelector;
+	UI_ActionMenu* actionMenu;
 	
 	Vector2 scroll{};
 	Vector2 scrollSpeed{ 150, 150};
+	
+	Gizmo actionGizmo;
+	int actionIndice {-1};
 
 	int currentFloor{ 0 };
 	
@@ -46,7 +51,9 @@ public:
 	~Engine();
 	void Start();
 	void Update();
+	void ChangeItem(string name, string value);
 	void Draw();
 
+	void RemoveItem();
 	void ChangeCurrentTexture();
 };

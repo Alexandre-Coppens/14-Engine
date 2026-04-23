@@ -76,7 +76,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\raylib;$(SolutionDir)\raylib\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\raylib;$(SolutionDir);$(SolutionDir)\raylib\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -212,6 +212,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)\raylib;$(SolutionDir)\raylib\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="MapMaker\Actors\UI_ActionMenu.cpp" />
     <ClCompile Include="MapMaker\Actors\UI_ActorMenu.cpp" />
     <ClCompile Include="MapMaker\Actors\UI_CurrentTexture.cpp" />
     <ClCompile Include="MapMaker\Actors\UI_ModeSelector.cpp" />
@@ -291,6 +292,7 @@
       <SDLCheck>true</SDLCheck>
 	  <AdditionalIncludeDirectories>$(SolutionDir)\raylib;$(SolutionDir);$(SolutionDir)\raylib\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>      <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="MapMaker\Actors\UI_WrittingBox.cpp" />
     <ClCompile Include="MapMaker\AssetsList.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -365,7 +367,7 @@
       <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)\raylib;$(SolutionDir)\raylib\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\raylib;$(SolutionDir);$(SolutionDir)\raylib\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="MapMaker\Engine.cpp">
@@ -442,7 +444,7 @@
       <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)\raylib;$(SolutionDir)\raylib\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\raylib;$(SolutionDir);$(SolutionDir)\raylib\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="MapMaker\main.cpp">
@@ -519,7 +521,7 @@
       <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)\raylib;$(SolutionDir)\raylib\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\raylib;$(SolutionDir);$(SolutionDir)\raylib\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="MapMaker\Terrain.cpp">
@@ -596,17 +598,19 @@
       <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)\raylib;$(SolutionDir)\raylib\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\raylib;$(SolutionDir);$(SolutionDir)\raylib\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="MapMaker\WinDialogue.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MapMaker\Actor.h" />
+    <ClInclude Include="MapMaker\Actors\UI_ActionMenu.h" />
     <ClInclude Include="MapMaker\Actors\UI_ActorMenu.h" />
     <ClInclude Include="MapMaker\Actors\UI_CurrentTexture.h" />
     <ClInclude Include="MapMaker\Actors\UI_ModeSelector.h" />
     <ClInclude Include="MapMaker\Actors\UI_TilesMenu.h" />
+    <ClInclude Include="MapMaker\Actors\UI_WrittingBox.h" />
     <ClInclude Include="MapMaker\AssetsList.h" />
     <ClInclude Include="MapMaker\DrawScreen.h" />
     <ClInclude Include="MapMaker\Engine.h" />

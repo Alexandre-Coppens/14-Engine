@@ -9,8 +9,12 @@ using std::to_string;
 
 Engine* Engine::instance;
 
+
 //int currentTexture{ 0 };
 Actor* hoveredActor = nullptr;
+float subgrid;
+Vector2 mPos;
+bool isHoveringActor;
 
 Engine::Engine() 
 {
@@ -27,6 +31,7 @@ Engine::~Engine()
 	delete actorMenu;
 	delete currentTexture;
 	delete modeSelector;
+	delete actionMenu;
 	
 	tileMenu = nullptr;
 	currentTexture = nullptr;
@@ -38,6 +43,9 @@ void Engine::Start()
 	actorMenu = new UI_ActorMenu{};
 	currentTexture = new UI_CurrentTexture{};
 	modeSelector = new UI_ModeSelector{};
+	actionMenu = new UI_ActionMenu{};
+	
+	actionMenu->enabled = false;
 	
 	assets = AssetList::GetInstance();
 	Terrain::gridMeterInPixels = 50.0f;
@@ -59,11 +67,6 @@ void Engine::Update()
 			delete go;
 		}
 	}
-
-	for (Actor* actor : Actor::GetAllActors())
-	{
-		if (actor->enabled) actor->Update();
-	}
 	
 	//Move
 	if (IsMouseButtonDown(2)) {
@@ -83,26 +86,23 @@ void Engine::Update()
 	}
 
 	//Tiles placement
-	float subgrid = Terrain::gridMeterInPixels / Terrain::gridSubdivision;
-	Vector2 mPos{ round(round(-scroll.x + GetMouseX()) / subgrid) * subgrid, round(round(-scroll.y + GetMouseY()) / subgrid) * subgrid };
+	subgrid = Terrain::gridMeterInPixels / Terrain::gridSubdivision;
+	mPos = Vector2{round(round(-scroll.x + GetMouseX()) / subgrid) * subgrid, round(round( - scroll.y + GetMouseY()) / subgrid) * subgrid };
 	
 	//Check is an actor is hovered
-	bool isHoveringActor = false;
+	isHoveringActor = false;
 	hoveredActor = nullptr;
-	for (std::vector<Actor*> actorLayer : *Actor::GetAllActorsLayered())
+	for (Actor* actor : Actor::GetAllActors())
 	{
-		for (Actor* actor : actorLayer)
+		if (!actor->enabled) continue;
+		if (actor->IsCursorInBounds())
 		{
-			if (!actor->enabled) continue;
-			if (actor->IsCursorInBounds())
-			{
-				actor->hovered = true;
-				hoveredActor = actor;
-				isHoveringActor = true;
-				break;
-			}
-			actor->hovered = false;
+			actor->hovered = true;
+			hoveredActor = actor;
+			isHoveringActor = true;
+			break;
 		}
+		actor->hovered = false;
 	}
 	
 	if (!isHoveringActor)
@@ -111,13 +111,17 @@ void Engine::Update()
 	}
 	
 	if(IsMouseButtonPressed(0))
-	{		
+	{	
+		//Check if an Actor is behind
 		if (!isHoveringActor || hoveredActor != tileMenu) tileMenu->enabled = false;
 		if (isHoveringActor)
 		{
 			selectedVertex = -1;
 			hoveredActor->Clicked();
 		}
+		//Check if the action Menu is open
+		else if (actionMenu->enabled) 
+			actionMenu->SetDisable();
 		//If close to a already existing vertex
 		else
 		{
@@ -226,60 +230,31 @@ void Engine::Update()
 	
 	if(IsMouseButtonPressed(1))
 	{
-		switch (modeSelector->currentMode)
+		if (Terrain::nearIndice != -1)
 		{
-		case CurrentMode::Walls:
-			if (Terrain::nearIndice != -1)
-			{
-				if(Terrain::nearGizmo == Vertex)
-				{
-					Terrain::wallVertices.erase(Terrain::nearIndice);
-				
-				
-					Terrain::wallList.erase(
-						std::remove_if(
-							Terrain::wallList.begin(),
-							Terrain::wallList.end(),
-							[](const Terrain::Wall& w){
-										return w.start == Terrain::nearIndice || w.end == Terrain::nearIndice;
-								}
-							),
-					Terrain::wallList.end()
-					);
-				
-					if (Terrain::nearIndice == selectedVertex) selectedVertex = -1;
-					Terrain::nearIndice = -1;
-				}
-				else if(Terrain::nearGizmo == Edge)
-				{
-					Terrain::wallList.erase(Terrain::wallList.begin() + Terrain::nearIndice);
-					Terrain::nearIndice = -1;
-				}
-			}
-			else selectedVertex = -1;
-			break;
-			
-		case CurrentMode::Floors:
+			actionGizmo = Terrain::nearGizmo;
+			actionIndice = Terrain::nearIndice;
 			if(Terrain::nearGizmo == Vertex)
 			{
-				std::vector<int>& floorVertices = Terrain::floorList[currentFloor].vertices;
-				auto find = std::find(floorVertices.begin(), floorVertices.end(), Terrain::nearIndice);
-				if (find != floorVertices.end()) Terrain::floorList[currentFloor].vertices.erase(find);
-				Terrain::nearIndice = -1;
-				Terrain::floorList[currentFloor].computed = false;
+				actionMenu->SetEnable(Vertex, actionIndice, GetMousePosition());
+			}
+			else if(Terrain::nearGizmo == Edge)
+			{
+				actionMenu->SetEnable(Edge, actionIndice, GetMousePosition());
 			}
 			else if(Terrain::nearGizmo == Floors)
 			{
-				Terrain::floorList.erase(Terrain::floorList.begin() + currentFloor);
-				Terrain::nearGizmo = None;
-				currentFloor = -1;
+				actionMenu->SetEnable(Floors, actionIndice, GetMousePosition());
 			}
-			else
+			else if(Terrain::nearGizmo == Actors)
 			{
-				currentFloor = -1;
-				selectedVertex = -1;
+				actionMenu->SetEnable(Actors, actionIndice, GetMousePosition());
 			}
-			break;
+		}
+		else
+		{
+			actionMenu->SetDisable();
+			selectedVertex = -1;
 		}
 	}
 	
@@ -289,8 +264,70 @@ void Engine::Update()
 	if (IsKeyPressed(KEY_ESCAPE)) selectedVertex = -1;
 }
 
-void Engine::Draw() 
+void Engine::ChangeItem(string name, string value)
+{
+	switch (actionGizmo)
 	{
+	case Edge:
+		if (name == "Height") Terrain::wallList[actionIndice].location.z = stof(value);
+		if (name == "Scale.Up") Terrain::wallList[actionIndice].size.z = stof(value);
+		break;
+		
+	case Floors:
+		if (name == "Floor Height") Terrain::floorList[actionIndice].floor = stof(value);
+		if (name == "Ceiling Height") Terrain::floorList[actionIndice].ceiling = stof(value);
+		break;
+		
+	case Actors:
+		if (name == "Height") Terrain::actorList[actionIndice].heigth = stof(value);
+		if (name == "Rotation") Terrain::actorList[actionIndice].rotation = stof(value);
+		if (name == "Bonus Text") Terrain::actorList[actionIndice].bonus = value;
+		break;
+	}
+}
+
+void Engine::RemoveItem()
+{
+	switch (actionGizmo)
+	{
+	case Vertex:
+		Terrain::wallVertices.erase(actionIndice);
+		Terrain::wallList.erase(
+			std::remove_if(
+				Terrain::wallList.begin(),
+				Terrain::wallList.end(),
+				[this](const Terrain::Wall& w){
+					return w.start == actionIndice || w.end == actionIndice;
+				}
+			),
+			Terrain::wallList.end()
+		);
+	
+		if (actionIndice == selectedVertex) selectedVertex = -1;
+		Terrain::nearIndice = -1;
+		break;
+		
+	case Edge:
+		Terrain::wallList.erase(Terrain::wallList.begin() + actionIndice);
+		Terrain::nearIndice = -1;
+		break;
+		
+	case Floors:
+		Terrain::floorList.erase(Terrain::floorList.begin() + currentFloor);
+		Terrain::nearGizmo = None;
+		currentFloor = -1;
+		break;
+		
+	case Actors:
+		Terrain::actorList.erase(Terrain::actorList.begin() + actionIndice);
+		Terrain::nearGizmo = None;
+		Terrain::nearIndice = -1;
+		break;
+	}
+}
+
+void Engine::Draw()
+{
 	BeginDrawing();
 	ClearBackground(RAYWHITE);
 
@@ -329,6 +366,7 @@ void Engine::Draw()
 	{
 		for (int j = 0; j < actors->at(i).size(); j++)
 		{
+			if (actors->at(i)[j] == nullptr) continue;
 			actors->at(i)[j]->Draw(scroll);
 		}
 	}
@@ -352,6 +390,6 @@ void Engine::ChangeCurrentTexture()
 {
 	if (currentFloor != -1)
 	{
-		Terrain::floorList[currentFloor].dictionaryTexture = Terrain::CheckInDictionary(tileMenu->GetTexture());;
+		Terrain::floorList[currentFloor].dictionaryTexture = Terrain::CheckInDictionary(tileMenu->GetTexture());
 	}
 }

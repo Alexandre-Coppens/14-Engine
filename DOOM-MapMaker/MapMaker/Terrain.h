@@ -25,8 +25,8 @@ public:
     struct Wall{
         int start;
         int end;
-        float floor   { 0 };
-        float ceiling { 3 };
+        float height  { 1.5f };
+        float scale   { 3 };
         int dictionaryTexture{ 0 };
         
         bool computed{ false };

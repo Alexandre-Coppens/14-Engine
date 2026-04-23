@@ -86,7 +86,7 @@ void Terrain::ComputeWall(Wall& wall)
 	wall.location = Vector3{
 		(Terrain::wallVertices[wall.start].x + Terrain::wallVertices[wall.end].x) * 0.5f,
 		(Terrain::wallVertices[wall.start].y + Terrain::wallVertices[wall.end].y) * 0.5f,
-		(wall.floor + wall.ceiling) * 0.5f };
+		wall.height };
 	wall.rotation = Vector3{
 		0.0f,
 		0.0f,
@@ -94,7 +94,7 @@ void Terrain::ComputeWall(Wall& wall)
 	wall.size = Vector3{
 		1.0f,
 		Vector2Distance(Terrain::wallVertices[wall.start], Terrain::wallVertices[wall.end]),
-		wall.ceiling - wall.floor};
+		wall.height};
 	
 	wall.computed = true;
 }
@@ -205,7 +205,9 @@ void Terrain::SaveMap(){
 				if (i != floor.vertices.size() - 1) saveFile << ":";
 				else saveFile << " ";
 			}
-			saveFile << to_string(floor.dictionaryTexture) + "\n";
+			saveFile << to_string(floor.dictionaryTexture) + " " +
+						to_string(floor.floor) + " " +
+						to_string(floor.ceiling) + "\n";
 		}
 		for (const Actor& actor : actorList) {
 			saveFile << "A " + 
@@ -247,15 +249,19 @@ void Terrain::LoadMap(){
 				Vector2 posV  { stof(locString[0]), stof(locString[1]) };
 				wallVertices[stoi(vertex[1])] = posV;
 			}
-			if (line[0] == 'W') {	// W int(start) int(end) int(dictionaryPointer)
+			if (line[0] == 'W') {	// W int(start) int(end) int(dictionaryPointer) vec3(location) vec3(rotation) vec3(size)
 				vector<string> wallString = BreakString(line, ' ');
+				vector<string> locString = BreakString(wallString[4], ':');
+				vector<string> sizeString = BreakString(wallString[6], ':');
 				Wall wall;
 				wall.start = stoi(wallString[1]);
 				wall.end = stoi(wallString[2]);
+				wall.height = stof(locString[2]);
+				wall.scale = stof(sizeString[2]);
 				wall.dictionaryTexture = stoi(wallString[3]);
 				wallList.push_back(wall);
 			}
-			if (line[0] == 'F') {	// F int(nbr vertices) Vector2(center) vec<int>(vertices) int(dictionaryPointer)
+			if (line[0] == 'F') {	// F int(nbr vertices) Vector2(center) vec<int>(vertices) int(dictionaryPointer) float(floor) float(ceiling)
 				vector<string> floorString = BreakString(line, ' ');
 				vector<string> vertices = BreakString(floorString[3], ':');
 				if (stoi(floorString[1]) == 0) continue;
@@ -264,6 +270,8 @@ void Terrain::LoadMap(){
 					floor.vertices.push_back(stoi(vertices[i]));
 				}
 				floor.dictionaryTexture = stoi(floorString[4]);
+				floor.floor = stoi(floorString[5]);
+				floor.ceiling = stoi(floorString[6]);
 				floorList.push_back(floor);
 			}
 			if (line[0] == 'A') {	// A string(name) Vector2(location) float(rotation) float(height) string(bonus)
