@@ -50,7 +50,6 @@ void Paddle::Update(float _deltaTime)
 
 	if (Inputs::GetKeyDown(SDLK_SPACE))
 	{
-		Log::Info(gravity->isTouchingFloor ? "true" : "false");
 		if(gravity->isTouchingFloor) gravity->setVelocity(gravity->getVelocity() + MultiplyScalar(mTransform2D->Up(), 500));
 	}
 

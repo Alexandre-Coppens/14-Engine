@@ -27,7 +27,7 @@ void Scene::Open(Game* _pGame)
 void Scene::Start()
 {
 	ActiveScene = this;
-	Log::Info("GAME::Loading Scene: '" + mName + "'.");
+	Log::Info("GAME::Loading Scene: '" + mName + "'.", LogLevel::Normal);
 }
 
 //Update Before Inputs

@@ -15,7 +15,7 @@ Switch::~Switch() = default;
 
 void Switch::Initialize()
 {
-	mModel = dynamic_cast<Model*>(AddComponent(new Model(this, "BasicModel")));
+	mModel = dynamic_cast<Model*>(AddComponent(new Model(this, PROG_BasicModel)));
 	mCollider = dynamic_cast<BoxCollider*>(AddComponent(new BoxCollider(this)));
 	DoomBaseActor::Initialize();
 }
@@ -24,7 +24,7 @@ void Switch::Start()
 {
 	referencedDoor->Lock();
 	mModel->setMesh(Assets::GetMesh(OBJ_Plane));
-	mModel->AddTexture(Assets::GetTexture(PNG_Switch_Off));
+	mModel->getMaterial()->SetTexture("uTexture", Assets::GetTexture(PNG_Switch_Off));
 	mTransform3D->setScale(Vector3{0.1f, 0.1f, 0.05f});
 	DoomBaseActor::Start();
 }
@@ -45,7 +45,7 @@ void Switch::Interact()
 	isOpen = true;
 	referencedDoor->Unlock();
 	referencedDoor->Interact();
-	mModel->setTexture(Assets::GetTexture(PNG_Switch_On));
+	mModel->getMaterial()->SetTexture("uTexture", Assets::GetTexture(PNG_Switch_On));
 	DoomBaseActor::Interact();
 }
 

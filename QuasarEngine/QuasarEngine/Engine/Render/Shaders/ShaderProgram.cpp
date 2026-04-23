@@ -3,16 +3,19 @@
 #include "Engine/Utilitaries/DebugMemoryLeakCatcher.h"
 #include "Engine/Utilitaries/MathLib.h"
 
-ShaderProgram::ShaderProgram(DrawOption _option)
+ShaderProgram::ShaderProgram()
 {
 	mID = 0;
-	mDrawOptions = _option;
 	DEBUGAddClass("ShaderProgram");
 }
 
 void ShaderProgram::Unload() 
 {
 	glDeleteProgram(mID);
+	for ( TextureBinding texture : textures)
+	{
+		texture.texture = nullptr;
+	}
 	DEBUGRemoveClass("ShaderProgram");
 }
 

@@ -21,7 +21,7 @@ Ball::~Ball()
 
 void Ball::Start()
 {
-    mModel = dynamic_cast<Model*>(AddComponent(new Model(this, "BasicModel")));
+    mModel = dynamic_cast<Model*>(AddComponent(new Model(this, PROG_BasicModel)));
     mPhysicBody = dynamic_cast<PhysicBody*>(AddComponent(new PhysicBody(this, ColliderType::SPHERE)));
     mCamera = dynamic_cast<Camera*>(AddComponent(new Camera(this)));
     SphereCollider* sphereCollider = dynamic_cast<SphereCollider*>(mPhysicBody->getReferencedCollider());
@@ -35,7 +35,7 @@ void Ball::Start()
     sphereCollider->setFriction(0.1f);
     
     mModel->setMesh(Assets::GetMesh(OBJ_Ball));
-    mModel->AddTexture(Assets::GetTexture(PNG_Ball));
+    mModel->getMaterial()->SetTexture("uTexture", Assets::GetTexture(PNG_Ball));
     Actor::Start();
 }
 

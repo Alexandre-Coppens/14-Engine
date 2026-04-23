@@ -1,7 +1,7 @@
 #pragma once
 #include <SDL_stdinc.h>
 
-#include "Engine/Render/ShaderProgram.h"
+#include "Engine/Render/Shaders/ShaderProgram.h"
 
 struct Vertex; 
 class VertexArray;

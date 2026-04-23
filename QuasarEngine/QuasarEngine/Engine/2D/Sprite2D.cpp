@@ -5,32 +5,32 @@
 #include "Engine/Actor.h"
 #include "Engine/Utilitaries/Rectangle.h"
 #include "Engine/Scene.h"
-#include "Engine/3D/Mesh.h"
-#include "Engine/Render/VertexArray.h"
+#include "Engine/Render/Shaders/ShaderProgram.h"
 #include "Engine/Utilitaries/Assets.h"
-#include "Engine/Utilitaries/Time.h"
 
-Sprite2D::Sprite2D(Actor* _pOwner, Texture* _pTexture, const uint8_t _drawOrder):
-	Component(_pOwner), mTexture(_pTexture), mDrawOrder(_drawOrder), mTextureWidth(mTexture->GetWidth()), mTextureHeight(_pTexture->GetHeight()), mXFlipped{false}
+Sprite2D::Sprite2D(RendererType _rendererType, Actor* _pOwner, Texture* _pTexture, const uint8_t _drawOrder):
+	Component(_pOwner),renderType(_rendererType), mTexture(_pTexture), mDrawOrder(_drawOrder), mTextureWidth(mTexture->GetWidth()), mTextureHeight(_pTexture->GetHeight()), mXFlipped{false}
 {
-	mTransform = Transform2D();
-	pOwner->getScene()->getRendererSdl()->AddSprite(this);
-}
+	switch (_rendererType)
+	{
+		case RendererType::OPENGL:
+			mTransform = Transform2D();
+			SetTexture(_pTexture);
+			mTransform.setSize(Vector2{ mTextureWidth ,mTextureHeight});
+			pOwner->getScene()->getRendererGl()->AddSprite(this, mDrawOrder);
+			break;
 
-Sprite2D::Sprite2D(Actor* _pOwner, Texture* _pTexture, std::string _shaderProgram, uint8_t _drawOrder):
-	Component(_pOwner), mTexture(_pTexture), mDrawOrder(_drawOrder), mShader(_shaderProgram)
-{
-	mTransform = Transform2D();
-	SetTexture(_pTexture);
-	mTransform.setSize(Vector2{ mTextureWidth ,mTextureHeight});
-	pOwner->getScene()->getRendererGl()->AddSprite(this, mDrawOrder);
+	case RendererType::SDL:
+		mTransform = Transform2D();
+		pOwner->getScene()->getRendererSdl()->AddSprite(this);
+	}
 }
 
 Sprite2D::~Sprite2D() = default;
 
 void Sprite2D::Destroy()
 {
-	if (mShader == "") pOwner->getScene()->getRendererSdl()->RemoveSprite(this);
+	if (renderType == RendererType::SDL) pOwner->getScene()->getRendererSdl()->RemoveSprite(this);
 	else pOwner->getScene()->getRendererGl()->RemoveSprite(this, mDrawOrder);
 	Component::Destroy();
 }
@@ -53,22 +53,12 @@ void Sprite2D::Draw(const RendererSdl& _pRenderer, DebugMode _debug)
 	}
 }
 
-void Sprite2D::DrawGL()
-{
+void Sprite2D::DrawGL(ShaderProgram* shader, int vertCount) {
 	if (!mIsActive) return;
-	Assets::GetShaderProgram(mShader)->Use();
 	
-	glPolygonMode( GL_FRONT, GL_FILL );
+	shader->SetVector2f("uLocation", mTransform.getLocation());
 
-	float time = Time::currentFrameTime;
-	Assets::GetShaderProgram(mShader)->SetFloat("uTime", time);
-	Assets::GetShaderProgram(mShader)->SetVector2f("uLocation", mTransform.getLocation());
-	
+	glActiveTexture(GL_TEXTURE0);
 	mTexture->SetActive();
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
-
-	Assets::GetMesh(OBJ_Plane)->getVertexArray()->SetActive();
-	
-	glDrawArrays(GL_TRIANGLES, 0, Assets::GetMesh(OBJ_Plane)->getVertexArray()->GetVerticesCount());
+	glDrawArrays(GL_TRIANGLES, 0, vertCount);
 }

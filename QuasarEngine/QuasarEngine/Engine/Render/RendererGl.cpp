@@ -6,7 +6,7 @@
 #include "Engine/Render/Window.h"
 #include "Engine/Render/VertexArray.h"
 #include "Engine/Utilitaries/MathLib.h"
-#include "Engine/Render/ShaderProgram.h"
+#include "Engine/Render/Shaders/ShaderProgram.h"
 
 #include "Engine/Utilitaries/Log.h"
 #include "Engine/Utilitaries/Assets.h"
@@ -14,7 +14,9 @@
 
 #include "Engine/3D/cModel.h"
 #include "Engine/2D/Sprite2D.h"
+#include "Engine/3D/Mesh.h"
 #include "Engine/Utilitaries/DebugMemoryLeakCatcher.h"
+#include "Engine/Utilitaries/Time.h"
 
 RendererGl::RendererGl():
 	pWindow(nullptr), 
@@ -66,7 +68,6 @@ bool RendererGl::Initialize(Window& _rWindow)
 
 	//TODO: separate Engine asset files & Game asset files
 	//Load the NULL Shader & important to engine assets
-	Assets::LoadShader(std::vector<GENERATED_SHADERS>{VERT_NULL, FRAG_NULL}, "NULL", DrawOption::NULL_SHADER);
 
 	glPatchParameteri(GL_PATCH_VERTICES, 3);
 	
@@ -93,44 +94,53 @@ void RendererGl::DrawModels() const
 
 	glEnable(GL_DEPTH_TEST);
 	glDisable(GL_BLEND);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	
-	for (auto& shader : mModelDrawOrder)
+	float time = Time::currentFrameTime;
+	
+	for (auto& [shader, modelList] : mModelDrawOrder)
 	{
-		if (shader.first == nullptr) continue;
-		DrawOption argument = (shader.first == Assets::GetShaderProgram("NULL") ? DrawOption::NULL_SHADER : shader.first->getDrawOptions() );
-		shader.first->Use();
-		shader.first->SetMatrix4Row("uViewProj", mView * mProj);
-		for (Model* model : shader.second)
+		if (!shader || modelList.empty()) continue;
+		shader->Use();
+		
+		shader->SetFloat("uTime", time);
+		shader->SetMatrix4Row("uViewProj", mView * mProj);
+		
+		for (Model* model : modelList)
 		{
-			model->Draw(argument);
+			model->Draw();
 		}
 	}
 }
 
-void RendererGl::DrawSprites()
-{
+void RendererGl::DrawSprites() {
 	if (mSpriteList.empty()) return;
 
 	glDisable(GL_DEPTH_TEST);
 	glEnable(GL_BLEND);
-	glBlendEquationSeparate(GL_FUNC_ADD, GL_FUNC_ADD);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	//pSpriteVao->SetActive();
+	auto* shader = Assets::GetShaderProgram(PROG_Sprite);
+	shader->Use();
+	shader->SetFloat("uTime", Time::currentFrameTime);
 
-	for (int i = 0; i < static_cast<int>(mSpriteList.size()); i++)
-	{
-		for (Sprite2D* sprite : mSpriteList[i])
-		{
-			sprite->DrawGL();
+	VertexArray* vao = Assets::GetMesh(OBJ_Plane)->getVertexArray();
+	vao->SetActive();
+	int vertCount = vao->GetVerticesCount();
+
+	glPolygonMode(GL_FRONT, GL_FILL);
+
+	for (int i = 0; i < static_cast<int>(mSpriteList.size()); i++) {
+		for (Sprite2D* sprite : mSpriteList[i]) {
+			sprite->DrawGL(shader, vertCount);
 		}
 	}
-	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
 void RendererGl::AddSprite(Sprite2D* _pSprite, int _drawOrder)
 {
-	while (mSpriteList.size() <= _drawOrder)
+	while (static_cast<int>(mSpriteList.size()) <= _drawOrder)
 	{
 		mSpriteList.push_back(std::vector<Sprite2D*>());
 	}

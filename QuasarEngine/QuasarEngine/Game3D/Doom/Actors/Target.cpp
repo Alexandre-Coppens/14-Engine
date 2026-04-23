@@ -19,7 +19,7 @@ Target::~Target()
 
 void Target::Initialize()
 {
-    mModel = dynamic_cast<Model*>(AddComponent(new Model(this, "Transparent")));
+    mModel = dynamic_cast<Model*>(AddComponent(new Model(this, PROG_Transparent)));
     mCollider = dynamic_cast<BoxCollider*>(AddComponent(new BoxCollider(this)));
     DoomBaseActor::Initialize();
 }
@@ -27,7 +27,7 @@ void Target::Initialize()
 void Target::Start()
 {
     mModel->setMesh(Assets::GetMesh(OBJ_Plane));
-    mModel->AddTexture(Assets::GetTexture(PNG_DemonFacing));
+    mModel->getMaterial()->SetTexture("uTexture", Assets::GetTexture(PNG_DemonFacing));
 
     mLife = mMaxLife;
 

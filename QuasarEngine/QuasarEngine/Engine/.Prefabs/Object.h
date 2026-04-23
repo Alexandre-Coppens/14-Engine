@@ -10,7 +10,7 @@ class Object : public Actor
 private:
     GENERATED_MESHES mMesh;
     GENERATED_TEXTURE mTexture;
-    std::string mShaderName;
+    GENERATED_SHADER_PROGRAMS mShaderName;
     
     Model* mModel            {nullptr};
     Collider3D* mCollider    {nullptr};
@@ -20,7 +20,7 @@ public:
 
 private:
 public:
-    Object(std::string _name, GENERATED_MESHES _model, GENERATED_TEXTURE _texture, std::string _shader);
+    Object(std::string _name, GENERATED_MESHES _model, GENERATED_TEXTURE _texture, GENERATED_SHADER_PROGRAMS _shader);
     ~Object() override;
     
     void Initialize()               override;

@@ -3,11 +3,17 @@
 
 #include "Engine/Utilitaries/CommonLib.h"
 
-#include "Engine/Render/Shader.h"
+#include "Engine/Render/Shaders/Shader.h"
 #include <vector>
+
+#include "Engine/Texture.h"
+#include "Engine/Render/Shaders/Uniform.h"
+
+struct Uniform;
 
 enum class DrawOption
 {
+	NONE,
 	COLOR,
 	NULL_SHADER,
 	TEXTURE,
@@ -18,18 +24,35 @@ enum class DrawOption
 	DEBUG
 };
 
+struct TextureBinding
+{
+	std::string name;
+	Texture* texture = nullptr;
+};
+
 class ShaderProgram
 {
 private:
 	unsigned int mID;
-	DrawOption mDrawOptions;
+	std::vector<Uniform> uniforms;
+	std::vector<TextureBinding> textures;
 
 public:
 	unsigned int getID() const { return mID; }
-	DrawOption getDrawOptions() const { return mDrawOptions; }
+	std::vector<Uniform> getUniforms() { return uniforms; }
+	std::vector<TextureBinding> getTextures() { return textures; }
 
+	void setUniformList(const std::vector<Uniform> _uniforms) {uniforms = _uniforms; }
+	void setTextures(const std::vector<std::string> _texturesNames){
+		for (TextureBinding bind : textures) bind.texture = nullptr;
+		textures.clear();
+		for (int i = 0; i < static_cast<int>(_texturesNames.size()); i++){
+			textures.push_back(TextureBinding{_texturesNames[i].c_str(), nullptr});
+		}
+	}
+	
 public:
-	ShaderProgram(DrawOption _option);
+	ShaderProgram();
 	~ShaderProgram() = default;
 	void Unload();
 	void Compose(std::vector<Shader*> _shaders);

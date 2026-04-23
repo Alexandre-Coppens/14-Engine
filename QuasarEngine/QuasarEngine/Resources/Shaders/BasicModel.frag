@@ -1,9 +1,9 @@
-#version 330
+#version 450
 
 in vec2 fragTexCoord;
 out vec4 outColor;
 
-uniform sampler2D uTexture;
+layout(binding = 0) uniform sampler2D uTexture;
 
 void main()
 {

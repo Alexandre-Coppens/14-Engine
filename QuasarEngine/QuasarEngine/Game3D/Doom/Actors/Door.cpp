@@ -22,7 +22,7 @@ Door::~Door()
 
 void Door::Initialize()
 {
-    mModel = dynamic_cast<Model*>(AddComponent(new Model(this, "BasicModel")));
+    mModel = dynamic_cast<Model*>(AddComponent(new Model(this, PROG_BasicModel)));
     mCollider = dynamic_cast<BoxCollider*>(AddComponent(new BoxCollider(this)));
     DoomBaseActor::Initialize();
 }
@@ -30,7 +30,7 @@ void Door::Initialize()
 void Door::Start()
 {
     mModel->setMesh(Assets::GetMesh(OBJ_cube));
-    mModel->AddTexture(Assets::GetTexture(PNG_Door));
+    mModel->getMaterial()->SetTexture("uTexture", Assets::GetTexture(PNG_Door));
     mTransform3D->addLocationZ(0.5f);
     mTransform3D->setScale(Vector3(0.05f, 1.0f, 1.0f));
     startHeight = mTransform3D->getLocation().z;

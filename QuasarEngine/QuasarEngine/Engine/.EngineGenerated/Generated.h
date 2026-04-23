@@ -1,9 +1,12 @@
 #pragma once 
 //Do not write anything in it. Auto-Generated in Assets.cpp.
 
+#include <map> 
+
 static int texturesCount = 44 ;
 static int meshesCount = 25 ;
 static int shadersCount = 26 ;
+static int shadersProgramsCount = 8 ;
 
 enum GENERATED_TEXTURE
 {
@@ -110,6 +113,48 @@ enum GENERATED_SHADERS
     FRAG_Texture,
     VERT_Texture,
     FRAG_Transparency,
+};
+
+enum GENERATED_SHADER_PROGRAMS
+{
+    PROG_BasicModel,
+    PROG_DebugUV,
+    PROG_Geometry,
+    PROG_Grass,
+    PROG_NoiseHeight,
+    PROG_Simple,
+    PROG_Sprite,
+    PROG_Transparent,
+};
+
+static std::map<std::string, GENERATED_SHADERS> stringToShader
+{
+   { "FRAG_NULL", FRAG_NULL },
+   { "VERT_NULL", VERT_NULL },
+   { "FRAG_BasicModel", FRAG_BasicModel },
+   { "VERT_BasicModel", VERT_BasicModel },
+   { "FRAG_FragTex", FRAG_FragTex },
+   { "FRAG_Geometry", FRAG_Geometry },
+   { "GEOM_Geometry", GEOM_Geometry },
+   { "VERT_Geometry", VERT_Geometry },
+   { "FRAG_Grass", FRAG_Grass },
+   { "VERT_Grass", VERT_Grass },
+   { "FRAG_NoiseHeight", FRAG_NoiseHeight },
+   { "TESC_NoiseHeight", TESC_NoiseHeight },
+   { "TESE_NoiseHeight", TESE_NoiseHeight },
+   { "VERT_NoiseHeight", VERT_NoiseHeight },
+   { "FRAG_Normal", FRAG_Normal },
+   { "FRAG_Simple", FRAG_Simple },
+   { "VERT_Simple", VERT_Simple },
+   { "FRAG_SimpleTess", FRAG_SimpleTess },
+   { "TESC_SimpleTess", TESC_SimpleTess },
+   { "TESE_SimpleTess", TESE_SimpleTess },
+   { "VERT_SimpleTess", VERT_SimpleTess },
+   { "FRAG_Sprite", FRAG_Sprite },
+   { "VERT_Sprite", VERT_Sprite },
+   { "FRAG_Texture", FRAG_Texture },
+   { "VERT_Texture", VERT_Texture },
+   { "FRAG_Transparency", FRAG_Transparency },
 };
 
 static std::string getTexturePath(GENERATED_TEXTURE _texture)
@@ -225,5 +270,20 @@ static std::string getShaderPath(GENERATED_SHADERS _shader)
    case FRAG_Texture:  return"Resources/Shaders/Texture.frag";
    case VERT_Texture:  return"Resources/Shaders/Texture.vert";
    case FRAG_Transparency:  return"Resources/Shaders/Transparency.frag";
+	}
+};
+
+static std::string getShaderProgramPath(GENERATED_SHADER_PROGRAMS _program)
+{
+   switch (_program)
+	{
+   case PROG_BasicModel:  return"Resources/Shaders/Programs/BasicModel.prog";
+   case PROG_DebugUV:  return"Resources/Shaders/Programs/DebugUV.prog";
+   case PROG_Geometry:  return"Resources/Shaders/Programs/Geometry.prog";
+   case PROG_Grass:  return"Resources/Shaders/Programs/Grass.prog";
+   case PROG_NoiseHeight:  return"Resources/Shaders/Programs/NoiseHeight.prog";
+   case PROG_Simple:  return"Resources/Shaders/Programs/Simple.prog";
+   case PROG_Sprite:  return"Resources/Shaders/Programs/Sprite.prog";
+   case PROG_Transparent:  return"Resources/Shaders/Programs/Transparent.prog";
 	}
 };

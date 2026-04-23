@@ -1,10 +1,8 @@
 ﻿#include "Preset_Scene.h"
 
-#include "Engine/Utilitaries/Assets.h"
 #include "Engine/Utilitaries/Log.h"
 
-#include "Engine/Render/Shader.h"
-#include "Engine/Render/ShaderProgram.h"
+#include "Engine/Render/Shaders/Shader.h"
 #include "Engine/Render/RendererGl.h"
 
 Preset_Scene::Preset_Scene(std::string _name)

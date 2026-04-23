@@ -6,11 +6,12 @@
 #include "MathLib.h"
 #include "Engine/Render/RendererGl.h"
 
-#include "Engine/Render/Shader.h"
-#include "Engine/Render/ShaderProgram.h"
+#include "Engine/Render/Shaders/Shader.h"
+#include "Engine/Render/Shaders/ShaderProgram.h"
 #include "Engine/Utilitaries/Log.h"
 #include "Engine/3D/Mesh.h"
 #include "Engine/Render/VertexArray.h"
+#include "Engine/Render/Shaders/Uniform.h"
 #include "Engine/Utilitaries/tiny_obj_loader.h"
 
 std::string Assets::engineFile   = "Engine/.EngineAssets";
@@ -21,13 +22,14 @@ std::vector<std::string> Assets::mSupportedShaderTypes = {".vert", ".frag", ".te
 std::map<std::string, std::string> Assets::mGeneratedTextures = {};
 std::map<std::string, std::string> Assets::mGeneratedMeshes	  = {};
 std::map<std::string, std::string> Assets::mGeneratedShader   = {};
+std::map<std::string, std::string> Assets::mGeneratedShaderPrograms   = {};
 
-std::map<GENERATED_TEXTURE,	Texture*>	Assets::mLoadedTextures = {};
-std::map<GENERATED_MESHES,	Mesh*>		Assets::mLoadedMeshes	= {};
-std::map<GENERATED_SHADERS,	Shader*>	Assets::mLoadedShaders	= {};
+std::map<GENERATED_TEXTURE,	Texture*>				Assets::mLoadedTextures = {};
+std::map<GENERATED_MESHES,	Mesh*>					Assets::mLoadedMeshes	= {};
+std::map<GENERATED_SHADERS,	Shader*>				Assets::mLoadedShaders	= {};
+std::map<GENERATED_SHADER_PROGRAMS,	ShaderProgram*> Assets::mShaderProgramList	= {};
 
 std::map<std::string, int> Assets::mTextureListUses = {};
-std::map<std::string, ShaderProgram*> Assets::mShaderProgramList = {};
 std::map<ShaderProgram*, std::vector<Model*>> Assets::mDrawOrder = {};
 
 IRenderer* Assets::mRenderer;
@@ -52,7 +54,7 @@ void Assets::ScanFiles()
 	for (const auto& path : assetsPaths)
 	{
 		for (const auto& entry : std::filesystem::directory_iterator(path)) {
-			Log::Info("PATH::" + entry.path().string());
+			Log::Info("PATH::" + entry.path().string(), LogLevel::Normal);
 
 			const auto filenameStr = entry.path().filename().string();
 
@@ -64,9 +66,10 @@ void Assets::ScanFiles()
 	}
 
 	//Check in Generated.h if it needs to be Updated;
-	int oldTextureNbr { 0 };
-	int oldModelsNbr  { 0 };
-	int oldShadersNbr { 0 };
+	int oldTextureNbr  { 0 };
+	int oldModelsNbr   { 0 };
+	int oldShadersNbr  { 0 };
+	int oldProgramsNbr { 0 };
 	int currentLine = 1;
 	std::string line;
 	std::ifstream loadFile(outputPath + "/" + "Generated.h");
@@ -74,16 +77,17 @@ void Assets::ScanFiles()
 	if (loadFile.is_open())
 	{
 		while (getline(loadFile, line) ){
-			if (currentLine == 4) oldTextureNbr = stoi(BreakString(line, ' ')[4]);
-			if (currentLine == 5) oldModelsNbr = stoi(BreakString(line, ' ')[4]);
-			if (currentLine == 6) oldShadersNbr = stoi(BreakString(line, ' ')[4]);
+			if (currentLine == 6) oldTextureNbr  = stoi(BreakString(line, ' ')[4]);
+			if (currentLine == 7) oldModelsNbr   = stoi(BreakString(line, ' ')[4]);
+			if (currentLine == 8) oldShadersNbr  = stoi(BreakString(line, ' ')[4]);
+			if (currentLine == 9) oldProgramsNbr = stoi(BreakString(line, ' ')[4]);
 			currentLine++;
 		}
 		loadFile.close();
 	}
-	if (oldTextureNbr == mGeneratedTextures.size() && oldModelsNbr == mGeneratedMeshes.size() && oldShadersNbr == mGeneratedShader.size())
+	if (oldTextureNbr == mGeneratedTextures.size() && oldModelsNbr == mGeneratedMeshes.size() && oldShadersNbr == mGeneratedShader.size() && oldProgramsNbr == mGeneratedShaderPrograms.size())
 	{
-		Log::Info("Asset Generation: No new Asset Detected.");
+		Log::Info("Asset Generation: No new Asset Detected.", LogLevel::Good);
 		return;
 	}
 	
@@ -99,12 +103,12 @@ void Assets::RecursiveScan(std::string _path)
 		const auto filenameStr = entry.path().filename().string();
 		
 		if (entry.is_directory()) {
-			Log::Info("PATH::" + entry.path().string());
+			Log::Info("PATH::" + entry.path().string(), LogLevel::Normal);
 			Assets::RecursiveScan(_path + "/" + filenameStr);
 			continue;
 		}
 		
-		Log::Info("FILE::" + filenameStr);
+		Log::Info("FILE::" + filenameStr, LogLevel::Normal);
 		const auto fileStemStr = entry.path().stem().string();
 		const auto fileExtensionStr = entry.path().extension().string();
 
@@ -118,8 +122,11 @@ void Assets::RecursiveScan(std::string _path)
 		else if (find(mSupportedShaderTypes.begin(), mSupportedShaderTypes.end(), fileExtensionStr) != mSupportedShaderTypes.end()) {
 			mGeneratedShader[_path + "/" + filenameStr] = toUpper(fileExtensionStr.substr(1)) + "_" + CleanFileName(fileStemStr);
 		}
+		else if (fileExtensionStr == ".prog") {
+			mGeneratedShaderPrograms[_path + "/" + filenameStr] = toUpper(fileExtensionStr.substr(1)) + "_" + CleanFileName(fileStemStr);
+		}
 		else {
-			Log::Info("Assets::Generation - " + fileExtensionStr + " not supported.");
+			Log::Info("Assets::Generation - " + fileExtensionStr + " not supported.", LogLevel::Warning);
 		}
 	}
 }
@@ -144,9 +151,12 @@ void Assets::WriteAssetsOnFile(std::string _filePath)
 	file << "#pragma once \n";
 	file << "//Do not write anything in it. Auto-Generated in Assets.cpp.\n";
 	file << "\n";
+	file << "#include <map> \n";
+	file << "\n";
 	file << "static int texturesCount = " + std::to_string(mGeneratedTextures.size()) + " ;\n";
 	file << "static int meshesCount = " + std::to_string(mGeneratedMeshes.size()) + " ;\n";
 	file << "static int shadersCount = " + std::to_string(mGeneratedShader.size()) + " ;\n";
+	file << "static int shadersProgramsCount = " + std::to_string(mGeneratedShaderPrograms.size()) + " ;\n";
 	
 	//Create ENUM Part
 	file << "\n";
@@ -175,8 +185,26 @@ void Assets::WriteAssetsOnFile(std::string _filePath)
 		file << "    " + it->second + ",\n";
 	}
 	file << "};\n";
+
+	file << "\n";
+	file << "enum GENERATED_SHADER_PROGRAMS\n";
+	file << "{\n";
+	for (auto it = mGeneratedShaderPrograms.begin(); it != mGeneratedShaderPrograms.end(); it++)
+	{
+		file << "    " + it->second + ",\n";
+	}
+	file << "};\n";
 	
 	//Create TRANSLATION Part
+	file << "\n";
+	file << "static std::map<std::string, GENERATED_SHADERS> stringToShader\n";
+	file << "{\n";
+	for (auto it = mGeneratedShader.begin(); it != mGeneratedShader.end(); it++)
+	{
+		file << "   { \"" + it->second + "\", " + it->second + " },\n";
+	}
+	file << "};\n";
+
 	file << "\n";
 	file << "static std::string getTexturePath(GENERATED_TEXTURE _texture)\n";
 	file << "{\n";
@@ -184,7 +212,7 @@ void Assets::WriteAssetsOnFile(std::string _filePath)
 	file << "	{\n";
 	for (auto it = mGeneratedTextures.begin(); it != mGeneratedTextures.end(); it++)
 	{
-		file << "   case " + it->second +":  return" + '"' + it->first + '"' + ";\n";
+		file << "   case " + it->second +":  return" + '"'  + it->first + '"'  + ";\n";
 	}
 	file << "	}\n";
 	file << "};\n";
@@ -212,8 +240,21 @@ void Assets::WriteAssetsOnFile(std::string _filePath)
 	}
 	file << "	}\n";
 	file << "};\n";
+
+	file << "\n";
+	file << "static std::string getShaderProgramPath(GENERATED_SHADER_PROGRAMS _program)\n";
+	file << "{\n";
+	file << "   switch (_program)\n";
+	file << "	{\n";
+	for (auto it = mGeneratedShaderPrograms.begin(); it != mGeneratedShaderPrograms.end(); it++)
+	{
+		file << "   case " + it->second +":  return" + '"'  + it->first + '"'  + ";\n";
+	}
+	file << "	}\n";
+	file << "};\n";
 	
 	file.close();
+	Log::Info("Asset: Generated.h is done!", LogLevel::Good);
 }
 
 // -=-=-=-=- GET ASSETS -=-=-=-=-
@@ -245,13 +286,13 @@ std::vector<Texture*> Assets::GetTextures(const std::vector<GENERATED_TEXTURE>& 
 	return tList;
 }
 
-ShaderProgram* Assets::GetShaderProgram(const std::string _shaderName)
+ShaderProgram* Assets::GetShaderProgram(const GENERATED_SHADER_PROGRAMS _shaderName)
 {
 	if (mShaderProgramList.count(_shaderName) == 0)
 	{
-		return mShaderProgramList["NULL_SHADER"];
+		mShaderProgramList[_shaderName] = LoadShaderProgramFromFile(getShaderProgramPath(_shaderName), _shaderName);
 	}
-	return mShaderProgramList[(_shaderName)];
+	return mShaderProgramList[_shaderName];
 }
 
 Mesh* Assets::GetMesh(const GENERATED_MESHES _mesh)
@@ -282,11 +323,81 @@ Texture* Assets::LoadTextureFromFile(const std::string& _pFileName)
 	return texture;
 }
 
-//TODO: Add the shaderPrograms to the Generated File
-
-ShaderProgram* Assets::LoadShader(const std::vector<GENERATED_SHADERS> _shaders, const std::string _name, DrawOption _option)
+ShaderProgram* Assets::LoadShaderProgramFromFile(const std::string& _filePath, GENERATED_SHADER_PROGRAMS _name)
 {
-	ShaderProgram* shaderProgram = new ShaderProgram(_option);
+	std::string line;
+	std::ifstream loadFile(_filePath);
+	std::vector<std::string> lineBroken;
+
+	std::vector<GENERATED_SHADERS> shaders;
+	std::vector<Uniform> uniforms;
+	std::vector<std::string> textures;
+
+	if (loadFile.is_open())
+	{
+		while (getline(loadFile, line) )
+		{
+			if (line[0] == static_cast<char>(-17))
+				line = line.substr(3);
+			if (line[0] == 'S') {
+				lineBroken = BreakString(line, ' ');
+				shaders.push_back(stringToShader[lineBroken[1]]);
+			}
+			else if (line[0] == 'U') {
+				lineBroken = BreakString(line, ' ');
+				UniformType type = stringToUniformType[lineBroken[1]];
+				
+				switch(type) {
+					case UniformType::UFloat:
+						uniforms.push_back(Uniform1f(lineBroken[2], 0.0f));
+						break;
+					case UniformType::UInt:
+						uniforms.push_back(Uniform1i(lineBroken[2], 0));
+						break;
+					case UniformType::UVector2:
+						uniforms.push_back(Uniform2f(lineBroken[2], Vector2Zero()));
+						break;
+					case UniformType::UVector3:
+						uniforms.push_back(Uniform3f(lineBroken[2], Vector3Zero()));
+						break;
+					case UniformType::UVector4:
+						uniforms.push_back(Uniform4f(lineBroken[2], Vector4Zero()));
+						break;
+					case UniformType::UMatrix:
+						uniforms.push_back(UniformMatrix4(lineBroken[2], Matrix4::Mat4Identity()));
+						break;
+					case UniformType::UMatrixRow:
+						uniforms.push_back(UniformMatrix4Row(lineBroken[2], Matrix4Row::Mat4RowIdentity()));
+						break;
+				}
+			}
+			else if (line[0] == 'T'){
+				lineBroken = BreakString(line, ' ');
+				textures.push_back(lineBroken[2]);
+			}
+		}
+		loadFile.close();
+
+		ShaderProgram* shaderProgram = new ShaderProgram();
+		shaderProgram->setUniformList(uniforms);
+		shaderProgram->setTextures(textures);
+
+		std::vector<std::string> cutFilePath = BreakString(_filePath, '/');
+		std::string file = cutFilePath[cutFilePath.size() - 1];
+		ComposeShader(shaderProgram, shaders);
+		
+		mShaderProgramList[_name] = shaderProgram;
+		dynamic_cast<RendererGl*>(mRenderer)->AddShaderProgram(mShaderProgramList[_name]);
+		Log::Info("ShaderProgram - " + file + " successfully composed.", LogLevel::Normal);
+		
+		shaderProgram = nullptr;
+		return mShaderProgramList[_name];
+	}
+	else return nullptr;
+}
+
+void Assets::ComposeShader(ShaderProgram* shaderProgram, std::vector<GENERATED_SHADERS> _shaders)
+{
 	std::vector<Shader*> mShaderList {};
 	Shader* tempShader;
 
@@ -308,12 +419,12 @@ ShaderProgram* Assets::LoadShader(const std::vector<GENERATED_SHADERS> _shaders,
 	}
 	
 	shaderProgram->Compose(mShaderList);
-	mShaderProgramList[_name] = shaderProgram;
-	dynamic_cast<RendererGl*>(mRenderer)->AddShaderProgram(mShaderProgramList[_name]);
-	Log::Info("ShaderProgram - " + _name + " successfully composed.");
-	shaderProgram = nullptr;
-	
-	return mShaderProgramList[_name];
+	for (Shader* shader : mShaderList)
+	{
+		delete shader;
+		shader = nullptr;
+	}
+	mShaderList.clear();
 }
 
 Mesh* Assets::LoadMeshFromFile(const std::string& _filePath)
@@ -330,7 +441,7 @@ Mesh* Assets::LoadMeshFromFile(const std::string& _filePath)
 	}
 	else
 	{
-		Log::Info("Mesh::" + _filePath + " successfully loaded.");
+		Log::Info("Mesh::" + _filePath + " successfully loaded.", LogLevel::Normal);
 	}
 	std::vector<Vertex> vertices;
 	for (int i = 0; i < static_cast<int>(shapes.size()); i++)

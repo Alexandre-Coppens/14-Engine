@@ -30,7 +30,7 @@ void DoomPlayer::Initialize()
 {
     mPhysicBody = dynamic_cast<PhysicBody*>(AddComponent(new PhysicBody(this, BOX)));
     mCamera = dynamic_cast<Camera*>(AddComponent(new Camera(this)));
-    mSprite = dynamic_cast<Sprite2D*>(AddComponent(new Sprite2D(this, Assets::GetTexture(PNG_HUD_InfoBar), "Sprite", 0)));
+    mSprite = dynamic_cast<Sprite2D*>(AddComponent(new Sprite2D( RendererType::OPENGL, this, Assets::GetTexture(PNG_HUD_InfoBar), 0)));
     Actor::Initialize();
 }
 
@@ -94,10 +94,10 @@ void DoomPlayer::Update(const float _deltaTime)
     if (Inputs::GetKeyDown(SDLK_SPACE))
     {
         RaycastResult raycast = CollisionManager::Raycast(mCamera->getLocalTransform()->getWorldLocation(), mCamera->getLocalTransform()->Forward(), this, 99999.0f);
-        Log::Info("Raycast result:" + std::to_string(raycast.hasHit));
+        Log::Info("Raycast result:" + std::to_string(raycast.hasHit), LogLevel::Normal);
         if (raycast.hasHit)
         {
-            Log::Info("Hit Actor:" + raycast.actor->getName());
+            Log::Info("Hit Actor:" + raycast.actor->getName(), LogLevel::Normal);
             Actor* line = getScene()->AddActor(new DebugLine(raycast));
 
             DoomBaseActor* actor = dynamic_cast<DoomBaseActor*>(raycast.actor);
@@ -111,10 +111,10 @@ void DoomPlayer::Update(const float _deltaTime)
     if (Inputs::GetKeyDown(SDLK_e))
     {
         RaycastResult raycast = CollisionManager::Raycast(mCamera->getLocalTransform()->getWorldLocation(), mCamera->getLocalTransform()->Forward(), this, 1.0f);
-        Log::Info("Raycast result:" + std::to_string(raycast.hasHit));
+        Log::Info("Raycast result:" + std::to_string(raycast.hasHit), LogLevel::Normal);
         if (raycast.hasHit)
         {
-            Log::Info("Hit Actor:" + raycast.actor->getName());
+            Log::Info("Hit Actor:" + raycast.actor->getName(), LogLevel::Normal);
             Actor* line = getScene()->AddActor(new DebugLine(raycast));
 
             DoomBaseActor* interactible = dynamic_cast<DoomBaseActor*>(raycast.actor);

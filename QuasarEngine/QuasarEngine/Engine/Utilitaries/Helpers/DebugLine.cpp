@@ -19,7 +19,7 @@ DebugLine::~DebugLine()
 
 void DebugLine::Initialize()
 {
-    mModel = dynamic_cast<Model*>(AddComponent(new Model(this, "Simple")));
+    mModel = dynamic_cast<Model*>(AddComponent(new Model(this, PROG_Simple)));
     Actor::Initialize();
 }
 

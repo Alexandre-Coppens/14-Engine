@@ -3,8 +3,8 @@
 #include "Engine/Utilitaries/Assets.h"
 #include "Engine/Utilitaries/Log.h"
 
-#include "Engine/Render/Shader.h"
-#include "Engine/Render/ShaderProgram.h"
+#include "Engine/Render/Shaders/Shader.h"
+#include "Engine/Render/Shaders/ShaderProgram.h"
 #include "Engine/Render/RendererGl.h"
 #include "Game3D/TestingGrounds/Actors/ActorCamera.h"
 #include "Game3D/TestingGrounds/Actors/Cube.h"
@@ -28,13 +28,9 @@ void Scene_Cube::Start()
 		return;
 	}
 
-	//Load Shaders
-	Assets::LoadShader(std::vector<GENERATED_SHADERS>{VERT_BasicModel, FRAG_BasicModel}, "BasicModel", DrawOption::TEXTURE);
-	Assets::LoadShader(std::vector<GENERATED_SHADERS>{VERT_Simple, FRAG_Simple}, "WireFrame", DrawOption::WIREFRAME);
-
 	//Load Actors
-	Actor* cube = AddActor(new Cube("Cube", "Cube", PNG_Block, "BasicModel"));
-	Actor* cube1 = AddActor(new Cube("Cube1", "Cube", PNG_Block, "BasicModel"));
+	Actor* cube = AddActor(new Cube("Cube", "Cube", PNG_Block, PROG_BasicModel));
+	Actor* cube1 = AddActor(new Cube("Cube1", "Cube", PNG_Block, PROG_BasicModel));
 	Actor* player = AddActor(new ActorCamera());
 
 	//Start the new Actors to modify them

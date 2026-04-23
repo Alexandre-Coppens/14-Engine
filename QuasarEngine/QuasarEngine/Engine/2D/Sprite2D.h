@@ -7,10 +7,13 @@
 #include "Engine/Utilitaries/CommonLib.h"
 #include "Engine/Render/RendererSdl.h"
 
+class Material;
 class ShaderProgram;
 class Sprite2D : public Component
 {
 protected:
+	RendererType renderType;
+	
 	Texture* mTexture;
 	uint8_t  mDrawOrder;
 	float mTextureWidth;
@@ -18,7 +21,6 @@ protected:
 	bool mXFlipped;
 
 	//GL
-	std::string mShader {""};
 	Transform2D mTransform;
 
 public:
@@ -33,8 +35,7 @@ public:
 
 private:
 public:
-	Sprite2D(Actor* _pOwner, Texture* _pTexture, uint8_t _drawOrder);
-	Sprite2D(Actor* _pOwner, Texture* _pTexture, std::string _shaderProgram, uint8_t _drawOrder);
+	Sprite2D(RendererType _rendererType, Actor* _pOwner, Texture* _pTexture, uint8_t _drawOrder);
 	~Sprite2D() override;
 	Sprite2D() = delete;
 	Sprite2D(const Sprite2D&) = delete;
@@ -45,7 +46,7 @@ public:
 
 	virtual void SetTexture(Texture* _pTexture);
 	virtual void Draw(const RendererSdl& _pRenderer, DebugMode _debug);
-	void DrawGL();
+	void DrawGL(ShaderProgram* shader, int vertCount);
 };
 
 #endif // !1

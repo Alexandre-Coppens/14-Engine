@@ -42,7 +42,7 @@ Game::~Game() = default;
 
 void Game::Initialize()
 {
-	Log::Info("GAME: Initializing " + mTitle);
+	Log::Info("GAME: Initializing " + mTitle, LogLevel::Normal);
 	mWindow = new Window(static_cast<Uint16>(Window::GetSize().x), static_cast<Uint16>(Window::GetSize().y), mTitle);
 
 	Assets::setRenderer(mRenderer);

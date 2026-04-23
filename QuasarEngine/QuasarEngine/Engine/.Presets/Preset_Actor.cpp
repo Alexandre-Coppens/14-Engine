@@ -17,14 +17,14 @@ Preset_Actor::~Preset_Actor()
 
 void Preset_Actor::Initialize()
 {
-    mModel = dynamic_cast<Model*>(AddComponent(new Model(this, "Null")));
+    mModel = dynamic_cast<Model*>(AddComponent(new Model(this, PROG_BasicModel)));
     Actor::Initialize();
 }
 
 void Preset_Actor::Start()
 {
     mModel->setMesh(Assets::GetMesh(OBJ_cube));
-    mModel->AddTexture(Assets::GetTexture(PNG_NullTexture));
+    mModel->getMaterial()->SetTexture("uTexture", Assets::GetTexture(PNG_NullTexture));
     Actor::Start();
 }
 

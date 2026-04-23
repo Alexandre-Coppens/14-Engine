@@ -67,7 +67,7 @@ bool Texture::LoadGl(RendererGl* _renderer, const std::string& _filename, SDL_Su
 	glGenerateMipmap(GL_TEXTURE_2D);
 	SDL_FreeSurface(_pSurface);
 	SDL_FreeSurface(glSurface);
-	Log::Info("Loaded GL texture : " + mFileName);
+	Log::Info("Loaded GL texture : " + mFileName, LogLevel::Normal);
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR);
@@ -76,7 +76,6 @@ bool Texture::LoadGl(RendererGl* _renderer, const std::string& _filename, SDL_Su
 }
 
 void Texture::SetActive() const {
-	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, mTextureId);
 }
 
@@ -90,7 +89,7 @@ bool Texture::LoadSdl(RendererSdl* _renderer, const std::string& _filename, SDL_
 		Log::Error(LogType::Render, "Failed to convert surface to texture: " + mFileName);
 		return false;
 	}
-	Log::Info("Loaded Texture: " + mFileName);
+	Log::Info("Loaded Texture: " + mFileName, LogLevel::Normal);
 	return true;
 }
 

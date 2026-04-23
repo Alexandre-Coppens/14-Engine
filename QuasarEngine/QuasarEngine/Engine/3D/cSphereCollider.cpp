@@ -4,7 +4,7 @@
 
 #include "cModel.h"
 #include "Engine/3D/Mesh.h"
-#include "Engine/Render/ShaderProgram.h"
+#include "Engine/Render/Shaders/ShaderProgram.h"
 #include "Engine/Render/VertexArray.h"
 #include "Engine/Utilitaries/Assets.h"
 
@@ -15,7 +15,7 @@ SphereCollider::SphereCollider(Actor* _pOwner):
 {
 	mColliderType = SPHERE;
 	mTransform = new Transform3D(pOwner, LOCAL);
-	mDebugModel = new Model(pOwner, mTransform, "Wireframe");
+	mDebugModel = new Model(pOwner, mTransform, PROG_Simple, DrawOption::WIREFRAME);
 	mDebugModel->setMesh(Assets::GetMesh(OBJ_Ball));
 	setDebugColor(Vector4(1.0f, 1.0f, 0.0f, 1.0f));
 }

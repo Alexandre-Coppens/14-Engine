@@ -4,7 +4,7 @@
 #include "Engine/3D/cBoxCollider.h"
 #include "Engine/3D/Mesh.h"
 
-Object::Object(std::string _name, GENERATED_MESHES _model, GENERATED_TEXTURE _texture, std::string _shader):
+Object::Object(std::string _name, GENERATED_MESHES _model, GENERATED_TEXTURE _texture, GENERATED_SHADER_PROGRAMS _shader):
     Actor()
 {
     mName = _name;
@@ -28,7 +28,7 @@ void Object::Initialize()
 void Object::Start()
 {
     mModel->setMesh(Assets::GetMesh(mMesh));
-    mModel->AddTexture(Assets::GetTexture(mTexture));
+    mModel->getMaterial()->SetTexture("uTexture", Assets::GetTexture(mTexture));
     
     //dynamic_cast<BoxCollider*>(mCollider)->setSize(1.1f);
     Actor::Start();

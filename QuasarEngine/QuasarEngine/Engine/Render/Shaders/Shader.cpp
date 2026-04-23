@@ -83,7 +83,7 @@ void Shader::Load(std::string _filePath, ShaderType _shaderType)
 	
 	if (ValidateCompilation(mID))
 	{
-		Log::Info("Shader - " + _filePath  + " successfully loaded with ID: " + std::to_string(mID) );
+		Log::Info("Shader - " + _filePath  + " successfully loaded with ID: " + std::to_string(mID), LogLevel::Normal);
 	}
 }
 

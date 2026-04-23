@@ -3,8 +3,8 @@
 #include "Engine/Utilitaries/Assets.h"
 #include "Engine/Utilitaries/Log.h"
 
-#include "Engine/Render/Shader.h"
-#include "Engine/Render/ShaderProgram.h"
+#include "Engine/Render/Shaders/Shader.h"
+#include "Engine/Render/Shaders/ShaderProgram.h"
 #include "Engine/Render/RendererGl.h"
 
 #include "Game3D/Bowling/Actors/Ball.h"
@@ -27,13 +27,6 @@ void Scene_Bowling::Start()
 		Log::Error(LogType::Video, "Renderer not of type OPENGL");
 		return;
 	}
-	
-	//Load Shaders
-	Assets::LoadShader(std::vector<GENERATED_SHADERS>{VERT_BasicModel, FRAG_BasicModel}, "BasicModel", DrawOption::TEXTURE);
-	Assets::LoadShader(std::vector<GENERATED_SHADERS>{VERT_BasicModel, FRAG_Normal}, "Normal", DrawOption::TEXTURE);
-	Assets::LoadShader(std::vector<GENERATED_SHADERS>{VERT_BasicModel, FRAG_Transparency}, "Transparency", DrawOption::TEXTURE);
-	Assets::LoadShader(std::vector<GENERATED_SHADERS>{VERT_Simple, FRAG_Simple}, "Simple", DrawOption::COLOR);
-	Assets::LoadShader(std::vector<GENERATED_SHADERS>{VERT_Simple, FRAG_Simple}, "Wireframe", DrawOption::WIREFRAME);
 
 	//Load Actors
 	Actor* alley = AddActor(new BowlingAlley());

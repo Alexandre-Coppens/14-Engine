@@ -9,7 +9,7 @@ class Cube : public Actor
 private:
 	std::string mModelName;
 	GENERATED_TEXTURE mTexture;
-	std::string mShaderName;
+	GENERATED_SHADER_PROGRAMS mShaderName;
     
 	Model* mModel            {nullptr};
 	Collider3D* mCollider    {nullptr};
@@ -20,7 +20,7 @@ public:
 
 private:
 public:
-	Cube(std::string _name, std::string _model = "Cube", GENERATED_TEXTURE _texture = PNG_NullTexture, std::string _shader = "");
+	Cube(std::string _name, std::string _model = "Cube", GENERATED_TEXTURE _texture = PNG_NullTexture, GENERATED_SHADER_PROGRAMS _shader = PROG_BasicModel);
 	~Cube() override;
 
 	void Start()					override;
