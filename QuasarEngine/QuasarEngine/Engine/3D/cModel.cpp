@@ -51,6 +51,7 @@ void Model::Draw()
 		const Matrix4Row wt = mParent->getWorldTransform();
 		mMaterial.getShaderProgram()->SetMatrix4Row("uWorldTransform", wt);
 		
+		mMesh->getVertexArray()->SetActive();
 		mMaterial.Bind();
 		
 		glPolygonMode( GL_FRONT_AND_BACK, GL_FILL );
@@ -71,8 +72,6 @@ void Model::Draw()
 		 default:
 		 	break;
 		 }
-		
-		mMesh->getVertexArray()->SetActive();
 		
 		//glPointSize(5.0f);
 		switch (mMaterial.getDrawOption())	

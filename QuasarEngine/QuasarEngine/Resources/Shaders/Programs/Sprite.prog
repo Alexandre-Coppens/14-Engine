@@ -1,4 +1,6 @@
 ﻿S VERT_Sprite
-S VERT_Sprite
+S FRAG_Sprite
 !U UVector2 uLocation
+!U UVector2 uScale
+!U UMatrix uProjection
 T 0 uTexture

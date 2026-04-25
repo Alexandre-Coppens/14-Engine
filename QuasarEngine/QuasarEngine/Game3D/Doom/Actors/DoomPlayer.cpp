@@ -49,10 +49,10 @@ void DoomPlayer::Update(const float _deltaTime)
     //mSprite->getTransform()->addRotation(90.0f * _deltaTime);
     //mSprite->getTransform()->addLocationX(50.0f * _deltaTime);
 
-    if (Inputs::GetKey(SDLK_LEFT))  mSprite->getTransform()->addLocationX(-50.0f * _deltaTime);
-    if (Inputs::GetKey(SDLK_RIGHT)) mSprite->getTransform()->addLocationX( 50.0f * _deltaTime);
-    if (Inputs::GetKey(SDLK_UP))    mSprite->getTransform()->addLocationY( 50.0f * _deltaTime);
-    if (Inputs::GetKey(SDLK_DOWN))  mSprite->getTransform()->addLocationY(-50.0f * _deltaTime);
+    if (Inputs::GetKey(SDLK_LEFT))  mSprite->getTransform()->addLocationX(-200.0f * _deltaTime);
+    if (Inputs::GetKey(SDLK_RIGHT)) mSprite->getTransform()->addLocationX( 200.0f * _deltaTime);
+    if (Inputs::GetKey(SDLK_UP))    mSprite->getTransform()->addLocationY( 200.0f * _deltaTime);
+    if (Inputs::GetKey(SDLK_DOWN))  mSprite->getTransform()->addLocationY(-200.0f * _deltaTime);
     
     if (Inputs::GetKey(SDLK_z))
     {

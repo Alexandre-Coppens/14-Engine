@@ -27,15 +27,19 @@ bool Texture::Load(IRenderer& _renderer, const std::string& _filePath)
 	mWidth  = static_cast<Uint16>(surface->w);
 	mHeight = static_cast<Uint16>(surface->h);
 	
-	SDL_Surface* flipped = SDL_CreateRGBSurface(0, surface->h, surface->w, surface->format->BitsPerPixel, surface->format->Rmask, surface->format->Gmask, surface->format->Bmask, surface->format->Amask);
-	
-	for (int y = 1; y < surface->h; y++)
+	//HACK: Rotating the texture 90d cw to fit with blender export
+	SDL_Surface* rotated = SDL_CreateRGBSurfaceWithFormat(0, surface->h, surface->w, surface->format->BitsPerPixel, surface->format->format);
+
+	int bpp = surface->format->BytesPerPixel;
+
+	for (int y = 0; y < surface->h; y++)
 	{
-		for (int x = 1; x < surface->w; x++) {
+		for (int x = 0; x < surface->w; x++)
+		{
 			memcpy(
-				(char*)flipped->pixels + (flipped->pitch * x) + (flipped->pitch - (y + 1) * flipped->format->BytesPerPixel),
-				(char*)surface->pixels + (y * flipped->pitch) + (x * flipped->format->BytesPerPixel),
-				flipped->format->BytesPerPixel
+				(char*)rotated->pixels + x * rotated->pitch + (surface->h - 1 - y) * bpp,
+				(char*)surface->pixels + y * surface->pitch + x * bpp,
+				bpp
 			);
 		}
 	}
@@ -43,34 +47,34 @@ bool Texture::Load(IRenderer& _renderer, const std::string& _filePath)
 	SDL_FreeSurface(surface);
 	
 	if (_renderer.getType() == RendererType::SDL)
-		return LoadSdl(dynamic_cast<RendererSdl*>(&_renderer), _filePath, flipped);
-	return LoadGl(dynamic_cast<RendererGl*>(&_renderer), _filePath, flipped);
+		return LoadSdl(dynamic_cast<RendererSdl*>(&_renderer), _filePath, rotated);
+	return LoadGl(dynamic_cast<RendererGl*>(&_renderer), _filePath, rotated);
 }
 
 bool Texture::LoadGl(RendererGl* _renderer, const std::string& _filename, SDL_Surface* _pSurface)
 {
-	int format = 0;
-	SDL_Surface* glSurface = SDL_ConvertSurfaceFormat(_pSurface, SDL_PIXELFORMAT_RGBA32, 0);
-
-	if (glSurface->format->format == SDL_PIXELFORMAT_RGB24) // REMOVE OR FIND A WAY TO SEPARATE ALPHA OR NOT
-	{
-		format = GL_RGB;
-	}
-	else if (glSurface->format->format == SDL_PIXELFORMAT_RGBA32)
-	{
-		format = GL_RGBA;
-	}
-
+	bool hasAlpha = SDL_ISPIXELFORMAT_ALPHA(_pSurface->format->format);
+	int format = hasAlpha ? GL_RGBA : GL_RGB;
+	
+	SDL_PixelFormatEnum targetFormat = hasAlpha ? SDL_PIXELFORMAT_RGBA32 : SDL_PIXELFORMAT_RGB24;
+	SDL_Surface* glSurface = SDL_ConvertSurfaceFormat(_pSurface, targetFormat, 0);
+	
 	glGenTextures(1, &mTextureId);
 	glBindTexture(GL_TEXTURE_2D, mTextureId);
-	glTexImage2D(GL_TEXTURE_2D, 0, format, mWidth, mHeight, 0, format, GL_UNSIGNED_BYTE, glSurface->pixels);
+	
+	glPixelStorei(GL_UNPACK_ROW_LENGTH, glSurface->pitch / glSurface->format->BytesPerPixel);
+	Log::Info("Pitch: " + std::to_string(glSurface->pitch) + " expected: " + std::to_string(glSurface->w * glSurface->format->BytesPerPixel), LogLevel::Normal);
+	
+	glTexImage2D(GL_TEXTURE_2D, 0, format, glSurface->w,  glSurface->h, 0, format, GL_UNSIGNED_BYTE, glSurface->pixels);
+	glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
+	
 	glGenerateMipmap(GL_TEXTURE_2D);
 	SDL_FreeSurface(_pSurface);
 	SDL_FreeSurface(glSurface);
 	Log::Info("Loaded GL texture : " + mFileName, LogLevel::Normal);
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
 	return true;
 }

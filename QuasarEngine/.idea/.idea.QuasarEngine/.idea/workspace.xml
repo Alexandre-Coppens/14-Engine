@@ -8,69 +8,57 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8aaab4d2-4f5d-4712-9cf7-40708eb9c5f6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Render/Shaders/Material.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Render/Shaders/Material.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Render/Shaders/Uniform.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Programs/BasicModel.prog" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Programs/DebugUV.prog" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Programs/Geometry.prog" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Programs/Grass.prog" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Programs/NoiseHeight.prog" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Programs/Simple.prog" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Programs/Sprite.prog" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Programs/Transparent.prog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.QuasarEngine/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.QuasarEngine/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine.sln" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine.sln" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine.sln.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/.EngineGenerated/Generated.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.EngineGenerated/Generated.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/.Prefabs/Object.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.Prefabs/Object.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/.Prefabs/Object.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.Prefabs/Object.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/.Presets/Preset_Actor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.Presets/Preset_Actor.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/.Presets/Preset_Scene.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.Presets/Preset_Scene.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/2D/Animation2D.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/2D/Animation2D.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/ActorCamera.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/ActorCamera.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/Animation2D.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/Animation2D.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/BoxCollider2D.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/BoxCollider2D.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/Collider.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/Collider.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/CollisionManager.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/CollisionManager.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/Cube.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/Cube.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/DebugLine.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/DebugLine.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/DoomBaseActor.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/DoomBaseActor.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/Door.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/Door.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/Gravity2D.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/Gravity2D.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/ImguiManager.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/ImguiManager.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/ImguiSimpleDemoFile.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/ImguiSimpleDemoFile.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/Interactible.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/Material.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/Material.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/QuasarEngine.tlog/unsuccessfulbuild" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/Scene_Cube.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/Scene_Cube.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/Sprite2D.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/Sprite2D.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/Switch.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/Switch.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/Target.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/Target.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/Transform2D.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/Transform2D.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/cUISprite.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/imgui.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/imgui.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_demo.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_demo.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_draw.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_draw.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_impl_opengl3.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_impl_opengl3.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_impl_sdl2.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_impl_sdl2.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_stdlib.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_stdlib.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_tables.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_tables.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_widgets.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_widgets.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/2D/Collider.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/2D/Collider.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/2D/Sprite2D.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/2D/Sprite2D.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/2D/Sprite2D.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/2D/Sprite2D.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/3D/Mesh.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/3D/Mesh.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cBoxCollider.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cBoxCollider.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cModel.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cModel.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cModel.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cModel.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cSphereCollider.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cSphereCollider.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cUISprite.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cUISprite.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Actor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Actor.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Game.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Game.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cPhysicBody.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cPhysicBody.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Render/RendererGl.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Render/RendererGl.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Render/Shader.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Render/Shaders/Shader.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Render/Shader.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Render/Shaders/Shader.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Render/ShaderProgram.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Render/Shaders/ShaderProgram.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Render/ShaderProgram.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Render/Shaders/ShaderProgram.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Scene.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Scene.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Render/Shaders/Material.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Render/Shaders/Material.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Render/Shaders/Material.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Render/Shaders/Material.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Render/Shaders/ShaderProgram.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Render/Shaders/ShaderProgram.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Render/Shaders/Uniform.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Render/Shaders/Uniform.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Texture.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Texture.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Assets.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Assets.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Assets.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Assets.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Helpers/DebugLine.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Helpers/DebugLine.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Log.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Log.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Log.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Log.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game2D/Actors/Box.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game2D/Actors/Box.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game2D/Actors/Paddle.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game2D/Actors/Paddle.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Actors/Ball.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Actors/Ball.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Actors/BowlingAlley.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Actors/BowlingAlley.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Actors/BoxGl.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Actors/BoxGl.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Actors/Pin.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Actors/Pin.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Scenes/Scene_Bowling.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Scenes/Scene_Bowling.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Actors/DoomPlayer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Actors/DoomPlayer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Actors/Door.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Actors/Door.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Actors/Switch.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Actors/Switch.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Actors/Target.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Actors/Target.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Scenes/Scene_Doom_Test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Scenes/Scene_Doom_Test.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/TestingGrounds/Actors/Cube.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/TestingGrounds/Actors/Cube.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/TestingGrounds/Actors/Cube.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/TestingGrounds/Actors/Cube.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/TestingGrounds/Scenes/Scene_Cube.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/TestingGrounds/Scenes/Scene_Cube.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/QuasarEngine.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/QuasarEngine.vcxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/BasicModel.frag" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/BasicModel.frag" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/BasicModel.vert" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/BasicModel.vert" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Debug/FragTex.frag" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Debug/FragTex.frag" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/imgui.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Programs/Simple.prog" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Programs/Simple.prog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Programs/Sprite.prog" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Programs/Sprite.prog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Simple.frag" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Simple.frag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Simple.vert" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Simple.vert" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Sprite.vert" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Sprite.vert" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,127 +80,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://C:/VisualStudio/VC/Tools/MSVC/14.38.33130/include/xmemory" root0="SKIP_HIGHLIGHTING" />
+    <setting file="cidr-memory-view://53" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Dependencies/GL/SDL/include/SDL_events.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Dependencies/GL/SDL/include/SDL_stdinc.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Dependencies/glew-2.2.0-win32/glew-2.2.0/include/GL/glew.h" root0="SKIP_HIGHLIGHTING" />
@@ -409,6 +277,11 @@
       <workItem from="1776927109938" duration="1547000" />
       <workItem from="1776948527157" duration="4497000" />
       <workItem from="1776953058952" duration="3017000" />
+      <workItem from="1777021345135" duration="69000" />
+      <workItem from="1777021666815" duration="381000" />
+      <workItem from="1777022153434" duration="196000" />
+      <workItem from="1777024104755" duration="10003000" />
+      <workItem from="1777100091246" duration="12791000" />
     </task>
     <servers />
   </component>

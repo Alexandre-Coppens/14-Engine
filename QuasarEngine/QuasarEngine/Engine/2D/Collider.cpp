@@ -110,7 +110,7 @@ bool Collider::BoxCollision(Rectangle c)
             mc.position + Vector2(-mc.size.x * 0.5f, -mc.size.y * 0.5f),    //bot left
             mc.position + Vector2(mc.size.x * 0.5f, -mc.size.y * 0.5f) };   //bot right
 
-            for (int i = 0; i < corners.size(); i++)
+            for (int i = 0; i < static_cast<int>(corners.size()); i++)
             {
                 if (corners[i].x < c.position.x) left++;
                 if (corners[i].x > c.position.x) right++;

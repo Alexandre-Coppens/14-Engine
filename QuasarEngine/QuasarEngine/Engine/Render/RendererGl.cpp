@@ -66,9 +66,6 @@ bool RendererGl::Initialize(Window& _rWindow)
 	
 	pSpriteVao = new VertexArray(spriteVertices, 4);
 
-	//TODO: separate Engine asset files & Game asset files
-	//Load the NULL Shader & important to engine assets
-
 	glPatchParameteri(GL_PATCH_VERTICES, 3);
 	
 	return true;
@@ -96,6 +93,7 @@ void RendererGl::DrawModels() const
 	glDisable(GL_BLEND);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glPolygonMode( GL_FRONT_AND_BACK, GL_FILL );
 	
 	float time = Time::currentFrameTime;
 	
@@ -120,20 +118,17 @@ void RendererGl::DrawSprites() {
 	glDisable(GL_DEPTH_TEST);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
+	glPolygonMode( GL_FRONT_AND_BACK, GL_FILL );
+	
 	auto* shader = Assets::GetShaderProgram(PROG_Sprite);
 	shader->Use();
+	shader->SetInteger("uTexture", 0);
 	shader->SetFloat("uTime", Time::currentFrameTime);
-
-	VertexArray* vao = Assets::GetMesh(OBJ_Plane)->getVertexArray();
-	vao->SetActive();
-	int vertCount = vao->GetVerticesCount();
-
-	glPolygonMode(GL_FRONT, GL_FILL);
-
+	shader->SetMatrix4Row("uViewProj", mSpriteViewProj);
+	
 	for (int i = 0; i < static_cast<int>(mSpriteList.size()); i++) {
 		for (Sprite2D* sprite : mSpriteList[i]) {
-			sprite->DrawGL(shader, vertCount);
+			sprite->DrawGL(shader);
 		}
 	}
 }

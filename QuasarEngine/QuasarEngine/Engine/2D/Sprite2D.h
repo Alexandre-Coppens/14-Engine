@@ -46,7 +46,7 @@ public:
 
 	virtual void SetTexture(Texture* _pTexture);
 	virtual void Draw(const RendererSdl& _pRenderer, DebugMode _debug);
-	void DrawGL(ShaderProgram* shader, int vertCount);
+	void DrawGL(ShaderProgram* shader);
 };
 
 #endif // !1

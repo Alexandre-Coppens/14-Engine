@@ -330,7 +330,7 @@ ShaderProgram* Assets::LoadShaderProgramFromFile(const std::string& _filePath, G
 	std::vector<std::string> lineBroken;
 
 	std::vector<GENERATED_SHADERS> shaders;
-	std::vector<Uniform> uniforms;
+	std::vector<Uniform*> uniforms;
 	std::vector<std::string> textures;
 
 	if (loadFile.is_open())
@@ -349,27 +349,28 @@ ShaderProgram* Assets::LoadShaderProgramFromFile(const std::string& _filePath, G
 				
 				switch(type) {
 					case UniformType::UFloat:
-						uniforms.push_back(Uniform1f(lineBroken[2], 0.0f));
+						uniforms.push_back(new Uniform1f(lineBroken[2], 0.0f));
 						break;
 					case UniformType::UInt:
-						uniforms.push_back(Uniform1i(lineBroken[2], 0));
+						uniforms.push_back(new Uniform1i(lineBroken[2], 0));
 						break;
 					case UniformType::UVector2:
-						uniforms.push_back(Uniform2f(lineBroken[2], Vector2Zero()));
+						uniforms.push_back(new Uniform2f(lineBroken[2], Vector2Zero()));
 						break;
 					case UniformType::UVector3:
-						uniforms.push_back(Uniform3f(lineBroken[2], Vector3Zero()));
+						uniforms.push_back(new Uniform3f(lineBroken[2], Vector3Zero()));
 						break;
 					case UniformType::UVector4:
-						uniforms.push_back(Uniform4f(lineBroken[2], Vector4Zero()));
+						uniforms.push_back(new Uniform4f(lineBroken[2], Vector4Zero()));
 						break;
 					case UniformType::UMatrix:
-						uniforms.push_back(UniformMatrix4(lineBroken[2], Matrix4::Mat4Identity()));
+						uniforms.push_back(new UniformMatrix4(lineBroken[2], Matrix4::Mat4Identity()));
 						break;
 					case UniformType::UMatrixRow:
-						uniforms.push_back(UniformMatrix4Row(lineBroken[2], Matrix4Row::Mat4RowIdentity()));
+						uniforms.push_back(new UniformMatrix4Row(lineBroken[2], Matrix4Row::Mat4RowIdentity()));
 						break;
 				}
+				uniforms[uniforms.size() - 1]->uType = type;
 			}
 			else if (line[0] == 'T'){
 				lineBroken = BreakString(line, ' ');
@@ -390,6 +391,11 @@ ShaderProgram* Assets::LoadShaderProgramFromFile(const std::string& _filePath, G
 		dynamic_cast<RendererGl*>(mRenderer)->AddShaderProgram(mShaderProgramList[_name]);
 		Log::Info("ShaderProgram - " + file + " successfully composed.", LogLevel::Normal);
 		
+		for (Uniform* uniform : uniforms)
+		{
+			uniform = nullptr;
+		}
+		uniforms.clear();
 		shaderProgram = nullptr;
 		return mShaderProgramList[_name];
 	}

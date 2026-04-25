@@ -8,10 +8,36 @@
 
 Material::Material(ShaderProgram* _shaderProgram, DrawOption _drawOption = DrawOption::NONE):
     mShaderProgram(_shaderProgram),
-    mUniforms(mShaderProgram->getUniforms()),
     mTextures(mShaderProgram->getTextures()),
     mDrawOption(_drawOption)
 {
+    std::vector<Uniform*> shaderUniforms = mShaderProgram->getUniforms();
+    for (Uniform* uniform : shaderUniforms)
+    {
+        switch(uniform->uType) {
+        case UniformType::UFloat:
+            mUniforms.push_back(new Uniform1f(uniform->uName, static_cast<Uniform1f*>(uniform)->uFloat));
+            break;
+        case UniformType::UInt:
+            mUniforms.push_back(new Uniform1i(uniform->uName, static_cast<Uniform1i*>(uniform)->uInt));
+            break;
+        case UniformType::UVector2:
+            mUniforms.push_back(new Uniform2f(uniform->uName, static_cast<Uniform2f*>(uniform)->uVector2));
+            break;
+        case UniformType::UVector3:
+            mUniforms.push_back(new Uniform3f(uniform->uName, static_cast<Uniform3f*>(uniform)->uVector3));
+            break;
+        case UniformType::UVector4:
+            mUniforms.push_back(new Uniform4f(uniform->uName, static_cast<Uniform4f*>(uniform)->uVector4));
+            break;
+        case UniformType::UMatrix:
+            mUniforms.push_back(new UniformMatrix4(uniform->uName, static_cast<UniformMatrix4*>(uniform)->uMatrix));
+            break;
+        case UniformType::UMatrixRow:
+            mUniforms.push_back(new UniformMatrix4Row(uniform->uName, static_cast<UniformMatrix4Row*>(uniform)->uMatrixRow));
+            break;
+        }
+    }
 }
 
 Material::~Material() = default;
@@ -19,6 +45,12 @@ Material::~Material() = default;
 void Material::Unload()
 {
     mShaderProgram = nullptr;
+    for (Uniform* uniform : mUniforms)
+    {
+        delete uniform;
+        uniform = nullptr;
+    }
+    mUniforms.clear();
     for (TextureBinding texture : mTextures)
     {
         texture.texture = Assets::GetTexture(PNG_NullTexture);
@@ -28,9 +60,9 @@ void Material::Unload()
 //Automatically bind Uniforms and Textures
 void Material::Bind()
 {
-    for (int i = 0; i < static_cast<int>(getUniforms()->size()); i++)
+    for (int i = 0; i < static_cast<int>(getUniforms().size()); i++)
     {
-        getUniforms()->at(i).SetUniform(getShaderProgram()->getID());
+        getUniforms()[i]->SetUniform(getShaderProgram()->getID()); 
     }
 		
     for (int i = 0; i < Min(static_cast<int>(getTextures()->size()), 32); i++)
@@ -45,7 +77,7 @@ Uniform* Material::GetUniform(const std::string* _name)
 {
     for (int i = 0; i < static_cast<int>(mUniforms.size()); ++i)
     {
-        if (mUniforms[i].uName == *_name) return &mUniforms[i];
+        if (mUniforms[i]->uName == *_name) return mUniforms[i];
     }
     Log::Info("Uniform " + *_name + " not found", LogLevel::Warning);
     return nullptr;

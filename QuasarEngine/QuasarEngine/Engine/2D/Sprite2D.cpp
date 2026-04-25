@@ -5,12 +5,15 @@
 #include "Engine/Actor.h"
 #include "Engine/Utilitaries/Rectangle.h"
 #include "Engine/Scene.h"
+#include "Engine/3D/Mesh.h"
+#include "Engine/Render/VertexArray.h"
 #include "Engine/Render/Shaders/ShaderProgram.h"
 #include "Engine/Utilitaries/Assets.h"
 
 Sprite2D::Sprite2D(RendererType _rendererType, Actor* _pOwner, Texture* _pTexture, const uint8_t _drawOrder):
 	Component(_pOwner),renderType(_rendererType), mTexture(_pTexture), mDrawOrder(_drawOrder), mTextureWidth(mTexture->GetWidth()), mTextureHeight(_pTexture->GetHeight()), mXFlipped{false}
 {
+	mName = "Sprite2D";
 	switch (_rendererType)
 	{
 		case RendererType::OPENGL:
@@ -53,12 +56,23 @@ void Sprite2D::Draw(const RendererSdl& _pRenderer, DebugMode _debug)
 	}
 }
 
-void Sprite2D::DrawGL(ShaderProgram* shader, int vertCount) {
+void Sprite2D::DrawGL(ShaderProgram* shader) {
 	if (!mIsActive) return;
 	
-	shader->SetVector2f("uLocation", mTransform.getLocation());
-
 	glActiveTexture(GL_TEXTURE0);
 	mTexture->SetActive();
+	
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	
+	shader->SetVector2f("uLocation", mTransform.getLocation());
+	shader->SetVector2f("uScale", mTransform.getSize() * mTransform.getScale());
+
+	VertexArray* vao = Assets::GetMesh(OBJ_Plane)->getVertexArray();
+	vao->SetActive();
+	int vertCount = vao->GetVerticesCount();
+	
 	glDrawArrays(GL_TRIANGLES, 0, vertCount);
 }

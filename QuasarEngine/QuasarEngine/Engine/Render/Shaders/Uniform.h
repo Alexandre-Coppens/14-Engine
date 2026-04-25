@@ -31,9 +31,10 @@ static inline std::map<std::string, UniformType> stringToUniformType{
 struct Uniform
 {
 	std::string uName;
+	UniformType uType;
 	Uniform(std::string _name): uName {_name} {}
 	virtual ~Uniform() = default;
-	virtual void SetUniform(const unsigned int _id) {Log::Info("Invalid Uniform Type!", LogLevel::Error);}
+	virtual void SetUniform(const unsigned int _id) = 0;
 };
 
 struct Uniform1f : public Uniform

@@ -8,13 +8,13 @@ class Material
 private:
     ShaderProgram* mShaderProgram;
 
-    std::vector<Uniform> mUniforms;
+    std::vector<Uniform*> mUniforms;
     std::vector<TextureBinding> mTextures;
     DrawOption mDrawOption;
 
 public:
     ShaderProgram* getShaderProgram() const { return mShaderProgram; }
-    std::vector<Uniform>* getUniforms() { return &mUniforms; }
+    std::vector<Uniform*> getUniforms() { return mUniforms; }
     std::vector<TextureBinding>* getTextures() { return &mTextures; }
     DrawOption getDrawOption() { return mDrawOption; }
 

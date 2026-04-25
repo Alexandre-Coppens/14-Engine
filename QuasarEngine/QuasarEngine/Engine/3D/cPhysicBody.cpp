@@ -14,6 +14,7 @@
 PhysicBody::PhysicBody(Actor* _pOwner, ColliderType _colliderType) :
     Component(_pOwner), mColliderType(_colliderType)
 {
+    mName = "PhysicBody";
     switch (mColliderType)
     {
     case ColliderType::SPHERE:

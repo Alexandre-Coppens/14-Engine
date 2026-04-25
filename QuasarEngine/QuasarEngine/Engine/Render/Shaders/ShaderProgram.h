@@ -34,15 +34,15 @@ class ShaderProgram
 {
 private:
 	unsigned int mID;
-	std::vector<Uniform> uniforms;
+	std::vector<Uniform*> uniforms;
 	std::vector<TextureBinding> textures;
 
 public:
 	unsigned int getID() const { return mID; }
-	std::vector<Uniform> getUniforms() { return uniforms; }
+	std::vector<Uniform*> getUniforms() { return uniforms; }
 	std::vector<TextureBinding> getTextures() { return textures; }
 
-	void setUniformList(const std::vector<Uniform> _uniforms) {uniforms = _uniforms; }
+	void setUniformList(const std::vector<Uniform*> _uniforms) {uniforms = _uniforms; }
 	void setTextures(const std::vector<std::string> _texturesNames){
 		for (TextureBinding bind : textures) bind.texture = nullptr;
 		textures.clear();
