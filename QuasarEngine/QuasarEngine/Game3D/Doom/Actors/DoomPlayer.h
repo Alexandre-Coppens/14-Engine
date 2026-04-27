@@ -14,6 +14,7 @@ private:
     PhysicBody* mPhysicBody  {nullptr};
     Camera* mCamera          {nullptr};
     Sprite2D* mSprite        {nullptr};
+    Sprite2D* mHand          {nullptr};
 
 public:
     Model* getModel() const {return mModel;}

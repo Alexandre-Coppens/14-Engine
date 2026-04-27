@@ -23,9 +23,9 @@ void Switch::Initialize()
 void Switch::Start()
 {
 	referencedDoor->Lock();
-	mModel->setMesh(Assets::GetMesh(OBJ_Plane));
+	mModel->setMesh(Assets::GetMesh(OBJ_cube));
 	mModel->getMaterial()->SetTexture("uTexture", Assets::GetTexture(PNG_Switch_Off));
-	mTransform3D->setScale(Vector3{0.1f, 0.1f, 0.05f});
+	mTransform3D->setScale(Vector3{0.05f, 0.2f, 0.2f});
 	DoomBaseActor::Start();
 }
 

@@ -30,7 +30,8 @@ void DoomPlayer::Initialize()
 {
     mPhysicBody = dynamic_cast<PhysicBody*>(AddComponent(new PhysicBody(this, BOX)));
     mCamera = dynamic_cast<Camera*>(AddComponent(new Camera(this)));
-    mSprite = dynamic_cast<Sprite2D*>(AddComponent(new Sprite2D( RendererType::OPENGL, this, Assets::GetTexture(PNG_HUD_InfoBar), 0)));
+    mSprite = dynamic_cast<Sprite2D*>(AddComponent(new Sprite2D( RendererType::OPENGL, this, Assets::GetTexture(PNG_HUD_InfoBar), 1)));
+    mHand = dynamic_cast<Sprite2D*>(AddComponent(new Sprite2D( RendererType::OPENGL, this, Assets::GetTexture(PNG_HUD_PistolHand), 0)));
     Actor::Initialize();
 }
 
@@ -41,6 +42,13 @@ void DoomPlayer::Start()
     dynamic_cast<BoxCollider*>(mCollider)->setSize(Vector3{0.2f, 0.2f, 1.0f});
     mPhysicBody->setGravityEnabled(true);
     
+    mSprite->getTransform()->addLocationY(-325.0f);
+    mSprite->getTransform()->setScale(2.5f);
+    
+    mHand->getTransform()->addLocationX( 90.0f);
+    mHand->getTransform()->addLocationY(-225.0f);
+    mHand->getTransform()->setScale(2.5f);
+    
     Actor::Start();
 }
 
@@ -49,17 +57,17 @@ void DoomPlayer::Update(const float _deltaTime)
     //mSprite->getTransform()->addRotation(90.0f * _deltaTime);
     //mSprite->getTransform()->addLocationX(50.0f * _deltaTime);
 
-    if (Inputs::GetKey(SDLK_LEFT))  mSprite->getTransform()->addLocationX(-200.0f * _deltaTime);
-    if (Inputs::GetKey(SDLK_RIGHT)) mSprite->getTransform()->addLocationX( 200.0f * _deltaTime);
-    if (Inputs::GetKey(SDLK_UP))    mSprite->getTransform()->addLocationY( 200.0f * _deltaTime);
-    if (Inputs::GetKey(SDLK_DOWN))  mSprite->getTransform()->addLocationY(-200.0f * _deltaTime);
+    if (Inputs::GetKey(SDLK_LEFT))  mSprite->getTransform()->addLocationX(-1000.0f * _deltaTime);
+    if (Inputs::GetKey(SDLK_RIGHT)) mSprite->getTransform()->addLocationX( 1000.0f * _deltaTime);
+    if (Inputs::GetKey(SDLK_UP))    mSprite->getTransform()->addLocationY( 1000.0f * _deltaTime);
+    if (Inputs::GetKey(SDLK_DOWN))  mSprite->getTransform()->addLocationY(-1000.0f * _deltaTime);
     
     if (Inputs::GetKey(SDLK_z))
     {
         Vector3 forward = mCamera->getLocalTransform()->Forward();
         forward.z = 0.0f;
         forward = Normalize(forward);
-        mTransform3D->addLocation(forward * 1 * _deltaTime);
+        mTransform3D->addLocation(forward * 3 * _deltaTime);
         //mTransform3D->addLocation(mCamera->getLocalTransform()->Forward() * 1 * _deltaTime);
     }
 
@@ -68,21 +76,21 @@ void DoomPlayer::Update(const float _deltaTime)
         Vector3 backward = mCamera->getLocalTransform()->Forward() * -1;
         backward.z = 0.0f;
         backward = Normalize(backward);
-        mTransform3D->addLocation(backward * 1 * _deltaTime);
+        mTransform3D->addLocation(backward * 3 * _deltaTime);
         //mTransform3D->addLocation(mCamera->getLocalTransform()->Forward() * -1 * _deltaTime);
     }
 
     if (Inputs::GetKey(SDLK_q))
     {
         Vector3 left = mCamera->getLocalTransform()->Right() * -1;
-        mTransform3D->addLocation(left * 1 * _deltaTime);
+        mTransform3D->addLocation(left * 3 * _deltaTime);
         //mTransform3D->addLocation(mCamera->getLocalTransform()->Right() * -1 * _deltaTime);
     }
 
     if (Inputs::GetKey(SDLK_d))
     {
         Vector3 right = mCamera->getLocalTransform()->Right();
-        mTransform3D->addLocation(right * 1 * _deltaTime);
+        mTransform3D->addLocation(right * 3 * _deltaTime);
         //mTransform3D->addLocation(mCamera->getLocalTransform()->Right() * 1 * _deltaTime);
     }
     

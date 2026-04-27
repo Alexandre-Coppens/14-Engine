@@ -33,6 +33,8 @@ public:
 	IRenderer* getRenderer()	const	{ return pRenderer; }
 	std::string  getSceneName() const	{ return mName; }
 	Game* getGame()				const	{ return pGame; }
+	std::vector<Actor*> getActorList()	const	{ return mActorList; }
+	std::vector<Actor*> getAddActorList()	const	{ return mAddActorList; }
 
 	RendererSdl* getRendererSdl()	const {
 		RendererSdl* ret = dynamic_cast<RendererSdl*>(pRenderer);

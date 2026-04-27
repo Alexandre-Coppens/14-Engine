@@ -27,24 +27,27 @@ bool Texture::Load(IRenderer& _renderer, const std::string& _filePath)
 	mWidth  = static_cast<Uint16>(surface->w);
 	mHeight = static_cast<Uint16>(surface->h);
 	
+	SDL_Surface* converted = SDL_ConvertSurfaceFormat(surface, SDL_PIXELFORMAT_RGBA32, 0);
+	SDL_FreeSurface(surface);
+	
 	//HACK: Rotating the texture 90d cw to fit with blender export
-	SDL_Surface* rotated = SDL_CreateRGBSurfaceWithFormat(0, surface->h, surface->w, surface->format->BitsPerPixel, surface->format->format);
+	SDL_Surface* rotated = SDL_CreateRGBSurfaceWithFormat(0, converted->h, converted->w, converted->format->BitsPerPixel, converted->format->format);
 
-	int bpp = surface->format->BytesPerPixel;
+	int bpp = converted->format->BytesPerPixel;
 
-	for (int y = 0; y < surface->h; y++)
+	for (int y = 0; y < converted->h; y++)
 	{
-		for (int x = 0; x < surface->w; x++)
+		for (int x = 0; x < converted->w; x++)
 		{
 			memcpy(
-				(char*)rotated->pixels + x * rotated->pitch + (surface->h - 1 - y) * bpp,
-				(char*)surface->pixels + y * surface->pitch + x * bpp,
+				(char*)rotated->pixels + x * rotated->pitch + (converted->h - 1 - y) * bpp,
+				(char*)converted->pixels + y * converted->pitch + x * bpp,
 				bpp
 			);
 		}
 	}
 	
-	SDL_FreeSurface(surface);
+	SDL_FreeSurface(converted);
 	
 	if (_renderer.getType() == RendererType::SDL)
 		return LoadSdl(dynamic_cast<RendererSdl*>(&_renderer), _filePath, rotated);

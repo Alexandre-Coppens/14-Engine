@@ -3,6 +3,8 @@
 #include <fstream>
 #include <iostream>
 
+#include "Switch.h"
+#include "Target.h"
 #include "Engine/Utilitaries/Assets.h"
 #include "Engine/Scene.h"
 #include "Engine/.Prefabs/Object.h"
@@ -254,10 +256,51 @@ void Map::ResolveActor(const std::string& pLine)
         const auto brokePos = BreakString(brokeLine[2], ':');
         const Vector3 pos = Vector3(stof(brokePos[0])* MAP_SCALE, std::stof(brokePos[1])* MAP_SCALE, std::stof(brokeLine[4])) ;
 
-        Actor* door = Scene::ActiveScene->AddActor(new Door());
+        Actor* door = Scene::ActiveScene->AddActor(new Door(brokeLine[5]));
         
         door->getTransform3D()->setLocation(pos);
-        const float rotation = std::stof(brokeLine[2]) + 90.0f;
+        const float rotation = std::stof(brokeLine[3]) + 90.0f;
         door->getTransform3D()->addRotationZ(rotation);
     }
+    if (brokeLine[1] == "Lever")
+    {
+        std::vector<Actor*> actors = Scene::ActiveScene->getAddActorList();
+        std::vector<Door*> doorFound;
+        
+        for (Actor* actor : actors)
+        {
+            Door* door = dynamic_cast<Door*>(actor);
+            if (door != nullptr) doorFound.push_back(door);
+            door = nullptr;
+        }
+        
+        Door* neededDoor = nullptr;
+        if (doorFound.size() > 0)
+        {
+            for (Door* door : doorFound)
+            {
+                if (door->getCode() == brokeLine[5]) neededDoor = door;
+            }
+        }
+        
+        const auto brokePos = BreakString(brokeLine[2], ':');
+        const Vector3 pos = Vector3(stof(brokePos[0])* MAP_SCALE, std::stof(brokePos[1])* MAP_SCALE, std::stof(brokeLine[4])) ;
+
+        Actor* lever = Scene::ActiveScene->AddActor(new Switch(neededDoor));
+        
+        lever->getTransform3D()->setLocation(pos);
+        const float rotation = std::stof(brokeLine[3]) + 90.0f;
+        lever->getTransform3D()->addRotationZ(rotation);
+    }
+    // if (brokeLine[1] == "Demon")
+    // {
+    //     const auto brokePos = BreakString(brokeLine[2], ':');
+    //     const Vector3 pos = Vector3(stof(brokePos[0])* MAP_SCALE, std::stof(brokePos[1])* MAP_SCALE, std::stof(brokeLine[4])) ;
+    //
+    //     Actor* target = Scene::ActiveScene->AddActor(new Target());
+    //     
+    //     target->getTransform3D()->setLocation(pos);
+    //     const float rotation = std::stof(brokeLine[3]) + 90.0f;
+    //     target->getTransform3D()->addRotationZ(rotation);
+    // }
 }

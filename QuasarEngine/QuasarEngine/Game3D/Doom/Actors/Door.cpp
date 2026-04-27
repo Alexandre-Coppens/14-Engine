@@ -9,10 +9,11 @@
 #include "Engine/3D/Mesh.h"
 #include "Engine/Utilitaries/Time.h"
 
-Door::Door() :
+Door::Door(std::string _code) :
     DoomBaseActor()
 {
     mName = "Door";
+    passcode = _code;
     Initialize();
 }
 

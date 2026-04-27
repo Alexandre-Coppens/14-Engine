@@ -3,7 +3,7 @@
 
 #include <map> 
 
-static int texturesCount = 153 ;
+static int texturesCount = 154 ;
 static int meshesCount = 26 ;
 static int shadersCount = 26 ;
 static int shadersProgramsCount = 8 ;
@@ -51,6 +51,7 @@ enum GENERATED_TEXTURE
     PNG_Switch_Off,
     PNG_Switch_On,
     PNG_HUD_InfoBar,
+    PNG_HUD_PistolHand,
     PNG_Unknown,
     PNG_sprite_1_1,
     PNG_sprite_1_2,
@@ -310,6 +311,7 @@ static GENERATED_TEXTURE getTextureEnum(std::string _texture)
    if ( _texture == "Switch_Off" ) return PNG_Switch_Off;
    if ( _texture == "Switch_On" ) return PNG_Switch_On;
    if ( _texture == "HUD_InfoBar" ) return PNG_HUD_InfoBar;
+   if ( _texture == "HUD_PistolHand" ) return PNG_HUD_PistolHand;
    if ( _texture == "Unknown" ) return PNG_Unknown;
    if ( _texture == "sprite-1-1" ) return PNG_sprite_1_1;
    if ( _texture == "sprite-1-2" ) return PNG_sprite_1_2;
@@ -470,6 +472,7 @@ static std::string getTexturePath(GENERATED_TEXTURE _texture)
    case PNG_Switch_Off:  return"Resources/Textures/Doom/Switch_Off.png";
    case PNG_Switch_On:  return"Resources/Textures/Doom/Switch_On.png";
    case PNG_HUD_InfoBar:  return"Resources/Textures/Doom/UI/HUD_InfoBar.png";
+   case PNG_HUD_PistolHand:  return"Resources/Textures/Doom/UI/HUD_PistolHand.png";
    case PNG_Unknown:  return"Resources/Textures/Doom/Unknown.png";
    case PNG_sprite_1_1:  return"Resources/Textures/Doom/sprite-1-1.png";
    case PNG_sprite_1_2:  return"Resources/Textures/Doom/sprite-1-2.png";

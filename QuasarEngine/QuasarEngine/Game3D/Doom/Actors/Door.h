@@ -25,12 +25,15 @@ private:
     bool needClosing {false};
     bool needWaiting {false};
     
+    std::string passcode {""};
+    
 public:
     Model* getModel() const {return mModel;}
+    std::string getCode() const {return passcode;}
 
 private:
 public:
-    Door();
+    Door(std::string _code);
     ~Door() override;
 
     virtual void Initialize()               override;
