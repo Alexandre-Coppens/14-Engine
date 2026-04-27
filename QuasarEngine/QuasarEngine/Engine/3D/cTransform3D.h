@@ -81,9 +81,9 @@ public:
 		rotateAroundX(mRotation.x);
 
 		mWorldQRotation = Quaternion();
-		mWorldQRotation = Concatenate(mQRotation, QuatFromAxisAngle(Up(), ToRad(mWorldRotation.z)));
-		mWorldQRotation = Concatenate(mQRotation, QuatFromAxisAngle(Right(), ToRad(mWorldRotation.y)));
-		mWorldQRotation = Concatenate(mQRotation, QuatFromAxisAngle(Forward(), ToRad(mWorldRotation.x)));
+		mWorldQRotation = Concatenate(mWorldQRotation, QuatFromAxisAngle(Up(), ToRad(mWorldRotation.z)));
+		mWorldQRotation = Concatenate(mWorldQRotation, QuatFromAxisAngle(Right(), ToRad(mWorldRotation.y)));
+		mWorldQRotation = Concatenate(mWorldQRotation, QuatFromAxisAngle(Forward(), ToRad(mWorldRotation.x)));
 	}
 	
 	void setTransform(const Transform3D* _t3D) {
@@ -96,6 +96,10 @@ public:
 	Vector3 Forward()	const { return Transform(Vector3UnitX(), mQRotation); }
 	Vector3 Right()		const { return Transform(Vector3UnitY(), mQRotation); }
 	Vector3 Up()		const { return Transform(Vector3UnitZ(), mQRotation); }
+	
+	Vector3 WorldForward()	const { return Transform(Vector3UnitX(), mWorldQRotation); }
+	Vector3 WorldRight()	const { return Transform(Vector3UnitY(), mWorldQRotation); }
+	Vector3 WorldUp()		const { return Transform(Vector3UnitZ(), mWorldQRotation); }
 
 protected:
 public:

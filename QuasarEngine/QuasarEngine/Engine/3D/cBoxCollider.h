@@ -13,10 +13,11 @@ private:
 public:
 	Vector3 getOffset() const {return mTransform->getLocation();}
 	Vector3 getSize() const {return mTransform->getScale();}
+	Transform3D* getTransform() const {return mTransform;}
 	
-	Vector3 getForward() const {return mTransform->Forward();}	//X Vector
-	Vector3 getRight() const {return mTransform->Right();}		//Y Vector
-	Vector3 getUp() const {return mTransform->Up();}		//Z Vector
+	Vector3 getForward() const {return mTransform->WorldForward();}	//X Vector
+	Vector3 getRight() const {return mTransform->WorldRight();}		//Y Vector
+	Vector3 getUp() const {return mTransform->WorldUp();}			//Z Vector
 	
 	void setOffset(const Vector3 _offset)  {mTransform->setLocation(_offset);}
 	void setSize(const Vector3 _size) {mTransform->setScale(_size);}

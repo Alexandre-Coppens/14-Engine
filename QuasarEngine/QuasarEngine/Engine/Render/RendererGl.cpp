@@ -2,6 +2,7 @@
 
 #include <SDL_image.h>
 #include "glew.h"
+#include "Engine/Scene.h"
 
 #include "Engine/Render/Window.h"
 #include "Engine/Render/VertexArray.h"
@@ -24,7 +25,7 @@ RendererGl::RendererGl():
 	mContext(nullptr), 
 	pSpriteShaderProgram(nullptr),
 	mModelDrawOrder(std::map<ShaderProgram*, std::vector<Model*>>()),
-	mSpriteViewProj(Mat4RowCreateSimpleViewProj(Window::GetSize().x, Window::GetSize().y)),
+	mSpriteViewProj(Mat4RowCreateSimpleViewProj(-Window::GetSize().x, Window::GetSize().y)),
 	mView(Mat4RowCreateLookAt(Vector3(0, 0, 5), Vector3UnitX(), Vector3UnitZ())),
 	mProj(Mat4RowCreatePerspectiveFOV(70.0f, Window::GetSize().x, Window::GetSize().y, 0.01f, 10000.0f))
 {
@@ -80,6 +81,7 @@ void RendererGl::BeginDraw()
 
 void RendererGl::Draw()
 {
+	Scene::ActiveScene->Draw();
 	DrawModels();
 	DrawSprites();
 }
@@ -157,7 +159,7 @@ void RendererGl::Close()
 	SDL_GL_DeleteContext(mContext);
 	delete pSpriteVao;
 	pSpriteVao = nullptr;
-
+	
 	pWindow = nullptr;
 	pSpriteShaderProgram = nullptr;
 	mModelDrawOrder.clear();

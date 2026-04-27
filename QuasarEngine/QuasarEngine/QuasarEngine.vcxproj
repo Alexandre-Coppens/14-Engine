@@ -193,9 +193,166 @@
     <ClCompile Include="Game3D\Doom\Actors\DoomPlayer.cpp" />
     <ClCompile Include="Game3D\Doom\Actors\Door.cpp" />
     <ClCompile Include="Game3D\Doom\Actors\DoomBaseActor.cpp" />
+    <ClCompile Include="Game3D\Doom\Actors\Map.cpp">
+      <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <Optimization>Disabled</Optimization>
+      <SupportJustMyCode>true</SupportJustMyCode>
+      <AssemblerOutput>NoListing</AssemblerOutput>
+      <AssemblerListingLocation>Debug\</AssemblerListingLocation>
+      <UndefineAllPreprocessorDefinitions>false</UndefineAllPreprocessorDefinitions>
+      <BrowseInformation>false</BrowseInformation>
+      <BrowseInformationFile>Debug\</BrowseInformationFile>
+      <CompileAs>Default</CompileAs>
+      <UseDynamicDebugging>false</UseDynamicDebugging>
+      <ConformanceMode>true</ConformanceMode>
+      <DiagnosticsFormat>Column</DiagnosticsFormat>
+      <DisableLanguageExtensions>false</DisableLanguageExtensions>
+      <ErrorReporting>Prompt</ErrorReporting>
+      <ExpandAttributedSource>false</ExpandAttributedSource>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <EnableASAN>false</EnableASAN>
+      <EnableFuzzer>false</EnableFuzzer>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <EnableVectorLength>NotSet</EnableVectorLength>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <GenerateModuleDependencies>false</GenerateModuleDependencies>
+      <GenerateSourceDependencies>false</GenerateSourceDependencies>
+      <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>Default</LanguageStandard_C>
+      <MinimalRebuild>false</MinimalRebuild>
+      <ModuleDependenciesFile>Debug\</ModuleDependenciesFile>
+      <ModuleOutputFile>Debug\</ModuleOutputFile>
+      <OmitDefaultLibName>false</OmitDefaultLibName>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <ObjectFileName>Debug\</ObjectFileName>
+      <CallingConvention>Cdecl</CallingConvention>
+      <ProgramDataBaseFileName>Debug\vc143.pdb</ProgramDataBaseFileName>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>Debug\QuasarEngine.pch</PrecompiledHeaderOutputFile>
+      <PreprocessToFile>false</PreprocessToFile>
+      <PreprocessKeepComments>false</PreprocessKeepComments>
+      <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
+      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+      <ShowIncludes>false</ShowIncludes>
+      <SourceDependenciesFile>Debug\</SourceDependenciesFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <SmallerTypeCheck>false</SmallerTypeCheck>
+      <SpectreMitigation>false</SpectreMitigation>
+      <StructMemberAlignment>Default</StructMemberAlignment>
+      <TrackerLogDirectory>Debug\QuasarEngine.tlog\</TrackerLogDirectory>
+      <TranslateIncludes>false</TranslateIncludes>
+      <MinimalRebuildFromTracking>true</MinimalRebuildFromTracking>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <UseFullPaths>true</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <XMLDocumentationFileName>Debug\</XMLDocumentationFileName>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <IntelJCCErratum>false</IntelJCCErratum>
+      <BuildStlModules>false</BuildStlModules>
+      <TreatAngleIncludeAsExternal>false</TreatAngleIncludeAsExternal>
+      <ExternalWarningLevel>InheritWarningLevel</ExternalWarningLevel>
+      <TreatExternalTemplatesAsInternal>true</TreatExternalTemplatesAsInternal>
+      <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
+      <EnablePREfast>false</EnablePREfast>
+      <OmitFramePointers>false</OmitFramePointers>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>E:\Github\14-Engine\QuasarEngine\QuasarEngine;E:\Github\14-Engine\QuasarEngine\QuasarEngine/Dependencies/GL/SDL/include;E:\Github\14-Engine\QuasarEngine\QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;E:\Github\14-Engine\QuasarEngine\QuasarEngine/Dependencies/SDL2_image-2.8.2\include;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Dependencies\imgui-1.92.7-docking\backends;E:\Github\14-Engine\QuasarEngine\QuasarEngine/Dependencies/imgui-1.92.7-docking</AdditionalIncludeDirectories>
+      <LinkCompiled>true</LinkCompiled>
+    </ClCompile>
     <ClCompile Include="Game3D\Doom\Actors\Switch.cpp" />
     <ClCompile Include="Game3D\Doom\Actors\Target.cpp" />
-    <ClCompile Include="Game3D\Doom\Scenes\Scene_Doom_Test.cpp" />
+    <ClCompile Include="Game3D\Doom\Scenes\Scene_Doom_Test.cpp">
+      <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <Optimization>Disabled</Optimization>
+      <SupportJustMyCode>true</SupportJustMyCode>
+      <AssemblerOutput>NoListing</AssemblerOutput>
+      <AssemblerListingLocation>Debug\</AssemblerListingLocation>
+      <UndefineAllPreprocessorDefinitions>false</UndefineAllPreprocessorDefinitions>
+      <BrowseInformation>false</BrowseInformation>
+      <BrowseInformationFile>Debug\</BrowseInformationFile>
+      <CompileAs>Default</CompileAs>
+      <UseDynamicDebugging>false</UseDynamicDebugging>
+      <ConformanceMode>true</ConformanceMode>
+      <DiagnosticsFormat>Column</DiagnosticsFormat>
+      <DisableLanguageExtensions>false</DisableLanguageExtensions>
+      <ErrorReporting>Prompt</ErrorReporting>
+      <ExpandAttributedSource>false</ExpandAttributedSource>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <EnableASAN>false</EnableASAN>
+      <EnableFuzzer>false</EnableFuzzer>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <EnableVectorLength>NotSet</EnableVectorLength>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <GenerateModuleDependencies>false</GenerateModuleDependencies>
+      <GenerateSourceDependencies>false</GenerateSourceDependencies>
+      <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>Default</LanguageStandard_C>
+      <MinimalRebuild>false</MinimalRebuild>
+      <ModuleDependenciesFile>Debug\</ModuleDependenciesFile>
+      <ModuleOutputFile>Debug\</ModuleOutputFile>
+      <OmitDefaultLibName>false</OmitDefaultLibName>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <ObjectFileName>Debug\</ObjectFileName>
+      <CallingConvention>Cdecl</CallingConvention>
+      <ProgramDataBaseFileName>Debug\vc143.pdb</ProgramDataBaseFileName>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>Debug\QuasarEngine.pch</PrecompiledHeaderOutputFile>
+      <PreprocessToFile>false</PreprocessToFile>
+      <PreprocessKeepComments>false</PreprocessKeepComments>
+      <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
+      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+      <ShowIncludes>false</ShowIncludes>
+      <SourceDependenciesFile>Debug\</SourceDependenciesFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <SmallerTypeCheck>false</SmallerTypeCheck>
+      <SpectreMitigation>false</SpectreMitigation>
+      <StructMemberAlignment>Default</StructMemberAlignment>
+      <TrackerLogDirectory>Debug\QuasarEngine.tlog\</TrackerLogDirectory>
+      <TranslateIncludes>false</TranslateIncludes>
+      <MinimalRebuildFromTracking>true</MinimalRebuildFromTracking>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <UseFullPaths>true</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <XMLDocumentationFileName>Debug\</XMLDocumentationFileName>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <IntelJCCErratum>false</IntelJCCErratum>
+      <BuildStlModules>false</BuildStlModules>
+      <TreatAngleIncludeAsExternal>false</TreatAngleIncludeAsExternal>
+      <ExternalWarningLevel>InheritWarningLevel</ExternalWarningLevel>
+      <TreatExternalTemplatesAsInternal>true</TreatExternalTemplatesAsInternal>
+      <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
+      <EnablePREfast>false</EnablePREfast>
+      <OmitFramePointers>false</OmitFramePointers>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>E:\Github\14-Engine\QuasarEngine\QuasarEngine;E:\Github\14-Engine\QuasarEngine\QuasarEngine/Dependencies/GL/SDL/include;E:\Github\14-Engine\QuasarEngine\QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;E:\Github\14-Engine\QuasarEngine\QuasarEngine/Dependencies/SDL2_image-2.8.2\include;E:\Github\14-Engine\QuasarEngine\QuasarEngine\Dependencies\imgui-1.92.7-docking\backends;E:\Github\14-Engine\QuasarEngine\QuasarEngine/Dependencies/imgui-1.92.7-docking</AdditionalIncludeDirectories>
+      <LinkCompiled>true</LinkCompiled>
+    </ClCompile>
     <ClCompile Include="Game3D\TestingGrounds\Actors\ActorCamera.cpp" />
     <ClCompile Include="Game3D\TestingGrounds\Actors\Cube.cpp" />
     <ClCompile Include="Game3D\TestingGrounds\Scenes\Scene_Cube.cpp" />
@@ -267,6 +424,7 @@
     <ClInclude Include="Game3D\Doom\Actors\DoomPlayer.h" />
     <ClInclude Include="Game3D\Doom\Actors\Door.h" />
     <ClInclude Include="Game3D\Doom\Actors\DoomBaseActor.h" />
+    <ClInclude Include="Game3D\Doom\Actors\Map.h" />
     <ClInclude Include="Game3D\Doom\Actors\Switch.h" />
     <ClInclude Include="Game3D\Doom\Actors\Target.h" />
     <ClInclude Include="Game3D\Doom\Scenes\Scene_Doom_Test.h" />
@@ -275,6 +433,7 @@
     <ClInclude Include="Game3D\TestingGrounds\Scenes\Scene_Cube.h" />
     <Content Include="Engine\.EngineAssets\Models\Cube.obj" />
     <Content Include="Engine\.EngineAssets\Models\Plane.obj" />
+    <Content Include="Engine\.EngineAssets\Models\SkySphere.obj" />
     <Content Include="Engine\.EngineAssets\Models\Sphere.obj" />
     <Content Include="Engine\.EngineAssets\Models\UI_Plane.obj" />
     <Content Include="Engine\.EngineAssets\Shaders\NULL.frag" />
@@ -295,6 +454,10 @@
     <Content Include="Resources\MegaAnim\05_megaman.png" />
     <Content Include="Resources\MegaAnim\06_megaman.png" />
     <Content Include="Resources\MegaAnim\07_megaman.png" />
+    <Content Include="Resources\Miscellaneous\Doom\TestMap_0.map" />
+    <Content Include="Resources\Miscellaneous\Doom\TestMap_1.map" />
+    <Content Include="Resources\Miscellaneous\Doom\TestMap_2.map" />
+    <Content Include="Resources\Miscellaneous\Doom\Test_Actors.map" />
     <Content Include="Resources\Models\Ball.obj" />
     <Content Include="Resources\Models\Bowling\Bowling_Alley_Alley.mtl" />
     <Content Include="Resources\Models\Bowling\Bowling_Alley_Alley.obj" />
@@ -372,11 +535,120 @@
     <Content Include="Resources\Textures\Bowling\Bowling_Alley_TableTop.png" />
     <Content Include="Resources\Textures\Bowling\Bowling_Alley_Trash.png" />
     <Content Include="Resources\Textures\Bowling\Bowling_Alley_Walls.png" />
+    <Content Include="Resources\Textures\Doom\Doom 1-1 Sky.png" />
+    <Content Include="Resources\Textures\Doom\sprite-1-1.png" />
+    <Content Include="Resources\Textures\Doom\sprite-1-2.png" />
+    <Content Include="Resources\Textures\Doom\sprite-1-3.png" />
+    <Content Include="Resources\Textures\Doom\sprite-1-4.png" />
+    <Content Include="Resources\Textures\Doom\sprite-1-5.png" />
+    <Content Include="Resources\Textures\Doom\sprite-1-6.png" />
+    <Content Include="Resources\Textures\Doom\sprite-1-7.png" />
+    <Content Include="Resources\Textures\Doom\sprite-1-8.png" />
+    <Content Include="Resources\Textures\Doom\sprite-1-9.png" />
+    <Content Include="Resources\Textures\Doom\sprite-10-1.png" />
+    <Content Include="Resources\Textures\Doom\sprite-10-2.png" />
+    <Content Include="Resources\Textures\Doom\sprite-10-3.png" />
+    <Content Include="Resources\Textures\Doom\sprite-10-4.png" />
+    <Content Include="Resources\Textures\Doom\sprite-10-5.png" />
+    <Content Include="Resources\Textures\Doom\sprite-10-6.png" />
+    <Content Include="Resources\Textures\Doom\sprite-10-7.png" />
+    <Content Include="Resources\Textures\Doom\sprite-10-8.png" />
+    <Content Include="Resources\Textures\Doom\sprite-10-9.png" />
+    <Content Include="Resources\Textures\Doom\sprite-11-1.png" />
+    <Content Include="Resources\Textures\Doom\sprite-11-2.png" />
+    <Content Include="Resources\Textures\Doom\sprite-11-3.png" />
+    <Content Include="Resources\Textures\Doom\sprite-11-4.png" />
+    <Content Include="Resources\Textures\Doom\sprite-11-5.png" />
+    <Content Include="Resources\Textures\Doom\sprite-11-6.png" />
+    <Content Include="Resources\Textures\Doom\sprite-11-7.png" />
+    <Content Include="Resources\Textures\Doom\sprite-11-8.png" />
+    <Content Include="Resources\Textures\Doom\sprite-11-9.png" />
+    <Content Include="Resources\Textures\Doom\sprite-12-1.png" />
+    <Content Include="Resources\Textures\Doom\sprite-12-2.png" />
+    <Content Include="Resources\Textures\Doom\sprite-12-3.png" />
+    <Content Include="Resources\Textures\Doom\sprite-12-4.png" />
+    <Content Include="Resources\Textures\Doom\sprite-12-5.png" />
+    <Content Include="Resources\Textures\Doom\sprite-12-6.png" />
+    <Content Include="Resources\Textures\Doom\sprite-12-7.png" />
+    <Content Include="Resources\Textures\Doom\sprite-12-8.png" />
+    <Content Include="Resources\Textures\Doom\sprite-2-1.png" />
+    <Content Include="Resources\Textures\Doom\sprite-2-2.png" />
+    <Content Include="Resources\Textures\Doom\sprite-2-3.png" />
+    <Content Include="Resources\Textures\Doom\sprite-2-4.png" />
+    <Content Include="Resources\Textures\Doom\sprite-2-5.png" />
+    <Content Include="Resources\Textures\Doom\sprite-2-6.png" />
+    <Content Include="Resources\Textures\Doom\sprite-2-7.png" />
+    <Content Include="Resources\Textures\Doom\sprite-2-8.png" />
+    <Content Include="Resources\Textures\Doom\sprite-2-9.png" />
+    <Content Include="Resources\Textures\Doom\sprite-3-1.png" />
+    <Content Include="Resources\Textures\Doom\sprite-3-2.png" />
+    <Content Include="Resources\Textures\Doom\sprite-3-3.png" />
+    <Content Include="Resources\Textures\Doom\sprite-3-4.png" />
+    <Content Include="Resources\Textures\Doom\sprite-3-5.png" />
+    <Content Include="Resources\Textures\Doom\sprite-3-6.png" />
+    <Content Include="Resources\Textures\Doom\sprite-3-7.png" />
+    <Content Include="Resources\Textures\Doom\sprite-3-8.png" />
+    <Content Include="Resources\Textures\Doom\sprite-3-9.png" />
+    <Content Include="Resources\Textures\Doom\sprite-4-1.png" />
+    <Content Include="Resources\Textures\Doom\sprite-4-2.png" />
+    <Content Include="Resources\Textures\Doom\sprite-4-3.png" />
+    <Content Include="Resources\Textures\Doom\sprite-4-4.png" />
+    <Content Include="Resources\Textures\Doom\sprite-4-5.png" />
+    <Content Include="Resources\Textures\Doom\sprite-4-6.png" />
+    <Content Include="Resources\Textures\Doom\sprite-4-7.png" />
+    <Content Include="Resources\Textures\Doom\sprite-4-8.png" />
+    <Content Include="Resources\Textures\Doom\sprite-4-9.png" />
+    <Content Include="Resources\Textures\Doom\sprite-5-1.png" />
+    <Content Include="Resources\Textures\Doom\sprite-5-2.png" />
+    <Content Include="Resources\Textures\Doom\sprite-5-3.png" />
+    <Content Include="Resources\Textures\Doom\sprite-5-4.png" />
+    <Content Include="Resources\Textures\Doom\sprite-5-5.png" />
+    <Content Include="Resources\Textures\Doom\sprite-5-6.png" />
+    <Content Include="Resources\Textures\Doom\sprite-5-7.png" />
+    <Content Include="Resources\Textures\Doom\sprite-5-8.png" />
+    <Content Include="Resources\Textures\Doom\sprite-5-9.png" />
+    <Content Include="Resources\Textures\Doom\sprite-6-1.png" />
+    <Content Include="Resources\Textures\Doom\sprite-6-2.png" />
+    <Content Include="Resources\Textures\Doom\sprite-6-3.png" />
+    <Content Include="Resources\Textures\Doom\sprite-6-4.png" />
+    <Content Include="Resources\Textures\Doom\sprite-6-5.png" />
+    <Content Include="Resources\Textures\Doom\sprite-6-6.png" />
+    <Content Include="Resources\Textures\Doom\sprite-6-7.png" />
+    <Content Include="Resources\Textures\Doom\sprite-6-8.png" />
+    <Content Include="Resources\Textures\Doom\sprite-6-9.png" />
+    <Content Include="Resources\Textures\Doom\sprite-7-1.png" />
+    <Content Include="Resources\Textures\Doom\sprite-7-2.png" />
+    <Content Include="Resources\Textures\Doom\sprite-7-3.png" />
+    <Content Include="Resources\Textures\Doom\sprite-7-4.png" />
+    <Content Include="Resources\Textures\Doom\sprite-7-5.png" />
+    <Content Include="Resources\Textures\Doom\sprite-7-6.png" />
+    <Content Include="Resources\Textures\Doom\sprite-7-7.png" />
+    <Content Include="Resources\Textures\Doom\sprite-7-8.png" />
+    <Content Include="Resources\Textures\Doom\sprite-7-9.png" />
+    <Content Include="Resources\Textures\Doom\sprite-8-1.png" />
+    <Content Include="Resources\Textures\Doom\sprite-8-2.png" />
+    <Content Include="Resources\Textures\Doom\sprite-8-3.png" />
+    <Content Include="Resources\Textures\Doom\sprite-8-4.png" />
+    <Content Include="Resources\Textures\Doom\sprite-8-5.png" />
+    <Content Include="Resources\Textures\Doom\sprite-8-6.png" />
+    <Content Include="Resources\Textures\Doom\sprite-8-7.png" />
+    <Content Include="Resources\Textures\Doom\sprite-8-8.png" />
+    <Content Include="Resources\Textures\Doom\sprite-8-9.png" />
+    <Content Include="Resources\Textures\Doom\sprite-9-1.png" />
+    <Content Include="Resources\Textures\Doom\sprite-9-2.png" />
+    <Content Include="Resources\Textures\Doom\sprite-9-3.png" />
+    <Content Include="Resources\Textures\Doom\sprite-9-4.png" />
+    <Content Include="Resources\Textures\Doom\sprite-9-5.png" />
+    <Content Include="Resources\Textures\Doom\sprite-9-6.png" />
+    <Content Include="Resources\Textures\Doom\sprite-9-7.png" />
+    <Content Include="Resources\Textures\Doom\sprite-9-8.png" />
+    <Content Include="Resources\Textures\Doom\sprite-9-9.png" />
     <Content Include="Resources\Textures\Doom\Switch_Off.png" />
     <Content Include="Resources\Textures\Doom\Switch_On.png" />
     <Content Include="Resources\Textures\Doom\DemonFacing.png" />
     <Content Include="Resources\Textures\Doom\Door.png" />
     <Content Include="Resources\Textures\Doom\UI\HUD_InfoBar.png" />
+    <Content Include="Resources\Textures\Doom\Unknown.png" />
     <Content Include="Resources\Textures\Grass_Gradient.png" />
     <Content Include="Resources\Textures\Pin.png" />
     <Content Include="Resources\Textures\pokeball.png" />

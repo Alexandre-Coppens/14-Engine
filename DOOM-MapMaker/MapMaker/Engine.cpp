@@ -266,6 +266,7 @@ void Engine::Update()
 
 void Engine::ChangeItem(string name, string value)
 {
+	value = "0" + value;
 	switch (actionGizmo)
 	{
 	case Edge:

@@ -32,7 +32,7 @@ void Transform3D::ComputeWorldTransform()
     mWorldRotation = Vector3Zero();
     mWorldLocation = Vector3Zero();
     if (mSpace == LOCAL)
-    { //pOwner is not found
+    { 
         mWorldScale *= pOwner->getTransform3D()->getScale();
         mWorldRotation += pOwner->getTransform3D()->getRotation();
         mWorldLocation += pOwner->getTransform3D()->getLocation();
@@ -40,7 +40,6 @@ void Transform3D::ComputeWorldTransform()
     mWorldScale *= getScale();
     mWorldRotation += getRotation();
     mWorldLocation += getLocation();
-    //mWorldLocation *= 0.2f;
     mRotation.x = Fmod(mRotation.x, 360.0f);
     mWorldRotation.x = Fmod(mWorldRotation.x, 360.0f);
     computeRotations();

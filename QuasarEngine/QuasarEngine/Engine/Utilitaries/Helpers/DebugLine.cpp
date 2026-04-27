@@ -25,7 +25,7 @@ void DebugLine::Initialize()
 
 void DebugLine::Start()
 {
-    mModel->setMesh(Assets::GetMesh(OBJ_cube));
+    //mModel->setMesh(Assets::GetMesh(OBJ_cube));
     Actor::Start();
 }
 

@@ -2,16 +2,13 @@
 
 #include "Engine/.Prefabs/Object.h"
 #include "Engine/3D/cCollider3D.h"
-#include "Engine/Utilitaries/Assets.h"
 #include "Engine/Utilitaries/Log.h"
 
 #include "Engine/Render/Shaders/Shader.h"
-#include "Engine/Render/Shaders/ShaderProgram.h"
 #include "Engine/Render/RendererGl.h"
+#include "Game3D/Doom/Actors/Map.h"
+#include "Game3D/Bowling/Actors/Player3D.h"
 #include "Game3D/Doom/Actors/DoomPlayer.h"
-#include "Game3D/Doom/Actors/Door.h"
-#include "Game3D/Doom/Actors/Switch.h"
-#include "Game3D/Doom/Actors/Target.h"
 
 Scene_Doom_Test::Scene_Doom_Test(std::string _name)
 {
@@ -32,30 +29,18 @@ void Scene_Doom_Test::Start()
         return;
     }
     
+    //Load Map
+    mMap = new Map("Resources/Miscellaneous/Doom/TestMap_2.map");
+    
     //Load Actors
     Actor* player = AddActor(new DoomPlayer());
-
-    Actor* door = AddActor(new Door());
-    Actor* lever = AddActor(new Switch(dynamic_cast<Door*>(door)));
-    Actor* target = AddActor(new Target());
-    Actor* grass = AddActor(new Object("Grass", OBJ_Grass, PNG_Grass_Gradient, PROG_Grass));
-    Actor* floor = AddActor(new Object("Floor", OBJ_Plane, PNG_Voronoi, PROG_NoiseHeight));
+    Actor* skysphere = AddActor(new Object("SkySphere", OBJ_SkySphere, PNG_Doom_1_1_Sky, PROG_BasicModel));
 
     //Modify Actors
     player->getTransform3D()->addLocationZ(1.0f);
     player->getTransform3D()->addRotationZ(180.0f);
-
-    lever->getTransform3D()->setLocation(Vector3{1.0f, 0.0f, 0.5f});
-    lever->getTransform3D()->addRotationY(90.0f);
     
-    target->getTransform3D()->addLocationX(-2.0f);
-    //target->getTransform3D()->addLocationZ(0.5f);
-    
-    grass->GetComponent<Collider3D>()->setActive(false);
-    grass->GetComponent<Model>()->getMaterial()->setDrawOption(DrawOption::INSTANCED);
-    
-    floor->getTransform3D()->setScale(Vector3(20.0f, 20.0f, 0.01f));
-    floor->GetComponent<Model>()->getMaterial()->setDrawOption(DrawOption::TESSELATION);
+    skysphere->GetComponent<Collider3D>()->setActive(false);
 }
 
 void Scene_Doom_Test::Update(float _deltaTime)
@@ -63,7 +48,24 @@ void Scene_Doom_Test::Update(float _deltaTime)
     Scene::Update(_deltaTime);
 }
 
+void Scene_Doom_Test::Draw()
+{
+    Scene::Draw();
+
+    glEnable(GL_DEPTH_TEST);
+    glDisable(GL_BLEND);
+    glPolygonMode( GL_FRONT_AND_BACK, GL_FILL );
+	
+    ShaderProgram* shader = Assets::GetShaderProgram(PROG_BasicModel);
+    shader->Use();
+    shader->SetMatrix4Row("uViewProj", dynamic_cast<RendererGl*>(pRenderer)->getViewMatrix());
+
+    mMap->Draw(shader);
+}
+
 void Scene_Doom_Test::Close()
 {
     Scene::Close();
+    delete mMap;
+    mMap = nullptr;
 }

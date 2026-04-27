@@ -46,6 +46,11 @@ void Scene::Update(const float _deltaTime)
 	CollisionManager::UpdatesCollisions();
 }
 
+//For non-Actor nor UI Draw needs
+void Scene::Draw()
+{
+}
+
 //Update After Rendering
 void Scene::LateUpdate()
 {

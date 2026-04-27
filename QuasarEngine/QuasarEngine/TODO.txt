@@ -1,10 +1,5 @@
 ﻿ASSETS/
     -Instead of checking number of objects in list, check every objects for Generated.h reload.
-    -Add a ShaderProgram creator for generated.h
-    
-SHADERS/
-    -Add a simplification of modification of the uniform in the shaders.
-    -Add a way to add multiple textures in a shader.
     
 COLLISIONS/
     -Add a first sphere check before testing every collisions in it.
@@ -13,3 +8,6 @@ COLLISIONS/
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=    
 FOR NEXT ENGINE:
 change normal pointers to std ones
+a config file to tell:
+    -Windows size
+    -What mode is used (load asset, engine, game)

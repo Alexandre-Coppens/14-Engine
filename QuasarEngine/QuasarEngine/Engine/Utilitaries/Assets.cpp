@@ -204,6 +204,17 @@ void Assets::WriteAssetsOnFile(std::string _filePath)
 		file << "   { \"" + it->second + "\", " + it->second + " },\n";
 	}
 	file << "};\n";
+	
+	file << "\n";
+	file << "static GENERATED_TEXTURE getTextureEnum(std::string _texture)\n";
+	file << "{\n";
+	for (auto it = mGeneratedTextures.begin(); it != mGeneratedTextures.end(); it++)
+	{
+		std::vector<std::string> breakPath = BreakString(it->first, '/');
+		file << "   if ( _texture == \"" + BreakString(breakPath[breakPath.size()-1], '.')[0] +"\" ) return " + it->second  + ";\n";
+	}
+	file << "	return PNG_NullTexture;\n";
+	file << "};\n";
 
 	file << "\n";
 	file << "static std::string getTexturePath(GENERATED_TEXTURE _texture)\n";
@@ -216,6 +227,7 @@ void Assets::WriteAssetsOnFile(std::string _filePath)
 	}
 	file << "	}\n";
 	file << "};\n";
+	
 	
 	file << "\n";
 	file << "static std::string getMeshPath(GENERATED_MESHES _mesh)\n";

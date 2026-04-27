@@ -78,6 +78,7 @@ void Game::Loop()
 void Game::Render()
 {
 	mRenderer->BeginDraw();
+	
 	mRenderer->Draw();
 	ImguiManager::Render();
 	mRenderer->EndDraw();

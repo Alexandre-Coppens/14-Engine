@@ -72,6 +72,7 @@ public:
 
 public:
 	Actor();
+	Actor(bool initialize);
 	virtual ~Actor();
 
 	virtual void	Initialize();

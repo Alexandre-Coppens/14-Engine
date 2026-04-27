@@ -32,7 +32,7 @@ void Door::Start()
     mModel->setMesh(Assets::GetMesh(OBJ_cube));
     mModel->getMaterial()->SetTexture("uTexture", Assets::GetTexture(PNG_Door));
     mTransform3D->addLocationZ(0.5f);
-    mTransform3D->setScale(Vector3(0.05f, 1.0f, 1.0f));
+    mTransform3D->setScale(Vector3(0.05f, 1.2f, 1.0f));
     startHeight = mTransform3D->getLocation().z;
     DoomBaseActor::Start();
 }

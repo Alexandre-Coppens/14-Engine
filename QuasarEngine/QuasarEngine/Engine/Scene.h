@@ -64,6 +64,7 @@ public:
 	virtual void Start();
 	virtual void EarlyUpdate();
 	virtual void Update(float _deltaTime);
+	virtual void Draw();
 	virtual void LateUpdate();
 
 	virtual void Open(Game* _pGame);

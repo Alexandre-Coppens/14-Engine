@@ -26,6 +26,7 @@ void UI_WrittingBox::Update()
 	else isHovering = false;
 	if (isHovering)
 	{
+		if (contentString == ".")  contentString = "0.";
 		if (IsKeyPressed(KEY_BACKSPACE))
 		{
 			if (contentString.length() > 0) contentString.erase(contentString.length() - 1);
@@ -41,7 +42,7 @@ void UI_WrittingBox::Update()
 					// NOTE: Only allow keys in range [32..125]
 					if ((key >= 44) && (key <= 57) && (contentString.length() < maxCharacters))
 					{
-						if (contentString.length() > 0) if (stof(contentString) == 0.0f) contentString = "";
+						//if (contentString.length() > 0) if (stof(contentString) == 0.0f) contentString = "";
 						contentString += (char)key;
 						Engine::instance->ChangeItem(name, contentString);
 					}

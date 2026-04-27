@@ -13,6 +13,15 @@ Actor::Actor():
 	DEBUGAddClass("Actor");
 }
 
+//Use this Init if it's created as parent NOT AS CHILD.
+Actor::Actor(bool _isSpawnedParent):
+	mScene(Scene::ActiveScene),
+	mState(ActorState::Active)
+{
+	DEBUGAddClass("Actor");
+	Initialize();
+}
+
 Actor::~Actor() = default;
 
 //Call this at the end of your Initialize

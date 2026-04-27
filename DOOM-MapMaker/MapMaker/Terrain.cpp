@@ -94,7 +94,7 @@ void Terrain::ComputeWall(Wall& wall)
 	wall.size = Vector3{
 		1.0f,
 		Vector2Distance(Terrain::wallVertices[wall.start], Terrain::wallVertices[wall.end]),
-		wall.height};
+		wall.scale};
 	
 	wall.computed = true;
 }
@@ -135,7 +135,7 @@ void Terrain::ISCursorOnSomething(Vector2 position)
 	}
 	for (auto v : wallVertices)
 	{
-		if (Vector2Distance(position, v.second) <= 5)
+		if (Vector2Distance(position, v.second) <= 5.0f)
 		{
 			nearGizmo = Vertex;
 			nearIndice = v.first;
@@ -145,7 +145,7 @@ void Terrain::ISCursorOnSomething(Vector2 position)
 	for (int i = 0; i < wallList.size(); i++)
 	{
 		Wall wall = wallList[i];
-		if (CheckCollisionPointLine(position, wallVertices[wall.start], wallVertices[wall.end], ceil(wallDrawSize)))
+		if (CheckCollisionPointLine(position, wallVertices[wall.start], wallVertices[wall.end], ceil(wallDrawSize) * 2.0f))
 		{
 			nearGizmo = Edge;
 			nearIndice = i;
@@ -215,7 +215,7 @@ void Terrain::SaveMap(){
 					to_string(actor.location.x) + ":" + to_string(actor.location.y) + " " +
 					to_string(actor.rotation)   + " " +
 					to_string(actor.heigth)     + " " +
-					actor.bonus					+  "\n";
+					actor.bonus + "."			+  "\n";
 		} 
 		saveFile.close();
 	}
