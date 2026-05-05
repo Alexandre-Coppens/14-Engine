@@ -42,7 +42,7 @@ int main(int argc, char* argv[])
 	// };
 
 	std::vector<Scene*> SceneGlList{
-		new Scene_Doom_Test("Doom Test")
+		new Scene_Cube("Cube Scene")
 	};
 	
 	switch (gameType)

@@ -5,8 +5,8 @@
 
 static int texturesCount = 154 ;
 static int meshesCount = 26 ;
-static int shadersCount = 26 ;
-static int shadersProgramsCount = 8 ;
+static int shadersCount = 30 ;
+static int shadersProgramsCount = 9 ;
 
 enum GENERATED_TEXTURE
 {
@@ -213,6 +213,10 @@ enum GENERATED_SHADERS
     TESE_NoiseHeight,
     VERT_NoiseHeight,
     FRAG_Normal,
+    FRAG_Planet_Base,
+    TESC_Planet_Base,
+    TESE_Planet_Base,
+    VERT_Planet_Base,
     FRAG_Simple,
     VERT_Simple,
     FRAG_SimpleTess,
@@ -233,6 +237,7 @@ enum GENERATED_SHADER_PROGRAMS
     PROG_Geometry,
     PROG_Grass,
     PROG_NoiseHeight,
+    PROG_Planet_Base,
     PROG_Simple,
     PROG_Sprite,
     PROG_Transparent,
@@ -255,6 +260,10 @@ static std::map<std::string, GENERATED_SHADERS> stringToShader
    { "TESE_NoiseHeight", TESE_NoiseHeight },
    { "VERT_NoiseHeight", VERT_NoiseHeight },
    { "FRAG_Normal", FRAG_Normal },
+   { "FRAG_Planet_Base", FRAG_Planet_Base },
+   { "TESC_Planet_Base", TESC_Planet_Base },
+   { "TESE_Planet_Base", TESE_Planet_Base },
+   { "VERT_Planet_Base", VERT_Planet_Base },
    { "FRAG_Simple", FRAG_Simple },
    { "VERT_Simple", VERT_Simple },
    { "FRAG_SimpleTess", FRAG_SimpleTess },
@@ -640,6 +649,10 @@ static std::string getShaderPath(GENERATED_SHADERS _shader)
    case TESE_NoiseHeight:  return"Resources/Shaders/NoiseHeight.tese";
    case VERT_NoiseHeight:  return"Resources/Shaders/NoiseHeight.vert";
    case FRAG_Normal:  return"Resources/Shaders/Normal.frag";
+   case FRAG_Planet_Base:  return"Resources/Shaders/Planet_Base.frag";
+   case TESC_Planet_Base:  return"Resources/Shaders/Planet_Base.tesc";
+   case TESE_Planet_Base:  return"Resources/Shaders/Planet_Base.tese";
+   case VERT_Planet_Base:  return"Resources/Shaders/Planet_Base.vert";
    case FRAG_Simple:  return"Resources/Shaders/Simple.frag";
    case VERT_Simple:  return"Resources/Shaders/Simple.vert";
    case FRAG_SimpleTess:  return"Resources/Shaders/SimpleTess.frag";
@@ -663,6 +676,7 @@ static std::string getShaderProgramPath(GENERATED_SHADER_PROGRAMS _program)
    case PROG_Geometry:  return"Resources/Shaders/Programs/Geometry.prog";
    case PROG_Grass:  return"Resources/Shaders/Programs/Grass.prog";
    case PROG_NoiseHeight:  return"Resources/Shaders/Programs/NoiseHeight.prog";
+   case PROG_Planet_Base:  return"Resources/Shaders/Programs/Planet_Base.prog";
    case PROG_Simple:  return"Resources/Shaders/Programs/Simple.prog";
    case PROG_Sprite:  return"Resources/Shaders/Programs/Sprite.prog";
    case PROG_Transparent:  return"Resources/Shaders/Programs/Transparent.prog";

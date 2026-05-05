@@ -342,11 +342,16 @@
     <Content Include="Resources\Shaders\NoiseHeight.tese" />
     <Content Include="Resources\Shaders\NoiseHeight.vert" />
     <Content Include="Resources\Shaders\Normal.frag" />
+    <Content Include="Resources\Shaders\Planet_Base.frag" />
+    <Content Include="Resources\Shaders\Planet_Base.tesc" />
+    <Content Include="Resources\Shaders\Planet_Base.tese" />
+    <Content Include="Resources\Shaders\Planet_Base.vert" />
     <Content Include="Resources\Shaders\Programs\BasicModel.prog" />
     <Content Include="Resources\Shaders\Programs\DebugUV.prog" />
     <Content Include="Resources\Shaders\Programs\Geometry.prog" />
     <Content Include="Resources\Shaders\Programs\Grass.prog" />
     <Content Include="Resources\Shaders\Programs\NoiseHeight.prog" />
+    <Content Include="Resources\Shaders\Programs\Planet_Base.prog" />
     <Content Include="Resources\Shaders\Programs\Simple.prog" />
     <Content Include="Resources\Shaders\Programs\Sprite.prog" />
     <Content Include="Resources\Shaders\Programs\Transparent.prog" />
