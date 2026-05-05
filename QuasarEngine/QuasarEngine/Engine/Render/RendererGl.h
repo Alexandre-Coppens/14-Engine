@@ -4,8 +4,8 @@
 
 #include "Engine/Utilitaries/CommonLib.h"
 #include "Engine/Render/IRenderer.h"
-#include "Engine/Render/VertexArray.h"
 
+class VertexArray;
 class CameraManager;
 class Model;
 class ShaderProgram;
@@ -13,12 +13,14 @@ class RendererGl : public IRenderer
 {
 private:
 	Window* pWindow;
-	CameraManager* pCameraManager;
+	SDL_GLContext mContext;
+	
 	VertexArray* pSpriteVao;
 	ShaderProgram* pSpriteShaderProgram;
-	SDL_GLContext mContext;
-	std::vector<Sprite2D*> mSpriteList;
+	std::vector<std::vector<Sprite2D*>> mSpriteList;
+	
 	std::map<ShaderProgram*, std::vector<Model*>> mModelDrawOrder;
+	
 	Matrix4Row mView = Matrix4Row::Mat4RowIdentity();
 	Matrix4Row mProj = Matrix4Row::Mat4RowIdentity();
 	Matrix4Row mSpriteViewProj = Matrix4Row::Mat4RowIdentity();
@@ -27,6 +29,9 @@ public:
 	void setViewMatrix(const Matrix4Row _view) {mView = _view;}
 	void setShaderProgram(ShaderProgram* _pShaderProgram) { pSpriteShaderProgram = _pShaderProgram; }
 
+	Matrix4Row getViewMatrix() { return mView * mProj; }
+	SDL_GLContext getContext() { return mContext; }
+	
 public:
 	RendererGl();
 	virtual ~RendererGl() override;
@@ -43,8 +48,8 @@ public:
 	void DrawModels() const;
 	void DrawSprites();
 	
-	void AddSprite(Sprite2D* _pSprite);
-	void RemoveSprite(Sprite2D* _pSprite);
+	void AddSprite(Sprite2D* _pSprite, int _drawOrder);
+	void RemoveSprite(Sprite2D* _pSprite, int _drawOrder);
 
 	void AddModel(Model* _pModel, ShaderProgram* _pShaderProgram);
 	void RemoveModel(Model* _pModel, ShaderProgram* _pShaderProgram);

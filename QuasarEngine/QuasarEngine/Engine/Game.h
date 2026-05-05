@@ -13,25 +13,26 @@ class Scene;
 class Game
 {
 private:
-	Window* pWindow;
-	std::string mTitle;
+	Window*	   mWindow   { nullptr };
+	IRenderer* mRenderer { nullptr };
 
-	IRenderer* pRenderer;
-
-	std::vector<Scene*> mScenes;
-	Uint8 mCurrentScene{ 0 };
-	float mLastUpdate{ 0 };
+	std::string mTitle	 { "Game" };
 	
-	int mChangeSceneTo {-1};
+	std::vector<Scene*> mScenes;
+	Uint8 mCurrentScene { 0 };
+	int mChangeSceneTo  {-1 };
+
+	float mLastUpdate   { 0 };
 
 public:
 
 private:
 	inline void ChangeScene()
 	{
-		mScenes[mCurrentScene]->UnLoad();
-		mCurrentScene = mChangeSceneTo;
-		mScenes[mCurrentScene]->Load(this);
+		mScenes[mCurrentScene]->Close();
+		mCurrentScene = static_cast<Uint8>(mChangeSceneTo);
+		mScenes[mCurrentScene]->setRenderer(mRenderer);
+		mScenes[mCurrentScene]->Open(this);
 		mChangeSceneTo = -1;
 	}
 	
@@ -47,7 +48,7 @@ public:
     template<typename T>
     inline void SetScene() {
         int target = -1;
-        for (int i = 0; i < mScenes.size(); i++)
+        for (int i = 0; i < static_cast<int>(mScenes.size()); i++)
         {
             if (dynamic_cast<T*>(mScenes[i]) != nullptr)
             {

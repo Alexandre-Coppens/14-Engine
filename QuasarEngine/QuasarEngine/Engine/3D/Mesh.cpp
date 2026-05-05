@@ -1,10 +1,6 @@
 #include "Mesh.h"
 
-#include "Engine/Render/Shader.h"
 #include "Engine/Render/VertexArray.h"
-#include "Engine/Render/ShaderProgram.h"
-
-#include "Engine/Utilitaries/Assets.h"
 
 Mesh::Mesh():
 	pVao(nullptr)
@@ -27,11 +23,12 @@ void Mesh::Unload()
 	delete pVao;
 	pVao = nullptr;
 }
+
 float* Mesh::ToVerticeArray()
 {
 	float* array = new float[mVertices.size() * 8];
 	int counter = 0;
-	for (int i = 0; i < mVertices.size(); i++)
+	for (int i = 0; i < static_cast<int>(mVertices.size()); i++)
 	{
 		array[counter+0] = mVertices[i].position.x;
 		array[counter+1] = mVertices[i].position.y;

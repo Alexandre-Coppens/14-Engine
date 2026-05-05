@@ -1,0 +1,5 @@
+﻿S VERT_BasicModel
+S FRAG_Transparency
+!U UMatrix uWorldTransform
+!U UMatrix uViewProj
+T 0 uTexture

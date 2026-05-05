@@ -4,6 +4,7 @@
 #include <cstring>
 #include <string>
 #include <array>
+#include <vector>
 
 using std::array;
 
@@ -15,6 +16,24 @@ enum Direction
 	RIGHT,
 	CENTER
 };
+
+//Break a string via a breaker
+static inline std::vector<std::string> BreakString(std::string _str, char _breaker) {
+	std::vector<std::string> r;
+	std::string word;
+	for(int i = 0; i < static_cast<int>(_str.size()); i++)
+	{
+		if (_str[i] == _breaker) {
+			r.push_back(word);
+			word.clear();
+		}
+		else{
+			word += _str[i];
+		}
+	}
+	r.push_back(word);
+	return r;
+}
 
 //All Structs
 struct Vector2
@@ -294,6 +313,12 @@ inline Vector3 operator*(const float& f, const Vector3& v1)
 inline Vector3 operator*(const Vector3& v1, const float& f)
 {
 	return MultiplyScalar(v1, f);
+}
+inline Vector3& operator*=(Vector3& v1, Vector3 v2) {
+	v1.x *= v2.x;
+	v1.y *= v2.y;
+	v1.z *= v2.z;
+	return v1;
 }
 inline Vector3& operator*=(Vector3& v, float f) {
 	v.x *= f;

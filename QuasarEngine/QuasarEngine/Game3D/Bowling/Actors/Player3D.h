@@ -11,7 +11,8 @@ private:
 public:
     Player3D();
     ~Player3D() override;
-
+    
+    void Initialize()               override;
     void Start()					override;
     void Update(float _deltaTime)	override;
     void Destroy()					override;

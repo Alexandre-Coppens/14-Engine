@@ -1,0 +1,13 @@
+﻿ASSETS/
+    -Instead of checking number of objects in list, check every objects for Generated.h reload.
+    
+COLLISIONS/
+    -Add a first sphere check before testing every collisions in it.
+    
+    
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=    
+FOR NEXT ENGINE:
+change normal pointers to std ones
+a config file to tell:
+    -Windows size
+    -What mode is used (load asset, engine, game)

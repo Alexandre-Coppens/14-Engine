@@ -1,0 +1,315 @@
+#include <iostream>
+#include <fstream>
+
+#include "Terrain.h"
+
+#include "Engine.h"
+#include "WinDialogue.h"
+
+using std::ofstream;
+using std::ifstream;
+using std::getline;
+using std::to_string;
+using std::cout;
+
+map<int, string> Terrain::dictionary;
+vector<Terrain::Wall> Terrain::wallList;
+map<int, Vector2> Terrain::wallVertices;
+
+vector<Terrain::Floor> Terrain::floorList;
+vector<Terrain::Actor> Terrain::actorList;
+
+int Terrain::verticesCount { 0 };
+Vector2 Terrain::position{ 0,0 };
+short Terrain::maxLayer{ 5 };
+
+//
+float Terrain::gridMeterInPixels;
+int Terrain::gridSubdivision;
+float Terrain::wallDrawSize;
+
+//
+Gizmo Terrain::nearGizmo {Vertex};
+int Terrain::nearIndice{-1};
+
+//void Terrain::SaveMap(string filename);
+//void Terrain::LoadMap(string filename);
+
+Terrain::Terrain() {
+}
+
+Terrain::~Terrain(){
+}
+
+void Terrain::Update()
+{
+}
+
+int Terrain::AddNewVertex(Vector2 pos) {
+	verticesCount++;
+	wallVertices[verticesCount] = pos;
+	return verticesCount;
+}
+
+void Terrain::AddNewWall(Wall wall)
+{
+	wallList.push_back(wall);
+}
+
+void Terrain::AddNewFloor(Floor _floor)
+{
+	floorList.push_back(_floor);
+}
+
+void Terrain::AddToDictionary(int index, string name) {
+	if (AssetList::SpriteList.find(name) == AssetList::SpriteList.end()) {
+		dictionary[index] = "Unknown";
+	}
+	else {
+		dictionary[index] = name;
+	}
+}
+
+int Terrain::CheckInDictionary(string name) {
+	for (auto d : dictionary) {
+		if (name == d.second) {
+			return d.first;
+		}
+	}
+	int newInt = (int)dictionary.size();
+	dictionary[newInt] = name;
+	return newInt;
+}
+
+void Terrain::ComputeWall(Wall& wall)
+{
+	wall.location = Vector3{
+		(Terrain::wallVertices[wall.start].x + Terrain::wallVertices[wall.end].x) * 0.5f,
+		(Terrain::wallVertices[wall.start].y + Terrain::wallVertices[wall.end].y) * 0.5f,
+		wall.height };
+	wall.rotation = Vector3{
+		0.0f,
+		0.0f,
+		Vector2LineAngle(Terrain::wallVertices[wall.start], Terrain::wallVertices[wall.end]) * RAD2DEG };
+	wall.size = Vector3{
+		1.0f,
+		Vector2Distance(Terrain::wallVertices[wall.start], Terrain::wallVertices[wall.end]),
+		wall.scale};
+	
+	wall.computed = true;
+}
+
+void Terrain::ComputeFloor(Floor& _floor)
+{
+	//_floor.dictionaryTexture = CheckInDictionary(Engine::instance->GetTileMenu()->GetTexture());
+	_floor.verticesLocation.clear();
+	Vector2 center = Vector2Zero();
+	Vector2 v2;
+	for (int i : _floor.vertices)
+	{
+		v2 = Terrain::wallVertices[i];
+		_floor.verticesLocation.push_back(v2);
+		center = Vector2Add(center, v2);
+	}
+	_floor.center = Vector2{center.x / _floor.vertices.size(), center.y / _floor.vertices.size() };
+	_floor.verticesLocation.insert(_floor.verticesLocation.begin(), _floor.center);
+	
+	_floor.computed = true;
+}
+
+void Terrain::ISCursorOnSomething(Vector2 position)
+{
+	nearGizmo = None;
+	if (Engine::instance->GetCurrentMode() == CurrentMode::Actors)
+	{
+		for (int i = 0; i < static_cast<int>(actorList.size()); i++)
+		{
+			if (Vector2Distance(position, actorList[i].location) <= 25.0f)
+			{
+				nearGizmo = Actors;
+				nearIndice = i;
+				return;
+			}
+		}
+		return;
+	}
+	for (auto v : wallVertices)
+	{
+		if (Vector2Distance(position, v.second) <= 5.0f)
+		{
+			nearGizmo = Vertex;
+			nearIndice = v.first;
+			return;
+		}
+	}
+	for (int i = 0; i < wallList.size(); i++)
+	{
+		Wall wall = wallList[i];
+		if (CheckCollisionPointLine(position, wallVertices[wall.start], wallVertices[wall.end], ceil(wallDrawSize) * 2.0f))
+		{
+			nearGizmo = Edge;
+			nearIndice = i;
+			return;
+		}
+	}
+	if (Engine::instance->GetCurrentMode() == CurrentMode::Floors)
+	{
+		for (int i = 0; i < floorList.size(); i++)
+		{
+			if (CheckCollisionPointRec(position, Rectangle{floorList[i].center.x - 25.0f , floorList[i].center.y - 25.0f, 50.0f, 50.0f}))
+			{
+				nearGizmo = Floors;
+				nearIndice = i;
+				return;
+			}
+		}
+	}
+	nearIndice = -1;
+}
+
+void Terrain::SaveMap(){
+	std::string path = WinDialogue::SaveFileWindow();
+	if (path == "") return;
+	
+	ofstream saveFile;
+	saveFile.open(path);
+	if (saveFile.is_open()) {
+		saveFile << "$ 2 " << "\n";
+		saveFile << "\n";
+		for (const auto wall : wallList) {
+			std::cout << wall.computed << " " << wall.location.x << std::endl;
+		}
+		for (auto d : dictionary) {
+			saveFile << "D " + to_string(d.first) + ":" + d.second + "\n";
+		}
+		for (const auto vertice : wallVertices) {
+			saveFile << "V " + to_string(vertice.first)  + " " +
+					to_string(vertice.second.x) + ":" + to_string(vertice.second.y) + "\n";
+		}
+		for (const Wall& wall : wallList) {
+			saveFile << "W " + 
+					to_string(wall.start)  + " " +
+					to_string(wall.end)  + " " +
+					to_string(wall.dictionaryTexture)  + " " +
+					to_string(wall.location.x) + ":" + to_string(wall.location.y) + ":" + to_string(wall.location.z) +  " " +
+					to_string(wall.rotation.x) + ":" + to_string(wall.rotation.y) + ":" + to_string(wall.rotation.z) +  " " +
+					to_string(wall.size.x)	   + ":" + to_string(wall.size.y)     + ":" + to_string(wall.size.z)     +  "\n";
+		}
+		for (const Floor& floor : floorList) {
+			saveFile << "F " + 
+					to_string(floor.vertices.size())  + " " +				
+					to_string(floor.center.x)  + ":" + to_string(floor.center.y)  + " ";	
+			for (int i = 0; i < floor.vertices.size(); i++)							
+			{
+				saveFile << to_string(floor.vertices[i]);
+				if (i != floor.vertices.size() - 1) saveFile << ":";
+				else saveFile << " ";
+			}
+			saveFile << to_string(floor.dictionaryTexture) + " " +
+						to_string(floor.floor) + " " +
+						to_string(floor.ceiling) + "\n";
+		}
+		for (const Actor& actor : actorList) {
+			saveFile << "A " + 
+					actor.name					+ " " +
+					to_string(actor.location.x) + ":" + to_string(actor.location.y) + " " +
+					to_string(actor.rotation)   + " " +
+					to_string(actor.heigth)     + " " +
+					actor.bonus + "."			+  "\n";
+		} 
+		saveFile.close();
+	}
+	else {
+		cout << "Could not load " + path + "\n";
+	}
+}
+
+void Terrain::LoadMap(){
+	
+	std::string path = WinDialogue::OpenFileWindow();
+	if (path == "") return;
+
+	dictionary.clear();
+	wallVertices.clear();
+	wallList.clear();
+
+	string line;
+	ifstream loadFile(path);
+
+	if (loadFile.is_open()) {
+		while (getline(loadFile, line) ){
+			if (line[0] == 'D') {	// D int(iterator) string(textureName)
+				vector<string> dict = BreakString(line, ' ');
+				dict = BreakString(dict[1], ':');
+				AddToDictionary(stoi(dict[0]), dict[1]);
+			}
+			if (line[0] == 'V') {	// V int(iterator) vec2(location)
+				vector<string> vertex = BreakString(line, ' ');
+				vector<string> locString = BreakString(vertex[2], ':');
+				Vector2 posV  { stof(locString[0]), stof(locString[1]) };
+				wallVertices[stoi(vertex[1])] = posV;
+			}
+			if (line[0] == 'W') {	// W int(start) int(end) int(dictionaryPointer) vec3(location) vec3(rotation) vec3(size)
+				vector<string> wallString = BreakString(line, ' ');
+				vector<string> locString = BreakString(wallString[4], ':');
+				vector<string> sizeString = BreakString(wallString[6], ':');
+				Wall wall;
+				wall.start = stoi(wallString[1]);
+				wall.end = stoi(wallString[2]);
+				wall.height = stof(locString[2]);
+				wall.scale = stof(sizeString[2]);
+				wall.dictionaryTexture = stoi(wallString[3]);
+				wallList.push_back(wall);
+			}
+			if (line[0] == 'F') {	// F int(nbr vertices) Vector2(center) vec<int>(vertices) int(dictionaryPointer) float(floor) float(ceiling)
+				vector<string> floorString = BreakString(line, ' ');
+				vector<string> vertices = BreakString(floorString[3], ':');
+				if (stoi(floorString[1]) == 0) continue;
+				Floor floor;
+				for (int i = 0; i < stoi(floorString[1]); i++)	{
+					floor.vertices.push_back(stoi(vertices[i]));
+				}
+				floor.dictionaryTexture = stoi(floorString[4]);
+				floor.floor = stoi(floorString[5]);
+				floor.ceiling = stoi(floorString[6]);
+				floorList.push_back(floor);
+			}
+			if (line[0] == 'A') {	// A string(name) Vector2(location) float(rotation) float(height) string(bonus)
+				vector<string> actorString = BreakString(line, ' ');
+				vector<string> location   = BreakString(actorString[2], ':');
+				Actor actor;
+				actor.name     = actorString[1];
+				actor.location = Vector2{stof(location[0]), stof(location[1])};
+				actor.rotation = stof(actorString[3]);
+				actor.heigth   = stof(actorString[4]);
+				actor.bonus    = actorString[5];
+				actorList.push_back(actor);
+			}
+		}
+		loadFile.close();
+		
+		int highest = 0;
+		for (auto wall : wallVertices) if (wall.first > highest) highest = wall.first;
+		verticesCount = highest;
+	}
+	else {
+		cout << "Could not load " + path + "\n";
+	}
+}
+
+vector<string> Terrain::BreakString(string str, char breacker) {
+	vector<string> r;
+	string word;
+	for(int i = 0; i < str.size(); i++)
+	{
+		if (str[i] == breacker) {
+			r.push_back(word);
+			word.clear();
+		}
+		else{
+			word += str[i];
+		}
+	}
+	r.push_back(word);
+	return r;
+}

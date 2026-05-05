@@ -5,16 +5,30 @@
 #include "Engine/Utilitaries/CommonLib.h"
 #include "Engine/Utilitaries/MathLib.h"
 
+enum Space
+{
+	WORLD,
+	LOCAL
+};
+
 class Transform3D : public Component
 {
 protected:
+	//Local and Set Accessible
 	Vector3		mLocation { Vector3Zero() };
 	Vector3		mRotation { Vector3Zero() }; 
 	Quaternion	mQRotation{ Quaternion() }; 
 	Vector3		mScale    { Vector3One() };
 
+	//World and Get only accessible
+	Vector3		mWorldLocation { Vector3Zero() };
+	Vector3		mWorldRotation { Vector3Zero() }; 
+	Quaternion	mWorldQRotation{ Quaternion() }; 
+	Vector3		mWorldScale    { Vector3One() };
+
 	mutable Matrix4Row mWorldTransform{ Matrix4Row::Mat4RowIdentity() };
 
+	Space mSpace     {WORLD};
 	bool mNeedsUpdate{ true };
 
 public:
@@ -23,8 +37,15 @@ public:
 	Quaternion getQRotation()	const { return mQRotation; }
 	Vector3 getScale()			const { return mScale; }
 
+	Vector3 getWorldLocation()		const { return mWorldLocation; }
+	Vector3 getWorldRotation()		const { return mWorldRotation; }
+	Quaternion getWorldQRotation()	const { return mWorldQRotation; }
+	Vector3 getWorldScale()			const { return mWorldScale; }
+
 	Matrix4Row getWorldTransform() { ComputeWorldTransform(); return mWorldTransform; }
 
+	void setNeedRecalculate() { mNeedsUpdate = true; }
+	
 	void setLocation(const Vector3 _v)  { mLocation = _v; mNeedsUpdate = true; }
 	void setRotation(const Vector3 _v)  { mRotation = _v; mNeedsUpdate = true; }
 	void setScale	(const Vector3 _v)	{ mScale = _v; mNeedsUpdate = true; }
@@ -53,34 +74,42 @@ public:
 	void rotateAroundY(const float _angle) { combineRotation(QuatFromAxisAngle(Right(), ToRad(_angle))); mNeedsUpdate = true; }
 	void rotateAroundZ(const float _angle) { combineRotation(QuatFromAxisAngle(Up(), ToRad(_angle))); mNeedsUpdate = true; }
 
-	void computeRotation(){
+	void computeRotations(){
 		mQRotation = Quaternion();
 		rotateAroundZ(mRotation.z);
 		rotateAroundY(mRotation.y);
 		rotateAroundX(mRotation.x);
+
+		mWorldQRotation = Quaternion();
+		mWorldQRotation = Concatenate(mWorldQRotation, QuatFromAxisAngle(Up(), ToRad(mWorldRotation.z)));
+		mWorldQRotation = Concatenate(mWorldQRotation, QuatFromAxisAngle(Right(), ToRad(mWorldRotation.y)));
+		mWorldQRotation = Concatenate(mWorldQRotation, QuatFromAxisAngle(Forward(), ToRad(mWorldRotation.x)));
 	}
 	
 	void setTransform(const Transform3D* _t3D) {
 		mLocation = _t3D->mLocation;
 		mRotation = _t3D->mRotation;
 		mScale	  = _t3D->mScale;
-		mNeedsUpdate = true; 
+		mNeedsUpdate = true;
 	}
 
 	Vector3 Forward()	const { return Transform(Vector3UnitX(), mQRotation); }
 	Vector3 Right()		const { return Transform(Vector3UnitY(), mQRotation); }
 	Vector3 Up()		const { return Transform(Vector3UnitZ(), mQRotation); }
+	
+	Vector3 WorldForward()	const { return Transform(Vector3UnitX(), mWorldQRotation); }
+	Vector3 WorldRight()	const { return Transform(Vector3UnitY(), mWorldQRotation); }
+	Vector3 WorldUp()		const { return Transform(Vector3UnitZ(), mWorldQRotation); }
 
 protected:
 public:
-	Transform3D();
-	Transform3D(Actor* _pOwner, uint8_t _updateOrder);
+	Transform3D(Actor* _pOwner, Space _space);
 	~Transform3D() override;
-	Transform3D& operator= (const Transform3D* _pTransform) { setTransform(_pTransform); }
+	Transform3D& operator= (const Transform3D* _pTransform) { setTransform(_pTransform); return *this; }
 
 	void OnStart()	override;
 	void Update(float _deltaTime)	override;
-	void OnEnd()	override;
+	void Destroy()	override;
 
 	void ComputeWorldTransform();
 };

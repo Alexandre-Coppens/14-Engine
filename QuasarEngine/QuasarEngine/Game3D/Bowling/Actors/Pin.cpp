@@ -6,8 +6,7 @@
 #include "Engine/3D/Mesh.h"
 #include "Engine/3D/cBoxCollider.h"
 #include "Engine/3D/cPhysicBody.h"
-#include "Engine/Utilitaries/Inputs.h"
-#include "Engine/Utilitaries/Log.h"
+#include "Engine/Utilitaries/Managers/Inputs.h"
 
 Pin::Pin() :
     Actor(),
@@ -23,7 +22,7 @@ Pin::~Pin()
 
 void Pin::Start()
 {
-    mModel = dynamic_cast<Model*>(AddComponent(new Model(this, "BasicModel")));
+    mModel = dynamic_cast<Model*>(AddComponent(new Model(this, PROG_BasicModel)));
     mPhysicBody = dynamic_cast<PhysicBody*>(AddComponent(new PhysicBody(this, ColliderType::BOX)));
     BoxCollider* collider = dynamic_cast<BoxCollider*>(mPhysicBody->getReferencedCollider());
     
@@ -32,8 +31,8 @@ void Pin::Start()
     collider->setOffset(Vector3{0.0f, 0.0f, 0.02f});
     collider->setSize(Vector3{0.01f, 0.01f, 0.03f});
     
-    mModel->setMesh(Assets::GetMesh("Pin"));
-    mModel->getMesh()->AddTexture(Assets::GetTexture("Pin"));
+    mModel->setMesh(Assets::GetMesh(OBJ_Pin));
+    mModel->getMaterial()->SetTexture("uTexture", Assets::GetTexture(PNG_Pin));
     Actor::Start();
 }
 

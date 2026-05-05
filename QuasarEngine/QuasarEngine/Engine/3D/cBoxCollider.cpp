@@ -2,17 +2,21 @@
 
 #include <glew.h>
 
+#include "Camera.h"
+#include "cModel.h"
+#include "Engine/Scene.h"
 #include "Engine/3D/Mesh.h"
-#include "Engine/Render/ShaderProgram.h"
-#include "Engine/Render/VertexArray.h"
+#include "Engine/Render/Shaders/ShaderProgram.h"
 #include "Engine/Utilitaries/Assets.h"
 
 BoxCollider::BoxCollider(Actor* _pOwner):
 	Collider3D(_pOwner)
 {
 	mColliderType = BOX;
-	mDebugMesh = Assets::GetMesh("Cube");
-	mpParentTransform = pOwner->getTransform3D();
+	mTransform = new Transform3D(pOwner, LOCAL);
+	mDebugModel = new Model(pOwner, mTransform, PROG_Simple, DrawOption::WIREFRAME);
+	mDebugModel->setMesh(Assets::GetMesh(OBJ_cube));
+	setDebugColor(Vector4(1.0f, 1.0f, 0.0f, 1.0f));
 }
 
 BoxCollider::~BoxCollider()
@@ -22,58 +26,35 @@ BoxCollider::~BoxCollider()
 
 Vector3 BoxCollider::getCenter()
 {
-	return pOwner->getTransform3D()->getLocation() + mOffset;
+	return mTransform->getWorldLocation();
+}
+
+Vector3 BoxCollider::getScale()
+{
+	return mTransform->getWorldScale();
 }
 
 std::vector<Vector3> BoxCollider::getWorldVertices()
 {
+	std::string name = pOwner->getName();
 	Vector3 center = getCenter();
+	Vector3 scale = getScale();
 	return std::vector<Vector3>
 	{
-		center + getForward() * mSize.x * 0.5f + getRight() * mSize.y * 0.5f + getUp() * mSize.z * 0.5f ,
-		center + getForward() * mSize.x * 0.5f + getRight() * mSize.y * 0.5f - getUp() * mSize.z * 0.5f ,
-		center + getForward() * mSize.x * 0.5f - getRight() * mSize.y * 0.5f + getUp() * mSize.z * 0.5f ,
-		center + getForward() * mSize.x * 0.5f - getRight() * mSize.y * 0.5f - getUp() * mSize.z * 0.5f ,
-		center - getForward() * mSize.x * 0.5f + getRight() * mSize.y * 0.5f + getUp() * mSize.z * 0.5f ,
-		center - getForward() * mSize.x * 0.5f + getRight() * mSize.y * 0.5f - getUp() * mSize.z * 0.5f ,
-		center - getForward() * mSize.x * 0.5f - getRight() * mSize.y * 0.5f + getUp() * mSize.z * 0.5f ,
-		center - getForward() * mSize.x * 0.5f - getRight() * mSize.y * 0.5f - getUp() * mSize.z * 0.5f ,
+		center + (getForward() * scale.x + getRight() * scale.y + getUp() * scale.z) * 1,
+		center + (getForward() * scale.x + getRight() * scale.y - getUp() * scale.z) * 1,
+		center + (getForward() * scale.x - getRight() * scale.y + getUp() * scale.z) * 1,
+		center + (getForward() * scale.x - getRight() * scale.y - getUp() * scale.z) * 1,
+		center + (getForward() * scale.x * -1 + getRight() * scale.y + getUp() * scale.z) * 1 ,
+		center + (getForward() * scale.x * -1 + getRight() * scale.y - getUp() * scale.z) * 1 ,
+		center + (getForward() * scale.x * -1 - getRight() * scale.y + getUp() * scale.z) * 1 ,
+		center + (getForward() * scale.x * -1 - getRight() * scale.y - getUp() * scale.z) * 1 ,
 	};
 }
 
-void BoxCollider::DrawDebug()
+void BoxCollider::Destroy()
 {
-	//Draw Box
-	Matrix4Row wt;
-	wt =  Mat4RowCreateScale(mSize * 0.5f);
-	wt *= Mat4RowCreateFromQuaternion(mpParentTransform->getQRotation());
-	wt *= Mat4RowCreateTranslation(getCenter());
-	
-	Assets::GetShader("Simple")->SetMatrix4Row("uWorldTransform", wt);
-	Assets::GetShader("Simple")->SetVector4f("uColor", Vector4(0.0f, 0.0f, 0.0f, 1.0f));
-	
-	mDebugMesh->getVertexArray()->SetActive();
-	
-	glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
-	glDrawArrays(GL_TRIANGLES, 0, mDebugMesh->getVertexArray()->GetVerticesCount());
-
-	//Draw Nearest Sphere
-	wt =  Mat4RowCreateScale(mSize * 0.5f);
-	wt *= Mat4RowCreateFromQuaternion(mpParentTransform->getQRotation());
-	wt *= Mat4RowCreateTranslation(getCenter());
-	
-	Assets::GetShader("Simple")->SetMatrix4Row("uWorldTransform", wt);
-	Assets::GetShader("Simple")->SetVector4f("uColor", Vector4(0.0f, 0.0f, 0.0f, 1.0f));
-	
-	mDebugMesh->getVertexArray()->SetActive();
-	
-	glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
-	glDrawArrays(GL_TRIANGLES, 0, mDebugMesh->getVertexArray()->GetVerticesCount());
-	glPolygonMode( GL_FRONT_AND_BACK, GL_FILL );
-}
-void BoxCollider::OnEnd()
-{
-	Collider3D::OnEnd();
-	mDebugMesh = nullptr;
-	mpParentTransform = nullptr;
+	Collider3D::Destroy();
+	delete mTransform;
+	mTransform = nullptr;
 }

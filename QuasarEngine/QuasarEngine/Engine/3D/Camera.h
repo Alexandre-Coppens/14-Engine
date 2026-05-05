@@ -19,7 +19,7 @@ public:
     void OnStart() override;
     void Update(const float _deltaTime) override;
     void UpdateCameraView() const;
-    void OnEnd() override;
+    void Destroy() override;
 };
 
 #endif // CAMERA_H

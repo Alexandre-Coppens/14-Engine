@@ -1,10 +1,10 @@
-#version 330 core
+#version 330
 
-out vec4 color;
+out vec4 outColor;
 
 uniform vec4 uColor;
 
 void main()
 {
-    color = uColor;
+    outColor = uColor;
 }

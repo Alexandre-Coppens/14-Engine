@@ -1,15 +1,15 @@
 #include "Coin.h"
 #include "Engine/Utilitaries/Assets.h"
 
-#include "Engine/2D/cBoxCollider2D.h"
-#include "Engine/2D/cAnimation2D.h"
+#include "Engine/2D/BoxCollider2D.h"
+#include "Engine/2D/Animation2D.h"
 #include "Engine/Scene.h"
 
 Coin::Coin() :
 	Actor()
 {
 	mName = "Coin";
-	mTransform2D.setSize({ 51,51 });
+	mTransform2D->setSize({ 51,51 });
 }
 
 Coin::~Coin()
@@ -18,8 +18,9 @@ Coin::~Coin()
 
 void Coin::Start()
 {
+	std::vector<GENERATED_TEXTURE> animation {PNG_Coin_01, PNG_Coin_02, PNG_Coin_03, PNG_Coin_04, PNG_Coin_05, PNG_Coin_06};
 	AddComponent(new BoxCollider2D(this, 1, CollisionPurpose::Overlapp, Rectangle{ Vector2Zero(),  Vector2{ 50.0f, 50.0f } }));
-	AddComponent(new AnimatedSprite2D(this, Assets::GetTextures("coin"), 0));
+	AddComponent(new AnimatedSprite2D(this, Assets::GetTextures(animation), 0));
 
 	Actor::Start();
 }

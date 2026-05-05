@@ -1,0 +1,7 @@
+﻿S VERT_NoiseHeight
+S TESC_NoiseHeight
+S TESE_NoiseHeight
+S FRAG_NoiseHeight
+!U UMatrix uWorldTransform
+!U UMatrix uViewProj
+T 0 uTexture

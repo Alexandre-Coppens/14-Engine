@@ -4,24 +4,37 @@
 
 #include "Engine/Component.h"
 #include "Engine/Scene.h"
+#include "Utilitaries/DebugMemoryLeakCatcher.h"
 
 Actor::Actor():
-	pScene(Scene::ActiveScene),
-	mState(ActorState::Active),
-	mTransform2D(Transform2D()),
-	mTransform3D(Transform3D())
+	mScene(Scene::ActiveScene),
+	mState(ActorState::Active)
 {
+	DEBUGAddClass("Actor");
 }
 
-Actor::~Actor()
+//Use this Init if it's created as parent NOT AS CHILD.
+Actor::Actor(bool _isSpawnedParent):
+	mScene(Scene::ActiveScene),
+	mState(ActorState::Active)
 {
-	Actor::Destroy();
+	DEBUGAddClass("Actor");
+	Initialize();
+}
+
+Actor::~Actor() = default;
+
+//Call this at the end of your Initialize
+void Actor::Initialize()
+{
+	mTransform2D = dynamic_cast<Transform2D*>(AddComponent(new Transform2D()));
+	mTransform3D = dynamic_cast<Transform3D*>(AddComponent(new Transform3D(this, WORLD)));
+	for (Component* c : mComponentList) c->OnStart();
 }
 
 void Actor::Start()
 {
-	for (Component* c : mComponentList) c->OnActorStart();
-	Log::Info("Actor::" + mName + "::Started");
+	Log::Info("Actor::" + mName + "::Started", LogLevel::Normal);
 }
 
 void Actor::Update(const float _deltaTime)
@@ -34,34 +47,26 @@ void Actor::Update(const float _deltaTime)
 
 void Actor::Destroy()
 {
-	pScene = nullptr;
-	for (const auto c : mComponentList)
+	mScene = nullptr;
+	while (!mComponentList.empty())
 	{
-		Log::Info("Removing Component: " + c->getName());
-		c->OnEnd();
+		mComponentList[0]->Destroy();
+		delete mComponentList[0];
+		mComponentList[0] = nullptr;
+		mComponentList.erase(mComponentList.begin());
 	}
-	RemoveComponents();
+	DEBUGRemoveClass("Actor");
 }
 
-Component* Actor::AddComponent(Component* _c)
+Component* Actor::AddComponent(Component* _component)
 {
-	const int componentUpdateOrder = _c->getUpdateOrder();
+	const int componentUpdateOrder = _component->getUpdateOrder();
 	std::vector<Component*>::iterator it;
 	for (it = mComponentList.begin(); it != mComponentList.end(); it++)
 	{
 		if (componentUpdateOrder < (*it)->getUpdateOrder()) break;
 	}
-	mComponentList.insert(it, _c);
-	_c->OnStart();
-	return _c;
-}
-
-void Actor::RemoveComponents()
-{
-	for (Component* c : mComponentList)
-	{
-		delete c;
-		c = nullptr;
-	}
-	mComponentList.clear();
+	mComponentList.insert(it, _component);
+	_component->OnStart();
+	return _component;
 }

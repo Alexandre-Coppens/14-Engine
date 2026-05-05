@@ -2,33 +2,47 @@
 #define MATERIAL_H
 
 #include "Engine/Component.h"
-#include "Engine/Utilitaries/CommonLib.h"
+#include "Engine/.EngineGenerated/Generated.h"
+#include "Engine/Render/Shaders/Material.h"
+#include "Engine/Render/Shaders/ShaderProgram.h"
 
+class Texture;
 class ShaderProgram;
 class Mesh;
+class Material;
 class Model : public Component
 {
 protected:
 	Mesh* mMesh;
-	size_t mTextureIndex;
-	std::string mShader;
+	Transform3D* mParent;
+	Material mMaterial;
+
+	Vector4 mColor {1.0f, 1.0f, 1.0f, 1.0f};
+	bool mVisible  { true };
+	DrawOption option;
 
 public:
 	Mesh* getMesh() const { return mMesh; }
-	std::string getShaderName() const { return mShader; }
+	Material* getMaterial() { return &mMaterial; }
+	Vector4 getColor() const { return mColor; }
+	bool getVisible() const { return mVisible; }
 	
 	virtual void setMesh(Mesh* _pMesh) { mMesh = _pMesh; }
-	void setTextureIndex(const size_t _pTextureIndex) { mTextureIndex = _pTextureIndex; }
+	virtual void setColor(Vector4 _color) { mColor = _color; }
+	void setVisible(const bool _newVisibility) { mVisible = _newVisibility; }
 
 private:
 public:
-	Model(Actor* _pOwner, const std::string _shader);
+	Model(Actor* _pOwner, GENERATED_SHADER_PROGRAMS _shader, DrawOption _option = DrawOption::NONE);
+	Model(Actor* _pOwner, Transform3D* _parent, GENERATED_SHADER_PROGRAMS _shader, DrawOption _option = DrawOption::NONE);
 	~Model() override;
 
+	void OnStart() override;
 	void Update(float _deltaTime) override {}
-	virtual void Draw(int _option);
+	virtual void Draw();
+	void Destroy() override;
 
-	void SetShader(const std::string _shader);
+	void SetShader(GENERATED_SHADER_PROGRAMS _shader, DrawOption _option);
 };
 
 #endif // !1

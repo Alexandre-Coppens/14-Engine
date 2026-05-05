@@ -1,6 +1,8 @@
 #include "VertexArray.h"
 #include <glew.h>
 
+#include "Engine/Utilitaries/DebugMemoryLeakCatcher.h"
+
 VertexArray::VertexArray(const float* _pVertices, const unsigned int _verticesCount) :
 	mVerticesCount(_verticesCount), mVertexArrayId(0), mVertexBufferId(0)
 {
@@ -22,12 +24,15 @@ VertexArray::VertexArray(const float* _pVertices, const unsigned int _verticesCo
 	//Texture Coords
 	glEnableVertexAttribArray(2);
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)(sizeof(float) * 6));
+
+	DEBUGAddClass("VertexArray");
 }
 
 VertexArray::~VertexArray()
 {
 	glDeleteBuffers(1, &mVertexBufferId);
 	glDeleteBuffers(1, &mVertexArrayId);
+	DEBUGRemoveClass("VertexArray");
 }
 
 void VertexArray::SetActive() const

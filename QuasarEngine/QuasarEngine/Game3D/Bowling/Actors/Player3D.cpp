@@ -3,7 +3,7 @@
 #include "Engine/Game.h"
 #include "Engine/Scene.h"
 #include "Engine/Utilitaries/Assets.h"
-#include "Engine/Utilitaries/Inputs.h"
+#include "Engine/Utilitaries/Managers/Inputs.h"
 
 #include "Engine/3D/Camera.h"
 
@@ -12,15 +12,21 @@ Player3D::Player3D() :
     pCamera(nullptr)
 {
     mName = "Player";
+    Initialize();
 }
 
 Player3D::~Player3D()
 {
 }
 
-void Player3D::Start()
+void Player3D::Initialize()
 {
     pCamera = dynamic_cast<Camera*>(AddComponent(new Camera(this)));
+    Actor::Initialize();
+}
+
+void Player3D::Start()
+{
     pCamera->getLocalTransform()->addRotationZ(180.0f);
     pCamera->getLocalTransform()->addLocationX(0.15f);
     pCamera->getLocalTransform()->addLocationZ(-0.2f);
@@ -33,22 +39,22 @@ void Player3D::Update(const float _deltaTime)
     
     if (Inputs::GetKey(SDLK_z))
     {
-        mTransform3D.addLocation(pCamera->getLocalTransform()->Forward() * 1 * _deltaTime);
+        mTransform3D->addLocation(pCamera->getLocalTransform()->Forward() * 5 * _deltaTime);
     }
 
     if (Inputs::GetKey(SDLK_s))
     {
-        mTransform3D.addLocation(pCamera->getLocalTransform()->Forward() * -1 * _deltaTime);
+        mTransform3D->addLocation(pCamera->getLocalTransform()->Forward() * -5 * _deltaTime);
     }
 
     if (Inputs::GetKey(SDLK_q))
     {
-        mTransform3D.addLocation(pCamera->getLocalTransform()->Right() * -1 * _deltaTime);
+        mTransform3D->addLocation(pCamera->getLocalTransform()->Right() * -5 * _deltaTime);
     }
 
     if (Inputs::GetKey(SDLK_d))
     {
-        mTransform3D.addLocation(pCamera->getLocalTransform()->Right() * 1 * _deltaTime);
+        mTransform3D->addLocation(pCamera->getLocalTransform()->Right() * 5 * _deltaTime);
     }
     
     /*if (Inputs::GetKeyDown(SDLK_r))
@@ -63,7 +69,6 @@ void Player3D::Update(const float _deltaTime)
     pCamera->getLocalTransform()->addRotationZ(yaw);
     pCamera->getLocalTransform()->addRotationY(pitch);
     pCamera->getLocalTransform()->clampRotationY(-89.0f, 89.0f);
-    pCamera->getLocalTransform()->computeRotation();
 }
 
 void Player3D::Destroy()

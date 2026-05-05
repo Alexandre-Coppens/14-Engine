@@ -1,6 +1,5 @@
 #include "cModel.h"
 
-#include "cCollider3D.h"
 #include "Engine/Actor.h"
 #include "Engine/Scene.h"
 #include "Engine/Texture.h"
@@ -8,67 +7,104 @@
 
 #include "Engine/Utilitaries/Assets.h"
 
-#include "Engine/Render/ShaderProgram.h"
+#include "Engine/Render/Shaders/ShaderProgram.h"
+#include "Engine/Render/Shaders/Material.h"
 #include "Engine/Render/RendererGl.h"
 #include "Engine/Render/VertexArray.h"
 
-Model::Model(Actor* _pOwner, std::string _shader)  :
-	Component(_pOwner), mMesh(nullptr), mTextureIndex(0), mShader(_shader)
+Model::Model(Actor* _pOwner, GENERATED_SHADER_PROGRAMS _shader, DrawOption _option):
+	Component(_pOwner),
+	mMesh(nullptr),
+	mMaterial(Material(Assets::GetShaderProgram(_shader), _option)),
+	mParent(nullptr),
+	option(_option)
 {
-	Scene::ActiveScene->getRendererGl()->AddModel(this, Assets::GetShader(mShader));
+	Scene::ActiveScene->getRendererGl()->AddModel(this, mMaterial.getShaderProgram());
+}
+
+Model::Model(Actor* _pOwner,Transform3D* _parent, GENERATED_SHADER_PROGRAMS _shader, DrawOption _option):
+	Component(_pOwner),
+	mMesh(nullptr),
+	mMaterial(Material(Assets::GetShaderProgram(_shader), _option)),
+	mParent(_parent),
+	option(_option)
+{
+	Scene::ActiveScene->getRendererGl()->AddModel(this, mMaterial.getShaderProgram());
 }
 
 Model::~Model()
 {
 	Component::~Component();
-	Scene::ActiveScene->getRendererGl()->RemoveModel(this, Assets::GetShader(mShader));
 }
 
-void Model::Draw(int _option)
+void Model::OnStart()
 {
-	if (mMesh)
+	if (mParent == nullptr) mParent = pOwner->getTransform3D();
+	Component::OnStart();
+}
+
+void Model::Draw()
+{
+	if (mMesh != nullptr)
 	{
-		Texture* t;
-		if (_option & DrawOption::NULL_SHADER)
-		{
-			t = Assets::GetTexture("NULLSHADER");
-			if (t) t->SetActive();
-		}
-		else if (_option & DrawOption::TEXTURE)
-		{
-			t = mMesh->getTexture(static_cast<Uint16>(mTextureIndex));
-			if (!t) t = Assets::GetTexture("NULLTEXTURE");
-			if (t) t->SetActive();
-		}
-		if (_option & DrawOption::COLOR)
-		{
-			Assets::GetShader(mShader)->SetVector4f("uColor", Vector4(0.5f, 0.25f, 0.5f, 1.0f));
-		}
-		if (_option & DrawOption::DEBUG)
-		{
-			//TODO: Implement the debug draw box ON TOP of the mesh
-			std::vector<Collider3D*> colliders = pOwner->GetComponents<Collider3D>();
-			if (colliders.size() > 0)
-			{
-				for (Collider3D* collider : colliders)
-				{
-					collider->DrawDebug();
-				}
-			}
-		}
-		
-		const Matrix4Row wt = pOwner->getWorldTransform();
-		Assets::GetShader(mShader)->SetMatrix4Row("uWorldTransform", wt);
+		if (!mVisible) return;
+		const Matrix4Row wt = mParent->getWorldTransform();
+		mMaterial.getShaderProgram()->SetMatrix4Row("uWorldTransform", wt);
 		
 		mMesh->getVertexArray()->SetActive();
-		glDrawArrays(GL_TRIANGLES, 0, mMesh->getVertexArray()->GetVerticesCount());
+		mMaterial.Bind();
+		
+		glPolygonMode( GL_FRONT_AND_BACK, GL_FILL );
+		 switch (mMaterial.getDrawOption())
+		 {
+		 case DrawOption::WIREFRAME:
+		 	glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
+		 	break;
+		
+		 case DrawOption::GEOMETRY:
+		 	glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
+		 	break;
+		
+		 case DrawOption::DEBUG:
+		 	glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
+		 	break;
+		 	
+		 default:
+		 	break;
+		 }
+		
+		//glPointSize(5.0f);
+		switch (mMaterial.getDrawOption())	
+		{
+		case DrawOption::INSTANCED:
+			glDrawArraysInstanced(GL_TRIANGLE_STRIP, 0, mMesh->getVertexArray()->GetVerticesCount(), 1024 * 1024);
+			break;
+			
+		case DrawOption::TESSELATION:
+			glDrawArrays(GL_PATCHES, 0, mMesh->getVertexArray()->GetVerticesCount());
+			break;
+			
+		default:
+			glDrawArrays(GL_TRIANGLES, 0, mMesh->getVertexArray()->GetVerticesCount());
+			break;
+		}
 	}
 }
 
-//Remove the Model from his old ShaderList to a new one
-void Model::SetShader(const std::string _shader)
+void Model::Destroy()
 {
-	Scene::ActiveScene->getRendererGl()->RemoveModel(this, Assets::GetShader(mShader));
-	mShader = _shader;
-	Scene::ActiveScene->getRendererGl()->AddModel(this, Assets::GetShader(mShader));
+	Scene::ActiveScene->getRendererGl()->RemoveModel(this, mMaterial.getShaderProgram());
+	mParent = nullptr;
+	mMesh = nullptr;
+	mMaterial.Unload();
+	Component::Destroy();
+}
+
+//Remove the Model from his old ShaderList to a new one
+void Model::SetShader(const GENERATED_SHADER_PROGRAMS _shader, DrawOption _option = DrawOption::NONE)
+{
+	Scene::ActiveScene->getRendererGl()->RemoveModel(this, mMaterial.getShaderProgram());
+	mMaterial.Unload();
+	mMaterial = Material(Assets::GetShaderProgram(_shader), _option);
+	Scene::ActiveScene->getRendererGl()->AddModel(this, mMaterial.getShaderProgram());
 }

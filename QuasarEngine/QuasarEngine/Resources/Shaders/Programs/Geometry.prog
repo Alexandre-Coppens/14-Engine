@@ -1,0 +1,6 @@
+﻿S VERT_Geometry
+S GEOM_Geometry
+S FRAG_Geometry
+!U UMatrix uWorldTransform
+!U UMatrix uViewProj
+T 0 uTexture

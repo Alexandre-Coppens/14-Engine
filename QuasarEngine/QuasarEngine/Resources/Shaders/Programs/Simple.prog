@@ -1,0 +1,6 @@
+﻿S VERT_Simple
+S FRAG_Simple
+!U UMatrix uWorldTransform
+!U UMatrix uViewProj
+U UVector4 uColor
+T 0 uTexture

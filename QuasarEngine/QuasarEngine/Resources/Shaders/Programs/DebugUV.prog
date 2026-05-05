@@ -1,0 +1,4 @@
+﻿S VERT_BasicModel
+S FRAG_FragTex
+!U UMatrix uWorldTransform
+!U UMatrix uViewProj

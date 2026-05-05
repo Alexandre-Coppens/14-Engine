@@ -15,6 +15,14 @@ enum class LogType
 	Video = SDL_LOG_CATEGORY_VIDEO,
 };
 
+enum class LogLevel
+{
+	Normal,
+	Good,
+	Warning,
+	Error,
+};
+
 class Log
 {
 public:
@@ -22,6 +30,6 @@ public:
 	Log(const Log&) = delete;
 	Log& operator = (const Log&) = delete;
 
-	static void Info(const std::string& message);
+	static void Info(const std::string& message, LogLevel _level);
 	static void Error(LogType category, const std::string& message);
 };

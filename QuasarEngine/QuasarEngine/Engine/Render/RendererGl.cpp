@@ -2,28 +2,34 @@
 
 #include <SDL_image.h>
 #include "glew.h"
+#include "Engine/Scene.h"
 
 #include "Engine/Render/Window.h"
 #include "Engine/Render/VertexArray.h"
 #include "Engine/Utilitaries/MathLib.h"
-#include "Engine/Render/ShaderProgram.h"
+#include "Engine/Render/Shaders/ShaderProgram.h"
 
 #include "Engine/Utilitaries/Log.h"
 #include "Engine/Utilitaries/Assets.h"
-#include "Engine/Utilitaries/CameraManager.h"
+#include "Engine/Utilitaries/Managers/CameraManager.h"
 
 #include "Engine/3D/cModel.h"
-#include "Engine/2D/cSprite2D.h"
+#include "Engine/2D/Sprite2D.h"
+#include "Engine/3D/Mesh.h"
+#include "Engine/Utilitaries/DebugMemoryLeakCatcher.h"
+#include "Engine/Utilitaries/Time.h"
 
 RendererGl::RendererGl():
 	pWindow(nullptr), 
 	pSpriteVao(nullptr), 
 	mContext(nullptr), 
 	pSpriteShaderProgram(nullptr),
-	mSpriteViewProj(Mat4RowCreateSimpleViewProj(Window::GetSize().x, Window::GetSize().y)),
+	mModelDrawOrder(std::map<ShaderProgram*, std::vector<Model*>>()),
+	mSpriteViewProj(Mat4RowCreateSimpleViewProj(-Window::GetSize().x, Window::GetSize().y)),
 	mView(Mat4RowCreateLookAt(Vector3(0, 0, 5), Vector3UnitX(), Vector3UnitZ())),
 	mProj(Mat4RowCreatePerspectiveFOV(70.0f, Window::GetSize().x, Window::GetSize().y, 0.01f, 10000.0f))
 {
+	DEBUGAddClass("RendererGL");
 }
 
 RendererGl::~RendererGl() = default;
@@ -33,8 +39,8 @@ bool RendererGl::Initialize(Window& _rWindow)
 	pWindow = &_rWindow;
 
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 5);
 
 	SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8);
 	SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 8);
@@ -61,14 +67,7 @@ bool RendererGl::Initialize(Window& _rWindow)
 	
 	pSpriteVao = new VertexArray(spriteVertices, 4);
 
-	//TODO: separate Engine asset files & Game asset files
-	//Load the NULL Shader & important to engine assets
-	Assets::LoadShader(this, "NULL.vert", "NULL.frag", "NULL", DrawOption::NULL_SHADER);
-	Assets::LoadTexture(*dynamic_cast<IRenderer*>(this), "Resources/Textures/NullShader.png", "NULLSHADER");
-	Assets::LoadTexture(*dynamic_cast<IRenderer*>(this), "Resources/Textures/NullTexture.png", "NULLTEXTURE");
-	
-	Assets::LoadMesh("Resources/Models/Cube.obj", "Cube");
-	Assets::LoadMesh("Resources/Models/Sphere.obj", "Sphere");
+	glPatchParameteri(GL_PATCH_VERTICES, 3);
 	
 	return true;
 }
@@ -82,6 +81,7 @@ void RendererGl::BeginDraw()
 
 void RendererGl::Draw()
 {
+	Scene::ActiveScene->Draw();
 	DrawModels();
 	DrawSprites();
 }
@@ -93,52 +93,65 @@ void RendererGl::DrawModels() const
 
 	glEnable(GL_DEPTH_TEST);
 	glDisable(GL_BLEND);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glPolygonMode( GL_FRONT_AND_BACK, GL_FILL );
 	
-	for (auto& shader : mModelDrawOrder)
+	float time = Time::currentFrameTime;
+	
+	for (auto& [shader, modelList] : mModelDrawOrder)
 	{
-		DrawOption argument = (shader.first == Assets::GetShader("NULL") ? DrawOption::NULL_SHADER : DrawOption::TEXTURE);
-		glBindTexture(GL_TEXTURE_2D, 0);
-		shader.first->Use();
-		shader.first->SetMatrix4Row("uViewProj", mView * mProj);
-		for (Model* model : shader.second)
+		if (!shader || modelList.empty()) continue;
+		shader->Use();
+		
+		shader->SetFloat("uTime", time);
+		shader->SetMatrix4Row("uViewProj", mView * mProj);
+		
+		for (Model* model : modelList)
 		{
-			model->Draw(shader.first->getDrawOptions() | DrawOption::DEBUG);
+			model->Draw();
 		}
 	}
 }
 
-void RendererGl::DrawSprites()
-{
+void RendererGl::DrawSprites() {
 	if (mSpriteList.empty()) return;
 
 	glDisable(GL_DEPTH_TEST);
 	glEnable(GL_BLEND);
-	glBlendEquationSeparate(GL_FUNC_ADD, GL_FUNC_ADD);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-	if (pSpriteShaderProgram != nullptr) pSpriteShaderProgram->Use();
-	pSpriteShaderProgram->SetMatrix4Row("uViewProj", mSpriteViewProj);
-	pSpriteVao->SetActive();
-
-	for (Sprite2D* sprite : mSpriteList)
-	{
-		//sprite->Draw(*this, DebugMode::DRAW_COLLISIONS);
-		glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-		//TODO: Add a plane object to create ui sprites
+	glPolygonMode( GL_FRONT_AND_BACK, GL_FILL );
+	
+	auto* shader = Assets::GetShaderProgram(PROG_Sprite);
+	shader->Use();
+	shader->SetInteger("uTexture", 0);
+	shader->SetFloat("uTime", Time::currentFrameTime);
+	shader->SetMatrix4Row("uViewProj", mSpriteViewProj);
+	
+	for (int i = 0; i < static_cast<int>(mSpriteList.size()); i++) {
+		for (Sprite2D* sprite : mSpriteList[i]) {
+			sprite->DrawGL(shader);
+		}
 	}
 }
 
-void RendererGl::AddSprite(Sprite2D* _pSprite)
+void RendererGl::AddSprite(Sprite2D* _pSprite, int _drawOrder)
 {
+	while (static_cast<int>(mSpriteList.size()) <= _drawOrder)
+	{
+		mSpriteList.push_back(std::vector<Sprite2D*>());
+	}
+	mSpriteList[_drawOrder].push_back(_pSprite);
 }
 
-void RendererGl::RemoveSprite(Sprite2D* _pSprite)
+void RendererGl::RemoveSprite(Sprite2D* _pSprite, int _drawOrder)
 {
+	mSpriteList[_drawOrder].erase(std::find(mSpriteList[_drawOrder].begin(), mSpriteList[_drawOrder].end(), _pSprite));
 }
 
 void RendererGl::EndDraw()
 {
-	SDL_GL_SwapWindow(pWindow->GetSdlWindow()); //TODO Fix this breakpoint error
+	SDL_GL_SwapWindow(pWindow->GetSdlWindow());
 }
 
 void RendererGl::Close()
@@ -146,6 +159,13 @@ void RendererGl::Close()
 	SDL_GL_DeleteContext(mContext);
 	delete pSpriteVao;
 	pSpriteVao = nullptr;
+	
+	pWindow = nullptr;
+	pSpriteShaderProgram = nullptr;
+	mModelDrawOrder.clear();
+	mSpriteList.clear();
+	
+	DEBUGRemoveClass("RendererGL");
 }
 
 void RendererGl::AddModel(Model* _pModel, ShaderProgram* _pShaderProgram)
@@ -162,7 +182,7 @@ void RendererGl::RemoveModel(Model* _pModel, ShaderProgram* _pShaderProgram )
 
 void RendererGl::AddShaderProgram(ShaderProgram* _pShaderProgram)
 {
-	mModelDrawOrder[_pShaderProgram];
+	mModelDrawOrder[_pShaderProgram] = std::vector<Model*>();
 }
 
 void RendererGl::RemoveShaderProgram(ShaderProgram* _pShaderProgram)
