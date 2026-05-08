@@ -69,6 +69,10 @@ void Model::Draw()
 		 	glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
 		 	break;
 		 	
+		 case DrawOption::TESSELATION:
+		 	glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
+		 	break;
+		 	
 		 default:
 		 	break;
 		 }

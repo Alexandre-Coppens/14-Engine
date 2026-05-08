@@ -21,10 +21,10 @@ void main(void)
 {
    if (gl_InvocationID == 0)
    {
-      const int MIN_TESS_LEVEL = 5;
+      const int MIN_TESS_LEVEL = 10;
       const int MAX_TESS_LEVEL = 60;
       const float MIN_DISTANCE = 0.1;
-      const float MAX_DISTANCE = 100;
+      const float MAX_DISTANCE = 20;
 
       vec4 eyeSpace0 = uViewProj * uWorldTransform * gl_in[0].gl_Position;
       vec4 eyeSpace1 = uViewProj * uWorldTransform * gl_in[1].gl_Position;

@@ -8,24 +8,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8aaab4d2-4f5d-4712-9cf7-40708eb9c5f6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planet_Base.tesc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planet_Base.tese" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planet_Base.vert" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Programs/Planet_Base.prog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.QuasarEngine/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.QuasarEngine/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/ActorCamera.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/ActorCamera.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/Animation2D.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/Animation2D.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/BoxCollider2D.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/BoxCollider2D.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/Collider.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/Collider.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/CollisionManager.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/CollisionManager.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/Cube.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/Cube.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/DebugLine.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/DebugLine.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/DoomBaseActor.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/DoomBaseActor.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/Door.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/Door.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/Gravity2D.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/Gravity2D.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/ImguiManager.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/ImguiManager.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/ImguiSimpleDemoFile.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/ImguiSimpleDemoFile.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/Material.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/Material.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/Scene_Cube.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/Scene_Cube.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/Sprite2D.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/Sprite2D.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/Switch.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/Switch.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/Target.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/Target.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/QuasarEngine.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/QuasarEngine.vcxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/Transform2D.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/Transform2D.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/imgui.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/imgui.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_demo.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_demo.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_draw.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_draw.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_impl_opengl3.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_impl_opengl3.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_impl_sdl2.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_impl_sdl2.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_stdlib.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_stdlib.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_tables.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_tables.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_widgets.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_widgets.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cModel.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/3D/cModel.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/TestingGrounds/Scenes/Scene_Cube.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/TestingGrounds/Scenes/Scene_Cube.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planet_Base.tesc" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planet_Base.tesc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planet_Base.tese" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planet_Base.tese" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,23 +48,19 @@
   <component name="DpaMonitoringSettings">
     <option name="firstShow" value="false" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="vs-template" />
-        <option value="fs-template" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="cidr-memory-view://7" root0="FORCE_HIGHLIGHTING" />
+    <setting file="cidr-memory-view://4" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Dependencies/GL/SDL/include/SDL_events.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Dependencies/GL/SDL/include/SDL_stdinc.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Dependencies/glew-2.2.0-win32/glew-2.2.0/include/GL/glew.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Engine/.EngineGenerated/Generated.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/QuasarEngine/Engine/3D/cBoxCollider.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/QuasarEngine/Engine/3D/cBoxCollider.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/QuasarEngine/Engine/3D/cSphereCollider.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/QuasarEngine/Engine/3D/cSphereCollider.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Engine/Render/Shaders/Uniform.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Engine/Render/Window.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Helpers/DebugLine.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -60,6 +69,18 @@
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Managers/CollisionManager.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Managers/ImguiManager.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Engine/Utilitaries/Managers/ImguiManager.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Actors/Ball.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Actors/Ball.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Actors/BowlingAlley.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Actors/BowlingAlley.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Actors/BoxGl.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Actors/BoxGl.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Actors/Pin.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Actors/Pin.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Actors/Player3D.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Actors/Player3D.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Scenes/Scene_Bowling.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/QuasarEngine/Game3D/Bowling/Scenes/Scene_Bowling.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Actors/Switch.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Game3D/Doom/Actors/Switch.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Game3D/TestingGrounds/Actors/ActorCamera.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -81,25 +102,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "C/C++ Project.QuasarEngine.executor": "Debug",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "Planets",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.sourceCode",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;C/C++ Project.QuasarEngine.executor&quot;: &quot;Debug&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Planets&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.tabs&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="QuasarEngine" type="CppProject" factoryName="C++ Project">
       <configuration_1 setup="1">
@@ -126,18 +146,6 @@
         <option name="TERMINAL_INTERACTION_BEHAVIOR" value="AUTO_DETECT" />
         <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/QuasarEngine/QuasarEngine.vcxproj" />
       </configuration_2>
-      <configuration_3 setup="1">
-        <option name="CONFIGURATION" value="Debug" />
-        <option name="PLATFORM" value="x64" />
-        <option name="CURRENT_LAUNCH_PROFILE" value="Local" />
-        <option name="EXE_PATH" value="$(LocalDebuggerCommand)" />
-        <option name="PROGRAM_PARAMETERS" value="$(LocalDebuggerCommandArguments)" />
-        <option name="WORKING_DIRECTORY" value="$(LocalDebuggerWorkingDirectory)" />
-        <option name="PASS_PARENT_ENVS" value="1" />
-        <option name="USE_EXTERNAL_CONSOLE" value="0" />
-        <option name="TERMINAL_INTERACTION_BEHAVIOR" value="AUTO_DETECT" />
-        <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/QuasarEngine/QuasarEngine.vcxproj" />
-      </configuration_3>
       <option name="DEFAULT_PROJECT_PATH" value="$PROJECT_DIR$/QuasarEngine/QuasarEngine.vcxproj" />
       <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/QuasarEngine/QuasarEngine.vcxproj" />
       <option name="AUTO_SELECT_PRIORITY" value="0" />
@@ -179,85 +187,7 @@
       <workItem from="1773737734618" duration="1552000" />
       <workItem from="1773752839728" duration="4084000" />
       <workItem from="1773756944589" duration="1973000" />
-      <workItem from="1773759125131" duration="4069000" />
-      <workItem from="1773819669248" duration="17680000" />
-      <workItem from="1773857996427" duration="135000" />
-      <workItem from="1773858275760" duration="2493000" />
-      <workItem from="1773993936872" duration="11267000" />
-      <workItem from="1774014545208" duration="67000" />
-      <workItem from="1774014659507" duration="10279000" />
-      <workItem from="1774033277736" duration="5780000" />
-      <workItem from="1774088382228" duration="2820000" />
-      <workItem from="1774091294473" duration="12668000" />
-      <workItem from="1774171258858" duration="7409000" />
-      <workItem from="1774180016296" duration="2996000" />
-      <workItem from="1774190658315" duration="18364000" />
-      <workItem from="1774253286529" duration="2676000" />
-      <workItem from="1774270005283" duration="2114000" />
-      <workItem from="1774276917125" duration="568000" />
-      <workItem from="1774277591460" duration="4429000" />
-      <workItem from="1774340246839" duration="3526000" />
-      <workItem from="1774345294271" duration="63000" />
-      <workItem from="1774345374557" duration="6295000" />
-      <workItem from="1774360786693" duration="4479000" />
-      <workItem from="1774603189374" duration="14000" />
-      <workItem from="1774603228760" duration="739000" />
-      <workItem from="1774603980228" duration="2261000" />
-      <workItem from="1774606652457" duration="5591000" />
-      <workItem from="1774687818822" duration="6709000" />
-      <workItem from="1774772415134" duration="11861000" />
-      <workItem from="1774861518486" duration="5052000" />
-      <workItem from="1774874435069" duration="4725000" />
-      <workItem from="1774892189575" duration="13000" />
-      <workItem from="1774940201484" duration="4341000" />
-      <workItem from="1774956683166" duration="10114000" />
-      <workItem from="1775027299349" duration="3697000" />
-      <workItem from="1775045041687" duration="1303000" />
-      <workItem from="1775046527125" duration="8788000" />
-      <workItem from="1775055420215" duration="1697000" />
-      <workItem from="1775112507523" duration="2422000" />
-      <workItem from="1775115034471" duration="16975000" />
-      <workItem from="1775199617525" duration="22279000" />
-      <workItem from="1775377246219" duration="9813000" />
-      <workItem from="1775393054118" duration="2116000" />
-      <workItem from="1775395536126" duration="5316000" />
-      <workItem from="1775465774956" duration="10631000" />
-      <workItem from="1775552268434" duration="2095000" />
-      <workItem from="1775653988775" duration="3864000" />
-      <workItem from="1775659787226" duration="440000" />
-      <workItem from="1775660239593" duration="1113000" />
-      <workItem from="1775722865591" duration="9701000" />
-      <workItem from="1775813580818" duration="942000" />
-      <workItem from="1775828735583" duration="1147000" />
-      <workItem from="1775831053041" duration="2011000" />
-      <workItem from="1775899911942" duration="21363000" />
-      <workItem from="1775984282280" duration="6842000" />
-      <workItem from="1776005402290" duration="12304000" />
-      <workItem from="1776068416146" duration="10031000" />
-      <workItem from="1776155623403" duration="16798000" />
-      <workItem from="1776244344013" duration="1104000" />
-      <workItem from="1776245687410" duration="6307000" />
-      <workItem from="1776258200124" duration="32000" />
-      <workItem from="1776258276596" duration="2483000" />
-      <workItem from="1776685558506" duration="7761000" />
-      <workItem from="1776695593716" duration="1302000" />
-      <workItem from="1776709520106" duration="4182000" />
-      <workItem from="1776754959946" duration="697000" />
-      <workItem from="1776755732479" duration="13040000" />
-      <workItem from="1776839882506" duration="16880000" />
-      <workItem from="1776868932105" duration="1842000" />
-      <workItem from="1776927109938" duration="1547000" />
-      <workItem from="1776948527157" duration="4497000" />
-      <workItem from="1776953058952" duration="3017000" />
-      <workItem from="1777021345135" duration="69000" />
-      <workItem from="1777021666815" duration="381000" />
-      <workItem from="1777022153434" duration="196000" />
-      <workItem from="1777024104755" duration="10003000" />
-      <workItem from="1777100091246" duration="12791000" />
-      <workItem from="1777185582880" duration="28447000" />
-      <workItem from="1777272977774" duration="23234000" />
-      <workItem from="1777322135520" duration="1045000" />
-      <workItem from="1777323746066" duration="2276000" />
+      <workItem from="1778087486565" duration="3757000" />
     </task>
     <servers />
   </component>
@@ -266,9 +196,6 @@
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
-  <component name="UnknownFeatures">
-    <option featureType="com.intellij.fileTypeFactory" implementationName="*.prog" />
-  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
@@ -289,9 +216,5 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
   </component>
 </project>
