@@ -37,6 +37,7 @@ void Scene_Cube::Start()
 	//Modify Actors
 	player->getTransform3D()->addLocationX(-1.0f);
 	cube->GetComponent<Model>()->getMaterial()->setDrawOption(DrawOption::TESSELATION);
+	cube->GetComponent<Model>()->getMaterial()->SetFloat("", 5.0f);
 }
 
 void Scene_Cube::Update(float _deltaTime)

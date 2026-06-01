@@ -3,6 +3,7 @@
 in TESE_OUT{
    vec4 color;
    vec2 texCoord;
+   vec3 normal;
 } frag_in;
 
 out vec4 FragColor;

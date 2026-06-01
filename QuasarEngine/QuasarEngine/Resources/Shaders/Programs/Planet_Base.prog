@@ -4,4 +4,5 @@ S TESE_Planet_Base
 S FRAG_Planet_Base
 !U UMatrix uWorldTransform
 !U UMatrix uViewProj
+U UFloat uSphereRadius
 T 0 uTexture

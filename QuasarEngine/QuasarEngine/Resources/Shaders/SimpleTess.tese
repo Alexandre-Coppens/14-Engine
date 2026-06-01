@@ -9,6 +9,7 @@ in TESC_OUT{
 out TESE_OUT{
     vec4 color;
     vec2 texCoord;
+    vec3 normal;
 } tese_out;
 
 vec2 interpolate2D(vec2 v0, vec2 v1, vec2 v2)

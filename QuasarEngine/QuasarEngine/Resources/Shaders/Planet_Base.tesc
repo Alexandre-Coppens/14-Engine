@@ -23,14 +23,14 @@ void main(void)
    {
       const int MIN_TESS_LEVEL = 10;
       const int MAX_TESS_LEVEL = 60;
-      const float MIN_DISTANCE = 0.1;
+      const float MIN_DISTANCE = 2.0;
       const float MAX_DISTANCE = 20;
 
       vec4 eyeSpace0 = uViewProj * uWorldTransform * gl_in[0].gl_Position;
       vec4 eyeSpace1 = uViewProj * uWorldTransform * gl_in[1].gl_Position;
       vec4 eyeSpace2 = uViewProj * uWorldTransform * gl_in[2].gl_Position;
 
-      float len0 = length(eyeSpace0.xyz);
+      float len0 = length(eyeSpace0.xyz / eyeSpace0.w);
       float len1 = length(eyeSpace1.xyz);
       float len2 = length(eyeSpace2.xyz);
 
@@ -38,11 +38,11 @@ void main(void)
       float distance1 = clamp((len1 - MIN_DISTANCE) / (MAX_DISTANCE - MIN_DISTANCE), 0.0, 1.0);
       float distance2 = clamp((len2 - MIN_DISTANCE) / (MAX_DISTANCE - MIN_DISTANCE), 0.0, 1.0);
 
-      float tessLevel0 = mix( MAX_TESS_LEVEL, MIN_TESS_LEVEL, min(distance0, distance1));
-      float tessLevel1 = mix( MAX_TESS_LEVEL, MIN_TESS_LEVEL, min(distance1, distance2));
-      float tessLevel2 = mix( MAX_TESS_LEVEL, MIN_TESS_LEVEL, min(distance2, distance0));
+      float tessLevel0 = mix( MAX_TESS_LEVEL, MIN_TESS_LEVEL, min(distance1, distance2));
+      float tessLevel1 = mix( MAX_TESS_LEVEL, MIN_TESS_LEVEL, min(distance2, distance0));
+      float tessLevel2 = mix( MAX_TESS_LEVEL, MIN_TESS_LEVEL, min(distance0, distance1));
 
-      gl_TessLevelInner[0] = max(tessLevel0, tessLevel2);
+      gl_TessLevelInner[0] = max(tessLevel0, max(tessLevel1, tessLevel2));
       gl_TessLevelOuter[0] = tessLevel0;
       gl_TessLevelOuter[1] = tessLevel1;
       gl_TessLevelOuter[2] = tessLevel2;
