@@ -14,21 +14,18 @@ out TESC_OUT{
    vec3 normal;
 } tesc_out[];
 
-uniform mat4 uViewProj;
-uniform mat4 uWorldTransform;
-
 void main(void)
 {
    if (gl_InvocationID == 0)
    {
-      const int MIN_TESS_LEVEL = 10;
-      const int MAX_TESS_LEVEL = 60;
+      const int MIN_TESS_LEVEL = 5;
+      const int MAX_TESS_LEVEL = 10;
       const float MIN_DISTANCE = 2.0;
       const float MAX_DISTANCE = 20;
 
-      vec4 eyeSpace0 = uViewProj * uWorldTransform * gl_in[0].gl_Position;
-      vec4 eyeSpace1 = uViewProj * uWorldTransform * gl_in[1].gl_Position;
-      vec4 eyeSpace2 = uViewProj * uWorldTransform * gl_in[2].gl_Position;
+      vec4 eyeSpace0 = gl_in[0].gl_Position;
+      vec4 eyeSpace1 = gl_in[1].gl_Position;
+      vec4 eyeSpace2 = gl_in[2].gl_Position;
 
       float len0 = length(eyeSpace0.xyz / eyeSpace0.w);
       float len1 = length(eyeSpace1.xyz);
