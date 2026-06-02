@@ -38,6 +38,8 @@ void Scene_Cube::Start()
 	player->getTransform3D()->addLocationX(-1.0f);
 	cube->GetComponent<Model>()->getMaterial()->setDrawOption(DrawOption::TESSELATION);
 	cube->GetComponent<Model>()->getMaterial()->SetFloat("uSphereRadius", 1.0f);
+	cube->GetComponent<Model>()->getMaterial()->SetFloat("uNoiseStrength", 0.25f);
+	cube->GetComponent<Model>()->getMaterial()->SetFloat("uNoiseSize", 2.0f);
 }
 
 void Scene_Cube::Update(float _deltaTime)
