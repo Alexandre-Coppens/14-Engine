@@ -21,7 +21,6 @@ public:
     void setDrawOption(DrawOption _option) { mDrawOption = _option; }
     
 private:
-    Uniform* GetUniform(const std::string _name);
     
 public:
     Material(ShaderProgram* _shaderProgram, DrawOption _drawOption);
@@ -29,6 +28,8 @@ public:
 
     void Unload();
     void Bind();
+    
+    Uniform* GetUniform(const std::string _name);
 
     void SetFloat		(const std::string _name, GLfloat _f);
     void SetInteger		(const std::string _name, GLint	_i);

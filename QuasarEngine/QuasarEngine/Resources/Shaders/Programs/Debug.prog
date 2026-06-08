@@ -1,7 +1,6 @@
-﻿S VERT_Grass
-S FRAG_Grass
+﻿S VERT_Debug
+S FRAG_Debug
 !U UMatrix uWorldTransform
 !U UMatrix uViewProj
 !U UFloat uTime
-U UInt uInstances
 T 0 uTexture

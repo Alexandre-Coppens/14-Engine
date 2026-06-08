@@ -5,8 +5,8 @@
 
 static int texturesCount = 154 ;
 static int meshesCount = 26 ;
-static int shadersCount = 30 ;
-static int shadersProgramsCount = 9 ;
+static int shadersCount = 34 ;
+static int shadersProgramsCount = 11 ;
 
 enum GENERATED_TEXTURE
 {
@@ -202,6 +202,8 @@ enum GENERATED_SHADERS
     VERT_NULL,
     FRAG_BasicModel,
     VERT_BasicModel,
+    FRAG_Debug,
+    VERT_Debug,
     FRAG_FragTex,
     FRAG_Geometry,
     GEOM_Geometry,
@@ -217,6 +219,8 @@ enum GENERATED_SHADERS
     TESC_Planet_Base,
     TESE_Planet_Base,
     VERT_Planet_Base,
+    FRAG_Planet_Base_Tree,
+    VERT_Planet_Base_Tree,
     FRAG_Simple,
     VERT_Simple,
     FRAG_SimpleTess,
@@ -233,11 +237,13 @@ enum GENERATED_SHADERS
 enum GENERATED_SHADER_PROGRAMS
 {
     PROG_BasicModel,
+    PROG_Debug,
     PROG_DebugUV,
     PROG_Geometry,
     PROG_Grass,
     PROG_NoiseHeight,
     PROG_Planet_Base,
+    PROG_Planet_Base_Tree,
     PROG_Simple,
     PROG_Sprite,
     PROG_Transparent,
@@ -249,6 +255,8 @@ static std::map<std::string, GENERATED_SHADERS> stringToShader
    { "VERT_NULL", VERT_NULL },
    { "FRAG_BasicModel", FRAG_BasicModel },
    { "VERT_BasicModel", VERT_BasicModel },
+   { "FRAG_Debug", FRAG_Debug },
+   { "VERT_Debug", VERT_Debug },
    { "FRAG_FragTex", FRAG_FragTex },
    { "FRAG_Geometry", FRAG_Geometry },
    { "GEOM_Geometry", GEOM_Geometry },
@@ -264,6 +272,8 @@ static std::map<std::string, GENERATED_SHADERS> stringToShader
    { "TESC_Planet_Base", TESC_Planet_Base },
    { "TESE_Planet_Base", TESE_Planet_Base },
    { "VERT_Planet_Base", VERT_Planet_Base },
+   { "FRAG_Planet_Base_Tree", FRAG_Planet_Base_Tree },
+   { "VERT_Planet_Base_Tree", VERT_Planet_Base_Tree },
    { "FRAG_Simple", FRAG_Simple },
    { "VERT_Simple", VERT_Simple },
    { "FRAG_SimpleTess", FRAG_SimpleTess },
@@ -638,6 +648,8 @@ static std::string getShaderPath(GENERATED_SHADERS _shader)
    case VERT_NULL:  return"Engine/.EngineAssets/Shaders/NULL.vert";
    case FRAG_BasicModel:  return"Resources/Shaders/BasicModel.frag";
    case VERT_BasicModel:  return"Resources/Shaders/BasicModel.vert";
+   case FRAG_Debug:  return"Resources/Shaders/Debug.frag";
+   case VERT_Debug:  return"Resources/Shaders/Debug.vert";
    case FRAG_FragTex:  return"Resources/Shaders/Debug/FragTex.frag";
    case FRAG_Geometry:  return"Resources/Shaders/Geometry.frag";
    case GEOM_Geometry:  return"Resources/Shaders/Geometry.geom";
@@ -653,6 +665,8 @@ static std::string getShaderPath(GENERATED_SHADERS _shader)
    case TESC_Planet_Base:  return"Resources/Shaders/Planet_Base.tesc";
    case TESE_Planet_Base:  return"Resources/Shaders/Planet_Base.tese";
    case VERT_Planet_Base:  return"Resources/Shaders/Planet_Base.vert";
+   case FRAG_Planet_Base_Tree:  return"Resources/Shaders/Planet_Base_Tree.frag";
+   case VERT_Planet_Base_Tree:  return"Resources/Shaders/Planet_Base_Tree.vert";
    case FRAG_Simple:  return"Resources/Shaders/Simple.frag";
    case VERT_Simple:  return"Resources/Shaders/Simple.vert";
    case FRAG_SimpleTess:  return"Resources/Shaders/SimpleTess.frag";
@@ -672,11 +686,13 @@ static std::string getShaderProgramPath(GENERATED_SHADER_PROGRAMS _program)
    switch (_program)
 	{
    case PROG_BasicModel:  return"Resources/Shaders/Programs/BasicModel.prog";
+   case PROG_Debug:  return"Resources/Shaders/Programs/Debug.prog";
    case PROG_DebugUV:  return"Resources/Shaders/Programs/DebugUV.prog";
    case PROG_Geometry:  return"Resources/Shaders/Programs/Geometry.prog";
    case PROG_Grass:  return"Resources/Shaders/Programs/Grass.prog";
    case PROG_NoiseHeight:  return"Resources/Shaders/Programs/NoiseHeight.prog";
    case PROG_Planet_Base:  return"Resources/Shaders/Programs/Planet_Base.prog";
+   case PROG_Planet_Base_Tree:  return"Resources/Shaders/Programs/Planet_Base_Tree.prog";
    case PROG_Simple:  return"Resources/Shaders/Programs/Simple.prog";
    case PROG_Sprite:  return"Resources/Shaders/Programs/Sprite.prog";
    case PROG_Transparent:  return"Resources/Shaders/Programs/Transparent.prog";

@@ -32,6 +32,7 @@ void Scene_Cube::Start()
 
 	//Load Actors
 	Actor* cube = AddActor(new Object("Cube", OBJ_cube, PNG_Block, PROG_Planet_Base));
+	Actor* trees = AddActor(new Object("Trees", OBJ_sphere, PNG_Block, PROG_Planet_Base_Tree));
 	Actor* player = AddActor(new Player3D());
 
 	//Modify Actors
@@ -40,6 +41,15 @@ void Scene_Cube::Start()
 	cube->GetComponent<Model>()->getMaterial()->SetFloat("uSphereRadius", 1.0f);
 	cube->GetComponent<Model>()->getMaterial()->SetFloat("uNoiseStrength", 0.25f);
 	cube->GetComponent<Model>()->getMaterial()->SetFloat("uNoiseSize", 2.0f);
+	
+	trees->getTransform3D()->setScale(0.1f);
+	trees->GetComponent<Model>()->getMaterial()->setDrawOption(DrawOption::INSTANCED);
+	trees->GetComponent<Model>()->getMaterial()->SetInteger("uInstances", 10 * 5);
+	trees->GetComponent<Model>()->getMaterial()->SetFloat("uSphereRadius", 1.0f);
+	trees->GetComponent<Model>()->getMaterial()->SetFloat("uNoiseStrength", 0.25f);
+	trees->GetComponent<Model>()->getMaterial()->SetFloat("uNoiseSize", 2.0f);
+	trees->GetComponent<Model>()->getMaterial()->SetInteger("uLongNumber", 10);
+	trees->GetComponent<Model>()->getMaterial()->SetInteger("uLatNumber", 5);
 }
 
 void Scene_Cube::Update(float _deltaTime)

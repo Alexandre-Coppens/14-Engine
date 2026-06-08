@@ -331,6 +331,8 @@
     <Content Include="Resources\Models\Pin.obj" />
     <Content Include="Resources\Shaders\BasicModel.frag" />
     <Content Include="Resources\Shaders\BasicModel.vert" />
+    <Content Include="Resources\Shaders\Debug.frag" />
+    <Content Include="Resources\Shaders\Debug.vert" />
     <Content Include="Resources\Shaders\Debug\FragTex.frag" />
     <Content Include="Resources\Shaders\Geometry.frag" />
     <Content Include="Resources\Shaders\Geometry.geom" />
@@ -346,12 +348,16 @@
     <Content Include="Resources\Shaders\Planet_Base.tesc" />
     <Content Include="Resources\Shaders\Planet_Base.tese" />
     <Content Include="Resources\Shaders\Planet_Base.vert" />
+    <Content Include="Resources\Shaders\Planet_Base_Tree.frag" />
+    <Content Include="Resources\Shaders\Planet_Base_Tree.vert" />
     <Content Include="Resources\Shaders\Programs\BasicModel.prog" />
+    <Content Include="Resources\Shaders\Programs\Debug.prog" />
     <Content Include="Resources\Shaders\Programs\DebugUV.prog" />
     <Content Include="Resources\Shaders\Programs\Geometry.prog" />
     <Content Include="Resources\Shaders\Programs\Grass.prog" />
     <Content Include="Resources\Shaders\Programs\NoiseHeight.prog" />
     <Content Include="Resources\Shaders\Programs\Planet_Base.prog" />
+    <Content Include="Resources\Shaders\Programs\Planet_Base_Tree.prog" />
     <Content Include="Resources\Shaders\Programs\Simple.prog" />
     <Content Include="Resources\Shaders\Programs\Sprite.prog" />
     <Content Include="Resources\Shaders\Programs\Transparent.prog" />
