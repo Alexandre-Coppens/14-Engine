@@ -3,8 +3,8 @@
 
 #include <map> 
 
-static int texturesCount = 154 ;
-static int meshesCount = 26 ;
+static int texturesCount = 155 ;
+static int meshesCount = 27 ;
 static int shadersCount = 34 ;
 static int shadersProgramsCount = 11 ;
 
@@ -162,6 +162,7 @@ enum GENERATED_TEXTURE
     PNG_sprite_9_9,
     PNG_Grass_Gradient,
     PNG_Pin,
+    PNG_Planet_Tree,
     PNG_Voronoi,
     PNG_pokeball,
 };
@@ -194,6 +195,7 @@ enum GENERATED_MESHES
     OBJ_Bowling_Alley_Walls,
     OBJ_Grass,
     OBJ_Pin,
+    OBJ_Tree,
 };
 
 enum GENERATED_SHADERS
@@ -441,6 +443,7 @@ static GENERATED_TEXTURE getTextureEnum(std::string _texture)
    if ( _texture == "sprite-9-9" ) return PNG_sprite_9_9;
    if ( _texture == "Grass_Gradient" ) return PNG_Grass_Gradient;
    if ( _texture == "Pin" ) return PNG_Pin;
+   if ( _texture == "Planet_Tree" ) return PNG_Planet_Tree;
    if ( _texture == "Voronoi" ) return PNG_Voronoi;
    if ( _texture == "pokeball" ) return PNG_pokeball;
 	return PNG_NullTexture;
@@ -602,6 +605,7 @@ static std::string getTexturePath(GENERATED_TEXTURE _texture)
    case PNG_sprite_9_9:  return"Resources/Textures/Doom/sprite-9-9.png";
    case PNG_Grass_Gradient:  return"Resources/Textures/Grass_Gradient.png";
    case PNG_Pin:  return"Resources/Textures/Pin.png";
+   case PNG_Planet_Tree:  return"Resources/Textures/Planet_Tree.png";
    case PNG_Voronoi:  return"Resources/Textures/Voronoi.png";
    case PNG_pokeball:  return"Resources/Textures/pokeball.png";
 	}
@@ -637,6 +641,7 @@ static std::string getMeshPath(GENERATED_MESHES _mesh)
    case OBJ_Bowling_Alley_Walls:  return"Resources/Models/Bowling/Bowling_Alley_Walls.obj";
    case OBJ_Grass:  return"Resources/Models/Grass.obj";
    case OBJ_Pin:  return"Resources/Models/Pin.obj";
+   case OBJ_Tree:  return"Resources/Models/Tree.obj";
 	}
 };
 
