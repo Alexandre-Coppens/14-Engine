@@ -329,6 +329,7 @@
     <Content Include="Resources\Models\Bowling\Bowling_Alley_Walls.obj" />
     <Content Include="Resources\Models\Grass.obj" />
     <Content Include="Resources\Models\Pin.obj" />
+    <Content Include="Resources\Models\Tree.obj" />
     <Content Include="Resources\Shaders\BasicModel.frag" />
     <Content Include="Resources\Shaders\BasicModel.vert" />
     <Content Include="Resources\Shaders\Debug.frag" />
@@ -508,6 +509,7 @@
     <Content Include="Resources\Textures\Doom\Unknown.png" />
     <Content Include="Resources\Textures\Grass_Gradient.png" />
     <Content Include="Resources\Textures\Pin.png" />
+    <Content Include="Resources\Textures\Planet_Tree.png" />
     <Content Include="Resources\Textures\pokeball.png" />
     <Content Include="Resources\Textures\Voronoi.png" />
     <Content Include="TODO.txt" />
