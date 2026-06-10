@@ -8,24 +8,49 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8aaab4d2-4f5d-4712-9cf7-40708eb9c5f6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/TestingGrounds/Actors/Planet.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/TestingGrounds/Actors/Planet.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planets/Planet_Sun.frag" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planets/Planet_Sun.tese" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Programs/Planet_Sun.prog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.QuasarEngine/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.QuasarEngine/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/ActorCamera.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/ActorCamera.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/Animation2D.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/Animation2D.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/BoxCollider2D.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/BoxCollider2D.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/Collider.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/Collider.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/CollisionManager.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/CollisionManager.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/Cube.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/Cube.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/DebugLine.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/DebugLine.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/DoomBaseActor.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/DoomBaseActor.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/Door.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/Door.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/Gravity2D.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/Gravity2D.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/ImguiManager.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/ImguiManager.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/ImguiSimpleDemoFile.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/ImguiSimpleDemoFile.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/Material.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/Material.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/Scene_Cube.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/Scene_Cube.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/Sprite2D.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/Sprite2D.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/Switch.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/Switch.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/Target.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/Target.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/Transform2D.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/Transform2D.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/imgui.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/imgui.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_demo.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_demo.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_draw.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_draw.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_impl_opengl3.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_impl_opengl3.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_impl_sdl2.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_impl_sdl2.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_stdlib.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_stdlib.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_tables.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_tables.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_widgets.obj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Debug/imgui_widgets.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/.EngineGenerated/Generated.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.EngineGenerated/Generated.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/Render/RendererGl.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/Render/RendererGl.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/.Presets/Preset_Actor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.Presets/Planet.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/.Presets/Preset_Actor.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.Presets/Planet.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/TestingGrounds/Scenes/Scene_Cube.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/TestingGrounds/Scenes/Scene_Cube.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planet_Base.frag" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planet_Base.frag" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planet_Base_Tree.frag" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planet_Base_Tree.frag" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planet_Base_Tree.vert" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planet_Base_Tree.vert" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/QuasarEngine.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/QuasarEngine.vcxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planet_Base.frag" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planets/Planet_Base.frag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planet_Base.tesc" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planets/Planet_Base.tesc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planet_Base.tese" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planets/Planet_Base.tese" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planet_Base.vert" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planets/Planet_Base.vert" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planet_Base_Tree.frag" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planets/Planet_Base_Tree.frag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planet_Base_Tree.vert" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planets/Planet_Base_Tree.vert" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +64,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="cidr-memory-view://53" root0="FORCE_HIGHLIGHTING" />
+    <setting file="cidr-memory-view://58" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Dependencies/GL/SDL/include/SDL_events.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Dependencies/GL/SDL/include/SDL_stdinc.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/QuasarEngine/Dependencies/glew-2.2.0-win32/glew-2.2.0/include/GL/glew.h" root0="SKIP_HIGHLIGHTING" />
@@ -190,6 +215,8 @@
       <workItem from="1780943825925" duration="12913000" />
       <workItem from="1780991034504" duration="277000" />
       <workItem from="1781025274424" duration="4687000" />
+      <workItem from="1781037302076" duration="87000" />
+      <workItem from="1781106293979" duration="7787000" />
     </task>
     <servers />
   </component>

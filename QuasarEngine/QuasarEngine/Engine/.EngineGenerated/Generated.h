@@ -5,8 +5,8 @@
 
 static int texturesCount = 155 ;
 static int meshesCount = 27 ;
-static int shadersCount = 34 ;
-static int shadersProgramsCount = 11 ;
+static int shadersCount = 36 ;
+static int shadersProgramsCount = 12 ;
 
 enum GENERATED_TEXTURE
 {
@@ -223,6 +223,8 @@ enum GENERATED_SHADERS
     VERT_Planet_Base,
     FRAG_Planet_Base_Tree,
     VERT_Planet_Base_Tree,
+    FRAG_Planet_Sun,
+    TESE_Planet_Sun,
     FRAG_Simple,
     VERT_Simple,
     FRAG_SimpleTess,
@@ -246,6 +248,7 @@ enum GENERATED_SHADER_PROGRAMS
     PROG_NoiseHeight,
     PROG_Planet_Base,
     PROG_Planet_Base_Tree,
+    PROG_Planet_Sun,
     PROG_Simple,
     PROG_Sprite,
     PROG_Transparent,
@@ -276,6 +279,8 @@ static std::map<std::string, GENERATED_SHADERS> stringToShader
    { "VERT_Planet_Base", VERT_Planet_Base },
    { "FRAG_Planet_Base_Tree", FRAG_Planet_Base_Tree },
    { "VERT_Planet_Base_Tree", VERT_Planet_Base_Tree },
+   { "FRAG_Planet_Sun", FRAG_Planet_Sun },
+   { "TESE_Planet_Sun", TESE_Planet_Sun },
    { "FRAG_Simple", FRAG_Simple },
    { "VERT_Simple", VERT_Simple },
    { "FRAG_SimpleTess", FRAG_SimpleTess },
@@ -666,12 +671,14 @@ static std::string getShaderPath(GENERATED_SHADERS _shader)
    case TESE_NoiseHeight:  return"Resources/Shaders/NoiseHeight.tese";
    case VERT_NoiseHeight:  return"Resources/Shaders/NoiseHeight.vert";
    case FRAG_Normal:  return"Resources/Shaders/Normal.frag";
-   case FRAG_Planet_Base:  return"Resources/Shaders/Planet_Base.frag";
-   case TESC_Planet_Base:  return"Resources/Shaders/Planet_Base.tesc";
-   case TESE_Planet_Base:  return"Resources/Shaders/Planet_Base.tese";
-   case VERT_Planet_Base:  return"Resources/Shaders/Planet_Base.vert";
-   case FRAG_Planet_Base_Tree:  return"Resources/Shaders/Planet_Base_Tree.frag";
-   case VERT_Planet_Base_Tree:  return"Resources/Shaders/Planet_Base_Tree.vert";
+   case FRAG_Planet_Base:  return"Resources/Shaders/Planets/Planet_Base.frag";
+   case TESC_Planet_Base:  return"Resources/Shaders/Planets/Planet_Base.tesc";
+   case TESE_Planet_Base:  return"Resources/Shaders/Planets/Planet_Base.tese";
+   case VERT_Planet_Base:  return"Resources/Shaders/Planets/Planet_Base.vert";
+   case FRAG_Planet_Base_Tree:  return"Resources/Shaders/Planets/Planet_Base_Tree.frag";
+   case VERT_Planet_Base_Tree:  return"Resources/Shaders/Planets/Planet_Base_Tree.vert";
+   case FRAG_Planet_Sun:  return"Resources/Shaders/Planets/Planet_Sun.frag";
+   case TESE_Planet_Sun:  return"Resources/Shaders/Planets/Planet_Sun.tese";
    case FRAG_Simple:  return"Resources/Shaders/Simple.frag";
    case VERT_Simple:  return"Resources/Shaders/Simple.vert";
    case FRAG_SimpleTess:  return"Resources/Shaders/SimpleTess.frag";
@@ -698,6 +705,7 @@ static std::string getShaderProgramPath(GENERATED_SHADER_PROGRAMS _program)
    case PROG_NoiseHeight:  return"Resources/Shaders/Programs/NoiseHeight.prog";
    case PROG_Planet_Base:  return"Resources/Shaders/Programs/Planet_Base.prog";
    case PROG_Planet_Base_Tree:  return"Resources/Shaders/Programs/Planet_Base_Tree.prog";
+   case PROG_Planet_Sun:  return"Resources/Shaders/Programs/Planet_Sun.prog";
    case PROG_Simple:  return"Resources/Shaders/Programs/Simple.prog";
    case PROG_Sprite:  return"Resources/Shaders/Programs/Sprite.prog";
    case PROG_Transparent:  return"Resources/Shaders/Programs/Transparent.prog";

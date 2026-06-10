@@ -17,6 +17,7 @@ out TESE_OUT{
 
 uniform mat4 uViewProj;
 uniform mat4 uWorldTransform;
+uniform float uTime;
 uniform float uSphereRadius;
 uniform float uNoiseStrength;
 uniform float uNoiseSize;
@@ -80,6 +81,9 @@ void main(void)
 
    vec3 spherePos = cubeToSphere(cubeSurface);
    float noise = clamp(noise(spherePos * uNoiseSize), 0.1, 1.0) ;
+   if(noise < 0.175){
+      noise = clamp( noise + cos(uTime * 0.01 * noise) * 0.1, 0.100, 0.159);
+   }
    vec3 sphereNoised = spherePos * uSphereRadius * (1 + noise * uNoiseStrength);
    gl_Position = vec4(sphereNoised, 1.0) * uWorldTransform * uViewProj;
    

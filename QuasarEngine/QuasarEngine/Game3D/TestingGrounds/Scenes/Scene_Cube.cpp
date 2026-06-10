@@ -10,6 +10,7 @@
 #include "Game3D/Bowling/Actors/Player3D.h"
 #include "Game3D/TestingGrounds/Actors/ActorCamera.h"
 #include "Game3D/TestingGrounds/Actors/Cube.h"
+#include "Game3D/TestingGrounds/Actors/Planet.h"
 
 Scene_Cube::Scene_Cube(std::string _name)
 {
@@ -31,17 +32,29 @@ void Scene_Cube::Start()
 	}
 
 	//Load Actors
-	Actor* cube = AddActor(new Object("Cube", OBJ_cube, PNG_Block, PROG_Planet_Base));
-	Actor* trees = AddActor(new Object("Trees", OBJ_Tree, PNG_Planet_Tree, PROG_Planet_Base_Tree));
+	Actor* treePlanet = AddActor(new Planet( OBJ_cube,PROG_Planet_Base, PNG_Block, 3.0f));
+	Actor* trees = AddActor(new Planet( OBJ_Tree,PROG_Planet_Base_Tree, PNG_Planet_Tree, 3.0f));
+	Actor* sun = AddActor(new Object("Sun", OBJ_cube, PNG_NullTexture, PROG_Planet_Sun));
 	Actor* player = AddActor(new Player3D());
 
 	//Modify Actors
 	player->getTransform3D()->addLocationX(-1.0f);
-	cube->GetComponent<Model>()->getMaterial()->setDrawOption(DrawOption::TESSELATION);
-	cube->GetComponent<Model>()->getMaterial()->SetFloat("uSphereRadius", 1.0f);
-	cube->GetComponent<Model>()->getMaterial()->SetFloat("uNoiseStrength", 0.25f);
-	cube->GetComponent<Model>()->getMaterial()->SetFloat("uNoiseSize", 2.0f);
 	
+	sun->getTransform3D()->addLocationX(-20.0f);
+	sun->GetComponent<Model>()->getMaterial()->setDrawOption(DrawOption::TESSELATION);
+	sun->GetComponent<Model>()->getMaterial()->SetFloat("uSphereRadius", 10.0f);
+	sun->GetComponent<Model>()->getMaterial()->SetFloat("uNoiseStrength", 0.05f);
+	sun->GetComponent<Model>()->getMaterial()->SetFloat("uNoiseSize", 25.0f);
+	
+	treePlanet->getTransform3D()->addLocationX(-5.0f); 
+	treePlanet->getTransform3D()->addRotation(Vector3(35.0f, 50.0f, 0.0f));
+	treePlanet->GetComponent<Model>()->getMaterial()->setDrawOption(DrawOption::TESSELATION);
+	treePlanet->GetComponent<Model>()->getMaterial()->SetFloat("uSphereRadius", 1.0f);
+	treePlanet->GetComponent<Model>()->getMaterial()->SetFloat("uNoiseStrength", 0.25f);
+	treePlanet->GetComponent<Model>()->getMaterial()->SetFloat("uNoiseSize", 2.0f);
+	
+	trees->getTransform3D()->addLocationX(-5.0f); 
+	trees->getTransform3D()->addRotation(Vector3(35.0f, 50.0f, 0.0f));
 	trees->getTransform3D()->setScale(0.1f);
 	trees->GetComponent<Model>()->getMaterial()->setDrawOption(DrawOption::INSTANCED);
 	trees->GetComponent<Model>()->getMaterial()->SetInteger("uInstances", 50 * 25);

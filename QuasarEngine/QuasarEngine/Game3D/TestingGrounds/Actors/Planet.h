@@ -4,19 +4,24 @@
 #include "Engine/3D/cPhysicBody.h"
 
 class Camera;
-class Preset_Actor : public Actor
+class Planet : public Actor
 {
 private:
     Model* mModel            {nullptr};
     PhysicBody* mPhysicBody  {nullptr};
+    
+    GENERATED_MESHES mMesh;
+    GENERATED_SHADER_PROGRAMS mShader;
+    GENERATED_TEXTURE mTexture;
+    float mConstantRotation {0.0f};
 
 public:
     Model* getModel() const {return mModel;}
 
 private:
 public:
-    Preset_Actor();
-    ~Preset_Actor() override;
+    Planet( GENERATED_MESHES _mesh, GENERATED_SHADER_PROGRAMS _shader, GENERATED_TEXTURE _texture, float _constantRotation);
+    ~Planet() override;
 
     void Initialize()               override;
     void Start()					override;
