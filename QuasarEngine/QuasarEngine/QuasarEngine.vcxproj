@@ -276,7 +276,7 @@
       <EnablePREfast>false</EnablePREfast>
       <OmitFramePointers>false</OmitFramePointers>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>H:\Github\14-Engine\QuasarEngine\QuasarEngine;H:\Github\14-Engine\QuasarEngine\QuasarEngine/Dependencies/GL/SDL/include;H:\Github\14-Engine\QuasarEngine\QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\include/GL;H:\Github\14-Engine\QuasarEngine\QuasarEngine/Dependencies/SDL2_image-2.8.2\include;H:\Github\14-Engine\QuasarEngine\QuasarEngine\Dependencies\imgui-1.92.7-docking\backends;H:\Github\14-Engine\QuasarEngine\QuasarEngine/Dependencies/imgui-1.92.7-docking</AdditionalIncludeDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)/QuasarEngine/Dependencies/SDL2_image-2.8.2\lib\x86;$(SolutionDir)/QuasarEngine/Dependencies/glew-2.2.0-win32\glew-2.2.0\lib\Release\Win32;$(SolutionDir)/QuasarEngine/Dependencies/GL/SDL/lib/x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="Game3D\TestingGrounds\Scenes\Scene_Cube.cpp" />
@@ -425,12 +425,14 @@
     <Content Include="Resources\Shaders\NoiseHeight.tese" />
     <Content Include="Resources\Shaders\NoiseHeight.vert" />
     <Content Include="Resources\Shaders\Normal.frag" />
-    <Content Include="Resources\Shaders\Planets\Planet_Base.frag" />
+    <Content Include="Resources\Shaders\Planets\Planet_Beach.frag" />
     <Content Include="Resources\Shaders\Planets\Planet_Base.tesc" />
-    <Content Include="Resources\Shaders\Planets\Planet_Base.tese" />
+    <Content Include="Resources\Shaders\Planets\Planet_Beach.tese" />
     <Content Include="Resources\Shaders\Planets\Planet_Base.vert" />
-    <Content Include="Resources\Shaders\Planets\Planet_Base_Tree.frag" />
-    <Content Include="Resources\Shaders\Planets\Planet_Base_Tree.vert" />
+    <Content Include="Resources\Shaders\Planets\Planet_Beach_Tree.frag" />
+    <Content Include="Resources\Shaders\Planets\Planet_Beach_Tree.vert" />
+    <Content Include="Resources\Shaders\Planets\Planet_Rock.frag" />
+    <Content Include="Resources\Shaders\Planets\Planet_Rock.tese" />
     <Content Include="Resources\Shaders\Planets\Planet_Sun.frag" />
     <Content Include="Resources\Shaders\Planets\Planet_Sun.tese" />
     <Content Include="Resources\Shaders\Programs\BasicModel.prog" />
@@ -439,8 +441,9 @@
     <Content Include="Resources\Shaders\Programs\Geometry.prog" />
     <Content Include="Resources\Shaders\Programs\Grass.prog" />
     <Content Include="Resources\Shaders\Programs\NoiseHeight.prog" />
-    <Content Include="Resources\Shaders\Programs\Planet_Base.prog" />
-    <Content Include="Resources\Shaders\Programs\Planet_Base_Tree.prog" />
+    <Content Include="Resources\Shaders\Programs\Planet_Beach.prog" />
+    <Content Include="Resources\Shaders\Programs\Planet_Beach_Tree.prog" />
+    <Content Include="Resources\Shaders\Programs\Planet_Rock.prog" />
     <Content Include="Resources\Shaders\Programs\Planet_Sun.prog" />
     <Content Include="Resources\Shaders\Programs\Simple.prog" />
     <Content Include="Resources\Shaders\Programs\Sprite.prog" />

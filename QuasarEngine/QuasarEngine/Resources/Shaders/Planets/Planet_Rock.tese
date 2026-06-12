@@ -80,12 +80,12 @@ void main(void)
    vec3 cubeSurface = cubePos / max(abs(cubePos.x), max(abs(cubePos.y), abs(cubePos.z)));
 
    vec3 spherePos = cubeToSphere(cubeSurface);
-   float noise = clamp(perlin(spherePos * uNoiseSize + vec3(uTime * 0.002, 0.0, 0.0)), -1.0, 1.0) ;
+   float noise = clamp(clamp(perlin(spherePos * uNoiseSize) * 2, -0.5, 0.5) + 0.5, -1.0, 0.5) ;
    vec3 sphereNoised = spherePos * uSphereRadius * (1 + noise * uNoiseStrength);
    gl_Position = vec4(sphereNoised, 1.0) * uWorldTransform * uViewProj;
    
    tese_out.color = mix(tese_in[0].color, tese_in[1].color, gl_TessCoord.x);
    tese_out.texCoord = interpolate2D(tese_in[0].texCoord, tese_in[1].texCoord, tese_in[2].texCoord);
    tese_out.normal = spherePos;
-   tese_out.perlinHeight = noise + perlin(spherePos * uNoiseSize * 3 + vec3(uTime * 0.002, 0.0, 0.0)) * 0.75;
+   tese_out.perlinHeight = noise + perlin(spherePos * uNoiseSize * 3 + vec3(uTime * 0.00002, 0.0, 0.0)) * 0.15;
 }

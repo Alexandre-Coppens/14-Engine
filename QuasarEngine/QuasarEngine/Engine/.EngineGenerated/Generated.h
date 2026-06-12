@@ -5,8 +5,8 @@
 
 static int texturesCount = 155 ;
 static int meshesCount = 27 ;
-static int shadersCount = 36 ;
-static int shadersProgramsCount = 12 ;
+static int shadersCount = 38 ;
+static int shadersProgramsCount = 13 ;
 
 enum GENERATED_TEXTURE
 {
@@ -217,12 +217,14 @@ enum GENERATED_SHADERS
     TESE_NoiseHeight,
     VERT_NoiseHeight,
     FRAG_Normal,
-    FRAG_Planet_Base,
     TESC_Planet_Base,
-    TESE_Planet_Base,
     VERT_Planet_Base,
-    FRAG_Planet_Base_Tree,
-    VERT_Planet_Base_Tree,
+    FRAG_Planet_Beach,
+    TESE_Planet_Beach,
+    FRAG_Planet_Beach_Tree,
+    VERT_Planet_Beach_Tree,
+    FRAG_Planet_Rock,
+    TESE_Planet_Rock,
     FRAG_Planet_Sun,
     TESE_Planet_Sun,
     FRAG_Simple,
@@ -246,8 +248,9 @@ enum GENERATED_SHADER_PROGRAMS
     PROG_Geometry,
     PROG_Grass,
     PROG_NoiseHeight,
-    PROG_Planet_Base,
-    PROG_Planet_Base_Tree,
+    PROG_Planet_Beach,
+    PROG_Planet_Beach_Tree,
+    PROG_Planet_Rock,
     PROG_Planet_Sun,
     PROG_Simple,
     PROG_Sprite,
@@ -273,12 +276,14 @@ static std::map<std::string, GENERATED_SHADERS> stringToShader
    { "TESE_NoiseHeight", TESE_NoiseHeight },
    { "VERT_NoiseHeight", VERT_NoiseHeight },
    { "FRAG_Normal", FRAG_Normal },
-   { "FRAG_Planet_Base", FRAG_Planet_Base },
    { "TESC_Planet_Base", TESC_Planet_Base },
-   { "TESE_Planet_Base", TESE_Planet_Base },
    { "VERT_Planet_Base", VERT_Planet_Base },
-   { "FRAG_Planet_Base_Tree", FRAG_Planet_Base_Tree },
-   { "VERT_Planet_Base_Tree", VERT_Planet_Base_Tree },
+   { "FRAG_Planet_Beach", FRAG_Planet_Beach },
+   { "TESE_Planet_Beach", TESE_Planet_Beach },
+   { "FRAG_Planet_Beach_Tree", FRAG_Planet_Beach_Tree },
+   { "VERT_Planet_Beach_Tree", VERT_Planet_Beach_Tree },
+   { "FRAG_Planet_Rock", FRAG_Planet_Rock },
+   { "TESE_Planet_Rock", TESE_Planet_Rock },
    { "FRAG_Planet_Sun", FRAG_Planet_Sun },
    { "TESE_Planet_Sun", TESE_Planet_Sun },
    { "FRAG_Simple", FRAG_Simple },
@@ -671,12 +676,14 @@ static std::string getShaderPath(GENERATED_SHADERS _shader)
    case TESE_NoiseHeight:  return"Resources/Shaders/NoiseHeight.tese";
    case VERT_NoiseHeight:  return"Resources/Shaders/NoiseHeight.vert";
    case FRAG_Normal:  return"Resources/Shaders/Normal.frag";
-   case FRAG_Planet_Base:  return"Resources/Shaders/Planets/Planet_Base.frag";
    case TESC_Planet_Base:  return"Resources/Shaders/Planets/Planet_Base.tesc";
-   case TESE_Planet_Base:  return"Resources/Shaders/Planets/Planet_Base.tese";
    case VERT_Planet_Base:  return"Resources/Shaders/Planets/Planet_Base.vert";
-   case FRAG_Planet_Base_Tree:  return"Resources/Shaders/Planets/Planet_Base_Tree.frag";
-   case VERT_Planet_Base_Tree:  return"Resources/Shaders/Planets/Planet_Base_Tree.vert";
+   case FRAG_Planet_Beach:  return"Resources/Shaders/Planets/Planet_Beach.frag";
+   case TESE_Planet_Beach:  return"Resources/Shaders/Planets/Planet_Beach.tese";
+   case FRAG_Planet_Beach_Tree:  return"Resources/Shaders/Planets/Planet_Beach_Tree.frag";
+   case VERT_Planet_Beach_Tree:  return"Resources/Shaders/Planets/Planet_Beach_Tree.vert";
+   case FRAG_Planet_Rock:  return"Resources/Shaders/Planets/Planet_Rock.frag";
+   case TESE_Planet_Rock:  return"Resources/Shaders/Planets/Planet_Rock.tese";
    case FRAG_Planet_Sun:  return"Resources/Shaders/Planets/Planet_Sun.frag";
    case TESE_Planet_Sun:  return"Resources/Shaders/Planets/Planet_Sun.tese";
    case FRAG_Simple:  return"Resources/Shaders/Simple.frag";
@@ -703,8 +710,9 @@ static std::string getShaderProgramPath(GENERATED_SHADER_PROGRAMS _program)
    case PROG_Geometry:  return"Resources/Shaders/Programs/Geometry.prog";
    case PROG_Grass:  return"Resources/Shaders/Programs/Grass.prog";
    case PROG_NoiseHeight:  return"Resources/Shaders/Programs/NoiseHeight.prog";
-   case PROG_Planet_Base:  return"Resources/Shaders/Programs/Planet_Base.prog";
-   case PROG_Planet_Base_Tree:  return"Resources/Shaders/Programs/Planet_Base_Tree.prog";
+   case PROG_Planet_Beach:  return"Resources/Shaders/Programs/Planet_Beach.prog";
+   case PROG_Planet_Beach_Tree:  return"Resources/Shaders/Programs/Planet_Beach_Tree.prog";
+   case PROG_Planet_Rock:  return"Resources/Shaders/Programs/Planet_Rock.prog";
    case PROG_Planet_Sun:  return"Resources/Shaders/Programs/Planet_Sun.prog";
    case PROG_Simple:  return"Resources/Shaders/Programs/Simple.prog";
    case PROG_Sprite:  return"Resources/Shaders/Programs/Sprite.prog";

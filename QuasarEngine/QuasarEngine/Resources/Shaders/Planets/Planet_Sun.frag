@@ -13,9 +13,11 @@ void main()
 {
    vec3 color;
 
-   if(frag_in.perlinHeight <= 0.100) {
+   if(frag_in.perlinHeight <= -0.1) {
+      color = vec3(0.500, 0.015, 0.015);
+   } else if(frag_in.perlinHeight <= 0.033) {
       color = vec3(0.761, 0.039, 0.039);
-   } else if (frag_in.perlinHeight <= 0.135) {
+   } else if (frag_in.perlinHeight <= 0.115) {
       color = vec3(0.941, 0.294, 0.035);
    } else if (frag_in.perlinHeight <= 0.200) {
       color = vec3(0.836, 0.428, 0.048);

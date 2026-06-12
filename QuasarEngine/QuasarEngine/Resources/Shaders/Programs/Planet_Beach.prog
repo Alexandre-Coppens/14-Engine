@@ -1,11 +1,10 @@
-﻿S VERT_Planet_Base_Tree
-S FRAG_Planet_Base_Tree
+﻿S VERT_Planet_Base
+S TESC_Planet_Base
+S TESE_Planet_Beach
+S FRAG_Planet_Beach
 !U UMatrix uWorldTransform
 !U UMatrix uViewProj
-U UInt uInstances
 U UFloat uSphereRadius
 U UFloat uNoiseStrength
 U UFloat uNoiseSize
-U UInt uLongNumber
-U UInt uLatNumber
 T 0 uTexture
