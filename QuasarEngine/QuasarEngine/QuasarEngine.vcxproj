@@ -425,6 +425,8 @@
     <Content Include="Resources\Shaders\NoiseHeight.tese" />
     <Content Include="Resources\Shaders\NoiseHeight.vert" />
     <Content Include="Resources\Shaders\Normal.frag" />
+    <Content Include="Resources\Shaders\Planets\Planet_Asteroids.frag" />
+    <Content Include="Resources\Shaders\Planets\Planet_Asteroids.vert" />
     <Content Include="Resources\Shaders\Planets\Planet_Beach.frag" />
     <Content Include="Resources\Shaders\Planets\Planet_Base.tesc" />
     <Content Include="Resources\Shaders\Planets\Planet_Beach.tese" />
@@ -433,6 +435,8 @@
     <Content Include="Resources\Shaders\Planets\Planet_Beach_Tree.vert" />
     <Content Include="Resources\Shaders\Planets\Planet_Rock.frag" />
     <Content Include="Resources\Shaders\Planets\Planet_Rock.tese" />
+    <Content Include="Resources\Shaders\Planets\Planet_Stars.frag" />
+    <Content Include="Resources\Shaders\Planets\Planet_Stars.vert" />
     <Content Include="Resources\Shaders\Planets\Planet_Sun.frag" />
     <Content Include="Resources\Shaders\Planets\Planet_Sun.tese" />
     <Content Include="Resources\Shaders\Programs\BasicModel.prog" />
@@ -441,9 +445,11 @@
     <Content Include="Resources\Shaders\Programs\Geometry.prog" />
     <Content Include="Resources\Shaders\Programs\Grass.prog" />
     <Content Include="Resources\Shaders\Programs\NoiseHeight.prog" />
+    <Content Include="Resources\Shaders\Programs\Planet_Asteroids.prog" />
     <Content Include="Resources\Shaders\Programs\Planet_Beach.prog" />
     <Content Include="Resources\Shaders\Programs\Planet_Beach_Tree.prog" />
     <Content Include="Resources\Shaders\Programs\Planet_Rock.prog" />
+    <Content Include="Resources\Shaders\Programs\Planet_Stars.prog" />
     <Content Include="Resources\Shaders\Programs\Planet_Sun.prog" />
     <Content Include="Resources\Shaders\Programs\Simple.prog" />
     <Content Include="Resources\Shaders\Programs\Sprite.prog" />
@@ -597,6 +603,7 @@
     <Content Include="Resources\Textures\Pin.png" />
     <Content Include="Resources\Textures\Planet_Tree.png" />
     <Content Include="Resources\Textures\pokeball.png" />
+    <Content Include="Resources\Textures\Star_Sheet.png" />
     <Content Include="Resources\Textures\Voronoi.png" />
     <Content Include="TODO.txt" />
   </ItemGroup>

@@ -13,14 +13,20 @@ private:
     GENERATED_MESHES mMesh;
     GENERATED_SHADER_PROGRAMS mShader;
     GENERATED_TEXTURE mTexture;
+    
     float mConstantRotation {0.0f};
-
+    Actor* mCenterActor {nullptr};
+    float mRotateAroundSpeed {0.0f};
+    
+    float mRotationPosition {0.0f};
+    float mDistanceToCenter {0.0f};
+    
 public:
     Model* getModel() const {return mModel;}
 
 private:
 public:
-    Planet( GENERATED_MESHES _mesh, GENERATED_SHADER_PROGRAMS _shader, GENERATED_TEXTURE _texture, float _constantRotation);
+    Planet(GENERATED_MESHES _mesh, GENERATED_SHADER_PROGRAMS _shader, GENERATED_TEXTURE _texture, float _selfRotationSpeed, Actor* _center, float _rotateAroundSpeed);
     ~Planet() override;
 
     void Initialize()               override;

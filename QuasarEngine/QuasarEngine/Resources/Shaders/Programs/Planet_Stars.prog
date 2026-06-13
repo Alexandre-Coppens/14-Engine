@@ -1,0 +1,8 @@
+﻿S VERT_Planet_Stars
+S FRAG_Planet_Stars
+!U UMatrix uWorldTransform
+!U UMatrix uViewProj
+U UInt uInstances
+U UFloat uDistanceRadius
+U UFloat uMeshInvScale
+T 0 uTexture

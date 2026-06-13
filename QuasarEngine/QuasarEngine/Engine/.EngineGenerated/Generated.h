@@ -3,10 +3,10 @@
 
 #include <map> 
 
-static int texturesCount = 155 ;
+static int texturesCount = 156 ;
 static int meshesCount = 27 ;
-static int shadersCount = 38 ;
-static int shadersProgramsCount = 13 ;
+static int shadersCount = 42 ;
+static int shadersProgramsCount = 15 ;
 
 enum GENERATED_TEXTURE
 {
@@ -163,6 +163,7 @@ enum GENERATED_TEXTURE
     PNG_Grass_Gradient,
     PNG_Pin,
     PNG_Planet_Tree,
+    PNG_Star_Sheet,
     PNG_Voronoi,
     PNG_pokeball,
 };
@@ -217,6 +218,8 @@ enum GENERATED_SHADERS
     TESE_NoiseHeight,
     VERT_NoiseHeight,
     FRAG_Normal,
+    FRAG_Planet_Asteroids,
+    VERT_Planet_Asteroids,
     TESC_Planet_Base,
     VERT_Planet_Base,
     FRAG_Planet_Beach,
@@ -225,6 +228,8 @@ enum GENERATED_SHADERS
     VERT_Planet_Beach_Tree,
     FRAG_Planet_Rock,
     TESE_Planet_Rock,
+    FRAG_Planet_Stars,
+    VERT_Planet_Stars,
     FRAG_Planet_Sun,
     TESE_Planet_Sun,
     FRAG_Simple,
@@ -248,9 +253,11 @@ enum GENERATED_SHADER_PROGRAMS
     PROG_Geometry,
     PROG_Grass,
     PROG_NoiseHeight,
+    PROG_Planet_Asteroids,
     PROG_Planet_Beach,
     PROG_Planet_Beach_Tree,
     PROG_Planet_Rock,
+    PROG_Planet_Stars,
     PROG_Planet_Sun,
     PROG_Simple,
     PROG_Sprite,
@@ -276,6 +283,8 @@ static std::map<std::string, GENERATED_SHADERS> stringToShader
    { "TESE_NoiseHeight", TESE_NoiseHeight },
    { "VERT_NoiseHeight", VERT_NoiseHeight },
    { "FRAG_Normal", FRAG_Normal },
+   { "FRAG_Planet_Asteroids", FRAG_Planet_Asteroids },
+   { "VERT_Planet_Asteroids", VERT_Planet_Asteroids },
    { "TESC_Planet_Base", TESC_Planet_Base },
    { "VERT_Planet_Base", VERT_Planet_Base },
    { "FRAG_Planet_Beach", FRAG_Planet_Beach },
@@ -284,6 +293,8 @@ static std::map<std::string, GENERATED_SHADERS> stringToShader
    { "VERT_Planet_Beach_Tree", VERT_Planet_Beach_Tree },
    { "FRAG_Planet_Rock", FRAG_Planet_Rock },
    { "TESE_Planet_Rock", TESE_Planet_Rock },
+   { "FRAG_Planet_Stars", FRAG_Planet_Stars },
+   { "VERT_Planet_Stars", VERT_Planet_Stars },
    { "FRAG_Planet_Sun", FRAG_Planet_Sun },
    { "TESE_Planet_Sun", TESE_Planet_Sun },
    { "FRAG_Simple", FRAG_Simple },
@@ -454,6 +465,7 @@ static GENERATED_TEXTURE getTextureEnum(std::string _texture)
    if ( _texture == "Grass_Gradient" ) return PNG_Grass_Gradient;
    if ( _texture == "Pin" ) return PNG_Pin;
    if ( _texture == "Planet_Tree" ) return PNG_Planet_Tree;
+   if ( _texture == "Star_Sheet" ) return PNG_Star_Sheet;
    if ( _texture == "Voronoi" ) return PNG_Voronoi;
    if ( _texture == "pokeball" ) return PNG_pokeball;
 	return PNG_NullTexture;
@@ -616,6 +628,7 @@ static std::string getTexturePath(GENERATED_TEXTURE _texture)
    case PNG_Grass_Gradient:  return"Resources/Textures/Grass_Gradient.png";
    case PNG_Pin:  return"Resources/Textures/Pin.png";
    case PNG_Planet_Tree:  return"Resources/Textures/Planet_Tree.png";
+   case PNG_Star_Sheet:  return"Resources/Textures/Star_Sheet.png";
    case PNG_Voronoi:  return"Resources/Textures/Voronoi.png";
    case PNG_pokeball:  return"Resources/Textures/pokeball.png";
 	}
@@ -676,6 +689,8 @@ static std::string getShaderPath(GENERATED_SHADERS _shader)
    case TESE_NoiseHeight:  return"Resources/Shaders/NoiseHeight.tese";
    case VERT_NoiseHeight:  return"Resources/Shaders/NoiseHeight.vert";
    case FRAG_Normal:  return"Resources/Shaders/Normal.frag";
+   case FRAG_Planet_Asteroids:  return"Resources/Shaders/Planets/Planet_Asteroids.frag";
+   case VERT_Planet_Asteroids:  return"Resources/Shaders/Planets/Planet_Asteroids.vert";
    case TESC_Planet_Base:  return"Resources/Shaders/Planets/Planet_Base.tesc";
    case VERT_Planet_Base:  return"Resources/Shaders/Planets/Planet_Base.vert";
    case FRAG_Planet_Beach:  return"Resources/Shaders/Planets/Planet_Beach.frag";
@@ -684,6 +699,8 @@ static std::string getShaderPath(GENERATED_SHADERS _shader)
    case VERT_Planet_Beach_Tree:  return"Resources/Shaders/Planets/Planet_Beach_Tree.vert";
    case FRAG_Planet_Rock:  return"Resources/Shaders/Planets/Planet_Rock.frag";
    case TESE_Planet_Rock:  return"Resources/Shaders/Planets/Planet_Rock.tese";
+   case FRAG_Planet_Stars:  return"Resources/Shaders/Planets/Planet_Stars.frag";
+   case VERT_Planet_Stars:  return"Resources/Shaders/Planets/Planet_Stars.vert";
    case FRAG_Planet_Sun:  return"Resources/Shaders/Planets/Planet_Sun.frag";
    case TESE_Planet_Sun:  return"Resources/Shaders/Planets/Planet_Sun.tese";
    case FRAG_Simple:  return"Resources/Shaders/Simple.frag";
@@ -710,9 +727,11 @@ static std::string getShaderProgramPath(GENERATED_SHADER_PROGRAMS _program)
    case PROG_Geometry:  return"Resources/Shaders/Programs/Geometry.prog";
    case PROG_Grass:  return"Resources/Shaders/Programs/Grass.prog";
    case PROG_NoiseHeight:  return"Resources/Shaders/Programs/NoiseHeight.prog";
+   case PROG_Planet_Asteroids:  return"Resources/Shaders/Programs/Planet_Asteroids.prog";
    case PROG_Planet_Beach:  return"Resources/Shaders/Programs/Planet_Beach.prog";
    case PROG_Planet_Beach_Tree:  return"Resources/Shaders/Programs/Planet_Beach_Tree.prog";
    case PROG_Planet_Rock:  return"Resources/Shaders/Programs/Planet_Rock.prog";
+   case PROG_Planet_Stars:  return"Resources/Shaders/Programs/Planet_Stars.prog";
    case PROG_Planet_Sun:  return"Resources/Shaders/Programs/Planet_Sun.prog";
    case PROG_Simple:  return"Resources/Shaders/Programs/Simple.prog";
    case PROG_Sprite:  return"Resources/Shaders/Programs/Sprite.prog";

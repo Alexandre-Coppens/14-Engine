@@ -1,0 +1,10 @@
+﻿S VERT_Planet_Asteroids
+S FRAG_Planet_Asteroids
+!U UMatrix uWorldTransform
+!U UMatrix uViewProj
+U UInt uInstances
+U UFloat uSpeed
+U UFloat uUpSize
+U UFloat uInteriorRingDist
+U UFloat uExteriorRingDist
+T 0 uTexture

@@ -14,21 +14,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8aaab4d2-4f5d-4712-9cf7-40708eb9c5f6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planets/Planet_Rock.frag" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planets/Planet_Rock.tese" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Programs/Planet_Rock.prog" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planets/Planet_Asteroids.frag" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planets/Planet_Asteroids.vert" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planets/Planet_Stars.frag" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planets/Planet_Stars.vert" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Programs/Planet_Asteroids.prog" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Programs/Planet_Stars.prog" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Textures/Star_Sheet.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.QuasarEngine/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.QuasarEngine/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Engine/.EngineGenerated/Generated.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Engine/.EngineGenerated/Generated.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/TestingGrounds/Actors/Planet.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/TestingGrounds/Actors/Planet.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/TestingGrounds/Actors/Planet.h" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/TestingGrounds/Actors/Planet.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/Game3D/TestingGrounds/Scenes/Scene_Cube.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Game3D/TestingGrounds/Scenes/Scene_Cube.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuasarEngine/QuasarEngine.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/QuasarEngine.vcxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planets/Planet_Base.frag" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planets/Planet_Beach.frag" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planets/Planet_Base.tese" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planets/Planet_Beach.tese" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planets/Planet_Base_Tree.frag" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planets/Planet_Beach_Tree.frag" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planets/Planet_Base_Tree.vert" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planets/Planet_Beach_Tree.vert" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planets/Planet_Sun.frag" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planets/Planet_Sun.frag" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planets/Planet_Sun.tese" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Planets/Planet_Sun.tese" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Programs/Planet_Base.prog" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Programs/Planet_Beach.prog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Programs/Planet_Base_Tree.prog" beforeDir="false" afterPath="$PROJECT_DIR$/QuasarEngine/Resources/Shaders/Programs/Planet_Beach_Tree.prog" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,6 +195,7 @@
       <workItem from="1781106293979" duration="7787000" />
       <workItem from="1781265721440" duration="22000" />
       <workItem from="1781265788165" duration="6983000" />
+      <workItem from="1781331737595" duration="10402000" />
     </task>
     <servers />
   </component>
