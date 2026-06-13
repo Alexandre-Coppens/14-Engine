@@ -1,0 +1,10 @@
+﻿S VERT_Planet_Base
+S TESC_Planet_Base
+S TESE_Planet_Sun
+S FRAG_Planet_Sun
+!U UMatrix uWorldTransform
+!U UMatrix uViewProj
+U UFloat uSphereRadius
+U UFloat uNoiseStrength
+U UFloat uNoiseSize
+T 0 uTexture

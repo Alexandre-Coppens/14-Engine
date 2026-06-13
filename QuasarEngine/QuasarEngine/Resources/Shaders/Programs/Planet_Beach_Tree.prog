@@ -1,0 +1,11 @@
+﻿S VERT_Planet_Beach_Tree
+S FRAG_Planet_Beach_Tree
+!U UMatrix uWorldTransform
+!U UMatrix uViewProj
+U UInt uInstances
+U UFloat uSphereRadius
+U UFloat uNoiseStrength
+U UFloat uNoiseSize
+U UInt uLongNumber
+U UInt uLatNumber
+T 0 uTexture

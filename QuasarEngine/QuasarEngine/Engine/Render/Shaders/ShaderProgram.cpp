@@ -1,5 +1,7 @@
 #include "ShaderProgram.h"
 
+#include <iostream>
+
 #include "Engine/Utilitaries/DebugMemoryLeakCatcher.h"
 #include "Engine/Utilitaries/MathLib.h"
 

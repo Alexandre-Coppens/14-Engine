@@ -1,5 +1,7 @@
 #include "cModel.h"
 
+#include <iostream>
+
 #include "Engine/Actor.h"
 #include "Engine/Scene.h"
 #include "Engine/Texture.h"
@@ -69,15 +71,22 @@ void Model::Draw()
 		 	glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
 		 	break;
 		 	
+		 case DrawOption::TESSELATION:
+		 	glPolygonMode( GL_FRONT_AND_BACK, GL_FILL );
+		 	break;
+		 	
 		 default:
 		 	break;
 		 }
 		
+		int instanceNbr;
 		//glPointSize(5.0f);
 		switch (mMaterial.getDrawOption())	
 		{
 		case DrawOption::INSTANCED:
-			glDrawArraysInstanced(GL_TRIANGLE_STRIP, 0, mMesh->getVertexArray()->GetVerticesCount(), 1024 * 1024);
+			instanceNbr = dynamic_cast<Uniform1i*>(mMaterial.GetUniform("uInstances"))->uInt;
+			glDrawArraysInstanced(GL_TRIANGLES, 0, getMesh()->getVertexArray()->GetVerticesCount(), instanceNbr);
+			//Log::Error( LogType::Video, "ERROR::GLDrawInstanced: " + glGetError());
 			break;
 			
 		case DrawOption::TESSELATION:

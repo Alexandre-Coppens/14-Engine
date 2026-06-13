@@ -19,13 +19,13 @@ enum class UniformType
 };
 
 static inline std::map<std::string, UniformType> stringToUniformType{
-	{"UFloat",		UniformType::UFloat},
-	{"UInt",		UniformType::UInt},
-	{"UVector2",	UniformType::UVector2},
-	{"UVector3",	UniformType::UVector3},
-	{"UVector4",    UniformType::UVector4},
-	{"UMatrix",     UniformType::UMatrix},
-	{"UMatrixRow",  UniformType::UMatrixRow},
+	{"UFloat",	  UniformType::UFloat},
+	{"UInt",		  UniformType::UInt},
+	{"UVector2",	  UniformType::UVector2},
+	{"UVector3",	  UniformType::UVector3},
+	{"UVector4",   UniformType::UVector4},
+	{"UMatrix",    UniformType::UMatrix},
+	{"UMatrixRow", UniformType::UMatrixRow},
 };
 
 struct Uniform
